@@ -11,13 +11,13 @@ import Illustration from './Illustration.astro';
 
 // Sept étapes de la page Méthode. L'étape des tests (5) est mise en avant.
 const etapes = [
-  { cx: 80, cy: 110, Icone: MessageCircle },
-  { cx: 180, cy: 90, Icone: FileText },
-  { cx: 280, cy: 110, Icone: LayoutTemplate },
-  { cx: 380, cy: 150, Icone: Wrench },
-  { cx: 300, cy: 230, Icone: FlaskConical, tests: true },
-  { cx: 180, cy: 260, Icone: Rocket },
-  { cx: 80, cy: 240, Icone: LifeBuoy },
+  { cx: 80, cy: 110, Icone: MessageCircle, delai: 'delai-0' },
+  { cx: 180, cy: 90, Icone: FileText, delai: 'delai-150' },
+  { cx: 280, cy: 110, Icone: LayoutTemplate, delai: 'delai-300' },
+  { cx: 380, cy: 150, Icone: Wrench, delai: 'delai-450' },
+  { cx: 300, cy: 230, Icone: FlaskConical, tests: true, delai: 'delai-600' },
+  { cx: 180, cy: 260, Icone: Rocket, delai: 'delai-750' },
+  { cx: 80, cy: 240, Icone: LifeBuoy, delai: 'delai-900' },
 ];
 const chemin = `M${etapes.map((e) => `${e.cx} ${e.cy}`).join(' L')}`;
 ---
@@ -27,14 +27,14 @@ const chemin = `M${etapes.map((e) => `${e.cx} ${e.cy}`).join(' L')}`;
   <path
     d={chemin}
     fill="none"
-    class="stroke-brand-600/40"
+    class="anim-flux stroke-brand-600/40 delai-800"
     stroke-width="4"
     stroke-dasharray="2 10"
     stroke-linecap="round"
     stroke-linejoin="round"
   ></path>
-  {etapes.map(({ cx, cy, Icone, tests }) => (
-    <>
+  {etapes.map(({ cx, cy, Icone, tests, delai }) => (
+    <g class:list={['anim-zoom', delai]}>
       <circle
         cx={cx}
         cy={cy}
@@ -45,6 +45,6 @@ const chemin = `M${etapes.map((e) => `${e.cx} ${e.cy}`).join(' L')}`;
       <g class={tests ? 'text-white' : 'text-brand-600'}>
         <Icone x={cx - (tests ? 20 : 14)} y={cy - (tests ? 20 : 14)} size={tests ? 40 : 28} />
       </g>
-    </>
+    </g>
   ))}
 </Illustration>

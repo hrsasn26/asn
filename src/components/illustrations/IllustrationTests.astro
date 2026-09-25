@@ -7,43 +7,46 @@ import Navigateur from './Navigateur.astro';
 
 // Un rapport d'audit (failles classées par gravité) et un bouclier validé.
 const constats = [
-  { y: 134, gravite: 'fill-rose-500' },
-  { y: 174, gravite: 'fill-amber-400' },
-  { y: 214, gravite: 'fill-amber-400' },
-  { y: 254, gravite: 'fill-emerald-500' },
+  { y: 134, gravite: 'fill-rose-500', delai: 'delai-200' },
+  { y: 174, gravite: 'fill-amber-400', delai: 'delai-350' },
+  { y: 214, gravite: 'fill-amber-400', delai: 'delai-500' },
+  { y: 254, gravite: 'fill-emerald-500', delai: 'delai-650' },
 ];
 ---
 
 <Illustration>
   <Fond />
-  <Navigateur x={40} y={64} largeur={270} hauteur={236}>
+  <Navigateur x={40} y={64} largeur={270} hauteur={236} class="anim-entree">
     <rect x="56" y="108" width="140" height="10" rx="5" class="fill-slate-800"></rect>
-    {constats.map(({ y, gravite }) => (
-      <>
+    {constats.map(({ y, gravite, delai }) => (
+      <g class:list={['anim-entree', delai]}>
         <rect x="56" y={y} width="238" height="30" rx="8" class="fill-slate-50" />
         <rect x="66" y={y + 9} width="34" height="12" rx="6" class={gravite} />
         <rect x="112" y={y + 8} width="150" height="6" rx="3" class="fill-slate-800" />
         <rect x="112" y={y + 18} width="100" height="5" rx="2.5" class="fill-slate-200" />
-      </>
+      </g>
     ))}
   </Navigateur>
 
-  <path
-    d="M370 70l62 22v58c0 44-27 73-62 90-35-17-62-46-62-90V92z"
-    class="fill-brand-600 stroke-white"
-    stroke-width="4"
-    stroke-linejoin="round"
-  ></path>
-  <path
-    d="M344 152l18 18 34-38"
-    fill="none"
-    class="stroke-white"
-    stroke-width="10"
-    stroke-linecap="round"
-    stroke-linejoin="round"
-  ></path>
+  <g class="anim-zoom delai-900">
+    <path
+      d="M370 70l62 22v58c0 44-27 73-62 90-35-17-62-46-62-90V92z"
+      class="fill-brand-600 stroke-white"
+      stroke-width="4"
+      stroke-linejoin="round"
+    ></path>
+    <path
+      d="M344 152l18 18 34-38"
+      pathLength="1"
+      fill="none"
+      class="anim-trace stroke-white puis-400"
+      stroke-width="10"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    ></path>
+  </g>
 
-  <Carte x={335} y={256} largeur={70} hauteur={62}>
+  <Carte x={335} y={256} largeur={70} hauteur={62} class="anim-entree delai-600">
     <BugOff x={356} y={264} size={28} />
   </Carte>
 </Illustration>

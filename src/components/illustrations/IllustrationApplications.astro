@@ -3,31 +3,45 @@ import Fond from './Fond.astro';
 import Illustration from './Illustration.astro';
 
 const barres = [
-  { x: 130, h: 50, fonce: true },
-  { x: 154, h: 72, fonce: false },
-  { x: 178, h: 40, fonce: true },
-  { x: 202, h: 84, fonce: false },
-  { x: 226, h: 62, fonce: true },
+  { x: 130, h: 50, fonce: true, delai: 'delai-400' },
+  { x: 154, h: 72, fonce: false, delai: 'delai-500' },
+  { x: 178, h: 40, fonce: true, delai: 'delai-600' },
+  { x: 202, h: 84, fonce: false, delai: 'delai-700' },
+  { x: 226, h: 62, fonce: true, delai: 'delai-800' },
 ];
 ---
 
 <Illustration>
   <Fond />
-  <rect
-    x="40"
-    y="60"
-    width="290"
-    height="210"
-    rx="14"
-    class="fill-white stroke-slate-300"
-    stroke-width="2"
-  ></rect>
-  <path d="M54 60h56v210H54a14 14 0 0 1-14-14V74a14 14 0 0 1 14-14z" class="fill-slate-800"></path>
-  <rect x="54" y="84" width="42" height="6" rx="3" class="fill-slate-600"></rect>
-  <rect x="54" y="102" width="34" height="6" rx="3" class="fill-slate-600"></rect>
-  <rect x="54" y="120" width="42" height="6" rx="3" class="fill-brand-600"></rect>
-  <rect x="54" y="138" width="30" height="6" rx="3" class="fill-slate-600"></rect>
-  <rect x="130" y="80" width="90" height="10" rx="5" class="fill-slate-800"></rect>
+  <g class="anim-entree">
+    <rect
+      x="40"
+      y="60"
+      width="290"
+      height="210"
+      rx="14"
+      class="fill-white stroke-slate-300"
+      stroke-width="2"
+    ></rect>
+    <path
+      d="M54 60h56v210H54a14 14 0 0 1-14-14V74a14 14 0 0 1 14-14z"
+      class="fill-slate-800"
+    ></path>
+    <rect x="54" y="84" width="42" height="6" rx="3" class="fill-slate-600"></rect>
+    <rect x="54" y="102" width="34" height="6" rx="3" class="fill-slate-600"></rect>
+    <rect x="54" y="120" width="42" height="6" rx="3" class="fill-brand-600"></rect>
+    <rect x="54" y="138" width="30" height="6" rx="3" class="fill-slate-600"></rect>
+    <rect
+      x="130"
+      y="80"
+      width="90"
+      height="10"
+      rx="5"
+      class="anim-ecrit fill-slate-800 delai-200"
+    ></rect>
+    <rect x="130" y="216" width="182" height="12" rx="6" class="fill-slate-100"></rect>
+    <rect x="130" y="238" width="182" height="12" rx="6" class="fill-slate-100"></rect>
+  </g>
   {barres.map((barre) => (
     <rect
       x={barre.x}
@@ -35,46 +49,48 @@ const barres = [
       width="16"
       height={barre.h}
       rx="4"
-      class={barre.fonce ? 'fill-brand-600' : 'fill-brand-100'}
+      class:list={['anim-pousse', barre.fonce ? 'fill-brand-600' : 'fill-brand-100', barre.delai]}
     />
   ))}
-  <rect x="256" y="104" width="56" height="56" rx="8" class="fill-brand-50"></rect>
-  {[0, 1, 2].map((ligne) =>
-    [0, 1, 2].map((colonne) => (
-      <rect
-        x={264 + colonne * 16}
-        y={114 + ligne * 14}
-        width="10"
-        height="8"
-        rx="2"
-        class={ligne === 1 && colonne === 1 ? 'fill-emerald-500' : 'fill-brand-100'}
-      />
-    )),
-  )}
-  <rect x="130" y="216" width="182" height="12" rx="6" class="fill-slate-100"></rect>
-  <rect x="130" y="238" width="182" height="12" rx="6" class="fill-slate-100"></rect>
-  <rect
-    x="316"
-    y="104"
-    width="118"
-    height="206"
-    rx="18"
-    class="fill-white stroke-slate-300"
-    stroke-width="2"
-  ></rect>
-  <rect x="352" y="115" width="46" height="6" rx="3" class="fill-slate-200"></rect>
-  {[140, 186, 232].map((y, index) => (
-    <>
-      <rect x="328" y={y} width="94" height="36" rx="8" class="fill-slate-50" />
-      <circle
-        cx="344"
-        cy={y + 18}
-        r="9"
-        class={index === 0 ? 'fill-emerald-500' : 'fill-brand-100'}
-      />
-      <rect x="360" y={y + 10} width="52" height="6" rx="3" class="fill-slate-800" />
-      <rect x="360" y={y + 22} width="36" height="5" rx="2.5" class="fill-slate-200" />
-    </>
-  ))}
-  <rect x="346" y="284" width="58" height="14" rx="7" class="fill-brand-600"></rect>
+  <g class="anim-zoom delai-600">
+    <rect x="256" y="104" width="56" height="56" rx="8" class="fill-brand-50"></rect>
+    {[0, 1, 2].map((ligne) =>
+      [0, 1, 2].map((colonne) => (
+        <rect
+          x={264 + colonne * 16}
+          y={114 + ligne * 14}
+          width="10"
+          height="8"
+          rx="2"
+          class={ligne === 1 && colonne === 1 ? 'fill-emerald-500' : 'fill-brand-100'}
+        />
+      )),
+    )}
+  </g>
+  <g class="anim-entree delai-300">
+    <rect
+      x="316"
+      y="104"
+      width="118"
+      height="206"
+      rx="18"
+      class="fill-white stroke-slate-300"
+      stroke-width="2"
+    ></rect>
+    <rect x="352" y="115" width="46" height="6" rx="3" class="fill-slate-200"></rect>
+    {[140, 186, 232].map((y, index) => (
+      <>
+        <rect x="328" y={y} width="94" height="36" rx="8" class="fill-slate-50" />
+        <circle
+          cx="344"
+          cy={y + 18}
+          r="9"
+          class={index === 0 ? 'fill-emerald-500' : 'fill-brand-100'}
+        />
+        <rect x="360" y={y + 10} width="52" height="6" rx="3" class="fill-slate-800" />
+        <rect x="360" y={y + 22} width="36" height="5" rx="2.5" class="fill-slate-200" />
+      </>
+    ))}
+    <rect x="346" y="284" width="58" height="14" rx="7" class="fill-brand-600"></rect>
+  </g>
 </Illustration>

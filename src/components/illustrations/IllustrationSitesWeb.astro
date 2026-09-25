@@ -6,45 +6,99 @@ import Navigateur from './Navigateur.astro';
 
 <Illustration>
   <Fond />
-  <Navigateur x={50} y={56} largeur={330} hauteur={240}>
+  <Navigateur x={50} y={56} largeur={330} hauteur={240} class="anim-entree">
     <rect x="70" y="104" width="40" height="10" rx="5" class="fill-brand-600"></rect>
     <rect x="250" y="106" width="30" height="6" rx="3" class="fill-slate-300"></rect>
     <rect x="290" y="106" width="30" height="6" rx="3" class="fill-slate-300"></rect>
     <rect x="330" y="106" width="30" height="6" rx="3" class="fill-slate-300"></rect>
-    <rect x="70" y="132" width="130" height="12" rx="6" class="fill-slate-800"></rect>
-    <rect x="70" y="152" width="110" height="7" rx="3.5" class="fill-slate-200"></rect>
-    <rect x="70" y="166" width="120" height="7" rx="3.5" class="fill-slate-200"></rect>
-    <rect x="70" y="184" width="70" height="20" rx="6" class="fill-brand-600"></rect>
-    <rect x="220" y="128" width="140" height="80" rx="10" class="fill-brand-100"></rect>
-    <path d="M230 198l32-34 22 22 14-12 52 24z" class="fill-brand-600/40"></path>
-    <circle cx="330" cy="148" r="9" class="fill-amber-300"></circle>
-    <rect x="70" y="224" width="90" height="52" rx="8" class="fill-slate-100"></rect>
-    <rect x="170" y="224" width="90" height="52" rx="8" class="fill-slate-100"></rect>
-    <rect x="270" y="224" width="90" height="52" rx="8" class="fill-slate-100"></rect>
+    <rect
+      x="70"
+      y="132"
+      width="130"
+      height="12"
+      rx="6"
+      class="anim-ecrit fill-slate-800 delai-200"
+    ></rect>
+    <rect
+      x="70"
+      y="152"
+      width="110"
+      height="7"
+      rx="3.5"
+      class="anim-ecrit fill-slate-200 delai-300"
+    ></rect>
+    <rect
+      x="70"
+      y="166"
+      width="120"
+      height="7"
+      rx="3.5"
+      class="anim-ecrit fill-slate-200 delai-350"
+    ></rect>
+    <rect
+      x="70"
+      y="184"
+      width="70"
+      height="20"
+      rx="6"
+      class="anim-zoom fill-brand-600 delai-500"
+    ></rect>
+    <g class="anim-zoom delai-400">
+      <rect x="220" y="128" width="140" height="80" rx="10" class="fill-brand-100"></rect>
+      <path d="M230 198l32-34 22 22 14-12 52 24z" class="fill-brand-600/40"></path>
+      <circle cx="330" cy="148" r="9" class="anim-zoom fill-amber-300 delai-900"></circle>
+    </g>
+    <rect
+      x="70"
+      y="224"
+      width="90"
+      height="52"
+      rx="8"
+      class="anim-entree fill-slate-100 delai-600"
+    ></rect>
+    <rect
+      x="170"
+      y="224"
+      width="90"
+      height="52"
+      rx="8"
+      class="anim-entree fill-slate-100 delai-700"
+    ></rect>
+    <rect
+      x="270"
+      y="224"
+      width="90"
+      height="52"
+      rx="8"
+      class="anim-entree fill-slate-100 delai-800"
+    ></rect>
   </Navigateur>
-  <circle cx="400" cy="256" r="46" class="fill-white stroke-slate-300" stroke-width="2"></circle>
-  <path
-    d="M372 267a30 30 0 1 1 56 0"
-    fill="none"
-    class="stroke-slate-200"
-    stroke-width="8"
-    stroke-linecap="round"
-  ></path>
-  <path
-    d="M372 267a30 30 0 0 1 49-32"
-    fill="none"
-    class="stroke-emerald-500"
-    stroke-width="8"
-    stroke-linecap="round"
-  ></path>
-  <line
-    x1="400"
-    y1="256"
-    x2="414"
-    y2="240"
-    class="stroke-slate-800"
-    stroke-width="4"
-    stroke-linecap="round"
-  ></line>
-  <circle cx="400" cy="256" r="5" class="fill-slate-800"></circle>
+  <g class="anim-zoom delai-800">
+    <circle cx="400" cy="256" r="46" class="fill-white stroke-slate-300" stroke-width="2"></circle>
+    <path
+      d="M372 267a30 30 0 1 1 56 0"
+      fill="none"
+      class="stroke-slate-200"
+      stroke-width="8"
+      stroke-linecap="round"
+    ></path>
+    <path
+      d="M372 267a30 30 0 0 1 49-32"
+      pathLength="1"
+      fill="none"
+      class="anim-trace stroke-emerald-500 puis-400"
+      stroke-width="8"
+      stroke-linecap="round"
+    ></path>
+    <line
+      x1="400"
+      y1="256"
+      x2="414"
+      y2="240"
+      class="anim-aiguille origin-[400px_256px] stroke-slate-800 puis-400"
+      stroke-width="4"
+      stroke-linecap="round"
+    ></line>
+    <circle cx="400" cy="256" r="5" class="fill-slate-800"></circle>
+  </g>
 </Illustration>

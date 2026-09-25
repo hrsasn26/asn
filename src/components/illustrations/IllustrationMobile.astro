@@ -17,90 +17,97 @@ const taches = [
 <Illustration>
   <Fond />
 
-  <rect
-    x="92"
-    y="48"
-    width="132"
-    height="264"
-    rx="24"
-    class="fill-white stroke-slate-300"
-    stroke-width="2"
-  ></rect>
-  <rect x="140" y="60" width="36" height="6" rx="3" class="fill-slate-200"></rect>
-  <rect x="106" y="78" width="104" height="40" rx="10" class="fill-brand-600"></rect>
-  <rect x="116" y="90" width="56" height="6" rx="3" class="fill-white"></rect>
-  <rect x="116" y="102" width="36" height="5" rx="2.5" class="fill-brand-100"></rect>
-  {lignes.map((y, index) => (
-    <>
-      <rect x="106" y={y} width="104" height="34" rx="8" class="fill-slate-50" />
-      <circle
-        cx="122"
-        cy={y + 17}
-        r="8"
-        class={index === 0 ? 'fill-emerald-500' : 'fill-brand-100'}
-      />
-      <rect x="136" y={y + 10} width="60" height="6" rx="3" class="fill-slate-800" />
-      <rect x="136" y={y + 21} width="40" height="5" rx="2.5" class="fill-slate-200" />
-    </>
-  ))}
-  <rect x="120" y="264" width="76" height="20" rx="10" class="fill-brand-600"></rect>
-  <rect x="138" y="298" width="40" height="5" rx="2.5" class="fill-slate-300"></rect>
-
-  <rect
-    x="256"
-    y="84"
-    width="132"
-    height="240"
-    rx="24"
-    class="fill-white stroke-slate-300"
-    stroke-width="2"
-  ></rect>
-  <rect x="304" y="96" width="36" height="6" rx="3" class="fill-slate-200"></rect>
-  <rect x="270" y="114" width="70" height="8" rx="4" class="fill-slate-800"></rect>
-  {taches.map(({ y, faite }) => (
-    <>
-      <rect
-        x="270"
-        y={y}
-        width="18"
-        height="18"
-        rx="5"
-        class={faite ? 'fill-emerald-500' : 'fill-white stroke-slate-300'}
-        stroke-width="2"
-      />
-      {faite && (
-        <path
-          d={`M274 ${y + 9}l4 4 7-8`}
-          fill="none"
-          class="stroke-white"
-          stroke-width="2.5"
-          stroke-linecap="round"
-          stroke-linejoin="round"
+  <g class="anim-entree">
+    <rect
+      x="92"
+      y="48"
+      width="132"
+      height="264"
+      rx="24"
+      class="fill-white stroke-slate-300"
+      stroke-width="2"
+    ></rect>
+    <rect x="140" y="60" width="36" height="6" rx="3" class="fill-slate-200"></rect>
+    <rect x="106" y="78" width="104" height="40" rx="10" class="fill-brand-600"></rect>
+    <rect x="116" y="90" width="56" height="6" rx="3" class="fill-white"></rect>
+    <rect x="116" y="102" width="36" height="5" rx="2.5" class="fill-brand-100"></rect>
+    {lignes.map((y, index) => (
+      <g class:list={['anim-entree', ['delai-200', 'delai-300', 'delai-400'][index]]}>
+        <rect x="106" y={y} width="104" height="34" rx="8" class="fill-slate-50" />
+        <circle
+          cx="122"
+          cy={y + 17}
+          r="8"
+          class={index === 0 ? 'fill-emerald-500' : 'fill-brand-100'}
         />
-      )}
-      <rect x="296" y={y + 6} width="70" height="6" rx="3" class="fill-slate-200" />
-    </>
-  ))}
-  <rect x="270" y="226" width="104" height="60" rx="10" class="fill-brand-50"></rect>
-  <g class="text-brand-600">
-    <Camera x={306} y={240} size={32} />
+        <rect x="136" y={y + 10} width="60" height="6" rx="3" class="fill-slate-800" />
+        <rect x="136" y={y + 21} width="40" height="5" rx="2.5" class="fill-slate-200" />
+      </g>
+    ))}
+    <rect x="120" y="264" width="76" height="20" rx="10" class="fill-brand-600"></rect>
+    <rect x="138" y="298" width="40" height="5" rx="2.5" class="fill-slate-300"></rect>
   </g>
-  <rect x="302" y="306" width="40" height="5" rx="2.5" class="fill-slate-300"></rect>
 
-  <rect
-    x="196"
-    y="40"
-    width="112"
-    height="40"
-    rx="14"
-    class="fill-white stroke-slate-300"
-    stroke-width="2"
-  ></rect>
-  <g class="text-brand-600">
-    <Bell x={206} y={48} size={24} />
+  <g class="anim-entree delai-200">
+    <rect
+      x="256"
+      y="84"
+      width="132"
+      height="240"
+      rx="24"
+      class="fill-white stroke-slate-300"
+      stroke-width="2"
+    ></rect>
+    <rect x="304" y="96" width="36" height="6" rx="3" class="fill-slate-200"></rect>
+    <rect x="270" y="114" width="70" height="8" rx="4" class="fill-slate-800"></rect>
+    {taches.map(({ y, faite }) => (
+      <>
+        <rect
+          x="270"
+          y={y}
+          width="18"
+          height="18"
+          rx="5"
+          class={faite ? 'fill-emerald-500' : 'fill-white stroke-slate-300'}
+          stroke-width="2"
+        />
+        {faite && (
+          <path
+            d={`M274 ${y + 9}l4 4 7-8`}
+            pathLength="1"
+            fill="none"
+            class:list={['anim-trace stroke-white', y === 134 ? 'delai-700' : 'delai-900']}
+            stroke-width="2.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        )}
+        <rect x="296" y={y + 6} width="70" height="6" rx="3" class="fill-slate-200" />
+      </>
+    ))}
+    <rect x="270" y="226" width="104" height="60" rx="10" class="fill-brand-50"></rect>
+    <g class="text-brand-600">
+      <Camera x={306} y={240} size={32} />
+    </g>
+    <rect x="302" y="306" width="40" height="5" rx="2.5" class="fill-slate-300"></rect>
   </g>
-  <rect x="238" y="52" width="56" height="6" rx="3" class="fill-slate-800"></rect>
-  <rect x="238" y="64" width="40" height="5" rx="2.5" class="fill-slate-200"></rect>
 
-  <Badge cx={394} cy={96} r={22} />
+  <g class="anim-zoom delai-1100">
+    <rect
+      x="196"
+      y="40"
+      width="112"
+      height="40"
+      rx="14"
+      class="fill-white stroke-slate-300"
+      stroke-width="2"
+    ></rect>
+    <g class="anim-sonne text-brand-600 puis-500">
+      <Bell x={206} y={48} size={24} />
+    </g>
+    <rect x="238" y="52" width="56" height="6" rx="3" class="fill-slate-800"></rect>
+    <rect x="238" y="64" width="40" height="5" rx="2.5" class="fill-slate-200"></rect>
+  </g>
+
+  <Badge cx={394} cy={96} r={22} class="delai-1800" />
 </Illustration>

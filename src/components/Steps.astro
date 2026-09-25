@@ -11,9 +11,17 @@ interface Props {
 const { items } = Astro.props;
 ---
 
-<ol class="grid max-w-3xl gap-4">
+<ol class="grid max-w-3xl gap-6">
   {items.map((item, index) => (
-    <li class="flex gap-4">
+    <li class="apparition relative flex gap-4">
+      {index < items.length - 1 && (
+        <span
+          aria-hidden="true"
+          class="absolute top-9 -bottom-6 left-[1.0625rem] w-0.5 bg-brand-100"
+        >
+          <span class="anim-frise block h-full bg-brand-700" />
+        </span>
+      )}
       <span
         aria-hidden="true"
         class="flex size-9 shrink-0 items-center justify-center rounded-full bg-brand-700 font-semibold text-white"
