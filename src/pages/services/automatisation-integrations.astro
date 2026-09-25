@@ -17,7 +17,6 @@ import ProblemList from '~/components/ProblemList.astro';
 import Section from '~/components/Section.astro';
 import Steps from '~/components/Steps.astro';
 import { offre, site } from '~/data/site';
-import { tarifs } from '~/data/tarifs';
 import BaseLayout from '~/layouts/BaseLayout.astro';
 import { serviceJsonLd } from '~/lib/seo';
 
@@ -201,8 +200,9 @@ const ctaTaches = { label: 'Identifier mes tâches à automatiser', href: '/cont
     </FaqItem>
     <FaqItem question="Combien ça coûte ?">
       <p>
-        Une automatisation simple commence à {tarifs.automatisation}. Avant de commencer, nous
-        estimons avec vous le temps gagné, pour que vous décidiez en connaissance de cause.
+        Cela dépend de la tâche à automatiser. Avant de commencer, nous estimons avec vous le temps
+        gagné, puis nous vous remettons un devis gratuit, à prix fixe. Vous décidez en connaissance
+        de cause.
       </p>
     </FaqItem>
   </Faq>

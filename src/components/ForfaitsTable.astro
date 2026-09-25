@@ -1,5 +1,5 @@
 ---
-import { forfaitsMaintenance } from '~/data/tarifs';
+import { forfaitsMaintenance } from '~/data/forfaits';
 
 const lignes: { label: string; valeur: (f: (typeof forfaitsMaintenance)[number]) => string }[] = [
   { label: 'Pour qui', valeur: (f) => f.pourQui },
@@ -10,7 +10,6 @@ const lignes: { label: string; valeur: (f: (typeof forfaitsMaintenance)[number])
   { label: 'Modifications incluses', valeur: (f) => f.modifications },
   { label: "Délai d'intervention", valeur: (f) => f.delaiIntervention },
   { label: 'Rapport mensuel', valeur: (f) => (f.rapportMensuel ? '✓' : '—') },
-  { label: 'Prix', valeur: (f) => f.prix },
 ];
 ---
 

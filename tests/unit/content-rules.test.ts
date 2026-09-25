@@ -19,8 +19,10 @@ describe('extraireTexte', () => {
 
 describe('analyserTexte', () => {
   it('signale les placeholders comme avertissements hors mode strict', () => {
-    const problemes = analyserTexte(['À partir de [X] €'], { strict: false });
-    expect(problemes).toEqual([{ niveau: 'avertissement', regle: 'placeholder', extrait: '[X]' }]);
+    const problemes = analyserTexte(['Réponse sous [48 h]'], { strict: false });
+    expect(problemes).toEqual([
+      { niveau: 'avertissement', regle: 'placeholder', extrait: '[48 h]' },
+    ]);
   });
 
   it('signale les placeholders comme erreurs en mode strict', () => {
@@ -42,6 +44,34 @@ describe('analyserTexte', () => {
     expect(problemes.some((p) => p.niveau === 'erreur')).toBe(true);
   });
 
+  it.each(['À partir de [X] DH', 'Site vitrine : 5 000 DH', '1 200 €', '300 MAD par mois'])(
+    'refuse le prix « %s »',
+    (texte) => {
+      const problemes = analyserTexte([texte], { strict: false });
+      expect(problemes.some((p) => p.regle.startsWith('prix affiché'))).toBe(true);
+    },
+  );
+
+  it('accepte le capital social des mentions légales', () => {
+    const problemes = analyserTexte(['SARL au capital de [montant] DH'], { strict: false });
+    expect(problemes.some((p) => p.regle.startsWith('prix affiché'))).toBe(false);
+  });
+
+  it.each(['Hébergement en France', 'Conforme au RGPD', 'Réclamation auprès de la CNIL'])(
+    'refuse la mention « %s »',
+    (texte) => {
+      const problemes = analyserTexte([texte], { strict: false });
+      expect(problemes.some((p) => p.regle.startsWith('mention interdite'))).toBe(true);
+    },
+  );
+
+  it('accepte « français » comme langue', () => {
+    const problemes = analyserTexte(['Un site en français, en arabe et en anglais'], {
+      strict: false,
+    });
+    expect(problemes).toEqual([]);
+  });
+
   it('refuse les points d’exclamation', () => {
     expect(analyserTexte(['Contactez-nous !'], { strict: false })[0]?.regle).toBe(
       "point d'exclamation",
@@ -60,7 +90,7 @@ describe('analyserTexte', () => {
   });
 
   it('accepte un placeholder suivi de ponctuation ou entre parenthèses', () => {
-    const problemes = analyserTexte(['Prix : [X] €/mois, délai ([48 h ouvrées]).'], {
+    const problemes = analyserTexte(['Modifications : [1 h]/mois, délai ([48 h ouvrées]).'], {
       strict: false,
     });
     expect(problemes.every((p) => p.regle === 'placeholder')).toBe(true);

@@ -64,7 +64,7 @@ jobs:
       - run: pnpm build
         env:
           SITE_URL: ${{ vars.SITE_URL }}
-      # Bloque la production tant qu'il reste un placeholder ([Ville ou région], [X] DH…).
+      # Bloque la production tant qu'il reste un placeholder ([Ville ou région], [pays à définir]…).
       - run: pnpm check:content --strict
 
   preprod:

@@ -20,7 +20,7 @@
 ## 1. Principes
 
 - **Le site est notre première preuve.** Il doit réussir les contrôles de notre propre audit gratuit : vitesse, sécurité, référencement technique et affichage mobile.
-- **Il applique nos promesses** : tests avant la mise en ligne, protection des données personnelles (loi 09-08), accessibilité, hébergement en France ou en Europe.
+- **Il applique nos promesses** : tests avant la mise en ligne, protection des données personnelles (loi 09-08), accessibilité. Aucun prix public : chaque prix est donné dans un devis.
 - **Le site contient surtout des pages statiques.** Seules les pages avec formulaire (Contact et Audit gratuit) passent par le serveur.
 - **Il envoie très peu de JavaScript.** Le menu mobile et la FAQ utilisent des éléments HTML natifs (`<details>`). Les formulaires fonctionnent sans JavaScript.
 
@@ -34,11 +34,11 @@
 | Images | Illustrations SVG originales, icônes Lucide (`@lucide/astro`, licence ISC) | SVG intégré dans la page : aucune requête, aucune photo de stock, couleurs du site. |
 | Contenu long | Content collections Astro (Markdown + schéma Zod) | Le blog et les réalisations sont dans Git. Le build échoue si un champ obligatoire manque. |
 | Formulaires | Astro Actions + Zod, adaptateur `@astrojs/node` | Validation côté serveur, messages d'erreur en français, champ piège anti-spam, limite de débit par adresse IP. |
-| E-mails | Brevo (API transactionnelle) | Entreprise française. Chaque demande arrive par e-mail à l'équipe. |
+| E-mails | Brevo (API transactionnelle) | Chaque demande arrive par e-mail à l'équipe. Serveurs hors du Maroc : transfert à déclarer à la CNDP. |
 | SEO | `@astrojs/sitemap`, `@astrojs/rss`, JSON-LD | Balises title et meta du brief. Données structurées : ProfessionalService, Service, BreadcrumbList, BlogPosting. |
 | Sécurité | CSP d'Astro + en-têtes HTTP dans Caddy | Astro calcule les empreintes des scripts et des styles de chaque page. Caddy ajoute HSTS, X-Frame-Options, etc. |
 | Serveur web | Caddy 2 | HTTPS automatique, compression, cache long des fichiers `/_astro/`. |
-| Hébergement | VPS en France (Scaleway ou OVHcloud), Docker Compose | La même plateforme que notre offre « Hébergement géré » : le site est notre premier client. |
+| Hébergement | VPS (hébergeur et pays à choisir, voir section 9), Docker Compose | La même plateforme que notre offre « Hébergement géré » : le site est notre premier client. |
 
 **Pourquoi pas WordPress ?** Il demande une base de données et des extensions à mettre à jour. Notre message s'oppose justement aux sites WordPress mal maintenus. Nous pouvons quand même le proposer aux clients.
 
@@ -75,7 +75,7 @@ src/
   content.config.ts       Schéma des articles et des études de cas
   data/
     site.ts               Nom, zone, délais, engagements (placeholders du brief)
-    tarifs.ts             Tous les prix (placeholders du brief)
+    forfaits.ts           Forfaits de maintenance (sans prix)
     navigation.ts         Menus
     methode.ts            Les cinq étapes d'un projet (accueil, services)
   layouts/BaseLayout.astro  Structure commune : <head>, SEO, en-tête, pied de page
@@ -92,18 +92,20 @@ deploy/                   Docker Compose, Caddyfile, script de déploiement
 ## 5. Modifier le contenu
 
 - **Textes des pages** : dans `src/pages/`. Chaque page indique la section du brief d'où viennent ses textes.
-- **Prix** : uniquement dans `src/data/tarifs.ts`. Un prix apparaît sur plusieurs pages : vous le modifiez une seule fois.
+- **Prix** : aucun sur le site. Chaque prix est donné dans un devis. Les forfaits de maintenance (sans prix) sont dans `src/data/forfaits.ts`.
 - **Nom, domaine, zone, délais, engagements** : dans `src/data/site.ts`. Le domaine sert aussi d'adresse de production dans `astro.config.mjs`.
 - **Article de blog** : ajoutez un fichier Markdown dans `src/content/blog/`. Les champs obligatoires sont dans `src/content.config.ts`.
 - **Étude de cas** : copiez `docs/modele-etude-de-cas.md` dans `src/content/realisations/`. Uniquement des projets réels, avec l'accord du client.
 - **Illustrations** : dans `src/components/illustrations/`. Elles sont décoratives (`aria-hidden`) et utilisent les jetons de couleur de `global.css` : elles suivent le design quand il change.
 - **Image de partage** (aperçu sur les réseaux sociaux) : lancez `pnpm image:partage` après un changement du nom de l'agence. Le script affiche le nom dès qu'il n'est plus un placeholder.
 
-**Placeholders.** Les informations non confirmées restent entre crochets : `[Ville ou région]`, `[X] DH`, `[À rédiger : …]`. Le script `pnpm check:content` les liste. En mode `--strict`, il bloque la mise en production tant qu'il en reste.
+**Placeholders.** Les informations non confirmées restent entre crochets : `[Ville ou région]`, `[pays à définir]`, `[À rédiger : …]`. Le script `pnpm check:content` les liste. En mode `--strict`, il bloque la mise en production tant qu'il en reste.
 
 **Règles du brief vérifiées automatiquement** (section 4) :
 - mots à éviter : DevOps, QA, stack, CI/CD, framework, « solutions innovantes », « optimiser », « digitaliser », « 360° » ;
 - pas de point d'exclamation ;
+- aucun prix affiché (« 5 000 DH », « [X] DH », « 300 € ») : les prix sont donnés dans les devis ;
+- aucune mention de la France, du RGPD ou de la CNIL : le site vise des projets au Maroc ;
 - pas de placeholder collé à un mot (ex. : « sous [48 h ouvrées]avec »). Astro supprime parfois l'espace entre une valeur `{…}` et le texte de la ligne suivante : écrivez `{' '}` ou gardez la valeur sur la même ligne.
 
 ## 6. Tests et intégration continue
@@ -182,7 +184,7 @@ Le site reste non indexé (`X-Robots-Tag: noindex` dans `vercel.json`) tant que 
 
 Le déploiement est désactivé tant que ces étapes ne sont pas faites.
 
-1. **Serveur** : un VPS en France avec Docker. Créez un utilisateur de déploiement et un dossier (par exemple `/srv/site`).
+1. **Serveur** : un VPS avec Docker (hébergeur et pays à choisir, voir section 9). Créez un utilisateur de déploiement et un dossier (par exemple `/srv/site`).
 2. **Configuration du serveur** : copiez `.env.example` dans ce dossier sous le nom `.env`, puis remplissez les valeurs. En production : `SITE_DOMAIN=www.digital-solutions.ma` et `DOMAINES_REDIRIGES=digital-solutions.ma`.
 3. **Accès à l'image** : sur le serveur, connectez Docker à `ghcr.io` avec un jeton GitHub en lecture seule (`read:packages`), ou rendez le paquet public.
 4. **DNS** : faites pointer `digital-solutions.ma` et `www.digital-solutions.ma` vers le serveur (enregistrements `A`, et `AAAA` si le serveur a une adresse IPv6). Caddy obtient les certificats HTTPS tout seul et redirige l'adresse sans `www`.
@@ -204,5 +206,5 @@ En préproduction, mettez `ROBOTS_TAG=noindex` dans `.env` pour que Google n'ind
 | Design | Modèle personnalisé ou designer partenaire (section 8 du brief). | Remplacer les jetons de `global.css`. Ajouter la police avec l'API Fonts d'Astro (police auto-hébergée). En attendant, le site utilise la police du système. |
 | Interface d'édition (CMS) | À décider si nous vendons des sites Astro aux clients. | Ajouter Keystatic (contenus dans Git) pour le tester sur notre site d'abord. |
 | Mesure d'audience | Matomo ou Plausible, sans cookie si possible. À valider avec le juriste (loi 09-08, consentement aux cookies). | Pas encore intégrée. Il faudra ajouter son domaine à la CSP (`astro.config.mjs`). |
-| Vercel : aperçu ou production | Vercel sert d'aperçu. Vercel est une entreprise américaine : l'utiliser en production doit rester compatible avec l'engagement « Hébergement en [France / Europe] » (section 4 du brief) et avec les règles de transfert de données à l'étranger de la loi 09-08. À valider avec le juriste. | En production sur Vercel : retirer `X-Robots-Tag: noindex` de `vercel.json`, choisir la région des fonctions et remplacer la limite d'envois en mémoire. |
+| Vercel : aperçu ou production | Vercel sert d'aperçu. Vercel est une entreprise américaine : l'utiliser en production doit rester compatible avec l'engagement « Hébergement en [pays à définir] » (section 4 du brief) et avec les règles de transfert de données à l'étranger de la loi 09-08. À valider avec le juriste. | En production sur Vercel : retirer `X-Robots-Tag: noindex` de `vercel.json`, choisir la région des fonctions et remplacer la limite d'envois en mémoire. |
 | Accusé de réception au prospect | Non mis en place. Un e-mail automatique vers une adresse saisie dans un formulaire peut servir à envoyer du spam à des tiers. | À ajouter avec un texte validé si le besoin est confirmé. |

@@ -20,7 +20,6 @@ import ProblemList from '~/components/ProblemList.astro';
 import Section from '~/components/Section.astro';
 import Steps from '~/components/Steps.astro';
 import { offre, site } from '~/data/site';
-import { tarifs } from '~/data/tarifs';
 import BaseLayout from '~/layouts/BaseLayout.astro';
 import { serviceJsonLd } from '~/lib/seo';
 
@@ -186,7 +185,9 @@ const ctaProjet = { label: 'Parler de mon projet IA', href: '/contact' };
     </FaqItem>
     <FaqItem question="Combien ça coûte ?">
       <p>
-        {`Un premier assistant commence à ${tarifs.assistantIA}. Le service d'IA est facturé en plus, selon l'utilisation : nous estimons ce coût avec vous avant de commencer.`}
+        Cela dépend de l'assistant et de vos données. Nous vous remettons un devis gratuit, à prix
+        fixe. Le service d'IA est facturé en plus, selon l'utilisation : nous estimons ce coût avec
+        vous avant de commencer.
       </p>
     </FaqItem>
     <FaqItem question="Dois-je changer mes outils ?">

@@ -30,7 +30,7 @@ const html = `<!doctype html>
     <h1>Des sites et des applications conçus par des ingénieurs</h1>
     <p class="promesse">Fiables, testés, sécurisés et suivis dans la durée.</p>
   </div>
-  <div class="services"><span>Sites web</span><span>Applications</span><span>Automatisation</span><span>Maintenance</span></div>
+  <div class="services"><span>Sites web</span><span>Applications</span><span>Intelligence artificielle</span><span>Maintenance</span></div>
 </body></html>`;
 
 const navigateur = await chromium.launch(

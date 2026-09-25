@@ -14,7 +14,8 @@ export const site = {
   zone: '[Ville ou région]',
   email: '[contact@digital-solutions.ma : adresse à créer]',
   telephone: '[numéro de téléphone]',
-  hebergement: '[France / Europe]',
+  /** Pays des serveurs : décision ouverte (docs/stack-technique.md, section 9). */
+  hebergement: '[pays à définir]',
   delaiReponse: '[48 h ouvrées]',
 } as const;
 
@@ -38,9 +39,6 @@ export const offre = {
   confidentialiteIA: '[à confirmer selon les fournisseurs retenus]',
   garantie: '[pendant X mois après la livraison : garantie à définir]',
   modalitesPaiement: '[à définir : acompte à la commande, solde à la livraison, etc.]',
-  prixHtTtc: "[À définir selon le statut de l'entreprise]",
-  paiementPlusieursFois: '[À définir]',
-  conditionsRetractation: '[Conditions à faire valider par un juriste]',
 } as const;
 
 /** Appels à l'action communs à tout le site (section 6 du brief). */

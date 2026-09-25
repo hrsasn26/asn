@@ -14,7 +14,6 @@ import ProblemList from '~/components/ProblemList.astro';
 import Section from '~/components/Section.astro';
 import Steps from '~/components/Steps.astro';
 import { site } from '~/data/site';
-import { tarifs } from '~/data/tarifs';
 import BaseLayout from '~/layouts/BaseLayout.astro';
 import { serviceJsonLd } from '~/lib/seo';
 
@@ -137,7 +136,8 @@ const ctaProjet = { label: 'Parler de mes chiffres', href: '/contact' };
     </FaqItem>
     <FaqItem question="Combien ça coûte ?">
       <p>
-        {`Un premier tableau de bord commence à ${tarifs.tableauDeBord}. Chaque projet fait l'objet d'un devis gratuit, à prix fixe.`}
+        Cela dépend du nombre de sources et d'indicateurs. Chaque projet fait l'objet d'un devis
+        gratuit, à prix fixe.
       </p>
     </FaqItem>
   </Faq>

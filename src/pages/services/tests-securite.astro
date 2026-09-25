@@ -15,7 +15,6 @@ import ProblemList from '~/components/ProblemList.astro';
 import Section from '~/components/Section.astro';
 import Steps from '~/components/Steps.astro';
 import { cta, site } from '~/data/site';
-import { tarifs } from '~/data/tarifs';
 import BaseLayout from '~/layouts/BaseLayout.astro';
 import { serviceJsonLd } from '~/lib/seo';
 
@@ -156,7 +155,8 @@ const ctaAudit = { label: 'Demander un audit de sécurité', href: '/contact' };
     </FaqItem>
     <FaqItem question="Combien ça coûte ?">
       <p>
-        {`Un audit de sécurité commence à ${tarifs.auditSecurite}. Pour les tests d'une application, nous vous remettons un devis à prix fixe après le cadrage.`}
+        Cela dépend de la taille du site ou de l'application et des tests choisis. Après le cadrage,
+        nous vous remettons un devis gratuit, à prix fixe.
       </p>
     </FaqItem>
     <FaqItem question="Que se passe-t-il après l'audit ?">

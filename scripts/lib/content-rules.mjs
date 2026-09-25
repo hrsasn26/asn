@@ -13,6 +13,22 @@ export const MOTS_A_EVITER = [
   { mot: '360°', motif: '360\\s*°' },
 ];
 
+/**
+ * Mentions interdites : le site vise des projets au Maroc (droit marocain, loi 09-08).
+ * « français » (la langue) reste autorisé.
+ */
+export const MENTIONS_INTERDITES = [
+  { mot: 'France', motif: 'france' },
+  { mot: 'RGPD', motif: 'rgpd' },
+  { mot: 'CNIL', motif: 'cnil' },
+];
+
+/**
+ * Montant affiché (ex. : « 5 000 DH », « [X] DH », « 300 € »). Aucun prix n'est public :
+ * chaque prix est donné dans un devis. « capital de [montant] DH » (mentions légales) reste autorisé.
+ */
+const MONTANT = /(?:\[X\]|\d[\d\s.,]*)\s*(?:DH|MAD|dirhams?|€|euros?)(?![\p{L}\p{N}])/giu;
+
 const ENTITES = { amp: '&', lt: '<', gt: '>', quot: '"', apos: "'", nbsp: ' ' };
 
 /** @param {string} texte */
@@ -113,6 +129,25 @@ export function analyserTexte(fragments, { strict }) {
           extrait: contexte(fragment, correspondance.index ?? 0),
         });
       }
+    }
+
+    for (const { mot, motif } of MENTIONS_INTERDITES) {
+      const regex = new RegExp(`(?<![\\p{L}\\p{N}])${motif}(?![\\p{L}\\p{N}])`, 'giu');
+      for (const correspondance of fragment.matchAll(regex)) {
+        problemes.push({
+          niveau: 'erreur',
+          regle: `mention interdite « ${mot} » (site pour le Maroc)`,
+          extrait: contexte(fragment, correspondance.index ?? 0),
+        });
+      }
+    }
+
+    for (const correspondance of fragment.matchAll(MONTANT)) {
+      problemes.push({
+        niveau: 'erreur',
+        regle: 'prix affiché (les prix sont donnés dans les devis)',
+        extrait: contexte(fragment, correspondance.index ?? 0),
+      });
     }
 
     // Un placeholder collé à un mot trahit une espace perdue lors du rendu

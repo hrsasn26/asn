@@ -1,21 +1,9 @@
 /**
- * Tous les prix du site, au même endroit.
+ * Forfaits d'hébergement et de maintenance (section 6.5 du brief).
  *
- * Règle du projet : ne jamais inventer de prix. Gardez les placeholders `[X] DH`
- * tant que les prix ne sont pas fixés (voir docs/brief-agence.md, section 8).
+ * Règle du projet : aucun prix public. Chaque prix est donné dans un devis.
+ * `pnpm check:content` bloque tout montant affiché sur le site.
  */
-export const tarifs = {
-  siteVitrine: '[X] DH',
-  boutique: '[X] DH',
-  mvp: '[X] DH',
-  applicationMobile: '[X] DH',
-  assistantIA: '[X] DH',
-  formationIA: '[X] DH',
-  automatisation: '[X] DH',
-  tableauDeBord: '[X] DH',
-  auditSecurite: '[X] DH',
-} as const;
-
 export interface ForfaitMaintenance {
   nom: string;
   recommande: boolean;
@@ -24,10 +12,8 @@ export interface ForfaitMaintenance {
   modifications: string;
   delaiIntervention: string;
   rapportMensuel: boolean;
-  prix: string;
 }
 
-/** Forfaits de la page « Hébergement et maintenance » (section 6.5 du brief). */
 export const forfaitsMaintenance: ForfaitMaintenance[] = [
   {
     nom: 'Essentiel',
@@ -37,7 +23,6 @@ export const forfaitsMaintenance: ForfaitMaintenance[] = [
     modifications: '—',
     delaiIntervention: '[48 h ouvrées]',
     rapportMensuel: false,
-    prix: '[X] DH/mois',
   },
   {
     nom: 'Sérénité',
@@ -47,7 +32,6 @@ export const forfaitsMaintenance: ForfaitMaintenance[] = [
     modifications: '[1 h/mois]',
     delaiIntervention: '[24 h ouvrées]',
     rapportMensuel: true,
-    prix: '[X] DH/mois',
   },
   {
     nom: 'Pro',
@@ -57,7 +41,6 @@ export const forfaitsMaintenance: ForfaitMaintenance[] = [
     modifications: '[3 h/mois]',
     delaiIntervention: '[4 h ouvrées]',
     rapportMensuel: true,
-    prix: '[X] DH/mois',
   },
 ];
 

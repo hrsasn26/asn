@@ -11,12 +11,14 @@ Les choix techniques, l'organisation du code et la mise en service sont dans [do
 ## État du projet
 
 - Offre : neuf pôles de services (section 3 du brief). Textes des quatre premières pages Services validés, sauf les ajouts marqués « à valider » (options Sites web, WhatsApp, formation IA). Pages Applications mobiles, Logiciels SaaS, Intelligence artificielle, Données et tableaux de bord, Tests et sécurité : textes proposés (sections 6.14 à 6.18), à valider.
-- Autres pages (Accueil, Méthode, Tarifs, L'agence, Contact, Réalisations, Blog) : textes proposés dans le brief (sections 6.7 à 6.13) et intégrés. Ils restent à valider.
+- Autres pages (Accueil, Méthode, L'agence, Contact, Réalisations, Blog) : textes proposés dans le brief (sections 6.7 à 6.13) et intégrés. Ils restent à valider.
 - Blog : trois premiers articles dans `src/content/blog/`, à valider.
-- Marché : Maroc. Prix en DH, droit marocain (loi 09-08 et CNDP pour les données personnelles, loi 31-08 pour les consommateurs). Ne pas citer le RGPD, la CNIL ou le droit français sur le site.
+- Marché : projets au Maroc. Droit marocain (loi 09-08 et CNDP pour les données personnelles, loi 31-08 pour les consommateurs). Ne pas citer la France, le RGPD, la CNIL ou le droit français sur le site.
+- Prix : aucun prix public. Pas de page Tarifs : chaque prix est donné en privé, dans un devis.
 - Pages légales : projets de texte avec placeholders, à faire valider par un juriste marocain.
+- Logo : à fournir par l'équipe. En attendant, l'en-tête affiche le nom en texte et le favicon est un carré bleu.
 - Images : illustrations SVG originales (`src/components/illustrations/`), icônes Lucide, image de partage `public/og.png`. Pas de photo de stock ni de photo d'équipe inventée.
-- Technologies : Astro 7, TypeScript, Tailwind CSS 4, Node.js 24, pnpm. Déploiement Docker + Caddy sur un VPS en France.
+- Technologies : Astro 7, TypeScript, Tailwind CSS 4, Node.js 24, pnpm. Déploiement Docker + Caddy sur un VPS (hébergeur et pays à choisir).
 - Déploiement : désactivé tant que la mise en service n'est pas faite (section 8 de `docs/stack-technique.md`). Un aperçu tourne sur Vercel (`asn-tau.vercel.app`, non indexé). Le domaine est à relier à Vercel ou au VPS (section « Nom de domaine » de `docs/stack-technique.md`).
 - Adaptateurs : Node par défaut, `@astrojs/vercel` seulement pendant un build Vercel. Tester les deux builds après un changement de configuration (`pnpm build` et `VERCEL=1 pnpm build`).
 
@@ -30,7 +32,7 @@ Les choix techniques, l'organisation du code et la mise en service sont dans [do
 
 ## Règles de code
 
-- Les prix sont uniquement dans `src/data/tarifs.ts`. Le nom, la zone, les délais et les engagements sont dans `src/data/site.ts`.
+- Aucun prix ni montant sur le site. `pnpm check:content` bloque tout prix affiché et toute mention de la France, du RGPD ou de la CNIL. Le nom, le domaine, la zone, les délais et les engagements sont dans `src/data/site.ts`. Les forfaits de maintenance (sans prix) sont dans `src/data/forfaits.ts`.
 - Chaque page reprend les textes du brief mot pour mot et indique la section d'origine en commentaire.
 - Les formulaires doivent fonctionner sans JavaScript. Tout nouveau formulaire utilise une Astro Action, un schéma Zod dans `src/lib/schemas.ts`, le champ piège et la case de consentement.
 - Pas de style en ligne (`style="…"`) ni de script externe sans mise à jour de la CSP (`astro.config.mjs`).
@@ -42,5 +44,5 @@ Les choix techniques, l'organisation du code et la mise en service sont dans [do
 
 - Tout le contenu du site est en **français**, avec vouvoiement.
 - Suivre le ton et les mots à éviter définis dans la section 4 du brief (pas de jargon technique comme DevOps, QA ou stack côté client).
-- Ne jamais inventer de prix, de statistiques, de témoignages ou de références clients. Garder les placeholders entre crochets (`[Ville ou région]`, `[X] DH`, etc.) tant que l'information n'est pas fournie.
+- Ne jamais inventer de prix, de statistiques, de témoignages ou de références clients. Garder les placeholders entre crochets (`[Ville ou région]`, `[pays à définir]`, etc.) tant que l'information n'est pas fournie.
 - Quand une décision change l'offre ou le positionnement, mettre à jour `docs/brief-agence.md` pour qu'il reste la source de vérité.
