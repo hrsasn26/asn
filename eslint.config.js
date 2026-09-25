@@ -6,7 +6,14 @@ import tseslint from 'typescript-eslint';
 
 export default defineConfig(
   {
-    ignores: ['dist/', '.astro/', 'playwright-report/', 'test-results/', '.lighthouseci/'],
+    ignores: [
+      'dist/',
+      '.astro/',
+      '.vercel/',
+      'playwright-report/',
+      'test-results/',
+      '.lighthouseci/',
+    ],
   },
   js.configs.recommended,
   tseslint.configs.recommended,

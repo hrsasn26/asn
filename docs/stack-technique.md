@@ -141,6 +141,19 @@ Le script `deploy/deployer.sh` copie `compose.yaml` et `Caddyfile` sur le serveu
 
 Renovate (`renovate.json`) propose les mises à jour des dépendances chaque lundi. La CI les teste avant la fusion.
 
+### Aperçu sur Vercel
+
+Le site peut aussi être déployé sur Vercel (projet `asn`, domaine `asn-tau.vercel.app`).
+
+- Pendant un build Vercel (variable `VERCEL` définie), Astro utilise l'adaptateur `@astrojs/vercel`. Partout ailleurs (Docker, CI, poste de développement), il utilise l'adaptateur Node.
+- Sans `SITE_URL`, les URL canoniques utilisent le domaine de production du projet Vercel.
+- `vercel.json` ajoute les en-têtes de sécurité et `X-Robots-Tag: noindex` : Google n'indexe pas le site tant qu'il contient des placeholders.
+- Variables d'environnement à définir dans Vercel pour les formulaires :
+  - `MAIL_TRANSPORT=log` pour tester : les demandes apparaissent dans les journaux Vercel, sans e-mail ;
+  - ou `MAIL_TRANSPORT=brevo` avec `BREVO_API_KEY`, `MAIL_FROM` et `MAIL_TO` pour de vrais envois.
+  Sans ces variables, les formulaires affichent un message d'erreur.
+- La limite d'envois est en mémoire. Sur Vercel, chaque instance de fonction a son propre compteur : la protection contre le spam est plus faible que sur le VPS.
+
 ## 8. Mise en service
 
 Le déploiement est désactivé tant que ces étapes ne sont pas faites.
@@ -167,4 +180,5 @@ En préproduction, mettez `ROBOTS_TAG=noindex` dans `.env` pour que Google n'ind
 | Design | Modèle personnalisé ou designer partenaire (section 8 du brief). | Remplacer les jetons de `global.css`. Ajouter la police avec l'API Fonts d'Astro (police auto-hébergée). En attendant, le site utilise la police du système. |
 | Interface d'édition (CMS) | À décider si nous vendons des sites Astro aux clients. | Ajouter Keystatic (contenus dans Git) pour le tester sur notre site d'abord. |
 | Mesure d'audience | Matomo (liste officielle de la CNIL) ou Plausible. À valider avec le juriste. | Pas encore intégrée. Il faudra ajouter son domaine à la CSP (`astro.config.mjs`). |
+| Vercel : aperçu ou production | Vercel sert d'aperçu. Vercel est une entreprise américaine : l'utiliser en production doit rester compatible avec l'engagement « Hébergement en [France / Europe] » (section 4 du brief). | En production sur Vercel : retirer `X-Robots-Tag: noindex` de `vercel.json`, choisir la région des fonctions et remplacer la limite d'envois en mémoire. |
 | Accusé de réception au prospect | Non mis en place. Un e-mail automatique vers une adresse saisie dans un formulaire peut servir à envoyer du spam à des tiers. | À ajouter avec un texte validé si le besoin est confirmé. |
