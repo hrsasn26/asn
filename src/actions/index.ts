@@ -1,4 +1,4 @@
-import { ActionError, defineAction } from 'astro:actions';
+import { ActionError, defineAction, type ActionAPIContext } from 'astro:actions';
 import { FORM_RATE_LIMIT_MAX } from 'astro:env/server';
 import { site } from '~/data/site';
 import { envoyerEmail, type Email } from '~/lib/mailer';
@@ -8,8 +8,20 @@ import { preoccupations, schemaAudit, schemaContact, typesProjet } from '~/lib/s
 // Par défaut, 5 demandes par adresse IP toutes les 10 minutes, tous formulaires confondus.
 const limiteur = creerLimiteur({ maxEnvois: FORM_RATE_LIMIT_MAX, fenetreMs: 10 * 60 * 1000 });
 
-async function traiterDemande(email: Email, ip: string) {
-  if (!limiteur.autoriser(ip)) {
+/**
+ * Adresse IP du visiteur. Astro lève une erreur si l'hébergeur ne la fournit pas
+ * (ex. : en-tête X-Forwarded-For absent) : le formulaire doit fonctionner quand même.
+ */
+function adresseClient(context: ActionAPIContext): string {
+  try {
+    return context.clientAddress;
+  } catch {
+    return 'inconnue';
+  }
+}
+
+async function traiterDemande(email: Email, context: ActionAPIContext) {
+  if (!limiteur.autoriser(adresseClient(context))) {
     throw new ActionError({
       code: 'TOO_MANY_REQUESTS',
       message: 'Vous avez envoyé plusieurs demandes en peu de temps. Réessayez dans 10 minutes.',
@@ -47,7 +59,7 @@ export const server = {
           ].join('\n'),
           repondreA: { email: demande.email, nom: demande.nom },
         },
-        context.clientAddress,
+        context,
       );
       return { envoye: true };
     },
@@ -71,7 +83,7 @@ export const server = {
           ].join('\n'),
           repondreA: { email: demande.email, nom: demande.nom },
         },
-        context.clientAddress,
+        context,
       );
       return { envoye: true };
     },

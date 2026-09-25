@@ -14,7 +14,8 @@ Les choix techniques, l'organisation du code et la mise en service sont dans [do
 - Autres pages (Accueil, Méthode, Tarifs, L'agence, Contact) : structure en place, textes à rédiger (blocs `[À rédiger : …]`).
 - Pages légales : à rédiger et à faire valider par un juriste.
 - Technologies : Astro 7, TypeScript, Tailwind CSS 4, Node.js 24, pnpm. Déploiement Docker + Caddy sur un VPS en France.
-- Déploiement : désactivé tant que la mise en service n'est pas faite (section 8 de `docs/stack-technique.md`).
+- Déploiement : désactivé tant que la mise en service n'est pas faite (section 8 de `docs/stack-technique.md`). Un aperçu tourne sur Vercel (`asn-tau.vercel.app`, non indexé).
+- Adaptateurs : Node par défaut, `@astrojs/vercel` seulement pendant un build Vercel. Tester les deux builds après un changement de configuration (`pnpm build` et `VERCEL=1 pnpm build`).
 
 ## Commandes
 

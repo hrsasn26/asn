@@ -1,13 +1,22 @@
 // @ts-check
 import node from '@astrojs/node';
 import sitemap from '@astrojs/sitemap';
+import vercel from '@astrojs/vercel';
 import tailwindcss from '@tailwindcss/vite';
 import { defineConfig, envField } from 'astro/config';
 
+// Vercel définit la variable VERCEL pendant ses builds.
+const surVercel = Boolean(process.env.VERCEL);
+
 // Adresse publique du site. Elle sert aux URL canoniques, au sitemap et au flux RSS.
-// En production, la CI la fournit avec la variable SITE_URL.
+// En production, la CI la fournit avec la variable SITE_URL. Sur Vercel, sans SITE_URL,
+// on utilise le domaine de production du projet (ex. : asn-tau.vercel.app).
 // `||` et non `??` : le Dockerfile définit SITE_URL à une chaîne vide si l'argument manque.
-const site = process.env.SITE_URL || 'http://localhost:4321';
+const site =
+  process.env.SITE_URL ||
+  (process.env.VERCEL_PROJECT_PRODUCTION_URL &&
+    `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`) ||
+  'http://localhost:4321';
 const { hostname, protocol } = new URL(site);
 
 export default defineConfig({
@@ -15,7 +24,8 @@ export default defineConfig({
   trailingSlash: 'never',
   // Pages statiques par défaut. Seules les pages avec formulaire sont rendues par le serveur.
   output: 'static',
-  adapter: node({ mode: 'standalone' }),
+  // Serveur Node (Docker + Caddy) par défaut ; fonctions Vercel pendant un build Vercel.
+  adapter: surVercel ? vercel() : node({ mode: 'standalone' }),
   integrations: [
     sitemap({
       // Les pages rendues par le serveur ne sont pas détectées automatiquement.
