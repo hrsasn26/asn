@@ -6,9 +6,9 @@ test('le menu mobile donne accès à toutes les pages', async ({ page, isMobile 
   await page.goto('/');
   await page.getByText('Menu', { exact: true }).click();
   const menu = page.getByRole('navigation', { name: 'Navigation principale (mobile)' });
-  await expect(menu.getByRole('link', { name: 'Tarifs' })).toBeVisible();
-  await menu.getByRole('link', { name: 'Tarifs' }).click();
-  await expect(page).toHaveURL(/\/tarifs$/);
+  await expect(menu.getByRole('link', { name: 'Méthode' })).toBeVisible();
+  await menu.getByRole('link', { name: 'Méthode' }).click();
+  await expect(page).toHaveURL(/\/methode$/);
 });
 
 test('le lien d’évitement mène au contenu principal', async ({ page, browserName, isMobile }) => {

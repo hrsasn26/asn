@@ -18,7 +18,6 @@ import ServiceCards from '~/components/ServiceCards.astro';
 import Steps from '~/components/Steps.astro';
 import { etapesProjet } from '~/data/methode';
 import { cta, delais, offre, site } from '~/data/site';
-import { tarifs } from '~/data/tarifs';
 import BaseLayout from '~/layouts/BaseLayout.astro';
 ---
 
@@ -80,9 +79,8 @@ import BaseLayout from '~/layouts/BaseLayout.astro';
   <Faq>
     <FaqItem question="Combien coûte un site ou une application ?">
       <p>
-        Nos sites vitrines commencent à {tarifs.siteVitrine}. Chaque projet fait l'objet d'un devis
-        gratuit, détaillé et à prix fixe : vous savez exactement ce que vous payez avant de vous
-        engager.
+        Chaque projet est différent. Après un premier échange, nous vous remettons un devis gratuit,
+        détaillé et à prix fixe : vous savez exactement ce que vous payez avant de vous engager.
       </p>
     </FaqItem>
     <FaqItem question="Combien de temps faut-il ?">

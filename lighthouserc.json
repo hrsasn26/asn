@@ -10,7 +10,6 @@
         "http://localhost:4321/services/intelligence-artificielle",
         "http://localhost:4321/services/tests-securite",
         "http://localhost:4321/methode",
-        "http://localhost:4321/tarifs",
         "http://localhost:4321/agence",
         "http://localhost:4321/audit-gratuit",
         "http://localhost:4321/contact",

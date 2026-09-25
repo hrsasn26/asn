@@ -56,6 +56,8 @@ Liste de référence des services qu'une agence de ce type propose en général,
 
 Neuf pôles de services, plus un audit gratuit pour générer des contacts.
 
+> **Décision du 25 septembre 2026 : aucun prix public.** Les prix sont donnés uniquement dans les devis, en privé. La page Tarifs est supprimée. `pnpm check:content` bloque tout montant affiché sur le site.
+
 > Ajouts du 25 septembre 2026, à valider : pôles 3, 4, 5, 7 et 8 (sections 6.14 à 6.18), sites multilingues (pôle 1), WhatsApp Business (pôle 6) et formation à l'IA (pôle 5).
 
 ### Pôle 1 : Sites web
@@ -141,7 +143,7 @@ Audit du site actuel du prospect : rapidité, sécurité, SEO technique, afficha
 **Design UX/UI des sites :** deux options, travailler avec un designer freelance partenaire, ou partir de modèles de qualité que nous personnalisons. [choix à faire]
 
 ### Particularités de la cible « particuliers »
-- Budgets plus serrés : proposer des **forfaits à prix fixe** (ex. « Site vitrine 5 pages ») plutôt que des devis sur mesure.
+- Budgets plus serrés : proposer des offres simples, avec un **devis gratuit à prix fixe**.
 - Obligations légales spécifiques : voir [section 7](#7-points-légaux).
 
 ---
@@ -176,7 +178,7 @@ Les clients ne savent pas ce que veulent dire « DevOps » ou « QA ». Sur le s
 ### Engagements à confirmer avant publication
 Ces engagements sont repris dans les textes. Ils sont forts commercialement, mais il faut pouvoir les tenir :
 - [ ] Le client reste propriétaire de son code, de son nom de domaine et de ses données.
-- [ ] Hébergement en [France / Europe].
+- [ ] Hébergement en [pays à définir]. Un hébergement au Maroc évite la déclaration de transfert de données à la CNDP.
 - [ ] Devis à prix fixe après cadrage.
 - [ ] Réponse aux demandes de contact sous [48 h ouvrées].
 - [ ] Accord de confidentialité (NDA) possible pour les porteurs de projet.
@@ -200,7 +202,6 @@ Accueil                                   /
 ├── Audit gratuit                         /audit-gratuit
 ├── Réalisations (études de cas)          /realisations
 ├── Méthode                               /methode
-├── Tarifs (forfaits « à partir de »)     /tarifs
 ├── L'agence (équipe, valeurs)            /agence
 ├── Blog (référencement)                  /blog
 ├── Contact / Demande de devis            /contact
@@ -369,7 +370,7 @@ Nous analysons gratuitement sa vitesse, sa sécurité et son référencement tec
 #### FAQ
 
 **Combien coûte un site ou une application ?**
-Nos sites vitrines commencent à [X] DH. Chaque projet fait l'objet d'un devis gratuit, détaillé et à prix fixe : vous savez exactement ce que vous payez avant de vous engager.
+Chaque projet est différent. Après un premier échange, nous vous remettons un devis gratuit, détaillé et à prix fixe : vous savez exactement ce que vous payez avant de vous engager.
 
 **Combien de temps faut-il ?**
 Comptez [2 à 4 semaines] pour un site vitrine et [4 à 8 semaines] pour une boutique en ligne. Pour une application, nous fixons le délai ensemble après le cadrage.
@@ -433,8 +434,6 @@ Pour présenter votre activité, montrer vos réalisations et être contacté fa
 - Prise de rendez-vous en ligne (en option)
 - Liens vers vos réseaux sociaux et votre fiche Google
 
-*À partir de [X] DH*
-
 **Boutique en ligne**
 Pour vendre vos produits sur Internet, 24 h/24.
 *Idéal pour :* commerçants, créateurs, PME.
@@ -443,8 +442,6 @@ Pour vendre vos produits sur Internet, 24 h/24.
 - Frais de livraison et factures automatiques
 - Shopify, WooCommerce ou sur mesure, selon votre volume de ventes
 
-*À partir de [X] DH*
-
 **Refonte de site**
 Pour moderniser un site vieillissant sans perdre votre place sur Google.
 *Idéal pour :* tout site de plus de [3] ans ou qui ne vous apporte plus de contacts.
@@ -452,7 +449,7 @@ Pour moderniser un site vieillissant sans perdre votre place sur Google.
 - Redirections des anciennes pages pour conserver votre référencement
 - Nouveau design, plus rapide et adapté au mobile
 
-*Sur devis*
+**Sous les offres :** Chaque projet fait l'objet d'un devis gratuit et détaillé, à prix fixe.
 
 #### Section : inclus dans chaque site
 
@@ -580,7 +577,7 @@ Nous concevons votre application pour que l'on puisse ajouter des fonctionnalit�
 Chaque nouvelle version est vérifiée par des tests automatiques. Une amélioration ne casse pas ce qui fonctionnait déjà.
 
 **Vos données protégées**
-Sauvegardes quotidiennes, accès sécurisés, hébergement en [France / Europe].
+Sauvegardes quotidiennes, accès sécurisés, hébergement en [pays à définir].
 
 **Un code qui vous appartient**
 Le code est documenté et vous appartient. Vous restez libre de changer de prestataire si vous le souhaitez.
@@ -606,7 +603,7 @@ Plutôt que de tout développer d'un coup, nous construisons d'abord une version
 #### FAQ
 
 **Combien coûte une application sur mesure ?**
-Cela dépend des fonctionnalités. Après l'atelier de cadrage, nous vous remettons un devis à prix fixe. À titre indicatif, une première version (MVP) commence à [X] DH.
+Cela dépend des fonctionnalités. Après l'atelier de cadrage, nous vous remettons un devis gratuit, à prix fixe.
 
 **Combien de temps faut-il ?**
 Une première version demande en général [6 à 12 semaines]. Nous fixons le planning ensemble après le cadrage.
@@ -732,7 +729,7 @@ Seulement aux clients qui ont donné leur accord. Nous prévoyons la demande d'a
 Nous choisissons des services compatibles avec la loi 09-08 sur les données personnelles, qui n'utilisent pas vos données pour entraîner leurs modèles. [à confirmer selon les fournisseurs retenus]
 
 **Combien ça coûte ?**
-Une automatisation simple commence à [X] DH. Avant de commencer, nous estimons avec vous le temps gagné, pour que vous décidiez en connaissance de cause.
+Cela dépend de la tâche à automatiser. Avant de commencer, nous estimons avec vous le temps gagné, puis nous vous remettons un devis gratuit, à prix fixe. Vous décidez en connaissance de cause.
 
 #### Appel à l'action final
 
@@ -776,7 +773,7 @@ Listez-nous les tâches répétitives qui vous prennent du temps. Nous vous diso
 **Titre :** Tout ce dont votre site a besoin
 
 **Hébergement géré**
-Serveurs en [France / Europe], connexion HTTPS, nom de domaine et e-mails professionnels.
+Serveurs en [pays à définir], connexion HTTPS, nom de domaine et e-mails professionnels.
 
 **Sauvegardes vérifiées**
 Des sauvegardes automatiques, conservées [30] jours. Nous testons régulièrement leur restauration : une sauvegarde jamais testée n'est pas une vraie sauvegarde.
@@ -807,9 +804,8 @@ Chaque mois, un résumé clair : disponibilité du site, sauvegardes réalisées
 | Modifications incluses | — | [1 h/mois] | [3 h/mois] |
 | Délai d'intervention | [48 h ouvrées] | [24 h ouvrées] | [4 h ouvrées] |
 | Rapport mensuel | — | ✓ | ✓ |
-| **Prix** | **[X] DH/mois** | **[X] DH/mois** | **[X] DH/mois** |
 
-[Sans engagement / Engagement de 12 mois] [à définir]
+Le prix de chaque forfait dépend de votre site : il figure dans votre devis gratuit. [Sans engagement / Engagement de 12 mois] [à définir]
 
 **Bouton :** [Choisir mon forfait]
 
@@ -955,7 +951,7 @@ Reprend la section « audit gratuit » de la page Services (6.1).
 - Vous restez propriétaire de votre code, de votre nom de domaine et de vos données.
 - Un devis à prix fixe, après un échange gratuit.
 - Une réponse à votre demande sous [48 h ouvrées].
-- Un hébergement en [France / Europe].
+- Un hébergement en [pays à définir].
 
 > Ces engagements sont encore à confirmer (section 4).
 
@@ -1036,85 +1032,10 @@ Reprend l'appel à l'action final de la page Services (6.1).
 
 ---
 
-### 6.9 Page « Tarifs »
+### 6.9 Page « Tarifs » (supprimée)
 
-> Proposition à valider. Tous les prix restent des placeholders (section 8).
-
-**URL :** `/tarifs`
-**Balise title :** Tarifs : sites web, applications et maintenance | Digital Solutions
-**Meta description :** Sites vitrines, boutiques en ligne, applications et maintenance : nos prix de départ, et un devis gratuit à prix fixe pour chaque projet.
-
-#### En-tête
-
-**H1 :** Des prix clairs, fixés avant le début du projet
-
-**Sous-titre :** Chaque projet fait l'objet d'un devis gratuit et détaillé, à prix fixe. Les prix ci-dessous vous donnent un point de départ.
-
-#### Section : vos projets
-
-**Titre :** Vos projets
-
-| Offre | Description | Prix |
-|---|---|---|
-| Site vitrine | Jusqu'à [5] pages, formulaire de contact, adapté à tous les écrans. | À partir de [X] DH |
-| Boutique en ligne | Paiement sécurisé, gestion des stocks et des commandes. | À partir de [X] DH |
-| Refonte de site | Nouveau site, sans perdre votre place sur Google. | Sur devis |
-| Première version d'application (MVP) | L'essentiel pour tester votre idée auprès de vrais utilisateurs. | À partir de [X] DH |
-| Outil métier ou application | Un outil conçu pour votre façon de travailler. | Sur devis, après l'atelier de cadrage |
-| Application mobile *(à valider)* | iPhone et Android, publiée sur l'App Store et Google Play. | À partir de [X] DH |
-| Logiciel SaaS *(à valider)* | Votre logiciel en ligne, vendu par abonnement. | Sur devis, après l'atelier de cadrage |
-| Assistant IA *(à valider)* | Un assistant pour vos clients ou vos équipes. Le coût d'utilisation du service d'IA s'ajoute, selon l'usage. | À partir de [X] DH |
-| Formation à l'IA *(à valider)* | Un atelier pratique pour vos équipes, avec vos propres cas de travail. | À partir de [X] DH |
-| Automatisation simple | Une tâche répétitive faite automatiquement. | À partir de [X] DH |
-| Tableau de bord *(à valider)* | Vos chiffres clés sur un seul écran, mis à jour automatiquement. | À partir de [X] DH |
-| Audit de sécurité *(à valider)* | Recherche des failles, rapport clair et plan de correction. | À partir de [X] DH |
-
-#### Section : inclus
-
-**Titre :** Inclus dans tous nos sites
-
-Adapté à tous les écrans, rapide, référencement technique, sécurisé, conforme à la loi 09-08 sur les données personnelles, accessible, modifiable par vous, formation incluse.
-
-**Lien :** [Voir le détail dans l'offre Sites web]
-
-#### Section : hébergement et maintenance
-
-Reprend le tableau des forfaits de la page Hébergement et maintenance (6.5).
-
-#### Section : comment nous fixons le prix
-
-**Titre :** Comment nous fixons le prix
-
-1. Un échange gratuit pour comprendre votre besoin.
-2. Un devis détaillé, à prix fixe : le prix ne change pas si ce qui est prévu ne change pas.
-3. Si vous demandez un changement en cours de projet, nous chiffrons son effet et vous décidez.
-
-**Modalités de paiement :** [à définir : acompte à la commande, solde à la livraison, etc.]
-
-#### Section : particuliers
-
-**Titre :** Vous êtes un particulier ?
-
-Nos forfaits à prix fixe sont pensés pour les budgets maîtrisés. Pour un contrat conclu à distance, vous disposez d'un délai de rétractation de 7 jours. [Conditions à faire valider par un juriste]
-
-#### FAQ
-
-**Les prix sont-ils indiqués HT ou TTC ?**
-[À définir selon le statut de l'entreprise]
-
-**Le devis est-il payant ?**
-Non. Le devis est gratuit et sans engagement.
-
-**Puis-je payer en plusieurs fois ?**
-[À définir]
-
-#### Appel à l'action final
-
-**Titre :** Recevez votre devis gratuit
-
-Décrivez-nous votre projet en quelques lignes. Nous revenons vers vous sous [48 h ouvrées] avec une première estimation.
-
-**Bouton :** [Demander un devis gratuit]
+> Page supprimée le 25 septembre 2026 : aucun prix n'est affiché sur le site. Chaque prix est donné dans un devis.
+> Les informations utiles restent ailleurs : devis gratuit à prix fixe (Méthode, 6.8), forfaits de maintenance sans prix (6.5), modalités de paiement et droit de rétractation (CGV).
 
 ---
 
@@ -1368,7 +1289,7 @@ Apple et Google changent leurs règles chaque année. Avec un forfait de mainten
 Pas toujours. Si vos clients vous consultent de temps en temps, un site rapide et adapté au mobile suffit souvent, et il coûte moins cher. Une application devient utile quand vos clients l'utilisent souvent, ou quand ils ont besoin des notifications, de l'appareil photo, de la localisation ou d'un mode sans connexion. Nous vous le disons honnêtement dès le premier échange.
 
 **Combien coûte une application mobile ?**
-Cela dépend des écrans et des fonctionnalités. Après le cadrage, nous vous remettons un devis à prix fixe. À titre indicatif, une première version commence à [X] DH.
+Cela dépend des écrans et des fonctionnalités. Après le cadrage, nous vous remettons un devis gratuit, à prix fixe.
 
 **Combien de temps faut-il ?**
 Nous fixons le planning ensemble après le cadrage. Il faut aussi prévoir quelques jours pour la validation de l'application par Apple et Google.
@@ -1466,7 +1387,7 @@ Nous préparons chaque mise en ligne pour éviter les coupures de service. En ca
 #### FAQ
 
 **Combien coûte le développement d'un SaaS ?**
-Cela dépend des fonctionnalités. Après l'atelier de cadrage, nous vous remettons un devis à prix fixe pour la première version. À titre indicatif, une première version (MVP) commence à [X] DH.
+Cela dépend des fonctionnalités. Après l'atelier de cadrage, nous vous remettons un devis gratuit, à prix fixe, pour la première version.
 
 **Combien de temps faut-il ?**
 Une première version demande en général [6 à 12 semaines]. Nous fixons le planning ensemble après le cadrage.
@@ -1589,7 +1510,7 @@ Les services d'IA actuels comprennent le français, l'arabe et l'anglais. Pour l
 Nous choisissons des services d'IA qui n'utilisent pas vos données pour entraîner leurs modèles. Nous limitons les données envoyées au strict nécessaire. [à confirmer selon les fournisseurs retenus]
 
 **Combien ça coûte ?**
-Un premier assistant commence à [X] DH. Le service d'IA est facturé en plus, selon l'utilisation : nous estimons ce coût avec vous avant de commencer.
+Cela dépend de l'assistant et de vos données. Nous vous remettons un devis gratuit, à prix fixe. Le service d'IA est facturé en plus, selon l'utilisation : nous estimons ce coût avec vous avant de commencer.
 
 **Dois-je changer mes outils ?**
 Non. Nous intégrons l'IA dans les outils que vous utilisez déjà : site, messagerie, CRM, dossiers partagés.
@@ -1676,7 +1597,7 @@ Cela dépend de l'outil de mesure. Certains outils fonctionnent sans cookie de s
 Seulement les personnes que vous choisissez. Chaque accès est personnel, et vous décidez qui voit quoi.
 
 **Combien ça coûte ?**
-Un premier tableau de bord commence à [X] DH. Chaque projet fait l'objet d'un devis gratuit, à prix fixe.
+Cela dépend du nombre de sources et d'indicateurs. Chaque projet fait l'objet d'un devis gratuit, à prix fixe.
 
 #### Appel à l'action final
 
@@ -1767,7 +1688,7 @@ Oui, c'est même le cas le plus fréquent. Nous avons besoin de votre accord éc
 Nous planifions les tests avec vous. Les tests de charge se font hors des heures d'affluence, ou sur une copie de votre site.
 
 **Combien ça coûte ?**
-Un audit de sécurité commence à [X] DH. Pour les tests d'une application, nous vous remettons un devis à prix fixe après le cadrage.
+Cela dépend de la taille du site ou de l'application et des tests choisis. Après le cadrage, nous vous remettons un devis gratuit, à prix fixe.
 
 **Que se passe-t-il après l'audit ?**
 Vous êtes libre : vous corrigez avec votre prestataire, ou nous nous en chargeons. Avec un forfait de maintenance, nous surveillons ensuite votre site dans la durée.
@@ -1815,11 +1736,11 @@ Un échange de 30 minutes, gratuit et confidentiel, pour définir ce qu'il faut 
 
 - [x] Choisir le nom de l'agence et réserver le nom de domaine : Digital Solutions, `digital-solutions.ma`
 - [ ] Relier le domaine au site et créer l'adresse e-mail de contact (voir la section « Nom de domaine » de [stack-technique.md](stack-technique.md))
-- [ ] Fixer les prix (remplacer tous les `[X] DH`)
+- [ ] Fixer la grille de prix interne, pour les devis. Elle n'est pas publiée sur le site.
 - [ ] Confirmer les engagements listés en [section 4](#engagements-à-confirmer-avant-publication)
 - [ ] Choisir l'option design : designer partenaire ou modèles personnalisés
 - [ ] Trouver les partenaires : graphiste, rédacteur, traducteur (arabe, anglais)
-- [ ] Relire et valider les textes proposés : Accueil, Méthode, Tarifs, L'agence, Contact, Réalisations, Blog (sections 6.7 à 6.13) et les trois premiers articles
+- [ ] Relire et valider les textes proposés : Accueil, Méthode, L'agence, Contact, Réalisations, Blog (sections 6.7 à 6.13) et les trois premiers articles
 - [ ] Relire et valider les pages des nouveaux services : Applications mobiles, Logiciels SaaS, Intelligence artificielle, Données et tableaux de bord, Tests et sécurité (sections 6.14 à 6.18)
 - [ ] Relire et valider les ajouts dans les pages existantes : options Sites web (langues, WhatsApp), section WhatsApp (Automatisation), formation à l'IA
 - [ ] Préparer un modèle d'autorisation de test pour les audits de sécurité, validé par le juriste

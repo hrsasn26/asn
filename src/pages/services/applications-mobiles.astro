@@ -19,7 +19,6 @@ import ProblemList from '~/components/ProblemList.astro';
 import Section from '~/components/Section.astro';
 import Steps from '~/components/Steps.astro';
 import { delais, site } from '~/data/site';
-import { tarifs } from '~/data/tarifs';
 import BaseLayout from '~/layouts/BaseLayout.astro';
 import { serviceJsonLd } from '~/lib/seo';
 
@@ -149,7 +148,8 @@ const ctaProjet = { label: 'Parler de mon application', href: '/contact' };
     </FaqItem>
     <FaqItem question="Combien coûte une application mobile ?">
       <p>
-        {`Cela dépend des écrans et des fonctionnalités. Après le cadrage, nous vous remettons un devis à prix fixe. À titre indicatif, une première version commence à ${tarifs.applicationMobile}.`}
+        Cela dépend des écrans et des fonctionnalités. Après le cadrage, nous vous remettons un
+        devis gratuit, à prix fixe.
       </p>
     </FaqItem>
     <FaqItem question="Combien de temps faut-il ?">

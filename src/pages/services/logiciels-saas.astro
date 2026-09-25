@@ -19,7 +19,6 @@ import ProblemList from '~/components/ProblemList.astro';
 import Section from '~/components/Section.astro';
 import Steps from '~/components/Steps.astro';
 import { delais, site } from '~/data/site';
-import { tarifs } from '~/data/tarifs';
 import BaseLayout from '~/layouts/BaseLayout.astro';
 import { serviceJsonLd } from '~/lib/seo';
 
@@ -148,7 +147,8 @@ const ctaProjet = { label: 'Présenter mon idée', href: '/contact' };
   <Faq>
     <FaqItem question="Combien coûte le développement d'un SaaS ?">
       <p>
-        {`Cela dépend des fonctionnalités. Après l'atelier de cadrage, nous vous remettons un devis à prix fixe pour la première version. À titre indicatif, une première version (MVP) commence à ${tarifs.mvp}.`}
+        Cela dépend des fonctionnalités. Après l'atelier de cadrage, nous vous remettons un devis
+        gratuit, à prix fixe, pour la première version.
       </p>
     </FaqItem>
     <FaqItem question="Combien de temps faut-il ?">

@@ -17,7 +17,7 @@ import Hero from '~/components/Hero.astro';
 import ProblemList from '~/components/ProblemList.astro';
 import Section from '~/components/Section.astro';
 import { cta, delais, site } from '~/data/site';
-import { engagementMaintenance } from '~/data/tarifs';
+import { engagementMaintenance } from '~/data/forfaits';
 import BaseLayout from '~/layouts/BaseLayout.astro';
 import { serviceJsonLd } from '~/lib/seo';
 
@@ -96,7 +96,10 @@ const ctaForfait = { label: 'Choisir mon forfait', href: '/contact' };
 
   <Section title="Choisissez votre forfait" tone="gris" id="forfaits">
     <ForfaitsTable />
-    <p class="mt-4 text-slate-700">{engagementMaintenance}</p>
+    <p class="mt-4 text-slate-700">
+      Le prix de chaque forfait dépend de votre site : il figure dans votre devis gratuit.{' '}
+      {engagementMaintenance}
+    </p>
     <div class="mt-6">
       <ButtonLink href={ctaForfait.href}>{ctaForfait.label}</ButtonLink>
     </div>

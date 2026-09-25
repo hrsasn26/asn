@@ -21,7 +21,6 @@ import OfferCard from '~/components/OfferCard.astro';
 import ProblemList from '~/components/ProblemList.astro';
 import Section from '~/components/Section.astro';
 import { cta, delais, offre, site } from '~/data/site';
-import { tarifs } from '~/data/tarifs';
 import BaseLayout from '~/layouts/BaseLayout.astro';
 import { serviceJsonLd } from '~/lib/seo';
 
@@ -69,7 +68,6 @@ const description =
           'Prise de rendez-vous en ligne (en option)',
           'Liens vers vos réseaux sociaux et votre fiche Google',
         ]}
-        prix={`À partir de ${tarifs.siteVitrine}`}
       />
       <OfferCard
         title="Boutique en ligne"
@@ -81,7 +79,6 @@ const description =
           'Frais de livraison et factures automatiques',
           'Shopify, WooCommerce ou sur mesure, selon votre volume de ventes',
         ]}
-        prix={`À partir de ${tarifs.boutique}`}
       />
       <OfferCard
         title="Refonte de site"
@@ -92,9 +89,11 @@ const description =
           'Redirections des anciennes pages pour conserver votre référencement',
           'Nouveau design, plus rapide et adapté au mobile',
         ]}
-        prix="Sur devis"
       />
     </div>
+    <p class="mt-8 max-w-3xl text-lg text-slate-700">
+      Chaque projet fait l'objet d'un devis gratuit et détaillé, à prix fixe.
+    </p>
   </Section>
 
   <Section title="Inclus dans tous nos sites, sans supplément" tone="gris">
