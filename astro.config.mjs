@@ -6,7 +6,8 @@ import { defineConfig, envField } from 'astro/config';
 
 // Adresse publique du site. Elle sert aux URL canoniques, au sitemap et au flux RSS.
 // En production, la CI la fournit avec la variable SITE_URL.
-const site = process.env.SITE_URL ?? 'http://localhost:4321';
+// `||` et non `??` : le Dockerfile définit SITE_URL à une chaîne vide si l'argument manque.
+const site = process.env.SITE_URL || 'http://localhost:4321';
 const { hostname, protocol } = new URL(site);
 
 export default defineConfig({
