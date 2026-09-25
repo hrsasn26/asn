@@ -1,12 +1,16 @@
 ---
+import Logo from '~/components/Logo.astro';
 import { liensLegaux, services } from '~/data/navigation';
 import { cta, site } from '~/data/site';
+
+// Année du build : le site est reconstruit à chaque déploiement.
+const annee = new Date().getFullYear();
 ---
 
 <footer class="mt-16 border-t border-slate-200 bg-slate-50">
   <div class="mx-auto grid max-w-6xl gap-8 px-4 py-10 sm:px-6 md:grid-cols-3">
     <div>
-      <p class="font-bold text-slate-900">{site.nom}</p>
+      <Logo />
       <p class="mt-2 text-sm text-slate-700">
         Des sites et des applications conçus par des ingénieurs : fiables, testés, sécurisés et
         suivis dans la durée.
@@ -46,5 +50,10 @@ import { cta, site } from '~/data/site';
         ))}
       </ul>
     </nav>
+  </div>
+  <div class="border-t border-slate-200">
+    <p class="mx-auto max-w-6xl px-4 py-4 text-sm text-slate-700 sm:px-6">
+      {`© ${annee} ${site.nom}. Tous droits réservés.`}
+    </p>
   </div>
 </footer>

@@ -207,6 +207,8 @@ Accueil                                   /
 └── Mentions légales · CGV · Confidentialité
 ```
 
+**Pied de page (toutes les pages) :** nom de l'agence et promesse, liens vers les services, liens légaux, puis la ligne « © [année] Digital Solutions. Tous droits réservés. » L'année est celle du dernier déploiement.
+
 La page « Méthode », avec une étape de tests bien visible, est l'endroit idéal pour mettre en avant la compétence QA.
 
 ---

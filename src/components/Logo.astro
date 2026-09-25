@@ -1,0 +1,47 @@
+---
+/**
+ * Logo provisoire : symbole (chevrons du code et coche des tests) et nom de l'agence.
+ * Le symbole est décoratif : le nom, écrit en texte, donne le nom accessible.
+ * La même forme est dans public/favicon.svg et dans l'image de partage.
+ */
+import { site } from '~/data/site';
+
+interface Props {
+  class?: string;
+}
+
+const { class: classe } = Astro.props;
+const [premierMot, ...autresMots] = site.nom.split(' ');
+---
+
+<span class:list={['inline-flex items-center gap-2.5', classe]}>
+  <svg
+    viewBox="0 0 48 48"
+    xmlns="http://www.w3.org/2000/svg"
+    aria-hidden="true"
+    focusable="false"
+    class="size-9 shrink-0"
+  >
+    <rect width="48" height="48" rx="12" class="fill-brand-700"></rect>
+    <path
+      d="M16 16l-7 8 7 8M32 16l7 8-7 8"
+      fill="none"
+      class="stroke-white"
+      stroke-width="4"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    ></path>
+    <path
+      d="M19.5 24.5l3.5 3.5 6-7"
+      fill="none"
+      class="stroke-emerald-400"
+      stroke-width="4"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    ></path>
+  </svg>
+  <span class="text-lg font-bold tracking-tight text-slate-900">
+    {premierMot}{' '}
+    {autresMots.length > 0 && <span class="text-brand-700">{autresMots.join(' ')}</span>}
+  </span>
+</span>
