@@ -1,8 +1,9 @@
 ---
 import { getCollection, render } from 'astro:content';
+import CtaFinal from '~/components/CtaFinal.astro';
 import Prose from '~/components/Prose.astro';
 import Section from '~/components/Section.astro';
-import { site } from '~/data/site';
+import { cta, site } from '~/data/site';
 import BaseLayout from '~/layouts/BaseLayout.astro';
 
 export async function getStaticPaths() {
@@ -46,4 +47,10 @@ const formatDate = new Intl.DateTimeFormat('fr-FR', { dateStyle: 'long' });
       </div>
     </article>
   </Section>
+
+  <CtaFinal
+    title="Parlons de votre projet"
+    text="Un échange de 30 minutes, gratuit et sans engagement, pour comprendre votre besoin et vous dire honnêtement ce que nous pouvons faire pour vous."
+    button={cta.principal}
+  />
 </BaseLayout>

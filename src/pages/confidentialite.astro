@@ -1,6 +1,8 @@
 ---
-// Texte à rédiger puis à faire valider par un juriste (docs/brief-agence.md, section 7).
+// Projet de texte à faire valider par un juriste (docs/brief-agence.md, section 7).
+// Il décrit les traitements réels du site : formulaires, envoi par Brevo, limite d'envois.
 import Placeholder from '~/components/Placeholder.astro';
+import Prose from '~/components/Prose.astro';
 import Section from '~/components/Section.astro';
 import { site } from '~/data/site';
 import BaseLayout from '~/layouts/BaseLayout.astro';
@@ -8,13 +10,84 @@ import BaseLayout from '~/layouts/BaseLayout.astro';
 
 <BaseLayout
   title={`Politique de confidentialité | ${site.nom}`}
-  description="[Meta description à rédiger]"
+  description="Quelles données nous collectons avec nos formulaires, pourquoi, combien de temps nous les gardons et comment exercer vos droits."
   breadcrumbs={[{ label: 'Politique de confidentialité', href: '/confidentialite' }]}
 >
   <Section>
     <h1 class="text-3xl sm:text-4xl">Politique de confidentialité</h1>
     <div class="mt-6 max-w-3xl">
-      <Placeholder text="[À rédiger et à faire valider par un juriste]" />
+      <Placeholder text="[Projet de texte : à faire valider par un juriste avant la mise en ligne]" />
+    </div>
+    <div class="mt-8">
+      <Prose>
+        <h2>Responsable du traitement</h2>
+        <p>
+          {site.nom}, [adresse]. Contact : {site.email}.
+        </p>
+
+        <h2>Les données que nous collectons</h2>
+        <p>Nous collectons uniquement les données que vous saisissez dans nos formulaires :</p>
+        <ul>
+          <li>
+            formulaire de contact : nom, adresse e-mail, téléphone (facultatif), type de projet
+            (facultatif) et message ;
+          </li>
+          <li>
+            formulaire d'audit gratuit : adresse de votre site, nom, adresse e-mail, téléphone
+            (facultatif) et principale préoccupation (facultative).
+          </li>
+        </ul>
+        <p>
+          Pour bloquer les envois abusifs, le serveur garde aussi votre adresse IP en mémoire
+          pendant 10 minutes au plus. Elle n'est pas enregistrée.
+        </p>
+
+        <h2>Pourquoi nous les utilisons</h2>
+        <p>
+          Nous utilisons ces données uniquement pour répondre à votre demande : devis, audit ou
+          question. Nous ne les vendons pas et nous ne les utilisons pas pour de la publicité.
+        </p>
+        <p>
+          Base légale : votre consentement, donné en cochant la case du formulaire, et les mesures
+          précontractuelles prises à votre demande (article 6 du RGPD). [À confirmer par le juriste]
+        </p>
+
+        <h2>Qui reçoit vos données</h2>
+        <ul>
+          <li>L'équipe de {site.nom}.</li>
+          <li>
+            Brevo, notre prestataire d'envoi d'e-mails, qui nous transmet votre demande. [Vérifier
+            la localisation des données et le contrat de sous-traitance]
+          </li>
+          <li>Notre hébergeur : [nom de l'hébergeur, pays].</li>
+        </ul>
+
+        <h2>Combien de temps nous les gardons</h2>
+        <p>[Durée à définir, par exemple 3 ans après notre dernier échange]</p>
+
+        <h2>Cookies</h2>
+        <p>
+          Ce site n'utilise pas de cookie de suivi ni de cookie publicitaire. [À mettre à jour si un
+          outil de mesure d'audience est ajouté]
+        </p>
+
+        <h2>Vos droits</h2>
+        <p>
+          Vous pouvez accéder à vos données, les corriger, les supprimer, limiter leur utilisation,
+          vous opposer à leur utilisation, les récupérer, et retirer votre consentement à tout
+          moment. Écrivez-nous à {site.email}.
+        </p>
+        <p>
+          Si vous pensez que vos droits ne sont pas respectés, vous pouvez déposer une réclamation
+          auprès de la CNIL (<a href="https://www.cnil.fr">www.cnil.fr</a>).
+        </p>
+
+        <h2>Sécurité</h2>
+        <p>
+          Le site utilise une connexion chiffrée (HTTPS). Seules les personnes qui traitent votre
+          demande ont accès à vos données.
+        </p>
+      </Prose>
     </div>
   </Section>
 </BaseLayout>

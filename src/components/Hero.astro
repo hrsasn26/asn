@@ -5,15 +5,28 @@ interface Props {
 }
 
 const { title, subtitle } = Astro.props;
+const avecIllustration = Astro.slots.has('illustration');
 ---
 
 <section class="bg-brand-50">
-  <div class="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20">
-    <h1 class="max-w-3xl text-3xl sm:text-5xl">{title}</h1>
-    {subtitle && <p class="mt-6 max-w-2xl text-lg text-slate-700">{subtitle}</p>}
-    {Astro.slots.has('default') && (
-      <div class="mt-8 flex flex-wrap gap-4">
-        <slot />
+  <div
+    class:list={[
+      'mx-auto max-w-6xl px-4 py-14 sm:px-6 sm:py-20',
+      avecIllustration && 'grid items-center gap-10 md:grid-cols-2',
+    ]}
+  >
+    <div>
+      <h1 class="max-w-3xl text-3xl sm:text-5xl">{title}</h1>
+      {subtitle && <p class="mt-6 max-w-2xl text-lg text-slate-700">{subtitle}</p>}
+      {Astro.slots.has('default') && (
+        <div class="mt-8 flex flex-wrap gap-4">
+          <slot />
+        </div>
+      )}
+    </div>
+    {avecIllustration && (
+      <div class="hidden md:block">
+        <slot name="illustration" />
       </div>
     )}
   </div>

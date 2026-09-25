@@ -9,6 +9,7 @@ export const site = {
   nom: '[Nom]',
   zone: '[Ville ou région]',
   email: '[adresse e-mail de contact]',
+  telephone: '[numéro de téléphone]',
   hebergement: '[France / Europe]',
   delaiReponse: '[48 h ouvrées]',
 } as const;
@@ -31,6 +32,11 @@ export const offre = {
   design:
     '[Nous travaillons avec un designer partenaire / Nous partons de modèles de qualité que nous adaptons à votre image]',
   confidentialiteIA: '[à confirmer selon les fournisseurs retenus]',
+  garantie: '[pendant X mois après la livraison : garantie à définir]',
+  modalitesPaiement: '[à définir : acompte à la commande, solde à la livraison, etc.]',
+  prixHtTtc: "[À définir selon le statut de l'entreprise]",
+  paiementPlusieursFois: '[À définir]',
+  conditionsRetractation: '[Conditions à faire valider par un juriste]',
 } as const;
 
 /** Appels à l'action communs à tout le site (section 6 du brief). */

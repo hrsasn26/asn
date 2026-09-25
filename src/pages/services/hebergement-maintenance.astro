@@ -1,5 +1,12 @@
 ---
 // Textes : docs/brief-agence.md, section 6.5.
+import Activity from '@lucide/astro/icons/activity';
+import FileText from '@lucide/astro/icons/file-text';
+import HardDrive from '@lucide/astro/icons/hard-drive';
+import PencilLine from '@lucide/astro/icons/pencil-line';
+import Server from '@lucide/astro/icons/server';
+import ShieldCheck from '@lucide/astro/icons/shield-check';
+import IllustrationHebergement from '~/components/illustrations/IllustrationHebergement.astro';
 import ButtonLink from '~/components/ButtonLink.astro';
 import CtaFinal from '~/components/CtaFinal.astro';
 import Faq from '~/components/Faq.astro';
@@ -37,6 +44,7 @@ const ctaForfait = { label: 'Choisir mon forfait', href: '/contact' };
     <ButtonLink href="/contact" variant="secondaire">
       Demander un devis
     </ButtonLink>
+    <IllustrationHebergement slot="illustration" />
   </Hero>
 
   <ProblemList
@@ -54,26 +62,32 @@ const ctaForfait = { label: 'Choisir mon forfait', href: '/contact' };
       items={[
         {
           title: 'Hébergement géré',
+          icone: Server,
           text: `Serveurs en ${site.hebergement}, connexion HTTPS, nom de domaine et e-mails professionnels.`,
         },
         {
           title: 'Sauvegardes vérifiées',
+          icone: HardDrive,
           text: `Des sauvegardes automatiques, conservées ${delais.retentionSauvegardes} jours. Nous testons régulièrement leur restauration : une sauvegarde jamais testée n'est pas une vraie sauvegarde.`,
         },
         {
           title: 'Surveillance 24 h/24',
+          icone: Activity,
           text: 'Si votre site ne répond plus, nous sommes alertés immédiatement et nous intervenons.',
         },
         {
           title: 'Mises à jour de sécurité testées',
+          icone: ShieldCheck,
           text: "Nous appliquons les mises à jour après avoir vérifié qu'elles ne cassent rien.",
         },
         {
           title: 'Petites modifications',
+          icone: PencilLine,
           text: 'Un texte à changer, une image à remplacer, une page à ajouter : envoyez-nous un message, nous nous en occupons.',
         },
         {
           title: 'Rapport mensuel',
+          icone: FileText,
           text: 'Chaque mois, un résumé clair : disponibilité du site, sauvegardes réalisées, mises à jour effectuées.',
         },
       ]}

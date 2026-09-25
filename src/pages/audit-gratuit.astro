@@ -1,5 +1,6 @@
 ---
 // Textes : docs/brief-agence.md, section 6.6.
+import IllustrationAudit from '~/components/illustrations/IllustrationAudit.astro';
 import { actions } from 'astro:actions';
 import Consent from '~/components/forms/Consent.astro';
 import ErrorSummary from '~/components/forms/ErrorSummary.astro';
@@ -35,7 +36,9 @@ const titre = `Audit gratuit de votre site web | ${site.nom}`;
   <Hero
     title="Votre site est-il lent, vulnérable ou invisible sur Google ?"
     subtitle="Recevez gratuitement un audit technique de votre site. Un rapport clair, sans jargon, avec les actions prioritaires à mener."
-  />
+  >
+    <IllustrationAudit slot="illustration" />
+  </Hero>
 
   <Section>
     <div class="grid gap-12 lg:grid-cols-2">

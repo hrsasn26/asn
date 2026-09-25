@@ -1,24 +1,52 @@
 ---
-// Page à rédiger (voir CLAUDE.md). Prix : src/data/tarifs.ts (placeholders du brief).
+// Textes : docs/brief-agence.md, section 6.9 (proposition à valider).
+// Prix : src/data/tarifs.ts (placeholders du brief).
 import ButtonLink from '~/components/ButtonLink.astro';
+import CtaFinal from '~/components/CtaFinal.astro';
+import Faq from '~/components/Faq.astro';
+import FaqItem from '~/components/FaqItem.astro';
 import ForfaitsTable from '~/components/ForfaitsTable.astro';
-import Placeholder from '~/components/Placeholder.astro';
+import Hero from '~/components/Hero.astro';
+import IllustrationTarifs from '~/components/illustrations/IllustrationTarifs.astro';
 import Section from '~/components/Section.astro';
-import { cta, site } from '~/data/site';
+import { cta, offre, site } from '~/data/site';
 import { engagementMaintenance, tarifs } from '~/data/tarifs';
 import BaseLayout from '~/layouts/BaseLayout.astro';
 
-const forfaitsProjet = [
-  { nom: 'Site vitrine', prix: `À partir de ${tarifs.siteVitrine}`, href: '/services/sites-web' },
-  { nom: 'Boutique en ligne', prix: `À partir de ${tarifs.boutique}`, href: '/services/sites-web' },
-  { nom: 'Refonte de site', prix: 'Sur devis', href: '/services/sites-web' },
+const projets = [
   {
-    nom: 'Première version de votre application (MVP)',
+    nom: 'Site vitrine',
+    description: `Jusqu'à ${offre.pagesSiteVitrine} pages, formulaire de contact, adapté à tous les écrans.`,
+    prix: `À partir de ${tarifs.siteVitrine}`,
+    href: '/services/sites-web',
+  },
+  {
+    nom: 'Boutique en ligne',
+    description: 'Paiement sécurisé, gestion des stocks et des commandes.',
+    prix: `À partir de ${tarifs.boutique}`,
+    href: '/services/sites-web',
+  },
+  {
+    nom: 'Refonte de site',
+    description: 'Nouveau site, sans perdre votre place sur Google.',
+    prix: 'Sur devis',
+    href: '/services/sites-web',
+  },
+  {
+    nom: "Première version d'application (MVP)",
+    description: "L'essentiel pour tester votre idée auprès de vrais utilisateurs.",
     prix: `À partir de ${tarifs.mvp}`,
     href: '/services/applications-sur-mesure',
   },
   {
+    nom: 'Outil métier ou application',
+    description: 'Un outil conçu pour votre façon de travailler.',
+    prix: "Sur devis, après l'atelier de cadrage",
+    href: '/services/applications-sur-mesure',
+  },
+  {
     nom: 'Automatisation simple',
+    description: 'Une tâche répétitive faite automatiquement.',
     prix: `À partir de ${tarifs.automatisation}`,
     href: '/services/automatisation-integrations',
   },
@@ -26,37 +54,88 @@ const forfaitsProjet = [
 ---
 
 <BaseLayout
-  title={`Tarifs | ${site.nom}`}
-  description="[Meta description à rédiger]"
+  title={`Tarifs : sites web, applications et maintenance | ${site.nom}`}
+  description="Sites vitrines, boutiques en ligne, applications et maintenance : nos prix de départ, et un devis gratuit à prix fixe pour chaque projet."
   breadcrumbs={[{ label: 'Tarifs', href: '/tarifs' }]}
 >
-  <Section>
-    <h1 class="text-3xl sm:text-4xl">Tarifs</h1>
-    <div class="mt-6 max-w-3xl">
-      <Placeholder text="[À rédiger : introduction de la page Tarifs]" />
-    </div>
-  </Section>
+  <Hero
+    title="Des prix clairs, fixés avant le début du projet"
+    subtitle="Chaque projet fait l'objet d'un devis gratuit et détaillé, à prix fixe. Les prix ci-dessous vous donnent un point de départ."
+  >
+    <ButtonLink href={cta.principal.href}>{cta.principal.label}</ButtonLink>
+    <IllustrationTarifs slot="illustration" />
+  </Hero>
 
-  <Section title="Vos projets" tone="gris">
-    <ul class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-      {forfaitsProjet.map((forfait) => (
-        <li class="rounded-lg border border-slate-200 bg-white p-6">
+  <Section title="Vos projets">
+    <ul class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+      {projets.map((projet) => (
+        <li class="flex flex-col rounded-lg border border-slate-200 bg-white p-6">
           <h3 class="text-lg">
-            <a href={forfait.href} class="text-slate-900 hover:text-brand-700">
-              {forfait.nom}
+            <a href={projet.href} class="text-slate-900 hover:text-brand-700">
+              {projet.nom}
             </a>
           </h3>
-          <p class="mt-2 font-semibold text-slate-900">{forfait.prix}</p>
+          <p class="mt-2 text-slate-700">{projet.description}</p>
+          <p class="mt-auto pt-4 text-lg font-semibold text-slate-900">{projet.prix}</p>
         </li>
       ))}
     </ul>
   </Section>
 
-  <Section title="Hébergement et maintenance">
+  <Section title="Inclus dans tous nos sites" tone="gris">
+    <p class="max-w-3xl text-lg text-slate-700">
+      Adapté à tous les écrans, rapide, référencement technique, sécurisé, conforme au RGPD,
+      accessible, modifiable par vous, formation incluse.
+    </p>
+    <p class="mt-6">
+      <a href="/services/sites-web" class="font-semibold text-brand-700 hover:text-brand-800">
+        Voir le détail dans l'offre Sites web<span aria-hidden="true"> →</span>
+      </a>
+    </p>
+  </Section>
+
+  <Section title="Hébergement et maintenance" id="forfaits">
     <ForfaitsTable />
     <p class="mt-4 text-slate-700">{engagementMaintenance}</p>
-    <div class="mt-8">
-      <ButtonLink href={cta.principal.href}>{cta.principal.label}</ButtonLink>
-    </div>
   </Section>
+
+  <Section title="Comment nous fixons le prix" tone="gris">
+    <ol class="grid max-w-3xl list-decimal gap-2 pl-5 text-slate-700">
+      <li>Un échange gratuit pour comprendre votre besoin.</li>
+      <li>
+        Un devis détaillé, à prix fixe : le prix ne change pas si ce qui est prévu ne change pas.
+      </li>
+      <li>
+        Si vous demandez un changement en cours de projet, nous chiffrons son effet et vous décidez.
+      </li>
+    </ol>
+    <p class="mt-6 max-w-3xl text-slate-700">
+      <strong class="text-slate-900">Modalités de paiement :</strong> {offre.modalitesPaiement}
+    </p>
+  </Section>
+
+  <Section title="Vous êtes un particulier ?">
+    <p class="max-w-3xl text-lg text-slate-700">
+      Nos forfaits à prix fixe sont pensés pour les budgets maîtrisés. Pour un contrat conclu à
+      distance, vous disposez d'un délai de rétractation de 14 jours. {offre.conditionsRetractation}
+    </p>
+  </Section>
+
+  <Faq>
+    <FaqItem question="Les prix sont-ils indiqués HT ou TTC ?">
+      <p>{offre.prixHtTtc}</p>
+    </FaqItem>
+    <FaqItem question="Le devis est-il payant ?">
+      <p>Non. Le devis est gratuit et sans engagement.</p>
+    </FaqItem>
+    <FaqItem question="Puis-je payer en plusieurs fois ?">
+      <p>{offre.paiementPlusieursFois}</p>
+    </FaqItem>
+  </Faq>
+
+  <CtaFinal
+    title="Recevez votre devis gratuit"
+    text={`Décrivez-nous votre projet en quelques lignes. Nous revenons vers vous sous ${site.delaiReponse} avec une première estimation.`}
+    button={cta.principal}
+  />
 </BaseLayout>

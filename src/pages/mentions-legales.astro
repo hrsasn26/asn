@@ -1,6 +1,8 @@
 ---
-// Texte à rédiger puis à faire valider par un juriste (docs/brief-agence.md, section 7).
+// Projet de texte à faire valider par un juriste (docs/brief-agence.md, section 7).
+// Contenu imposé par la loi pour la confiance dans l'économie numérique (LCEN, article 6).
 import Placeholder from '~/components/Placeholder.astro';
+import Prose from '~/components/Prose.astro';
 import Section from '~/components/Section.astro';
 import { site } from '~/data/site';
 import BaseLayout from '~/layouts/BaseLayout.astro';
@@ -8,13 +10,52 @@ import BaseLayout from '~/layouts/BaseLayout.astro';
 
 <BaseLayout
   title={`Mentions légales | ${site.nom}`}
-  description="[Meta description à rédiger]"
+  description={`Mentions légales du site ${site.nom} : éditeur, directeur de la publication, hébergeur et propriété intellectuelle.`}
   breadcrumbs={[{ label: 'Mentions légales', href: '/mentions-legales' }]}
 >
   <Section>
     <h1 class="text-3xl sm:text-4xl">Mentions légales</h1>
     <div class="mt-6 max-w-3xl">
-      <Placeholder text="[À rédiger et à faire valider par un juriste]" />
+      <Placeholder text="[Projet de texte : à faire valider par un juriste avant la mise en ligne]" />
+    </div>
+    <div class="mt-8">
+      <Prose>
+        <h2>Éditeur du site</h2>
+        <p>
+          Le site est édité par {site.nom}, [forme juridique] au capital de [montant] €,
+          immatriculée au registre du commerce et des sociétés de [ville] sous le numéro [SIREN].
+        </p>
+        <ul>
+          <li>Siège social : [adresse]</li>
+          <li>Numéro de TVA intracommunautaire : [numéro]</li>
+          <li>Téléphone : {site.telephone}</li>
+          <li>E-mail : {site.email}</li>
+        </ul>
+
+        <h2>Directeur de la publication</h2>
+        <p>[Prénom Nom], [fonction].</p>
+
+        <h2>Hébergement</h2>
+        <p>[Nom de l'hébergeur], [adresse], [téléphone].</p>
+
+        <h2>Médiation de la consommation</h2>
+        <p>
+          Pour tout litige avec un client particulier, vous pouvez contacter gratuitement le
+          médiateur de la consommation : [nom du médiateur], [adresse], [site web].
+        </p>
+
+        <h2>Propriété intellectuelle</h2>
+        <p>
+          Les textes, les illustrations et le code de ce site appartiennent à {site.nom}, sauf
+          mention contraire. Vous ne pouvez pas les reproduire sans autorisation écrite.
+        </p>
+
+        <h2>Données personnelles</h2>
+        <p>
+          Pour savoir comment nous utilisons vos données, lisez notre{' '}
+          <a href="/confidentialite">politique de confidentialité</a>.
+        </p>
+      </Prose>
     </div>
   </Section>
 </BaseLayout>

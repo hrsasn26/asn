@@ -115,6 +115,16 @@ export function analyserTexte(fragments, { strict }) {
       }
     }
 
+    // Un placeholder collé à un mot trahit une espace perdue lors du rendu
+    // (ex. : « sous [48 h ouvrées]avec »). L'erreur resterait après le remplacement.
+    for (const correspondance of fragment.matchAll(/\][^\s.,;:!?)»’'"/\]…-]|[^\s(«’'"/[]\[/gu)) {
+      problemes.push({
+        niveau: 'erreur',
+        regle: 'espace manquante autour d’un placeholder',
+        extrait: contexte(fragment, correspondance.index ?? 0),
+      });
+    }
+
     for (const correspondance of fragment.matchAll(/!/g)) {
       problemes.push({
         niveau: 'erreur',

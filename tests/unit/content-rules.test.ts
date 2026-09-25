@@ -48,6 +48,24 @@ describe('analyserTexte', () => {
     );
   });
 
+  it('signale une espace manquante autour d’un placeholder', () => {
+    const problemes = analyserTexte(['Réponse sous [48 h ouvrées]avec un devis'], {
+      strict: false,
+    });
+    expect(problemes.some((p) => p.regle.startsWith('espace manquante'))).toBe(true);
+    const apresPonctuation = analyserTexte(['Modalités de paiement :[à définir]'], {
+      strict: false,
+    });
+    expect(apresPonctuation.some((p) => p.regle.startsWith('espace manquante'))).toBe(true);
+  });
+
+  it('accepte un placeholder suivi de ponctuation ou entre parenthèses', () => {
+    const problemes = analyserTexte(['Prix : [X] €/mois, délai ([48 h ouvrées]).'], {
+      strict: false,
+    });
+    expect(problemes.every((p) => p.regle === 'placeholder')).toBe(true);
+  });
+
   it('ne confond pas un mot interdit avec une partie de mot', () => {
     expect(analyserTexte(['Nos stackeurs et la qualité'], { strict: false })).toEqual([]);
   });

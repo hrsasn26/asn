@@ -1,0 +1,13 @@
+---
+import Compass from '@lucide/astro/icons/compass';
+import Fond from './Fond.astro';
+import Illustration from './Illustration.astro';
+---
+
+<Illustration>
+  <Fond />
+  <circle cx="240" cy="180" r="100" class="fill-white stroke-slate-300" stroke-width="2"></circle>
+  <g class="text-brand-600">
+    <Compass x={170} y={110} size={140} stroke-width={1.4} />
+  </g>
+</Illustration>

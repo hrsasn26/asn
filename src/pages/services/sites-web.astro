@@ -1,5 +1,14 @@
 ---
 // Textes : docs/brief-agence.md, section 6.2.
+import Accessibility from '@lucide/astro/icons/accessibility';
+import Gauge from '@lucide/astro/icons/gauge';
+import GraduationCap from '@lucide/astro/icons/graduation-cap';
+import LockKeyhole from '@lucide/astro/icons/lock-keyhole';
+import MonitorSmartphone from '@lucide/astro/icons/monitor-smartphone';
+import PencilLine from '@lucide/astro/icons/pencil-line';
+import Search from '@lucide/astro/icons/search';
+import ShieldCheck from '@lucide/astro/icons/shield-check';
+import IllustrationSitesWeb from '~/components/illustrations/IllustrationSitesWeb.astro';
 import ButtonLink from '~/components/ButtonLink.astro';
 import CtaFinal from '~/components/CtaFinal.astro';
 import Faq from '~/components/Faq.astro';
@@ -33,6 +42,7 @@ const description =
     subtitle="Site vitrine, boutique en ligne ou refonte : nous créons des sites qui chargent vite, s'affichent parfaitement sur mobile et que vous pouvez modifier vous-même."
   >
     <ButtonLink href={cta.principal.href}>{cta.principal.label}</ButtonLink>
+    <IllustrationSitesWeb slot="illustration" />
   </Hero>
 
   <ProblemList
@@ -91,34 +101,42 @@ const description =
       items={[
         {
           title: 'Adapté à tous les écrans',
+          icone: MonitorSmartphone,
           text: 'Ordinateur, tablette et téléphone.',
         },
         {
           title: 'Rapide',
+          icone: Gauge,
           text: 'Nous mesurons la vitesse de chaque page avant la livraison.',
         },
         {
           title: 'Référencement technique',
+          icone: Search,
           text: 'Structure des pages, balises, plan du site et données structurées pour que Google comprenne votre activité.',
         },
         {
           title: 'Sécurisé',
+          icone: ShieldCheck,
           text: 'Connexion HTTPS, protections contre le spam et les attaques courantes.',
         },
         {
           title: 'Conforme au RGPD',
+          icone: LockKeyhole,
           text: 'Bandeau cookies et pages légales mises en place.',
         },
         {
           title: 'Accessible',
+          icone: Accessibility,
           text: 'Lisible par tous, y compris par les personnes en situation de handicap.',
         },
         {
           title: 'Modifiable par vous',
+          icone: PencilLine,
           text: "Un espace d'administration simple pour changer vos textes et vos images.",
         },
         {
           title: 'Formation incluse',
+          icone: GraduationCap,
           text: 'Nous vous montrons comment gérer votre site.',
         },
       ]}

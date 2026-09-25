@@ -1,0 +1,50 @@
+---
+import FileText from '@lucide/astro/icons/file-text';
+import FlaskConical from '@lucide/astro/icons/flask-conical';
+import LayoutTemplate from '@lucide/astro/icons/layout-template';
+import LifeBuoy from '@lucide/astro/icons/life-buoy';
+import MessageCircle from '@lucide/astro/icons/message-circle';
+import Rocket from '@lucide/astro/icons/rocket';
+import Wrench from '@lucide/astro/icons/wrench';
+import Fond from './Fond.astro';
+import Illustration from './Illustration.astro';
+
+// Sept étapes de la page Méthode. L'étape des tests (5) est mise en avant.
+const etapes = [
+  { cx: 80, cy: 110, Icone: MessageCircle },
+  { cx: 180, cy: 90, Icone: FileText },
+  { cx: 280, cy: 110, Icone: LayoutTemplate },
+  { cx: 380, cy: 150, Icone: Wrench },
+  { cx: 300, cy: 230, Icone: FlaskConical, tests: true },
+  { cx: 180, cy: 260, Icone: Rocket },
+  { cx: 80, cy: 240, Icone: LifeBuoy },
+];
+const chemin = `M${etapes.map((e) => `${e.cx} ${e.cy}`).join(' L')}`;
+---
+
+<Illustration>
+  <Fond />
+  <path
+    d={chemin}
+    fill="none"
+    class="stroke-brand-600/40"
+    stroke-width="4"
+    stroke-dasharray="2 10"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  ></path>
+  {etapes.map(({ cx, cy, Icone, tests }) => (
+    <>
+      <circle
+        cx={cx}
+        cy={cy}
+        r={tests ? 44 : 32}
+        class={tests ? 'fill-emerald-500' : 'fill-white stroke-slate-300'}
+        stroke-width="2"
+      />
+      <g class={tests ? 'text-white' : 'text-brand-600'}>
+        <Icone x={cx - (tests ? 20 : 14)} y={cy - (tests ? 20 : 14)} size={tests ? 40 : 28} />
+      </g>
+    </>
+  ))}
+</Illustration>

@@ -1,31 +1,46 @@
 ---
+// Textes : docs/brief-agence.md, section 6.12 (proposition à valider).
+// Règle du projet : uniquement des projets réels, avec l'accord écrit du client.
 import { getCollection } from 'astro:content';
+import CtaFinal from '~/components/CtaFinal.astro';
+import Hero from '~/components/Hero.astro';
+import IllustrationRealisations from '~/components/illustrations/IllustrationRealisations.astro';
 import Placeholder from '~/components/Placeholder.astro';
 import Section from '~/components/Section.astro';
-import { site } from '~/data/site';
+import { services } from '~/data/navigation';
+import { cta, site } from '~/data/site';
 import BaseLayout from '~/layouts/BaseLayout.astro';
 
 const etudes = (await getCollection('realisations', ({ data }) => !data.draft)).sort(
   (a, b) => b.data.publishedAt.getTime() - a.data.publishedAt.getTime(),
 );
+const nomService = (id: string) =>
+  services.find((service) => service.href === `/services/${id}`)?.label ?? '';
 ---
 
 <BaseLayout
-  title={`Réalisations | ${site.nom}`}
-  description="[Meta description à rédiger]"
+  title={`Réalisations : nos projets de sites et d'applications | ${site.nom}`}
+  description="Des projets réalisés pour nos clients : le besoin de départ, la solution mise en place et ce que le client y a gagné."
   breadcrumbs={[{ label: 'Réalisations', href: '/realisations' }]}
 >
+  <Hero
+    title="Nos réalisations"
+    subtitle="Chaque étude de cas présente le besoin de départ, la solution mise en place et ce que le client y a gagné."
+  >
+    <IllustrationRealisations slot="illustration" />
+  </Hero>
+
   <Section>
-    <h1 class="text-3xl sm:text-4xl">Réalisations</h1>
     {etudes.length === 0 ? (
-      <div class="mt-6 max-w-3xl">
+      <div class="max-w-3xl">
         <Placeholder text="[À compléter : 2 ou 3 études de cas réelles, avec l'accord des clients]" />
       </div>
     ) : (
-      <ul class="mt-8 grid gap-6 md:grid-cols-2">
+      <ul class="grid gap-6 md:grid-cols-2">
         {etudes.map((etude) => (
           <li class="rounded-lg border border-slate-200 p-6">
-            <h2 class="text-xl">
+            <p class="text-sm font-medium text-brand-700">{nomService(etude.data.service)}</p>
+            <h2 class="mt-1 text-xl">
               <a href={`/realisations/${etude.id}`} class="text-slate-900 hover:text-brand-700">
                 {etude.data.title}
               </a>
@@ -37,4 +52,10 @@ const etudes = (await getCollection('realisations', ({ data }) => !data.draft)).
       </ul>
     )}
   </Section>
+
+  <CtaFinal
+    title="Et si le prochain projet était le vôtre ?"
+    text="Un échange de 30 minutes, gratuit et sans engagement, pour parler de votre besoin."
+    button={cta.principal}
+  />
 </BaseLayout>

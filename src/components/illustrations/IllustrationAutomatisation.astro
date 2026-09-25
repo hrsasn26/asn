@@ -1,0 +1,56 @@
+---
+import FileText from '@lucide/astro/icons/file-text';
+import Globe from '@lucide/astro/icons/globe';
+import Mail from '@lucide/astro/icons/mail';
+import RefreshCw from '@lucide/astro/icons/refresh-cw';
+import ShoppingBag from '@lucide/astro/icons/shopping-bag';
+import Carte from './Carte.astro';
+import Fond from './Fond.astro';
+import Illustration from './Illustration.astro';
+
+const liens = [
+  'M150 100C200 100 196 180 192 180',
+  'M150 260C200 260 196 180 192 180',
+  'M288 180C284 180 280 100 330 100',
+  'M288 180C284 180 280 260 330 260',
+];
+---
+
+<Illustration>
+  <Fond />
+  {liens.map((d) => (
+    <path
+      d={d}
+      fill="none"
+      class="stroke-brand-600/50"
+      stroke-width="4"
+      stroke-dasharray="2 10"
+      stroke-linecap="round"
+    />
+  ))}
+  <Carte x={60} y={60}>
+    <Globe x={87} y={74} size={36} />
+  </Carte>
+  <Carte x={60} y={220}>
+    <ShoppingBag x={87} y={234} size={36} />
+  </Carte>
+  <Carte x={330} y={60}>
+    <FileText x={357} y={74} size={36} />
+  </Carte>
+  <Carte x={330} y={220}>
+    <Mail x={357} y={234} size={36} />
+  </Carte>
+  <circle cx="240" cy="180" r="48" class="fill-brand-600"></circle>
+  <g class="text-white">
+    <RefreshCw x={216} y={156} size={48} stroke-width={2.2} />
+  </g>
+  <circle cx="276" cy="146" r="14" class="fill-emerald-500"></circle>
+  <path
+    d="M269 146l5 5 9-10"
+    fill="none"
+    class="stroke-white"
+    stroke-width="3.5"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  ></path>
+</Illustration>

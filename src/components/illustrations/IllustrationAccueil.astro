@@ -1,0 +1,53 @@
+---
+import Badge from './Badge.astro';
+import Fond from './Fond.astro';
+import Illustration from './Illustration.astro';
+import Navigateur from './Navigateur.astro';
+---
+
+<Illustration>
+  <Fond />
+  <Navigateur x={50} y={60} largeur={300} hauteur={210}>
+    <rect x="70" y="110" width="150" height="14" rx="7" class="fill-slate-800"></rect>
+    <rect x="70" y="134" width="190" height="8" rx="4" class="fill-slate-200"></rect>
+    <rect x="70" y="150" width="160" height="8" rx="4" class="fill-slate-200"></rect>
+    <rect x="70" y="172" width="84" height="24" rx="8" class="fill-brand-600"></rect>
+    <rect x="70" y="212" width="80" height="40" rx="8" class="fill-brand-50"></rect>
+    <rect x="160" y="212" width="80" height="40" rx="8" class="fill-brand-50"></rect>
+    <rect x="250" y="212" width="80" height="40" rx="8" class="fill-brand-50"></rect>
+  </Navigateur>
+  <rect
+    x="318"
+    y="130"
+    width="112"
+    height="190"
+    rx="18"
+    class="fill-white stroke-slate-300"
+    stroke-width="2"
+  ></rect>
+  <rect x="352" y="141" width="44" height="6" rx="3" class="fill-slate-200"></rect>
+  <rect x="332" y="160" width="84" height="10" rx="5" class="fill-slate-800"></rect>
+  <rect x="332" y="178" width="70" height="6" rx="3" class="fill-slate-200"></rect>
+  <rect x="332" y="194" width="84" height="44" rx="8" class="fill-brand-50"></rect>
+  <rect x="332" y="248" width="60" height="18" rx="6" class="fill-brand-600"></rect>
+  <rect x="332" y="276" width="84" height="6" rx="3" class="fill-slate-200"></rect>
+  <rect
+    x="34"
+    y="248"
+    width="150"
+    height="72"
+    rx="12"
+    class="fill-white stroke-slate-300"
+    stroke-width="2"
+  ></rect>
+  <rect x="50" y="262" width="60" height="6" rx="3" class="fill-slate-200"></rect>
+  <polyline
+    points="50,302 74,292 98,298 122,282 146,286 168,272"
+    fill="none"
+    class="stroke-brand-600"
+    stroke-width="4"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  ></polyline>
+  <Badge cx={356} cy={92} r={30} />
+</Illustration>

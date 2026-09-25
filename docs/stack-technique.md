@@ -31,6 +31,7 @@
 | Framework | Astro 7, TypeScript strict | Pages en HTML statique. Composants typés. Formulaires côté serveur avec Astro Actions. |
 | Environnement | Node.js 24 LTS, pnpm 10 | Astro 7 demande Node 22.12 ou plus. |
 | Styles | Tailwind CSS 4 | Les couleurs sont des jetons dans `src/styles/global.css`. Elles changeront avec le design. |
+| Images | Illustrations SVG originales, icônes Lucide (`@lucide/astro`, licence ISC) | SVG intégré dans la page : aucune requête, aucune photo de stock, couleurs du site. |
 | Contenu long | Content collections Astro (Markdown + schéma Zod) | Le blog et les réalisations sont dans Git. Le build échoue si un champ obligatoire manque. |
 | Formulaires | Astro Actions + Zod, adaptateur `@astrojs/node` | Validation côté serveur, messages d'erreur en français, champ piège anti-spam, limite de débit par adresse IP. |
 | E-mails | Brevo (API transactionnelle) | Entreprise française. Chaque demande arrive par e-mail à l'équipe. |
@@ -69,17 +70,20 @@ Visiteur ──HTTPS──▶ Caddy (certificat, en-têtes de sécurité, compre
 src/
   actions/index.ts        Formulaires : validation, anti-spam, envoi de l'e-mail
   components/             Composants des pages (Hero, Section, FAQ, formulaires…)
+    illustrations/        Illustrations SVG des en-têtes (une par page)
   content/                Blog et réalisations (Markdown)
   content.config.ts       Schéma des articles et des études de cas
   data/
     site.ts               Nom, zone, délais, engagements (placeholders du brief)
     tarifs.ts             Tous les prix (placeholders du brief)
     navigation.ts         Menus
+    methode.ts            Les cinq étapes d'un projet (accueil, services)
   layouts/BaseLayout.astro  Structure commune : <head>, SEO, en-tête, pied de page
   lib/                    Schémas des formulaires, envoi d'e-mail, limite de débit, SEO
   pages/                  Une page par URL de l'arborescence (section 5 du brief)
   styles/global.css       Tailwind et jetons de design
 scripts/check-content.mjs Vérification des règles de contenu
+scripts/generer-image-partage.mjs  Image de partage public/og.png
 tests/unit/               Tests unitaires (Vitest)
 tests/e2e/                Tests dans les navigateurs (Playwright + axe)
 deploy/                   Docker Compose, Caddyfile, script de déploiement
@@ -91,13 +95,16 @@ deploy/                   Docker Compose, Caddyfile, script de déploiement
 - **Prix** : uniquement dans `src/data/tarifs.ts`. Un prix apparaît sur plusieurs pages : vous le modifiez une seule fois.
 - **Nom, zone, délais, engagements** : dans `src/data/site.ts`.
 - **Article de blog** : ajoutez un fichier Markdown dans `src/content/blog/`. Les champs obligatoires sont dans `src/content.config.ts`.
-- **Étude de cas** : ajoutez un fichier Markdown dans `src/content/realisations/`. Uniquement des projets réels, avec l'accord du client.
+- **Étude de cas** : copiez `docs/modele-etude-de-cas.md` dans `src/content/realisations/`. Uniquement des projets réels, avec l'accord du client.
+- **Illustrations** : dans `src/components/illustrations/`. Elles sont décoratives (`aria-hidden`) et utilisent les jetons de couleur de `global.css` : elles suivent le design quand il change.
+- **Image de partage** (aperçu sur les réseaux sociaux) : lancez `pnpm image:partage` après un changement du nom de l'agence. Le script affiche le nom dès qu'il n'est plus un placeholder.
 
 **Placeholders.** Les informations non confirmées restent entre crochets : `[Nom]`, `[X] €`, `[À rédiger : …]`. Le script `pnpm check:content` les liste. En mode `--strict`, il bloque la mise en production tant qu'il en reste.
 
 **Règles du brief vérifiées automatiquement** (section 4) :
 - mots à éviter : DevOps, QA, stack, CI/CD, framework, « solutions innovantes », « optimiser », « digitaliser », « 360° » ;
-- pas de point d'exclamation.
+- pas de point d'exclamation ;
+- pas de placeholder collé à un mot (ex. : « sous [48 h ouvrées]avec »). Astro supprime parfois l'espace entre une valeur `{…}` et le texte de la ligne suivante : écrivez `{' '}` ou gardez la valeur sur la même ligne.
 
 ## 6. Tests et intégration continue
 
@@ -105,10 +112,10 @@ deploy/                   Docker Compose, Caddyfile, script de déploiement
 |---|---|
 | Prettier, ESLint, `astro check` | Format, qualité et types du code. |
 | Vitest | Règles de validation des formulaires, limite de débit, règles de contenu. |
-| `check-content` | Placeholders, mots à éviter, points d'exclamation, sur le HTML final. |
+| `check-content` | Placeholders, mots à éviter, points d'exclamation, espaces manquantes, sur le HTML final. |
 | Playwright | Chaque page du sitemap sur Chromium, Firefox et WebKit, en tailles ordinateur, mobile et tablette. Envoi des formulaires, erreurs, menu mobile, lien d'évitement, liens internes. Pas de défilement horizontal. |
 | axe-core | Accessibilité de chaque page (WCAG 2.1 AA). Il ne trouve qu'une partie des problèmes : faites aussi une vérification manuelle au clavier et au lecteur d'écran. |
-| Lighthouse CI | Seuils : performance 95, accessibilité 100, bonnes pratiques 100, SEO 100. Six pages clés. |
+| Lighthouse CI | Seuils : performance 95, accessibilité 100, bonnes pratiques 100, SEO 100. Neuf pages clés. |
 | Build Docker | L'image se construit. |
 
 La CI (`.github/workflows/ci.yml`) lance tous ces contrôles sur chaque pull request et sur `main`.
@@ -123,6 +130,7 @@ pnpm start            # lance le build (HOST et PORT configurables)
 pnpm test             # tests unitaires
 pnpm test:e2e         # tests navigateurs (après pnpm build)
 pnpm check:content    # règles de contenu (après pnpm build)
+pnpm image:partage    # régénère public/og.png (Chromium nécessaire)
 pnpm verify           # tous les contrôles, dans l'ordre de la CI
 ```
 

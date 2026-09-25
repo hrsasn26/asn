@@ -7,18 +7,41 @@
         "http://localhost:4321/",
         "http://localhost:4321/services",
         "http://localhost:4321/services/sites-web",
-        "http://localhost:4321/services/hebergement-maintenance",
+        "http://localhost:4321/methode",
+        "http://localhost:4321/tarifs",
+        "http://localhost:4321/agence",
         "http://localhost:4321/audit-gratuit",
-        "http://localhost:4321/contact"
+        "http://localhost:4321/contact",
+        "http://localhost:4321/blog/site-vitrine-elements-indispensables"
       ],
       "numberOfRuns": 1
     },
     "assert": {
       "assertions": {
-        "categories:performance": ["error", { "minScore": 0.95 }],
-        "categories:accessibility": ["error", { "minScore": 1 }],
-        "categories:best-practices": ["error", { "minScore": 1 }],
-        "categories:seo": ["error", { "minScore": 1 }]
+        "categories:performance": [
+          "error",
+          {
+            "minScore": 0.95
+          }
+        ],
+        "categories:accessibility": [
+          "error",
+          {
+            "minScore": 1
+          }
+        ],
+        "categories:best-practices": [
+          "error",
+          {
+            "minScore": 1
+          }
+        ],
+        "categories:seo": [
+          "error",
+          {
+            "minScore": 1
+          }
+        ]
       }
     },
     "upload": {

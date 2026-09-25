@@ -1,5 +1,14 @@
 ---
 // Textes : docs/brief-agence.md, section 6.3.
+import BadgeCheck from '@lucide/astro/icons/badge-check';
+import Blocks from '@lucide/astro/icons/blocks';
+import CalendarCheck from '@lucide/astro/icons/calendar-check';
+import KeyRound from '@lucide/astro/icons/key-round';
+import LockKeyhole from '@lucide/astro/icons/lock-keyhole';
+import Rocket from '@lucide/astro/icons/rocket';
+import Smartphone from '@lucide/astro/icons/smartphone';
+import Users from '@lucide/astro/icons/users';
+import IllustrationApplications from '~/components/illustrations/IllustrationApplications.astro';
 import ButtonLink from '~/components/ButtonLink.astro';
 import CtaFinal from '~/components/CtaFinal.astro';
 import Faq from '~/components/Faq.astro';
@@ -34,6 +43,7 @@ const ctaProjet = { label: 'Parler de mon projet', href: '/contact' };
     subtitle="Réservation, devis, planning, espace client, application mobile : nous développons le logiciel dont vous avez besoin, et il évolue avec votre activité."
   >
     <ButtonLink href={ctaProjet.href}>{ctaProjet.label}</ButtonLink>
+    <IllustrationApplications slot="illustration" />
   </Hero>
 
   <ProblemList
@@ -51,18 +61,22 @@ const ctaProjet = { label: 'Parler de mon projet', href: '/contact' };
       items={[
         {
           title: 'Outils métier',
+          icone: CalendarCheck,
           text: "Prise de rendez-vous, devis et factures, gestion de stock, planning d'équipe, suivi de chantier. Un seul outil, pensé pour votre activité, à la place de trois logiciels mal adaptés.",
         },
         {
           title: 'Espaces clients et portails',
+          icone: Users,
           text: 'Vos clients suivent leurs commandes, téléchargent leurs documents et font leurs demandes en ligne, sans vous appeler.',
         },
         {
           title: 'Applications mobiles',
+          icone: Smartphone,
           text: "Une application iPhone et Android à partir d'un seul développement, pour un coût maîtrisé. Nous nous occupons aussi de la publication sur l'App Store et Google Play.",
         },
         {
           title: 'Première version de votre projet (MVP)',
+          icone: Rocket,
           text: "Vous avez une idée d'application ? Nous construisons une première version avec l'essentiel, pour la tester auprès de vrais utilisateurs avant d'investir davantage.",
         },
       ]}
@@ -74,18 +88,22 @@ const ctaProjet = { label: 'Parler de mon projet', href: '/contact' };
       items={[
         {
           title: 'Pensée pour évoluer',
+          icone: Blocks,
           text: "Nous concevons votre application pour que l'on puisse ajouter des fonctionnalités dans deux ans sans tout reconstruire.",
         },
         {
           title: 'Testée automatiquement',
+          icone: BadgeCheck,
           text: 'Chaque nouvelle version est vérifiée par des tests automatiques. Une amélioration ne casse pas ce qui fonctionnait déjà.',
         },
         {
           title: 'Vos données protégées',
+          icone: LockKeyhole,
           text: `Sauvegardes quotidiennes, accès sécurisés, hébergement en ${site.hebergement}.`,
         },
         {
           title: 'Un code qui vous appartient',
+          icone: KeyRound,
           text: 'Le code est documenté et vous appartient. Vous restez libre de changer de prestataire si vous le souhaitez.',
         },
       ]}

@@ -1,15 +1,24 @@
 ---
+import type { AstroComponent } from '@lucide/astro';
+
 interface Props {
   title: string;
   text: string;
   items: string[];
   link: { label: string; href: string };
+  /** Icône décorative (Lucide). */
+  icone?: AstroComponent;
 }
 
-const { title, text, items, link } = Astro.props;
+const { title, text, items, link, icone: Icone } = Astro.props;
 ---
 
 <article class="flex flex-col rounded-lg border border-slate-200 bg-white p-6">
+  {Icone && (
+    <span class="mb-4 inline-flex size-12 items-center justify-center rounded-lg bg-brand-700 text-white">
+      <Icone size={26} />
+    </span>
+  )}
   <h3 class="text-xl">{title}</h3>
   <p class="mt-2 text-slate-700">{text}</p>
   <ul class="mt-4 list-disc space-y-1 pl-5 text-slate-700">

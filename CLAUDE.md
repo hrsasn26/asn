@@ -4,15 +4,17 @@ Site vitrine d'une agence de services numériques (nom à définir) qui cible le
 
 ## Référence
 
-Tout le cadrage est dans [docs/brief-agence.md](docs/brief-agence.md) : offre de services, positionnement, arborescence, textes des pages Services, points légaux et prochaines étapes. Lis-le avant toute tâche de contenu ou de développement du site.
+Tout le cadrage est dans [docs/brief-agence.md](docs/brief-agence.md) : offre de services, positionnement, arborescence, textes des pages, points légaux et prochaines étapes. Lis-le avant toute tâche de contenu ou de développement du site.
 
 Les choix techniques, l'organisation du code et la mise en service sont dans [docs/stack-technique.md](docs/stack-technique.md).
 
 ## État du projet
 
 - Offre et textes des pages Services : rédigés (voir le brief) et intégrés au site.
-- Autres pages (Accueil, Méthode, Tarifs, L'agence, Contact) : structure en place, textes à rédiger (blocs `[À rédiger : …]`).
-- Pages légales : à rédiger et à faire valider par un juriste.
+- Autres pages (Accueil, Méthode, Tarifs, L'agence, Contact, Réalisations, Blog) : textes proposés dans le brief (sections 6.7 à 6.13) et intégrés. Ils restent à valider.
+- Blog : trois premiers articles dans `src/content/blog/`, à valider.
+- Pages légales : projets de texte avec placeholders, à faire valider par un juriste.
+- Images : illustrations SVG originales (`src/components/illustrations/`), icônes Lucide, image de partage `public/og.png`. Pas de photo de stock ni de photo d'équipe inventée.
 - Technologies : Astro 7, TypeScript, Tailwind CSS 4, Node.js 24, pnpm. Déploiement Docker + Caddy sur un VPS en France.
 - Déploiement : désactivé tant que la mise en service n'est pas faite (section 8 de `docs/stack-technique.md`). Un aperçu tourne sur Vercel (`asn-tau.vercel.app`, non indexé).
 - Adaptateurs : Node par défaut, `@astrojs/vercel` seulement pendant un build Vercel. Tester les deux builds après un changement de configuration (`pnpm build` et `VERCEL=1 pnpm build`).
@@ -23,6 +25,7 @@ Les choix techniques, l'organisation du code et la mise en service sont dans [do
 - `pnpm build` puis `pnpm check:content` : build et vérification des règles de contenu.
 - `pnpm test` : tests unitaires. `pnpm test:e2e` : tests navigateurs (après `pnpm build`).
 - `pnpm verify` : tous les contrôles de la CI, dans l'ordre.
+- `pnpm image:partage` : régénère l'image de partage après un changement du nom de l'agence.
 
 ## Règles de code
 
@@ -31,6 +34,8 @@ Les choix techniques, l'organisation du code et la mise en service sont dans [do
 - Les formulaires doivent fonctionner sans JavaScript. Tout nouveau formulaire utilise une Astro Action, un schéma Zod dans `src/lib/schemas.ts`, le champ piège et la case de consentement.
 - Pas de style en ligne (`style="…"`) ni de script externe sans mise à jour de la CSP (`astro.config.mjs`).
 - Toute nouvelle page doit passer les tests axe et Lighthouse de la CI.
+- Les illustrations sont décoratives (`aria-hidden`) et utilisent les classes de couleur Tailwind, jamais de couleur en dur ni de style en ligne.
+- Une valeur `{…}` suivie de texte à la ligne suivante peut perdre son espace au rendu : écrire `{' '}` ou garder la valeur sur la même ligne. `pnpm check:content` détecte le cas pour les placeholders.
 
 ## Règles de contenu
 
