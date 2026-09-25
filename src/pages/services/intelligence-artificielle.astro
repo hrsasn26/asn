@@ -1,5 +1,5 @@
 ---
-// Textes : docs/brief-agence.md, section 6.16 (proposition à valider).
+// Textes : docs/brief-agence.md, section 6.16 (proposition à valider, avec la section Formation).
 import Activity from '@lucide/astro/icons/activity';
 import BadgeCheck from '@lucide/astro/icons/badge-check';
 import BookOpenText from '@lucide/astro/icons/book-open-text';
@@ -9,6 +9,7 @@ import PenLine from '@lucide/astro/icons/pen-line';
 import Scale from '@lucide/astro/icons/scale';
 import ScanText from '@lucide/astro/icons/scan-text';
 import IllustrationIA from '~/components/illustrations/IllustrationIA.astro';
+import Placeholder from '~/components/Placeholder.astro';
 import ButtonLink from '~/components/ButtonLink.astro';
 import CtaFinal from '~/components/CtaFinal.astro';
 import Faq from '~/components/Faq.astro';
@@ -83,7 +84,33 @@ const ctaProjet = { label: 'Parler de mon projet IA', href: '/contact' };
     />
   </Section>
 
-  <Section title="Une IA testée et encadrée" tone="gris">
+  {/* Ajout à valider (section 6.16 du brief, « Formation »). */}
+  <Section title="Former vos équipes à l'IA" tone="gris" id="formation">
+    <div class="max-w-3xl space-y-4 text-lg text-slate-700">
+      <p>
+        Vos équipes utilisent déjà des outils d'IA comme ChatGPT ? Nous organisons des ateliers
+        pratiques, avec vos propres cas de travail. Vos équipes apprennent à :
+      </p>
+      <ul class="list-disc space-y-1 pl-5">
+        <li>rédiger des demandes claires pour obtenir de bonnes réponses ;</li>
+        <li>vérifier les réponses et repérer les erreurs ;</li>
+        <li>savoir quelles informations ne jamais confier à un outil d'IA ;</li>
+        <li>utiliser l'IA pour les tâches de tous les jours : e-mails, résumés, tableaux.</li>
+      </ul>
+      <p>
+        À la fin de l'atelier, vous recevez des règles d'utilisation simples, adaptées à votre
+        entreprise.
+      </p>
+      <Placeholder text="[Durée et nombre de participants : à définir]" />
+    </div>
+    <div class="mt-6">
+      <ButtonLink href="/contact" variant="secondaire">
+        Organiser un atelier
+      </ButtonLink>
+    </div>
+  </Section>
+
+  <Section title="Une IA testée et encadrée">
     <FeatureGrid
       items={[
         {
@@ -110,7 +137,7 @@ const ctaProjet = { label: 'Parler de mon projet IA', href: '/contact' };
     />
   </Section>
 
-  <Section title="Comment nous travaillons">
+  <Section title="Comment nous travaillons" tone="gris">
     <Steps
       items={[
         {

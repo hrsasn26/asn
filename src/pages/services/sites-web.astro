@@ -3,7 +3,9 @@
 import Accessibility from '@lucide/astro/icons/accessibility';
 import Gauge from '@lucide/astro/icons/gauge';
 import GraduationCap from '@lucide/astro/icons/graduation-cap';
+import Languages from '@lucide/astro/icons/languages';
 import LockKeyhole from '@lucide/astro/icons/lock-keyhole';
+import MessageCircle from '@lucide/astro/icons/message-circle';
 import MonitorSmartphone from '@lucide/astro/icons/monitor-smartphone';
 import PencilLine from '@lucide/astro/icons/pencil-line';
 import Search from '@lucide/astro/icons/search';
@@ -143,7 +145,33 @@ const description =
     />
   </Section>
 
-  <Section title="Testé avant la mise en ligne. Vraiment.">
+  {/* Ajout à valider (section 6.2 du brief, « Les options »). */}
+  <Section title="Les options">
+    <FeatureGrid
+      items={[
+        {
+          title: 'Un site en plusieurs langues',
+          icone: Languages,
+          text: "Français, arabe, anglais : chaque visiteur lit votre site dans sa langue. La version arabe s'affiche de droite à gauche, avec une mise en page adaptée. Chaque langue a ses propres pages, que Google peut référencer. Vous nous fournissez les textes traduits. Si besoin, nous vous mettons en relation avec un traducteur.",
+        },
+        {
+          title: 'WhatsApp sur votre site',
+          icone: MessageCircle,
+          text: 'Un bouton pour vous écrire sur WhatsApp en un clic. Nous pouvons aussi relier WhatsApp à vos outils et envoyer des messages automatiques.',
+        },
+      ]}
+    />
+    <p class="mt-8">
+      <a
+        href="/services/automatisation-integrations#whatsapp"
+        class="font-semibold text-brand-700 hover:text-brand-800"
+      >
+        Voir l'offre Automatisation<span aria-hidden="true"> →</span>
+      </a>
+    </p>
+  </Section>
+
+  <Section title="Testé avant la mise en ligne. Vraiment." tone="gris">
     <p class="max-w-3xl text-lg text-slate-700">
       Avant de livrer votre site, nous vérifions chaque page sur les principaux navigateurs et
       tailles d'écran. Nous testons chaque formulaire, chaque lien et chaque paiement. Vous ne
@@ -151,7 +179,7 @@ const description =
     </p>
   </Section>
 
-  <Section title="Un site à votre image" tone="gris">
+  <Section title="Un site à votre image">
     <div class="max-w-3xl space-y-4 text-lg text-slate-700">
       <p>
         {offre.design}. Vous validez les maquettes avant le début du développement : pas de mauvaise

@@ -4,23 +4,34 @@ import ChartColumn from '@lucide/astro/icons/chart-column';
 import Cloud from '@lucide/astro/icons/cloud';
 import Globe from '@lucide/astro/icons/globe';
 import ServerCog from '@lucide/astro/icons/server-cog';
+import ShieldCheck from '@lucide/astro/icons/shield-check';
 import Smartphone from '@lucide/astro/icons/smartphone';
 import Sparkles from '@lucide/astro/icons/sparkles';
 import Workflow from '@lucide/astro/icons/workflow';
 import Fond from './Fond.astro';
 import Illustration from './Illustration.astro';
 
-// Les huit pôles de services, sur deux lignes.
-const icones = [Globe, AppWindow, Smartphone, Cloud, Sparkles, Workflow, ChartColumn, ServerCog];
+// Les neuf pôles de services, sur trois lignes.
+const icones = [
+  Globe,
+  AppWindow,
+  Smartphone,
+  Cloud,
+  Sparkles,
+  Workflow,
+  ChartColumn,
+  ShieldCheck,
+  ServerCog,
+];
 const couleurs: Record<number, { fond: string; texte: string }> = {
   0: { fond: 'fill-brand-600', texte: 'text-white' },
   4: { fond: 'fill-brand-600', texte: 'text-white' },
-  7: { fond: 'fill-emerald-500', texte: 'text-white' },
+  8: { fond: 'fill-emerald-500', texte: 'text-white' },
 };
 const tuiles = icones.map((Icone, index) => ({
   Icone,
-  x: 36 + (index % 4) * 108,
-  y: 84 + Math.floor(index / 4) * 108,
+  x: 134 + (index % 3) * 76,
+  y: 74 + Math.floor(index / 3) * 76,
   ...(couleurs[index] ?? { fond: 'fill-white', texte: 'text-brand-600' }),
 }));
 ---
@@ -32,14 +43,14 @@ const tuiles = icones.map((Icone, index) => ({
       <rect
         x={x}
         y={y}
-        width="84"
-        height="84"
-        rx="16"
+        width="60"
+        height="60"
+        rx="12"
         class={`${fond} stroke-slate-300`}
         stroke-width="2"
       />
       <g class={texte}>
-        <Icone x={x + 22} y={y + 22} size={40} />
+        <Icone x={x + 14} y={y + 14} size={32} />
       </g>
     </>
   ))}

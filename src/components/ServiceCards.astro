@@ -1,22 +1,28 @@
 ---
-// Cartes des huit pôles (docs/brief-agence.md, section 6.1).
+// Cartes des neuf pôles (docs/brief-agence.md, section 6.1).
 import AppWindow from '@lucide/astro/icons/app-window';
 import ChartColumn from '@lucide/astro/icons/chart-column';
 import Cloud from '@lucide/astro/icons/cloud';
 import Globe from '@lucide/astro/icons/globe';
 import ServerCog from '@lucide/astro/icons/server-cog';
+import ShieldCheck from '@lucide/astro/icons/shield-check';
 import Smartphone from '@lucide/astro/icons/smartphone';
 import Sparkles from '@lucide/astro/icons/sparkles';
 import Workflow from '@lucide/astro/icons/workflow';
 import ServiceCard from '~/components/ServiceCard.astro';
 ---
 
-<div class="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
+<div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
   <ServiceCard
     title="Sites web"
     icone={Globe}
     text="Un site vitrine ou une boutique en ligne rapide, bien référencé et facile à mettre à jour."
-    items={['Site vitrine', 'Boutique en ligne', 'Refonte de site existant']}
+    items={[
+      'Site vitrine',
+      'Boutique en ligne',
+      'Refonte de site existant',
+      'Sites en français, arabe et anglais',
+    ]}
     link={{ label: "Découvrir l'offre Sites web", href: '/services/sites-web' }}
   />
   <ServiceCard
@@ -59,7 +65,11 @@ import ServiceCard from '~/components/ServiceCard.astro';
     title="Intelligence artificielle"
     icone={Sparkles}
     text="L'IA là où elle vous fait vraiment gagner du temps, avec des résultats vérifiés."
-    items={['Assistant pour vos clients', 'Assistant pour vos équipes', 'Traitement de documents']}
+    items={[
+      'Assistants pour vos clients et vos équipes',
+      'Traitement de documents',
+      'Formation de vos équipes',
+    ]}
     link={{
       label: "Découvrir l'offre Intelligence artificielle",
       href: '/services/intelligence-artificielle',
@@ -69,7 +79,11 @@ import ServiceCard from '~/components/ServiceCard.astro';
     title="Automatisation et intégrations"
     icone={Workflow}
     text="Vos logiciels connectés entre eux, et les tâches répétitives faites automatiquement."
-    items={['Connexion de vos outils', 'Automatisation des tâches', "Alerte en cas d'erreur"]}
+    items={[
+      'Connexion de vos outils',
+      'Automatisation des tâches',
+      'WhatsApp connecté à vos outils',
+    ]}
     link={{
       label: "Découvrir l'offre Automatisation",
       href: '/services/automatisation-integrations',
@@ -85,6 +99,17 @@ import ServiceCard from '~/components/ServiceCard.astro';
       'Rapports automatiques',
     ]}
     link={{ label: "Découvrir l'offre Données", href: '/services/donnees-tableaux-de-bord' }}
+  />
+  <ServiceCard
+    title="Tests et sécurité"
+    icone={ShieldCheck}
+    text="Vos sites et vos applications vérifiés par des spécialistes des tests, même si nous ne les avons pas développés."
+    items={[
+      'Audit de sécurité',
+      'Tests avant une mise en ligne',
+      'Tests automatiques et tests de charge',
+    ]}
+    link={{ label: "Découvrir l'offre Tests et sécurité", href: '/services/tests-securite' }}
   />
   <ServiceCard
     title="Hébergement et maintenance"

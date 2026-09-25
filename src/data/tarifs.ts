@@ -10,8 +10,10 @@ export const tarifs = {
   mvp: '[X] DH',
   applicationMobile: '[X] DH',
   assistantIA: '[X] DH',
+  formationIA: '[X] DH',
   automatisation: '[X] DH',
   tableauDeBord: '[X] DH',
+  auditSecurite: '[X] DH',
 } as const;
 
 export interface ForfaitMaintenance {

@@ -38,24 +38,25 @@ Liste de référence des services qu'une agence de ce type propose en général,
 |---|---|---|
 | Conseil et stratégie | Audit digital, feuille de route, accompagnement de projet | **Partiel** : audit technique uniquement |
 | Design et identité visuelle | Logo, charte graphique, UX/UI, design system, vidéo, photo | **Via partenaire** |
-| Développement web | Site vitrine, e-commerce, landing pages, applications web, refonte | **Oui** |
+| Développement web | Site vitrine, e-commerce, landing pages, applications web, refonte, sites multilingues | **Oui** |
 | Applications mobiles | Natives, multiplateformes (React Native, Flutter), PWA | **Oui** (multiplateforme), avec une page dédiée |
 | Logiciels SaaS | Plateformes en ligne par abonnement : comptes clients, abonnements, paiement | **Oui** |
 | Marketing et acquisition | SEO, SEA, publicité sociale, GEO, emailing, rédaction | **Partiel** : SEO technique uniquement. Rédaction via partenaire. Pas de publicité. |
 | Réseaux sociaux | Stratégie, community management, contenus, influence | **Non** |
 | Data et performance | Suivi GA4 / Tag Manager, tableaux de bord, CRO, tests A/B | **Partiel** : mesure d'audience, tableaux de bord et rapports automatiques. Pas de CRO ni de tests A/B (marketing). |
 | IA | Assistants (chatbots), recherche dans les documents, traitement de documents, rédaction assistée | **Oui**, avec une page dédiée |
-| Automatisation | Automatisation (n8n, Make, Zapier), intégration CRM/ERP | **Oui** |
+| Automatisation | Automatisation (n8n, Make, Zapier), intégration CRM/ERP, WhatsApp Business | **Oui** |
+| Tests et sécurité | Audit de sécurité, recette avant mise en ligne, tests automatiques, tests de charge | **Oui**, avec une page dédiée |
 | Hébergement, maintenance, conformité | Hébergement, maintenance, sécurité, protection des données (loi 09-08), accessibilité | **Oui** |
-| Formation | Prise en main des outils livrés | **Oui** (incluse dans les projets) |
+| Formation | Prise en main des outils livrés, ateliers IA pour les équipes | **Oui** : prise en main incluse dans les projets, ateliers IA en option |
 
 ---
 
 ## 3. Offre retenue
 
-Huit pôles de services, plus un audit gratuit pour générer des contacts.
+Neuf pôles de services, plus un audit gratuit pour générer des contacts.
 
-> Pôles 3, 4, 5 et 7 : ajoutés le 25 septembre 2026. Textes des pages à valider (sections 6.14 à 6.17).
+> Ajouts du 25 septembre 2026, à valider : pôles 3, 4, 5, 7 et 8 (sections 6.14 à 6.18), sites multilingues (pôle 1), WhatsApp Business (pôle 6) et formation à l'IA (pôle 5).
 
 ### Pôle 1 : Sites web
 *Compétences : développement fullstack*
@@ -63,6 +64,8 @@ Huit pôles de services, plus un audit gratuit pour générer des contacts.
 - Site e-commerce (Shopify, WooCommerce ou sur mesure)
 - Refonte ou migration d'un site existant
 - Inclus par défaut : SEO technique, rapidité, accessibilité, conformité à la loi 09-08 (données personnelles)
+- En option : site en plusieurs langues (français, arabe de droite à gauche, anglais). Traductions fournies par le client ou par un traducteur partenaire.
+- En option : bouton WhatsApp (voir pôle 6)
 
 ### Pôle 2 : Applications sur mesure
 *Compétences : ingénierie logicielle, fullstack*
@@ -82,7 +85,7 @@ Huit pôles de services, plus un audit gratuit pour générer des contacts.
 - Comptes clients séparés, abonnements, paiement en ligne, espace d'administration
 - Première version (MVP), puis hébergement, surveillance et évolutions
 
-> **Stratégique :** un SaaS demande un hébergement et des évolutions en continu. C'est un revenu récurrent, comme le pôle 8.
+> **Stratégique :** un SaaS demande un hébergement et des évolutions en continu. C'est un revenu récurrent, comme le pôle 9.
 
 ### Pôle 5 : Intelligence artificielle
 *Compétences : ingénierie logicielle, fullstack, QA*
@@ -90,6 +93,7 @@ Huit pôles de services, plus un audit gratuit pour générer des contacts.
 - Assistants pour les équipes : recherche dans les documents internes, avec la source
 - Traitement de documents : lecture, extraction, classement
 - Rédaction assistée, toujours relue par une personne
+- Formation des équipes : ateliers pratiques avec leurs propres cas, et règles d'utilisation de l'IA pour l'entreprise
 
 > Notre différence : une IA testée avec des cas réels, qui cite ses sources et dit quand elle ne sait pas. Pas de promesse de résultat.
 
@@ -98,6 +102,7 @@ Huit pôles de services, plus un audit gratuit pour générer des contacts.
 - Connexion des outils entre eux par API : site, CRM, comptabilité, boutique en ligne
 - Automatisation des tâches répétitives (n8n, Make, scripts sur mesure)
 - Automatisations surveillées, avec une alerte en cas d'erreur
+- WhatsApp Business : bouton sur le site, messages automatiques par la plateforme officielle de Meta, conversations envoyées dans le CRM
 
 ### Pôle 7 : Données et tableaux de bord
 *Compétences : fullstack, ingénierie logicielle, QA*
@@ -106,7 +111,17 @@ Huit pôles de services, plus un audit gratuit pour générer des contacts.
 - Rapports automatiques et alertes
 - Hors offre : analyse marketing, publicité, CRO et tests A/B
 
-### Pôle 8 : Hébergement, maintenance et sécurité
+### Pôle 8 : Tests et sécurité
+*Compétences : QA, DevOps*
+- Audit de sécurité de sites et d'applications, y compris développés par d'autres
+- Tests avant une mise en ligne (recette), sur tous les écrans et navigateurs
+- Ajout de tests automatiques à un projet existant
+- Tests de charge avant un pic de visiteurs
+- Toujours avec l'autorisation écrite du propriétaire (voir [section 7](#7-points-légaux))
+
+> C'est notre cœur de métier (QA). L'audit gratuit sert de porte d'entrée : il regarde le site de l'extérieur, l'audit de sécurité va plus loin.
+
+### Pôle 9 : Hébergement, maintenance et sécurité
 *Compétences : DevOps, QA*
 - Hébergement géré, nom de domaine, e-mails professionnels
 - Maintenance corrective et évolutive en forfait mensuel
@@ -180,6 +195,7 @@ Accueil                                   /
 │   ├── Intelligence artificielle         /services/intelligence-artificielle
 │   ├── Automatisation & intégrations     /services/automatisation-integrations
 │   ├── Données & tableaux de bord        /services/donnees-tableaux-de-bord
+│   ├── Tests & sécurité                  /services/tests-securite
 │   └── Hébergement & maintenance         /services/hebergement-maintenance
 ├── Audit gratuit                         /audit-gratuit
 ├── Réalisations (études de cas)          /realisations
@@ -197,7 +213,7 @@ La page « Méthode », avec une étape de tests bien visible, est l'endroit id�
 
 ## 6. Contenus des pages
 
-> Sections 6.1 à 6.6 : textes validés. Sections 6.7 à 6.13 et 6.14 à 6.17 (nouveaux services) : propositions à valider.
+> Sections 6.1 à 6.6 : textes validés, sauf les ajouts marqués « à valider ». Sections 6.7 à 6.13 et 6.14 à 6.18 (nouveaux services) : propositions à valider.
 > Adaptation au Maroc (25 septembre 2026) : prix en DH, loi 09-08 à la place du RGPD, délai de rétractation de 7 jours. Ces changements sont à revalider, y compris dans les sections 6.1 à 6.6.
 
 **Appel à l'action principal (tout le site) :** « Demander un devis gratuit »
@@ -233,6 +249,7 @@ Un site vitrine ou une boutique en ligne rapide, bien référencé et facile à 
 - Site vitrine
 - Boutique en ligne
 - Refonte de site existant
+- Sites en français, arabe et anglais *(ajout à valider)*
 
 → [Découvrir l'offre Sites web]
 
@@ -262,9 +279,9 @@ Votre logiciel en ligne, vendu par abonnement et construit pour accueillir de pl
 
 **Carte 5 : Intelligence artificielle** *(proposition à valider)*
 L'IA là où elle vous fait vraiment gagner du temps, avec des résultats vérifiés.
-- Assistant pour vos clients
-- Assistant pour vos équipes
+- Assistants pour vos clients et vos équipes
 - Traitement de documents
+- Formation de vos équipes
 
 → [Découvrir l'offre Intelligence artificielle]
 
@@ -272,7 +289,7 @@ L'IA là où elle vous fait vraiment gagner du temps, avec des résultats vérif
 Vos logiciels connectés entre eux, et les tâches répétitives faites automatiquement.
 - Connexion de vos outils
 - Automatisation des tâches
-- Alerte en cas d'erreur
+- WhatsApp connecté à vos outils *(ajout à valider)*
 
 → [Découvrir l'offre Automatisation]
 
@@ -284,7 +301,15 @@ Vos chiffres clés réunis sur un seul écran, fiables et mis à jour automatiqu
 
 → [Découvrir l'offre Données]
 
-**Carte 8 : Hébergement et maintenance**
+**Carte 8 : Tests et sécurité** *(proposition à valider)*
+Vos sites et vos applications vérifiés par des spécialistes des tests, même si nous ne les avons pas développés.
+- Audit de sécurité
+- Tests avant une mise en ligne
+- Tests automatiques et tests de charge
+
+→ [Découvrir l'offre Tests et sécurité]
+
+**Carte 9 : Hébergement et maintenance**
 Votre site en ligne, sauvegardé et à jour. Vous n'avez plus à y penser.
 - Hébergement sécurisé
 - Sauvegardes et mises à jour
@@ -439,6 +464,18 @@ Pour moderniser un site vieillissant sans perdre votre place sur Google.
 - **Accessible** : lisible par tous, y compris par les personnes en situation de handicap.
 - **Modifiable par vous** : un espace d'administration simple pour changer vos textes et vos images.
 - **Formation incluse** : nous vous montrons comment gérer votre site.
+
+#### Section : options *(ajout à valider)*
+
+**Titre :** Les options
+
+**Un site en plusieurs langues**
+Français, arabe, anglais : chaque visiteur lit votre site dans sa langue. La version arabe s'affiche de droite à gauche, avec une mise en page adaptée. Chaque langue a ses propres pages, que Google peut référencer. Vous nous fournissez les textes traduits. Si besoin, nous vous mettons en relation avec un traducteur.
+
+**WhatsApp sur votre site**
+Un bouton pour vous écrire sur WhatsApp en un clic. Nous pouvons aussi relier WhatsApp à vos outils et envoyer des messages automatiques.
+
+→ [Voir l'offre Automatisation]
 
 #### Section : notre différence
 
@@ -644,6 +681,21 @@ Un assistant sur votre site qui répond aux questions fréquentes, le tri automa
 
 **Pour un cabinet ou un bureau :** les documents reçus par e-mail sont classés automatiquement dans le bon dossier client.
 
+#### Section : WhatsApp *(ajout à valider)*
+
+**Titre :** WhatsApp, connecté à vos outils
+
+Vos clients vous écrivent déjà sur WhatsApp. Nous connectons WhatsApp Business à votre site et à vos outils, pour répondre plus vite sans rien perdre.
+
+**Un bouton WhatsApp sur votre site**
+Vos visiteurs vous écrivent en un clic, depuis leur téléphone ou leur ordinateur.
+
+**Des messages automatiques**
+Confirmation de commande, rappel de rendez-vous, suivi de livraison : le message part tout seul, au bon moment.
+
+**Vos conversations dans vos outils**
+Chaque demande reçue sur WhatsApp arrive dans votre CRM. Votre équipe voit l'historique de chaque client.
+
 #### Section : notre différence
 
 **Titre :** Des automatisations fiables, pas du bricolage
@@ -667,6 +719,12 @@ Non. Nous partons de ceux que vous utilisez déjà.
 
 **Que se passe-t-il si une automatisation tombe en panne ?**
 Nous sommes alertés et nous intervenons. Avec un forfait de maintenance, la correction est incluse.
+
+**Faut-il un compte WhatsApp particulier ?** *(ajout à valider)*
+Pour les messages automatiques, oui : un compte WhatsApp Business relié à la plateforme officielle de Meta. Nous le créons avec vous. Meta facture certains messages : nous estimons ce coût avec vous avant de commencer.
+
+**Puis-je envoyer des promotions sur WhatsApp ?** *(ajout à valider)*
+Seulement aux clients qui ont donné leur accord. Nous prévoyons la demande d'accord et la possibilité de se désinscrire.
 
 **Mes données sont-elles en sécurité avec l'IA ?**
 Nous choisissons des services compatibles avec la loi 09-08 sur les données personnelles, qui n'utilisent pas vos données pour entraîner leurs modèles. [à confirmer selon les fournisseurs retenus]
@@ -1004,8 +1062,10 @@ Reprend l'appel à l'action final de la page Services (6.1).
 | Application mobile *(à valider)* | iPhone et Android, publiée sur l'App Store et Google Play. | À partir de [X] DH |
 | Logiciel SaaS *(à valider)* | Votre logiciel en ligne, vendu par abonnement. | Sur devis, après l'atelier de cadrage |
 | Assistant IA *(à valider)* | Un assistant pour vos clients ou vos équipes. Le coût d'utilisation du service d'IA s'ajoute, selon l'usage. | À partir de [X] DH |
+| Formation à l'IA *(à valider)* | Un atelier pratique pour vos équipes, avec vos propres cas de travail. | À partir de [X] DH |
 | Automatisation simple | Une tâche répétitive faite automatiquement. | À partir de [X] DH |
 | Tableau de bord *(à valider)* | Vos chiffres clés sur un seul écran, mis à jour automatiquement. | À partir de [X] DH |
+| Audit de sécurité *(à valider)* | Recherche des failles, rapport clair et plan de correction. | À partir de [X] DH |
 
 #### Section : inclus
 
@@ -1473,6 +1533,22 @@ Factures, bons de commande, formulaires : l'IA lit les documents, extrait les in
 **La rédaction assistée**
 Réponses aux e-mails, fiches produits, comptes rendus de réunion : l'IA prépare un brouillon, vous le relisez et vous le validez.
 
+#### Section : formation *(ajout à valider)*
+
+**Titre :** Former vos équipes à l'IA
+
+Vos équipes utilisent déjà des outils d'IA comme ChatGPT ? Nous organisons des ateliers pratiques, avec vos propres cas de travail. Vos équipes apprennent à :
+- rédiger des demandes claires pour obtenir de bonnes réponses ;
+- vérifier les réponses et repérer les erreurs ;
+- savoir quelles informations ne jamais confier à un outil d'IA ;
+- utiliser l'IA pour les tâches de tous les jours : e-mails, résumés, tableaux.
+
+À la fin de l'atelier, vous recevez des règles d'utilisation simples, adaptées à votre entreprise.
+
+[Durée et nombre de participants : à définir]
+
+**Bouton :** [Organiser un atelier]
+
 #### Section : notre différence
 
 **Titre :** Une IA testée et encadrée
@@ -1610,6 +1686,100 @@ Listez-nous les chiffres que vous suivez aujourd'hui et les outils qui les conti
 
 ---
 
+### 6.18 Page « Tests et sécurité »
+
+> Proposition à valider.
+
+**URL :** `/services/tests-securite`
+**Balise title :** Audit de sécurité et tests de sites et d'applications | Digital Solutions
+**Meta description :** Audit de sécurité, tests avant une mise en ligne, tests automatiques et tests de charge : nous vérifions vos sites et vos applications.
+**Mots-clés visés (à valider) :** audit sécurité site web Maroc, test application web, test de charge, recette application
+
+#### En-tête
+
+**H1 :** Vos sites et vos applications, vérifiés avant vos clients
+
+**Sous-titre :** Audit de sécurité, tests avant une mise en ligne, tests automatiques : nous trouvons les problèmes avant qu'ils vous coûtent des clients. Même si nous n'avons pas développé votre projet.
+
+**Bouton :** [Demander un audit de sécurité]
+
+#### Section : le problème
+
+**Titre :** Vous n'êtes pas sûr de votre site ou de votre application ?
+
+- Votre prestataire livre sans tester, et vos clients découvrent les bugs.
+- Vous ne savez pas si votre site résiste aux attaques courantes.
+- Chaque nouvelle version casse une fonction qui marchait.
+- Vous préparez un lancement ou une campagne, et vous craignez que le site ne tienne pas.
+
+#### Section : ce que nous faisons
+
+**Titre :** Quatre façons de sécuriser votre projet
+
+**Audit de sécurité**
+Nous recherchons les failles les plus courantes : mises à jour oubliées, mots de passe faibles, accès trop larges, formulaires mal protégés, serveur mal configuré. Vous recevez un rapport avec les failles classées par gravité, et les corrections à faire.
+
+**Tests avant une mise en ligne**
+Avant le lancement d'un site ou d'une nouvelle version, nous vérifions chaque parcours important : inscription, commande, paiement, formulaires. Sur ordinateur, tablette et mobile, dans les principaux navigateurs.
+
+**Tests automatiques**
+Nous ajoutons des tests automatiques à votre projet. À chaque nouvelle version, ils vérifient que ce qui fonctionnait fonctionne toujours.
+
+**Tests de charge**
+Nous simulons un grand nombre de visiteurs en même temps. Vous savez si votre site tient le jour d'un pic (soldes, fêtes, campagne publicitaire), et vous connaissez ses limites avant vos clients.
+
+#### Section : notre différence
+
+**Titre :** Des spécialistes des tests
+
+Les tests sont au cœur de notre métier : nous testons chacun de nos propres projets avant la mise en ligne. Nous appliquons la même méthode à vos projets, même s'ils ont été développés par un autre prestataire ou par votre équipe. Nos rapports sont écrits sans jargon : chaque problème est expliqué, avec son effet sur votre activité et la correction à faire.
+
+#### Section : nos règles
+
+**Titre :** Nos règles
+
+- Nous testons uniquement avec l'accord écrit du propriétaire du site ou de l'application.
+- Nous gardons vos informations confidentielles, et nous pouvons signer un accord de confidentialité.
+- Un audit réduit les risques, mais personne ne peut garantir qu'un site ne sera jamais piraté. Nous vous le disons honnêtement.
+
+#### Section : méthode
+
+**Titre :** Comment nous travaillons
+
+1. **Cadrage.** Nous définissons ensemble ce qui est testé, comment et quand. Vous signez une autorisation.
+2. **Tests.** Nous vérifions votre site ou votre application, sans perturber vos clients.
+3. **Rapport.** Vous recevez la liste des problèmes, classés par gravité, avec les corrections.
+4. **Corrections.** Nous corrigeons nous-mêmes, ou nous accompagnons votre prestataire.
+5. **Nouvelle vérification.** Nous vérifions que chaque correction fonctionne.
+
+#### FAQ
+
+**Quelle différence avec l'audit gratuit ?**
+L'audit gratuit regarde votre site de l'extérieur : vitesse, sécurité de base, référencement technique et affichage mobile. L'audit de sécurité va plus loin : avec votre accord, nous examinons aussi le code, le serveur et les accès.
+→ [Faire auditer mon site]
+
+**Pouvez-vous tester un projet développé par un autre prestataire ?**
+Oui, c'est même le cas le plus fréquent. Nous avons besoin de votre accord écrit et, pour aller plus loin, d'un accès au code ou au serveur.
+
+**Les tests vont-ils perturber mon site ?**
+Nous planifions les tests avec vous. Les tests de charge se font hors des heures d'affluence, ou sur une copie de votre site.
+
+**Combien ça coûte ?**
+Un audit de sécurité commence à [X] DH. Pour les tests d'une application, nous vous remettons un devis à prix fixe après le cadrage.
+
+**Que se passe-t-il après l'audit ?**
+Vous êtes libre : vous corrigez avec votre prestataire, ou nous nous en chargeons. Avec un forfait de maintenance, nous surveillons ensuite votre site dans la durée.
+
+#### Appel à l'action final
+
+**Titre :** Faites vérifier votre site ou votre application
+
+Un échange de 30 minutes, gratuit et confidentiel, pour définir ce qu'il faut tester en priorité.
+
+**Bouton :** [Demander un audit de sécurité]
+
+---
+
 ## 7. Points légaux
 
 > À faire valider par un juriste avant la mise en ligne.
@@ -1634,6 +1804,8 @@ Listez-nous les chiffres que vous suivez aujourd'hui et les outils qui les conti
 **Offre aux clients**
 - Nos sites clients doivent aussi respecter la loi 09-08 : déclaration à la CNDP, pages légales, consentement. Argument commercial possible [à valider] : nous préparons les pages et nous expliquons la démarche au client.
 - L'**European Accessibility Act** concerne seulement les clients qui vendent aux particuliers dans l'Union européenne.
+- **Tests et audit de sécurité** : accord écrit du propriétaire avant tout test. Accéder sans autorisation à un système informatique est puni par le Code pénal (articles 607-3 et suivants, issus de la loi 07-03) [à vérifier par le juriste]. Prévoir un modèle d'autorisation de test.
+- **Messages WhatsApp automatiques** : la prospection par message électronique demande le consentement préalable de la personne (loi 09-08, article 10) [à vérifier par le juriste]. Prévoir la demande d'accord et la désinscription.
 
 ---
 
@@ -1644,9 +1816,11 @@ Listez-nous les chiffres que vous suivez aujourd'hui et les outils qui les conti
 - [ ] Fixer les prix (remplacer tous les `[X] DH`)
 - [ ] Confirmer les engagements listés en [section 4](#engagements-à-confirmer-avant-publication)
 - [ ] Choisir l'option design : designer partenaire ou modèles personnalisés
-- [ ] Trouver les partenaires : graphiste, rédacteur
+- [ ] Trouver les partenaires : graphiste, rédacteur, traducteur (arabe, anglais)
 - [ ] Relire et valider les textes proposés : Accueil, Méthode, Tarifs, L'agence, Contact, Réalisations, Blog (sections 6.7 à 6.13) et les trois premiers articles
-- [ ] Relire et valider les pages des nouveaux services : Applications mobiles, Logiciels SaaS, Intelligence artificielle, Données et tableaux de bord (sections 6.14 à 6.17)
+- [ ] Relire et valider les pages des nouveaux services : Applications mobiles, Logiciels SaaS, Intelligence artificielle, Données et tableaux de bord, Tests et sécurité (sections 6.14 à 6.18)
+- [ ] Relire et valider les ajouts dans les pages existantes : options Sites web (langues, WhatsApp), section WhatsApp (Automatisation), formation à l'IA
+- [ ] Préparer un modèle d'autorisation de test pour les audits de sécurité, validé par le juriste
 - [ ] Choisir les fournisseurs d'IA (données non utilisées pour l'entraînement, transfert hors du Maroc à déclarer à la CNDP)
 - [ ] Préparer 2 ou 3 études de cas réelles pour la page Réalisations
 - [x] Choisir les technologies du site et commencer le développement (voir [stack-technique.md](stack-technique.md))

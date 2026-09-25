@@ -8,6 +8,7 @@
         "http://localhost:4321/services",
         "http://localhost:4321/services/sites-web",
         "http://localhost:4321/services/intelligence-artificielle",
+        "http://localhost:4321/services/tests-securite",
         "http://localhost:4321/methode",
         "http://localhost:4321/tarifs",
         "http://localhost:4321/agence",
