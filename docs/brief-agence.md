@@ -436,7 +436,7 @@ Pour présenter votre activité, montrer vos réalisations et être contacté fa
 **Boutique en ligne**
 Pour vendre vos produits sur Internet, 24 h/24.
 *Idéal pour :* commerçants, créateurs, PME.
-- Paiement sécurisé (carte bancaire, PayPal…)
+- Paiement sécurisé (carte bancaire via le CMI, paiement à la livraison…) *(modifié pour le Maroc, à valider)*
 - Gestion des stocks et des commandes
 - Frais de livraison et factures automatiques
 - Shopify, WooCommerce ou sur mesure, selon votre volume de ventes
