@@ -39,11 +39,13 @@ Liste de référence des services qu'une agence de ce type propose en général,
 | Conseil et stratégie | Audit digital, feuille de route, accompagnement de projet | **Partiel** : audit technique uniquement |
 | Design et identité visuelle | Logo, charte graphique, UX/UI, design system, vidéo, photo | **Via partenaire** |
 | Développement web | Site vitrine, e-commerce, landing pages, applications web, refonte | **Oui** |
-| Applications mobiles | Natives, multiplateformes (React Native, Flutter), PWA | **Oui** (multiplateforme) |
+| Applications mobiles | Natives, multiplateformes (React Native, Flutter), PWA | **Oui** (multiplateforme), avec une page dédiée |
+| Logiciels SaaS | Plateformes en ligne par abonnement : comptes clients, abonnements, paiement | **Oui** |
 | Marketing et acquisition | SEO, SEA, publicité sociale, GEO, emailing, rédaction | **Partiel** : SEO technique uniquement. Rédaction via partenaire. Pas de publicité. |
 | Réseaux sociaux | Stratégie, community management, contenus, influence | **Non** |
-| Data et performance | Suivi GA4 / Tag Manager, tableaux de bord, CRO, tests A/B | **Partiel** : mise en place technique du suivi |
-| IA et automatisation | Chatbots, automatisation (n8n, Make, Zapier), intégration CRM/ERP | **Oui** |
+| Data et performance | Suivi GA4 / Tag Manager, tableaux de bord, CRO, tests A/B | **Partiel** : mesure d'audience, tableaux de bord et rapports automatiques. Pas de CRO ni de tests A/B (marketing). |
+| IA | Assistants (chatbots), recherche dans les documents, traitement de documents, rédaction assistée | **Oui**, avec une page dédiée |
+| Automatisation | Automatisation (n8n, Make, Zapier), intégration CRM/ERP | **Oui** |
 | Hébergement, maintenance, conformité | Hébergement, maintenance, sécurité, protection des données (loi 09-08), accessibilité | **Oui** |
 | Formation | Prise en main des outils livrés | **Oui** (incluse dans les projets) |
 
@@ -51,7 +53,9 @@ Liste de référence des services qu'une agence de ce type propose en général,
 
 ## 3. Offre retenue
 
-Quatre pôles de services, plus un audit gratuit pour générer des contacts.
+Huit pôles de services, plus un audit gratuit pour générer des contacts.
+
+> Pôles 3, 4, 5 et 7 : ajoutés le 25 septembre 2026. Textes des pages à valider (sections 6.14 à 6.17).
 
 ### Pôle 1 : Sites web
 *Compétences : développement fullstack*
@@ -62,17 +66,47 @@ Quatre pôles de services, plus un audit gratuit pour générer des contacts.
 
 ### Pôle 2 : Applications sur mesure
 *Compétences : ingénierie logicielle, fullstack*
-- Outils métier : réservation, devis et facturation, gestion de stock, planning, espace client
-- Applications web et mobiles (React Native ou Flutter)
+- Outils métier : réservation, devis et facturation, gestion de stock, planning
+- Espaces clients et portails
 - MVP pour porteurs de projet : c'est la meilleure cible « particulier » pour notre équipe
 
-### Pôle 3 : Automatisation et intégrations
+### Pôle 3 : Applications mobiles
+*Compétences : ingénierie logicielle, fullstack, QA*
+- Applications iPhone et Android à partir d'un seul développement (React Native ou Flutter)
+- Applications pour les clients (réservation, commande, fidélité) et pour les équipes (terrain, hors connexion)
+- Publication sur l'App Store et Google Play, puis mises à jour imposées chaque année par Apple et Google
+
+### Pôle 4 : Logiciels SaaS
+*Compétences : ingénierie logicielle, fullstack, DevOps, QA*
+- Plateformes en ligne vendues par abonnement, pour les porteurs de projet et les entreprises
+- Comptes clients séparés, abonnements, paiement en ligne, espace d'administration
+- Première version (MVP), puis hébergement, surveillance et évolutions
+
+> **Stratégique :** un SaaS demande un hébergement et des évolutions en continu. C'est un revenu récurrent, comme le pôle 8.
+
+### Pôle 5 : Intelligence artificielle
+*Compétences : ingénierie logicielle, fullstack, QA*
+- Assistants pour les clients : site web, WhatsApp
+- Assistants pour les équipes : recherche dans les documents internes, avec la source
+- Traitement de documents : lecture, extraction, classement
+- Rédaction assistée, toujours relue par une personne
+
+> Notre différence : une IA testée avec des cas réels, qui cite ses sources et dit quand elle ne sait pas. Pas de promesse de résultat.
+
+### Pôle 6 : Automatisation et intégrations
 *Compétences : fullstack, ingénierie logicielle*
 - Connexion des outils entre eux par API : site, CRM, comptabilité, boutique en ligne
 - Automatisation des tâches répétitives (n8n, Make, scripts sur mesure)
-- Intégration d'IA : chatbot, traitement de documents, assistant client
+- Automatisations surveillées, avec une alerte en cas d'erreur
 
-### Pôle 4 : Hébergement, maintenance et sécurité
+### Pôle 7 : Données et tableaux de bord
+*Compétences : fullstack, ingénierie logicielle, QA*
+- Mesure d'audience des sites : Matomo, Plausible ou Google Analytics, dans le respect de la loi 09-08
+- Tableaux de bord de l'activité : ventes, stocks, rendez-vous, à partir des outils du client
+- Rapports automatiques et alertes
+- Hors offre : analyse marketing, publicité, CRO et tests A/B
+
+### Pôle 8 : Hébergement, maintenance et sécurité
 *Compétences : DevOps, QA*
 - Hébergement géré, nom de domaine, e-mails professionnels
 - Maintenance corrective et évolutive en forfait mensuel
@@ -141,7 +175,11 @@ Accueil                                   /
 ├── Services                              /services
 │   ├── Sites web                         /services/sites-web
 │   ├── Applications sur mesure           /services/applications-sur-mesure
+│   ├── Applications mobiles              /services/applications-mobiles
+│   ├── Logiciels SaaS                    /services/logiciels-saas
+│   ├── Intelligence artificielle         /services/intelligence-artificielle
 │   ├── Automatisation & intégrations     /services/automatisation-integrations
+│   ├── Données & tableaux de bord        /services/donnees-tableaux-de-bord
 │   └── Hébergement & maintenance         /services/hebergement-maintenance
 ├── Audit gratuit                         /audit-gratuit
 ├── Réalisations (études de cas)          /realisations
@@ -159,7 +197,7 @@ La page « Méthode », avec une étape de tests bien visible, est l'endroit id�
 
 ## 6. Contenus des pages
 
-> Sections 6.1 à 6.6 : textes validés. Sections 6.7 à 6.13 : propositions à valider.
+> Sections 6.1 à 6.6 : textes validés. Sections 6.7 à 6.13 et 6.14 à 6.17 (nouveaux services) : propositions à valider.
 > Adaptation au Maroc (25 septembre 2026) : prix en DH, loi 09-08 à la place du RGPD, délai de rétractation de 7 jours. Ces changements sont à revalider, y compris dans les sections 6.1 à 6.6.
 
 **Appel à l'action principal (tout le site) :** « Demander un devis gratuit »
@@ -171,7 +209,7 @@ La page « Méthode », avec une étape de tests bien visible, est l'endroit id�
 
 **URL :** `/services`
 **Balise title :** Création de sites web et d'applications sur mesure | Digital Solutions
-**Meta description :** Sites web, applications, automatisation et maintenance pour TPE, PME et particuliers. Des projets conçus par des ingénieurs, testés et suivis dans la durée.
+**Meta description :** Sites web, applications web et mobiles, logiciels SaaS, IA, automatisation et maintenance : des projets conçus par des ingénieurs, testés et suivis.
 **Mots-clés visés (à valider) :** agence web [ville], création site internet TPE, développement application sur mesure
 
 #### En-tête
@@ -199,22 +237,54 @@ Un site vitrine ou une boutique en ligne rapide, bien référencé et facile à 
 → [Découvrir l'offre Sites web]
 
 **Carte 2 : Applications sur mesure**
-Un outil conçu pour votre façon de travailler : réservation, devis, planning, espace client ou application mobile.
+Un outil conçu pour votre façon de travailler : réservation, devis, planning ou espace client.
 - Outils métier
-- Applications web et mobiles
+- Espaces clients et portails
 - Première version de votre projet d'application
 
 → [Découvrir l'offre Applications]
 
-**Carte 3 : Automatisation et intégrations**
+**Carte 3 : Applications mobiles** *(proposition à valider)*
+Une application iPhone et Android pour vos clients ou pour vos équipes, publiée et suivie par nos soins.
+- Applications pour vos clients
+- Applications pour vos équipes
+- Publication sur l'App Store et Google Play
+
+→ [Découvrir l'offre Applications mobiles]
+
+**Carte 4 : Logiciels SaaS** *(proposition à valider)*
+Votre logiciel en ligne, vendu par abonnement et construit pour accueillir de plus en plus de clients.
+- Comptes clients et abonnements
+- Paiement en ligne
+- Première version, puis évolutions
+
+→ [Découvrir l'offre Logiciels SaaS]
+
+**Carte 5 : Intelligence artificielle** *(proposition à valider)*
+L'IA là où elle vous fait vraiment gagner du temps, avec des résultats vérifiés.
+- Assistant pour vos clients
+- Assistant pour vos équipes
+- Traitement de documents
+
+→ [Découvrir l'offre Intelligence artificielle]
+
+**Carte 6 : Automatisation et intégrations**
 Vos logiciels connectés entre eux, et les tâches répétitives faites automatiquement.
 - Connexion de vos outils
 - Automatisation des tâches
-- Intégration de l'IA
+- Alerte en cas d'erreur
 
 → [Découvrir l'offre Automatisation]
 
-**Carte 4 : Hébergement et maintenance**
+**Carte 7 : Données et tableaux de bord** *(proposition à valider)*
+Vos chiffres clés réunis sur un seul écran, fiables et mis à jour automatiquement.
+- Mesure d'audience de votre site
+- Tableaux de bord de votre activité
+- Rapports automatiques
+
+→ [Découvrir l'offre Données]
+
+**Carte 8 : Hébergement et maintenance**
 Votre site en ligne, sauvegardé et à jour. Vous n'avez plus à y penser.
 - Hébergement sécurisé
 - Sauvegardes et mises à jour
@@ -458,6 +528,8 @@ Une application iPhone et Android à partir d'un seul développement, pour un co
 **Première version de votre projet (MVP)**
 Vous avez une idée d'application ? Nous construisons une première version avec l'essentiel, pour la tester auprès de vrais utilisateurs avant d'investir davantage.
 
+**Liens sous les cartes** *(ajout à valider)* : → [Voir l'offre Applications mobiles] → [Vous voulez vendre votre logiciel par abonnement ? Voir l'offre Logiciels SaaS]
+
 #### Section : notre différence
 
 **Titre :** Une application solide, pas un prototype fragile
@@ -559,6 +631,8 @@ Relances, rapports, notifications, synchronisation des stocks. Nous utilisons de
 
 **Intégrer l'IA, là où elle est utile**
 Un assistant sur votre site qui répond aux questions fréquentes, le tri automatique de vos documents, l'extraction des informations de vos factures. Nous n'intégrons l'IA que là où elle vous fait vraiment gagner du temps, et vos données restent protégées.
+
+**Lien sous les cartes** *(ajout à valider)* : → [Découvrir l'offre Intelligence artificielle]
 
 #### Section : exemples
 
@@ -927,7 +1001,11 @@ Reprend l'appel à l'action final de la page Services (6.1).
 | Refonte de site | Nouveau site, sans perdre votre place sur Google. | Sur devis |
 | Première version d'application (MVP) | L'essentiel pour tester votre idée auprès de vrais utilisateurs. | À partir de [X] DH |
 | Outil métier ou application | Un outil conçu pour votre façon de travailler. | Sur devis, après l'atelier de cadrage |
+| Application mobile *(à valider)* | iPhone et Android, publiée sur l'App Store et Google Play. | À partir de [X] DH |
+| Logiciel SaaS *(à valider)* | Votre logiciel en ligne, vendu par abonnement. | Sur devis, après l'atelier de cadrage |
+| Assistant IA *(à valider)* | Un assistant pour vos clients ou vos équipes. Le coût d'utilisation du service d'IA s'ajoute, selon l'usage. | À partir de [X] DH |
 | Automatisation simple | Une tâche répétitive faite automatiquement. | À partir de [X] DH |
+| Tableau de bord *(à valider)* | Vos chiffres clés sur un seul écran, mis à jour automatiquement. | À partir de [X] DH |
 
 #### Section : inclus
 
@@ -1154,6 +1232,384 @@ Un échange de 30 minutes, gratuit et sans engagement, pour parler de votre beso
 
 ---
 
+### 6.14 Page « Applications mobiles »
+
+> Proposition à valider.
+
+**URL :** `/services/applications-mobiles`
+**Balise title :** Création d'application mobile iPhone et Android | Digital Solutions
+**Meta description :** Une application iPhone et Android pour vos clients ou vos équipes, testée sur de vrais téléphones et suivie après sa publication sur les stores.
+**Mots-clés visés (à valider) :** création application mobile [ville], développement application iPhone Android, application mobile entreprise
+
+#### En-tête
+
+**H1 :** Votre application iPhone et Android, solide et suivie dans la durée
+
+**Sous-titre :** Pour vos clients ou pour vos équipes : nous concevons, testons et publions votre application, puis nous la gardons à jour.
+
+**Bouton :** [Parler de mon application]
+
+#### Section : le problème
+
+**Titre :** Une application mobile, c'est un vrai projet
+
+- Vous ne savez pas si vous avez besoin d'une application ou d'un site adapté au mobile.
+- Un devis pour iPhone, un autre pour Android : le budget double.
+- Une application jamais mise à jour finit par mal fonctionner sur les nouveaux téléphones.
+- Quand une application plante, les utilisateurs la suppriment et laissent une mauvaise note.
+
+#### Section : ce que nous développons
+
+**Titre :** Des applications pour vos clients et pour vos équipes
+
+**Une application pour vos clients**
+Réservation, commande, fidélité, suivi de livraison, espace client : vos services dans la poche de vos clients, avec des notifications pour les prévenir au bon moment.
+
+**Une application pour vos équipes**
+Pointage, suivi de chantier, inventaire, tournées, photos et signatures sur le terrain. L'application peut fonctionner sans connexion et envoyer les données dès que le réseau revient.
+
+**Un seul développement pour iPhone et Android**
+Nous développons une seule application qui fonctionne sur les deux systèmes. Vous payez un seul projet, et les deux versions évoluent ensemble.
+
+**La publication sur l'App Store et Google Play**
+Nous préparons les fiches, les captures d'écran et les documents demandés par Apple et Google, et nous suivons la validation jusqu'à la publication.
+
+#### Section : notre différence
+
+**Titre :** Testée sur de vrais téléphones, suivie après la publication
+
+**Testée sur de vrais téléphones**
+Avant chaque publication, nous vérifions votre application sur plusieurs modèles d'iPhone et d'Android, avec des petits et des grands écrans.
+
+**Connectée à vos outils**
+Votre application utilise les mêmes données que votre site, votre boutique ou votre logiciel de gestion. Vous ne saisissez rien deux fois.
+
+**Vos données protégées**
+Connexion chiffrée, comptes utilisateurs sécurisés et respect de la loi 09-08 sur les données personnelles.
+
+**Toujours à jour**
+Apple et Google changent leurs règles chaque année. Avec un forfait de maintenance, nous mettons votre application à jour pour qu'elle reste disponible et compatible.
+
+#### Section : méthode
+
+**Titre :** Comment nous travaillons
+
+1. **Cadrage.** Nous listons les écrans et les fonctionnalités, et nous gardons l'essentiel pour la première version.
+2. **Maquettes.** Vous voyez les écrans de votre application avant le début du développement.
+3. **Développement par étapes.** Une nouvelle version à installer sur votre téléphone toutes les [2] semaines.
+4. **Tests.** Tests automatiques et vérifications sur de vrais téléphones avant chaque publication.
+5. **Publication et suivi.** Nous publions votre application sur l'App Store et Google Play, puis nous la gardons à jour.
+
+#### FAQ
+
+**Ai-je besoin d'une application ou d'un site adapté au mobile ?**
+Pas toujours. Si vos clients vous consultent de temps en temps, un site rapide et adapté au mobile suffit souvent, et il coûte moins cher. Une application devient utile quand vos clients l'utilisent souvent, ou quand ils ont besoin des notifications, de l'appareil photo, de la localisation ou d'un mode sans connexion. Nous vous le disons honnêtement dès le premier échange.
+
+**Combien coûte une application mobile ?**
+Cela dépend des écrans et des fonctionnalités. Après le cadrage, nous vous remettons un devis à prix fixe. À titre indicatif, une première version commence à [X] DH.
+
+**Combien de temps faut-il ?**
+Nous fixons le planning ensemble après le cadrage. Il faut aussi prévoir quelques jours pour la validation de l'application par Apple et Google.
+
+**À qui appartient l'application ?**
+À vous. Elle est publiée avec vos propres comptes développeur Apple et Google, et le code vous appartient. Apple et Google facturent ces comptes directement : nous vous aidons à les créer.
+
+**Pouvez-vous reprendre une application existante ?**
+Oui. Nous commençons par un audit du code pour faire le point, puis nous vous proposons un plan : corriger, faire évoluer ou reconstruire certaines parties.
+
+#### Appel à l'action final
+
+**Titre :** Parlons de votre application
+
+Un échange de 30 minutes, gratuit et confidentiel, pour savoir si une application est la bonne réponse à votre besoin, et pour quel budget.
+
+**Bouton :** [Parler de mon application]
+
+---
+
+### 6.15 Page « Logiciels SaaS »
+
+> Proposition à valider.
+
+**URL :** `/services/logiciels-saas`
+**Balise title :** Développement de logiciel SaaS par abonnement | Digital Solutions
+**Meta description :** Vous voulez vendre un logiciel en ligne par abonnement ? Nous développons votre SaaS : comptes clients, abonnements, paiement en ligne, sécurité et suivi.
+**Mots-clés visés (à valider) :** développement SaaS Maroc, créer un logiciel SaaS, plateforme en ligne par abonnement
+
+#### En-tête
+
+**H1 :** Votre logiciel en ligne, vendu par abonnement
+
+**Sous-titre :** Vous avez une idée de logiciel pour les entreprises ou pour les particuliers ? Nous développons votre plateforme, de la première version au lancement, puis nous la faisons évoluer avec vous.
+
+**Bouton :** [Présenter mon idée]
+
+#### Section : définition
+
+**Titre :** Un SaaS, en clair
+
+Un SaaS (« logiciel en tant que service ») est un logiciel que vos clients utilisent en ligne, depuis leur navigateur ou leur téléphone. Ils n'installent rien et ils paient un abonnement. Vous gérez une seule version du logiciel pour tous vos clients.
+
+#### Section : le problème
+
+**Titre :** Les pièges d'un projet SaaS
+
+- Vous voulez tout développer avant de trouver votre premier client.
+- Les données d'un client s'affichent chez un autre, et la confiance est perdue.
+- Le logiciel ralentit quand le nombre de clients augmente.
+- Chaque nouvelle version casse une fonction que vos clients utilisaient.
+
+#### Section : ce que nous construisons
+
+**Titre :** Tout ce dont votre SaaS a besoin
+
+**Comptes et équipes**
+Inscription, connexion sécurisée, gestion des utilisateurs et de leurs droits. Les données de chaque client restent séparées de celles des autres.
+
+**Abonnements et paiement**
+Formules, période d'essai, paiement en ligne et factures automatiques. Nous choisissons avec vous la solution de paiement adaptée à vos clients, au Maroc ou à l'international.
+
+**Espace d'administration**
+Vous suivez vos clients, vos abonnements et l'utilisation de votre logiciel, sans passer par nous.
+
+**Connexion avec d'autres logiciels**
+Vos clients relient votre SaaS à leurs propres outils : comptabilité, CRM, e-mailing. Votre logiciel devient plus utile, et plus difficile à remplacer.
+
+#### Section : notre différence
+
+**Titre :** Construit pour grandir
+
+**Des bases solides**
+Nous concevons votre logiciel pour accueillir de nouveaux clients et de nouvelles fonctionnalités sans tout reconstruire.
+
+**Testé à chaque version**
+Des tests automatiques vérifient chaque nouvelle version avant sa mise en ligne. Vos clients ne découvrent pas les bugs à votre place.
+
+**Sécurité et sauvegardes**
+Connexions chiffrées, accès contrôlés, sauvegardes quotidiennes et surveillance 24 h/24.
+
+**Des mises à jour sans surprise**
+Nous préparons chaque mise en ligne pour éviter les coupures de service. En cas de problème, nous revenons à la version précédente en quelques minutes.
+
+#### Section : méthode
+
+**Titre :** Du cadrage aux premiers clients
+
+1. **Atelier de cadrage.** Nous listons les fonctions essentielles pour vos premiers clients et nous définissons les formules d'abonnement.
+2. **Maquettes.** Vous voyez les écrans et vous pouvez les montrer à vos futurs clients avant le développement.
+3. **Première version.** L'essentiel pour vendre et recueillir les avis de vos premiers clients.
+4. **Tests et lancement.** Tests automatiques, vérifications manuelles, puis mise en ligne.
+5. **Évolutions et suivi.** Nous hébergeons, surveillons et faisons évoluer votre logiciel selon les retours de vos clients.
+
+#### FAQ
+
+**Combien coûte le développement d'un SaaS ?**
+Cela dépend des fonctionnalités. Après l'atelier de cadrage, nous vous remettons un devis à prix fixe pour la première version. À titre indicatif, une première version (MVP) commence à [X] DH.
+
+**Combien de temps faut-il ?**
+Une première version demande en général [6 à 12 semaines]. Nous fixons le planning ensemble après le cadrage.
+
+**Qui est propriétaire du logiciel ?**
+Vous. Le code, les données et les comptes (hébergement, paiement, nom de domaine) sont à votre nom.
+
+**Mon idée sera-t-elle protégée ?**
+Oui. Nous pouvons signer un accord de confidentialité avant d'entrer dans les détails de votre projet.
+
+**Pouvez-vous héberger et maintenir le logiciel après le lancement ?**
+Oui. Nous proposons l'hébergement, la surveillance et les évolutions dans un forfait mensuel adapté à votre nombre de clients.
+
+**Mes clients sont à l'étranger. Est-ce un problème ?**
+Non, mais les règles changent selon les pays : protection des données, facturation, paiement. Nous en tenons compte dès le cadrage. [À valider avec un juriste selon les pays visés]
+
+#### Appel à l'action final
+
+**Titre :** Présentez-nous votre idée de SaaS
+
+Un échange de 30 minutes, gratuit et confidentiel, pour parler de votre idée, de vos futurs clients et de ce qui est réaliste pour une première version.
+
+**Bouton :** [Présenter mon idée]
+
+---
+
+### 6.16 Page « Intelligence artificielle »
+
+> Proposition à valider.
+
+**URL :** `/services/intelligence-artificielle`
+**Balise title :** Intégration de l'intelligence artificielle en entreprise | Digital Solutions
+**Meta description :** Assistant pour vos clients, recherche dans vos documents, lecture automatique des factures : nous intégrons l'IA là où elle vous fait gagner du temps.
+**Mots-clés visés (à valider) :** intelligence artificielle entreprise Maroc, chatbot site web, assistant WhatsApp, IA pour PME
+
+#### En-tête
+
+**H1 :** L'intelligence artificielle, là où elle vous fait vraiment gagner du temps
+
+**Sous-titre :** Assistants pour vos clients et pour vos équipes, traitement de documents, rédaction assistée : nous intégrons l'IA dans vos outils, avec des résultats vérifiés et vos données protégées.
+
+**Bouton :** [Parler de mon projet IA]
+
+#### Section : le problème
+
+**Titre :** L'IA vous intéresse, mais par où commencer ?
+
+- Vous entendez parler d'IA partout, sans savoir ce qu'elle peut faire pour votre activité.
+- Vous répondez chaque jour aux mêmes questions, par téléphone, par e-mail ou sur WhatsApp.
+- Vos équipes passent des heures à lire, recopier et classer des documents.
+- Vos équipes utilisent déjà des outils d'IA, sans règles pour protéger vos données.
+
+#### Section : ce que nous faisons
+
+**Titre :** Ce que l'IA peut faire pour vous
+
+**Un assistant pour vos clients**
+Sur votre site ou sur WhatsApp, il répond aux questions fréquentes à partir de vos informations : horaires, tarifs, suivi de commande. Quand il ne sait pas, il transmet la demande à votre équipe.
+
+**Un assistant pour vos équipes**
+Vos collaborateurs posent leurs questions sur vos procédures, vos catalogues ou vos contrats. Ils reçoivent une réponse avec le document d'origine.
+
+**Le traitement de vos documents**
+Factures, bons de commande, formulaires : l'IA lit les documents, extrait les informations et les range dans vos outils. Votre équipe vérifie seulement les cas douteux.
+
+**La rédaction assistée**
+Réponses aux e-mails, fiches produits, comptes rendus de réunion : l'IA prépare un brouillon, vous le relisez et vous le validez.
+
+#### Section : notre différence
+
+**Titre :** Une IA testée et encadrée
+
+**Testée avec vos vraies questions**
+Avant la mise en service, nous vérifions les réponses sur une liste de cas réels, préparée avec vous. Nous corrigeons les erreurs avant vos clients.
+
+**Honnête sur ses limites**
+L'assistant cite ses sources et dit quand il ne sait pas. Pour les décisions importantes, une personne valide toujours le résultat.
+
+**Vos données protégées**
+Nous choisissons des services d'IA qui n'utilisent pas vos données pour entraîner leurs modèles, et nous respectons la loi 09-08. [à confirmer selon les fournisseurs retenus]
+
+**Suivie dans la durée**
+Nous surveillons la qualité des réponses et les coûts d'utilisation. Nous mettons l'assistant à jour quand vos informations changent.
+
+#### Section : méthode
+
+**Titre :** Comment nous travaillons
+
+1. **Diagnostic.** Nous repérons avec vous les tâches où l'IA peut vous faire gagner du temps, et celles où elle n'est pas utile.
+2. **Essai sur vos données.** Nous construisons un premier prototype avec vos documents et vos vraies questions.
+3. **Tests.** Nous mesurons la qualité des réponses et nous corrigeons avant la mise en service.
+4. **Mise en service et formation.** Nous intégrons l'IA dans vos outils et nous formons vos équipes.
+5. **Suivi.** Nous surveillons les résultats et les coûts, et nous adaptons l'assistant.
+
+#### FAQ
+
+**L'IA peut-elle se tromper ?**
+Oui. C'est pourquoi nous testons les réponses avant la mise en service, nous limitons l'assistant à vos informations et nous prévoyons une vérification par une personne là où une erreur aurait des conséquences.
+
+**L'assistant comprend-il l'arabe et la darija ?**
+Les services d'IA actuels comprennent le français, l'arabe et l'anglais. Pour la darija, les résultats varient : nous faisons des essais avec vos propres exemples avant de vous proposer une solution.
+
+**Mes données sont-elles en sécurité ?**
+Nous choisissons des services d'IA qui n'utilisent pas vos données pour entraîner leurs modèles. Nous limitons les données envoyées au strict nécessaire. [à confirmer selon les fournisseurs retenus]
+
+**Combien ça coûte ?**
+Un premier assistant commence à [X] DH. Le service d'IA est facturé en plus, selon l'utilisation : nous estimons ce coût avec vous avant de commencer.
+
+**Dois-je changer mes outils ?**
+Non. Nous intégrons l'IA dans les outils que vous utilisez déjà : site, messagerie, CRM, dossiers partagés.
+
+#### Appel à l'action final
+
+**Titre :** Où l'IA peut-elle vous faire gagner du temps ?
+
+Décrivez-nous les tâches qui vous prennent du temps. Nous vous disons gratuitement si l'IA peut vous aider, et comment.
+
+**Bouton :** [Parler de mon projet IA]
+
+---
+
+### 6.17 Page « Données et tableaux de bord »
+
+> Proposition à valider.
+
+**URL :** `/services/donnees-tableaux-de-bord`
+**Balise title :** Tableaux de bord et mesure d'audience | Digital Solutions
+**Meta description :** Mesure d'audience de votre site et tableaux de bord de votre activité : vos chiffres clés sur un seul écran, fiables et mis à jour automatiquement.
+**Mots-clés visés (à valider) :** tableau de bord entreprise, mesure d'audience site web, reporting automatique, Google Analytics
+
+#### En-tête
+
+**H1 :** Vos chiffres clés, sur un seul écran
+
+**Sous-titre :** Visiteurs de votre site, ventes, stocks, rendez-vous : nous réunissons vos données dans des tableaux de bord clairs, mis à jour automatiquement.
+
+**Bouton :** [Parler de mes chiffres]
+
+#### Section : le problème
+
+**Titre :** Vous pilotez votre activité à l'aveugle ?
+
+- Vous ne savez pas combien de visiteurs votre site reçoit, ni d'où ils viennent.
+- Vos chiffres sont éparpillés entre votre boutique, votre comptabilité et plusieurs tableurs.
+- Chaque fin de mois, vous passez des heures à préparer le même rapport.
+- Deux tableaux donnent deux chiffres différents, et vous ne savez pas lequel croire.
+
+#### Section : ce que nous faisons
+
+**Titre :** Trois façons de mieux connaître votre activité
+
+**La mesure d'audience de votre site**
+Combien de visiteurs, d'où ils viennent, quelles pages mènent à une demande de devis ou à une vente. Nous installons un outil de mesure qui respecte la vie privée de vos visiteurs et la loi 09-08.
+
+**Les tableaux de bord de votre activité**
+Ventes, chiffre d'affaires, stocks, rendez-vous : vos données réunies depuis vos outils, sur un seul écran, sur ordinateur ou sur téléphone.
+
+**Les rapports automatiques**
+Un résumé clair chaque semaine ou chaque mois par e-mail, sans préparation de votre part. Et une alerte quand un chiffre sort de l'ordinaire : stock bas, baisse des ventes.
+
+#### Section : notre différence
+
+**Titre :** Des chiffres fiables
+
+Un tableau de bord faux est pire que pas de tableau de bord du tout. Nous vérifions que chaque chiffre correspond à celui de vos logiciels, et nous testons les calculs avant la mise en service. Chaque indicateur est documenté : vous savez d'où vient le chiffre et comment il est calculé.
+
+#### Section : nos limites
+
+**Titre :** Ce que nous ne faisons pas
+
+Nous mettons en place les outils et des chiffres fiables. L'analyse marketing, la publicité et les campagnes ne font pas partie de nos services. Si vous travaillez avec une agence marketing ou un consultant, nous leur donnons accès aux chiffres.
+
+#### Section : méthode
+
+**Titre :** Comment nous travaillons
+
+1. **Choix des indicateurs.** Nous définissons avec vous les chiffres qui comptent vraiment pour votre activité.
+2. **Connexion des sources.** Nous relions vos outils : site, boutique, comptabilité, CRM, tableurs.
+3. **Construction et vérification.** Nous construisons les tableaux de bord et nous vérifions chaque chiffre avec vous.
+4. **Formation et suivi.** Nous vous montrons comment lire vos tableaux, puis nous les faisons évoluer avec vos besoins.
+
+#### FAQ
+
+**Quels outils utilisez-vous ?**
+Pour la mesure d'audience : Matomo, Plausible ou Google Analytics, selon vos besoins. Pour les tableaux de bord : des outils éprouvés comme Looker Studio ou Metabase, ou un tableau de bord sur mesure dans votre application.
+
+**Faut-il un bandeau cookies ?**
+Cela dépend de l'outil de mesure. Certains outils fonctionnent sans cookie de suivi. Nous vous conseillons la solution la plus simple qui respecte la loi 09-08. [À valider avec le juriste]
+
+**Qui peut voir mes chiffres ?**
+Seulement les personnes que vous choisissez. Chaque accès est personnel, et vous décidez qui voit quoi.
+
+**Combien ça coûte ?**
+Un premier tableau de bord commence à [X] DH. Chaque projet fait l'objet d'un devis gratuit, à prix fixe.
+
+#### Appel à l'action final
+
+**Titre :** Quels chiffres aimeriez-vous voir chaque matin ?
+
+Listez-nous les chiffres que vous suivez aujourd'hui et les outils qui les contiennent. Nous vous disons gratuitement ce qu'un tableau de bord peut vous apporter.
+
+**Bouton :** [Parler de mes chiffres]
+
+---
+
 ## 7. Points légaux
 
 > À faire valider par un juriste avant la mise en ligne.
@@ -1190,6 +1646,8 @@ Un échange de 30 minutes, gratuit et sans engagement, pour parler de votre beso
 - [ ] Choisir l'option design : designer partenaire ou modèles personnalisés
 - [ ] Trouver les partenaires : graphiste, rédacteur
 - [ ] Relire et valider les textes proposés : Accueil, Méthode, Tarifs, L'agence, Contact, Réalisations, Blog (sections 6.7 à 6.13) et les trois premiers articles
+- [ ] Relire et valider les pages des nouveaux services : Applications mobiles, Logiciels SaaS, Intelligence artificielle, Données et tableaux de bord (sections 6.14 à 6.17)
+- [ ] Choisir les fournisseurs d'IA (données non utilisées pour l'entraînement, transfert hors du Maroc à déclarer à la CNDP)
 - [ ] Préparer 2 ou 3 études de cas réelles pour la page Réalisations
 - [x] Choisir les technologies du site et commencer le développement (voir [stack-technique.md](stack-technique.md))
 - [ ] Faire valider les CGV et les mentions légales par un juriste (droit marocain)

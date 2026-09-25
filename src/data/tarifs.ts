@@ -8,7 +8,10 @@ export const tarifs = {
   siteVitrine: '[X] DH',
   boutique: '[X] DH',
   mvp: '[X] DH',
+  applicationMobile: '[X] DH',
+  assistantIA: '[X] DH',
   automatisation: '[X] DH',
+  tableauDeBord: '[X] DH',
 } as const;
 
 export interface ForfaitMaintenance {

@@ -1,0 +1,85 @@
+---
+import FileSearch from '@lucide/astro/icons/file-search';
+import FileText from '@lucide/astro/icons/file-text';
+import ScanText from '@lucide/astro/icons/scan-text';
+import Sparkles from '@lucide/astro/icons/sparkles';
+import Badge from './Badge.astro';
+import Carte from './Carte.astro';
+import Fond from './Fond.astro';
+import Illustration from './Illustration.astro';
+
+// Un assistant qui répond à partir des documents de l'entreprise et cite sa source.
+const liens = ['M336 112C316 112 318 150 298 150', 'M336 238C316 238 318 200 298 200'];
+---
+
+<Illustration>
+  <Fond />
+  {liens.map((d) => (
+    <path
+      d={d}
+      fill="none"
+      class="stroke-brand-600/50"
+      stroke-width="4"
+      stroke-dasharray="2 10"
+      stroke-linecap="round"
+    />
+  ))}
+
+  <rect
+    x="48"
+    y="52"
+    width="250"
+    height="256"
+    rx="18"
+    class="fill-white stroke-slate-300"
+    stroke-width="2"
+  ></rect>
+  <path d="M48 70a18 18 0 0 1 18-18h214a18 18 0 0 1 18 18v26H48z" class="fill-slate-100"></path>
+  <circle cx="74" cy="74" r="14" class="fill-brand-600"></circle>
+  <g class="text-white">
+    <Sparkles x={64} y={64} size={20} />
+  </g>
+  <rect x="96" y="70" width="80" height="8" rx="4" class="fill-slate-800"></rect>
+
+  <rect x="150" y="108" width="132" height="36" rx="14" class="fill-brand-600"></rect>
+  <rect x="164" y="119" width="90" height="6" rx="3" class="fill-white"></rect>
+  <rect x="164" y="130" width="60" height="5" rx="2.5" class="fill-brand-100"></rect>
+
+  <rect x="64" y="156" width="170" height="64" rx="14" class="fill-slate-100"></rect>
+  <rect x="78" y="170" width="130" height="6" rx="3" class="fill-slate-800"></rect>
+  <rect x="78" y="184" width="110" height="6" rx="3" class="fill-slate-300"></rect>
+  <rect x="78" y="198" width="80" height="6" rx="3" class="fill-slate-300"></rect>
+  <Badge cx={234} cy={160} r={16} />
+
+  <rect
+    x="64"
+    y="228"
+    width="112"
+    height="26"
+    rx="13"
+    class="fill-brand-50 stroke-brand-600"
+    stroke-width="1.5"
+  ></rect>
+  <g class="text-brand-600">
+    <FileText x={72} y={233} size={16} />
+  </g>
+  <rect x="94" y="238" width="68" height="6" rx="3" class="fill-brand-600"></rect>
+
+  <rect
+    x="64"
+    y="266"
+    width="218"
+    height="28"
+    rx="14"
+    class="fill-slate-50 stroke-slate-200"
+    stroke-width="2"
+  ></rect>
+  <circle cx="268" cy="280" r="10" class="fill-brand-600"></circle>
+
+  <Carte x={336} y={70} largeur={96} hauteur={84}>
+    <FileSearch x={366} y={86} size={36} />
+  </Carte>
+  <Carte x={336} y={196} largeur={96} hauteur={84}>
+    <ScanText x={366} y={212} size={36} />
+  </Carte>
+</Illustration>

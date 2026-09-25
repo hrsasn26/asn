@@ -1,13 +1,17 @@
 ---
-// Cartes des quatre pôles (docs/brief-agence.md, section 6.1).
+// Cartes des huit pôles (docs/brief-agence.md, section 6.1).
+import AppWindow from '@lucide/astro/icons/app-window';
+import ChartColumn from '@lucide/astro/icons/chart-column';
+import Cloud from '@lucide/astro/icons/cloud';
 import Globe from '@lucide/astro/icons/globe';
 import ServerCog from '@lucide/astro/icons/server-cog';
 import Smartphone from '@lucide/astro/icons/smartphone';
+import Sparkles from '@lucide/astro/icons/sparkles';
 import Workflow from '@lucide/astro/icons/workflow';
 import ServiceCard from '~/components/ServiceCard.astro';
 ---
 
-<div class="grid gap-6 md:grid-cols-2">
+<div class="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
   <ServiceCard
     title="Sites web"
     icone={Globe}
@@ -17,24 +21,70 @@ import ServiceCard from '~/components/ServiceCard.astro';
   />
   <ServiceCard
     title="Applications sur mesure"
-    icone={Smartphone}
-    text="Un outil conçu pour votre façon de travailler : réservation, devis, planning, espace client ou application mobile."
+    icone={AppWindow}
+    text="Un outil conçu pour votre façon de travailler : réservation, devis, planning ou espace client."
     items={[
       'Outils métier',
-      'Applications web et mobiles',
+      'Espaces clients et portails',
       "Première version de votre projet d'application",
     ]}
     link={{ label: "Découvrir l'offre Applications", href: '/services/applications-sur-mesure' }}
   />
   <ServiceCard
+    title="Applications mobiles"
+    icone={Smartphone}
+    text="Une application iPhone et Android pour vos clients ou pour vos équipes, publiée et suivie par nos soins."
+    items={[
+      'Applications pour vos clients',
+      'Applications pour vos équipes',
+      "Publication sur l'App Store et Google Play",
+    ]}
+    link={{
+      label: "Découvrir l'offre Applications mobiles",
+      href: '/services/applications-mobiles',
+    }}
+  />
+  <ServiceCard
+    title="Logiciels SaaS"
+    icone={Cloud}
+    text="Votre logiciel en ligne, vendu par abonnement et construit pour accueillir de plus en plus de clients."
+    items={[
+      'Comptes clients et abonnements',
+      'Paiement en ligne',
+      'Première version, puis évolutions',
+    ]}
+    link={{ label: "Découvrir l'offre Logiciels SaaS", href: '/services/logiciels-saas' }}
+  />
+  <ServiceCard
+    title="Intelligence artificielle"
+    icone={Sparkles}
+    text="L'IA là où elle vous fait vraiment gagner du temps, avec des résultats vérifiés."
+    items={['Assistant pour vos clients', 'Assistant pour vos équipes', 'Traitement de documents']}
+    link={{
+      label: "Découvrir l'offre Intelligence artificielle",
+      href: '/services/intelligence-artificielle',
+    }}
+  />
+  <ServiceCard
     title="Automatisation et intégrations"
     icone={Workflow}
     text="Vos logiciels connectés entre eux, et les tâches répétitives faites automatiquement."
-    items={['Connexion de vos outils', 'Automatisation des tâches', "Intégration de l'IA"]}
+    items={['Connexion de vos outils', 'Automatisation des tâches', "Alerte en cas d'erreur"]}
     link={{
       label: "Découvrir l'offre Automatisation",
       href: '/services/automatisation-integrations',
     }}
+  />
+  <ServiceCard
+    title="Données et tableaux de bord"
+    icone={ChartColumn}
+    text="Vos chiffres clés réunis sur un seul écran, fiables et mis à jour automatiquement."
+    items={[
+      "Mesure d'audience de votre site",
+      'Tableaux de bord de votre activité',
+      'Rapports automatiques',
+    ]}
+    link={{ label: "Découvrir l'offre Données", href: '/services/donnees-tableaux-de-bord' }}
   />
   <ServiceCard
     title="Hébergement et maintenance"

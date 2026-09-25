@@ -10,7 +10,7 @@ Les choix techniques, l'organisation du code et la mise en service sont dans [do
 
 ## État du projet
 
-- Offre et textes des pages Services : rédigés (voir le brief) et intégrés au site.
+- Offre : huit pôles de services (section 3 du brief). Textes des quatre premières pages Services validés. Pages Applications mobiles, Logiciels SaaS, Intelligence artificielle et Données et tableaux de bord : textes proposés (sections 6.14 à 6.17), à valider.
 - Autres pages (Accueil, Méthode, Tarifs, L'agence, Contact, Réalisations, Blog) : textes proposés dans le brief (sections 6.7 à 6.13) et intégrés. Ils restent à valider.
 - Blog : trois premiers articles dans `src/content/blog/`, à valider.
 - Marché : Maroc. Prix en DH, droit marocain (loi 09-08 et CNDP pour les données personnelles, loi 31-08 pour les consommateurs). Ne pas citer le RGPD, la CNIL ou le droit français sur le site.

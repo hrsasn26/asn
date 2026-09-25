@@ -1,0 +1,178 @@
+---
+// Textes : docs/brief-agence.md, section 6.16 (proposition à valider).
+import Activity from '@lucide/astro/icons/activity';
+import BadgeCheck from '@lucide/astro/icons/badge-check';
+import BookOpenText from '@lucide/astro/icons/book-open-text';
+import LockKeyhole from '@lucide/astro/icons/lock-keyhole';
+import MessagesSquare from '@lucide/astro/icons/messages-square';
+import PenLine from '@lucide/astro/icons/pen-line';
+import Scale from '@lucide/astro/icons/scale';
+import ScanText from '@lucide/astro/icons/scan-text';
+import IllustrationIA from '~/components/illustrations/IllustrationIA.astro';
+import ButtonLink from '~/components/ButtonLink.astro';
+import CtaFinal from '~/components/CtaFinal.astro';
+import Faq from '~/components/Faq.astro';
+import FaqItem from '~/components/FaqItem.astro';
+import FeatureGrid from '~/components/FeatureGrid.astro';
+import Hero from '~/components/Hero.astro';
+import ProblemList from '~/components/ProblemList.astro';
+import Section from '~/components/Section.astro';
+import Steps from '~/components/Steps.astro';
+import { offre, site } from '~/data/site';
+import { tarifs } from '~/data/tarifs';
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import { serviceJsonLd } from '~/lib/seo';
+
+const title = "Intégration de l'intelligence artificielle en entreprise";
+const description =
+  "Assistant pour vos clients, recherche dans vos documents, lecture automatique des factures : nous intégrons l'IA là où elle vous fait gagner du temps.";
+const ctaProjet = { label: 'Parler de mon projet IA', href: '/contact' };
+---
+
+<BaseLayout
+  title={`${title} | ${site.nom}`}
+  description={description}
+  breadcrumbs={[
+    { label: 'Services', href: '/services' },
+    { label: 'Intelligence artificielle', href: '/services/intelligence-artificielle' },
+  ]}
+  jsonLd={serviceJsonLd({ name: title, description })}
+>
+  <Hero
+    title="L'intelligence artificielle, là où elle vous fait vraiment gagner du temps"
+    subtitle="Assistants pour vos clients et pour vos équipes, traitement de documents, rédaction assistée : nous intégrons l'IA dans vos outils, avec des résultats vérifiés et vos données protégées."
+  >
+    <ButtonLink href={ctaProjet.href}>{ctaProjet.label}</ButtonLink>
+    <IllustrationIA slot="illustration" />
+  </Hero>
+
+  <ProblemList
+    title="L'IA vous intéresse, mais par où commencer ?"
+    items={[
+      "Vous entendez parler d'IA partout, sans savoir ce qu'elle peut faire pour votre activité.",
+      'Vous répondez chaque jour aux mêmes questions, par téléphone, par e-mail ou sur WhatsApp.',
+      'Vos équipes passent des heures à lire, recopier et classer des documents.',
+      "Vos équipes utilisent déjà des outils d'IA, sans règles pour protéger vos données.",
+    ]}
+  />
+
+  <Section title="Ce que l'IA peut faire pour vous">
+    <FeatureGrid
+      items={[
+        {
+          title: 'Un assistant pour vos clients',
+          icone: MessagesSquare,
+          text: 'Sur votre site ou sur WhatsApp, il répond aux questions fréquentes à partir de vos informations : horaires, tarifs, suivi de commande. Quand il ne sait pas, il transmet la demande à votre équipe.',
+        },
+        {
+          title: 'Un assistant pour vos équipes',
+          icone: BookOpenText,
+          text: "Vos collaborateurs posent leurs questions sur vos procédures, vos catalogues ou vos contrats. Ils reçoivent une réponse avec le document d'origine.",
+        },
+        {
+          title: 'Le traitement de vos documents',
+          icone: ScanText,
+          text: "Factures, bons de commande, formulaires : l'IA lit les documents, extrait les informations et les range dans vos outils. Votre équipe vérifie seulement les cas douteux.",
+        },
+        {
+          title: 'La rédaction assistée',
+          icone: PenLine,
+          text: "Réponses aux e-mails, fiches produits, comptes rendus de réunion : l'IA prépare un brouillon, vous le relisez et vous le validez.",
+        },
+      ]}
+    />
+  </Section>
+
+  <Section title="Une IA testée et encadrée" tone="gris">
+    <FeatureGrid
+      items={[
+        {
+          title: 'Testée avec vos vraies questions',
+          icone: BadgeCheck,
+          text: 'Avant la mise en service, nous vérifions les réponses sur une liste de cas réels, préparée avec vous. Nous corrigeons les erreurs avant vos clients.',
+        },
+        {
+          title: 'Honnête sur ses limites',
+          icone: Scale,
+          text: "L'assistant cite ses sources et dit quand il ne sait pas. Pour les décisions importantes, une personne valide toujours le résultat.",
+        },
+        {
+          title: 'Vos données protégées',
+          icone: LockKeyhole,
+          text: `Nous choisissons des services d'IA qui n'utilisent pas vos données pour entraîner leurs modèles, et nous respectons la loi 09-08. ${offre.confidentialiteIA}`,
+        },
+        {
+          title: 'Suivie dans la durée',
+          icone: Activity,
+          text: "Nous surveillons la qualité des réponses et les coûts d'utilisation. Nous mettons l'assistant à jour quand vos informations changent.",
+        },
+      ]}
+    />
+  </Section>
+
+  <Section title="Comment nous travaillons">
+    <Steps
+      items={[
+        {
+          title: 'Diagnostic.',
+          text: "Nous repérons avec vous les tâches où l'IA peut vous faire gagner du temps, et celles où elle n'est pas utile.",
+        },
+        {
+          title: 'Essai sur vos données.',
+          text: 'Nous construisons un premier prototype avec vos documents et vos vraies questions.',
+        },
+        {
+          title: 'Tests.',
+          text: 'Nous mesurons la qualité des réponses et nous corrigeons avant la mise en service.',
+        },
+        {
+          title: 'Mise en service et formation.',
+          text: "Nous intégrons l'IA dans vos outils et nous formons vos équipes.",
+        },
+        {
+          title: 'Suivi.',
+          text: "Nous surveillons les résultats et les coûts, et nous adaptons l'assistant.",
+        },
+      ]}
+    />
+  </Section>
+
+  <Faq>
+    <FaqItem question="L'IA peut-elle se tromper ?">
+      <p>
+        Oui. C'est pourquoi nous testons les réponses avant la mise en service, nous limitons
+        l'assistant à vos informations et nous prévoyons une vérification par une personne là où une
+        erreur aurait des conséquences.
+      </p>
+    </FaqItem>
+    <FaqItem question="L'assistant comprend-il l'arabe et la darija ?">
+      <p>
+        Les services d'IA actuels comprennent le français, l'arabe et l'anglais. Pour la darija, les
+        résultats varient : nous faisons des essais avec vos propres exemples avant de vous proposer
+        une solution.
+      </p>
+    </FaqItem>
+    <FaqItem question="Mes données sont-elles en sécurité ?">
+      <p>
+        {`Nous choisissons des services d'IA qui n'utilisent pas vos données pour entraîner leurs modèles. Nous limitons les données envoyées au strict nécessaire. ${offre.confidentialiteIA}`}
+      </p>
+    </FaqItem>
+    <FaqItem question="Combien ça coûte ?">
+      <p>
+        {`Un premier assistant commence à ${tarifs.assistantIA}. Le service d'IA est facturé en plus, selon l'utilisation : nous estimons ce coût avec vous avant de commencer.`}
+      </p>
+    </FaqItem>
+    <FaqItem question="Dois-je changer mes outils ?">
+      <p>
+        Non. Nous intégrons l'IA dans les outils que vous utilisez déjà : site, messagerie, CRM,
+        dossiers partagés.
+      </p>
+    </FaqItem>
+  </Faq>
+
+  <CtaFinal
+    title="Où l'IA peut-elle vous faire gagner du temps ?"
+    text="Décrivez-nous les tâches qui vous prennent du temps. Nous vous disons gratuitement si l'IA peut vous aider, et comment."
+    button={ctaProjet}
+  />
+</BaseLayout>

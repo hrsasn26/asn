@@ -1,0 +1,95 @@
+---
+import TrendingUp from '@lucide/astro/icons/trending-up';
+import Badge from './Badge.astro';
+import Navigateur from './Navigateur.astro';
+import Fond from './Fond.astro';
+import Illustration from './Illustration.astro';
+
+// Un tableau de bord : chiffres clés, courbe et répartition.
+const tuiles = [56, 184, 312];
+const courbe = '72,270 104,252 136,258 168,232 200,238 232,212 272,192';
+const circonference = 2 * Math.PI * 34;
+---
+
+<Illustration>
+  <Fond />
+  <Navigateur x={40} y={48} largeur={400} hauteur={264}>
+    {tuiles.map((x, index) => (
+      <>
+        <rect x={x} y="92" width="112" height="56" rx="10" class="fill-brand-50" />
+        <rect x={x + 12} y="104" width="50" height="6" rx="3" class="fill-slate-300" />
+        <rect x={x + 12} y="120" width="64" height="12" rx="4" class="fill-slate-800" />
+        {index === 0 && (
+          <g class="text-emerald-600">
+            <TrendingUp x={x + 80} y={116} size={20} />
+          </g>
+        )}
+        {index === 2 && <circle cx={x + 90} cy="126" r="6" class="fill-emerald-500" />}
+      </>
+    ))}
+
+    <rect
+      x="56"
+      y="164"
+      width="232"
+      height="132"
+      rx="10"
+      class="fill-white stroke-slate-200"
+      stroke-width="2"
+    ></rect>
+    {[196, 226, 256].map((y) => (
+      <rect x="68" y={y} width="208" height="2" class="fill-slate-100" />
+    ))}
+    <polyline
+      points={courbe}
+      fill="none"
+      class="stroke-brand-600"
+      stroke-width="4"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    ></polyline>
+    <circle cx="272" cy="192" r="6" class="fill-white stroke-brand-600" stroke-width="3"></circle>
+
+    <rect
+      x="304"
+      y="164"
+      width="120"
+      height="132"
+      rx="10"
+      class="fill-white stroke-slate-200"
+      stroke-width="2"
+    ></rect>
+    <circle
+      cx="364"
+      cy="220"
+      r="34"
+      fill="none"
+      class="stroke-brand-100"
+      stroke-width="16"
+    ></circle>
+    <circle
+      cx="364"
+      cy="220"
+      r="34"
+      fill="none"
+      class="stroke-brand-600"
+      stroke-width="16"
+      stroke-dasharray={`${circonference * 0.6} ${circonference}`}
+      transform="rotate(-90 364 220)"
+    ></circle>
+    <circle
+      cx="364"
+      cy="220"
+      r="34"
+      fill="none"
+      class="stroke-emerald-500"
+      stroke-width="16"
+      stroke-dasharray={`${circonference * 0.2} ${circonference}`}
+      stroke-dashoffset={-circonference * 0.6}
+      transform="rotate(-90 364 220)"
+    ></circle>
+    <rect x="324" y="272" width="36" height="6" rx="3" class="fill-slate-200"></rect>
+    <rect x="368" y="272" width="36" height="6" rx="3" class="fill-slate-200"></rect>
+  </Navigateur>
+  <Badge cx={428} cy={60} r={20} />
+</Illustration>

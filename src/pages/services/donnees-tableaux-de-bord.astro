@@ -1,0 +1,150 @@
+---
+// Textes : docs/brief-agence.md, section 6.17 (proposition à valider).
+import ChartColumn from '@lucide/astro/icons/chart-column';
+import ChartLine from '@lucide/astro/icons/chart-line';
+import MailCheck from '@lucide/astro/icons/mail-check';
+import IllustrationDonnees from '~/components/illustrations/IllustrationDonnees.astro';
+import ButtonLink from '~/components/ButtonLink.astro';
+import CtaFinal from '~/components/CtaFinal.astro';
+import Faq from '~/components/Faq.astro';
+import FaqItem from '~/components/FaqItem.astro';
+import FeatureGrid from '~/components/FeatureGrid.astro';
+import Hero from '~/components/Hero.astro';
+import ProblemList from '~/components/ProblemList.astro';
+import Section from '~/components/Section.astro';
+import Steps from '~/components/Steps.astro';
+import { site } from '~/data/site';
+import { tarifs } from '~/data/tarifs';
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import { serviceJsonLd } from '~/lib/seo';
+
+const title = "Tableaux de bord et mesure d'audience";
+const description =
+  "Mesure d'audience de votre site et tableaux de bord de votre activité : vos chiffres clés sur un seul écran, fiables et mis à jour automatiquement.";
+const ctaProjet = { label: 'Parler de mes chiffres', href: '/contact' };
+---
+
+<BaseLayout
+  title={`${title} | ${site.nom}`}
+  description={description}
+  breadcrumbs={[
+    { label: 'Services', href: '/services' },
+    { label: 'Données et tableaux de bord', href: '/services/donnees-tableaux-de-bord' },
+  ]}
+  jsonLd={serviceJsonLd({ name: title, description })}
+>
+  <Hero
+    title="Vos chiffres clés, sur un seul écran"
+    subtitle="Visiteurs de votre site, ventes, stocks, rendez-vous : nous réunissons vos données dans des tableaux de bord clairs, mis à jour automatiquement."
+  >
+    <ButtonLink href={ctaProjet.href}>{ctaProjet.label}</ButtonLink>
+    <IllustrationDonnees slot="illustration" />
+  </Hero>
+
+  <ProblemList
+    title="Vous pilotez votre activité à l'aveugle ?"
+    items={[
+      "Vous ne savez pas combien de visiteurs votre site reçoit, ni d'où ils viennent.",
+      'Vos chiffres sont éparpillés entre votre boutique, votre comptabilité et plusieurs tableurs.',
+      'Chaque fin de mois, vous passez des heures à préparer le même rapport.',
+      'Deux tableaux donnent deux chiffres différents, et vous ne savez pas lequel croire.',
+    ]}
+  />
+
+  <Section title="Trois façons de mieux connaître votre activité">
+    <FeatureGrid
+      columns={3}
+      items={[
+        {
+          title: "La mesure d'audience de votre site",
+          icone: ChartLine,
+          text: "Combien de visiteurs, d'où ils viennent, quelles pages mènent à une demande de devis ou à une vente. Nous installons un outil de mesure qui respecte la vie privée de vos visiteurs et la loi 09-08.",
+        },
+        {
+          title: 'Les tableaux de bord de votre activité',
+          icone: ChartColumn,
+          text: "Ventes, chiffre d'affaires, stocks, rendez-vous : vos données réunies depuis vos outils, sur un seul écran, sur ordinateur ou sur téléphone.",
+        },
+        {
+          title: 'Les rapports automatiques',
+          icone: MailCheck,
+          text: "Un résumé clair chaque semaine ou chaque mois par e-mail, sans préparation de votre part. Et une alerte quand un chiffre sort de l'ordinaire : stock bas, baisse des ventes.",
+        },
+      ]}
+    />
+  </Section>
+
+  <Section title="Des chiffres fiables" tone="gris">
+    <p class="max-w-3xl text-lg text-slate-700">
+      Un tableau de bord faux est pire que pas de tableau de bord du tout. Nous vérifions que chaque
+      chiffre correspond à celui de vos logiciels, et nous testons les calculs avant la mise en
+      service. Chaque indicateur est documenté : vous savez d'où vient le chiffre et comment il est
+      calculé.
+    </p>
+  </Section>
+
+  <Section title="Ce que nous ne faisons pas">
+    <p class="max-w-3xl text-lg text-slate-700">
+      Nous mettons en place les outils et des chiffres fiables. L'analyse marketing, la publicité et
+      les campagnes ne font pas partie de nos services. Si vous travaillez avec une agence marketing
+      ou un consultant, nous leur donnons accès aux chiffres.
+    </p>
+  </Section>
+
+  <Section title="Comment nous travaillons" tone="gris">
+    <Steps
+      items={[
+        {
+          title: 'Choix des indicateurs.',
+          text: 'Nous définissons avec vous les chiffres qui comptent vraiment pour votre activité.',
+        },
+        {
+          title: 'Connexion des sources.',
+          text: 'Nous relions vos outils : site, boutique, comptabilité, CRM, tableurs.',
+        },
+        {
+          title: 'Construction et vérification.',
+          text: 'Nous construisons les tableaux de bord et nous vérifions chaque chiffre avec vous.',
+        },
+        {
+          title: 'Formation et suivi.',
+          text: 'Nous vous montrons comment lire vos tableaux, puis nous les faisons évoluer avec vos besoins.',
+        },
+      ]}
+    />
+  </Section>
+
+  <Faq>
+    <FaqItem question="Quels outils utilisez-vous ?">
+      <p>
+        Pour la mesure d'audience : Matomo, Plausible ou Google Analytics, selon vos besoins. Pour
+        les tableaux de bord : des outils éprouvés comme Looker Studio ou Metabase, ou un tableau de
+        bord sur mesure dans votre application.
+      </p>
+    </FaqItem>
+    <FaqItem question="Faut-il un bandeau cookies ?">
+      <p>
+        Cela dépend de l'outil de mesure. Certains outils fonctionnent sans cookie de suivi. Nous
+        vous conseillons la solution la plus simple qui respecte la loi 09-08. [À valider avec le
+        juriste]
+      </p>
+    </FaqItem>
+    <FaqItem question="Qui peut voir mes chiffres ?">
+      <p>
+        Seulement les personnes que vous choisissez. Chaque accès est personnel, et vous décidez qui
+        voit quoi.
+      </p>
+    </FaqItem>
+    <FaqItem question="Combien ça coûte ?">
+      <p>
+        {`Un premier tableau de bord commence à ${tarifs.tableauDeBord}. Chaque projet fait l'objet d'un devis gratuit, à prix fixe.`}
+      </p>
+    </FaqItem>
+  </Faq>
+
+  <CtaFinal
+    title="Quels chiffres aimeriez-vous voir chaque matin ?"
+    text="Listez-nous les chiffres que vous suivez aujourd'hui et les outils qui les contiennent. Nous vous disons gratuitement ce qu'un tableau de bord peut vous apporter."
+    button={ctaProjet}
+  />
+</BaseLayout>
