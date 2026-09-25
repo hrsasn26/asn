@@ -1,5 +1,6 @@
 ---
 import ButtonLink from '~/components/ButtonLink.astro';
+import IllustrationIntrouvable from '~/components/illustrations/IllustrationIntrouvable.astro';
 import Section from '~/components/Section.astro';
 import { site } from '~/data/site';
 import BaseLayout from '~/layouts/BaseLayout.astro';
@@ -7,12 +8,19 @@ import BaseLayout from '~/layouts/BaseLayout.astro';
 
 <BaseLayout title={`Page introuvable | ${site.nom}`} description="Cette page n'existe pas.">
   <Section>
-    <h1 class="text-3xl sm:text-4xl">Page introuvable</h1>
-    <p class="mt-4 text-lg text-slate-700">
-      Cette page n'existe pas ou a été déplacée. Vérifiez l'adresse, ou revenez à l'accueil.
-    </p>
-    <div class="mt-8">
-      <ButtonLink href="/">Revenir à l'accueil</ButtonLink>
+    <div class="grid items-center gap-10 md:grid-cols-2">
+      <div>
+        <h1 class="text-3xl sm:text-4xl">Page introuvable</h1>
+        <p class="mt-4 text-lg text-slate-700">
+          Cette page n'existe pas ou a été déplacée. Vérifiez l'adresse, ou revenez à l'accueil.
+        </p>
+        <div class="mt-8">
+          <ButtonLink href="/">Revenir à l'accueil</ButtonLink>
+        </div>
+      </div>
+      <div class="mx-auto w-full max-w-sm md:max-w-none">
+        <IllustrationIntrouvable />
+      </div>
     </div>
   </Section>
 </BaseLayout>

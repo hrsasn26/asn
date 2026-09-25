@@ -19,6 +19,8 @@ interface Props {
 
 const { title, description, breadcrumbs, jsonLd } = Astro.props;
 const canonical = new URL(cheminPublic(Astro.url.pathname), Astro.site);
+// Image de partage générée par `pnpm image:partage` (scripts/generer-image-partage.mjs).
+const imagePartage = new URL('/og.png', Astro.site);
 ---
 
 <!doctype html>
@@ -37,6 +39,14 @@ const canonical = new URL(cheminPublic(Astro.url.pathname), Astro.site);
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={imagePartage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta
+      property="og:image:alt"
+      content="Des sites et des applications conçus par des ingénieurs : fiables, testés, sécurisés et suivis dans la durée."
+    />
+    <meta name="twitter:card" content="summary_large_image" />
     {jsonLd && <JsonLd data={jsonLd} />}
   </head>
   <body class="flex min-h-screen flex-col">

@@ -1,17 +1,23 @@
 ---
 // Cartes des quatre pôles (docs/brief-agence.md, section 6.1).
+import Globe from '@lucide/astro/icons/globe';
+import ServerCog from '@lucide/astro/icons/server-cog';
+import Smartphone from '@lucide/astro/icons/smartphone';
+import Workflow from '@lucide/astro/icons/workflow';
 import ServiceCard from '~/components/ServiceCard.astro';
 ---
 
 <div class="grid gap-6 md:grid-cols-2">
   <ServiceCard
     title="Sites web"
+    icone={Globe}
     text="Un site vitrine ou une boutique en ligne rapide, bien référencé et facile à mettre à jour."
     items={['Site vitrine', 'Boutique en ligne', 'Refonte de site existant']}
     link={{ label: "Découvrir l'offre Sites web", href: '/services/sites-web' }}
   />
   <ServiceCard
     title="Applications sur mesure"
+    icone={Smartphone}
     text="Un outil conçu pour votre façon de travailler : réservation, devis, planning, espace client ou application mobile."
     items={[
       'Outils métier',
@@ -22,6 +28,7 @@ import ServiceCard from '~/components/ServiceCard.astro';
   />
   <ServiceCard
     title="Automatisation et intégrations"
+    icone={Workflow}
     text="Vos logiciels connectés entre eux, et les tâches répétitives faites automatiquement."
     items={['Connexion de vos outils', 'Automatisation des tâches', "Intégration de l'IA"]}
     link={{
@@ -31,6 +38,7 @@ import ServiceCard from '~/components/ServiceCard.astro';
   />
   <ServiceCard
     title="Hébergement et maintenance"
+    icone={ServerCog}
     text="Votre site en ligne, sauvegardé et à jour. Vous n'avez plus à y penser."
     items={['Hébergement sécurisé', 'Sauvegardes et mises à jour', 'Reprise de site existant']}
     link={{ label: 'Découvrir nos forfaits', href: '/services/hebergement-maintenance' }}

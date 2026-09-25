@@ -1,0 +1,22 @@
+---
+/** Pastille ronde avec une coche : symbole des tests réussis. */
+interface Props {
+  cx: number;
+  cy: number;
+  r?: number;
+}
+
+const { cx, cy, r = 28 } = Astro.props;
+const k = r / 28;
+const coche = `M${cx - 13 * k} ${cy} l${10 * k} ${10 * k} l${17 * k} -${19 * k}`;
+---
+
+<circle cx={cx} cy={cy} r={r} class="fill-emerald-500"></circle>
+<path
+  d={coche}
+  fill="none"
+  class="stroke-white"
+  stroke-width={6 * k}
+  stroke-linecap="round"
+  stroke-linejoin="round"
+></path>

@@ -2,9 +2,15 @@
 // Section « Nous accompagnons » (docs/brief-agence.md, section 6.1).
 import FeatureGrid from '~/components/FeatureGrid.astro';
 import Section from '~/components/Section.astro';
+
+interface Props {
+  tone?: 'clair' | 'gris';
+}
+
+const { tone = 'gris' } = Astro.props;
 ---
 
-<Section title="Nous accompagnons" tone="gris">
+<Section title="Nous accompagnons" tone={tone}>
   <FeatureGrid
     columns={3}
     items={[

@@ -1,7 +1,7 @@
 # Brief agence : offre de services et contenus du site
 
 > Document de travail de référence pour le site de l'agence.
-> Il contient le positionnement, l'offre de services, l'arborescence du site et les textes des pages Services.
+> Il contient le positionnement, l'offre de services, l'arborescence du site et les textes des pages.
 > Les éléments entre crochets `[...]` restent à compléter ou à confirmer.
 
 ## Sommaire
@@ -11,7 +11,7 @@
 3. [Offre retenue](#3-offre-retenue)
 4. [Positionnement et message](#4-positionnement-et-message)
 5. [Arborescence du site](#5-arborescence-du-site)
-6. [Contenus des pages Services](#6-contenus-des-pages-services)
+6. [Contenus des pages](#6-contenus-des-pages)
 7. [Points légaux](#7-points-légaux)
 8. [Prochaines étapes](#8-prochaines-étapes)
 
@@ -156,7 +156,9 @@ La page « Méthode », avec une étape de tests bien visible, est l'endroit id�
 
 ---
 
-## 6. Contenus des pages Services
+## 6. Contenus des pages
+
+> Sections 6.1 à 6.6 : textes validés. Sections 6.7 à 6.13 : propositions à valider.
 
 **Appel à l'action principal (tout le site) :** « Demander un devis gratuit »
 **Appel à l'action secondaire :** « Faire auditer mon site »
@@ -747,6 +749,409 @@ Votre site est entre de bonnes mains, et vous pouvez vous concentrer sur votre a
 
 ---
 
+### 6.7 Page « Accueil »
+
+> Proposition à valider. Elle reprend la promesse (section 4) et plusieurs blocs de la page Services (section 6.1).
+
+**URL :** `/`
+**Balise title :** Sites web et applications sur mesure pour TPE, PME et particuliers | [Nom]
+**Meta description :** Nous créons, testons, hébergeons et maintenons vos sites et vos applications. Une équipe d'ingénieurs, un seul interlocuteur et un devis à prix fixe.
+**Mots-clés visés (à valider) :** agence web [ville], création site internet, application sur mesure
+
+#### En-tête
+
+**H1 :** Des sites et des applications conçus par des ingénieurs
+
+**Sous-titre :** Fiables, testés, sécurisés et suivis dans la durée. Nous construisons votre projet, puis nous nous en occupons, pour que vous puissiez vous concentrer sur votre activité.
+
+**Boutons :** [Demander un devis gratuit] [Faire auditer mon site]
+
+#### Section : ce que vous y gagnez
+
+**Titre :** Ce que vous y gagnez
+
+**Toujours en ligne**
+Votre site reste en ligne, rapide et sauvegardé automatiquement.
+
+**Testé avant la mise en ligne**
+Tout est vérifié sur ordinateur, tablette et mobile avant la mise en ligne. Pas de mauvaise surprise.
+
+**Construit pour durer**
+Un outil solide, qui évolue avec votre activité sans tout reconstruire.
+
+**Un seul interlocuteur**
+Les personnes qui construisent votre projet sont celles qui vous répondent, du premier échange à la maintenance.
+
+> Le tableau de la section 4 dit « sauvegardé chaque jour ». Le forfait Essentiel prévoit des sauvegardes hebdomadaires : le texte dit donc « sauvegardé automatiquement ».
+
+#### Section : nos services
+
+Reprend la section « Ce que nous faisons pour vous » de la page Services (6.1).
+
+#### Section : pour qui
+
+Reprend la section « Nous accompagnons » de la page Services (6.1).
+
+#### Section : méthode en bref
+
+**Titre :** Un projet en cinq étapes claires
+
+Reprend les cinq étapes de la page Services (6.1).
+
+**Lien :** [Découvrir notre méthode]
+
+#### Section : réalisations
+
+**Titre :** Nos réalisations
+
+Les trois dernières études de cas. Tant qu'il n'y en a pas : [À compléter : 2 ou 3 études de cas réelles, avec l'accord des clients]
+
+**Lien :** [Voir nos réalisations]
+
+#### Section : audit gratuit
+
+Reprend la section « audit gratuit » de la page Services (6.1).
+
+#### Section : nos engagements
+
+**Titre :** Nos engagements
+
+- Vous restez propriétaire de votre code, de votre nom de domaine et de vos données.
+- Un devis à prix fixe, après un échange gratuit.
+- Une réponse à votre demande sous [48 h ouvrées].
+- Un hébergement en [France / Europe].
+
+> Ces engagements sont encore à confirmer (section 4).
+
+#### Appel à l'action final
+
+Reprend l'appel à l'action final de la page Services (6.1).
+
+---
+
+### 6.8 Page « Méthode »
+
+> Proposition à valider. Le brief demande une étape de tests bien visible sur cette page (section 5).
+
+**URL :** `/methode`
+**Balise title :** Notre méthode : un projet clair, testé et suivi | [Nom]
+**Meta description :** Échange gratuit, devis à prix fixe, maquettes, développement par étapes, tests complets et suivi après la mise en ligne : découvrez comment se déroule votre projet.
+
+#### En-tête
+
+**H1 :** Une méthode claire, du premier appel au suivi
+
+**Sous-titre :** À chaque étape, vous savez ce qui se passe, ce que vous validez et ce que vous recevez. Les tests font partie du projet : ce n'est pas une option.
+
+#### Section : les étapes
+
+**Titre :** Les étapes de votre projet
+
+1. **Un premier échange, gratuit.** Un appel de 30 minutes pour comprendre votre activité, votre besoin et vos contraintes. Nous vous disons honnêtement si nous sommes la bonne équipe pour votre projet.
+   *Vous recevez :* un premier avis sur votre projet.
+2. **Un devis clair, à prix fixe.** Nous détaillons ce qui est inclus, le prix et les délais. Vous savez exactement ce que vous payez avant de vous engager.
+   *Vous recevez :* un devis écrit, avec la liste précise de ce qui est livré.
+3. **Les maquettes.** Vous voyez les écrans de votre site ou de votre application avant le début du développement. Vous demandez les modifications nécessaires, puis vous validez.
+   *Vous recevez :* les maquettes à valider.
+4. **Le développement, par étapes.** Nous construisons votre projet par petites étapes. Vous suivez l'avancement et vous validez chaque étape.
+   *Vous recevez :* l'accès à une version de test, mise à jour régulièrement.
+5. **Les tests.** Avant chaque mise en ligne, nous vérifions :
+   - chaque page, sur ordinateur, tablette et mobile, dans les principaux navigateurs ;
+   - chaque formulaire, chaque lien et chaque paiement ;
+   - la vitesse d'affichage de chaque page ;
+   - l'accessibilité, pour que tous vos visiteurs puissent utiliser votre site ;
+   - la sécurité : connexion HTTPS, protections contre le spam et les attaques courantes.
+
+   Pour les applications, des tests automatiques vérifient chaque nouvelle version : une amélioration ne casse pas ce qui fonctionnait déjà.
+   *Vous recevez :* un site ou une application vérifiés, prêts à être mis en ligne.
+6. **La mise en ligne et la formation.** Nous mettons votre projet en ligne, puis nous vous montrons comment l'utiliser et le modifier vous-même.
+   *Vous recevez :* l'accès complet à votre site, à votre code et à vos données.
+7. **Le suivi.** Si vous le souhaitez, nous hébergeons et maintenons votre projet avec un forfait mensuel : sauvegardes, mises à jour de sécurité, surveillance et petites modifications.
+   *Vous recevez :* selon votre forfait, un rapport mensuel clair.
+
+#### Section : pourquoi les tests
+
+**Titre :** Pourquoi les tests comptent autant
+
+Un bug découvert par un client coûte plus cher qu'un bug trouvé avant la mise en ligne : une vente perdue, une demande de contact jamais reçue, une image dégradée. C'est pourquoi les tests font partie de chaque projet et de chaque mise à jour.
+
+#### Section : votre rôle
+
+**Titre :** Ce dont nous avons besoin de votre part
+
+- Vos textes et vos photos. Si vous préférez déléguer, nous vous mettons en relation avec un rédacteur ou un photographe partenaire.
+- Vos accès : nom de domaine, hébergement actuel, outils à connecter.
+- Un interlocuteur disponible pour valider chaque étape.
+
+#### FAQ
+
+**Combien de temps dure un projet ?**
+Comptez [2 à 4 semaines] pour un site vitrine et [4 à 8 semaines] pour une boutique en ligne. Pour une application, nous fixons le planning ensemble après le cadrage.
+
+**Puis-je demander des changements en cours de projet ?**
+Oui. Nous estimons l'effet sur le prix et sur le délai, puis vous décidez. Rien n'est ajouté à la facture sans votre accord.
+
+**Que se passe-t-il si un problème apparaît après la mise en ligne ?**
+Nous corrigeons les défauts liés à notre travail [pendant X mois après la livraison : garantie à définir]. Avec un forfait de maintenance, nous surveillons votre site et nous intervenons rapidement.
+
+#### Appel à l'action final
+
+Reprend l'appel à l'action final de la page Services (6.1).
+
+---
+
+### 6.9 Page « Tarifs »
+
+> Proposition à valider. Tous les prix restent des placeholders (section 8).
+
+**URL :** `/tarifs`
+**Balise title :** Tarifs : sites web, applications et maintenance | [Nom]
+**Meta description :** Sites vitrines, boutiques en ligne, applications et maintenance : nos prix de départ, et un devis gratuit à prix fixe pour chaque projet.
+
+#### En-tête
+
+**H1 :** Des prix clairs, fixés avant le début du projet
+
+**Sous-titre :** Chaque projet fait l'objet d'un devis gratuit et détaillé, à prix fixe. Les prix ci-dessous vous donnent un point de départ.
+
+#### Section : vos projets
+
+**Titre :** Vos projets
+
+| Offre | Description | Prix |
+|---|---|---|
+| Site vitrine | Jusqu'à [5] pages, formulaire de contact, adapté à tous les écrans. | À partir de [X] € |
+| Boutique en ligne | Paiement sécurisé, gestion des stocks et des commandes. | À partir de [X] € |
+| Refonte de site | Nouveau site, sans perdre votre place sur Google. | Sur devis |
+| Première version d'application (MVP) | L'essentiel pour tester votre idée auprès de vrais utilisateurs. | À partir de [X] € |
+| Outil métier ou application | Un outil conçu pour votre façon de travailler. | Sur devis, après l'atelier de cadrage |
+| Automatisation simple | Une tâche répétitive faite automatiquement. | À partir de [X] € |
+
+#### Section : inclus
+
+**Titre :** Inclus dans tous nos sites
+
+Adapté à tous les écrans, rapide, référencement technique, sécurisé, conforme au RGPD, accessible, modifiable par vous, formation incluse.
+
+**Lien :** [Voir le détail dans l'offre Sites web]
+
+#### Section : hébergement et maintenance
+
+Reprend le tableau des forfaits de la page Hébergement et maintenance (6.5).
+
+#### Section : comment nous fixons le prix
+
+**Titre :** Comment nous fixons le prix
+
+1. Un échange gratuit pour comprendre votre besoin.
+2. Un devis détaillé, à prix fixe : le prix ne change pas si ce qui est prévu ne change pas.
+3. Si vous demandez un changement en cours de projet, nous chiffrons son effet et vous décidez.
+
+**Modalités de paiement :** [à définir : acompte à la commande, solde à la livraison, etc.]
+
+#### Section : particuliers
+
+**Titre :** Vous êtes un particulier ?
+
+Nos forfaits à prix fixe sont pensés pour les budgets maîtrisés. Pour un contrat conclu à distance, vous disposez d'un délai de rétractation de 14 jours. [Conditions à faire valider par un juriste]
+
+#### FAQ
+
+**Les prix sont-ils indiqués HT ou TTC ?**
+[À définir selon le statut de l'entreprise]
+
+**Le devis est-il payant ?**
+Non. Le devis est gratuit et sans engagement.
+
+**Puis-je payer en plusieurs fois ?**
+[À définir]
+
+#### Appel à l'action final
+
+**Titre :** Recevez votre devis gratuit
+
+Décrivez-nous votre projet en quelques lignes. Nous revenons vers vous sous [48 h ouvrées] avec une première estimation.
+
+**Bouton :** [Demander un devis gratuit]
+
+---
+
+### 6.10 Page « L'agence »
+
+> Proposition à valider. Aucune information sur l'équipe n'est inventée : les membres restent des placeholders.
+
+**URL :** `/agence`
+**Balise title :** L'agence : une équipe d'ingénieurs à votre service | [Nom]
+**Meta description :** Une équipe d'ingénieurs qui conçoit, teste, héberge et maintient des sites et des applications pour les TPE, PME et particuliers.
+
+#### En-tête
+
+**H1 :** Une équipe d'ingénieurs, à la taille de votre projet
+
+**Sous-titre :** Nous construisons des sites et des applications solides, et nous les suivons dans la durée. Nous sommes basés à [Ville ou région].
+
+#### Section : pourquoi nous avons créé l'agence
+
+**Titre :** Pourquoi [Nom] existe
+
+Beaucoup de TPE et de PME ont vécu la même situation : un site livré sans tests, un prestataire qui ne répond plus, un site piraté faute de mises à jour. Nous avons créé [Nom] pour proposer autre chose : des projets construits avec les méthodes des ingénieurs, et un suivi dans la durée.
+
+[À rédiger : l'histoire de l'agence, en quelques phrases]
+
+#### Section : nos compétences, en clair
+
+**Titre :** Ce que nous savons faire, en clair
+
+- **Concevoir des outils solides**, qui évoluent avec votre activité.
+- **Prendre en charge tout votre projet**, de l'écran au serveur : vous avez un seul interlocuteur.
+- **Garder votre site en ligne**, rapide et sauvegardé.
+- **Tout tester** avant chaque mise en ligne.
+
+#### Section : nos valeurs
+
+**Titre :** Nos valeurs
+
+**Fiabilité**
+Nous livrons ce que nous avons testé.
+
+**Transparence**
+Un prix fixe, et des explications sans jargon.
+
+**Honnêteté**
+Nous vous disons quand un projet n'est pas raisonnable. Nous ne promettons jamais de résultat que nous ne maîtrisons pas.
+
+**Engagement dans la durée**
+Nous restons là après la mise en ligne.
+
+**Liberté**
+Vous restez propriétaire de votre code, de votre nom de domaine et de vos données.
+
+#### Section : l'équipe
+
+**Titre :** L'équipe
+
+Une carte par personne : [Prénom Nom], [Rôle], [Une phrase de présentation]. [Photos : à fournir]
+
+#### Section : partenaires
+
+**Titre :** Nos partenaires
+
+Pour le design, le logo et la rédaction, nous travaillons avec des indépendants de confiance : [graphiste partenaire], [rédacteur partenaire]. Le développement, lui, n'est jamais sous-traité.
+
+#### Appel à l'action final
+
+Reprend l'appel à l'action final de la page Services (6.1).
+
+---
+
+### 6.11 Page « Contact »
+
+> Proposition à valider. Le formulaire est déjà en place.
+
+**URL :** `/contact`
+**Balise title :** Contact et demande de devis gratuit | [Nom]
+**Meta description :** Décrivez votre projet en quelques lignes : nous revenons vers vous avec une première estimation. Devis gratuit et sans engagement.
+
+#### En-tête
+
+**H1 :** Parlons de votre projet
+
+Décrivez-nous votre projet en quelques lignes. Nous revenons vers vous sous [48 h ouvrées] avec une première estimation.
+
+#### Formulaire
+
+- Nom *(obligatoire)*
+- E-mail *(obligatoire)*
+- Téléphone *(facultatif)*
+- Votre projet : Site web / Application sur mesure / Automatisation et intégrations / Hébergement et maintenance / Autre *(facultatif)*
+- Votre message *(obligatoire)*
+- Case de consentement RGPD + lien vers la politique de confidentialité
+
+**Bouton :** [Envoyer ma demande]
+
+**Réassurance sous le bouton :** Gratuit et sans engagement. Vos informations servent uniquement à répondre à votre demande.
+
+#### Section : et ensuite
+
+**Titre :** Et ensuite ?
+
+1. Nous lisons votre demande et nous revenons vers vous sous [48 h ouvrées].
+2. Nous organisons un appel de 30 minutes, gratuit, pour comprendre votre besoin.
+3. Vous recevez un devis clair, à prix fixe, sans engagement.
+
+#### Section : autres moyens
+
+**Titre :** Autres moyens de nous joindre
+
+- E-mail : [adresse e-mail de contact]
+- Téléphone : [numéro de téléphone]
+- Zone : [Ville ou région]
+
+#### Encadré : audit
+
+**Titre :** Vous avez déjà un site ?
+
+Commencez par un audit gratuit : vitesse, sécurité, référencement technique et affichage mobile.
+
+**Bouton :** [Faire auditer mon site]
+
+---
+
+### 6.12 Page « Réalisations »
+
+> Proposition à valider. Uniquement des projets réels, avec l'accord écrit du client.
+
+**URL :** `/realisations`
+**Balise title :** Réalisations : nos projets de sites et d'applications | [Nom]
+**Meta description :** Des projets réalisés pour nos clients : le besoin de départ, la solution mise en place et ce que le client y a gagné.
+
+#### En-tête
+
+**H1 :** Nos réalisations
+
+**Sous-titre :** Chaque étude de cas présente le besoin de départ, la solution mise en place et ce que le client y a gagné.
+
+Tant qu'il n'y a pas d'étude de cas : [À compléter : 2 ou 3 études de cas réelles, avec l'accord des clients]
+
+#### Structure d'une étude de cas
+
+Un fichier Markdown par projet dans `src/content/realisations/` (modèle : `docs/modele-etude-de-cas.md`) :
+
+1. **Le client** : secteur, taille, zone.
+2. **Le besoin** : la situation de départ, avec les mots du client.
+3. **La solution** : ce que nous avons construit.
+4. **Les tests et la mise en ligne.**
+5. **Le résultat** : uniquement des faits vérifiables, validés par le client. Aucun chiffre inventé.
+
+#### Appel à l'action final
+
+**Titre :** Et si le prochain projet était le vôtre ?
+
+Un échange de 30 minutes, gratuit et sans engagement, pour parler de votre besoin.
+
+**Bouton :** [Demander un devis gratuit]
+
+---
+
+### 6.13 Page « Blog »
+
+> Proposition à valider.
+
+**URL :** `/blog`
+**Balise title :** Blog : conseils pour votre site web et vos outils numériques | [Nom]
+**Meta description :** Des conseils pratiques et sans jargon pour créer, entretenir et faire connaître votre site web.
+
+**H1 :** Blog
+
+**Sous-titre :** Des conseils pratiques et sans jargon pour créer, entretenir et faire connaître votre site web.
+
+**Premiers articles (dans `src/content/blog/`) :**
+- Site vitrine : les éléments indispensables pour inspirer confiance
+- Maintenance de site web : ce qu'il faut surveiller, et pourquoi
+- Refonte de site : comment garder votre place sur Google
+
+---
+
 ## 7. Points légaux
 
 > À faire valider par un juriste avant la mise en ligne.
@@ -772,7 +1177,7 @@ Votre site est entre de bonnes mains, et vous pouvez vous concentrer sur votre a
 - [ ] Confirmer les engagements listés en [section 4](#engagements-à-confirmer-avant-publication)
 - [ ] Choisir l'option design : designer partenaire ou modèles personnalisés
 - [ ] Trouver les partenaires : graphiste, rédacteur
-- [ ] Rédiger les autres pages : Accueil, Méthode, Tarifs, L'agence, Contact
+- [ ] Relire et valider les textes proposés : Accueil, Méthode, Tarifs, L'agence, Contact, Réalisations, Blog (sections 6.7 à 6.13) et les trois premiers articles
 - [ ] Préparer 2 ou 3 études de cas réelles pour la page Réalisations
 - [x] Choisir les technologies du site et commencer le développement (voir [stack-technique.md](stack-technique.md))
 - [ ] Faire valider les CGV et les mentions légales par un juriste

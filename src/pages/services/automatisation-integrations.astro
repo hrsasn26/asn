@@ -1,5 +1,9 @@
 ---
 // Textes : docs/brief-agence.md, section 6.4.
+import RefreshCw from '@lucide/astro/icons/refresh-cw';
+import Sparkles from '@lucide/astro/icons/sparkles';
+import Workflow from '@lucide/astro/icons/workflow';
+import IllustrationAutomatisation from '~/components/illustrations/IllustrationAutomatisation.astro';
 import ButtonLink from '~/components/ButtonLink.astro';
 import CtaFinal from '~/components/CtaFinal.astro';
 import Faq from '~/components/Faq.astro';
@@ -34,6 +38,7 @@ const ctaTaches = { label: 'Identifier mes tâches à automatiser', href: '/cont
     subtitle="Nous connectons vos outils entre eux et automatisons les tâches répétitives. Vos informations circulent toutes seules, au bon endroit."
   >
     <ButtonLink href={ctaTaches.href}>{ctaTaches.label}</ButtonLink>
+    <IllustrationAutomatisation slot="illustration" />
   </Hero>
 
   <ProblemList
@@ -52,14 +57,17 @@ const ctaTaches = { label: 'Identifier mes tâches à automatiser', href: '/cont
       items={[
         {
           title: 'Connecter vos outils',
+          icone: Workflow,
           text: 'Site web, boutique, CRM, comptabilité, agenda, e-mailing : nous les faisons communiquer. Chaque commande crée automatiquement sa facture, et chaque demande de contact arrive directement dans votre CRM.',
         },
         {
           title: 'Automatiser les tâches répétitives',
+          icone: RefreshCw,
           text: "Relances, rapports, notifications, synchronisation des stocks. Nous utilisons des outils éprouvés (n8n, Make, Zapier), ou un développement sur mesure quand c'est nécessaire.",
         },
         {
           title: "Intégrer l'IA, là où elle est utile",
+          icone: Sparkles,
           text: "Un assistant sur votre site qui répond aux questions fréquentes, le tri automatique de vos documents, l'extraction des informations de vos factures. Nous n'intégrons l'IA que là où elle vous fait vraiment gagner du temps, et vos données restent protégées.",
         },
       ]}

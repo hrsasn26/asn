@@ -1,51 +1,162 @@
 ---
-// Page à rédiger (voir CLAUDE.md). Étapes reprises du brief, section 6.1.
+// Textes : docs/brief-agence.md, section 6.8 (proposition à valider).
 // Le brief demande une étape de tests bien visible sur cette page (section 5).
 import CtaFinal from '~/components/CtaFinal.astro';
-import Placeholder from '~/components/Placeholder.astro';
+import Faq from '~/components/Faq.astro';
+import FaqItem from '~/components/FaqItem.astro';
+import Hero from '~/components/Hero.astro';
+import IllustrationMethode from '~/components/illustrations/IllustrationMethode.astro';
 import Section from '~/components/Section.astro';
-import Steps from '~/components/Steps.astro';
-import { cta, site } from '~/data/site';
+import { cta, delais, offre, site } from '~/data/site';
 import BaseLayout from '~/layouts/BaseLayout.astro';
+
+interface Etape {
+  title: string;
+  text: string;
+  liste?: string[];
+  complement?: string;
+  recu: string;
+  tests?: boolean;
+}
+
+const etapes: Etape[] = [
+  {
+    title: 'Un premier échange, gratuit.',
+    text: 'Un appel de 30 minutes pour comprendre votre activité, votre besoin et vos contraintes. Nous vous disons honnêtement si nous sommes la bonne équipe pour votre projet.',
+    recu: 'un premier avis sur votre projet.',
+  },
+  {
+    title: 'Un devis clair, à prix fixe.',
+    text: 'Nous détaillons ce qui est inclus, le prix et les délais. Vous savez exactement ce que vous payez avant de vous engager.',
+    recu: 'un devis écrit, avec la liste précise de ce qui est livré.',
+  },
+  {
+    title: 'Les maquettes.',
+    text: 'Vous voyez les écrans de votre site ou de votre application avant le début du développement. Vous demandez les modifications nécessaires, puis vous validez.',
+    recu: 'les maquettes à valider.',
+  },
+  {
+    title: 'Le développement, par étapes.',
+    text: "Nous construisons votre projet par petites étapes. Vous suivez l'avancement et vous validez chaque étape.",
+    recu: "l'accès à une version de test, mise à jour régulièrement.",
+  },
+  {
+    title: 'Les tests.',
+    text: 'Avant chaque mise en ligne, nous vérifions :',
+    liste: [
+      'chaque page, sur ordinateur, tablette et mobile, dans les principaux navigateurs ;',
+      'chaque formulaire, chaque lien et chaque paiement ;',
+      "la vitesse d'affichage de chaque page ;",
+      "l'accessibilité, pour que tous vos visiteurs puissent utiliser votre site ;",
+      'la sécurité : connexion HTTPS, protections contre le spam et les attaques courantes.',
+    ],
+    complement:
+      'Pour les applications, des tests automatiques vérifient chaque nouvelle version : une amélioration ne casse pas ce qui fonctionnait déjà.',
+    recu: 'un site ou une application vérifiés, prêts à être mis en ligne.',
+    tests: true,
+  },
+  {
+    title: 'La mise en ligne et la formation.',
+    text: "Nous mettons votre projet en ligne, puis nous vous montrons comment l'utiliser et le modifier vous-même.",
+    recu: "l'accès complet à votre site, à votre code et à vos données.",
+  },
+  {
+    title: 'Le suivi.',
+    text: 'Si vous le souhaitez, nous hébergeons et maintenons votre projet avec un forfait mensuel : sauvegardes, mises à jour de sécurité, surveillance et petites modifications.',
+    recu: 'selon votre forfait, un rapport mensuel clair.',
+  },
+];
 ---
 
 <BaseLayout
-  title={`Méthode | ${site.nom}`}
-  description="[Meta description à rédiger]"
+  title={`Notre méthode : un projet clair, testé et suivi | ${site.nom}`}
+  description="Échange gratuit, devis à prix fixe, maquettes, développement par étapes, tests complets et suivi après la mise en ligne : découvrez comment se déroule votre projet."
   breadcrumbs={[{ label: 'Méthode', href: '/methode' }]}
 >
-  <Section>
-    <h1 class="text-3xl sm:text-4xl">Comment se déroule votre projet</h1>
-    <div class="mt-10">
-      <Steps
-        items={[
-          {
-            title: 'On échange.',
-            text: 'Un appel de 30 minutes, gratuit, pour comprendre votre besoin.',
-          },
-          {
-            title: 'On vous envoie un devis clair.',
-            text: 'Un prix fixe, des délais et la liste précise de ce qui est inclus.',
-          },
-          {
-            title: 'On développe.',
-            text: "Vous suivez l'avancement et validez chaque étape.",
-          },
-          {
-            title: 'On teste.',
-            text: 'Tout est vérifié avant la mise en ligne, sur tous les écrans.',
-          },
-          {
-            title: 'On met en ligne et on reste là.',
-            text: "On vous forme à l'utilisation, puis on assure la maintenance si vous le souhaitez.",
-          },
-        ]}
-      />
-    </div>
-    <div class="mt-10 max-w-3xl">
-      <Placeholder text="[À rédiger : détail de chaque étape, avec une étape de tests bien visible]" />
-    </div>
+  <Hero
+    title="Une méthode claire, du premier appel au suivi"
+    subtitle="À chaque étape, vous savez ce qui se passe, ce que vous validez et ce que vous recevez. Les tests font partie du projet : ce n'est pas une option."
+  >
+    <IllustrationMethode slot="illustration" />
+  </Hero>
+
+  <Section title="Les étapes de votre projet">
+    <ol class="grid max-w-3xl gap-6">
+      {etapes.map((etape, index) => (
+        <li
+          class:list={[
+            'flex gap-4 rounded-lg border p-6',
+            etape.tests ? 'border-emerald-600 bg-emerald-50' : 'border-slate-200 bg-white',
+          ]}
+        >
+          <span
+            aria-hidden="true"
+            class:list={[
+              'flex size-10 shrink-0 items-center justify-center rounded-full font-semibold text-white',
+              etape.tests ? 'bg-emerald-700' : 'bg-brand-700',
+            ]}
+          >
+            {index + 1}
+          </span>
+          <div>
+            <h3 class="text-lg">{etape.title}</h3>
+            <p class="mt-2 text-slate-700">{etape.text}</p>
+            {etape.liste && (
+              <ul class="mt-3 list-disc space-y-1 pl-5 text-slate-700">
+                {etape.liste.map((point) => (
+                  <li>{point}</li>
+                ))}
+              </ul>
+            )}
+            {etape.complement && <p class="mt-3 text-slate-700">{etape.complement}</p>}
+            <p class="mt-3 text-slate-900">
+              <em>Vous recevez :</em> {etape.recu}
+            </p>
+          </div>
+        </li>
+      ))}
+    </ol>
   </Section>
+
+  <Section title="Pourquoi les tests comptent autant" tone="gris">
+    <p class="max-w-3xl text-lg text-slate-700">
+      Un bug découvert par un client coûte plus cher qu'un bug trouvé avant la mise en ligne : une
+      vente perdue, une demande de contact jamais reçue, une image dégradée. C'est pourquoi les
+      tests font partie de chaque projet et de chaque mise à jour.
+    </p>
+  </Section>
+
+  <Section title="Ce dont nous avons besoin de votre part">
+    <ul class="grid max-w-3xl list-disc gap-2 pl-5 text-slate-700">
+      <li>
+        Vos textes et vos photos. Si vous préférez déléguer, nous vous mettons en relation avec un
+        rédacteur ou un photographe partenaire.
+      </li>
+      <li>Vos accès : nom de domaine, hébergement actuel, outils à connecter.</li>
+      <li>Un interlocuteur disponible pour valider chaque étape.</li>
+    </ul>
+  </Section>
+
+  <Faq>
+    <FaqItem question="Combien de temps dure un projet ?">
+      <p>
+        Comptez {delais.siteVitrine} pour un site vitrine et {delais.boutique} pour une boutique en
+        ligne. Pour une application, nous fixons le planning ensemble après le cadrage.
+      </p>
+    </FaqItem>
+    <FaqItem question="Puis-je demander des changements en cours de projet ?">
+      <p>
+        Oui. Nous estimons l'effet sur le prix et sur le délai, puis vous décidez. Rien n'est ajouté
+        à la facture sans votre accord.
+      </p>
+    </FaqItem>
+    <FaqItem question="Que se passe-t-il si un problème apparaît après la mise en ligne ?">
+      <p>
+        Nous corrigeons les défauts liés à notre travail {offre.garantie}. Avec un forfait de
+        maintenance, nous surveillons votre site et nous intervenons rapidement.
+      </p>
+    </FaqItem>
+  </Faq>
 
   <CtaFinal
     title="Parlons de votre projet"

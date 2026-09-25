@@ -1,0 +1,26 @@
+---
+import Fond from './Fond.astro';
+import Illustration from './Illustration.astro';
+import Navigateur from './Navigateur.astro';
+---
+
+<Illustration>
+  <Fond />
+  <Navigateur x={150} y={50} largeur={260} hauteur={170}>
+    <rect x="170" y="96" width="220" height="100" rx="8" class="fill-slate-100"></rect>
+  </Navigateur>
+  <Navigateur x={110} y={100} largeur={260} hauteur={170}>
+    <rect x="130" y="146" width="100" height="10" rx="5" class="fill-slate-800"></rect>
+    <rect x="130" y="164" width="90" height="6" rx="3" class="fill-slate-200"></rect>
+    <rect x="240" y="142" width="110" height="60" rx="8" class="fill-brand-100"></rect>
+    <rect x="130" y="216" width="70" height="36" rx="6" class="fill-brand-50"></rect>
+    <rect x="210" y="216" width="70" height="36" rx="6" class="fill-brand-50"></rect>
+    <rect x="290" y="216" width="60" height="36" rx="6" class="fill-brand-50"></rect>
+  </Navigateur>
+  <Navigateur x={60} y={160} largeur={200} hauteur={150}>
+    <rect x="78" y="206" width="90" height="10" rx="5" class="fill-slate-800"></rect>
+    <rect x="78" y="224" width="140" height="6" rx="3" class="fill-slate-200"></rect>
+    <rect x="78" y="240" width="120" height="6" rx="3" class="fill-slate-200"></rect>
+    <rect x="78" y="262" width="60" height="18" rx="6" class="fill-brand-600"></rect>
+  </Navigateur>
+</Illustration>

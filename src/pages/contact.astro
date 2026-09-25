@@ -1,13 +1,18 @@
 ---
-// Page à rédiger (voir CLAUDE.md). Textes repris : docs/brief-agence.md, section 6.2.
+// Textes : docs/brief-agence.md, section 6.11 (proposition à valider).
+import Mail from '@lucide/astro/icons/mail';
+import MapPin from '@lucide/astro/icons/map-pin';
+import Phone from '@lucide/astro/icons/phone';
 import { actions } from 'astro:actions';
+import ButtonLink from '~/components/ButtonLink.astro';
+import IllustrationContact from '~/components/illustrations/IllustrationContact.astro';
 import ErrorSummary from '~/components/forms/ErrorSummary.astro';
 import Field from '~/components/forms/Field.astro';
 import Consent from '~/components/forms/Consent.astro';
 import Honeypot from '~/components/forms/Honeypot.astro';
 import Success from '~/components/forms/Success.astro';
 import Section from '~/components/Section.astro';
-import { site } from '~/data/site';
+import { cta, site } from '~/data/site';
 import BaseLayout from '~/layouts/BaseLayout.astro';
 import { etatFormulaire } from '~/lib/formulaire';
 import { typesProjet } from '~/lib/schemas';
@@ -23,95 +28,144 @@ const etat = await etatFormulaire(Astro.getActionResult(actions.contact), Astro.
   'consentement',
 ]);
 const projetChoisi = etat.valeur('projet') ?? '';
-const titre = `Contact et demande de devis | ${site.nom}`;
+const titre = `Contact et demande de devis gratuit | ${site.nom}`;
 ---
 
 <BaseLayout
   title={etat.enErreur ? `Erreur : ${titre}` : titre}
-  description="[Meta description à rédiger]"
+  description="Décrivez votre projet en quelques lignes : nous revenons vers vous avec une première estimation. Devis gratuit et sans engagement."
   breadcrumbs={[{ label: 'Contact', href: '/contact' }]}
 >
   <Section>
     <h1 class="text-3xl sm:text-4xl">Parlons de votre projet</h1>
     <p class="mt-4 max-w-2xl text-lg text-slate-700">
-      Décrivez-nous votre projet en quelques lignes. Nous revenons vers vous sous{' '}
-      {site.delaiReponse}
-      avec une première estimation.
+      {`Décrivez-nous votre projet en quelques lignes. Nous revenons vers vous sous ${site.delaiReponse} avec une première estimation.`}
     </p>
 
-    <div class="mt-10 max-w-2xl">
-      {etat.envoye ? (
-        <Success title="Votre demande est envoyée">
-          <p>Nous revenons vers vous sous {site.delaiReponse}.</p>
-        </Success>
-      ) : (
-        <>
-          <ErrorSummary errors={etat.resume} message={etat.messageGeneral} />
-          <form method="POST" action={actions.contact} novalidate class="relative space-y-6">
-            <Field
-              name="nom"
-              label="Nom"
-              required
-              autocomplete="name"
-              value={etat.valeur('nom')}
-              errors={etat.erreursChamps.nom}
-            />
-            <Field
-              name="email"
-              label="E-mail"
-              type="email"
-              required
-              autocomplete="email"
-              value={etat.valeur('email')}
-              errors={etat.erreursChamps.email}
-            />
-            <Field
-              name="telephone"
-              label="Téléphone"
-              type="tel"
-              autocomplete="tel"
-              value={etat.valeur('telephone')}
-              errors={etat.erreursChamps.telephone}
-            />
-            <div>
-              <label for="champ-projet" class="block font-medium text-slate-900">
-                Votre projet <span class="font-normal text-slate-600">(facultatif)</span>
-              </label>
-              <select
-                id="champ-projet"
-                name="projet"
-                class="mt-1 block w-full rounded-md border border-slate-400 bg-white px-3 py-2 text-slate-900"
-              >
-                <option value="">Choisissez un type de projet</option>
-                {Object.entries(typesProjet).map(([valeur, libelle]) => (
-                  <option value={valeur} selected={projetChoisi === valeur}>
-                    {libelle}
-                  </option>
-                ))}
-              </select>
-            </div>
-            <Field
-              name="message"
-              label="Votre message"
-              type="textarea"
-              required
-              value={etat.valeur('message')}
-              errors={etat.erreursChamps.message}
-            />
-            <Consent
-              errors={etat.erreursChamps.consentement}
-              checked={etat.valeur('consentement') !== undefined}
-            />
-            <Honeypot />
-            <button
-              type="submit"
-              class="rounded-md bg-brand-700 px-5 py-3 font-semibold text-white hover:bg-brand-800"
-            >
-              Envoyer ma demande
-            </button>
-          </form>
-        </>
-      )}
+    <div class="mt-10 grid gap-12 lg:grid-cols-[minmax(0,2fr)_minmax(0,1fr)]">
+      <div>
+        {etat.envoye ? (
+          <Success title="Votre demande est envoyée">
+            <p>Nous revenons vers vous sous {site.delaiReponse}.</p>
+          </Success>
+        ) : (
+          <>
+            <ErrorSummary errors={etat.resume} message={etat.messageGeneral} />
+            <form method="POST" action={actions.contact} novalidate class="relative space-y-6">
+              <Field
+                name="nom"
+                label="Nom"
+                required
+                autocomplete="name"
+                value={etat.valeur('nom')}
+                errors={etat.erreursChamps.nom}
+              />
+              <Field
+                name="email"
+                label="E-mail"
+                type="email"
+                required
+                autocomplete="email"
+                value={etat.valeur('email')}
+                errors={etat.erreursChamps.email}
+              />
+              <Field
+                name="telephone"
+                label="Téléphone"
+                type="tel"
+                autocomplete="tel"
+                value={etat.valeur('telephone')}
+                errors={etat.erreursChamps.telephone}
+              />
+              <div>
+                <label for="champ-projet" class="block font-medium text-slate-900">
+                  Votre projet <span class="font-normal text-slate-600">(facultatif)</span>
+                </label>
+                <select
+                  id="champ-projet"
+                  name="projet"
+                  class="mt-1 block w-full rounded-md border border-slate-400 bg-white px-3 py-2 text-slate-900"
+                >
+                  <option value="">Choisissez un type de projet</option>
+                  {Object.entries(typesProjet).map(([valeur, libelle]) => (
+                    <option value={valeur} selected={projetChoisi === valeur}>
+                      {libelle}
+                    </option>
+                  ))}
+                </select>
+              </div>
+              <Field
+                name="message"
+                label="Votre message"
+                type="textarea"
+                required
+                value={etat.valeur('message')}
+                errors={etat.erreursChamps.message}
+              />
+              <Consent
+                errors={etat.erreursChamps.consentement}
+                checked={etat.valeur('consentement') !== undefined}
+              />
+              <Honeypot />
+              <div>
+                <button
+                  type="submit"
+                  class="rounded-md bg-brand-700 px-5 py-3 font-semibold text-white hover:bg-brand-800"
+                >
+                  Envoyer ma demande
+                </button>
+                <p class="mt-3 text-sm text-slate-600">
+                  Gratuit et sans engagement. Vos informations servent uniquement à répondre à votre
+                  demande.
+                </p>
+              </div>
+            </form>
+          </>
+        )}
+      </div>
+
+      <aside class="space-y-8" aria-label="Informations complémentaires">
+        <div class="hidden lg:block">
+          <IllustrationContact />
+        </div>
+        <div>
+          <h2 class="text-xl">Et ensuite ?</h2>
+          <ol class="mt-4 list-decimal space-y-2 pl-5 text-slate-700">
+            <li>Nous lisons votre demande et nous revenons vers vous sous {site.delaiReponse}.</li>
+            <li>Nous organisons un appel de 30 minutes, gratuit, pour comprendre votre besoin.</li>
+            <li>Vous recevez un devis clair, à prix fixe, sans engagement.</li>
+          </ol>
+        </div>
+        <div>
+          <h2 class="text-xl">Autres moyens de nous joindre</h2>
+          <ul class="mt-4 space-y-3 text-slate-700">
+            <li class="flex items-center gap-3">
+              <Mail size={20} class="shrink-0 text-brand-700" />
+              <span>E-mail : {site.email}</span>
+            </li>
+            <li class="flex items-center gap-3">
+              <Phone size={20} class="shrink-0 text-brand-700" />
+              <span>Téléphone : {site.telephone}</span>
+            </li>
+            <li class="flex items-center gap-3">
+              <MapPin size={20} class="shrink-0 text-brand-700" />
+              <span>Zone : {site.zone}</span>
+            </li>
+          </ul>
+        </div>
+        <div class="rounded-lg border border-slate-200 bg-brand-50 p-6">
+          <h2 class="text-xl">Vous avez déjà un site ?</h2>
+          <p class="mt-2 text-slate-700">
+            Commencez par un audit gratuit : vitesse, sécurité, référencement technique et affichage
+            mobile.
+          </p>
+          <div class="mt-4">
+            <ButtonLink href={cta.secondaire.href} variant="secondaire">
+              {cta.secondaire.label}
+            </ButtonLink>
+          </div>
+        </div>
+      </aside>
     </div>
   </Section>
 </BaseLayout>

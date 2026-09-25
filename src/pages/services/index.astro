@@ -1,5 +1,10 @@
 ---
 // Textes : docs/brief-agence.md, section 6.1.
+import BadgeCheck from '@lucide/astro/icons/badge-check';
+import Blocks from '@lucide/astro/icons/blocks';
+import Handshake from '@lucide/astro/icons/handshake';
+import KeyRound from '@lucide/astro/icons/key-round';
+import IllustrationServices from '~/components/illustrations/IllustrationServices.astro';
 import AuditTeaser from '~/components/AuditTeaser.astro';
 import ButtonLink from '~/components/ButtonLink.astro';
 import CtaFinal from '~/components/CtaFinal.astro';
@@ -11,6 +16,7 @@ import PourQui from '~/components/PourQui.astro';
 import Section from '~/components/Section.astro';
 import ServiceCards from '~/components/ServiceCards.astro';
 import Steps from '~/components/Steps.astro';
+import { etapesProjet } from '~/data/methode';
 import { cta, delais, offre, site } from '~/data/site';
 import { tarifs } from '~/data/tarifs';
 import BaseLayout from '~/layouts/BaseLayout.astro';
@@ -29,6 +35,7 @@ import BaseLayout from '~/layouts/BaseLayout.astro';
     <ButtonLink href={cta.secondaire.href} variant="secondaire">
       {cta.secondaire.label}
     </ButtonLink>
+    <IllustrationServices slot="illustration" />
   </Hero>
 
   <Section title="Ce que nous faisons pour vous">
@@ -40,18 +47,22 @@ import BaseLayout from '~/layouts/BaseLayout.astro';
       items={[
         {
           title: 'Conçu par des ingénieurs',
+          icone: Blocks,
           text: 'Votre projet est développé par des ingénieurs logiciels, avec les méthodes des grandes entreprises, adaptées à la taille de la vôtre.',
         },
         {
           title: 'Tout est testé avant la mise en ligne',
+          icone: BadgeCheck,
           text: 'Chaque page, chaque formulaire et chaque paiement est vérifié sur ordinateur, tablette et mobile. Vous ne découvrez pas les bugs à la place de vos clients.',
         },
         {
           title: 'Un seul interlocuteur',
+          icone: Handshake,
           text: 'Du premier échange à la maintenance, vous parlez aux personnes qui construisent votre projet. Pas de sous-traitance cachée.',
         },
         {
           title: 'Vous restez propriétaire',
+          icone: KeyRound,
           text: 'Votre code, votre nom de domaine et vos données vous appartiennent. Si un jour vous changez de prestataire, vous repartez avec tout.',
         },
       ]}
@@ -59,30 +70,7 @@ import BaseLayout from '~/layouts/BaseLayout.astro';
   </Section>
 
   <Section title="Comment se déroule votre projet">
-    <Steps
-      items={[
-        {
-          title: 'On échange.',
-          text: 'Un appel de 30 minutes, gratuit, pour comprendre votre besoin.',
-        },
-        {
-          title: 'On vous envoie un devis clair.',
-          text: 'Un prix fixe, des délais et la liste précise de ce qui est inclus.',
-        },
-        {
-          title: 'On développe.',
-          text: "Vous suivez l'avancement et validez chaque étape.",
-        },
-        {
-          title: 'On teste.',
-          text: 'Tout est vérifié avant la mise en ligne, sur tous les écrans.',
-        },
-        {
-          title: 'On met en ligne et on reste là.',
-          text: "On vous forme à l'utilisation, puis on assure la maintenance si vous le souhaitez.",
-        },
-      ]}
-    />
+    <Steps items={etapesProjet} />
   </Section>
 
   <PourQui />

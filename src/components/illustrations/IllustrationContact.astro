@@ -1,0 +1,44 @@
+---
+import Send from '@lucide/astro/icons/send';
+import Fond from './Fond.astro';
+import Illustration from './Illustration.astro';
+---
+
+<Illustration>
+  <Fond />
+  <rect
+    x="70"
+    y="110"
+    width="230"
+    height="160"
+    rx="14"
+    class="fill-white stroke-slate-300"
+    stroke-width="2"
+  ></rect>
+  <path
+    d="M76 120l109 82 109-82"
+    fill="none"
+    class="stroke-slate-300"
+    stroke-width="4"
+    stroke-linejoin="round"
+  ></path>
+  <path
+    d="M250 60h150a16 16 0 0 1 16 16v60a16 16 0 0 1-16 16h-96l-24 22v-22h-30a16 16 0 0 1-16-16V76a16 16 0 0 1 16-16z"
+    class="fill-brand-600"
+  ></path>
+  <rect x="270" y="86" width="110" height="8" rx="4" class="fill-white/80"></rect>
+  <rect x="270" y="104" width="80" height="8" rx="4" class="fill-white/80"></rect>
+  <rect x="270" y="122" width="96" height="8" rx="4" class="fill-white/80"></rect>
+  <path
+    d="M322 214h92a14 14 0 0 1 14 14v36a14 14 0 0 1-14 14h-10v18l-20-18h-62a14 14 0 0 1-14-14v-36a14 14 0 0 1 14-14z"
+    class="fill-white stroke-slate-300"
+    stroke-width="2"
+  ></path>
+  <circle cx="344" cy="246" r="6" class="fill-slate-300"></circle>
+  <circle cx="366" cy="246" r="6" class="fill-slate-300"></circle>
+  <circle cx="388" cy="246" r="6" class="fill-slate-300"></circle>
+  <circle cx="110" cy="290" r="30" class="fill-emerald-500"></circle>
+  <g class="text-white">
+    <Send x={94} y={274} size={32} />
+  </g>
+</Illustration>

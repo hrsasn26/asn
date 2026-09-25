@@ -11,12 +11,16 @@ const formatDate = new Intl.DateTimeFormat('fr-FR', { dateStyle: 'long' });
 ---
 
 <BaseLayout
-  title={`Blog | ${site.nom}`}
-  description="[Meta description à rédiger]"
+  title={`Blog : conseils pour votre site web et vos outils numériques | ${site.nom}`}
+  description="Des conseils pratiques et sans jargon pour créer, entretenir et faire connaître votre site web."
   breadcrumbs={[{ label: 'Blog', href: '/blog' }]}
 >
   <Section>
     <h1 class="text-3xl sm:text-4xl">Blog</h1>
+    <p class="mt-4 max-w-2xl text-lg text-slate-700">
+      Des conseils pratiques et sans jargon pour créer, entretenir et faire connaître votre site
+      web.
+    </p>
     {articles.length === 0 ? (
       <p class="mt-6 text-slate-700">Aucun article pour l'instant.</p>
     ) : (
