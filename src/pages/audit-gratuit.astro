@@ -1,0 +1,162 @@
+---
+// Textes : docs/brief-agence.md, section 6.6.
+import { actions } from 'astro:actions';
+import Consent from '~/components/forms/Consent.astro';
+import ErrorSummary from '~/components/forms/ErrorSummary.astro';
+import Field from '~/components/forms/Field.astro';
+import Honeypot from '~/components/forms/Honeypot.astro';
+import Success from '~/components/forms/Success.astro';
+import Hero from '~/components/Hero.astro';
+import Section from '~/components/Section.astro';
+import { delais, site } from '~/data/site';
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import { etatFormulaire } from '~/lib/formulaire';
+import { preoccupations } from '~/lib/schemas';
+
+export const prerender = false;
+
+const etat = await etatFormulaire(Astro.getActionResult(actions.audit), Astro.request, [
+  'adresseSite',
+  'nom',
+  'email',
+  'telephone',
+  'preoccupation',
+  'consentement',
+]);
+const preoccupationChoisie = etat.valeur('preoccupation');
+const titre = `Audit gratuit de votre site web | ${site.nom}`;
+---
+
+<BaseLayout
+  title={etat.enErreur ? `Erreur : ${titre}` : titre}
+  description="Vitesse, sécurité, référencement, affichage mobile : recevez gratuitement un audit technique de votre site, avec un rapport clair et les actions prioritaires."
+  breadcrumbs={[{ label: 'Audit gratuit', href: '/audit-gratuit' }]}
+>
+  <Hero
+    title="Votre site est-il lent, vulnérable ou invisible sur Google ?"
+    subtitle="Recevez gratuitement un audit technique de votre site. Un rapport clair, sans jargon, avec les actions prioritaires à mener."
+  />
+
+  <Section>
+    <div class="grid gap-12 lg:grid-cols-2">
+      <div class="space-y-10">
+        <div>
+          <h2 class="text-2xl">Ce que nous vérifions</h2>
+          <ul class="mt-4 space-y-3 text-slate-700">
+            <li>
+              <strong class="text-slate-900">Vitesse</strong> : combien de temps vos pages mettent à
+              s'afficher, et pourquoi.
+            </li>
+            <li>
+              <strong class="text-slate-900">Sécurité</strong> : certificat HTTPS, mises à jour,
+              failles connues.
+            </li>
+            <li>
+              <strong class="text-slate-900">Référencement technique</strong> : ce qui empêche
+              Google de bien comprendre votre site.
+            </li>
+            <li>
+              <strong class="text-slate-900">Affichage mobile</strong> : comment vos visiteurs
+              voient votre site sur téléphone.
+            </li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="text-2xl">Ce que vous recevez</h2>
+          <ul class="mt-4 list-disc space-y-2 pl-5 text-slate-700">
+            <li>Un rapport écrit sous {delais.rapportAudit}</li>
+            <li>La liste des problèmes, classés par priorité</li>
+            <li>{delais.appelAudit}</li>
+          </ul>
+        </div>
+      </div>
+
+      <div>
+        <h2 class="mb-6 text-2xl">Demander mon audit</h2>
+        {etat.envoye ? (
+          <Success title="Votre demande d'audit est envoyée">
+            <p>Vous recevez votre rapport sous {delais.rapportAudit}.</p>
+          </Success>
+        ) : (
+          <>
+            <ErrorSummary errors={etat.resume} message={etat.messageGeneral} />
+            <form method="POST" action={actions.audit} novalidate class="relative space-y-6">
+              <Field
+                name="adresseSite"
+                label="Adresse de votre site"
+                required
+                autocomplete="url"
+                inputmode="url"
+                hint="Par exemple : monsite.fr"
+                value={etat.valeur('adresseSite')}
+                errors={etat.erreursChamps.adresseSite}
+              />
+              <Field
+                name="nom"
+                label="Nom"
+                required
+                autocomplete="name"
+                value={etat.valeur('nom')}
+                errors={etat.erreursChamps.nom}
+              />
+              <Field
+                name="email"
+                label="E-mail"
+                type="email"
+                required
+                autocomplete="email"
+                value={etat.valeur('email')}
+                errors={etat.erreursChamps.email}
+              />
+              <Field
+                name="telephone"
+                label="Téléphone"
+                type="tel"
+                autocomplete="tel"
+                value={etat.valeur('telephone')}
+                errors={etat.erreursChamps.telephone}
+              />
+              <fieldset>
+                <legend class="font-medium text-slate-900">
+                  Votre principale préoccupation{' '}
+                  <span class="font-normal text-slate-600">(facultatif)</span>
+                </legend>
+                <div class="mt-2 space-y-2">
+                  {Object.entries(preoccupations).map(([valeur, libelle]) => (
+                    <div class="flex items-center gap-3">
+                      <input
+                        type="radio"
+                        id={`champ-preoccupation-${valeur}`}
+                        name="preoccupation"
+                        value={valeur}
+                        checked={preoccupationChoisie === valeur}
+                        class="size-5 accent-brand-700"
+                      />
+                      <label for={`champ-preoccupation-${valeur}`}>{libelle}</label>
+                    </div>
+                  ))}
+                </div>
+              </fieldset>
+              <Consent
+                errors={etat.erreursChamps.consentement}
+                checked={etat.valeur('consentement') !== undefined}
+              />
+              <Honeypot />
+              <div>
+                <button
+                  type="submit"
+                  class="rounded-md bg-brand-700 px-5 py-3 font-semibold text-white hover:bg-brand-800"
+                >
+                  Recevoir mon audit gratuit
+                </button>
+                <p class="mt-3 text-sm text-slate-600">
+                  Gratuit, sans engagement et sans relances insistantes.
+                </p>
+              </div>
+            </form>
+          </>
+        )}
+      </div>
+    </div>
+  </Section>
+</BaseLayout>

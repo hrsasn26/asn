@@ -1,0 +1,40 @@
+---
+import { getCollection } from 'astro:content';
+import Placeholder from '~/components/Placeholder.astro';
+import Section from '~/components/Section.astro';
+import { site } from '~/data/site';
+import BaseLayout from '~/layouts/BaseLayout.astro';
+
+const etudes = (await getCollection('realisations', ({ data }) => !data.draft)).sort(
+  (a, b) => b.data.publishedAt.getTime() - a.data.publishedAt.getTime(),
+);
+---
+
+<BaseLayout
+  title={`Réalisations | ${site.nom}`}
+  description="[Meta description à rédiger]"
+  breadcrumbs={[{ label: 'Réalisations', href: '/realisations' }]}
+>
+  <Section>
+    <h1 class="text-3xl sm:text-4xl">Réalisations</h1>
+    {etudes.length === 0 ? (
+      <div class="mt-6 max-w-3xl">
+        <Placeholder text="[À compléter : 2 ou 3 études de cas réelles, avec l'accord des clients]" />
+      </div>
+    ) : (
+      <ul class="mt-8 grid gap-6 md:grid-cols-2">
+        {etudes.map((etude) => (
+          <li class="rounded-lg border border-slate-200 p-6">
+            <h2 class="text-xl">
+              <a href={`/realisations/${etude.id}`} class="text-slate-900 hover:text-brand-700">
+                {etude.data.title}
+              </a>
+            </h2>
+            <p class="mt-1 text-sm text-slate-600">{etude.data.client}</p>
+            <p class="mt-2 text-slate-700">{etude.data.description}</p>
+          </li>
+        ))}
+      </ul>
+    )}
+  </Section>
+</BaseLayout>

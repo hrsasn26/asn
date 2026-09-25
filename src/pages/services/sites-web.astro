@@ -1,0 +1,201 @@
+---
+// Textes : docs/brief-agence.md, section 6.2.
+import ButtonLink from '~/components/ButtonLink.astro';
+import CtaFinal from '~/components/CtaFinal.astro';
+import Faq from '~/components/Faq.astro';
+import FaqItem from '~/components/FaqItem.astro';
+import FeatureGrid from '~/components/FeatureGrid.astro';
+import Hero from '~/components/Hero.astro';
+import OfferCard from '~/components/OfferCard.astro';
+import ProblemList from '~/components/ProblemList.astro';
+import Section from '~/components/Section.astro';
+import { cta, delais, offre, site } from '~/data/site';
+import { tarifs } from '~/data/tarifs';
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import { serviceJsonLd } from '~/lib/seo';
+
+const title = 'Création de site vitrine et e-commerce';
+const description =
+  'Site vitrine, boutique en ligne ou refonte : des sites rapides, sécurisés et bien référencés, conçus par des ingénieurs pour les TPE, PME et particuliers.';
+---
+
+<BaseLayout
+  title={`${title} | ${site.nom}`}
+  description={description}
+  breadcrumbs={[
+    { label: 'Services', href: '/services' },
+    { label: 'Sites web', href: '/services/sites-web' },
+  ]}
+  jsonLd={serviceJsonLd({ name: title, description })}
+>
+  <Hero
+    title="Un site web rapide, sécurisé et facile à trouver sur Google"
+    subtitle="Site vitrine, boutique en ligne ou refonte : nous créons des sites qui chargent vite, s'affichent parfaitement sur mobile et que vous pouvez modifier vous-même."
+  >
+    <ButtonLink href={cta.principal.href}>{cta.principal.label}</ButtonLink>
+  </Hero>
+
+  <ProblemList
+    title="Votre site vous fait perdre des clients ?"
+    items={[
+      "Il met plusieurs secondes à s'afficher, et les visiteurs partent avant de le voir.",
+      "Il s'affiche mal sur téléphone.",
+      'Personne ne le trouve sur Google.',
+      'Chaque modification passe par un prestataire qui ne répond plus.',
+    ]}
+  />
+
+  <Section title="Trois façons de lancer ou de relancer votre présence en ligne">
+    <div class="grid gap-6 lg:grid-cols-3">
+      <OfferCard
+        title="Site vitrine"
+        text="Pour présenter votre activité, montrer vos réalisations et être contacté facilement."
+        idealPour="artisans, indépendants, TPE, particuliers."
+        items={[
+          `Jusqu'à ${offre.pagesSiteVitrine} pages`,
+          'Formulaire de contact',
+          'Prise de rendez-vous en ligne (en option)',
+          'Liens vers vos réseaux sociaux et votre fiche Google',
+        ]}
+        prix={`À partir de ${tarifs.siteVitrine}`}
+      />
+      <OfferCard
+        title="Boutique en ligne"
+        text="Pour vendre vos produits sur Internet, 24 h/24."
+        idealPour="commerçants, créateurs, PME."
+        items={[
+          'Paiement sécurisé (carte bancaire, PayPal…)',
+          'Gestion des stocks et des commandes',
+          'Frais de livraison et factures automatiques',
+          'Shopify, WooCommerce ou sur mesure, selon votre volume de ventes',
+        ]}
+        prix={`À partir de ${tarifs.boutique}`}
+      />
+      <OfferCard
+        title="Refonte de site"
+        text="Pour moderniser un site vieillissant sans perdre votre place sur Google."
+        idealPour={`tout site de plus de ${offre.ageRefonte} ans ou qui ne vous apporte plus de contacts.`}
+        items={[
+          'Reprise de vos contenus',
+          'Redirections des anciennes pages pour conserver votre référencement',
+          'Nouveau design, plus rapide et adapté au mobile',
+        ]}
+        prix="Sur devis"
+      />
+    </div>
+  </Section>
+
+  <Section title="Inclus dans tous nos sites, sans supplément" tone="gris">
+    <FeatureGrid
+      columns={4}
+      items={[
+        {
+          title: 'Adapté à tous les écrans',
+          text: 'Ordinateur, tablette et téléphone.',
+        },
+        {
+          title: 'Rapide',
+          text: 'Nous mesurons la vitesse de chaque page avant la livraison.',
+        },
+        {
+          title: 'Référencement technique',
+          text: 'Structure des pages, balises, plan du site et données structurées pour que Google comprenne votre activité.',
+        },
+        {
+          title: 'Sécurisé',
+          text: 'Connexion HTTPS, protections contre le spam et les attaques courantes.',
+        },
+        {
+          title: 'Conforme au RGPD',
+          text: 'Bandeau cookies et pages légales mises en place.',
+        },
+        {
+          title: 'Accessible',
+          text: 'Lisible par tous, y compris par les personnes en situation de handicap.',
+        },
+        {
+          title: 'Modifiable par vous',
+          text: "Un espace d'administration simple pour changer vos textes et vos images.",
+        },
+        {
+          title: 'Formation incluse',
+          text: 'Nous vous montrons comment gérer votre site.',
+        },
+      ]}
+    />
+  </Section>
+
+  <Section title="Testé avant la mise en ligne. Vraiment.">
+    <p class="max-w-3xl text-lg text-slate-700">
+      Avant de livrer votre site, nous vérifions chaque page sur les principaux navigateurs et
+      tailles d'écran. Nous testons chaque formulaire, chaque lien et chaque paiement. Vous ne
+      découvrez pas les problèmes par un client mécontent.
+    </p>
+  </Section>
+
+  <Section title="Un site à votre image" tone="gris">
+    <div class="max-w-3xl space-y-4 text-lg text-slate-700">
+      <p>
+        {offre.design}. Vous validez les maquettes avant le début du développement : pas de mauvaise
+        surprise à la livraison.
+      </p>
+      <p>
+        Vous n'avez pas encore de logo ? Nous pouvons vous mettre en relation avec un graphiste
+        partenaire.
+      </p>
+    </div>
+  </Section>
+
+  <Faq>
+    <FaqItem question="Pourrai-je modifier mon site moi-même ?">
+      <p>
+        Oui. Vous disposez d'un espace d'administration pour changer vos textes, vos images et
+        ajouter des pages ou des articles. Nous vous formons à son utilisation à la livraison.
+      </p>
+    </FaqItem>
+    <FaqItem question="Vous occupez-vous des textes et des photos ?">
+      <p>
+        Vous nous fournissez vos textes et vos photos, et nous vous aidons à les organiser. Si vous
+        préférez déléguer, nous pouvons vous mettre en relation avec un rédacteur ou un photographe
+        partenaire.
+      </p>
+    </FaqItem>
+    <FaqItem question="Mon site sera-t-il bien référencé sur Google ?">
+      <p>
+        Nous nous occupons de toute la partie technique du référencement : vitesse, structure,
+        balises, compatibilité mobile. Votre position dans Google dépend aussi de vos contenus et de
+        la concurrence dans votre secteur : personne ne peut honnêtement vous garantir la première
+        place. En revanche, nous vous donnons toutes les bases pour y arriver.
+      </p>
+    </FaqItem>
+    <FaqItem question="WordPress ou développement sur mesure ?">
+      <p>
+        Nous vous conseillons selon votre besoin. WordPress convient très bien à la plupart des
+        sites vitrines. Le sur-mesure devient intéressant quand vous avez des fonctionnalités
+        spécifiques ou de gros volumes.
+      </p>
+    </FaqItem>
+    <FaqItem question="Combien de temps faut-il pour créer mon site ?">
+      <p>
+        Comptez {delais.siteVitrine} pour un site vitrine et {delais.boutique} pour une boutique en
+        ligne, selon la rapidité à laquelle nous recevons vos contenus.
+      </p>
+    </FaqItem>
+    <FaqItem question="Que se passe-t-il après la mise en ligne ?">
+      <p>
+        Votre site vous appartient. Vous pouvez le gérer seul, ou nous confier son hébergement et sa
+        maintenance avec l'un de nos{' '}
+        <a href="/services/hebergement-maintenance#forfaits" class="text-brand-700 underline">
+          forfaits mensuels
+        </a>
+        .
+      </p>
+    </FaqItem>
+  </Faq>
+
+  <CtaFinal
+    title="Parlons de votre futur site"
+    text={`Décrivez-nous votre projet en quelques lignes. Nous revenons vers vous sous ${site.delaiReponse} avec une première estimation.`}
+    button={cta.principal}
+  />
+</BaseLayout>

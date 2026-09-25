@@ -1,0 +1,20 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": ["config:recommended"],
+  "timezone": "Europe/Paris",
+  "schedule": ["before 7am on monday"],
+  "labels": ["dépendances"],
+  "packageRules": [
+    {
+      "description": "Regroupe les mises à jour mineures et les correctifs dans une seule pull request.",
+      "matchUpdateTypes": ["minor", "patch"],
+      "matchCurrentVersion": "!/^0/",
+      "groupName": "mises à jour mineures"
+    },
+    {
+      "description": "typescript-eslint et @astrojs/check ne prennent pas encore en charge TypeScript 7.",
+      "matchPackageNames": ["typescript"],
+      "allowedVersions": "<6.1"
+    }
+  ]
+}

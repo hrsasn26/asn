@@ -1,0 +1,36 @@
+@import 'tailwindcss';
+
+/*
+ * Jetons de design. Ils seront remplacés quand l'option design sera choisie
+ * (modèle personnalisé ou designer partenaire, voir docs/brief-agence.md).
+ */
+@theme {
+  --color-brand-50: var(--color-blue-50);
+  --color-brand-100: var(--color-blue-100);
+  --color-brand-600: var(--color-blue-600);
+  --color-brand-700: var(--color-blue-700);
+  --color-brand-800: var(--color-blue-800);
+  --color-brand-900: var(--color-blue-900);
+}
+
+@layer base {
+  html {
+    @apply scroll-smooth bg-white text-slate-800 antialiased;
+  }
+
+  h1,
+  h2,
+  h3 {
+    @apply font-semibold text-balance text-slate-900;
+  }
+
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-brand-700;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      @apply scroll-auto;
+    }
+  }
+}

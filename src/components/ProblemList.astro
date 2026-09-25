@@ -1,0 +1,18 @@
+---
+import Section from '~/components/Section.astro';
+
+interface Props {
+  title: string;
+  items: string[];
+}
+
+const { title, items } = Astro.props;
+---
+
+<Section title={title} tone="gris">
+  <ul class="grid max-w-3xl gap-3">
+    {items.map((item) => (
+      <li class="rounded-md border border-slate-200 bg-white px-4 py-3">{item}</li>
+    ))}
+  </ul>
+</Section>

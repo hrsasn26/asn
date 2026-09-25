@@ -1,0 +1,170 @@
+---
+// Textes : docs/brief-agence.md, section 6.3.
+import ButtonLink from '~/components/ButtonLink.astro';
+import CtaFinal from '~/components/CtaFinal.astro';
+import Faq from '~/components/Faq.astro';
+import FaqItem from '~/components/FaqItem.astro';
+import FeatureGrid from '~/components/FeatureGrid.astro';
+import Hero from '~/components/Hero.astro';
+import ProblemList from '~/components/ProblemList.astro';
+import Section from '~/components/Section.astro';
+import Steps from '~/components/Steps.astro';
+import { delais, site } from '~/data/site';
+import { tarifs } from '~/data/tarifs';
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import { serviceJsonLd } from '~/lib/seo';
+
+const title = 'Applications web et mobiles sur mesure';
+const description =
+  'Outil métier, espace client, application mobile ou première version de votre projet : nous développons des applications sur mesure, testées et faites pour évoluer.';
+const ctaProjet = { label: 'Parler de mon projet', href: '/contact' };
+---
+
+<BaseLayout
+  title={`${title} | ${site.nom}`}
+  description={description}
+  breadcrumbs={[
+    { label: 'Services', href: '/services' },
+    { label: 'Applications sur mesure', href: '/services/applications-sur-mesure' },
+  ]}
+  jsonLd={serviceJsonLd({ name: title, description })}
+>
+  <Hero
+    title="Un outil conçu pour votre façon de travailler"
+    subtitle="Réservation, devis, planning, espace client, application mobile : nous développons le logiciel dont vous avez besoin, et il évolue avec votre activité."
+  >
+    <ButtonLink href={ctaProjet.href}>{ctaProjet.label}</ButtonLink>
+  </Hero>
+
+  <ProblemList
+    title="Vos outils actuels vous ralentissent ?"
+    items={[
+      'Tout est géré dans des tableurs, avec des erreurs de copie.',
+      "Vous payez plusieurs logiciels qui ne font qu'à moitié ce que vous voulez.",
+      "Vos clients vous appellent pour des informations qu'ils pourraient trouver en ligne.",
+      "Vous avez une idée d'application, mais vous ne savez pas par où commencer.",
+    ]}
+  />
+
+  <Section title="Ce que nous pouvons construire pour vous">
+    <FeatureGrid
+      items={[
+        {
+          title: 'Outils métier',
+          text: "Prise de rendez-vous, devis et factures, gestion de stock, planning d'équipe, suivi de chantier. Un seul outil, pensé pour votre activité, à la place de trois logiciels mal adaptés.",
+        },
+        {
+          title: 'Espaces clients et portails',
+          text: 'Vos clients suivent leurs commandes, téléchargent leurs documents et font leurs demandes en ligne, sans vous appeler.',
+        },
+        {
+          title: 'Applications mobiles',
+          text: "Une application iPhone et Android à partir d'un seul développement, pour un coût maîtrisé. Nous nous occupons aussi de la publication sur l'App Store et Google Play.",
+        },
+        {
+          title: 'Première version de votre projet (MVP)',
+          text: "Vous avez une idée d'application ? Nous construisons une première version avec l'essentiel, pour la tester auprès de vrais utilisateurs avant d'investir davantage.",
+        },
+      ]}
+    />
+  </Section>
+
+  <Section title="Une application solide, pas un prototype fragile" tone="gris">
+    <FeatureGrid
+      items={[
+        {
+          title: 'Pensée pour évoluer',
+          text: "Nous concevons votre application pour que l'on puisse ajouter des fonctionnalités dans deux ans sans tout reconstruire.",
+        },
+        {
+          title: 'Testée automatiquement',
+          text: 'Chaque nouvelle version est vérifiée par des tests automatiques. Une amélioration ne casse pas ce qui fonctionnait déjà.',
+        },
+        {
+          title: 'Vos données protégées',
+          text: `Sauvegardes quotidiennes, accès sécurisés, hébergement en ${site.hebergement}.`,
+        },
+        {
+          title: 'Un code qui vous appartient',
+          text: 'Le code est documenté et vous appartient. Vous restez libre de changer de prestataire si vous le souhaitez.',
+        },
+      ]}
+    />
+  </Section>
+
+  <Section title="Comment nous travaillons">
+    <Steps
+      items={[
+        {
+          title: 'Atelier de cadrage.',
+          text: "Nous listons ensemble les fonctionnalités et nous gardons l'essentiel pour la première version.",
+        },
+        {
+          title: 'Maquettes.',
+          text: "Vous voyez les écrans de votre application avant qu'une seule ligne de code soit écrite.",
+        },
+        {
+          title: 'Développement par étapes.',
+          text: `Une nouvelle version à tester toutes les ${delais.iteration} semaines. Vous suivez l'avancement concrètement.`,
+        },
+        {
+          title: 'Tests.',
+          text: 'Tests automatiques et vérifications manuelles avant chaque mise en ligne.',
+        },
+        {
+          title: 'Mise en ligne et suivi.',
+          text: 'Nous formons vos équipes, puis nous assurons la maintenance et les évolutions.',
+        },
+      ]}
+    />
+  </Section>
+
+  <Section title="Vous avez une idée d'application ? Commencez petit." tone="gris">
+    <p class="max-w-3xl text-lg text-slate-700">
+      Plutôt que de tout développer d'un coup, nous construisons d'abord une version simple, avec
+      les fonctionnalités essentielles. Vous la testez auprès de vrais utilisateurs, puis vous
+      décidez de la suite en connaissance de cause. Vous dépensez moins, et vous apprenez plus vite.
+    </p>
+    <div class="mt-6">
+      <ButtonLink href="/contact" variant="secondaire">
+        Présenter mon idée
+      </ButtonLink>
+    </div>
+  </Section>
+
+  <Faq>
+    <FaqItem question="Combien coûte une application sur mesure ?">
+      <p>
+        Cela dépend des fonctionnalités. Après l'atelier de cadrage, nous vous remettons un devis à
+        prix fixe. À titre indicatif, une première version (MVP) commence à {tarifs.mvp}.
+      </p>
+    </FaqItem>
+    <FaqItem question="Combien de temps faut-il ?">
+      <p>
+        Une première version demande en général {delais.mvp}. Nous fixons le planning ensemble après
+        le cadrage.
+      </p>
+    </FaqItem>
+    <FaqItem question="Mon idée sera-t-elle protégée ?">
+      <p>
+        Oui. Nous pouvons signer un accord de confidentialité avant d'entrer dans les détails de
+        votre projet.
+      </p>
+    </FaqItem>
+    <FaqItem question="Serai-je propriétaire du code ?">
+      <p>Oui. La cession des droits sur le code est prévue dans le contrat.</p>
+    </FaqItem>
+    <FaqItem question="J'ai déjà une application développée par un autre prestataire. Pouvez-vous la reprendre ?">
+      <p>
+        Oui. Nous commençons par un audit du code pour faire le point, puis nous vous proposons un
+        plan : corriger, faire évoluer ou reconstruire certaines parties.
+      </p>
+    </FaqItem>
+  </Faq>
+
+  <CtaFinal
+    title="Parlons de votre projet"
+    text="Un échange de 30 minutes, gratuit et confidentiel, pour comprendre votre besoin et vous dire ce qui est réaliste, dans quel délai et pour quel budget."
+    button={ctaProjet}
+  />
+</BaseLayout>

@@ -1,0 +1,77 @@
+---
+interface Props {
+  name: string;
+  label: string;
+  type?: 'text' | 'email' | 'tel' | 'textarea';
+  required?: boolean;
+  autocomplete?: string;
+  value?: string | undefined;
+  errors?: string[] | undefined;
+  hint?: string;
+  inputmode?: 'url' | 'text' | 'email' | 'tel';
+}
+
+const {
+  name,
+  label,
+  type = 'text',
+  required = false,
+  autocomplete,
+  value,
+  errors,
+  hint,
+  inputmode,
+} = Astro.props;
+
+const id = `champ-${name}`;
+const erreur = errors?.[0];
+const describedBy =
+  [hint && `${id}-aide`, erreur && `${id}-erreur`].filter(Boolean).join(' ') || undefined;
+const classes = [
+  'mt-1 block w-full rounded-md border bg-white px-3 py-2 text-slate-900',
+  erreur ? 'border-red-700' : 'border-slate-400',
+];
+---
+
+<div>
+  <label for={id} class="block font-medium text-slate-900">
+    {label}{' '}
+    <span class="font-normal text-slate-600">{required ? '(obligatoire)' : '(facultatif)'}</span>
+  </label>
+  {hint && (
+    <p id={`${id}-aide`} class="mt-1 text-sm text-slate-600">
+      {hint}
+    </p>
+  )}
+  {type === 'textarea' ? (
+    <textarea
+      id={id}
+      name={name}
+      rows="6"
+      required={required}
+      aria-invalid={erreur ? 'true' : undefined}
+      aria-describedby={describedBy}
+      class:list={classes}
+    >
+        {value}
+      </textarea>
+  ) : (
+    <input
+      id={id}
+      name={name}
+      type={type}
+      value={value}
+      required={required}
+      autocomplete={autocomplete}
+      inputmode={inputmode}
+      aria-invalid={erreur ? 'true' : undefined}
+      aria-describedby={describedBy}
+      class:list={classes}
+    />
+  )}
+  {erreur && (
+    <p id={`${id}-erreur`} class="mt-1 text-sm font-medium text-red-700">
+      {erreur}
+    </p>
+  )}
+</div>

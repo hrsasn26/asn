@@ -1,0 +1,37 @@
+---
+import JsonLd from '~/components/JsonLd.astro';
+import type { LienNav } from '~/data/navigation';
+
+interface Props {
+  items: LienNav[];
+}
+
+const items = [{ label: 'Accueil', href: '/' }, ...Astro.props.items];
+const jsonLd = {
+  '@type': 'BreadcrumbList',
+  itemListElement: items.map((item, index) => ({
+    '@type': 'ListItem',
+    position: index + 1,
+    name: item.label,
+    item: new URL(item.href, Astro.site).href,
+  })),
+};
+---
+
+<nav aria-label="Fil d'Ariane" class="mx-auto w-full max-w-6xl px-4 pt-4 text-sm sm:px-6">
+  <ol class="flex flex-wrap gap-2 text-slate-600">
+    {items.map((item, index) => (
+      <li class="flex gap-2">
+        {index > 0 && <span aria-hidden="true">/</span>}
+        {index === items.length - 1 ? (
+          <span aria-current="page">{item.label}</span>
+        ) : (
+          <a href={item.href} class="text-slate-700 hover:text-brand-700">
+            {item.label}
+          </a>
+        )}
+      </li>
+    ))}
+  </ol>
+</nav>
+<JsonLd data={jsonLd} />

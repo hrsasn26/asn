@@ -1,0 +1,25 @@
+---
+// Section « Nous accompagnons » (docs/brief-agence.md, section 6.1).
+import FeatureGrid from '~/components/FeatureGrid.astro';
+import Section from '~/components/Section.astro';
+---
+
+<Section title="Nous accompagnons" tone="gris">
+  <FeatureGrid
+    columns={3}
+    items={[
+      {
+        title: 'Les particuliers et porteurs de projet',
+        text: "Un site personnel, un portfolio ou la première version de votre idée d'application.",
+      },
+      {
+        title: 'Les TPE, artisans et indépendants',
+        text: 'Un site vitrine qui inspire confiance, la prise de rendez-vous ou les demandes de devis en ligne.',
+      },
+      {
+        title: 'Les PME',
+        text: 'Des outils métier sur mesure, des logiciels qui communiquent entre eux et un hébergement fiable.',
+      },
+    ]}
+  />
+</Section>

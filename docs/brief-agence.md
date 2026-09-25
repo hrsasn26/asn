@@ -774,5 +774,5 @@ Votre site est entre de bonnes mains, et vous pouvez vous concentrer sur votre a
 - [ ] Trouver les partenaires : graphiste, rédacteur
 - [ ] Rédiger les autres pages : Accueil, Méthode, Tarifs, L'agence, Contact
 - [ ] Préparer 2 ou 3 études de cas réelles pour la page Réalisations
-- [ ] Choisir les technologies du site et commencer le développement
+- [x] Choisir les technologies du site et commencer le développement (voir [stack-technique.md](stack-technique.md))
 - [ ] Faire valider les CGV et les mentions légales par un juriste

@@ -1,0 +1,64 @@
+---
+import ButtonLink from '~/components/ButtonLink.astro';
+import { navigationPrincipale } from '~/data/navigation';
+import { cta, site } from '~/data/site';
+import { cheminPublic } from '~/lib/url';
+
+const path = cheminPublic(Astro.url.pathname);
+const isCurrent = (href: string) => path === href || path.startsWith(`${href}/`);
+---
+
+<header class="border-b border-slate-200 bg-white">
+  <div class="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-4 sm:px-6">
+    <a href="/" class="text-lg font-bold text-slate-900 no-underline">
+      {site.nom}
+    </a>
+
+    <nav aria-label="Navigation principale" class="hidden lg:block">
+      <ul class="flex items-center gap-6">
+        {navigationPrincipale.map((lien) => (
+          <li>
+            <a
+              href={lien.href}
+              aria-current={isCurrent(lien.href) ? 'page' : undefined}
+              class="text-slate-700 no-underline hover:text-brand-700 aria-[current=page]:font-semibold aria-[current=page]:text-brand-800"
+            >
+              {lien.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+
+    <div class="hidden lg:block">
+      <ButtonLink href={cta.principal.href}>{cta.principal.label}</ButtonLink>
+    </div>
+
+    <details class="group relative lg:hidden">
+      <summary class="cursor-pointer list-none rounded-md border border-slate-300 px-3 py-2 font-medium text-slate-800 [&::-webkit-details-marker]:hidden">
+        Menu
+      </summary>
+      <nav
+        aria-label="Navigation principale (mobile)"
+        class="absolute right-0 z-40 mt-2 w-64 rounded-md border border-slate-200 bg-white p-4 shadow-lg"
+      >
+        <ul class="flex flex-col gap-3">
+          {navigationPrincipale.map((lien) => (
+            <li>
+              <a
+                href={lien.href}
+                aria-current={isCurrent(lien.href) ? 'page' : undefined}
+                class="block text-slate-800 no-underline aria-[current=page]:font-semibold aria-[current=page]:text-brand-800"
+              >
+                {lien.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+        <div class="mt-4">
+          <ButtonLink href={cta.principal.href}>{cta.principal.label}</ButtonLink>
+        </div>
+      </nav>
+    </details>
+  </div>
+</header>

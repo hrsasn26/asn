@@ -1,0 +1,34 @@
+# Déploiement sur un serveur (VPS) avec Docker Compose.
+# Les variables viennent du fichier .env placé à côté de ce fichier (voir .env.example).
+services:
+  web:
+    image: ${IMAGE:-ghcr.io/hrsasn26/asn}:${IMAGE_TAG:-latest}
+    restart: unless-stopped
+    environment:
+      MAIL_TRANSPORT: ${MAIL_TRANSPORT:-brevo}
+      BREVO_API_KEY: ${BREVO_API_KEY:?BREVO_API_KEY manquant}
+      MAIL_FROM: ${MAIL_FROM:?MAIL_FROM manquant}
+      MAIL_TO: ${MAIL_TO:?MAIL_TO manquant}
+      FORM_RATE_LIMIT_MAX: ${FORM_RATE_LIMIT_MAX:-5}
+
+  caddy:
+    image: caddy:2-alpine
+    restart: unless-stopped
+    depends_on:
+      - web
+    ports:
+      - '80:80'
+      - '443:443'
+      - '443:443/udp'
+    environment:
+      SITE_DOMAIN: ${SITE_DOMAIN:?SITE_DOMAIN manquant}
+      ACME_EMAIL: ${ACME_EMAIL:?ACME_EMAIL manquant}
+      ROBOTS_TAG: ${ROBOTS_TAG:-all}
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy_data:/data
+      - caddy_config:/config
+
+volumes:
+  caddy_data:
+  caddy_config:

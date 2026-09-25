@@ -1,0 +1,19 @@
+---
+interface Props {
+  question: string;
+}
+
+const { question } = Astro.props;
+---
+
+<details class="group py-4">
+  <summary class="flex cursor-pointer list-none items-start justify-between gap-4 font-semibold text-slate-900 [&::-webkit-details-marker]:hidden">
+    <span>{question}</span>
+    <span aria-hidden="true" class="text-brand-700 group-open:rotate-45">
+      +
+    </span>
+  </summary>
+  <div class="mt-3 text-slate-700">
+    <slot />
+  </div>
+</details>

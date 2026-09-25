@@ -1,0 +1,16 @@
+---
+interface Props {
+  title?: string;
+  tone?: 'clair' | 'gris';
+  id?: string;
+}
+
+const { title, tone = 'clair', id } = Astro.props;
+---
+
+<section id={id} class:list={['scroll-mt-4', tone === 'gris' && 'bg-slate-50']}>
+  <div class="mx-auto max-w-6xl px-4 py-14 sm:px-6">
+    {title && <h2 class="mb-8 text-2xl sm:text-3xl">{title}</h2>}
+    <slot />
+  </div>
+</section>
