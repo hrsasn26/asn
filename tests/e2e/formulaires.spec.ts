@@ -23,7 +23,7 @@ test.describe('formulaire de contact', () => {
   test('envoie une demande valide', async ({ page }) => {
     await page.goto('/contact');
     await page.getByLabel(/^Nom/).fill('Camille Martin');
-    await page.getByLabel(/^E-mail/).fill('camille@exemple.fr');
+    await page.getByLabel(/^E-mail/).fill('camille@exemple.ma');
     await page.getByLabel(/^Votre projet/).selectOption('site-web');
     await page.getByLabel(/^Votre message/).fill('Je souhaite créer un site vitrine.');
     await page.getByLabel(/J'accepte/).check();
@@ -36,9 +36,9 @@ test.describe('formulaire de contact', () => {
 test.describe("formulaire d'audit gratuit", () => {
   test('envoie une demande avec une adresse sans https://', async ({ page }) => {
     await page.goto('/audit-gratuit');
-    await page.getByLabel(/^Adresse de votre site/).fill('monsite.fr');
+    await page.getByLabel(/^Adresse de votre site/).fill('monsite.ma');
     await page.getByLabel(/^Nom/).fill('Camille Martin');
-    await page.getByLabel(/^E-mail/).fill('camille@exemple.fr');
+    await page.getByLabel(/^E-mail/).fill('camille@exemple.ma');
     await page.getByLabel('Sécurité').check();
     await page.getByLabel(/J'accepte/).check();
     await page.getByRole('button', { name: 'Recevoir mon audit gratuit' }).click();
@@ -48,9 +48,9 @@ test.describe("formulaire d'audit gratuit", () => {
 
   test('refuse la demande sans consentement', async ({ page }) => {
     await page.goto('/audit-gratuit');
-    await page.getByLabel(/^Adresse de votre site/).fill('monsite.fr');
+    await page.getByLabel(/^Adresse de votre site/).fill('monsite.ma');
     await page.getByLabel(/^Nom/).fill('Camille Martin');
-    await page.getByLabel(/^E-mail/).fill('camille@exemple.fr');
+    await page.getByLabel(/^E-mail/).fill('camille@exemple.ma');
     await page.getByRole('button', { name: 'Recevoir mon audit gratuit' }).click();
 
     await expect(page.getByRole('alert')).toContainText('Acceptez la politique de confidentialité');

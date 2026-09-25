@@ -1,0 +1,181 @@
+---
+// Textes : docs/brief-agence.md, section 6.14 (proposition à valider).
+import BadgeCheck from '@lucide/astro/icons/badge-check';
+import HardHat from '@lucide/astro/icons/hard-hat';
+import LockKeyhole from '@lucide/astro/icons/lock-keyhole';
+import RefreshCw from '@lucide/astro/icons/refresh-cw';
+import Smartphone from '@lucide/astro/icons/smartphone';
+import Store from '@lucide/astro/icons/store';
+import TabletSmartphone from '@lucide/astro/icons/tablet-smartphone';
+import Workflow from '@lucide/astro/icons/workflow';
+import IllustrationMobile from '~/components/illustrations/IllustrationMobile.astro';
+import ButtonLink from '~/components/ButtonLink.astro';
+import CtaFinal from '~/components/CtaFinal.astro';
+import Faq from '~/components/Faq.astro';
+import FaqItem from '~/components/FaqItem.astro';
+import FeatureGrid from '~/components/FeatureGrid.astro';
+import Hero from '~/components/Hero.astro';
+import ProblemList from '~/components/ProblemList.astro';
+import Section from '~/components/Section.astro';
+import Steps from '~/components/Steps.astro';
+import { delais, site } from '~/data/site';
+import { tarifs } from '~/data/tarifs';
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import { serviceJsonLd } from '~/lib/seo';
+
+const title = "Création d'application mobile iPhone et Android";
+const description =
+  'Une application iPhone et Android pour vos clients ou vos équipes, testée sur de vrais téléphones et suivie après sa publication sur les stores.';
+const ctaProjet = { label: 'Parler de mon application', href: '/contact' };
+---
+
+<BaseLayout
+  title={`${title} | ${site.nom}`}
+  description={description}
+  breadcrumbs={[
+    { label: 'Services', href: '/services' },
+    { label: 'Applications mobiles', href: '/services/applications-mobiles' },
+  ]}
+  jsonLd={serviceJsonLd({ name: title, description })}
+>
+  <Hero
+    title="Votre application iPhone et Android, solide et suivie dans la durée"
+    subtitle="Pour vos clients ou pour vos équipes : nous concevons, testons et publions votre application, puis nous la gardons à jour."
+  >
+    <ButtonLink href={ctaProjet.href}>{ctaProjet.label}</ButtonLink>
+    <IllustrationMobile slot="illustration" />
+  </Hero>
+
+  <ProblemList
+    title="Une application mobile, c'est un vrai projet"
+    items={[
+      "Vous ne savez pas si vous avez besoin d'une application ou d'un site adapté au mobile.",
+      'Un devis pour iPhone, un autre pour Android : le budget double.',
+      'Une application jamais mise à jour finit par mal fonctionner sur les nouveaux téléphones.',
+      'Quand une application plante, les utilisateurs la suppriment et laissent une mauvaise note.',
+    ]}
+  />
+
+  <Section title="Des applications pour vos clients et pour vos équipes">
+    <FeatureGrid
+      items={[
+        {
+          title: 'Une application pour vos clients',
+          icone: Smartphone,
+          text: 'Réservation, commande, fidélité, suivi de livraison, espace client : vos services dans la poche de vos clients, avec des notifications pour les prévenir au bon moment.',
+        },
+        {
+          title: 'Une application pour vos équipes',
+          icone: HardHat,
+          text: "Pointage, suivi de chantier, inventaire, tournées, photos et signatures sur le terrain. L'application peut fonctionner sans connexion et envoyer les données dès que le réseau revient.",
+        },
+        {
+          title: 'Un seul développement pour iPhone et Android',
+          icone: TabletSmartphone,
+          text: 'Nous développons une seule application qui fonctionne sur les deux systèmes. Vous payez un seul projet, et les deux versions évoluent ensemble.',
+        },
+        {
+          title: "La publication sur l'App Store et Google Play",
+          icone: Store,
+          text: "Nous préparons les fiches, les captures d'écran et les documents demandés par Apple et Google, et nous suivons la validation jusqu'à la publication.",
+        },
+      ]}
+    />
+  </Section>
+
+  <Section title="Testée sur de vrais téléphones, suivie après la publication" tone="gris">
+    <FeatureGrid
+      items={[
+        {
+          title: 'Testée sur de vrais téléphones',
+          icone: BadgeCheck,
+          text: "Avant chaque publication, nous vérifions votre application sur plusieurs modèles d'iPhone et d'Android, avec des petits et des grands écrans.",
+        },
+        {
+          title: 'Connectée à vos outils',
+          icone: Workflow,
+          text: 'Votre application utilise les mêmes données que votre site, votre boutique ou votre logiciel de gestion. Vous ne saisissez rien deux fois.',
+        },
+        {
+          title: 'Vos données protégées',
+          icone: LockKeyhole,
+          text: 'Connexion chiffrée, comptes utilisateurs sécurisés et respect de la loi 09-08 sur les données personnelles.',
+        },
+        {
+          title: 'Toujours à jour',
+          icone: RefreshCw,
+          text: "Apple et Google changent leurs règles chaque année. Avec un forfait de maintenance, nous mettons votre application à jour pour qu'elle reste disponible et compatible.",
+        },
+      ]}
+    />
+  </Section>
+
+  <Section title="Comment nous travaillons">
+    <Steps
+      items={[
+        {
+          title: 'Cadrage.',
+          text: "Nous listons les écrans et les fonctionnalités, et nous gardons l'essentiel pour la première version.",
+        },
+        {
+          title: 'Maquettes.',
+          text: 'Vous voyez les écrans de votre application avant le début du développement.',
+        },
+        {
+          title: 'Développement par étapes.',
+          text: `Une nouvelle version à installer sur votre téléphone toutes les ${delais.iteration} semaines.`,
+        },
+        {
+          title: 'Tests.',
+          text: 'Tests automatiques et vérifications sur de vrais téléphones avant chaque publication.',
+        },
+        {
+          title: 'Publication et suivi.',
+          text: "Nous publions votre application sur l'App Store et Google Play, puis nous la gardons à jour.",
+        },
+      ]}
+    />
+  </Section>
+
+  <Faq>
+    <FaqItem question="Ai-je besoin d'une application ou d'un site adapté au mobile ?">
+      <p>
+        Pas toujours. Si vos clients vous consultent de temps en temps, un site rapide et adapté au
+        mobile suffit souvent, et il coûte moins cher. Une application devient utile quand vos
+        clients l'utilisent souvent, ou quand ils ont besoin des notifications, de l'appareil photo,
+        de la localisation ou d'un mode sans connexion. Nous vous le disons honnêtement dès le
+        premier échange.
+      </p>
+    </FaqItem>
+    <FaqItem question="Combien coûte une application mobile ?">
+      <p>
+        {`Cela dépend des écrans et des fonctionnalités. Après le cadrage, nous vous remettons un devis à prix fixe. À titre indicatif, une première version commence à ${tarifs.applicationMobile}.`}
+      </p>
+    </FaqItem>
+    <FaqItem question="Combien de temps faut-il ?">
+      <p>
+        Nous fixons le planning ensemble après le cadrage. Il faut aussi prévoir quelques jours pour
+        la validation de l'application par Apple et Google.
+      </p>
+    </FaqItem>
+    <FaqItem question="À qui appartient l'application ?">
+      <p>
+        À vous. Elle est publiée avec vos propres comptes développeur Apple et Google, et le code
+        vous appartient. Apple et Google facturent ces comptes directement : nous vous aidons à les
+        créer.
+      </p>
+    </FaqItem>
+    <FaqItem question="Pouvez-vous reprendre une application existante ?">
+      <p>
+        Oui. Nous commençons par un audit du code pour faire le point, puis nous vous proposons un
+        plan : corriger, faire évoluer ou reconstruire certaines parties.
+      </p>
+    </FaqItem>
+  </Faq>
+
+  <CtaFinal
+    title="Parlons de votre application"
+    text="Un échange de 30 minutes, gratuit et confidentiel, pour savoir si une application est la bonne réponse à votre besoin, et pour quel budget."
+    button={ctaProjet}
+  />
+</BaseLayout>

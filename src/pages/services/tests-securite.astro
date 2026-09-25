@@ -1,0 +1,175 @@
+---
+// Textes : docs/brief-agence.md, section 6.18 (proposition à valider).
+import BadgeCheck from '@lucide/astro/icons/badge-check';
+import Gauge from '@lucide/astro/icons/gauge';
+import MonitorSmartphone from '@lucide/astro/icons/monitor-smartphone';
+import ShieldCheck from '@lucide/astro/icons/shield-check';
+import IllustrationTests from '~/components/illustrations/IllustrationTests.astro';
+import ButtonLink from '~/components/ButtonLink.astro';
+import CtaFinal from '~/components/CtaFinal.astro';
+import Faq from '~/components/Faq.astro';
+import FaqItem from '~/components/FaqItem.astro';
+import FeatureGrid from '~/components/FeatureGrid.astro';
+import Hero from '~/components/Hero.astro';
+import ProblemList from '~/components/ProblemList.astro';
+import Section from '~/components/Section.astro';
+import Steps from '~/components/Steps.astro';
+import { cta, site } from '~/data/site';
+import { tarifs } from '~/data/tarifs';
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import { serviceJsonLd } from '~/lib/seo';
+
+const title = "Audit de sécurité et tests de sites et d'applications";
+const description =
+  'Audit de sécurité, tests avant une mise en ligne, tests automatiques et tests de charge : nous vérifions vos sites et vos applications.';
+const ctaAudit = { label: 'Demander un audit de sécurité', href: '/contact' };
+---
+
+<BaseLayout
+  title={`${title} | ${site.nom}`}
+  description={description}
+  breadcrumbs={[
+    { label: 'Services', href: '/services' },
+    { label: 'Tests et sécurité', href: '/services/tests-securite' },
+  ]}
+  jsonLd={serviceJsonLd({ name: title, description })}
+>
+  <Hero
+    title="Vos sites et vos applications, vérifiés avant vos clients"
+    subtitle="Audit de sécurité, tests avant une mise en ligne, tests automatiques : nous trouvons les problèmes avant qu'ils vous coûtent des clients. Même si nous n'avons pas développé votre projet."
+  >
+    <ButtonLink href={ctaAudit.href}>{ctaAudit.label}</ButtonLink>
+    <IllustrationTests slot="illustration" />
+  </Hero>
+
+  <ProblemList
+    title="Vous n'êtes pas sûr de votre site ou de votre application ?"
+    items={[
+      'Votre prestataire livre sans tester, et vos clients découvrent les bugs.',
+      'Vous ne savez pas si votre site résiste aux attaques courantes.',
+      'Chaque nouvelle version casse une fonction qui marchait.',
+      'Vous préparez un lancement ou une campagne, et vous craignez que le site ne tienne pas.',
+    ]}
+  />
+
+  <Section title="Quatre façons de sécuriser votre projet">
+    <FeatureGrid
+      items={[
+        {
+          title: 'Audit de sécurité',
+          icone: ShieldCheck,
+          text: 'Nous recherchons les failles les plus courantes : mises à jour oubliées, mots de passe faibles, accès trop larges, formulaires mal protégés, serveur mal configuré. Vous recevez un rapport avec les failles classées par gravité, et les corrections à faire.',
+        },
+        {
+          title: 'Tests avant une mise en ligne',
+          icone: MonitorSmartphone,
+          text: "Avant le lancement d'un site ou d'une nouvelle version, nous vérifions chaque parcours important : inscription, commande, paiement, formulaires. Sur ordinateur, tablette et mobile, dans les principaux navigateurs.",
+        },
+        {
+          title: 'Tests automatiques',
+          icone: BadgeCheck,
+          text: 'Nous ajoutons des tests automatiques à votre projet. À chaque nouvelle version, ils vérifient que ce qui fonctionnait fonctionne toujours.',
+        },
+        {
+          title: 'Tests de charge',
+          icone: Gauge,
+          text: "Nous simulons un grand nombre de visiteurs en même temps. Vous savez si votre site tient le jour d'un pic (soldes, fêtes, campagne publicitaire), et vous connaissez ses limites avant vos clients.",
+        },
+      ]}
+    />
+  </Section>
+
+  <Section title="Des spécialistes des tests" tone="gris">
+    <p class="max-w-3xl text-lg text-slate-700">
+      Les tests sont au cœur de notre métier : nous testons chacun de nos propres projets avant la
+      mise en ligne. Nous appliquons la même méthode à vos projets, même s'ils ont été développés
+      par un autre prestataire ou par votre équipe. Nos rapports sont écrits sans jargon : chaque
+      problème est expliqué, avec son effet sur votre activité et la correction à faire.
+    </p>
+  </Section>
+
+  <Section title="Nos règles">
+    <ul class="grid max-w-3xl list-disc gap-2 pl-5 text-lg text-slate-700">
+      <li>
+        Nous testons uniquement avec l'accord écrit du propriétaire du site ou de l'application.
+      </li>
+      <li>
+        Nous gardons vos informations confidentielles, et nous pouvons signer un accord de
+        confidentialité.
+      </li>
+      <li>
+        Un audit réduit les risques, mais personne ne peut garantir qu'un site ne sera jamais
+        piraté. Nous vous le disons honnêtement.
+      </li>
+    </ul>
+  </Section>
+
+  <Section title="Comment nous travaillons" tone="gris">
+    <Steps
+      items={[
+        {
+          title: 'Cadrage.',
+          text: 'Nous définissons ensemble ce qui est testé, comment et quand. Vous signez une autorisation.',
+        },
+        {
+          title: 'Tests.',
+          text: 'Nous vérifions votre site ou votre application, sans perturber vos clients.',
+        },
+        {
+          title: 'Rapport.',
+          text: 'Vous recevez la liste des problèmes, classés par gravité, avec les corrections.',
+        },
+        {
+          title: 'Corrections.',
+          text: 'Nous corrigeons nous-mêmes, ou nous accompagnons votre prestataire.',
+        },
+        {
+          title: 'Nouvelle vérification.',
+          text: 'Nous vérifions que chaque correction fonctionne.',
+        },
+      ]}
+    />
+  </Section>
+
+  <Faq>
+    <FaqItem question="Quelle différence avec l'audit gratuit ?">
+      <p>
+        L'audit gratuit regarde votre site de l'extérieur : vitesse, sécurité de base, référencement
+        technique et affichage mobile. L'audit de sécurité va plus loin : avec votre accord, nous
+        examinons aussi le code, le serveur et les accès.
+      </p>
+      <p>
+        <a href={cta.secondaire.href}>{cta.secondaire.label}</a>
+      </p>
+    </FaqItem>
+    <FaqItem question="Pouvez-vous tester un projet développé par un autre prestataire ?">
+      <p>
+        Oui, c'est même le cas le plus fréquent. Nous avons besoin de votre accord écrit et, pour
+        aller plus loin, d'un accès au code ou au serveur.
+      </p>
+    </FaqItem>
+    <FaqItem question="Les tests vont-ils perturber mon site ?">
+      <p>
+        Nous planifions les tests avec vous. Les tests de charge se font hors des heures
+        d'affluence, ou sur une copie de votre site.
+      </p>
+    </FaqItem>
+    <FaqItem question="Combien ça coûte ?">
+      <p>
+        {`Un audit de sécurité commence à ${tarifs.auditSecurite}. Pour les tests d'une application, nous vous remettons un devis à prix fixe après le cadrage.`}
+      </p>
+    </FaqItem>
+    <FaqItem question="Que se passe-t-il après l'audit ?">
+      <p>
+        Vous êtes libre : vous corrigez avec votre prestataire, ou nous nous en chargeons. Avec un
+        forfait de maintenance, nous surveillons ensuite votre site dans la durée.
+      </p>
+    </FaqItem>
+  </Faq>
+
+  <CtaFinal
+    title="Faites vérifier votre site ou votre application"
+    text="Un échange de 30 minutes, gratuit et confidentiel, pour définir ce qu'il faut tester en priorité."
+    button={ctaAudit}
+  />
+</BaseLayout>

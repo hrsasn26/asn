@@ -3,7 +3,10 @@
 	email {$ACME_EMAIL}
 }
 
-{$SITE_DOMAIN} {
+# SITE_DOMAIN : domaine du site (ex. : www.digital-solutions.ma).
+# DOMAINES_REDIRIGES : domaines redirigés vers SITE_DOMAIN (ex. : digital-solutions.ma).
+# Vide en préproduction.
+{$SITE_DOMAIN} {$DOMAINES_REDIRIGES} {
 	encode zstd gzip
 
 	# La politique de sécurité du contenu (CSP) est produite par Astro, page par page.
@@ -18,13 +21,12 @@
 		-Server
 	}
 
+	@autreDomaine not host {$SITE_DOMAIN}
+	redir @autreDomaine https://{$SITE_DOMAIN}{uri} permanent
+
 	# Les fichiers de /_astro/ ont un nom unique à chaque build : cache long.
 	@assets path /_astro/*
 	header @assets Cache-Control "public, max-age=31536000, immutable"
 
 	reverse_proxy web:4321
-}
-
-www.{$SITE_DOMAIN} {
-	redir https://{$SITE_DOMAIN}{uri} permanent
 }

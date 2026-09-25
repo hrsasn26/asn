@@ -45,10 +45,47 @@ const projets = [
     href: '/services/applications-sur-mesure',
   },
   {
+    nom: 'Application mobile',
+    description: "iPhone et Android, publiée sur l'App Store et Google Play.",
+    prix: `À partir de ${tarifs.applicationMobile}`,
+    href: '/services/applications-mobiles',
+  },
+  {
+    nom: 'Logiciel SaaS',
+    description: 'Votre logiciel en ligne, vendu par abonnement.',
+    prix: "Sur devis, après l'atelier de cadrage",
+    href: '/services/logiciels-saas',
+  },
+  {
+    nom: 'Assistant IA',
+    description:
+      "Un assistant pour vos clients ou vos équipes. Le coût d'utilisation du service d'IA s'ajoute, selon l'usage.",
+    prix: `À partir de ${tarifs.assistantIA}`,
+    href: '/services/intelligence-artificielle',
+  },
+  {
+    nom: "Formation à l'IA",
+    description: 'Un atelier pratique pour vos équipes, avec vos propres cas de travail.',
+    prix: `À partir de ${tarifs.formationIA}`,
+    href: '/services/intelligence-artificielle#formation',
+  },
+  {
     nom: 'Automatisation simple',
     description: 'Une tâche répétitive faite automatiquement.',
     prix: `À partir de ${tarifs.automatisation}`,
     href: '/services/automatisation-integrations',
+  },
+  {
+    nom: 'Tableau de bord',
+    description: 'Vos chiffres clés sur un seul écran, mis à jour automatiquement.',
+    prix: `À partir de ${tarifs.tableauDeBord}`,
+    href: '/services/donnees-tableaux-de-bord',
+  },
+  {
+    nom: 'Audit de sécurité',
+    description: 'Recherche des failles, rapport clair et plan de correction.',
+    prix: `À partir de ${tarifs.auditSecurite}`,
+    href: '/services/tests-securite',
   },
 ];
 ---
@@ -84,8 +121,8 @@ const projets = [
 
   <Section title="Inclus dans tous nos sites" tone="gris">
     <p class="max-w-3xl text-lg text-slate-700">
-      Adapté à tous les écrans, rapide, référencement technique, sécurisé, conforme au RGPD,
-      accessible, modifiable par vous, formation incluse.
+      Adapté à tous les écrans, rapide, référencement technique, sécurisé, conforme à la loi 09-08
+      sur les données personnelles, accessible, modifiable par vous, formation incluse.
     </p>
     <p class="mt-6">
       <a href="/services/sites-web" class="font-semibold text-brand-700 hover:text-brand-800">
@@ -117,7 +154,7 @@ const projets = [
   <Section title="Vous êtes un particulier ?">
     <p class="max-w-3xl text-lg text-slate-700">
       Nos forfaits à prix fixe sont pensés pour les budgets maîtrisés. Pour un contrat conclu à
-      distance, vous disposez d'un délai de rétractation de 14 jours. {offre.conditionsRetractation}
+      distance, vous disposez d'un délai de rétractation de 7 jours. {offre.conditionsRetractation}
     </p>
   </Section>
 

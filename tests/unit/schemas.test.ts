@@ -3,7 +3,7 @@ import { normaliserAdresseSite, schemaAudit, schemaContact } from '../../src/lib
 
 const contactValide = {
   nom: 'Camille Martin',
-  email: 'camille@exemple.fr',
+  email: 'camille@exemple.ma',
   message: 'Je souhaite créer un site vitrine.',
   consentement: true,
 };
@@ -22,7 +22,7 @@ describe('schemaContact', () => {
   it('refuse une adresse e-mail invalide avec un message en français', () => {
     const resultat = schemaContact.safeParse({ ...contactValide, email: 'camille' });
     expect(resultat.error?.issues[0]?.message).toBe(
-      'Indiquez une adresse e-mail valide, par exemple nom@exemple.fr.',
+      'Indiquez une adresse e-mail valide, par exemple nom@exemple.ma.',
     );
   });
 
@@ -39,15 +39,15 @@ describe('schemaContact', () => {
 
 describe('schemaAudit', () => {
   const auditValide = {
-    adresseSite: 'monsite.fr',
+    adresseSite: 'monsite.ma',
     nom: 'Camille Martin',
-    email: 'camille@exemple.fr',
+    email: 'camille@exemple.ma',
     consentement: true,
   };
 
   it("ajoute https:// à l'adresse du site", () => {
     const resultat = schemaAudit.parse(auditValide);
-    expect(resultat.adresseSite).toBe('https://monsite.fr/');
+    expect(resultat.adresseSite).toBe('https://monsite.ma/');
   });
 
   it('utilise « Je ne sais pas » par défaut', () => {
@@ -63,14 +63,14 @@ describe('schemaAudit', () => {
 
 describe('normaliserAdresseSite', () => {
   it.each([
-    ['monsite.fr', 'https://monsite.fr/'],
-    ['http://monsite.fr/page', 'http://monsite.fr/page'],
-    ['  https://www.monsite.fr  ', 'https://www.monsite.fr/'],
+    ['monsite.ma', 'https://monsite.ma/'],
+    ['http://monsite.ma/page', 'http://monsite.ma/page'],
+    ['  https://www.monsite.ma  ', 'https://www.monsite.ma/'],
   ])('%s → %s', (saisie, attendu) => {
     expect(normaliserAdresseSite(saisie)).toBe(attendu);
   });
 
-  it.each(['localhost', 'monsite', 'ftp://monsite.fr', ''])('refuse « %s »', (saisie) => {
+  it.each(['localhost', 'monsite', 'ftp://monsite.ma', ''])('refuse « %s »', (saisie) => {
     expect(normaliserAdresseSite(saisie)).toBeUndefined();
   });
 });
