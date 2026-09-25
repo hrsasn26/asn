@@ -1,0 +1,20 @@
+---
+// Page à rédiger (voir CLAUDE.md) : équipe et valeurs.
+import Placeholder from '~/components/Placeholder.astro';
+import Section from '~/components/Section.astro';
+import { site } from '~/data/site';
+import BaseLayout from '~/layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title={`L'agence | ${site.nom}`}
+  description="[Meta description à rédiger]"
+  breadcrumbs={[{ label: "L'agence", href: '/agence' }]}
+>
+  <Section>
+    <h1 class="text-3xl sm:text-4xl">L'agence</h1>
+    <div class="mt-6 max-w-3xl">
+      <Placeholder text="[À rédiger : équipe et valeurs]" />
+    </div>
+  </Section>
+</BaseLayout>

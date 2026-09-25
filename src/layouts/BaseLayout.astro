@@ -1,0 +1,56 @@
+---
+import '~/styles/global.css';
+import Breadcrumbs from '~/components/Breadcrumbs.astro';
+import Footer from '~/components/Footer.astro';
+import Header from '~/components/Header.astro';
+import JsonLd from '~/components/JsonLd.astro';
+import type { LienNav } from '~/data/navigation';
+import { cheminPublic } from '~/lib/url';
+
+interface Props {
+  /** Contenu complet de la balise <title> (voir le brief pour chaque page). */
+  title: string;
+  description: string;
+  /** Fil d'Ariane, sans l'accueil. Le dernier élément est la page courante. */
+  breadcrumbs?: LienNav[];
+  /** Données structurées schema.org propres à la page. */
+  jsonLd?: Record<string, unknown>;
+}
+
+const { title, description, breadcrumbs, jsonLd } = Astro.props;
+const canonical = new URL(cheminPublic(Astro.url.pathname), Astro.site);
+---
+
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <link rel="alternate" type="application/rss+xml" title="Blog" href="/rss.xml" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="fr_FR" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    {jsonLd && <JsonLd data={jsonLd} />}
+  </head>
+  <body class="flex min-h-screen flex-col">
+    <a
+      href="#contenu"
+      class="sr-only rounded bg-white px-4 py-2 font-medium text-brand-800 focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-50"
+    >
+      Aller au contenu
+    </a>
+    <Header />
+    {breadcrumbs && <Breadcrumbs items={breadcrumbs} />}
+    <main id="contenu" class="flex-1" tabindex="-1">
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>

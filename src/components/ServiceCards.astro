@@ -1,0 +1,38 @@
+---
+// Cartes des quatre pôles (docs/brief-agence.md, section 6.1).
+import ServiceCard from '~/components/ServiceCard.astro';
+---
+
+<div class="grid gap-6 md:grid-cols-2">
+  <ServiceCard
+    title="Sites web"
+    text="Un site vitrine ou une boutique en ligne rapide, bien référencé et facile à mettre à jour."
+    items={['Site vitrine', 'Boutique en ligne', 'Refonte de site existant']}
+    link={{ label: "Découvrir l'offre Sites web", href: '/services/sites-web' }}
+  />
+  <ServiceCard
+    title="Applications sur mesure"
+    text="Un outil conçu pour votre façon de travailler : réservation, devis, planning, espace client ou application mobile."
+    items={[
+      'Outils métier',
+      'Applications web et mobiles',
+      "Première version de votre projet d'application",
+    ]}
+    link={{ label: "Découvrir l'offre Applications", href: '/services/applications-sur-mesure' }}
+  />
+  <ServiceCard
+    title="Automatisation et intégrations"
+    text="Vos logiciels connectés entre eux, et les tâches répétitives faites automatiquement."
+    items={['Connexion de vos outils', 'Automatisation des tâches', "Intégration de l'IA"]}
+    link={{
+      label: "Découvrir l'offre Automatisation",
+      href: '/services/automatisation-integrations',
+    }}
+  />
+  <ServiceCard
+    title="Hébergement et maintenance"
+    text="Votre site en ligne, sauvegardé et à jour. Vous n'avez plus à y penser."
+    items={['Hébergement sécurisé', 'Sauvegardes et mises à jour', 'Reprise de site existant']}
+    link={{ label: 'Découvrir nos forfaits', href: '/services/hebergement-maintenance' }}
+  />
+</div>

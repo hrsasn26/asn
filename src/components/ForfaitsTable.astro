@@ -1,0 +1,66 @@
+---
+import { forfaitsMaintenance } from '~/data/tarifs';
+
+const lignes: { label: string; valeur: (f: (typeof forfaitsMaintenance)[number]) => string }[] = [
+  { label: 'Pour qui', valeur: (f) => f.pourQui },
+  { label: 'Hébergement + HTTPS', valeur: () => '✓' },
+  { label: 'Sauvegardes', valeur: (f) => f.sauvegardes },
+  { label: 'Surveillance 24 h/24', valeur: () => '✓' },
+  { label: 'Mises à jour de sécurité', valeur: () => '✓' },
+  { label: 'Modifications incluses', valeur: (f) => f.modifications },
+  { label: "Délai d'intervention", valeur: (f) => f.delaiIntervention },
+  { label: 'Rapport mensuel', valeur: (f) => (f.rapportMensuel ? '✓' : '—') },
+  { label: 'Prix', valeur: (f) => f.prix },
+];
+---
+
+<div
+  class="overflow-x-auto rounded-lg border border-slate-200"
+  role="region"
+  aria-label="Comparatif des forfaits"
+  tabindex="0"
+>
+  <table class="w-full min-w-xl border-collapse text-left">
+    <caption class="sr-only">Comparatif des forfaits d'hébergement et de maintenance</caption>
+    <thead class="bg-slate-50">
+      <tr>
+        <td class="p-3"></td>
+        {forfaitsMaintenance.map((f) => (
+          <th scope="col" class="p-3 text-slate-900">
+            {f.nom}
+            {f.recommande && <span class="block text-sm font-normal italic">(recommandé)</span>}
+          </th>
+        ))}
+      </tr>
+    </thead>
+    <tbody>
+      {lignes.map((ligne) => (
+        <tr class="border-t border-slate-200">
+          <th scope="row" class="p-3 font-medium text-slate-900">
+            {ligne.label}
+          </th>
+          {forfaitsMaintenance.map((f) => {
+            const valeur = ligne.valeur(f);
+            return (
+              <td class="p-3 text-slate-700">
+                {valeur === '✓' ? (
+                  <>
+                    <span aria-hidden="true">✓</span>
+                    <span class="sr-only">Inclus</span>
+                  </>
+                ) : valeur === '—' ? (
+                  <>
+                    <span aria-hidden="true">—</span>
+                    <span class="sr-only">Non inclus</span>
+                  </>
+                ) : (
+                  valeur
+                )}
+              </td>
+            );
+          })}
+        </tr>
+      ))}
+    </tbody>
+  </table>
+</div>

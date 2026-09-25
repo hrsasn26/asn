@@ -1,0 +1,128 @@
+---
+// Textes : docs/brief-agence.md, section 6.1.
+import AuditTeaser from '~/components/AuditTeaser.astro';
+import ButtonLink from '~/components/ButtonLink.astro';
+import CtaFinal from '~/components/CtaFinal.astro';
+import Faq from '~/components/Faq.astro';
+import FaqItem from '~/components/FaqItem.astro';
+import FeatureGrid from '~/components/FeatureGrid.astro';
+import Hero from '~/components/Hero.astro';
+import PourQui from '~/components/PourQui.astro';
+import Section from '~/components/Section.astro';
+import ServiceCards from '~/components/ServiceCards.astro';
+import Steps from '~/components/Steps.astro';
+import { cta, delais, offre, site } from '~/data/site';
+import { tarifs } from '~/data/tarifs';
+import BaseLayout from '~/layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title={`Création de sites web et d'applications sur mesure | ${site.nom}`}
+  description="Sites web, applications, automatisation et maintenance pour TPE, PME et particuliers. Des projets conçus par des ingénieurs, testés et suivis dans la durée."
+  breadcrumbs={[{ label: 'Services', href: '/services' }]}
+>
+  <Hero
+    title="Des sites et des applications qui fonctionnent. Aujourd'hui, et dans cinq ans."
+    subtitle="Nous sommes une équipe d'ingénieurs. Nous concevons, testons, hébergeons et maintenons vos projets web, pour que vous puissiez vous concentrer sur votre activité."
+  >
+    <ButtonLink href={cta.principal.href}>{cta.principal.label}</ButtonLink>
+    <ButtonLink href={cta.secondaire.href} variant="secondaire">
+      {cta.secondaire.label}
+    </ButtonLink>
+  </Hero>
+
+  <Section title="Ce que nous faisons pour vous">
+    <ServiceCards />
+  </Section>
+
+  <Section title="Pourquoi travailler avec nous" tone="gris">
+    <FeatureGrid
+      items={[
+        {
+          title: 'Conçu par des ingénieurs',
+          text: 'Votre projet est développé par des ingénieurs logiciels, avec les méthodes des grandes entreprises, adaptées à la taille de la vôtre.',
+        },
+        {
+          title: 'Tout est testé avant la mise en ligne',
+          text: 'Chaque page, chaque formulaire et chaque paiement est vérifié sur ordinateur, tablette et mobile. Vous ne découvrez pas les bugs à la place de vos clients.',
+        },
+        {
+          title: 'Un seul interlocuteur',
+          text: 'Du premier échange à la maintenance, vous parlez aux personnes qui construisent votre projet. Pas de sous-traitance cachée.',
+        },
+        {
+          title: 'Vous restez propriétaire',
+          text: 'Votre code, votre nom de domaine et vos données vous appartiennent. Si un jour vous changez de prestataire, vous repartez avec tout.',
+        },
+      ]}
+    />
+  </Section>
+
+  <Section title="Comment se déroule votre projet">
+    <Steps
+      items={[
+        {
+          title: 'On échange.',
+          text: 'Un appel de 30 minutes, gratuit, pour comprendre votre besoin.',
+        },
+        {
+          title: 'On vous envoie un devis clair.',
+          text: 'Un prix fixe, des délais et la liste précise de ce qui est inclus.',
+        },
+        {
+          title: 'On développe.',
+          text: "Vous suivez l'avancement et validez chaque étape.",
+        },
+        {
+          title: 'On teste.',
+          text: 'Tout est vérifié avant la mise en ligne, sur tous les écrans.',
+        },
+        {
+          title: 'On met en ligne et on reste là.',
+          text: "On vous forme à l'utilisation, puis on assure la maintenance si vous le souhaitez.",
+        },
+      ]}
+    />
+  </Section>
+
+  <PourQui />
+
+  <AuditTeaser />
+
+  <Faq>
+    <FaqItem question="Combien coûte un site ou une application ?">
+      <p>
+        Nos sites vitrines commencent à {tarifs.siteVitrine}. Chaque projet fait l'objet d'un devis
+        gratuit, détaillé et à prix fixe : vous savez exactement ce que vous payez avant de vous
+        engager.
+      </p>
+    </FaqItem>
+    <FaqItem question="Combien de temps faut-il ?">
+      <p>
+        Comptez {delais.siteVitrine} pour un site vitrine et {delais.boutique} pour une boutique en
+        ligne. Pour une application, nous fixons le délai ensemble après le cadrage.
+      </p>
+    </FaqItem>
+    <FaqItem question="Je n'y connais rien en informatique. Est-ce un problème ?">
+      <p>
+        Non. Nous vous expliquons chaque choix simplement, et nous vous formons à l'utilisation de
+        votre site ou de votre outil à la livraison.
+      </p>
+    </FaqItem>
+    <FaqItem question="Vous occupez-vous du design ?">
+      <p>Oui. {offre.design}. Vous validez les maquettes avant le début du développement.</p>
+    </FaqItem>
+    <FaqItem question="J'ai déjà un site ou une application. Pouvez-vous le reprendre ?">
+      <p>
+        Oui. Nous commençons par un audit pour faire le point, puis nous vous proposons un plan :
+        corriger, améliorer ou reconstruire si c'est plus raisonnable.
+      </p>
+    </FaqItem>
+  </Faq>
+
+  <CtaFinal
+    title="Parlons de votre projet"
+    text="Un échange de 30 minutes, gratuit et sans engagement, pour comprendre votre besoin et vous dire honnêtement ce que nous pouvons faire pour vous."
+    button={cta.principal}
+  />
+</BaseLayout>

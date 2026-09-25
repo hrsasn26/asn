@@ -1,0 +1,42 @@
+---
+import { getCollection } from 'astro:content';
+import Section from '~/components/Section.astro';
+import { site } from '~/data/site';
+import BaseLayout from '~/layouts/BaseLayout.astro';
+
+const articles = (await getCollection('blog', ({ data }) => !data.draft)).sort(
+  (a, b) => b.data.publishedAt.getTime() - a.data.publishedAt.getTime(),
+);
+const formatDate = new Intl.DateTimeFormat('fr-FR', { dateStyle: 'long' });
+---
+
+<BaseLayout
+  title={`Blog | ${site.nom}`}
+  description="[Meta description à rédiger]"
+  breadcrumbs={[{ label: 'Blog', href: '/blog' }]}
+>
+  <Section>
+    <h1 class="text-3xl sm:text-4xl">Blog</h1>
+    {articles.length === 0 ? (
+      <p class="mt-6 text-slate-700">Aucun article pour l'instant.</p>
+    ) : (
+      <ul class="mt-8 grid gap-6">
+        {articles.map((article) => (
+          <li class="rounded-lg border border-slate-200 p-6">
+            <h2 class="text-xl">
+              <a href={`/blog/${article.id}`} class="text-slate-900 hover:text-brand-700">
+                {article.data.title}
+              </a>
+            </h2>
+            <p class="mt-1 text-sm text-slate-600">
+              <time datetime={article.data.publishedAt.toISOString()}>
+                {formatDate.format(article.data.publishedAt)}
+              </time>
+            </p>
+            <p class="mt-2 text-slate-700">{article.data.description}</p>
+          </li>
+        ))}
+      </ul>
+    )}
+  </Section>
+</BaseLayout>

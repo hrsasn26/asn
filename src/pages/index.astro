@@ -1,0 +1,48 @@
+---
+// Page à rédiger (voir CLAUDE.md). En attendant, elle reprend des textes validés du brief :
+// promesse (section 4) et blocs de la page Services (section 6.1).
+import AuditTeaser from '~/components/AuditTeaser.astro';
+import ButtonLink from '~/components/ButtonLink.astro';
+import CtaFinal from '~/components/CtaFinal.astro';
+import Hero from '~/components/Hero.astro';
+import Placeholder from '~/components/Placeholder.astro';
+import PourQui from '~/components/PourQui.astro';
+import Section from '~/components/Section.astro';
+import ServiceCards from '~/components/ServiceCards.astro';
+import { cta, site } from '~/data/site';
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import { organisationJsonLd } from '~/lib/seo';
+---
+
+<BaseLayout
+  title={`${site.nom} | [Balise title à rédiger]`}
+  description="[Meta description à rédiger]"
+  jsonLd={organisationJsonLd(Astro.site ?? Astro.url.origin)}
+>
+  <Hero title="Des sites et des applications conçus par des ingénieurs : fiables, testés, sécurisés et suivis dans la durée.">
+    <ButtonLink href={cta.principal.href}>{cta.principal.label}</ButtonLink>
+    <ButtonLink href={cta.secondaire.href} variant="secondaire">
+      {cta.secondaire.label}
+    </ButtonLink>
+  </Hero>
+
+  <Section title="Ce que nous faisons pour vous">
+    <ServiceCards />
+  </Section>
+
+  <PourQui />
+
+  <Section>
+    <div class="max-w-3xl">
+      <Placeholder text="[À rédiger : autres sections de l'accueil, par exemple la méthode en bref et les réalisations]" />
+    </div>
+  </Section>
+
+  <AuditTeaser />
+
+  <CtaFinal
+    title="Parlons de votre projet"
+    text="Un échange de 30 minutes, gratuit et sans engagement, pour comprendre votre besoin et vous dire honnêtement ce que nous pouvons faire pour vous."
+    button={cta.principal}
+  />
+</BaseLayout>

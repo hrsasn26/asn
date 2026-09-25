@@ -1,0 +1,40 @@
+---
+interface Props {
+  /** Erreurs par champ, dans l'ordre du formulaire. */
+  errors: { name: string; message: string }[];
+  /** Erreur générale (envoi impossible, trop de demandes…). */
+  message?: string | undefined;
+}
+
+const { errors, message } = Astro.props;
+---
+
+{(errors.length > 0 || message) && (
+  <div
+    role="alert"
+    id="erreurs-formulaire"
+    tabindex="-1"
+    class="mb-6 rounded-md border-2 border-red-700 bg-red-50 p-4 text-red-900"
+  >
+    {errors.length > 0 ? (
+      <>
+        <h2 class="text-lg text-red-900">
+          {errors.length === 1
+            ? 'Le formulaire contient 1 erreur'
+            : `Le formulaire contient ${errors.length} erreurs`}
+        </h2>
+        <ul class="mt-2 list-disc pl-5">
+          {errors.map((erreur) => (
+            <li>
+              <a href={`#champ-${erreur.name}`} class="underline">
+                {erreur.message}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </>
+    ) : (
+      <p>{message}</p>
+    )}
+  </div>
+)}

@@ -1,0 +1,155 @@
+---
+// Textes : docs/brief-agence.md, section 6.4.
+import ButtonLink from '~/components/ButtonLink.astro';
+import CtaFinal from '~/components/CtaFinal.astro';
+import Faq from '~/components/Faq.astro';
+import FaqItem from '~/components/FaqItem.astro';
+import FeatureGrid from '~/components/FeatureGrid.astro';
+import Hero from '~/components/Hero.astro';
+import ProblemList from '~/components/ProblemList.astro';
+import Section from '~/components/Section.astro';
+import Steps from '~/components/Steps.astro';
+import { offre, site } from '~/data/site';
+import { tarifs } from '~/data/tarifs';
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import { serviceJsonLd } from '~/lib/seo';
+
+const title = 'Automatisation et connexion de vos logiciels';
+const description =
+  "Connectez votre site, votre CRM et votre comptabilité. Automatisez les tâches répétitives et utilisez l'IA là où elle vous fait vraiment gagner du temps.";
+const ctaTaches = { label: 'Identifier mes tâches à automatiser', href: '/contact' };
+---
+
+<BaseLayout
+  title={`${title} | ${site.nom}`}
+  description={description}
+  breadcrumbs={[
+    { label: 'Services', href: '/services' },
+    { label: 'Automatisation et intégrations', href: '/services/automatisation-integrations' },
+  ]}
+  jsonLd={serviceJsonLd({ name: title, description })}
+>
+  <Hero
+    title="Moins de saisie, moins d'erreurs, plus de temps pour votre métier"
+    subtitle="Nous connectons vos outils entre eux et automatisons les tâches répétitives. Vos informations circulent toutes seules, au bon endroit."
+  >
+    <ButtonLink href={ctaTaches.href}>{ctaTaches.label}</ButtonLink>
+  </Hero>
+
+  <ProblemList
+    title="Ça vous parle ?"
+    items={[
+      'Vous recopiez les commandes du site dans votre logiciel de facturation.',
+      'Vous envoyez les mêmes e-mails de relance à la main.',
+      'Les informations clients sont éparpillées entre votre boîte mail, un tableur et votre CRM.',
+      "Chaque semaine, vous exportez un fichier d'un outil pour l'importer dans un autre.",
+    ]}
+  />
+
+  <Section title="Trois façons de vous faire gagner du temps">
+    <FeatureGrid
+      columns={3}
+      items={[
+        {
+          title: 'Connecter vos outils',
+          text: 'Site web, boutique, CRM, comptabilité, agenda, e-mailing : nous les faisons communiquer. Chaque commande crée automatiquement sa facture, et chaque demande de contact arrive directement dans votre CRM.',
+        },
+        {
+          title: 'Automatiser les tâches répétitives',
+          text: "Relances, rapports, notifications, synchronisation des stocks. Nous utilisons des outils éprouvés (n8n, Make, Zapier), ou un développement sur mesure quand c'est nécessaire.",
+        },
+        {
+          title: "Intégrer l'IA, là où elle est utile",
+          text: "Un assistant sur votre site qui répond aux questions fréquentes, le tri automatique de vos documents, l'extraction des informations de vos factures. Nous n'intégrons l'IA que là où elle vous fait vraiment gagner du temps, et vos données restent protégées.",
+        },
+      ]}
+    />
+  </Section>
+
+  <Section title="Quelques exemples concrets" tone="gris">
+    <ul class="grid max-w-3xl gap-4 text-slate-700">
+      <li>
+        <strong class="text-slate-900">Pour un artisan :</strong> une demande de devis arrive sur le
+        site → la fiche client est créée → un devis prérempli est prêt à envoyer → une relance part
+        automatiquement sans réponse sous 7 jours.
+      </li>
+      <li>
+        <strong class="text-slate-900">Pour une boutique en ligne :</strong> une commande est passée
+        → la facture est créée dans le logiciel de comptabilité → le stock est mis à jour → le
+        client reçoit son e-mail de suivi.
+      </li>
+      <li>
+        <strong class="text-slate-900">Pour un cabinet ou un bureau :</strong> les documents reçus
+        par e-mail sont classés automatiquement dans le bon dossier client.
+      </li>
+    </ul>
+  </Section>
+
+  <Section title="Des automatisations fiables, pas du bricolage">
+    <p class="max-w-3xl text-lg text-slate-700">
+      Une automatisation qui tombe en panne sans que personne ne le remarque peut faire plus de
+      dégâts que pas d'automatisation du tout. Nous testons chaque scénario avant la mise en
+      service, nous surveillons son fonctionnement et nous sommes alertés en cas d'erreur. Tout est
+      documenté : vous savez ce qui tourne et pourquoi.
+    </p>
+  </Section>
+
+  <Section title="Comment nous travaillons" tone="gris">
+    <Steps
+      items={[
+        {
+          title: 'Diagnostic.',
+          text: 'Nous regardons avec vous les tâches qui vous prennent du temps et nous estimons le temps que vous pouvez gagner.',
+        },
+        {
+          title: 'Proposition.',
+          text: 'Nous classons les automatisations par gain de temps et vous choisissez les priorités.',
+        },
+        {
+          title: 'Mise en place et tests.',
+          text: 'Nous construisons chaque automatisation et la testons avec des cas réels.',
+        },
+        {
+          title: 'Suivi.',
+          text: 'Nous surveillons le bon fonctionnement et nous adaptons les automatisations quand vos outils changent.',
+        },
+      ]}
+    />
+  </Section>
+
+  <Faq>
+    <FaqItem question="Quels logiciels pouvez-vous connecter ?">
+      <p>
+        La plupart des logiciels récents peuvent être connectés : CRM, comptabilité, boutique en
+        ligne, agenda, e-mailing. Dites-nous lesquels vous utilisez, nous vérifions pour vous.
+      </p>
+    </FaqItem>
+    <FaqItem question="Dois-je changer mes outils ?">
+      <p>Non. Nous partons de ceux que vous utilisez déjà.</p>
+    </FaqItem>
+    <FaqItem question="Que se passe-t-il si une automatisation tombe en panne ?">
+      <p>
+        Nous sommes alertés et nous intervenons. Avec un forfait de maintenance, la correction est
+        incluse.
+      </p>
+    </FaqItem>
+    <FaqItem question="Mes données sont-elles en sécurité avec l'IA ?">
+      <p>
+        Nous choisissons des services conformes au RGPD, qui n'utilisent pas vos données pour
+        entraîner leurs modèles. {offre.confidentialiteIA}
+      </p>
+    </FaqItem>
+    <FaqItem question="Combien ça coûte ?">
+      <p>
+        Une automatisation simple commence à {tarifs.automatisation}. Avant de commencer, nous
+        estimons avec vous le temps gagné, pour que vous décidiez en connaissance de cause.
+      </p>
+    </FaqItem>
+  </Faq>
+
+  <CtaFinal
+    title="Quelles tâches pourriez-vous ne plus jamais faire ?"
+    text="Listez-nous les tâches répétitives qui vous prennent du temps. Nous vous disons gratuitement ce qui peut être automatisé."
+    button={ctaTaches}
+  />
+</BaseLayout>

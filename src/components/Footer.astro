@@ -1,0 +1,50 @@
+---
+import { liensLegaux, services } from '~/data/navigation';
+import { cta, site } from '~/data/site';
+---
+
+<footer class="mt-16 border-t border-slate-200 bg-slate-50">
+  <div class="mx-auto grid max-w-6xl gap-8 px-4 py-10 sm:px-6 md:grid-cols-3">
+    <div>
+      <p class="font-bold text-slate-900">{site.nom}</p>
+      <p class="mt-2 text-sm text-slate-700">
+        Des sites et des applications conçus par des ingénieurs : fiables, testés, sécurisés et
+        suivis dans la durée.
+      </p>
+    </div>
+    <nav aria-label="Services">
+      <p class="font-semibold text-slate-900">Services</p>
+      <ul class="mt-2 space-y-1 text-sm">
+        {services.map((lien) => (
+          <li>
+            <a href={lien.href} class="text-slate-700 hover:text-brand-700">
+              {lien.label}
+            </a>
+          </li>
+        ))}
+        <li>
+          <a href={cta.secondaire.href} class="text-slate-700 hover:text-brand-700">
+            Audit gratuit
+          </a>
+        </li>
+      </ul>
+    </nav>
+    <nav aria-label="Informations légales">
+      <p class="font-semibold text-slate-900">Informations</p>
+      <ul class="mt-2 space-y-1 text-sm">
+        <li>
+          <a href="/contact" class="text-slate-700 hover:text-brand-700">
+            Contact
+          </a>
+        </li>
+        {liensLegaux.map((lien) => (
+          <li>
+            <a href={lien.href} class="text-slate-700 hover:text-brand-700">
+              {lien.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+  </div>
+</footer>

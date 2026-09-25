@@ -1,0 +1,14 @@
+---
+interface Props {
+  data: Record<string, unknown>;
+}
+
+const { data } = Astro.props;
+// Empêche la fermeture prématurée de la balise <script> si le texte contient « </ ».
+const json = JSON.stringify({ '@context': 'https://schema.org', ...data }).replaceAll(
+  '<',
+  '\\u003c',
+);
+---
+
+<script type="application/ld+json" is:inline set:html={json} />
