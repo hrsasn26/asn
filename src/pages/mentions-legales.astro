@@ -1,6 +1,7 @@
 ---
 // Projet de texte à faire valider par un juriste (docs/brief-agence.md, section 7).
-// Contenu imposé par la loi pour la confiance dans l'économie numérique (LCEN, article 6).
+// Droit marocain : identité et identifiants de l'entreprise (RC, ICE, IF, taxe professionnelle),
+// informations du fournisseur (loi 31-08, article 29) et données personnelles (loi 09-08).
 import Placeholder from '~/components/Placeholder.astro';
 import Prose from '~/components/Prose.astro';
 import Section from '~/components/Section.astro';
@@ -22,12 +23,14 @@ import BaseLayout from '~/layouts/BaseLayout.astro';
       <Prose>
         <h2>Éditeur du site</h2>
         <p>
-          Le site est édité par {site.nom}, [forme juridique] au capital de [montant] €,
-          immatriculée au registre du commerce et des sociétés de [ville] sous le numéro [SIREN].
+          {`Le site ${site.domaine} est édité par ${site.nom}, [forme juridique] au capital de [montant] DH.`}
         </p>
         <ul>
           <li>Siège social : [adresse]</li>
-          <li>Numéro de TVA intracommunautaire : [numéro]</li>
+          <li>Registre du commerce : [ville], numéro [numéro]</li>
+          <li>Identifiant commun de l'entreprise (ICE) : [numéro]</li>
+          <li>Identifiant fiscal (IF) : [numéro]</li>
+          <li>Taxe professionnelle : [numéro]</li>
           <li>Téléphone : {site.telephone}</li>
           <li>E-mail : {site.email}</li>
         </ul>
@@ -38,12 +41,6 @@ import BaseLayout from '~/layouts/BaseLayout.astro';
         <h2>Hébergement</h2>
         <p>[Nom de l'hébergeur], [adresse], [téléphone].</p>
 
-        <h2>Médiation de la consommation</h2>
-        <p>
-          Pour tout litige avec un client particulier, vous pouvez contacter gratuitement le
-          médiateur de la consommation : [nom du médiateur], [adresse], [site web].
-        </p>
-
         <h2>Propriété intellectuelle</h2>
         <p>
           Les textes, les illustrations et le code de ce site appartiennent à {site.nom}, sauf
@@ -51,6 +48,11 @@ import BaseLayout from '~/layouts/BaseLayout.astro';
         </p>
 
         <h2>Données personnelles</h2>
+        <p>
+          Les données collectées sur ce site sont traitées conformément à la loi 09-08 relative à la
+          protection des personnes physiques à l'égard du traitement des données à caractère
+          personnel. Déclaration auprès de la CNDP : [numéro de récépissé].
+        </p>
         <p>
           Pour savoir comment nous utilisons vos données, lisez notre{' '}
           <a href="/confidentialite">politique de confidentialité</a>.

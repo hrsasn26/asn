@@ -29,7 +29,7 @@ const texteObligatoire = (message: string, max: number) =>
 const nom = texteObligatoire('Indiquez votre nom.', 100);
 
 const email = z
-  .email({ error: 'Indiquez une adresse e-mail valide, par exemple nom@exemple.fr.' })
+  .email({ error: 'Indiquez une adresse e-mail valide, par exemple nom@exemple.ma.' })
   .max(200, { error: "L'adresse e-mail ne doit pas dépasser 200 caractères." });
 
 const telephone = z
@@ -46,7 +46,7 @@ const consentement = z.boolean().refine((valeur) => valeur, {
 const piege = z.string().optional();
 
 /**
- * Ajoute « https:// » si le visiteur a saisi seulement « monsite.fr ».
+ * Ajoute « https:// » si le visiteur a saisi seulement « monsite.ma ».
  * Retourne `undefined` si l'adresse n'est pas celle d'un site public.
  */
 export function normaliserAdresseSite(saisie: string): string | undefined {
@@ -61,7 +61,7 @@ export function normaliserAdresseSite(saisie: string): string | undefined {
   }
 }
 
-const messageAdresse = "Indiquez l'adresse de votre site, par exemple monsite.fr.";
+const messageAdresse = "Indiquez l'adresse de votre site, par exemple monsite.ma.";
 
 const adresseSite = texteObligatoire(messageAdresse, 300)
   .refine((valeur) => normaliserAdresseSite(valeur) !== undefined, { error: messageAdresse })

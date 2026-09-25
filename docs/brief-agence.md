@@ -21,11 +21,12 @@
 
 | | |
 |---|---|
-| **Nom de l'agence** | [à définir] |
-| **Clients cibles** | TPE, PME, particuliers |
+| **Nom de l'agence** | Digital Solutions |
+| **Nom de domaine** | digital-solutions.ma (site : https://www.digital-solutions.ma) |
+| **Clients cibles** | TPE, PME et particuliers, au Maroc |
 | **Compétences de l'équipe** | Ingénierie logicielle, développement fullstack, DevOps, QA (tests) |
 | **Compétences absentes** | Design graphique et UX/UI, marketing (publicité, réseaux sociaux, rédaction) |
-| **Zone géographique** | [à définir : ville ou région, utile pour le référencement local] |
+| **Zone géographique** | Maroc. Ville ou région : [à définir, utile pour le référencement local] |
 
 ---
 
@@ -43,7 +44,7 @@ Liste de référence des services qu'une agence de ce type propose en général,
 | Réseaux sociaux | Stratégie, community management, contenus, influence | **Non** |
 | Data et performance | Suivi GA4 / Tag Manager, tableaux de bord, CRO, tests A/B | **Partiel** : mise en place technique du suivi |
 | IA et automatisation | Chatbots, automatisation (n8n, Make, Zapier), intégration CRM/ERP | **Oui** |
-| Hébergement, maintenance, conformité | Hébergement, maintenance, sécurité, RGPD, accessibilité | **Oui** |
+| Hébergement, maintenance, conformité | Hébergement, maintenance, sécurité, protection des données (loi 09-08), accessibilité | **Oui** |
 | Formation | Prise en main des outils livrés | **Oui** (incluse dans les projets) |
 
 ---
@@ -57,7 +58,7 @@ Quatre pôles de services, plus un audit gratuit pour générer des contacts.
 - Site vitrine (TPE, artisans, indépendants, particuliers)
 - Site e-commerce (Shopify, WooCommerce ou sur mesure)
 - Refonte ou migration d'un site existant
-- Inclus par défaut : SEO technique, rapidité, accessibilité, conformité RGPD
+- Inclus par défaut : SEO technique, rapidité, accessibilité, conformité à la loi 09-08 (données personnelles)
 
 ### Pôle 2 : Applications sur mesure
 *Compétences : ingénierie logicielle, fullstack*
@@ -159,6 +160,7 @@ La page « Méthode », avec une étape de tests bien visible, est l'endroit id�
 ## 6. Contenus des pages
 
 > Sections 6.1 à 6.6 : textes validés. Sections 6.7 à 6.13 : propositions à valider.
+> Adaptation au Maroc (25 septembre 2026) : prix en DH, loi 09-08 à la place du RGPD, délai de rétractation de 7 jours. Ces changements sont à revalider, y compris dans les sections 6.1 à 6.6.
 
 **Appel à l'action principal (tout le site) :** « Demander un devis gratuit »
 **Appel à l'action secondaire :** « Faire auditer mon site »
@@ -168,7 +170,7 @@ La page « Méthode », avec une étape de tests bien visible, est l'endroit id�
 ### 6.1 Page « Services » (page d'ensemble)
 
 **URL :** `/services`
-**Balise title :** Création de sites web et d'applications sur mesure | [Nom]
+**Balise title :** Création de sites web et d'applications sur mesure | Digital Solutions
 **Meta description :** Sites web, applications, automatisation et maintenance pour TPE, PME et particuliers. Des projets conçus par des ingénieurs, testés et suivis dans la durée.
 **Mots-clés visés (à valider) :** agence web [ville], création site internet TPE, développement application sur mesure
 
@@ -270,7 +272,7 @@ Nous analysons gratuitement sa vitesse, sa sécurité et son référencement tec
 #### FAQ
 
 **Combien coûte un site ou une application ?**
-Nos sites vitrines commencent à [X] €. Chaque projet fait l'objet d'un devis gratuit, détaillé et à prix fixe : vous savez exactement ce que vous payez avant de vous engager.
+Nos sites vitrines commencent à [X] DH. Chaque projet fait l'objet d'un devis gratuit, détaillé et à prix fixe : vous savez exactement ce que vous payez avant de vous engager.
 
 **Combien de temps faut-il ?**
 Comptez [2 à 4 semaines] pour un site vitrine et [4 à 8 semaines] pour une boutique en ligne. Pour une application, nous fixons le délai ensemble après le cadrage.
@@ -297,7 +299,7 @@ Un échange de 30 minutes, gratuit et sans engagement, pour comprendre votre bes
 ### 6.2 Page « Sites web »
 
 **URL :** `/services/sites-web`
-**Balise title :** Création de site vitrine et e-commerce | [Nom]
+**Balise title :** Création de site vitrine et e-commerce | Digital Solutions
 **Meta description :** Site vitrine, boutique en ligne ou refonte : des sites rapides, sécurisés et bien référencés, conçus par des ingénieurs pour les TPE, PME et particuliers.
 **Mots-clés visés (à valider) :** création site vitrine, création site internet [ville], création boutique en ligne, refonte site web
 
@@ -334,7 +336,7 @@ Pour présenter votre activité, montrer vos réalisations et être contacté fa
 - Prise de rendez-vous en ligne (en option)
 - Liens vers vos réseaux sociaux et votre fiche Google
 
-*À partir de [X] €*
+*À partir de [X] DH*
 
 **Boutique en ligne**
 Pour vendre vos produits sur Internet, 24 h/24.
@@ -344,7 +346,7 @@ Pour vendre vos produits sur Internet, 24 h/24.
 - Frais de livraison et factures automatiques
 - Shopify, WooCommerce ou sur mesure, selon votre volume de ventes
 
-*À partir de [X] €*
+*À partir de [X] DH*
 
 **Refonte de site**
 Pour moderniser un site vieillissant sans perdre votre place sur Google.
@@ -363,7 +365,7 @@ Pour moderniser un site vieillissant sans perdre votre place sur Google.
 - **Rapide** : nous mesurons la vitesse de chaque page avant la livraison.
 - **Référencement technique** : structure des pages, balises, plan du site et données structurées pour que Google comprenne votre activité.
 - **Sécurisé** : connexion HTTPS, protections contre le spam et les attaques courantes.
-- **Conforme au RGPD** : bandeau cookies et pages légales mises en place.
+- **Conforme à la loi 09-08** : données personnelles protégées, bandeau cookies et pages légales mises en place.
 - **Accessible** : lisible par tous, y compris par les personnes en situation de handicap.
 - **Modifiable par vous** : un espace d'administration simple pour changer vos textes et vos images.
 - **Formation incluse** : nous vous montrons comment gérer votre site.
@@ -415,7 +417,7 @@ Décrivez-nous votre projet en quelques lignes. Nous revenons vers vous sous [48
 ### 6.3 Page « Applications sur mesure »
 
 **URL :** `/services/applications-sur-mesure`
-**Balise title :** Applications web et mobiles sur mesure | [Nom]
+**Balise title :** Applications web et mobiles sur mesure | Digital Solutions
 **Meta description :** Outil métier, espace client, application mobile ou première version de votre projet : nous développons des applications sur mesure, testées et faites pour évoluer.
 **Mots-clés visés (à valider) :** développement application sur mesure, logiciel sur mesure PME, création application mobile, développement MVP
 
@@ -493,7 +495,7 @@ Plutôt que de tout développer d'un coup, nous construisons d'abord une version
 #### FAQ
 
 **Combien coûte une application sur mesure ?**
-Cela dépend des fonctionnalités. Après l'atelier de cadrage, nous vous remettons un devis à prix fixe. À titre indicatif, une première version (MVP) commence à [X] €.
+Cela dépend des fonctionnalités. Après l'atelier de cadrage, nous vous remettons un devis à prix fixe. À titre indicatif, une première version (MVP) commence à [X] DH.
 
 **Combien de temps faut-il ?**
 Une première version demande en général [6 à 12 semaines]. Nous fixons le planning ensemble après le cadrage.
@@ -520,7 +522,7 @@ Un échange de 30 minutes, gratuit et confidentiel, pour comprendre votre besoin
 ### 6.4 Page « Automatisation et intégrations »
 
 **URL :** `/services/automatisation-integrations`
-**Balise title :** Automatisation et connexion de vos logiciels | [Nom]
+**Balise title :** Automatisation et connexion de vos logiciels | Digital Solutions
 **Meta description :** Connectez votre site, votre CRM et votre comptabilité. Automatisez les tâches répétitives et utilisez l'IA là où elle vous fait vraiment gagner du temps.
 **Mots-clés visés (à valider) :** automatisation tâches entreprise, intégration logiciels PME, automatisation n8n, chatbot site web
 
@@ -593,10 +595,10 @@ Non. Nous partons de ceux que vous utilisez déjà.
 Nous sommes alertés et nous intervenons. Avec un forfait de maintenance, la correction est incluse.
 
 **Mes données sont-elles en sécurité avec l'IA ?**
-Nous choisissons des services conformes au RGPD, qui n'utilisent pas vos données pour entraîner leurs modèles. [à confirmer selon les fournisseurs retenus]
+Nous choisissons des services compatibles avec la loi 09-08 sur les données personnelles, qui n'utilisent pas vos données pour entraîner leurs modèles. [à confirmer selon les fournisseurs retenus]
 
 **Combien ça coûte ?**
-Une automatisation simple commence à [X] €. Avant de commencer, nous estimons avec vous le temps gagné, pour que vous décidiez en connaissance de cause.
+Une automatisation simple commence à [X] DH. Avant de commencer, nous estimons avec vous le temps gagné, pour que vous décidiez en connaissance de cause.
 
 #### Appel à l'action final
 
@@ -611,7 +613,7 @@ Listez-nous les tâches répétitives qui vous prennent du temps. Nous vous diso
 ### 6.5 Page « Hébergement et maintenance »
 
 **URL :** `/services/hebergement-maintenance`
-**Balise title :** Hébergement et maintenance de site web | [Nom]
+**Balise title :** Hébergement et maintenance de site web | Digital Solutions
 **Meta description :** Hébergement sécurisé, sauvegardes, mises à jour et support : nous gardons votre site et vos applications en ligne, rapides et protégés. Forfaits mensuels.
 **Mots-clés visés (à valider) :** maintenance site web, hébergement site internet, maintenance WordPress, reprise site web
 
@@ -671,7 +673,7 @@ Chaque mois, un résumé clair : disponibilité du site, sauvegardes réalisées
 | Modifications incluses | — | [1 h/mois] | [3 h/mois] |
 | Délai d'intervention | [48 h ouvrées] | [24 h ouvrées] | [4 h ouvrées] |
 | Rapport mensuel | — | ✓ | ✓ |
-| **Prix** | **[X] €/mois** | **[X] €/mois** | **[X] €/mois** |
+| **Prix** | **[X] DH/mois** | **[X] DH/mois** | **[X] DH/mois** |
 
 [Sans engagement / Engagement de 12 mois] [à définir]
 
@@ -712,7 +714,7 @@ Votre site est entre de bonnes mains, et vous pouvez vous concentrer sur votre a
 ### 6.6 Page « Audit gratuit »
 
 **URL :** `/audit-gratuit`
-**Balise title :** Audit gratuit de votre site web | [Nom]
+**Balise title :** Audit gratuit de votre site web | Digital Solutions
 **Meta description :** Vitesse, sécurité, référencement, affichage mobile : recevez gratuitement un audit technique de votre site, avec un rapport clair et les actions prioritaires.
 
 #### En-tête
@@ -741,7 +743,7 @@ Votre site est entre de bonnes mains, et vous pouvez vous concentrer sur votre a
 - E-mail *(obligatoire)*
 - Téléphone *(facultatif)*
 - Votre principale préoccupation : Vitesse / Sécurité / Référencement / Je ne sais pas
-- Case de consentement RGPD + lien vers la politique de confidentialité
+- Case de consentement (loi 09-08) + lien vers la politique de confidentialité
 
 **Bouton :** [Recevoir mon audit gratuit]
 
@@ -754,7 +756,7 @@ Votre site est entre de bonnes mains, et vous pouvez vous concentrer sur votre a
 > Proposition à valider. Elle reprend la promesse (section 4) et plusieurs blocs de la page Services (section 6.1).
 
 **URL :** `/`
-**Balise title :** Sites web et applications sur mesure pour TPE, PME et particuliers | [Nom]
+**Balise title :** Sites web et applications sur mesure pour TPE, PME et particuliers | Digital Solutions
 **Meta description :** Nous créons, testons, hébergeons et maintenons vos sites et vos applications. Une équipe d'ingénieurs, un seul interlocuteur et un devis à prix fixe.
 **Mots-clés visés (à valider) :** agence web [ville], création site internet, application sur mesure
 
@@ -834,7 +836,7 @@ Reprend l'appel à l'action final de la page Services (6.1).
 > Proposition à valider. Le brief demande une étape de tests bien visible sur cette page (section 5).
 
 **URL :** `/methode`
-**Balise title :** Notre méthode : un projet clair, testé et suivi | [Nom]
+**Balise title :** Notre méthode : un projet clair, testé et suivi | Digital Solutions
 **Meta description :** Échange gratuit, devis à prix fixe, maquettes, développement par étapes, tests complets et suivi après la mise en ligne : découvrez comment se déroule votre projet.
 
 #### En-tête
@@ -905,7 +907,7 @@ Reprend l'appel à l'action final de la page Services (6.1).
 > Proposition à valider. Tous les prix restent des placeholders (section 8).
 
 **URL :** `/tarifs`
-**Balise title :** Tarifs : sites web, applications et maintenance | [Nom]
+**Balise title :** Tarifs : sites web, applications et maintenance | Digital Solutions
 **Meta description :** Sites vitrines, boutiques en ligne, applications et maintenance : nos prix de départ, et un devis gratuit à prix fixe pour chaque projet.
 
 #### En-tête
@@ -920,18 +922,18 @@ Reprend l'appel à l'action final de la page Services (6.1).
 
 | Offre | Description | Prix |
 |---|---|---|
-| Site vitrine | Jusqu'à [5] pages, formulaire de contact, adapté à tous les écrans. | À partir de [X] € |
-| Boutique en ligne | Paiement sécurisé, gestion des stocks et des commandes. | À partir de [X] € |
+| Site vitrine | Jusqu'à [5] pages, formulaire de contact, adapté à tous les écrans. | À partir de [X] DH |
+| Boutique en ligne | Paiement sécurisé, gestion des stocks et des commandes. | À partir de [X] DH |
 | Refonte de site | Nouveau site, sans perdre votre place sur Google. | Sur devis |
-| Première version d'application (MVP) | L'essentiel pour tester votre idée auprès de vrais utilisateurs. | À partir de [X] € |
+| Première version d'application (MVP) | L'essentiel pour tester votre idée auprès de vrais utilisateurs. | À partir de [X] DH |
 | Outil métier ou application | Un outil conçu pour votre façon de travailler. | Sur devis, après l'atelier de cadrage |
-| Automatisation simple | Une tâche répétitive faite automatiquement. | À partir de [X] € |
+| Automatisation simple | Une tâche répétitive faite automatiquement. | À partir de [X] DH |
 
 #### Section : inclus
 
 **Titre :** Inclus dans tous nos sites
 
-Adapté à tous les écrans, rapide, référencement technique, sécurisé, conforme au RGPD, accessible, modifiable par vous, formation incluse.
+Adapté à tous les écrans, rapide, référencement technique, sécurisé, conforme à la loi 09-08 sur les données personnelles, accessible, modifiable par vous, formation incluse.
 
 **Lien :** [Voir le détail dans l'offre Sites web]
 
@@ -953,7 +955,7 @@ Reprend le tableau des forfaits de la page Hébergement et maintenance (6.5).
 
 **Titre :** Vous êtes un particulier ?
 
-Nos forfaits à prix fixe sont pensés pour les budgets maîtrisés. Pour un contrat conclu à distance, vous disposez d'un délai de rétractation de 14 jours. [Conditions à faire valider par un juriste]
+Nos forfaits à prix fixe sont pensés pour les budgets maîtrisés. Pour un contrat conclu à distance, vous disposez d'un délai de rétractation de 7 jours. [Conditions à faire valider par un juriste]
 
 #### FAQ
 
@@ -981,7 +983,7 @@ Décrivez-nous votre projet en quelques lignes. Nous revenons vers vous sous [48
 > Proposition à valider. Aucune information sur l'équipe n'est inventée : les membres restent des placeholders.
 
 **URL :** `/agence`
-**Balise title :** L'agence : une équipe d'ingénieurs à votre service | [Nom]
+**Balise title :** L'agence : une équipe d'ingénieurs à votre service | Digital Solutions
 **Meta description :** Une équipe d'ingénieurs qui conçoit, teste, héberge et maintient des sites et des applications pour les TPE, PME et particuliers.
 
 #### En-tête
@@ -992,9 +994,9 @@ Décrivez-nous votre projet en quelques lignes. Nous revenons vers vous sous [48
 
 #### Section : pourquoi nous avons créé l'agence
 
-**Titre :** Pourquoi [Nom] existe
+**Titre :** Pourquoi Digital Solutions existe
 
-Beaucoup de TPE et de PME ont vécu la même situation : un site livré sans tests, un prestataire qui ne répond plus, un site piraté faute de mises à jour. Nous avons créé [Nom] pour proposer autre chose : des projets construits avec les méthodes des ingénieurs, et un suivi dans la durée.
+Beaucoup de TPE et de PME ont vécu la même situation : un site livré sans tests, un prestataire qui ne répond plus, un site piraté faute de mises à jour. Nous avons créé Digital Solutions pour proposer autre chose : des projets construits avec les méthodes des ingénieurs, et un suivi dans la durée.
 
 [À rédiger : l'histoire de l'agence, en quelques phrases]
 
@@ -1049,7 +1051,7 @@ Reprend l'appel à l'action final de la page Services (6.1).
 > Proposition à valider. Le formulaire est déjà en place.
 
 **URL :** `/contact`
-**Balise title :** Contact et demande de devis gratuit | [Nom]
+**Balise title :** Contact et demande de devis gratuit | Digital Solutions
 **Meta description :** Décrivez votre projet en quelques lignes : nous revenons vers vous avec une première estimation. Devis gratuit et sans engagement.
 
 #### En-tête
@@ -1065,7 +1067,7 @@ Décrivez-nous votre projet en quelques lignes. Nous revenons vers vous sous [48
 - Téléphone *(facultatif)*
 - Votre projet : Site web / Application sur mesure / Automatisation et intégrations / Hébergement et maintenance / Autre *(facultatif)*
 - Votre message *(obligatoire)*
-- Case de consentement RGPD + lien vers la politique de confidentialité
+- Case de consentement (loi 09-08) + lien vers la politique de confidentialité
 
 **Bouton :** [Envoyer ma demande]
 
@@ -1102,7 +1104,7 @@ Commencez par un audit gratuit : vitesse, sécurité, référencement technique 
 > Proposition à valider. Uniquement des projets réels, avec l'accord écrit du client.
 
 **URL :** `/realisations`
-**Balise title :** Réalisations : nos projets de sites et d'applications | [Nom]
+**Balise title :** Réalisations : nos projets de sites et d'applications | Digital Solutions
 **Meta description :** Des projets réalisés pour nos clients : le besoin de départ, la solution mise en place et ce que le client y a gagné.
 
 #### En-tête
@@ -1138,7 +1140,7 @@ Un échange de 30 minutes, gratuit et sans engagement, pour parler de votre beso
 > Proposition à valider.
 
 **URL :** `/blog`
-**Balise title :** Blog : conseils pour votre site web et vos outils numériques | [Nom]
+**Balise title :** Blog : conseils pour votre site web et vos outils numériques | Digital Solutions
 **Meta description :** Des conseils pratiques et sans jargon pour créer, entretenir et faire connaître votre site web.
 
 **H1 :** Blog
@@ -1155,29 +1157,40 @@ Un échange de 30 minutes, gratuit et sans engagement, pour parler de votre beso
 ## 7. Points légaux
 
 > À faire valider par un juriste avant la mise en ligne.
+> L'agence et ses clients sont au Maroc : le droit marocain s'applique.
 
-**Vente aux particuliers (Code de la consommation)**
-- **Droit de rétractation de 14 jours** pour les contrats conclus à distance ou hors établissement. Si le client veut que le travail commence avant la fin de ce délai, il faut recueillir sa demande expresse.
+**Vente aux particuliers (loi 31-08 sur la protection du consommateur)**
+- **Droit de rétractation de 7 jours** pour les contrats conclus à distance (article 36). Le délai passe à 30 jours si le fournisseur ne confirme pas par écrit les informations obligatoires. Le remboursement se fait sous 30 jours. À vérifier avec le juriste : le point de départ du délai pour une prestation de services, le cas d'un travail commencé avec l'accord du client avant la fin du délai, et les règles du démarchage.
+- **Informations obligatoires** du fournisseur dans l'offre (article 29) : identité, adresse, téléphone, e-mail, numéro d'immatriculation.
 - **CGV spécifiques** à la vente aux particuliers.
-- **Médiateur de la consommation** : l'adhésion est obligatoire, et ses coordonnées doivent figurer sur le site et dans les CGV.
+
+**Données personnelles (loi 09-08, CNDP)**
+- **Déclaration préalable à la CNDP** des traitements du site (formulaires de contact et d'audit), avant la mise en ligne. Indiquer le numéro de récépissé dans les mentions légales et dans la politique de confidentialité.
+- **Transfert de données à l'étranger** (article 43) : Brevo (envoi des e-mails) et un hébergeur hors du Maroc reçoivent des données. Le transfert est à déclarer à la CNDP. Vérifier que le pays de destination est sur la liste des pays reconnus par la CNDP.
+- **Droits des personnes** : information (article 5), accès (article 7), rectification et suppression (article 8), opposition (article 9).
+- **Cookies** : consentement avant tout cookie de suivi. Le site n'en utilise pas pour l'instant.
 
 **Site de l'agence**
-- Mentions légales, politique de confidentialité, gestion des cookies.
+- Mentions légales : raison sociale, forme juridique, capital, siège, registre du commerce, ICE, identifiant fiscal, taxe professionnelle, directeur de la publication, hébergeur.
+- Politique de confidentialité, gestion des cookies.
 - Consentement explicite sur tous les formulaires (contact, devis, audit).
 
-**Argument commercial à exploiter**
-- L'**European Accessibility Act** s'applique depuis le 28 juin 2025 à certains services, dont le e-commerce vers les particuliers. Les microentreprises de services en sont exemptées. Vérifier le champ exact, puis en faire un argument pour les clients e-commerce concernés.
+**Offre aux clients**
+- Nos sites clients doivent aussi respecter la loi 09-08 : déclaration à la CNDP, pages légales, consentement. Argument commercial possible [à valider] : nous préparons les pages et nous expliquons la démarche au client.
+- L'**European Accessibility Act** concerne seulement les clients qui vendent aux particuliers dans l'Union européenne.
 
 ---
 
 ## 8. Prochaines étapes
 
-- [ ] Choisir le nom de l'agence et réserver le nom de domaine
-- [ ] Fixer les prix (remplacer tous les `[X] €`)
+- [x] Choisir le nom de l'agence et réserver le nom de domaine : Digital Solutions, `digital-solutions.ma`
+- [ ] Relier le domaine au site et créer l'adresse e-mail de contact (voir la section « Nom de domaine » de [stack-technique.md](stack-technique.md))
+- [ ] Fixer les prix (remplacer tous les `[X] DH`)
 - [ ] Confirmer les engagements listés en [section 4](#engagements-à-confirmer-avant-publication)
 - [ ] Choisir l'option design : designer partenaire ou modèles personnalisés
 - [ ] Trouver les partenaires : graphiste, rédacteur
 - [ ] Relire et valider les textes proposés : Accueil, Méthode, Tarifs, L'agence, Contact, Réalisations, Blog (sections 6.7 à 6.13) et les trois premiers articles
 - [ ] Préparer 2 ou 3 études de cas réelles pour la page Réalisations
 - [x] Choisir les technologies du site et commencer le développement (voir [stack-technique.md](stack-technique.md))
-- [ ] Faire valider les CGV et les mentions légales par un juriste
+- [ ] Faire valider les CGV et les mentions légales par un juriste (droit marocain)
+- [ ] Déclarer les traitements du site à la CNDP, avec le transfert des données vers Brevo et l'hébergeur

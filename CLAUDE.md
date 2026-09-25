@@ -1,6 +1,6 @@
 # Site web de l'agence
 
-Site vitrine d'une agence de services numériques (nom à définir) qui cible les TPE, PME et particuliers. L'équipe est technique : ingénierie logicielle, développement fullstack, DevOps, QA.
+Site vitrine de Digital Solutions, une agence de services numériques au Maroc qui cible les TPE, PME et particuliers. Domaine : `https://www.digital-solutions.ma`. L'équipe est technique : ingénierie logicielle, développement fullstack, DevOps, QA.
 
 ## Référence
 
@@ -13,10 +13,11 @@ Les choix techniques, l'organisation du code et la mise en service sont dans [do
 - Offre et textes des pages Services : rédigés (voir le brief) et intégrés au site.
 - Autres pages (Accueil, Méthode, Tarifs, L'agence, Contact, Réalisations, Blog) : textes proposés dans le brief (sections 6.7 à 6.13) et intégrés. Ils restent à valider.
 - Blog : trois premiers articles dans `src/content/blog/`, à valider.
-- Pages légales : projets de texte avec placeholders, à faire valider par un juriste.
+- Marché : Maroc. Prix en DH, droit marocain (loi 09-08 et CNDP pour les données personnelles, loi 31-08 pour les consommateurs). Ne pas citer le RGPD, la CNIL ou le droit français sur le site.
+- Pages légales : projets de texte avec placeholders, à faire valider par un juriste marocain.
 - Images : illustrations SVG originales (`src/components/illustrations/`), icônes Lucide, image de partage `public/og.png`. Pas de photo de stock ni de photo d'équipe inventée.
 - Technologies : Astro 7, TypeScript, Tailwind CSS 4, Node.js 24, pnpm. Déploiement Docker + Caddy sur un VPS en France.
-- Déploiement : désactivé tant que la mise en service n'est pas faite (section 8 de `docs/stack-technique.md`). Un aperçu tourne sur Vercel (`asn-tau.vercel.app`, non indexé).
+- Déploiement : désactivé tant que la mise en service n'est pas faite (section 8 de `docs/stack-technique.md`). Un aperçu tourne sur Vercel (`asn-tau.vercel.app`, non indexé). Le domaine est à relier à Vercel ou au VPS (section « Nom de domaine » de `docs/stack-technique.md`).
 - Adaptateurs : Node par défaut, `@astrojs/vercel` seulement pendant un build Vercel. Tester les deux builds après un changement de configuration (`pnpm build` et `VERCEL=1 pnpm build`).
 
 ## Commandes
@@ -41,5 +42,5 @@ Les choix techniques, l'organisation du code et la mise en service sont dans [do
 
 - Tout le contenu du site est en **français**, avec vouvoiement.
 - Suivre le ton et les mots à éviter définis dans la section 4 du brief (pas de jargon technique comme DevOps, QA ou stack côté client).
-- Ne jamais inventer de prix, de statistiques, de témoignages ou de références clients. Garder les placeholders entre crochets (`[Nom]`, `[X] €`, etc.) tant que l'information n'est pas fournie.
+- Ne jamais inventer de prix, de statistiques, de témoignages ou de références clients. Garder les placeholders entre crochets (`[Ville ou région]`, `[X] DH`, etc.) tant que l'information n'est pas fournie.
 - Quand une décision change l'offre ou le positionnement, mettre à jour `docs/brief-agence.md` pour qu'il reste la source de vérité.

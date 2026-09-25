@@ -7,6 +7,7 @@ export function organisationJsonLd(url: URL | string) {
     name: site.nom,
     url: String(url),
     email: site.email,
+    address: { '@type': 'PostalAddress', addressCountry: site.pays },
     areaServed: site.zone,
   };
 }

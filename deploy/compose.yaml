@@ -22,6 +22,7 @@ services:
       - '443:443/udp'
     environment:
       SITE_DOMAIN: ${SITE_DOMAIN:?SITE_DOMAIN manquant}
+      DOMAINES_REDIRIGES: ${DOMAINES_REDIRIGES:-}
       ACME_EMAIL: ${ACME_EMAIL:?ACME_EMAIL manquant}
       ROBOTS_TAG: ${ROBOTS_TAG:-all}
     volumes:

@@ -4,19 +4,20 @@ import sitemap from '@astrojs/sitemap';
 import vercel from '@astrojs/vercel';
 import tailwindcss from '@tailwindcss/vite';
 import { defineConfig, envField } from 'astro/config';
+import { site as infos } from './src/data/site.ts';
 
 // Vercel définit la variable VERCEL pendant ses builds.
 const surVercel = Boolean(process.env.VERCEL);
 
+// Adresse de production : domaine de l'agence (src/data/site.ts).
+const urlProduction = `https://${infos.domaine}`;
+
 // Adresse publique du site. Elle sert aux URL canoniques, au sitemap et au flux RSS.
 // En production, la CI la fournit avec la variable SITE_URL. Sur Vercel, sans SITE_URL,
-// on utilise le domaine de production du projet (ex. : asn-tau.vercel.app).
+// on utilise le domaine de l'agence : les aperçus pointent vers les pages de production.
+// Ailleurs (poste de développement, CI), l'adresse locale garde les tests sur le même domaine.
 // `||` et non `??` : le Dockerfile définit SITE_URL à une chaîne vide si l'argument manque.
-const site =
-  process.env.SITE_URL ||
-  (process.env.VERCEL_PROJECT_PRODUCTION_URL &&
-    `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`) ||
-  'http://localhost:4321';
+const site = process.env.SITE_URL || (surVercel ? urlProduction : 'http://localhost:4321');
 const { hostname, protocol } = new URL(site);
 
 export default defineConfig({

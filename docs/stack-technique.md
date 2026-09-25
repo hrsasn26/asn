@@ -20,7 +20,7 @@
 ## 1. Principes
 
 - **Le site est notre première preuve.** Il doit réussir les contrôles de notre propre audit gratuit : vitesse, sécurité, référencement technique et affichage mobile.
-- **Il applique nos promesses** : tests avant la mise en ligne, RGPD, accessibilité, hébergement en France ou en Europe.
+- **Il applique nos promesses** : tests avant la mise en ligne, protection des données personnelles (loi 09-08), accessibilité, hébergement en France ou en Europe.
 - **Le site contient surtout des pages statiques.** Seules les pages avec formulaire (Contact et Audit gratuit) passent par le serveur.
 - **Il envoie très peu de JavaScript.** Le menu mobile et la FAQ utilisent des éléments HTML natifs (`<details>`). Les formulaires fonctionnent sans JavaScript.
 
@@ -93,13 +93,13 @@ deploy/                   Docker Compose, Caddyfile, script de déploiement
 
 - **Textes des pages** : dans `src/pages/`. Chaque page indique la section du brief d'où viennent ses textes.
 - **Prix** : uniquement dans `src/data/tarifs.ts`. Un prix apparaît sur plusieurs pages : vous le modifiez une seule fois.
-- **Nom, zone, délais, engagements** : dans `src/data/site.ts`.
+- **Nom, domaine, zone, délais, engagements** : dans `src/data/site.ts`. Le domaine sert aussi d'adresse de production dans `astro.config.mjs`.
 - **Article de blog** : ajoutez un fichier Markdown dans `src/content/blog/`. Les champs obligatoires sont dans `src/content.config.ts`.
 - **Étude de cas** : copiez `docs/modele-etude-de-cas.md` dans `src/content/realisations/`. Uniquement des projets réels, avec l'accord du client.
 - **Illustrations** : dans `src/components/illustrations/`. Elles sont décoratives (`aria-hidden`) et utilisent les jetons de couleur de `global.css` : elles suivent le design quand il change.
 - **Image de partage** (aperçu sur les réseaux sociaux) : lancez `pnpm image:partage` après un changement du nom de l'agence. Le script affiche le nom dès qu'il n'est plus un placeholder.
 
-**Placeholders.** Les informations non confirmées restent entre crochets : `[Nom]`, `[X] €`, `[À rédiger : …]`. Le script `pnpm check:content` les liste. En mode `--strict`, il bloque la mise en production tant qu'il en reste.
+**Placeholders.** Les informations non confirmées restent entre crochets : `[Ville ou région]`, `[X] DH`, `[À rédiger : …]`. Le script `pnpm check:content` les liste. En mode `--strict`, il bloque la mise en production tant qu'il en reste.
 
 **Règles du brief vérifiées automatiquement** (section 4) :
 - mots à éviter : DevOps, QA, stack, CI/CD, framework, « solutions innovantes », « optimiser », « digitaliser », « 360° » ;
@@ -154,7 +154,7 @@ Renovate (`renovate.json`) propose les mises à jour des dépendances chaque lun
 Le site peut aussi être déployé sur Vercel (projet `asn`, domaine `asn-tau.vercel.app`).
 
 - Pendant un build Vercel (variable `VERCEL` définie), Astro utilise l'adaptateur `@astrojs/vercel`. Partout ailleurs (Docker, CI, poste de développement), il utilise l'adaptateur Node.
-- Sans `SITE_URL`, les URL canoniques utilisent le domaine de production du projet Vercel.
+- Sans `SITE_URL`, les URL canoniques utilisent le domaine de l'agence, `https://www.digital-solutions.ma` (champ `domaine` de `src/data/site.ts`).
 - `vercel.json` ajoute les en-têtes de sécurité et `X-Robots-Tag: noindex` : Google n'indexe pas le site tant qu'il contient des placeholders.
 - Variables d'environnement à définir dans Vercel pour les formulaires :
   - `MAIL_TRANSPORT=log` pour tester : les demandes apparaissent dans les journaux Vercel, sans e-mail ;
@@ -162,17 +162,33 @@ Le site peut aussi être déployé sur Vercel (projet `asn`, domaine `asn-tau.ve
   Sans ces variables, les formulaires affichent un message d'erreur.
 - La limite d'envois est en mémoire. Sur Vercel, chaque instance de fonction a son propre compteur : la protection contre le spam est plus faible que sur le VPS.
 
+### Nom de domaine
+
+Le domaine de l'agence est `digital-solutions.ma`. L'adresse officielle du site est **`https://www.digital-solutions.ma`** : l'adresse sans `www` redirige vers elle.
+
+**Pour afficher l'aperçu Vercel sur ce domaine :**
+
+1. Dans Vercel, projet `asn`, menu **Settings → Domains** : ajoutez `www.digital-solutions.ma`, puis `digital-solutions.ma` avec l'option de redirection vers `www.digital-solutions.ma`.
+2. Chez le bureau d'enregistrement du domaine, créez les enregistrements DNS que Vercel affiche : un enregistrement `A` pour `digital-solutions.ma` et un enregistrement `CNAME` pour `www`. Copiez les valeurs exactes depuis Vercel.
+3. Attendez la propagation DNS. Vercel crée le certificat HTTPS tout seul.
+
+Le site reste non indexé (`X-Robots-Tag: noindex` dans `vercel.json`) tant que les textes et les pages légales ne sont pas validés.
+
+**Pour la production sur le VPS**, voir la section 8 : les mêmes enregistrements DNS pointent alors vers l'adresse IP du serveur.
+
+**E-mails :** pour envoyer les formulaires depuis une adresse `@digital-solutions.ma`, authentifiez le domaine dans Brevo (enregistrements DNS SPF, DKIM et DMARC fournis par Brevo).
+
 ## 8. Mise en service
 
 Le déploiement est désactivé tant que ces étapes ne sont pas faites.
 
 1. **Serveur** : un VPS en France avec Docker. Créez un utilisateur de déploiement et un dossier (par exemple `/srv/site`).
-2. **Configuration du serveur** : copiez `.env.example` dans ce dossier sous le nom `.env`, puis remplissez les valeurs.
+2. **Configuration du serveur** : copiez `.env.example` dans ce dossier sous le nom `.env`, puis remplissez les valeurs. En production : `SITE_DOMAIN=www.digital-solutions.ma` et `DOMAINES_REDIRIGES=digital-solutions.ma`.
 3. **Accès à l'image** : sur le serveur, connectez Docker à `ghcr.io` avec un jeton GitHub en lecture seule (`read:packages`), ou rendez le paquet public.
-4. **DNS** : faites pointer le domaine (et `www`) vers le serveur. Caddy obtient le certificat HTTPS tout seul.
-5. **Brevo** : créez une clé d'API et validez l'adresse d'expédition.
+4. **DNS** : faites pointer `digital-solutions.ma` et `www.digital-solutions.ma` vers le serveur (enregistrements `A`, et `AAAA` si le serveur a une adresse IPv6). Caddy obtient les certificats HTTPS tout seul et redirige l'adresse sans `www`.
+5. **Brevo** : créez une clé d'API et authentifiez le domaine `digital-solutions.ma` (voir « Nom de domaine » ci-dessus).
 6. **GitHub** :
-   - variables du dépôt : `DEPLOY_ENABLED=true`, `SITE_URL` (ex. `https://www.exemple.fr`) ;
+   - variables du dépôt : `DEPLOY_ENABLED=true`, `SITE_URL=https://www.digital-solutions.ma` ;
    - environnements `preprod` et `production`, chacun avec les variables `DEPLOY_HOST`, `DEPLOY_USER`, `DEPLOY_PATH`, `DEPLOY_URL` et les secrets `DEPLOY_SSH_KEY`, `DEPLOY_KNOWN_HOSTS` ;
    - sur l'environnement `production`, ajoutez une validation manuelle (« Required reviewers »).
 7. **Renovate** : installez l'application Renovate sur le dépôt.
@@ -184,9 +200,9 @@ En préproduction, mettez `ROBOTS_TAG=noindex` dans `.env` pour que Google n'ind
 
 | Sujet | État | Effet sur la stack |
 |---|---|---|
-| Hébergeur précis | Scaleway ou OVHcloud, à choisir. Alternative : Clever Cloud (moins d'exploitation). | Avec Clever Cloud, `deploy/` est remplacé par un déploiement par `git push`. |
+| Hébergeur précis | Scaleway ou OVHcloud, à choisir. Alternative : Clever Cloud (moins d'exploitation). Un hébergement hors du Maroc est un transfert de données à l'étranger (loi 09-08, article 43) : à déclarer à la CNDP. Un hébergeur au Maroc évite ce transfert. À valider avec le juriste. | Avec Clever Cloud, `deploy/` est remplacé par un déploiement par `git push`. Avec un hébergeur au Maroc, `deploy/` ne change pas. |
 | Design | Modèle personnalisé ou designer partenaire (section 8 du brief). | Remplacer les jetons de `global.css`. Ajouter la police avec l'API Fonts d'Astro (police auto-hébergée). En attendant, le site utilise la police du système. |
 | Interface d'édition (CMS) | À décider si nous vendons des sites Astro aux clients. | Ajouter Keystatic (contenus dans Git) pour le tester sur notre site d'abord. |
-| Mesure d'audience | Matomo (liste officielle de la CNIL) ou Plausible. À valider avec le juriste. | Pas encore intégrée. Il faudra ajouter son domaine à la CSP (`astro.config.mjs`). |
-| Vercel : aperçu ou production | Vercel sert d'aperçu. Vercel est une entreprise américaine : l'utiliser en production doit rester compatible avec l'engagement « Hébergement en [France / Europe] » (section 4 du brief). | En production sur Vercel : retirer `X-Robots-Tag: noindex` de `vercel.json`, choisir la région des fonctions et remplacer la limite d'envois en mémoire. |
+| Mesure d'audience | Matomo ou Plausible, sans cookie si possible. À valider avec le juriste (loi 09-08, consentement aux cookies). | Pas encore intégrée. Il faudra ajouter son domaine à la CSP (`astro.config.mjs`). |
+| Vercel : aperçu ou production | Vercel sert d'aperçu. Vercel est une entreprise américaine : l'utiliser en production doit rester compatible avec l'engagement « Hébergement en [France / Europe] » (section 4 du brief) et avec les règles de transfert de données à l'étranger de la loi 09-08. À valider avec le juriste. | En production sur Vercel : retirer `X-Robots-Tag: noindex` de `vercel.json`, choisir la région des fonctions et remplacer la limite d'envois en mémoire. |
 | Accusé de réception au prospect | Non mis en place. Un e-mail automatique vers une adresse saisie dans un formulaire peut servir à envoyer du spam à des tiers. | À ajouter avec un texte validé si le besoin est confirmé. |

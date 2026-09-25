@@ -1,14 +1,14 @@
 /**
  * Tous les prix du site, au même endroit.
  *
- * Règle du projet : ne jamais inventer de prix. Gardez les placeholders `[X] €`
+ * Règle du projet : ne jamais inventer de prix. Gardez les placeholders `[X] DH`
  * tant que les prix ne sont pas fixés (voir docs/brief-agence.md, section 8).
  */
 export const tarifs = {
-  siteVitrine: '[X] €',
-  boutique: '[X] €',
-  mvp: '[X] €',
-  automatisation: '[X] €',
+  siteVitrine: '[X] DH',
+  boutique: '[X] DH',
+  mvp: '[X] DH',
+  automatisation: '[X] DH',
 } as const;
 
 export interface ForfaitMaintenance {
@@ -32,7 +32,7 @@ export const forfaitsMaintenance: ForfaitMaintenance[] = [
     modifications: '—',
     delaiIntervention: '[48 h ouvrées]',
     rapportMensuel: false,
-    prix: '[X] €/mois',
+    prix: '[X] DH/mois',
   },
   {
     nom: 'Sérénité',
@@ -42,7 +42,7 @@ export const forfaitsMaintenance: ForfaitMaintenance[] = [
     modifications: '[1 h/mois]',
     delaiIntervention: '[24 h ouvrées]',
     rapportMensuel: true,
-    prix: '[X] €/mois',
+    prix: '[X] DH/mois',
   },
   {
     nom: 'Pro',
@@ -52,7 +52,7 @@ export const forfaitsMaintenance: ForfaitMaintenance[] = [
     modifications: '[3 h/mois]',
     delaiIntervention: '[4 h ouvrées]',
     rapportMensuel: true,
-    prix: '[X] €/mois',
+    prix: '[X] DH/mois',
   },
 ];
 

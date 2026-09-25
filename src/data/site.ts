@@ -6,9 +6,13 @@
  * Le script `pnpm check:content --strict` bloque la mise en production tant qu'il en reste.
  */
 export const site = {
-  nom: '[Nom]',
+  nom: 'Digital Solutions',
+  /** Domaine du site. L'adresse sans « www » redirige vers celui-ci. */
+  domaine: 'www.digital-solutions.ma',
+  /** Code du pays (ISO 3166-1), pour les données structurées. */
+  pays: 'MA',
   zone: '[Ville ou région]',
-  email: '[adresse e-mail de contact]',
+  email: '[contact@digital-solutions.ma : adresse à créer]',
   telephone: '[numéro de téléphone]',
   hebergement: '[France / Europe]',
   delaiReponse: '[48 h ouvrées]',
