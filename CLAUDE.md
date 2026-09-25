@@ -16,7 +16,8 @@ Les choix techniques, l'organisation du code et la mise en service sont dans [do
 - Marché : projets au Maroc. Droit marocain (loi 09-08 et CNDP pour les données personnelles, loi 31-08 pour les consommateurs). Ne pas citer la France, le RGPD, la CNIL ou le droit français sur le site.
 - Prix : aucun prix public. Pas de page Tarifs : chaque prix est donné en privé, dans un devis.
 - Pages légales : projets de texte avec placeholders, à faire valider par un juriste marocain.
-- Images : logo provisoire (`src/components/Logo.astro`, même symbole dans `public/favicon.svg`), illustrations SVG originales (`src/components/illustrations/`), icônes Lucide, image de partage `public/og.png`. Pas de photo de stock ni de photo d'équipe inventée.
+- Logo : à fournir par l'équipe. En attendant, l'en-tête affiche le nom en texte et le favicon est un carré bleu.
+- Images : illustrations SVG originales (`src/components/illustrations/`), icônes Lucide, image de partage `public/og.png`. Pas de photo de stock ni de photo d'équipe inventée.
 - Technologies : Astro 7, TypeScript, Tailwind CSS 4, Node.js 24, pnpm. Déploiement Docker + Caddy sur un VPS (hébergeur et pays à choisir).
 - Déploiement : désactivé tant que la mise en service n'est pas faite (section 8 de `docs/stack-technique.md`). Un aperçu tourne sur Vercel (`asn-tau.vercel.app`, non indexé). Le domaine est à relier à Vercel ou au VPS (section « Nom de domaine » de `docs/stack-technique.md`).
 - Adaptateurs : Node par défaut, `@astrojs/vercel` seulement pendant un build Vercel. Tester les deux builds après un changement de configuration (`pnpm build` et `VERCEL=1 pnpm build`).

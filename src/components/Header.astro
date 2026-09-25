@@ -1,8 +1,7 @@
 ---
 import ButtonLink from '~/components/ButtonLink.astro';
-import Logo from '~/components/Logo.astro';
 import { navigationPrincipale } from '~/data/navigation';
-import { cta } from '~/data/site';
+import { cta, site } from '~/data/site';
 import { cheminPublic } from '~/lib/url';
 
 const path = cheminPublic(Astro.url.pathname);
@@ -11,8 +10,8 @@ const isCurrent = (href: string) => path === href || path.startsWith(`${href}/`)
 
 <header class="border-b border-slate-200 bg-white">
   <div class="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-4 sm:px-6">
-    <a href="/" class="no-underline">
-      <Logo />
+    <a href="/" class="text-lg font-bold text-slate-900 no-underline">
+      {site.nom}
     </a>
 
     <nav aria-label="Navigation principale" class="hidden lg:block">

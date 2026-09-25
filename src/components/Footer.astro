@@ -1,5 +1,4 @@
 ---
-import Logo from '~/components/Logo.astro';
 import { liensLegaux, services } from '~/data/navigation';
 import { cta, site } from '~/data/site';
 
@@ -10,7 +9,7 @@ const annee = new Date().getFullYear();
 <footer class="mt-16 border-t border-slate-200 bg-slate-50">
   <div class="mx-auto grid max-w-6xl gap-8 px-4 py-10 sm:px-6 md:grid-cols-3">
     <div>
-      <Logo />
+      <p class="font-bold text-slate-900">{site.nom}</p>
       <p class="mt-2 text-sm text-slate-700">
         Des sites et des applications conçus par des ingénieurs : fiables, testés, sécurisés et
         suivis dans la durée.
