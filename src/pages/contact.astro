@@ -110,7 +110,7 @@ const titre = `Contact et demande de devis gratuit | ${site.nom}`;
               <div>
                 <button
                   type="submit"
-                  class="rounded-md bg-brand-700 px-5 py-3 font-semibold text-white hover:bg-brand-800"
+                  class="rounded-md bg-brand-700 px-5 py-3 font-semibold text-white hover:bg-brand-800 transition hover:shadow-md motion-safe:hover:-translate-y-0.5"
                 >
                   Envoyer ma demande
                 </button>
@@ -140,15 +140,15 @@ const titre = `Contact et demande de devis gratuit | ${site.nom}`;
           <h2 class="text-xl">Autres moyens de nous joindre</h2>
           <ul class="mt-4 space-y-3 text-slate-700">
             <li class="flex items-center gap-3">
-              <Mail size={20} class="shrink-0 text-brand-700" />
+              <Mail size={20} class="shrink-0 text-blue-700" />
               <span>E-mail : {site.email}</span>
             </li>
             <li class="flex items-center gap-3">
-              <Phone size={20} class="shrink-0 text-brand-700" />
+              <Phone size={20} class="shrink-0 text-emerald-700" />
               <span>Téléphone : {site.telephone}</span>
             </li>
             <li class="flex items-center gap-3">
-              <MapPin size={20} class="shrink-0 text-brand-700" />
+              <MapPin size={20} class="shrink-0 text-rose-700" />
               <span>Zone : {site.zone}</span>
             </li>
           </ul>

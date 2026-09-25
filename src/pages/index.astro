@@ -93,7 +93,7 @@ const realisations = (await getCollection('realisations', ({ data }) => !data.dr
     ) : (
       <ul class="grid gap-6 md:grid-cols-3">
         {realisations.map((etude) => (
-          <li class="rounded-lg border border-slate-200 p-6">
+          <li class="apparition rounded-lg border border-slate-200 p-6 transition hover:border-slate-300 hover:shadow-lg motion-safe:hover:-translate-y-1">
             <h3 class="text-lg">
               <a href={`/realisations/${etude.id}`} class="text-slate-900 hover:text-brand-700">
                 {etude.data.title}
@@ -122,7 +122,7 @@ const realisations = (await getCollection('realisations', ({ data }) => !data.dr
         `Une réponse à votre demande sous ${site.delaiReponse}.`,
         `Un hébergement en ${site.hebergement}.`,
       ].map((engagement) => (
-        <li class="flex gap-3 rounded-md border border-slate-200 bg-white px-4 py-3">
+        <li class="apparition flex gap-3 rounded-md border border-slate-200 bg-white px-4 py-3">
           <BadgeCheck class="mt-0.5 shrink-0 text-emerald-600" size={20} />
           <span>{engagement}</span>
         </li>

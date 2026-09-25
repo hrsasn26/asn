@@ -38,7 +38,7 @@ const nomService = (id: string) =>
     ) : (
       <ul class="grid gap-6 md:grid-cols-2">
         {etudes.map((etude) => (
-          <li class="rounded-lg border border-slate-200 p-6">
+          <li class="apparition rounded-lg border border-slate-200 p-6 transition hover:border-slate-300 hover:shadow-lg motion-safe:hover:-translate-y-1">
             <p class="text-sm font-medium text-brand-700">{nomService(etude.data.service)}</p>
             <h2 class="mt-1 text-xl">
               <a href={`/realisations/${etude.id}`} class="text-slate-900 hover:text-brand-700">

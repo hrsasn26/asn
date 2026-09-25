@@ -22,35 +22,38 @@ const liens = [
     <path
       d={d}
       fill="none"
-      class="stroke-brand-600/50"
+      class="anim-flux stroke-brand-600/50 delai-600"
       stroke-width="4"
       stroke-dasharray="2 10"
       stroke-linecap="round"
     />
   ))}
-  <Carte x={60} y={60}>
+  <Carte x={60} y={60} class="anim-entree">
     <Globe x={87} y={74} size={36} />
   </Carte>
-  <Carte x={60} y={220}>
+  <Carte x={60} y={220} class="anim-entree delai-150">
     <ShoppingBag x={87} y={234} size={36} />
   </Carte>
-  <Carte x={330} y={60}>
+  <Carte x={330} y={60} class="anim-entree delai-300">
     <FileText x={357} y={74} size={36} />
   </Carte>
-  <Carte x={330} y={220}>
+  <Carte x={330} y={220} class="anim-entree delai-450">
     <Mail x={357} y={234} size={36} />
   </Carte>
-  <circle cx="240" cy="180" r="48" class="fill-brand-600"></circle>
-  <g class="text-white">
+  <circle cx="240" cy="180" r="48" class="anim-zoom fill-brand-600 delai-300"></circle>
+  <g class="anim-tourne text-white delai-400">
     <RefreshCw x={216} y={156} size={48} stroke-width={2.2} />
   </g>
-  <circle cx="276" cy="146" r="14" class="fill-emerald-500"></circle>
-  <path
-    d="M269 146l5 5 9-10"
-    fill="none"
-    class="stroke-white"
-    stroke-width="3.5"
-    stroke-linecap="round"
-    stroke-linejoin="round"
-  ></path>
+  <g class="anim-zoom delai-1800">
+    <circle cx="276" cy="146" r="14" class="fill-emerald-500"></circle>
+    <path
+      d="M269 146l5 5 9-10"
+      pathLength="1"
+      fill="none"
+      class="anim-trace stroke-white puis-350"
+      stroke-width="3.5"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    ></path>
+  </g>
 </Illustration>

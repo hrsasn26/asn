@@ -1,5 +1,6 @@
 ---
 import type { AstroComponent } from '@lucide/astro';
+import { couleurPalette } from '~/data/couleurs';
 
 export interface Feature {
   title: string;
@@ -24,10 +25,15 @@ const { items, columns = 2 } = Astro.props;
     columns === 4 && 'md:grid-cols-2 lg:grid-cols-4',
   ]}
 >
-  {items.map(({ title, text, icone: Icone }) => (
-    <div class="rounded-lg border border-slate-200 bg-white p-6">
+  {items.map(({ title, text, icone: Icone }, index) => (
+    <div class="apparition rounded-lg border border-slate-200 bg-white p-6">
       {Icone && (
-        <span class="mb-4 inline-flex size-11 items-center justify-center rounded-lg bg-brand-50 text-brand-700">
+        <span
+          class:list={[
+            'mb-4 inline-flex size-11 items-center justify-center rounded-lg',
+            couleurPalette(index).douce,
+          ]}
+        >
           <Icone size={24} />
         </span>
       )}

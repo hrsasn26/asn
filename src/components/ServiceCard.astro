@@ -1,5 +1,6 @@
 ---
 import type { AstroComponent } from '@lucide/astro';
+import { couleurDuService } from '~/data/couleurs';
 
 interface Props {
   title: string;
@@ -11,11 +12,22 @@ interface Props {
 }
 
 const { title, text, items, link, icone: Icone } = Astro.props;
+// Chaque service a sa couleur (src/data/couleurs.ts).
+const { tuile } = couleurDuService(link.href);
+// Le dernier mot du lien et la flèche restent sur la même ligne.
+const mots = link.label.split(' ');
+const finLien = mots.pop();
+const debutLien = mots.join(' ');
 ---
 
-<article class="flex flex-col rounded-lg border border-slate-200 bg-white p-6">
+<article class="group apparition flex flex-col rounded-lg border border-slate-200 bg-white p-6 transition hover:border-slate-300 hover:shadow-lg motion-safe:hover:-translate-y-1">
   {Icone && (
-    <span class="mb-4 inline-flex size-12 items-center justify-center rounded-lg bg-brand-700 text-white">
+    <span
+      class:list={[
+        'mb-4 inline-flex size-12 items-center justify-center rounded-lg text-white transition-transform motion-safe:group-hover:scale-110 motion-safe:group-hover:-rotate-6',
+        tuile,
+      ]}
+    >
       <Icone size={26} />
     </span>
   )}
@@ -28,8 +40,16 @@ const { title, text, items, link, icone: Icone } = Astro.props;
   </ul>
   <p class="mt-auto pt-6">
     <a href={link.href} class="font-semibold text-brand-700 hover:text-brand-800">
-      {link.label}
-      <span aria-hidden="true">&nbsp;→</span>
+      {debutLien}{' '}
+      <span class="whitespace-nowrap">
+        {finLien}{' '}
+        <span
+          aria-hidden="true"
+          class="inline-block transition-transform motion-safe:group-hover:translate-x-1"
+        >
+          →
+        </span>
+      </span>
     </a>
   </p>
 </article>

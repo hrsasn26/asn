@@ -22,7 +22,7 @@
 - **Le site est notre première preuve.** Il doit réussir les contrôles de notre propre audit gratuit : vitesse, sécurité, référencement technique et affichage mobile.
 - **Il applique nos promesses** : tests avant la mise en ligne, protection des données personnelles (loi 09-08), accessibilité. Aucun prix public : chaque prix est donné dans un devis.
 - **Le site contient surtout des pages statiques.** Seules les pages avec formulaire (Contact et Audit gratuit) passent par le serveur.
-- **Il envoie très peu de JavaScript.** Le menu mobile et la FAQ utilisent des éléments HTML natifs (`<details>`). Les formulaires fonctionnent sans JavaScript.
+- **Il envoie très peu de JavaScript.** Le menu mobile et la FAQ utilisent des éléments HTML natifs (`<details>`). Les formulaires fonctionnent sans JavaScript. Les animations sont en CSS.
 
 ## 2. Stack retenue
 
@@ -77,11 +77,12 @@ src/
     site.ts               Nom, zone, délais, engagements (placeholders du brief)
     forfaits.ts           Forfaits de maintenance (sans prix)
     navigation.ts         Menus
+    couleurs.ts           Couleur de chaque service et palette des icônes
     methode.ts            Les cinq étapes d'un projet (accueil, services)
   layouts/BaseLayout.astro  Structure commune : <head>, SEO, en-tête, pied de page
   lib/                    Schémas des formulaires, envoi d'e-mail, limite de débit, SEO
   pages/                  Une page par URL de l'arborescence (section 5 du brief)
-  styles/global.css       Tailwind et jetons de design
+  styles/global.css       Tailwind, jetons de design et animations
 scripts/check-content.mjs Vérification des règles de contenu
 scripts/generer-image-partage.mjs  Image de partage public/og.png
 tests/unit/               Tests unitaires (Vitest)
@@ -97,7 +98,24 @@ deploy/                   Docker Compose, Caddyfile, script de déploiement
 - **Article de blog** : ajoutez un fichier Markdown dans `src/content/blog/`. Les champs obligatoires sont dans `src/content.config.ts`.
 - **Étude de cas** : copiez `docs/modele-etude-de-cas.md` dans `src/content/realisations/`. Uniquement des projets réels, avec l'accord du client.
 - **Illustrations** : dans `src/components/illustrations/`. Elles sont décoratives (`aria-hidden`) et utilisent les jetons de couleur de `global.css` : elles suivent le design quand il change.
+- **Couleurs des icônes** : dans `src/data/couleurs.ts`. Chaque service a sa couleur : carte du service et illustration de la page Services. Les icônes des grilles d'avantages suivent la palette, dans l'ordre. Les classes sont écrites en entier (`bg-teal-700`) : Tailwind ne détecte pas les classes construites.
 - **Image de partage** (aperçu sur les réseaux sociaux) : lancez `pnpm image:partage` après un changement du nom de l'agence. Le script affiche le nom dès qu'il n'est plus un placeholder.
+
+**Animations.** Elles sont en CSS seul, dans `src/styles/global.css` :
+- les illustrations s'animent à l'ouverture de la page (classes `anim-entree`, `anim-zoom`, `anim-trace`, `anim-pousse`, `anim-ecrit`, `anim-flux`, `anim-aiguille`, `anim-tourne`, `anim-sonne`, `anim-saut`) ;
+- l'ordre d'apparition se règle avec `delai-300` (300 ms) ; `puis-200` compte à partir du délai du parent ;
+- les cartes et les titres montent en place pendant le défilement (`apparition`), la frise des étapes se remplit (`anim-frise`) ;
+- les cartes des services, les boutons et les liens du menu réagissent au survol ; les réponses de la FAQ se déroulent ; les pages s'enchaînent en fondu (transitions de page du navigateur).
+
+Règles, vérifiées par `tests/e2e/animations.spec.ts` pour les deux premières :
+- aucune animation si le visiteur a demandé à réduire les animations sur son appareil ;
+- une animation qui démarre seule s'arrête avant 5 secondes (WCAG 2.2.2) : pas de boucle infinie ;
+- le texte n'est jamais animé en opacité : son contraste reste lisible et vérifiable par axe et Lighthouse ;
+- un trait qui se dessine (`anim-trace`) a besoin de l'attribut `pathLength="1"`.
+
+Deux pièges pour les animations liées au défilement :
+- Lightning CSS (utilisé par Tailwind) fusionne `animation-timeline` dans le raccourci `animation`, que les navigateurs refusent. Écrivez les propriétés détaillées (`animation-name`, `animation-duration`, etc.) ;
+- un parent en `overflow: hidden` devient un conteneur de défilement et bloque la timeline `view()`. Utilisez `overflow: clip` ou rien.
 
 **Placeholders.** Les informations non confirmées restent entre crochets : `[Ville ou région]`, `[pays à définir]`, `[À rédiger : …]`. Le script `pnpm check:content` les liste. En mode `--strict`, il bloque la mise en production tant qu'il en reste.
 
@@ -115,7 +133,7 @@ deploy/                   Docker Compose, Caddyfile, script de déploiement
 | Prettier, ESLint, `astro check` | Format, qualité et types du code. |
 | Vitest | Règles de validation des formulaires, limite de débit, règles de contenu. |
 | `check-content` | Placeholders, mots à éviter, points d'exclamation, espaces manquantes, sur le HTML final. |
-| Playwright | Chaque page du sitemap sur Chromium, Firefox et WebKit, en tailles ordinateur, mobile et tablette. Envoi des formulaires, erreurs, menu mobile, lien d'évitement, liens internes. Pas de défilement horizontal. |
+| Playwright | Chaque page du sitemap sur Chromium, Firefox et WebKit, en tailles ordinateur, mobile et tablette. Envoi des formulaires, erreurs, menu mobile, lien d'évitement, liens internes. Pas de défilement horizontal. Animations : moins de 5 secondes, aucune en mode « réduire les animations ». |
 | axe-core | Accessibilité de chaque page (WCAG 2.1 AA). Il ne trouve qu'une partie des problèmes : faites aussi une vérification manuelle au clavier et au lecteur d'écran. |
 | Lighthouse CI | Seuils : performance 95, accessibilité 100, bonnes pratiques 100, SEO 100. Neuf pages clés. |
 | Build Docker | L'image se construit. |

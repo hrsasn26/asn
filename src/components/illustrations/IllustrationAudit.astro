@@ -5,18 +5,27 @@ import Illustration from './Illustration.astro';
 
 <Illustration>
   <Fond />
-  <rect
-    x="70"
-    y="56"
-    width="220"
-    height="260"
-    rx="14"
-    class="fill-white stroke-slate-300"
-    stroke-width="2"
-  ></rect>
-  <rect x="94" y="84" width="120" height="12" rx="6" class="fill-slate-800"></rect>
+  <g class="anim-entree">
+    <rect
+      x="70"
+      y="56"
+      width="220"
+      height="260"
+      rx="14"
+      class="fill-white stroke-slate-300"
+      stroke-width="2"
+    ></rect>
+    <rect
+      x="94"
+      y="84"
+      width="120"
+      height="12"
+      rx="6"
+      class="anim-ecrit fill-slate-800 puis-200"
+    ></rect>
+  </g>
   {[118, 162, 206, 250].map((y, index) => (
-    <>
+    <g class:list={['anim-entree', ['delai-300', 'delai-450', 'delai-600', 'delai-750'][index]]}>
       <circle
         cx="106"
         cy={y + 8}
@@ -25,40 +34,43 @@ import Illustration from './Illustration.astro';
       />
       <rect x="126" y={y} width="140" height="7" rx="3.5" class="fill-slate-200" />
       <rect x="126" y={y + 13} width="100" height="7" rx="3.5" class="fill-slate-200" />
-    </>
+    </g>
   ))}
-  <circle cx="330" cy="180" r="70" class="fill-white stroke-brand-600" stroke-width="12"></circle>
-  <path
-    d="M290 196a42 42 0 1 1 80 0"
-    fill="none"
-    class="stroke-slate-200"
-    stroke-width="10"
-    stroke-linecap="round"
-  ></path>
-  <path
-    d="M290 196a42 42 0 0 1 70-43"
-    fill="none"
-    class="stroke-emerald-500"
-    stroke-width="10"
-    stroke-linecap="round"
-  ></path>
-  <line
-    x1="330"
-    y1="184"
-    x2="350"
-    y2="164"
-    class="stroke-slate-800"
-    stroke-width="5"
-    stroke-linecap="round"
-  ></line>
-  <circle cx="330" cy="184" r="6" class="fill-slate-800"></circle>
-  <line
-    x1="382"
-    y1="232"
-    x2="428"
-    y2="282"
-    class="stroke-brand-600"
-    stroke-width="18"
-    stroke-linecap="round"
-  ></line>
+  <g class="anim-zoom delai-200">
+    <circle cx="330" cy="180" r="70" class="fill-white stroke-brand-600" stroke-width="12"></circle>
+    <path
+      d="M290 196a42 42 0 1 1 80 0"
+      fill="none"
+      class="stroke-slate-200"
+      stroke-width="10"
+      stroke-linecap="round"
+    ></path>
+    <path
+      d="M290 196a42 42 0 0 1 70-43"
+      pathLength="1"
+      fill="none"
+      class="anim-trace stroke-emerald-500 puis-600"
+      stroke-width="10"
+      stroke-linecap="round"
+    ></path>
+    <line
+      x1="330"
+      y1="184"
+      x2="350"
+      y2="164"
+      class="anim-aiguille origin-[330px_184px] stroke-slate-800 puis-600"
+      stroke-width="5"
+      stroke-linecap="round"
+    ></line>
+    <circle cx="330" cy="184" r="6" class="fill-slate-800"></circle>
+    <line
+      x1="382"
+      y1="232"
+      x2="428"
+      y2="282"
+      class="stroke-brand-600"
+      stroke-width="18"
+      stroke-linecap="round"
+    ></line>
+  </g>
 </Illustration>

@@ -15,7 +15,7 @@ const { title, text, button } = Astro.props;
     <div class="mt-8">
       <a
         href={button.href}
-        class="inline-block rounded-md bg-white px-5 py-3 font-semibold text-brand-900 no-underline hover:bg-brand-50"
+        class="inline-block rounded-md bg-white px-5 py-3 font-semibold text-brand-900 no-underline hover:bg-brand-50 transition hover:shadow-md motion-safe:hover:-translate-y-0.5"
       >
         {button.label}
       </a>
