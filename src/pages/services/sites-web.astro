@@ -1,17 +1,8 @@
 ---
-// Textes : docs/brief-agence.md, section 6.2.
-import Accessibility from '@lucide/astro/icons/accessibility';
-import Gauge from '@lucide/astro/icons/gauge';
-import GraduationCap from '@lucide/astro/icons/graduation-cap';
-import Languages from '@lucide/astro/icons/languages';
-import LockKeyhole from '@lucide/astro/icons/lock-keyhole';
-import MessageCircle from '@lucide/astro/icons/message-circle';
-import MonitorSmartphone from '@lucide/astro/icons/monitor-smartphone';
-import PencilLine from '@lucide/astro/icons/pencil-line';
-import Search from '@lucide/astro/icons/search';
-import ShieldCheck from '@lucide/astro/icons/shield-check';
+// Textes : docs/brief-agence.md, section 6.2. Surtitres des sections : section 6.20.
 import ButtonLink from '~/components/ButtonLink.astro';
 import CtaFinal from '~/components/CtaFinal.astro';
+import Encadre from '~/components/Encadre.astro';
 import Faq from '~/components/Faq.astro';
 import FaqItem from '~/components/FaqItem.astro';
 import FeatureGrid from '~/components/FeatureGrid.astro';
@@ -20,6 +11,8 @@ import LienFleche from '~/components/LienFleche.astro';
 import OfferCard from '~/components/OfferCard.astro';
 import ProblemList from '~/components/ProblemList.astro';
 import Section from '~/components/Section.astro';
+import Texte from '~/components/Texte.astro';
+import { surtitreService } from '~/data/navigation';
 import { cta, delais, offre, site } from '~/data/site';
 import BaseLayout from '~/layouts/BaseLayout.astro';
 import { serviceJsonLd } from '~/lib/seo';
@@ -40,8 +33,9 @@ const description =
 >
   <Hero
     maquette="sites-web"
+    surtitre={surtitreService('/services/sites-web')}
     title="Un site web rapide, sécurisé et facile à trouver sur Google"
-    motCle="rapide"
+    motCle="facile à trouver sur Google"
     subtitle="Site vitrine, boutique en ligne ou refonte : nous créons des sites qui chargent vite, s'affichent parfaitement sur mobile et que vous pouvez modifier vous-même."
   >
     <ButtonLink href={cta.principal.href}>{cta.principal.label}</ButtonLink>
@@ -57,8 +51,12 @@ const description =
     ]}
   />
 
-  <Section title="Trois façons de lancer ou de relancer votre présence en ligne">
-    <div class="grid gap-6 lg:grid-cols-3">
+  <Section
+    surtitre="Nos formules"
+    title="Trois façons de lancer ou de relancer votre présence en ligne"
+    disposition="centre"
+  >
+    <div class="flex flex-wrap gap-6">
       <OfferCard
         title="Site vitrine"
         text="Pour présenter votre activité, montrer vos réalisations et être contacté facilement."
@@ -92,106 +90,119 @@ const description =
         ]}
       />
     </div>
-    <p class="apparition mt-8 max-w-3xl text-lg text-slate-700">
+    <p class="apparition mt-8 text-center text-[0.9375rem] text-doux">
       Chaque projet fait l'objet d'un devis gratuit et détaillé, à prix fixe.
     </p>
   </Section>
 
-  <Section title="Inclus dans tous nos sites, sans supplément" tone="gris">
+  <Section surtitre="Sans supplément" title="Inclus dans tous nos sites" disposition="colonnes">
     <FeatureGrid
-      columns={4}
+      min={240}
       items={[
-        {
-          title: 'Adapté à tous les écrans',
-          icone: MonitorSmartphone,
-          text: 'Ordinateur, tablette et téléphone.',
-        },
-        {
-          title: 'Rapide',
-          icone: Gauge,
-          text: 'Nous mesurons la vitesse de chaque page avant la livraison.',
-        },
+        { title: 'Adapté à tous les écrans', text: 'Ordinateur, tablette et téléphone.' },
+        { title: 'Rapide', text: 'Nous mesurons la vitesse de chaque page avant la livraison.' },
         {
           title: 'Référencement technique',
-          icone: Search,
           text: 'Structure des pages, balises, plan du site et données structurées pour que Google comprenne votre activité.',
         },
         {
           title: 'Sécurisé',
-          icone: ShieldCheck,
           text: 'Connexion HTTPS, protections contre le spam et les attaques courantes.',
         },
         {
           title: 'Conforme à la loi 09-08',
-          icone: LockKeyhole,
           text: 'Données personnelles protégées, bandeau cookies et pages légales mises en place.',
         },
         {
           title: 'Accessible',
-          icone: Accessibility,
           text: 'Lisible par tous, y compris par les personnes en situation de handicap.',
         },
         {
           title: 'Modifiable par vous',
-          icone: PencilLine,
           text: "Un espace d'administration simple pour changer vos textes et vos images.",
         },
-        {
-          title: 'Formation incluse',
-          icone: GraduationCap,
-          text: 'Nous vous montrons comment gérer votre site.',
-        },
+        { title: 'Formation incluse', text: 'Nous vous montrons comment gérer votre site.' },
       ]}
     />
   </Section>
 
   {/* Ajout à valider (section 6.2 du brief, « Les options »). */}
-  <Section title="Les options">
-    <FeatureGrid
-      items={[
-        {
-          title: 'Un site en plusieurs langues',
-          icone: Languages,
-          text: "Français, arabe, anglais : chaque visiteur lit votre site dans sa langue. La version arabe s'affiche de droite à gauche, avec une mise en page adaptée. Chaque langue a ses propres pages, que Google peut référencer. Vous nous fournissez les textes traduits. Si besoin, nous vous mettons en relation avec un traducteur.",
-        },
-        {
-          title: 'WhatsApp sur votre site',
-          icone: MessageCircle,
-          text: 'Un bouton pour vous écrire sur WhatsApp en un clic. Nous pouvons aussi relier WhatsApp à vos outils et envoyer des messages automatiques.',
-        },
-      ]}
-    />
-    <p class="apparition mt-8">
-      <LienFleche
-        href="/services/automatisation-integrations#whatsapp"
-        label="Voir l'offre Automatisation"
-      />
-    </p>
+  <Section surtitre="À la carte" title="Les options">
+    <div class="flex flex-wrap gap-6">
+      <Encadre class="flex-[1.3_1_26.25rem]" espace="petit">
+        {/* Langues proposées : décoratif, le texte les cite. */}
+        <div aria-hidden="true" class="flex gap-2 text-xs font-semibold">
+          <span class="rounded-full bg-white px-2.5 py-1">FR</span>
+          <span lang="ar" class="rounded-full bg-white px-2.5 py-1">
+            ع
+          </span>
+          <span class="rounded-full bg-white px-2.5 py-1">EN</span>
+        </div>
+        <h3 class="mt-6 text-[1.375rem]">Un site en plusieurs langues</h3>
+        <p class="mt-3 leading-[1.7] text-doux">
+          Français, arabe, anglais : chaque visiteur lit votre site dans sa langue. La version arabe
+          s'affiche de droite à gauche, avec une mise en page adaptée. Chaque langue a ses propres
+          pages, que Google peut référencer. Vous nous fournissez les textes traduits. Si besoin,
+          nous vous mettons en relation avec un traducteur.
+        </p>
+      </Encadre>
+      <Encadre class="flex flex-[1_1_21.25rem] flex-col" espace="petit">
+        <span aria-hidden="true" class="block size-9 rounded-full bg-whatsapp"></span>
+        <h3 class="mt-6 text-[1.375rem]">WhatsApp sur votre site</h3>
+        <p class="mt-3 leading-[1.7] text-doux">
+          Un bouton pour vous écrire sur WhatsApp en un clic. Nous pouvons aussi relier WhatsApp à
+          vos outils et envoyer des messages automatiques.
+        </p>
+        <p class="mt-auto pt-5">
+          <LienFleche
+            href="/services/automatisation-integrations#whatsapp"
+            label="Voir l'offre Automatisation"
+          />
+        </p>
+      </Encadre>
+    </div>
   </Section>
 
-  <Section title="Testé avant la mise en ligne. Vraiment." tone="gris">
-    <p class="apparition max-w-3xl text-lg text-slate-700">
-      Avant de livrer votre site, nous vérifions chaque page sur les principaux navigateurs et
-      tailles d'écran. Nous testons chaque formulaire, chaque lien et chaque paiement. Vous ne
-      découvrez pas les problèmes par un client mécontent.
-    </p>
-  </Section>
-
-  <Section title="Un site à votre image">
-    <div class="apparition max-w-3xl space-y-4 text-lg text-slate-700">
-      <p>
-        {offre.design}. Vous validez les maquettes avant le début du développement : pas de mauvaise
-        surprise à la livraison.
-      </p>
-      <p>
-        Vous n'avez pas encore de logo ? Nous pouvons vous mettre en relation avec un graphiste
-        partenaire.
-      </p>
+  <Section>
+    <div class="flex flex-wrap gap-6">
+      <Encadre
+        ton="sombre"
+        surtitre="Qualité"
+        title="Testé avant la mise en ligne. Vraiment."
+        motCle="Vraiment."
+        espace="moyen"
+        class="flex-[1_1_26.25rem]"
+      >
+        <p class="leading-[1.75] text-nuit-texte">
+          Avant de livrer votre site, nous vérifions chaque page sur les principaux navigateurs et
+          tailles d'écran. Nous testons chaque formulaire, chaque lien et chaque paiement. Vous ne
+          découvrez pas les problèmes par un client mécontent.
+        </p>
+      </Encadre>
+      <Encadre
+        ton="cadre"
+        surtitre="Design"
+        title="Un site à votre image"
+        espace="moyen"
+        class="flex-[1_1_26.25rem]"
+      >
+        <div class="space-y-3.5 leading-[1.75] text-doux">
+          <p>
+            <Texte
+              texte={`${offre.design}. Vous validez les maquettes avant le début du développement : pas de mauvaise surprise à la livraison.`}
+            />
+          </p>
+          <p>
+            Vous n'avez pas encore de logo ? Nous pouvons vous mettre en relation avec un graphiste
+            partenaire.
+          </p>
+        </div>
+      </Encadre>
     </div>
   </Section>
 
   <Faq>
-    <FaqItem question="Pourrai-je modifier mon site moi-même ?">
+    <FaqItem question="Pourrai-je modifier mon site moi-même ?" ouvert>
       <p>
         Oui. Vous disposez d'un espace d'administration pour changer vos textes, vos images et
         ajouter des pages ou des articles. Nous vous formons à son utilisation à la livraison.
@@ -221,24 +232,23 @@ const description =
     </FaqItem>
     <FaqItem question="Combien de temps faut-il pour créer mon site ?">
       <p>
-        Comptez {delais.siteVitrine} pour un site vitrine et {delais.boutique} pour une boutique en
-        ligne, selon la rapidité à laquelle nous recevons vos contenus.
+        <Texte
+          texte={`Comptez ${delais.siteVitrine} pour un site vitrine et ${delais.boutique} pour une boutique en ligne, selon la rapidité à laquelle nous recevons vos contenus.`}
+        />
       </p>
     </FaqItem>
     <FaqItem question="Que se passe-t-il après la mise en ligne ?">
       <p>
         Votre site vous appartient. Vous pouvez le gérer seul, ou nous confier son hébergement et sa
         maintenance avec l'un de nos{' '}
-        <a href="/services/hebergement-maintenance#forfaits" class="text-brand-700 underline">
-          forfaits mensuels
-        </a>
-        .
+        <a href="/services/hebergement-maintenance#forfaits">forfaits mensuels</a>.
       </p>
     </FaqItem>
   </Faq>
 
   <CtaFinal
     title="Parlons de votre futur site"
+    motCle="futur site"
     text={`Décrivez-nous votre projet en quelques lignes. Nous revenons vers vous sous ${site.delaiReponse} avec une première estimation.`}
     button={cta.principal}
   />

@@ -1,20 +1,19 @@
 ---
-// Textes : docs/brief-agence.md, section 6.6.
-import CircleCheck from '@lucide/astro/icons/circle-check';
-import Gauge from '@lucide/astro/icons/gauge';
-import ScanSearch from '@lucide/astro/icons/scan-search';
-import Search from '@lucide/astro/icons/search';
-import ShieldCheck from '@lucide/astro/icons/shield-check';
-import Smartphone from '@lucide/astro/icons/smartphone';
+// Textes : docs/brief-agence.md, section 6.6. Surtitres des sections : section 6.20.
 import { actions } from 'astro:actions';
+import ButtonLink from '~/components/ButtonLink.astro';
+import EnteteSection from '~/components/EnteteSection.astro';
+import FeatureGrid from '~/components/FeatureGrid.astro';
+import CarteFormulaire from '~/components/forms/CarteFormulaire.astro';
 import Consent from '~/components/forms/Consent.astro';
 import ErrorSummary from '~/components/forms/ErrorSummary.astro';
 import Field from '~/components/forms/Field.astro';
 import Honeypot from '~/components/forms/Honeypot.astro';
 import Success from '~/components/forms/Success.astro';
 import Hero from '~/components/Hero.astro';
+import ListePoints from '~/components/ListePoints.astro';
 import Section from '~/components/Section.astro';
-import { couleurPalette } from '~/data/couleurs';
+import Texte from '~/components/Texte.astro';
 import { delais, site } from '~/data/site';
 import BaseLayout from '~/layouts/BaseLayout.astro';
 import { etatFormulaire } from '~/lib/formulaire';
@@ -32,34 +31,6 @@ const etat = await etatFormulaire(Astro.getActionResult(actions.audit), Astro.re
 ]);
 const preoccupationChoisie = etat.valeur('preoccupation');
 const titre = `Audit gratuit de votre site web | ${site.nom}`;
-
-// Les quatre points vérifiés, chacun avec son icône (apparition en cascade).
-const verifications = [
-  {
-    Icone: Gauge,
-    titre: 'Vitesse',
-    texte: "combien de temps vos pages mettent à s'afficher, et pourquoi.",
-    delai: 'delai-300',
-  },
-  {
-    Icone: ShieldCheck,
-    titre: 'Sécurité',
-    texte: 'certificat HTTPS, mises à jour, failles connues.',
-    delai: 'delai-400',
-  },
-  {
-    Icone: Search,
-    titre: 'Référencement technique',
-    texte: 'ce qui empêche Google de bien comprendre votre site.',
-    delai: 'delai-500',
-  },
-  {
-    Icone: Smartphone,
-    titre: 'Affichage mobile',
-    texte: 'comment vos visiteurs voient votre site sur téléphone.',
-    delai: 'delai-600',
-  },
-];
 ---
 
 <BaseLayout
@@ -69,80 +40,75 @@ const verifications = [
 >
   <Hero
     maquette="audit-gratuit"
+    surtitre="Audit gratuit"
     title="Votre site est-il lent, vulnérable ou invisible sur Google ?"
-    motCle="invisible"
+    motCle="invisible sur Google ?"
     subtitle="Recevez gratuitement un audit technique de votre site. Un rapport clair, sans jargon, avec les actions prioritaires à mener."
-  />
+  >
+    <ButtonLink href="#demande">Demander mon audit</ButtonLink>
+  </Hero>
 
-  <Section>
-    <div class="grid gap-12 lg:grid-cols-2">
-      <div class="space-y-10">
-        <div>
-          <h2 class="apparition text-2xl">Ce que nous vérifions</h2>
-          <ul class="mt-4 space-y-4 text-slate-700">
-            {verifications.map(({ Icone, titre, texte, delai }, index) => (
-              <li class="apparition flex items-start gap-3">
-                <span
-                  class:list={[
-                    'anim-zoom inline-flex size-9 shrink-0 items-center justify-center rounded-lg',
-                    couleurPalette(index).douce,
-                    delai,
-                  ]}
-                >
-                  <Icone size={20} />
-                </span>
-                <p class="pt-1.5">
-                  <strong class="text-slate-900">{titre}</strong>
-                  {` : ${texte}`}
-                </p>
-              </li>
-            ))}
-          </ul>
-        </div>
-        <div>
-          <h2 class="apparition text-2xl">Ce que vous recevez</h2>
-          <ul class="mt-4 space-y-2 text-slate-700">
-            {[
-              `Un rapport écrit sous ${delais.rapportAudit}`,
-              'La liste des problèmes, classés par priorité',
-              delais.appelAudit,
-            ].map((element, index) => (
-              <li class="apparition flex items-start gap-3">
-                <CircleCheck
-                  size={20}
-                  aria-hidden="true"
-                  class:list={[
-                    'anim-zoom mt-0.5 shrink-0 text-emerald-600',
-                    ['delai-700', 'delai-800', 'delai-900'][index],
-                  ]}
-                />
-                <span>{element}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
+  <Section surtitre="Périmètre" title="Ce que nous vérifions" disposition="colonnes">
+    <FeatureGrid
+      items={[
+        { title: 'Vitesse', text: "Combien de temps vos pages mettent à s'afficher, et pourquoi." },
+        { title: 'Sécurité', text: 'Certificat HTTPS, mises à jour, failles connues.' },
+        {
+          title: 'Référencement technique',
+          text: 'Ce qui empêche Google de bien comprendre votre site.',
+        },
+        {
+          title: 'Affichage mobile',
+          text: 'Comment vos visiteurs voient votre site sur téléphone.',
+        },
+      ]}
+    />
+  </Section>
+
+  <Section id="demande" class="pb-20 sm:pb-32">
+    <div class="flex flex-wrap items-start gap-x-20 gap-y-12">
+      <div class="apparition min-w-0 flex-[1_1_20rem]">
+        <EnteteSection surtitre="Livrables" title="Ce que vous recevez" />
+        <ListePoints
+          variante="lignes"
+          class="mt-8 leading-[1.6] [&_li]:py-4.5"
+          items={[
+            `Un rapport écrit sous ${delais.rapportAudit}`,
+            'La liste des problèmes, classés par priorité',
+            delais.appelAudit,
+          ]}
+        />
       </div>
 
-      <div>
-        <h2 class="apparition mb-6 text-2xl">Demander mon audit</h2>
+      <CarteFormulaire class="max-w-full min-w-0 flex-[1.3_1_28.75rem]">
+        <h2 class="text-2xl font-semibold tracking-[-0.02em]">Demander mon audit</h2>
         {etat.envoye ? (
-          <Success title="Votre demande d'audit est envoyée">
-            <p>Vous recevez votre rapport sous {delais.rapportAudit}.</p>
-          </Success>
+          <div class="mt-6">
+            <Success title="Votre demande d'audit est envoyée">
+              <p>
+                <Texte texte={`Vous recevez votre rapport sous ${delais.rapportAudit}.`} />
+              </p>
+            </Success>
+          </div>
         ) : (
-          <>
+          <form
+            method="POST"
+            action={actions.audit}
+            novalidate
+            class="relative mt-6 flex flex-col gap-5"
+          >
             <ErrorSummary errors={etat.resume} message={etat.messageGeneral} />
-            <form method="POST" action={actions.audit} novalidate class="relative space-y-6">
-              <Field
-                name="adresseSite"
-                label="Adresse de votre site"
-                required
-                autocomplete="url"
-                inputmode="url"
-                hint="Par exemple : monsite.ma"
-                value={etat.valeur('adresseSite')}
-                errors={etat.erreursChamps.adresseSite}
-              />
+            <Field
+              name="adresseSite"
+              label="Adresse de votre site"
+              required
+              autocomplete="url"
+              inputmode="url"
+              hint="Par exemple : monsite.ma"
+              value={etat.valeur('adresseSite')}
+              errors={etat.erreursChamps.adresseSite}
+            />
+            <div class="flex flex-wrap gap-5">
               <Field
                 name="nom"
                 label="Nom"
@@ -150,6 +116,7 @@ const verifications = [
                 autocomplete="name"
                 value={etat.valeur('nom')}
                 errors={etat.erreursChamps.nom}
+                class="min-w-0 flex-[1_1_12.5rem]"
               />
               <Field
                 name="email"
@@ -159,61 +126,59 @@ const verifications = [
                 autocomplete="email"
                 value={etat.valeur('email')}
                 errors={etat.erreursChamps.email}
+                class="min-w-0 flex-[1_1_12.5rem]"
               />
-              <Field
-                name="telephone"
-                label="Téléphone"
-                type="tel"
-                autocomplete="tel"
-                value={etat.valeur('telephone')}
-                errors={etat.erreursChamps.telephone}
-              />
-              <fieldset class="group">
-                <legend class="font-medium text-slate-900 transition-colors group-focus-within:text-brand-700">
-                  Votre principale préoccupation{' '}
-                  <span class="font-normal text-slate-600">(facultatif)</span>
-                </legend>
-                <div class="mt-2 space-y-2">
-                  {Object.entries(preoccupations).map(([valeur, libelle]) => (
-                    <div class="flex items-center gap-3">
-                      <input
-                        type="radio"
-                        id={`champ-preoccupation-${valeur}`}
-                        name="preoccupation"
-                        value={valeur}
-                        checked={preoccupationChoisie === valeur}
-                        class="size-5 accent-brand-700"
-                      />
-                      <label for={`champ-preoccupation-${valeur}`}>{libelle}</label>
-                    </div>
-                  ))}
-                </div>
-              </fieldset>
-              <Consent
-                errors={etat.erreursChamps.consentement}
-                checked={etat.valeur('consentement') !== undefined}
-              />
-              <Honeypot />
-              <div>
-                <button
-                  type="submit"
-                  class="group inline-flex items-center gap-2 rounded-md bg-brand-700 px-5 py-3 font-semibold text-white transition hover:bg-brand-800 hover:shadow-md motion-safe:hover:-translate-y-0.5"
-                >
-                  Recevoir mon audit gratuit
-                  <ScanSearch
-                    size={18}
-                    aria-hidden="true"
-                    class="transition-transform motion-safe:group-hover:scale-110 motion-safe:group-hover:-rotate-12"
-                  />
-                </button>
-                <p class="mt-3 text-sm text-slate-600">
-                  Gratuit, sans engagement et sans relances insistantes.
-                </p>
+            </div>
+            <Field
+              name="telephone"
+              label="Téléphone"
+              type="tel"
+              autocomplete="tel"
+              value={etat.valeur('telephone')}
+              errors={etat.erreursChamps.telephone}
+            />
+            <fieldset class="group">
+              <legend class="text-sm font-semibold transition-colors group-focus-within:text-bleu">
+                Votre principale préoccupation{' '}
+                <span class="font-normal text-discret">(facultatif)</span>
+              </legend>
+              {/*
+               * Boutons radio en forme de pastille : le bouton couvre toute la pastille
+               * (appearance-none), le choix est visible par le fond bleu nuit (has-checked).
+               */}
+              <div class="mt-2.5 flex flex-wrap gap-2">
+                {Object.entries(preoccupations).map(([valeur, libelle]) => (
+                  <label class="relative inline-flex cursor-pointer items-center rounded-full px-4 py-2.5 text-sm font-medium ring-1 ring-champ transition-colors ring-inset hover:ring-encre has-checked:bg-encre has-checked:text-white has-checked:ring-encre">
+                    <input
+                      type="radio"
+                      id={`champ-preoccupation-${valeur}`}
+                      name="preoccupation"
+                      value={valeur}
+                      checked={preoccupationChoisie === valeur}
+                      class="absolute inset-0 size-full cursor-pointer appearance-none rounded-full"
+                    />
+                    {libelle}
+                  </label>
+                ))}
               </div>
-            </form>
-          </>
+            </fieldset>
+            <Consent
+              errors={etat.erreursChamps.consentement}
+              checked={etat.valeur('consentement') !== undefined}
+            />
+            <Honeypot />
+            <button
+              type="submit"
+              class="w-full cursor-pointer rounded-full bg-encre px-7 py-4 text-base font-semibold text-white transition-colors hover:bg-bleu"
+            >
+              Recevoir mon audit gratuit
+            </button>
+            <p class="text-center text-[0.8125rem] text-discret">
+              Gratuit, sans engagement et sans relances insistantes.
+            </p>
+          </form>
         )}
-      </div>
+      </CarteFormulaire>
     </div>
   </Section>
 </BaseLayout>

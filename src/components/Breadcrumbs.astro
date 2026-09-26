@@ -18,15 +18,17 @@ const jsonLd = {
 };
 ---
 
-<nav aria-label="Fil d'Ariane" class="mx-auto w-full max-w-6xl px-4 pt-4 text-sm sm:px-6">
-  <ol class="flex flex-wrap gap-2 text-slate-600">
+<nav aria-label="Fil d'Ariane" class="conteneur pt-8 text-[0.8125rem] sm:pt-10">
+  <ol class="flex flex-wrap gap-x-2.5 gap-y-1 text-discret">
     {items.map((item, index) => (
-      <li class="flex gap-2">
+      <li class="flex gap-2.5">
         {index > 0 && <span aria-hidden="true">/</span>}
         {index === items.length - 1 ? (
-          <span aria-current="page">{item.label}</span>
+          <span aria-current="page" class="text-encre">
+            {item.label}
+          </span>
         ) : (
-          <a href={item.href} class="text-slate-700 hover:text-brand-700">
+          <a href={item.href} class="text-discret no-underline hover:text-encre">
             {item.label}
           </a>
         )}

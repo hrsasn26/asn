@@ -14,11 +14,11 @@ const { errors, message } = Astro.props;
     role="alert"
     id="erreurs-formulaire"
     tabindex="-1"
-    class="anim-alerte mb-6 rounded-md border-2 border-red-700 bg-red-50 p-4 text-red-900"
+    class="anim-alerte rounded-2xl border-2 border-red-700 bg-red-50 p-5 text-red-900"
   >
     {errors.length > 0 ? (
       <>
-        <h2 class="text-lg text-red-900">
+        <h2 class="text-lg font-semibold text-red-900">
           {errors.length === 1
             ? 'Le formulaire contient 1 erreur'
             : `Le formulaire contient ${errors.length} erreurs`}

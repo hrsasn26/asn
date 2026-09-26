@@ -1,10 +1,9 @@
 ---
+// Surtitres des sections : docs/brief-agence.md, section 6.20.
 // Textes : docs/brief-agence.md, section 6.17 (proposition à valider).
-import ChartColumn from '@lucide/astro/icons/chart-column';
-import ChartLine from '@lucide/astro/icons/chart-line';
-import MailCheck from '@lucide/astro/icons/mail-check';
 import ButtonLink from '~/components/ButtonLink.astro';
 import CtaFinal from '~/components/CtaFinal.astro';
+import Encadre from '~/components/Encadre.astro';
 import Faq from '~/components/Faq.astro';
 import FaqItem from '~/components/FaqItem.astro';
 import FeatureGrid from '~/components/FeatureGrid.astro';
@@ -12,7 +11,9 @@ import Hero from '~/components/Hero.astro';
 import ProblemList from '~/components/ProblemList.astro';
 import Section from '~/components/Section.astro';
 import Steps from '~/components/Steps.astro';
+import Texte from '~/components/Texte.astro';
 import { site } from '~/data/site';
+import { surtitreService } from '~/data/navigation';
 import BaseLayout from '~/layouts/BaseLayout.astro';
 import { serviceJsonLd } from '~/lib/seo';
 
@@ -33,8 +34,9 @@ const ctaProjet = { label: 'Parler de mes chiffres', href: '/contact' };
 >
   <Hero
     maquette="donnees-tableaux-de-bord"
+    surtitre={surtitreService('/services/donnees-tableaux-de-bord')}
     title="Vos chiffres clés, sur un seul écran"
-    motCle="un seul écran"
+    motCle="sur un seul écran"
     subtitle="Visiteurs de votre site, ventes, stocks, rendez-vous : nous réunissons vos données dans des tableaux de bord clairs, mis à jour automatiquement."
   >
     <ButtonLink href={ctaProjet.href}>{ctaProjet.label}</ButtonLink>
@@ -50,47 +52,64 @@ const ctaProjet = { label: 'Parler de mes chiffres', href: '/contact' };
     ]}
   />
 
-  <Section title="Trois façons de mieux connaître votre activité">
+  <Section
+    surtitre="Nos solutions"
+    title="Trois façons de mieux connaître votre activité"
+    disposition="centre"
+  >
     <FeatureGrid
-      columns={3}
+      variante="cartes"
+      min={300}
       items={[
         {
           title: "La mesure d'audience de votre site",
-          icone: ChartLine,
           text: "Combien de visiteurs, d'où ils viennent, quelles pages mènent à une demande de devis ou à une vente. Nous installons un outil de mesure qui respecte la vie privée de vos visiteurs et la loi 09-08.",
         },
         {
           title: 'Les tableaux de bord de votre activité',
-          icone: ChartColumn,
           text: "Ventes, chiffre d'affaires, stocks, rendez-vous : vos données réunies depuis vos outils, sur un seul écran, sur ordinateur ou sur téléphone.",
         },
         {
           title: 'Les rapports automatiques',
-          icone: MailCheck,
           text: "Un résumé clair chaque semaine ou chaque mois par e-mail, sans préparation de votre part. Et une alerte quand un chiffre sort de l'ordinaire : stock bas, baisse des ventes.",
         },
       ]}
     />
   </Section>
 
-  <Section title="Des chiffres fiables" tone="gris">
-    <p class="apparition max-w-3xl text-lg text-slate-700">
-      Un tableau de bord faux est pire que pas de tableau de bord du tout. Nous vérifions que chaque
-      chiffre correspond à celui de vos logiciels, et nous testons les calculs avant la mise en
-      service. Chaque indicateur est documenté : vous savez d'où vient le chiffre et comment il est
-      calculé.
-    </p>
+  <Section>
+    <div class="flex flex-wrap gap-6">
+      <Encadre
+        ton="sombre"
+        surtitre="Qualité"
+        title="Des chiffres fiables"
+        espace="moyen"
+        class="flex-[1_1_26.25rem]"
+      >
+        <p class="leading-[1.75] text-nuit-texte">
+          Un tableau de bord faux est pire que pas de tableau de bord du tout. Nous vérifions que
+          chaque chiffre correspond à celui de vos logiciels, et nous testons les calculs avant la
+          mise en service. Chaque indicateur est documenté : vous savez d'où vient le chiffre et
+          comment il est calculé.
+        </p>
+      </Encadre>
+      <Encadre
+        ton="cadre"
+        surtitre="Nos limites"
+        title="Ce que nous ne faisons pas"
+        espace="moyen"
+        class="flex-[1_1_26.25rem]"
+      >
+        <p class="leading-[1.75] text-doux">
+          Nous mettons en place les outils et des chiffres fiables. L'analyse marketing, la
+          publicité et les campagnes ne font pas partie de nos services. Si vous travaillez avec une
+          agence marketing ou un consultant, nous leur donnons accès aux chiffres.
+        </p>
+      </Encadre>
+    </div>
   </Section>
 
-  <Section title="Ce que nous ne faisons pas">
-    <p class="apparition max-w-3xl text-lg text-slate-700">
-      Nous mettons en place les outils et des chiffres fiables. L'analyse marketing, la publicité et
-      les campagnes ne font pas partie de nos services. Si vous travaillez avec une agence marketing
-      ou un consultant, nous leur donnons accès aux chiffres.
-    </p>
-  </Section>
-
-  <Section title="Comment nous travaillons" tone="gris">
+  <Section surtitre="Méthode" title="Comment nous travaillons" disposition="centre">
     <Steps
       items={[
         {
@@ -114,7 +133,7 @@ const ctaProjet = { label: 'Parler de mes chiffres', href: '/contact' };
   </Section>
 
   <Faq>
-    <FaqItem question="Quels outils utilisez-vous ?">
+    <FaqItem question="Quels outils utilisez-vous ?" ouvert>
       <p>
         Pour la mesure d'audience : Matomo, Plausible ou Google Analytics, selon vos besoins. Pour
         les tableaux de bord : des outils éprouvés comme Looker Studio ou Metabase, ou un tableau de
@@ -123,9 +142,7 @@ const ctaProjet = { label: 'Parler de mes chiffres', href: '/contact' };
     </FaqItem>
     <FaqItem question="Faut-il un bandeau cookies ?">
       <p>
-        Cela dépend de l'outil de mesure. Certains outils fonctionnent sans cookie de suivi. Nous
-        vous conseillons la solution la plus simple qui respecte la loi 09-08. [À valider avec le
-        juriste]
+        <Texte texte="Cela dépend de l'outil de mesure. Certains outils fonctionnent sans cookie de suivi. Nous vous conseillons la solution la plus simple qui respecte la loi 09-08. [À valider avec le juriste]" />
       </p>
     </FaqItem>
     <FaqItem question="Qui peut voir mes chiffres ?">
@@ -144,6 +161,7 @@ const ctaProjet = { label: 'Parler de mes chiffres', href: '/contact' };
 
   <CtaFinal
     title="Quels chiffres aimeriez-vous voir chaque matin ?"
+    motCle="chaque matin ?"
     text="Listez-nous les chiffres que vous suivez aujourd'hui et les outils qui les contiennent. Nous vous disons gratuitement ce qu'un tableau de bord peut vous apporter."
     button={ctaProjet}
   />

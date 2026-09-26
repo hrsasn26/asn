@@ -11,6 +11,7 @@ interface Props {
   errors?: string[] | undefined;
   hint?: string;
   inputmode?: 'url' | 'text' | 'email' | 'tel';
+  class?: string;
 }
 
 const {
@@ -23,28 +24,33 @@ const {
   errors,
   hint,
   inputmode,
+  class: classe,
 } = Astro.props;
 
 const id = `champ-${name}`;
 const erreur = errors?.[0];
 const describedBy =
   [hint && `${id}-aide`, erreur && `${id}-erreur`].filter(Boolean).join(' ') || undefined;
+// Bordure des champs : contraste de 3:1 au moins avec le fond (WCAG 1.4.11).
 const classes = [
-  'mt-1 block w-full rounded-md border bg-white px-3 py-2 text-slate-900 transition-colors focus:border-brand-700',
-  erreur ? 'border-red-700' : 'border-slate-400',
+  'block w-full rounded-xl border bg-white px-4 py-3.5 text-[0.9375rem] text-encre transition-colors focus:border-bleu',
+  erreur ? 'border-red-700' : 'border-champ',
 ];
 ---
 
-<div class="group">
-  <label
-    for={id}
-    class="block font-medium text-slate-900 transition-colors group-focus-within:text-brand-700"
-  >
-    {label}{' '}
-    <span class="font-normal text-slate-600">{required ? '(obligatoire)' : '(facultatif)'}</span>
+{/* Seuls les champs facultatifs sont signalés : les autres sont obligatoires (attribut required). */}
+<div class:list={['group flex flex-col gap-2', classe]}>
+  <label for={id} class="text-sm font-semibold transition-colors group-focus-within:text-bleu">
+    {required ? (
+      label
+    ) : (
+      <>
+        {label} <span class="font-normal text-discret">(facultatif)</span>
+      </>
+    )}
   </label>
   {hint && (
-    <p id={`${id}-aide`} class="mt-1 text-sm text-slate-600">
+    <p id={`${id}-aide`} class="-mt-1 text-sm text-discret">
       {hint}
     </p>
   )}
@@ -52,14 +58,12 @@ const classes = [
     <textarea
       id={id}
       name={name}
-      rows="6"
+      rows="5"
       required={required}
       aria-invalid={erreur ? 'true' : undefined}
       aria-describedby={describedBy}
-      class:list={classes}
-    >
-        {value}
-      </textarea>
+      class:list={[classes, 'resize-y']}
+    >{value}</textarea>
   ) : (
     <input
       id={id}
@@ -75,7 +79,7 @@ const classes = [
     />
   )}
   {erreur && (
-    <p id={`${id}-erreur`} class="mt-1 flex items-center gap-1.5 text-sm font-medium text-red-700">
+    <p id={`${id}-erreur`} class="flex items-center gap-1.5 text-sm font-medium text-red-700">
       <CircleAlert size={16} aria-hidden="true" class="anim-zoom shrink-0 delai-300" />
       {erreur}
     </p>

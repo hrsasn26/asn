@@ -1,0 +1,20 @@
+---
+/**
+ * Texte qui peut contenir des placeholders entre crochets (« sous [48 h ouvrées] ») :
+ * ils sont surlignés en jaune pour la relecture (classe a-completer). Quand une valeur de
+ * src/data/site.ts est confirmée, les crochets disparaissent et le surlignage aussi.
+ *
+ * Passez la phrase entière dans `texte` (chaîne modèle) : une valeur {…} suivie de texte
+ * à la ligne suivante peut perdre son espace au rendu.
+ */
+interface Props {
+  texte: string;
+}
+
+// La parenthèse capturante garde les placeholders dans le résultat : ils ont un indice impair.
+const morceaux = Astro.props.texte.split(/(\[[^\]\n]+\])/);
+---
+
+{morceaux.map((morceau, index) =>
+  index % 2 === 1 ? <span class="a-completer">{morceau}</span> : morceau,
+)}

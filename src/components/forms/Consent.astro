@@ -20,23 +20,23 @@ const erreur = errors?.[0];
       checked={checked}
       aria-invalid={erreur ? 'true' : undefined}
       aria-describedby={erreur ? 'champ-consentement-erreur' : undefined}
-      class="mt-1 size-5 shrink-0 accent-brand-700"
+      class="mt-0.5 size-5 shrink-0 accent-encre"
     />
-    <label for="champ-consentement" class="text-slate-800">
+    <label for="champ-consentement" class="text-sm leading-[1.55] text-texte">
       J'accepte que mes données soient utilisées pour répondre à ma demande, selon la{' '}
       <a
         href="/confidentialite"
-        class="text-brand-700 underline underline-offset-2 hover:text-brand-800 hover:underline-offset-4"
+        class="text-bleu underline underline-offset-2 hover:text-encre hover:underline-offset-4"
       >
         politique de confidentialité
       </a>
-      . (obligatoire)
+      .
     </label>
   </div>
   {erreur && (
     <p
       id="champ-consentement-erreur"
-      class="mt-1 flex items-center gap-1.5 text-sm font-medium text-red-700"
+      class="mt-2 flex items-center gap-1.5 text-sm font-medium text-red-700"
     >
       <CircleAlert size={16} aria-hidden="true" class="anim-zoom shrink-0 delai-300" />
       {erreur}

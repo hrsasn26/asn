@@ -1,17 +1,16 @@
 ---
-// Textes : docs/brief-agence.md, section 6.8 (proposition à valider).
-// Le brief demande une étape de tests bien visible sur cette page (section 5).
-import CircleCheck from '@lucide/astro/icons/circle-check';
-import FileImage from '@lucide/astro/icons/file-image';
-import KeyRound from '@lucide/astro/icons/key-round';
-import UserCheck from '@lucide/astro/icons/user-check';
+// Textes : docs/brief-agence.md, section 6.8 (proposition à valider). Surtitres : section 6.20.
+// Le brief demande une étape de tests bien visible sur cette page (section 5) : elle détaille
+// les vérifications, et l'encadré « Pourquoi les tests comptent autant » la suit.
 import CtaFinal from '~/components/CtaFinal.astro';
+import Encadre from '~/components/Encadre.astro';
 import Faq from '~/components/Faq.astro';
 import FaqItem from '~/components/FaqItem.astro';
+import FeatureGrid from '~/components/FeatureGrid.astro';
 import Hero from '~/components/Hero.astro';
-import IllustrationMethode from '~/components/illustrations/IllustrationMethode.astro';
+import ListePoints from '~/components/ListePoints.astro';
 import Section from '~/components/Section.astro';
-import { couleurPalette } from '~/data/couleurs';
+import Texte from '~/components/Texte.astro';
 import { cta, delais, offre, site } from '~/data/site';
 import BaseLayout from '~/layouts/BaseLayout.astro';
 
@@ -21,7 +20,6 @@ interface Etape {
   liste?: string[];
   complement?: string;
   recu: string;
-  tests?: boolean;
 }
 
 const etapes: Etape[] = [
@@ -58,7 +56,6 @@ const etapes: Etape[] = [
     complement:
       'Pour les applications, des tests automatiques vérifient chaque nouvelle version : une amélioration ne casse pas ce qui fonctionnait déjà.',
     recu: 'un site ou une application vérifiés, prêts à être mis en ligne.',
-    tests: true,
   },
   {
     title: 'La mise en ligne et la formation.',
@@ -71,17 +68,6 @@ const etapes: Etape[] = [
     recu: 'selon votre forfait, un rapport mensuel clair.',
   },
 ];
-
-// Ce dont nous avons besoin de votre part, chaque point avec son icône.
-const besoins = [
-  {
-    Icone: FileImage,
-    texte:
-      'Vos textes et vos photos. Si vous préférez déléguer, nous vous mettons en relation avec un rédacteur ou un photographe partenaire.',
-  },
-  { Icone: KeyRound, texte: 'Vos accès : nom de domaine, hébergement actuel, outils à connecter.' },
-  { Icone: UserCheck, texte: 'Un interlocuteur disponible pour valider chaque étape.' },
-];
 ---
 
 <BaseLayout
@@ -91,94 +77,91 @@ const besoins = [
 >
   <Hero
     title="Une méthode claire, du premier appel au suivi"
-    motCle="claire"
+    motCle="au suivi"
     subtitle="À chaque étape, vous savez ce qui se passe, ce que vous validez et ce que vous recevez. Les tests font partie du projet : ce n'est pas une option."
-  >
-    <IllustrationMethode slot="illustration" />
-  </Hero>
+  />
 
-  <Section title="Les étapes de votre projet">
-    <div class="relative max-w-3xl">
-      {/* Frise qui relie les étapes : visible entre les cartes, elle se remplit au défilement. */}
-      <div aria-hidden="true" class="absolute top-11 bottom-11 left-[2.6875rem] w-0.5 bg-slate-200">
-        <div class="anim-frise h-full bg-brand-700" />
-      </div>
-      <ol class="relative grid gap-8">
-        {etapes.map((etape, index) => (
-          <li
-            class:list={[
-              'apparition flex gap-4 rounded-lg border p-6',
-              etape.tests ? 'border-emerald-600 bg-emerald-50' : 'border-slate-200 bg-white',
-            ]}
-          >
-            <span
-              aria-hidden="true"
-              class:list={[
-                'apparition-zoom flex size-10 shrink-0 items-center justify-center rounded-full font-semibold text-white',
-                etape.tests ? 'bg-emerald-700' : 'bg-brand-700',
-              ]}
-            >
-              {index + 1}
-            </span>
-            <div>
-              <h3 class="text-lg">{etape.title}</h3>
-              <p class="mt-2 text-slate-700">{etape.text}</p>
-              {etape.liste && (
-                <ul class="mt-3 space-y-1.5 text-slate-700">
-                  {etape.liste.map((point) => (
-                    <li class="flex items-start gap-2">
-                      <CircleCheck
-                        size={18}
-                        aria-hidden="true"
-                        class="apparition-zoom mt-0.5 shrink-0 text-emerald-700"
-                      />
-                      <span>{point}</span>
-                    </li>
-                  ))}
-                </ul>
+  <Section
+    surtitre={`${etapes.length} étapes`}
+    title="Les étapes de votre projet"
+    disposition="colonnes"
+    titreCollant
+  >
+    <ol>
+      {etapes.map((etape, index) => {
+        const derniere = index === etapes.length - 1;
+        return (
+          <li class="apparition grid grid-cols-[2.75rem_minmax(0,1fr)] gap-x-5 sm:gap-x-7">
+            {/* Numéro et trait vertical jusqu'à l'étape suivante. */}
+            <div aria-hidden="true" class="flex flex-col items-center">
+              <span class="apparition-zoom grid size-11 shrink-0 place-items-center rounded-full bg-white text-[0.9375rem] font-semibold ring-1 ring-encre ring-inset">
+                {index + 1}
+              </span>
+              {!derniere && <span class="mt-2 w-px flex-1 bg-trait" />}
+            </div>
+            <div class:list={['pt-2', !derniere && 'pb-12']}>
+              <h3 class="text-[1.375rem] tracking-[-0.015em]">{etape.title}</h3>
+              <p class="mt-3 max-w-[38.75rem] leading-[1.7] text-doux">{etape.text}</p>
+              {etape.liste && <ListePoints items={etape.liste} class="mt-3.5" />}
+              {etape.complement && (
+                <p class="mt-3.5 max-w-[38.75rem] leading-[1.7] text-doux">{etape.complement}</p>
               )}
-              {etape.complement && <p class="mt-3 text-slate-700">{etape.complement}</p>}
-              <p class="mt-3 text-slate-900">
-                <em>Vous recevez :</em> {etape.recu}
+              <p class="mt-4.5 flex max-w-[38.75rem] flex-wrap items-baseline gap-x-3.5 gap-y-1 rounded-xl bg-surface px-4.5 py-3.5 text-[0.9375rem] leading-normal">
+                <span class="text-[0.6875rem] font-semibold tracking-[0.18em] whitespace-nowrap text-discret uppercase">
+                  Vous recevez
+                </span>
+                <span>{etape.recu}</span>
               </p>
             </div>
           </li>
-        ))}
-      </ol>
-    </div>
+        );
+      })}
+    </ol>
   </Section>
 
-  <Section title="Pourquoi les tests comptent autant" tone="gris">
-    <p class="apparition max-w-3xl text-lg text-slate-700">
-      Un bug découvert par un client coûte plus cher qu'un bug trouvé avant la mise en ligne : une
-      vente perdue, une demande de contact jamais reçue, une image dégradée. C'est pourquoi les
-      tests font partie de chaque projet et de chaque mise à jour.
-    </p>
+  <Section>
+    <Encadre
+      ton="sombre"
+      surtitre="Qualité"
+      title="Pourquoi les tests comptent autant"
+      disposition="colonnes"
+    >
+      <p class="text-lg leading-[1.75] text-nuit-texte">
+        Un bug découvert par un client coûte plus cher qu'un bug trouvé avant la mise en ligne : une
+        vente perdue, une demande de contact jamais reçue, une image dégradée. C'est pourquoi les
+        tests font partie de chaque projet et de chaque mise à jour.
+      </p>
+    </Encadre>
   </Section>
 
-  <Section title="Ce dont nous avons besoin de votre part">
-    <ul class="grid max-w-3xl gap-3 text-slate-700">
-      {besoins.map(({ Icone, texte }, index) => (
-        <li class="apparition flex items-start gap-3">
-          <span
-            class:list={[
-              'apparition-zoom inline-flex size-9 shrink-0 items-center justify-center rounded-lg',
-              couleurPalette(index).douce,
-            ]}
-          >
-            <Icone size={20} />
-          </span>
-          <span class="pt-1.5">{texte}</span>
-        </li>
-      ))}
-    </ul>
+  <Section
+    surtitre="Votre rôle"
+    title="Ce dont nous avons besoin de votre part"
+    disposition="colonnes"
+  >
+    <FeatureGrid
+      min={220}
+      titresEnLigne
+      items={[
+        {
+          title: 'Vos textes et vos photos.',
+          text: ' Si vous préférez déléguer, nous vous mettons en relation avec un rédacteur ou un photographe partenaire.',
+        },
+        {
+          title: 'Vos accès :',
+          text: ' nom de domaine, hébergement actuel, outils à connecter.',
+        },
+        { title: 'Un interlocuteur disponible', text: ' pour valider chaque étape.' },
+      ]}
+    />
   </Section>
 
   <Faq>
-    <FaqItem question="Combien de temps dure un projet ?">
+    <FaqItem question="Combien de temps dure un projet ?" ouvert>
       <p>
-        Comptez {delais.siteVitrine} pour un site vitrine et {delais.boutique} pour une boutique en
-        ligne. Pour une application, nous fixons le planning ensemble après le cadrage.
+        <Texte
+          texte={`Comptez ${delais.siteVitrine} pour un site vitrine et ${delais.boutique} pour une boutique en ligne. Pour une application, nous fixons le planning ensemble après le cadrage.`}
+        />
       </p>
     </FaqItem>
     <FaqItem question="Puis-je demander des changements en cours de projet ?">
@@ -189,14 +172,16 @@ const besoins = [
     </FaqItem>
     <FaqItem question="Que se passe-t-il si un problème apparaît après la mise en ligne ?">
       <p>
-        Nous corrigeons les défauts liés à notre travail {offre.garantie}. Avec un forfait de
-        maintenance, nous surveillons votre site et nous intervenons rapidement.
+        <Texte
+          texte={`Nous corrigeons les défauts liés à notre travail ${offre.garantie}. Avec un forfait de maintenance, nous surveillons votre site et nous intervenons rapidement.`}
+        />
       </p>
     </FaqItem>
   </Faq>
 
   <CtaFinal
     title="Parlons de votre projet"
+    motCle="projet"
     text="Un échange de 30 minutes, gratuit et sans engagement, pour comprendre votre besoin et vous dire honnêtement ce que nous pouvons faire pour vous."
     button={cta.principal}
   />

@@ -1,40 +1,29 @@
 ---
-// Textes : docs/brief-agence.md, section 6.10 (proposition à valider).
+// Textes : docs/brief-agence.md, section 6.10 (proposition à valider). Surtitres : section 6.20.
 // Aucune information sur l'équipe n'est inventée : les membres restent des placeholders.
-import Activity from '@lucide/astro/icons/activity';
-import BadgeCheck from '@lucide/astro/icons/badge-check';
-import Blocks from '@lucide/astro/icons/blocks';
-import Clock from '@lucide/astro/icons/clock';
-import Layers from '@lucide/astro/icons/layers';
-import Eye from '@lucide/astro/icons/eye';
-import KeyRound from '@lucide/astro/icons/key-round';
-import Scale from '@lucide/astro/icons/scale';
-import ShieldCheck from '@lucide/astro/icons/shield-check';
-import UserRound from '@lucide/astro/icons/user-round';
 import CtaFinal from '~/components/CtaFinal.astro';
+import Encadre from '~/components/Encadre.astro';
+import EnteteSection from '~/components/EnteteSection.astro';
 import FeatureGrid from '~/components/FeatureGrid.astro';
 import Hero from '~/components/Hero.astro';
-import IllustrationAgence from '~/components/illustrations/IllustrationAgence.astro';
 import Placeholder from '~/components/Placeholder.astro';
 import Section from '~/components/Section.astro';
-import { couleurPalette } from '~/data/couleurs';
+import Texte from '~/components/Texte.astro';
 import { cta, site } from '~/data/site';
 import BaseLayout from '~/layouts/BaseLayout.astro';
 
-// Ce que nous savons faire : le début de chaque phrase est en gras, chaque point a son icône.
-const savoirFaire = [
+const valeurs = [
+  { title: 'Fiabilité', text: 'Nous livrons ce que nous avons testé.' },
+  { title: 'Transparence', text: 'Un prix fixe, et des explications sans jargon.' },
   {
-    Icone: Blocks,
-    titre: 'Concevoir des outils solides',
-    suite: ', qui évoluent avec votre activité.',
+    title: 'Honnêteté',
+    text: "Nous vous disons quand un projet n'est pas raisonnable. Nous ne promettons jamais de résultat que nous ne maîtrisons pas.",
   },
+  { title: 'Engagement dans la durée', text: 'Nous restons là après la mise en ligne.' },
   {
-    Icone: Layers,
-    titre: 'Prendre en charge tout votre projet',
-    suite: ", de l'écran au serveur : vous avez un seul interlocuteur.",
+    title: 'Liberté',
+    text: 'Vous restez propriétaire de votre code, de votre nom de domaine et de vos données.',
   },
-  { Icone: Activity, titre: 'Garder votre site en ligne', suite: ', rapide et sauvegardé.' },
-  { Icone: BadgeCheck, titre: 'Tout tester', suite: ' avant chaque mise en ligne.' },
 ];
 ---
 
@@ -45,106 +34,125 @@ const savoirFaire = [
 >
   <Hero
     title="Une équipe d'ingénieurs, à la taille de votre projet"
-    motCle="ingénieurs"
+    motCle="à la taille de votre projet"
     subtitle={`Nous construisons des sites et des applications solides, et nous les suivons dans la durée. Nous sommes basés à ${site.zone}.`}
-  >
-    <IllustrationAgence slot="illustration" />
-  </Hero>
+  />
 
-  <Section title={`Pourquoi ${site.nom} existe`}>
-    <div class="max-w-3xl space-y-4 text-lg text-slate-700">
-      <p class="apparition">
+  <Section surtitre="Notre histoire" title={`Pourquoi ${site.nom} existe`} disposition="colonnes">
+    <div class="apparition">
+      <p class="text-lg leading-[1.7] sm:text-xl">
         Beaucoup de TPE et de PME ont vécu la même situation : un site livré sans tests, un
-        prestataire qui ne répond plus, un site piraté faute de mises à jour. Nous avons créé{' '}
-        {site.nom} pour proposer autre chose : des projets construits avec les méthodes des
-        ingénieurs, et un suivi dans la durée.
+        prestataire qui ne répond plus, un site piraté faute de mises à jour.
       </p>
-      <Placeholder text="[À rédiger : l'histoire de l'agence, en quelques phrases]" />
+      <p class="mt-5 leading-[1.75] text-doux sm:text-[1.0625rem]">
+        {`Nous avons créé ${site.nom} pour proposer autre chose : des projets construits avec les méthodes des ingénieurs, et un suivi dans la durée.`}
+      </p>
+      <Placeholder
+        text="[À rédiger : l'histoire de l'agence, en quelques phrases]"
+        class="mt-5 sm:text-[1.0625rem]"
+      />
     </div>
   </Section>
 
-  <Section title="Ce que nous savons faire, en clair" tone="gris">
-    <ul class="grid max-w-3xl gap-4 text-slate-700">
-      {savoirFaire.map(({ Icone, titre, suite }, index) => (
-        <li class="apparition flex items-start gap-3">
-          <span
+  <Section
+    surtitre="Savoir-faire"
+    title="Ce que nous savons faire, en clair"
+    disposition="colonnes"
+  >
+    <FeatureGrid
+      titresEnLigne
+      items={[
+        {
+          title: 'Concevoir des outils solides',
+          text: ', qui évoluent avec votre activité.',
+        },
+        {
+          title: 'Prendre en charge tout votre projet',
+          text: ", de l'écran au serveur : vous avez un seul interlocuteur.",
+        },
+        { title: 'Garder votre site en ligne', text: ', rapide et sauvegardé.' },
+        { title: 'Tout tester', text: ' avant chaque mise en ligne.' },
+      ]}
+    />
+  </Section>
+
+  <Section surtitre="Valeurs" title="Nos valeurs" disposition="centre">
+    <ul class="flex flex-wrap gap-4">
+      {valeurs.map(({ title, text }, index) => {
+        // La dernière valeur (Liberté) est sur fond sombre, comme dans les maquettes.
+        const sombre = index === valeurs.length - 1;
+        return (
+          <li
             class:list={[
-              'apparition-zoom inline-flex size-9 shrink-0 items-center justify-center rounded-lg',
-              couleurPalette(index).douce,
+              'apparition min-w-0 flex-[1_1_9.375rem] rounded-[1.25rem] p-6',
+              sombre ? 'bg-encre text-white' : 'bg-surface',
             ]}
           >
-            <Icone size={20} />
-          </span>
-          <p class="pt-1.5">
-            <strong class="text-slate-900">{titre}</strong>
-            {suite}
+            <p
+              aria-hidden="true"
+              class:list={[
+                'text-[0.8125rem] font-semibold',
+                sombre ? 'text-nuit-discret' : 'text-discret',
+              ]}
+            >
+              {String(index + 1).padStart(2, '0')}
+            </p>
+            <h3 class="mt-7 text-xl">{title}</h3>
+            <p
+              class:list={[
+                'mt-2 text-[0.9375rem] leading-[1.6]',
+                sombre ? 'text-nuit-texte' : 'text-doux',
+              ]}
+            >
+              {text}
+            </p>
+          </li>
+        );
+      })}
+    </ul>
+  </Section>
+
+  <Section>
+    <div class="apparition flex flex-wrap items-end justify-between gap-4">
+      <EnteteSection surtitre="Équipe" title="L'équipe" />
+      <Placeholder text="[Photos : à fournir]" class="text-sm" />
+    </div>
+    <ul class="mt-12 grid grid-cols-[repeat(auto-fit,minmax(min(100%,16.25rem),1fr))] gap-6">
+      {[1, 2, 3].map(() => (
+        <li class="apparition">
+          {/* Emplacement de la photo, à fournir : aucune photo n'est inventée. */}
+          <div
+            aria-hidden="true"
+            class="aspect-[4/5] rounded-[1.25rem] bg-[repeating-linear-gradient(135deg,var(--color-ligne)_0_10px,var(--color-surface)_10px_20px)]"
+          />
+          <p class="mt-5 text-[1.1875rem] font-semibold">
+            <Texte texte="[Prénom Nom]" />
+          </p>
+          <p class="mt-1 text-sm text-discret">
+            <Texte texte="[Rôle]" />
+          </p>
+          <p class="mt-2.5 text-[0.9375rem] leading-[1.6] text-doux">
+            <Texte texte="[Une phrase de présentation]" />
           </p>
         </li>
       ))}
     </ul>
   </Section>
 
-  <Section title="Nos valeurs">
-    <FeatureGrid
-      columns={3}
-      items={[
-        {
-          title: 'Fiabilité',
-          text: 'Nous livrons ce que nous avons testé.',
-          icone: ShieldCheck,
-        },
-        {
-          title: 'Transparence',
-          text: 'Un prix fixe, et des explications sans jargon.',
-          icone: Eye,
-        },
-        {
-          title: 'Honnêteté',
-          text: "Nous vous disons quand un projet n'est pas raisonnable. Nous ne promettons jamais de résultat que nous ne maîtrisons pas.",
-          icone: Scale,
-        },
-        {
-          title: 'Engagement dans la durée',
-          text: 'Nous restons là après la mise en ligne.',
-          icone: Clock,
-        },
-        {
-          title: 'Liberté',
-          text: 'Vous restez propriétaire de votre code, de votre nom de domaine et de vos données.',
-          icone: KeyRound,
-        },
-      ]}
-    />
-  </Section>
-
-  <Section title="L'équipe" tone="gris">
-    <ul class="grid gap-6 md:grid-cols-3">
-      {[1, 2, 3].map(() => (
-        <li class="apparition rounded-lg border border-slate-200 bg-white p-6">
-          <span class="apparition-zoom inline-flex size-16 items-center justify-center rounded-full bg-slate-200 text-slate-500">
-            <UserRound size={32} />
-          </span>
-          <p class="mt-4 font-semibold text-slate-900">[Prénom Nom]</p>
-          <p class="text-sm text-slate-600">[Rôle]</p>
-          <p class="mt-2 text-slate-700">[Une phrase de présentation]</p>
-        </li>
-      ))}
-    </ul>
-    <div class="mt-6 max-w-3xl">
-      <Placeholder text="[Photos : à fournir]" />
-    </div>
-  </Section>
-
-  <Section title="Nos partenaires">
-    <p class="apparition max-w-3xl text-lg text-slate-700">
-      Pour le design, le logo et la rédaction, nous travaillons avec des indépendants de confiance :
-      [graphiste partenaire], [rédacteur partenaire]. Le développement, lui, n'est jamais
-      sous-traité.
-    </p>
+  <Section>
+    <Encadre ton="cadre" surtitre="Réseau" title="Nos partenaires" disposition="colonnes">
+      <p class="leading-[1.75] text-doux sm:text-[1.0625rem]">
+        <Texte texte="Pour le design, le logo et la rédaction, nous travaillons avec des indépendants de confiance : [graphiste partenaire], [rédacteur partenaire]." />{' '}
+        <strong class="font-semibold text-encre">
+          Le développement, lui, n'est jamais sous-traité.
+        </strong>
+      </p>
+    </Encadre>
   </Section>
 
   <CtaFinal
     title="Parlons de votre projet"
+    motCle="projet"
     text="Un échange de 30 minutes, gratuit et sans engagement, pour comprendre votre besoin et vous dire honnêtement ce que nous pouvons faire pour vous."
     button={cta.principal}
   />

@@ -1,13 +1,6 @@
 ---
+// Surtitres des sections : docs/brief-agence.md, section 6.20.
 // Textes : docs/brief-agence.md, section 6.14 (proposition à valider).
-import BadgeCheck from '@lucide/astro/icons/badge-check';
-import HardHat from '@lucide/astro/icons/hard-hat';
-import LockKeyhole from '@lucide/astro/icons/lock-keyhole';
-import RefreshCw from '@lucide/astro/icons/refresh-cw';
-import Smartphone from '@lucide/astro/icons/smartphone';
-import Store from '@lucide/astro/icons/store';
-import TabletSmartphone from '@lucide/astro/icons/tablet-smartphone';
-import Workflow from '@lucide/astro/icons/workflow';
 import ButtonLink from '~/components/ButtonLink.astro';
 import CtaFinal from '~/components/CtaFinal.astro';
 import Faq from '~/components/Faq.astro';
@@ -18,6 +11,7 @@ import ProblemList from '~/components/ProblemList.astro';
 import Section from '~/components/Section.astro';
 import Steps from '~/components/Steps.astro';
 import { delais, site } from '~/data/site';
+import { surtitreService } from '~/data/navigation';
 import BaseLayout from '~/layouts/BaseLayout.astro';
 import { serviceJsonLd } from '~/lib/seo';
 
@@ -38,8 +32,9 @@ const ctaProjet = { label: 'Parler de mon application', href: '/contact' };
 >
   <Hero
     maquette="applications-mobiles"
+    surtitre={surtitreService('/services/applications-mobiles')}
     title="Votre application iPhone et Android, solide et suivie dans la durée"
-    motCle="solide"
+    motCle="solide et suivie dans la durée"
     subtitle="Pour vos clients ou pour vos équipes : nous concevons, testons et publions votre application, puis nous la gardons à jour."
   >
     <ButtonLink href={ctaProjet.href}>{ctaProjet.label}</ButtonLink>
@@ -55,61 +50,63 @@ const ctaProjet = { label: 'Parler de mon application', href: '/contact' };
     ]}
   />
 
-  <Section title="Des applications pour vos clients et pour vos équipes">
+  <Section
+    surtitre="Nos solutions"
+    title="Des applications pour vos clients et pour vos équipes"
+    disposition="centre"
+  >
     <FeatureGrid
+      variante="cartes"
+      min={400}
       items={[
         {
           title: 'Une application pour vos clients',
-          icone: Smartphone,
           text: 'Réservation, commande, fidélité, suivi de livraison, espace client : vos services dans la poche de vos clients, avec des notifications pour les prévenir au bon moment.',
         },
         {
           title: 'Une application pour vos équipes',
-          icone: HardHat,
           text: "Pointage, suivi de chantier, inventaire, tournées, photos et signatures sur le terrain. L'application peut fonctionner sans connexion et envoyer les données dès que le réseau revient.",
         },
         {
           title: 'Un seul développement pour iPhone et Android',
-          icone: TabletSmartphone,
           text: 'Nous développons une seule application qui fonctionne sur les deux systèmes. Vous payez un seul projet, et les deux versions évoluent ensemble.',
         },
         {
           title: "La publication sur l'App Store et Google Play",
-          icone: Store,
           text: "Nous préparons les fiches, les captures d'écran et les documents demandés par Apple et Google, et nous suivons la validation jusqu'à la publication.",
         },
       ]}
     />
   </Section>
 
-  <Section title="Testée sur de vrais téléphones, suivie après la publication" tone="gris">
+  <Section
+    surtitre="Notre différence"
+    title="Testée sur de vrais téléphones, suivie après la publication"
+    disposition="colonnes"
+  >
     <FeatureGrid
       items={[
         {
           title: 'Testée sur de vrais téléphones',
-          icone: BadgeCheck,
           text: "Avant chaque publication, nous vérifions votre application sur plusieurs modèles d'iPhone et d'Android, avec des petits et des grands écrans.",
         },
         {
           title: 'Connectée à vos outils',
-          icone: Workflow,
           text: 'Votre application utilise les mêmes données que votre site, votre boutique ou votre logiciel de gestion. Vous ne saisissez rien deux fois.',
         },
         {
           title: 'Vos données protégées',
-          icone: LockKeyhole,
           text: 'Connexion chiffrée, comptes utilisateurs sécurisés et respect de la loi 09-08 sur les données personnelles.',
         },
         {
           title: 'Toujours à jour',
-          icone: RefreshCw,
           text: "Apple et Google changent leurs règles chaque année. Avec un forfait de maintenance, nous mettons votre application à jour pour qu'elle reste disponible et compatible.",
         },
       ]}
     />
   </Section>
 
-  <Section title="Comment nous travaillons">
+  <Section surtitre="Méthode" title="Comment nous travaillons" disposition="centre">
     <Steps
       items={[
         {
@@ -137,7 +134,7 @@ const ctaProjet = { label: 'Parler de mon application', href: '/contact' };
   </Section>
 
   <Faq>
-    <FaqItem question="Ai-je besoin d'une application ou d'un site adapté au mobile ?">
+    <FaqItem question="Ai-je besoin d'une application ou d'un site adapté au mobile ?" ouvert>
       <p>
         Pas toujours. Si vos clients vous consultent de temps en temps, un site rapide et adapté au
         mobile suffit souvent, et il coûte moins cher. Une application devient utile quand vos
@@ -175,6 +172,7 @@ const ctaProjet = { label: 'Parler de mon application', href: '/contact' };
 
   <CtaFinal
     title="Parlons de votre application"
+    motCle="application"
     text="Un échange de 30 minutes, gratuit et confidentiel, pour savoir si une application est la bonne réponse à votre besoin, et pour quel budget."
     button={ctaProjet}
   />

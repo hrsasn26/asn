@@ -1,13 +1,6 @@
 ---
+// Surtitres des sections : docs/brief-agence.md, section 6.20.
 // Textes : docs/brief-agence.md, section 6.15 (proposition à valider).
-import BadgeCheck from '@lucide/astro/icons/badge-check';
-import Blocks from '@lucide/astro/icons/blocks';
-import CreditCard from '@lucide/astro/icons/credit-card';
-import LayoutDashboard from '@lucide/astro/icons/layout-dashboard';
-import Plug from '@lucide/astro/icons/plug';
-import RefreshCw from '@lucide/astro/icons/refresh-cw';
-import ShieldCheck from '@lucide/astro/icons/shield-check';
-import UsersRound from '@lucide/astro/icons/users-round';
 import ButtonLink from '~/components/ButtonLink.astro';
 import CtaFinal from '~/components/CtaFinal.astro';
 import Faq from '~/components/Faq.astro';
@@ -17,7 +10,9 @@ import Hero from '~/components/Hero.astro';
 import ProblemList from '~/components/ProblemList.astro';
 import Section from '~/components/Section.astro';
 import Steps from '~/components/Steps.astro';
+import Texte from '~/components/Texte.astro';
 import { delais, site } from '~/data/site';
+import { surtitreService } from '~/data/navigation';
 import BaseLayout from '~/layouts/BaseLayout.astro';
 import { serviceJsonLd } from '~/lib/seo';
 
@@ -38,15 +33,16 @@ const ctaProjet = { label: 'Présenter mon idée', href: '/contact' };
 >
   <Hero
     maquette="logiciels-saas"
+    surtitre={surtitreService('/services/logiciels-saas')}
     title="Votre logiciel en ligne, vendu par abonnement"
-    motCle="abonnement"
+    motCle="vendu par abonnement"
     subtitle="Vous avez une idée de logiciel pour les entreprises ou pour les particuliers ? Nous développons votre plateforme, de la première version au lancement, puis nous la faisons évoluer avec vous."
   >
     <ButtonLink href={ctaProjet.href}>{ctaProjet.label}</ButtonLink>
   </Hero>
 
-  <Section title="Un SaaS, en clair">
-    <p class="apparition max-w-3xl text-lg text-slate-700">
+  <Section surtitre="Définition" title="Un SaaS, en clair" disposition="colonnes">
+    <p class="apparition text-lg leading-[1.75] text-doux">
       Un SaaS (« logiciel en tant que service ») est un logiciel que vos clients utilisent en ligne,
       depuis leur navigateur ou leur téléphone. Ils n'installent rien et ils paient un abonnement.
       Vous gérez une seule version du logiciel pour tous vos clients.
@@ -63,61 +59,55 @@ const ctaProjet = { label: 'Présenter mon idée', href: '/contact' };
     ]}
   />
 
-  <Section title="Tout ce dont votre SaaS a besoin">
+  <Section surtitre="Nos solutions" title="Tout ce dont votre SaaS a besoin" disposition="centre">
     <FeatureGrid
+      variante="cartes"
+      min={400}
       items={[
         {
           title: 'Comptes et équipes',
-          icone: UsersRound,
           text: 'Inscription, connexion sécurisée, gestion des utilisateurs et de leurs droits. Les données de chaque client restent séparées de celles des autres.',
         },
         {
           title: 'Abonnements et paiement',
-          icone: CreditCard,
           text: "Formules, période d'essai, paiement en ligne et factures automatiques. Nous choisissons avec vous la solution de paiement adaptée à vos clients, au Maroc ou à l'international.",
         },
         {
           title: "Espace d'administration",
-          icone: LayoutDashboard,
           text: "Vous suivez vos clients, vos abonnements et l'utilisation de votre logiciel, sans passer par nous.",
         },
         {
           title: "Connexion avec d'autres logiciels",
-          icone: Plug,
           text: 'Vos clients relient votre SaaS à leurs propres outils : comptabilité, CRM, e-mailing. Votre logiciel devient plus utile, et plus difficile à remplacer.',
         },
       ]}
     />
   </Section>
 
-  <Section title="Construit pour grandir" tone="gris">
+  <Section surtitre="Notre différence" title="Construit pour grandir" disposition="colonnes">
     <FeatureGrid
       items={[
         {
           title: 'Des bases solides',
-          icone: Blocks,
           text: 'Nous concevons votre logiciel pour accueillir de nouveaux clients et de nouvelles fonctionnalités sans tout reconstruire.',
         },
         {
           title: 'Testé à chaque version',
-          icone: BadgeCheck,
           text: 'Des tests automatiques vérifient chaque nouvelle version avant sa mise en ligne. Vos clients ne découvrent pas les bugs à votre place.',
         },
         {
           title: 'Sécurité et sauvegardes',
-          icone: ShieldCheck,
           text: 'Connexions chiffrées, accès contrôlés, sauvegardes quotidiennes et surveillance 24 h/24.',
         },
         {
           title: 'Des mises à jour sans surprise',
-          icone: RefreshCw,
           text: 'Nous préparons chaque mise en ligne pour éviter les coupures de service. En cas de problème, nous revenons à la version précédente en quelques minutes.',
         },
       ]}
     />
   </Section>
 
-  <Section title="Du cadrage aux premiers clients">
+  <Section surtitre="Méthode" title="Du cadrage aux premiers clients" disposition="centre">
     <Steps
       items={[
         {
@@ -145,7 +135,7 @@ const ctaProjet = { label: 'Présenter mon idée', href: '/contact' };
   </Section>
 
   <Faq>
-    <FaqItem question="Combien coûte le développement d'un SaaS ?">
+    <FaqItem question="Combien coûte le développement d'un SaaS ?" ouvert>
       <p>
         Cela dépend des fonctionnalités. Après l'atelier de cadrage, nous vous remettons un devis
         gratuit, à prix fixe, pour la première version.
@@ -153,7 +143,9 @@ const ctaProjet = { label: 'Présenter mon idée', href: '/contact' };
     </FaqItem>
     <FaqItem question="Combien de temps faut-il ?">
       <p>
-        {`Une première version demande en général ${delais.mvp}. Nous fixons le planning ensemble après le cadrage.`}
+        <Texte
+          texte={`Une première version demande en général ${delais.mvp}. Nous fixons le planning ensemble après le cadrage.`}
+        />
       </p>
     </FaqItem>
     <FaqItem question="Qui est propriétaire du logiciel ?">
@@ -176,15 +168,14 @@ const ctaProjet = { label: 'Présenter mon idée', href: '/contact' };
     </FaqItem>
     <FaqItem question="Mes clients sont à l'étranger. Est-ce un problème ?">
       <p>
-        Non, mais les règles changent selon les pays : protection des données, facturation,
-        paiement. Nous en tenons compte dès le cadrage. [À valider avec un juriste selon les pays
-        visés]
+        <Texte texte="Non, mais les règles changent selon les pays : protection des données, facturation, paiement. Nous en tenons compte dès le cadrage. [À valider avec un juriste selon les pays visés]" />
       </p>
     </FaqItem>
   </Faq>
 
   <CtaFinal
     title="Présentez-nous votre idée de SaaS"
+    motCle="votre idée de SaaS"
     text="Un échange de 30 minutes, gratuit et confidentiel, pour parler de votre idée, de vos futurs clients et de ce qui est réaliste pour une première version."
     button={ctaProjet}
   />

@@ -1,15 +1,9 @@
 ---
+// Surtitres des sections : docs/brief-agence.md, section 6.20.
 // Textes : docs/brief-agence.md, section 6.3.
-import BadgeCheck from '@lucide/astro/icons/badge-check';
-import Blocks from '@lucide/astro/icons/blocks';
-import CalendarCheck from '@lucide/astro/icons/calendar-check';
-import KeyRound from '@lucide/astro/icons/key-round';
-import LockKeyhole from '@lucide/astro/icons/lock-keyhole';
-import Rocket from '@lucide/astro/icons/rocket';
-import Smartphone from '@lucide/astro/icons/smartphone';
-import Users from '@lucide/astro/icons/users';
 import ButtonLink from '~/components/ButtonLink.astro';
 import CtaFinal from '~/components/CtaFinal.astro';
+import Encadre from '~/components/Encadre.astro';
 import Faq from '~/components/Faq.astro';
 import FaqItem from '~/components/FaqItem.astro';
 import FeatureGrid from '~/components/FeatureGrid.astro';
@@ -18,7 +12,9 @@ import LienFleche from '~/components/LienFleche.astro';
 import ProblemList from '~/components/ProblemList.astro';
 import Section from '~/components/Section.astro';
 import Steps from '~/components/Steps.astro';
+import Texte from '~/components/Texte.astro';
 import { delais, site } from '~/data/site';
+import { surtitreService } from '~/data/navigation';
 import BaseLayout from '~/layouts/BaseLayout.astro';
 import { serviceJsonLd } from '~/lib/seo';
 
@@ -39,8 +35,9 @@ const ctaProjet = { label: 'Parler de mon projet', href: '/contact' };
 >
   <Hero
     maquette="applications-sur-mesure"
+    surtitre={surtitreService('/services/applications-sur-mesure')}
     title="Un outil conçu pour votre façon de travailler"
-    motCle="travailler"
+    motCle="votre façon de travailler"
     subtitle="Réservation, devis, planning, espace client, application mobile : nous développons le logiciel dont vous avez besoin, et il évolue avec votre activité."
   >
     <ButtonLink href={ctaProjet.href}>{ctaProjet.label}</ButtonLink>
@@ -56,32 +53,34 @@ const ctaProjet = { label: 'Parler de mon projet', href: '/contact' };
     ]}
   />
 
-  <Section title="Ce que nous pouvons construire pour vous">
+  <Section
+    surtitre="Nos solutions"
+    title="Ce que nous pouvons construire pour vous"
+    disposition="centre"
+  >
     <FeatureGrid
+      variante="cartes"
+      min={400}
       items={[
         {
           title: 'Outils métier',
-          icone: CalendarCheck,
           text: "Prise de rendez-vous, devis et factures, gestion de stock, planning d'équipe, suivi de chantier. Un seul outil, pensé pour votre activité, à la place de trois logiciels mal adaptés.",
         },
         {
           title: 'Espaces clients et portails',
-          icone: Users,
           text: 'Vos clients suivent leurs commandes, téléchargent leurs documents et font leurs demandes en ligne, sans vous appeler.',
         },
         {
           title: 'Applications mobiles',
-          icone: Smartphone,
           text: "Une application iPhone et Android à partir d'un seul développement, pour un coût maîtrisé. Nous nous occupons aussi de la publication sur l'App Store et Google Play.",
         },
         {
           title: 'Première version de votre projet (MVP)',
-          icone: Rocket,
           text: "Vous avez une idée d'application ? Nous construisons une première version avec l'essentiel, pour la tester auprès de vrais utilisateurs avant d'investir davantage.",
         },
       ]}
     />
-    <ul class="mt-8 space-y-2">
+    <ul class="mt-10 flex flex-col items-center gap-2 text-center text-[0.9375rem] text-doux">
       <li class="apparition">
         <LienFleche
           href="/services/applications-mobiles"
@@ -95,34 +94,34 @@ const ctaProjet = { label: 'Parler de mon projet', href: '/contact' };
     </ul>
   </Section>
 
-  <Section title="Une application solide, pas un prototype fragile" tone="gris">
+  <Section
+    surtitre="Notre différence"
+    title="Une application solide, pas un prototype fragile"
+    disposition="colonnes"
+  >
     <FeatureGrid
       items={[
         {
           title: 'Pensée pour évoluer',
-          icone: Blocks,
           text: "Nous concevons votre application pour que l'on puisse ajouter des fonctionnalités dans deux ans sans tout reconstruire.",
         },
         {
           title: 'Testée automatiquement',
-          icone: BadgeCheck,
           text: 'Chaque nouvelle version est vérifiée par des tests automatiques. Une amélioration ne casse pas ce qui fonctionnait déjà.',
         },
         {
           title: 'Vos données protégées',
-          icone: LockKeyhole,
           text: `Sauvegardes quotidiennes, accès sécurisés, hébergement en ${site.hebergement}.`,
         },
         {
           title: 'Un code qui vous appartient',
-          icone: KeyRound,
           text: 'Le code est documenté et vous appartient. Vous restez libre de changer de prestataire si vous le souhaitez.',
         },
       ]}
     />
   </Section>
 
-  <Section title="Comment nous travaillons">
+  <Section surtitre="Méthode" title="Comment nous travaillons" disposition="centre">
     <Steps
       items={[
         {
@@ -149,21 +148,30 @@ const ctaProjet = { label: 'Parler de mon projet', href: '/contact' };
     />
   </Section>
 
-  <Section title="Vous avez une idée d'application ? Commencez petit." tone="gris">
-    <p class="apparition max-w-3xl text-lg text-slate-700">
-      Plutôt que de tout développer d'un coup, nous construisons d'abord une version simple, avec
-      les fonctionnalités essentielles. Vous la testez auprès de vrais utilisateurs, puis vous
-      décidez de la suite en connaissance de cause. Vous dépensez moins, et vous apprenez plus vite.
-    </p>
-    <div class="apparition mt-6">
-      <ButtonLink href="/contact" variant="secondaire">
-        Présenter mon idée
-      </ButtonLink>
-    </div>
+  <Section>
+    <Encadre
+      ton="sombre"
+      surtitre="Porteurs de projet"
+      title="Vous avez une idée d'application ? Commencez petit."
+      motCle="Commencez petit."
+      disposition="colonnes"
+    >
+      <p class="text-lg leading-[1.75] text-nuit-texte">
+        Plutôt que de tout développer d'un coup, nous construisons d'abord une version simple, avec
+        les fonctionnalités essentielles. Vous la testez auprès de vrais utilisateurs, puis vous
+        décidez de la suite en connaissance de cause. Vous dépensez moins, et vous apprenez plus
+        vite.
+      </p>
+      <div class="mt-8">
+        <ButtonLink href="/contact" variant="clair">
+          Présenter mon idée
+        </ButtonLink>
+      </div>
+    </Encadre>
   </Section>
 
   <Faq>
-    <FaqItem question="Combien coûte une application sur mesure ?">
+    <FaqItem question="Combien coûte une application sur mesure ?" ouvert>
       <p>
         Cela dépend des fonctionnalités. Après l'atelier de cadrage, nous vous remettons un devis
         gratuit, à prix fixe.
@@ -171,8 +179,9 @@ const ctaProjet = { label: 'Parler de mon projet', href: '/contact' };
     </FaqItem>
     <FaqItem question="Combien de temps faut-il ?">
       <p>
-        Une première version demande en général {delais.mvp}. Nous fixons le planning ensemble après
-        le cadrage.
+        <Texte
+          texte={`Une première version demande en général ${delais.mvp}. Nous fixons le planning ensemble après le cadrage.`}
+        />
       </p>
     </FaqItem>
     <FaqItem question="Mon idée sera-t-elle protégée ?">
@@ -194,6 +203,7 @@ const ctaProjet = { label: 'Parler de mon projet', href: '/contact' };
 
   <CtaFinal
     title="Parlons de votre projet"
+    motCle="projet"
     text="Un échange de 30 minutes, gratuit et confidentiel, pour comprendre votre besoin et vous dire ce qui est réaliste, dans quel délai et pour quel budget."
     button={ctaProjet}
   />

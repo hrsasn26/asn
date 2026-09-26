@@ -1,0 +1,17 @@
+---
+/** Carte blanche qui contient un formulaire (Contact, Audit gratuit) : bordure fine et ombre douce. */
+interface Props {
+  class?: string;
+}
+
+const { class: classe } = Astro.props;
+---
+
+<div
+  class:list={[
+    'rounded-3xl bg-white p-[clamp(1.5rem,4vw,2.75rem)] shadow-[0_0_0_1px_var(--color-ligne),0_40px_80px_-48px_rgb(11_27_51/0.35)]',
+    classe,
+  ]}
+>
+  <slot />
+</div>

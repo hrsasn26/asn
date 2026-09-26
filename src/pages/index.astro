@@ -1,15 +1,13 @@
 ---
 // Textes : docs/brief-agence.md, section 6.7 (proposition à valider).
-import Activity from '@lucide/astro/icons/activity';
-import BadgeCheck from '@lucide/astro/icons/badge-check';
-import Blocks from '@lucide/astro/icons/blocks';
-import Handshake from '@lucide/astro/icons/handshake';
+// Surtitres des sections : section 6.20 du brief.
 import AuditTeaser from '~/components/AuditTeaser.astro';
 import ButtonLink from '~/components/ButtonLink.astro';
 import CtaFinal from '~/components/CtaFinal.astro';
 import FeatureGrid from '~/components/FeatureGrid.astro';
 import Hero from '~/components/Hero.astro';
 import LienFleche from '~/components/LienFleche.astro';
+import ListePoints from '~/components/ListePoints.astro';
 import PourQui from '~/components/PourQui.astro';
 import Section from '~/components/Section.astro';
 import ServiceCards from '~/components/ServiceCards.astro';
@@ -26,7 +24,9 @@ import { organisationJsonLd } from '~/lib/seo';
   jsonLd={organisationJsonLd(Astro.site ?? Astro.url.origin)}
 >
   <Hero
+    centre
     maquette="accueil"
+    surtitre="TPE · PME · Particuliers"
     title="Des sites et des applications conçus par des ingénieurs"
     motCle="ingénieurs"
     subtitle="Fiables, testés, sécurisés et suivis dans la durée. Nous construisons votre projet, puis nous nous en occupons, pour que vous puissiez vous concentrer sur votre activité."
@@ -37,67 +37,59 @@ import { organisationJsonLd } from '~/lib/seo';
     </ButtonLink>
   </Hero>
 
-  <Section title="Ce que vous y gagnez">
+  <Section surtitre="Vos bénéfices" title="Ce que vous y gagnez" disposition="colonnes">
     <FeatureGrid
-      columns={4}
       items={[
         {
           title: 'Toujours en ligne',
           text: 'Votre site reste en ligne, rapide et sauvegardé automatiquement.',
-          icone: Activity,
         },
         {
           title: 'Testé avant la mise en ligne',
           text: 'Tout est vérifié sur ordinateur, tablette et mobile avant la mise en ligne. Pas de mauvaise surprise.',
-          icone: BadgeCheck,
         },
         {
           title: 'Construit pour durer',
           text: 'Un outil solide, qui évolue avec votre activité sans tout reconstruire.',
-          icone: Blocks,
         },
         {
           title: 'Un seul interlocuteur',
           text: 'Les personnes qui construisent votre projet sont celles qui vous répondent, du premier échange à la maintenance.',
-          icone: Handshake,
         },
       ]}
     />
   </Section>
 
-  <Section title="Ce que nous faisons pour vous" tone="gris">
+  <Section surtitre="Nos services" title="Ce que nous faisons pour vous" disposition="centre">
     <ServiceCards />
   </Section>
 
-  <PourQui tone="clair" />
+  <PourQui />
 
-  <Section title="Un projet en cinq étapes claires" tone="gris">
+  <Section surtitre="Méthode" title="Un projet en cinq étapes claires" disposition="centre">
     <Steps items={etapesProjet} />
-    <p class="apparition mt-8">
+    <p class="apparition mt-12 text-center">
       <LienFleche href="/methode" label="Découvrir notre méthode" />
     </p>
   </Section>
 
-  <AuditTeaser />
+  <AuditTeaser maquette />
 
-  <Section title="Nos engagements" tone="gris">
-    <ul class="grid max-w-3xl gap-3">
-      {[
+  <Section surtitre="Engagements" title="Nos engagements" disposition="colonnes">
+    <ListePoints
+      variante="grille"
+      items={[
         'Vous restez propriétaire de votre code, de votre nom de domaine et de vos données.',
         'Un devis à prix fixe, après un échange gratuit.',
         `Une réponse à votre demande sous ${site.delaiReponse}.`,
         `Un hébergement en ${site.hebergement}.`,
-      ].map((engagement) => (
-        <li class="apparition flex gap-3 rounded-md border border-slate-200 bg-white px-4 py-3">
-          <BadgeCheck class="apparition-zoom mt-0.5 shrink-0 text-emerald-600" size={20} />
-          <span>{engagement}</span>
-        </li>
-      ))}
-    </ul>
+      ]}
+    />
   </Section>
 
   <CtaFinal
     title="Parlons de votre projet"
+    motCle="projet"
     text="Un échange de 30 minutes, gratuit et sans engagement, pour comprendre votre besoin et vous dire honnêtement ce que nous pouvons faire pour vous."
     button={cta.principal}
   />

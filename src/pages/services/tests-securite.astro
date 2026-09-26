@@ -1,19 +1,19 @@
 ---
+// Surtitres des sections : docs/brief-agence.md, section 6.20.
 // Textes : docs/brief-agence.md, section 6.18 (proposition à valider).
-import BadgeCheck from '@lucide/astro/icons/badge-check';
-import Gauge from '@lucide/astro/icons/gauge';
-import MonitorSmartphone from '@lucide/astro/icons/monitor-smartphone';
-import ShieldCheck from '@lucide/astro/icons/shield-check';
 import ButtonLink from '~/components/ButtonLink.astro';
 import CtaFinal from '~/components/CtaFinal.astro';
+import Encadre from '~/components/Encadre.astro';
 import Faq from '~/components/Faq.astro';
 import FaqItem from '~/components/FaqItem.astro';
 import FeatureGrid from '~/components/FeatureGrid.astro';
 import Hero from '~/components/Hero.astro';
+import ListePoints from '~/components/ListePoints.astro';
 import ProblemList from '~/components/ProblemList.astro';
 import Section from '~/components/Section.astro';
 import Steps from '~/components/Steps.astro';
 import { cta, site } from '~/data/site';
+import { surtitreService } from '~/data/navigation';
 import BaseLayout from '~/layouts/BaseLayout.astro';
 import { serviceJsonLd } from '~/lib/seo';
 
@@ -34,8 +34,9 @@ const ctaAudit = { label: 'Demander un audit de sécurité', href: '/contact' };
 >
   <Hero
     maquette="tests-securite"
+    surtitre={surtitreService('/services/tests-securite')}
     title="Vos sites et vos applications, vérifiés avant vos clients"
-    motCle="vérifiés"
+    motCle="vérifiés avant vos clients"
     subtitle="Audit de sécurité, tests avant une mise en ligne, tests automatiques : nous trouvons les problèmes avant qu'ils vous coûtent des clients. Même si nous n'avons pas développé votre projet."
   >
     <ButtonLink href={ctaAudit.href}>{ctaAudit.label}</ButtonLink>
@@ -51,59 +52,73 @@ const ctaAudit = { label: 'Demander un audit de sécurité', href: '/contact' };
     ]}
   />
 
-  <Section title="Quatre façons de sécuriser votre projet">
+  <Section
+    surtitre="Nos solutions"
+    title="Quatre façons de sécuriser votre projet"
+    disposition="centre"
+  >
     <FeatureGrid
+      variante="cartes"
+      min={400}
       items={[
         {
           title: 'Audit de sécurité',
-          icone: ShieldCheck,
           text: 'Nous recherchons les failles les plus courantes : mises à jour oubliées, mots de passe faibles, accès trop larges, formulaires mal protégés, serveur mal configuré. Vous recevez un rapport avec les failles classées par gravité, et les corrections à faire.',
         },
         {
           title: 'Tests avant une mise en ligne',
-          icone: MonitorSmartphone,
           text: "Avant le lancement d'un site ou d'une nouvelle version, nous vérifions chaque parcours important : inscription, commande, paiement, formulaires. Sur ordinateur, tablette et mobile, dans les principaux navigateurs.",
         },
         {
           title: 'Tests automatiques',
-          icone: BadgeCheck,
           text: 'Nous ajoutons des tests automatiques à votre projet. À chaque nouvelle version, ils vérifient que ce qui fonctionnait fonctionne toujours.',
         },
         {
           title: 'Tests de charge',
-          icone: Gauge,
           text: "Nous simulons un grand nombre de visiteurs en même temps. Vous savez si votre site tient le jour d'un pic (soldes, fêtes, campagne publicitaire), et vous connaissez ses limites avant vos clients.",
         },
       ]}
     />
   </Section>
 
-  <Section title="Des spécialistes des tests" tone="gris">
-    <p class="apparition max-w-3xl text-lg text-slate-700">
-      Les tests sont au cœur de notre métier : nous testons chacun de nos propres projets avant la
-      mise en ligne. Nous appliquons la même méthode à vos projets, même s'ils ont été développés
-      par un autre prestataire ou par votre équipe. Nos rapports sont écrits sans jargon : chaque
-      problème est expliqué, avec son effet sur votre activité et la correction à faire.
-    </p>
+  <Section>
+    <div class="flex flex-wrap gap-6">
+      <Encadre
+        ton="sombre"
+        surtitre="Notre différence"
+        title="Des spécialistes des tests"
+        espace="moyen"
+        class="flex-[1_1_26.25rem]"
+      >
+        <p class="leading-[1.75] text-nuit-texte">
+          Les tests sont au cœur de notre métier : nous testons chacun de nos propres projets avant
+          la mise en ligne. Nous appliquons la même méthode à vos projets, même s'ils ont été
+          développés par un autre prestataire ou par votre équipe. Nos rapports sont écrits sans
+          jargon : chaque problème est expliqué, avec son effet sur votre activité et la correction
+          à faire.
+        </p>
+      </Encadre>
+      <Encadre
+        ton="cadre"
+        surtitre="Confiance"
+        title="Nos règles"
+        espace="moyen"
+        class="flex-[1_1_26.25rem]"
+      >
+        <ListePoints
+          variante="lignes"
+          class="mt-2 text-base leading-[1.65] text-doux"
+          items={[
+            "Nous testons uniquement avec l'accord écrit du propriétaire du site ou de l'application.",
+            'Nous gardons vos informations confidentielles, et nous pouvons signer un accord de confidentialité.',
+            "Un audit réduit les risques, mais personne ne peut garantir qu'un site ne sera jamais piraté. Nous vous le disons honnêtement.",
+          ]}
+        />
+      </Encadre>
+    </div>
   </Section>
 
-  <Section title="Nos règles">
-    <ul class="grid max-w-3xl list-disc gap-2 pl-5 text-lg text-slate-700">
-      <li class="apparition">
-        Nous testons uniquement avec l'accord écrit du propriétaire du site ou de l'application.
-      </li>
-      <li class="apparition">
-        Nous gardons vos informations confidentielles, et nous pouvons signer un accord de
-        confidentialité.
-      </li>
-      <li class="apparition">
-        Un audit réduit les risques, mais personne ne peut garantir qu'un site ne sera jamais
-        piraté. Nous vous le disons honnêtement.
-      </li>
-    </ul>
-  </Section>
-
-  <Section title="Comment nous travaillons" tone="gris">
+  <Section surtitre="Méthode" title="Comment nous travaillons" disposition="centre">
     <Steps
       items={[
         {
@@ -131,7 +146,7 @@ const ctaAudit = { label: 'Demander un audit de sécurité', href: '/contact' };
   </Section>
 
   <Faq>
-    <FaqItem question="Quelle différence avec l'audit gratuit ?">
+    <FaqItem question="Quelle différence avec l'audit gratuit ?" ouvert>
       <p>
         L'audit gratuit regarde votre site de l'extérieur : vitesse, sécurité de base, référencement
         technique et affichage mobile. L'audit de sécurité va plus loin : avec votre accord, nous
@@ -169,6 +184,7 @@ const ctaAudit = { label: 'Demander un audit de sécurité', href: '/contact' };
 
   <CtaFinal
     title="Faites vérifier votre site ou votre application"
+    motCle="votre site ou votre application"
     text="Un échange de 30 minutes, gratuit et confidentiel, pour définir ce qu'il faut tester en priorité."
     button={ctaAudit}
   />

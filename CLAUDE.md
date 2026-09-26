@@ -16,8 +16,9 @@ Les choix techniques, l'organisation du code et la mise en service sont dans [do
 - Marché : projets au Maroc. Droit marocain (loi 09-08 et CNDP pour les données personnelles, loi 31-08 pour les consommateurs). Ne pas citer la France, le RGPD, la CNIL ou le droit français sur le site.
 - Prix : aucun prix public. Pas de page Tarifs : chaque prix est donné en privé, dans un devis.
 - Pages légales : projets de texte avec placeholders, à faire valider par un juriste marocain.
-- Logo : à fournir par l'équipe. En attendant, l'en-tête affiche le nom en texte et le favicon est un carré bleu.
-- Images : illustrations SVG originales (`src/components/illustrations/`), icônes Lucide, image de partage `public/og.png`, visuels des en-têtes (maquettes d'écrans pour des clients fictifs, section 6.19 du brief, sources dans `design/heros/`). Pas de photo de stock ni de photo d'équipe inventée.
+- Design : maquettes du designer du 26 septembre 2026, intégrées sur toutes les pages (section « Design » de `docs/stack-technique.md`). Police Manrope, servie par le site. Surtitres des sections : section 6.20 du brief.
+- Logo : à fournir par l'équipe. En attendant, l'en-tête et le pied de page affichent un repère provisoire (un cercle et un point, composant `Repere`) devant le nom, et le favicon reprend ce repère.
+- Images : visuels des en-têtes (maquettes d'écrans pour des clients fictifs, section 6.19 du brief, sources dans `design/heros/`), aussi en vignette sur les cartes des services, image de partage `public/og.png`, icônes Lucide dans les messages d'erreur. Pas de photo de stock ni de photo d'équipe inventée.
 - Technologies : Astro 7, TypeScript, Tailwind CSS 4, Node.js 24, pnpm. Déploiement Docker + Caddy sur un VPS (hébergeur et pays à choisir).
 - Déploiement : désactivé tant que la mise en service n'est pas faite (section 8 de `docs/stack-technique.md`). Un aperçu tourne sur Vercel (`asn-tau.vercel.app`, non indexé). Le domaine est à relier à Vercel ou au VPS (section « Nom de domaine » de `docs/stack-technique.md`).
 - Adaptateurs : Node par défaut, `@astrojs/vercel` seulement pendant un build Vercel. Tester les deux builds après un changement de configuration (`pnpm build` et `VERCEL=1 pnpm build`).
@@ -28,7 +29,7 @@ Les choix techniques, l'organisation du code et la mise en service sont dans [do
 - `pnpm build` puis `pnpm check:content` : build et vérification des règles de contenu.
 - `pnpm test` : tests unitaires. `pnpm test:e2e` : tests navigateurs (après `pnpm build`).
 - `pnpm verify` : tous les contrôles de la CI, dans l'ordre.
-- `pnpm image:partage` : régénère l'image de partage après un changement du nom de l'agence.
+- `pnpm image:partage` : régénère l'image de partage après un changement du nom de l'agence ou des couleurs.
 - `pnpm image:heros [nom]` : régénère les visuels des en-têtes après un changement dans `design/heros/`.
 
 ## Règles de code
@@ -38,9 +39,11 @@ Les choix techniques, l'organisation du code et la mise en service sont dans [do
 - Les formulaires doivent fonctionner sans JavaScript. Tout nouveau formulaire utilise une Astro Action, un schéma Zod dans `src/lib/schemas.ts`, le champ piège et la case de consentement.
 - Pas de style en ligne (`style="…"`) ni de script externe sans mise à jour de la CSP (`astro.config.mjs`).
 - Toute nouvelle page doit passer les tests axe et Lighthouse de la CI.
-- Les illustrations sont décoratives (`aria-hidden`) et utilisent les classes de couleur Tailwind, jamais de couleur en dur ni de style en ligne.
+- Couleurs, tailles de titres et largeur du contenu : les jetons de `src/styles/global.css` (`encre`, `bleu`, `doux`, `discret`, `surface`, `text-section`…), jamais de couleur en dur. Les mises en page passent par les composants `Hero`, `Section` (dispositions `colonnes`, `centre`, `pile`) et `Encadre` (tons `gris`, `sombre`, `cadre`).
+- Chaque section a un surtitre (petites capitales au-dessus du titre). Un nouveau surtitre s'ajoute d'abord dans la section 6.20 du brief.
 - Les visuels des en-têtes (`Hero maquette="…"`) sont des images avec un texte alternatif et la légende « Exemple fictif » (`src/data/maquettes.ts`). Leur texte respecte les mêmes règles que le site : aucun prix ni montant, aucune entreprise réelle, aucun engagement non confirmé. `pnpm test` et `pnpm image:heros` le vérifient sur les sources.
-- Couleurs des icônes : chaque service a sa couleur, la palette est dans `src/data/couleurs.ts`.
+- Placeholders surlignés en jaune : un texte qui peut contenir un placeholder passe par le composant `Texte` (phrase entière dans une chaîne modèle). Les composants de liste (`FeatureGrid`, `Steps`, `ListePoints`…) et `Prose` (pages légales) le font déjà.
+- Accessibilité, écarts assumés avec les maquettes : liens soulignés dans le texte (WCAG 1.4.1), bordure des champs plus foncée (contraste de 3:1, WCAG 1.4.11), gris des surtitres et des mentions « facultatif » un peu plus foncé (contraste de 4,5:1 sur le fond gris).
 - Animations : CSS seul, avec les utilitaires de `src/styles/global.css` (section « Animations » de `docs/stack-technique.md`). Aucune animation en mode « réduire les animations », aucune animation automatique de plus de 5 secondes, jamais d'animation d'opacité sur du texte, jamais de mouvement sur les champs d'un formulaire.
 - Une valeur `{…}` suivie de texte à la ligne suivante peut perdre son espace au rendu : écrire `{' '}` ou garder la valeur sur la même ligne. `pnpm check:content` détecte le cas pour les placeholders.
 

@@ -6,15 +6,23 @@
 interface Props {
   href: string;
   label: string;
+  /** Sur fond sombre : lien blanc. */
+  sombre?: boolean;
 }
 
-const { href, label } = Astro.props;
+const { href, label, sombre = false } = Astro.props;
 const mots = label.split(' ');
 const fin = mots.pop();
 const debut = mots.join(' ');
 ---
 
-<a href={href} class="group font-semibold text-brand-700 hover:text-brand-800">
+<a
+  href={href}
+  class:list={[
+    'group text-[0.9375rem] font-semibold no-underline',
+    sombre ? 'text-white hover:text-nuit-survol' : 'text-bleu hover:text-encre',
+  ]}
+>
   {debut}{' '}
   <span class="whitespace-nowrap">
     {fin}

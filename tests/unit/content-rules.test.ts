@@ -89,6 +89,15 @@ describe('analyserTexte', () => {
     expect(apresPonctuation.some((p) => p.regle.startsWith('espace manquante'))).toBe(true);
   });
 
+  it('garde un placeholder surligné dans sa phrase', () => {
+    const fragments = extraireTexte(
+      '<p>Réponse sous <span class="a-completer">[48 h ouvrées]</span>avec un devis.</p>',
+    );
+    expect(fragments).toContain('Réponse sous [48 h ouvrées]avec un devis.');
+    const problemes = analyserTexte(fragments, { strict: false });
+    expect(problemes.some((p) => p.regle.startsWith('espace manquante'))).toBe(true);
+  });
+
   it('accepte un placeholder suivi de ponctuation ou entre parenthèses', () => {
     const problemes = analyserTexte(['Modifications : [1 h]/mois, délai ([48 h ouvrées]).'], {
       strict: false,

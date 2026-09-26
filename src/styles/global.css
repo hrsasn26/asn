@@ -1,31 +1,101 @@
 @import 'tailwindcss';
 
 /*
- * Jetons de design. Ils seront remplacés quand l'option design sera choisie
- * (modèle personnalisé ou designer partenaire, voir docs/brief-agence.md).
+ * Jetons de design (maquettes du designer, 26 septembre 2026 : docs/stack-technique.md,
+ * section « Design »). Bleu nuit, bleu d'accent et gris, police Manrope.
  */
 @theme {
-  --color-brand-50: var(--color-blue-50);
-  --color-brand-100: var(--color-blue-100);
-  --color-brand-600: var(--color-blue-600);
-  --color-brand-700: var(--color-blue-700);
-  --color-brand-800: var(--color-blue-800);
-  --color-brand-900: var(--color-blue-900);
+  /* Police chargée par le composant <Font> (astro.config.mjs, API Fonts d'Astro). */
+  --font-sans: var(--font-manrope), system-ui, sans-serif;
+
+  /* Texte principal, fonds sombres et boutons. */
+  --color-encre: #0b1b33;
+  /* Liens et accents. */
+  --color-bleu: #1d4ed8;
+  /* Sous-titres et liens du menu. */
+  --color-texte: #4b5770;
+  /* Texte courant secondaire. */
+  --color-doux: #5a6578;
+  /* Listes, pastilles et texte sur fond gris. */
+  --color-fonce: #3a4660;
+  /* Surtitres, numéros et mentions « facultatif » : contraste de 4,5:1 sur le fond gris. */
+  --color-discret: #647089;
+  /* Fonds gris (encadrés, dégradé du haut des pages). */
+  --color-surface: #f4f6fa;
+  /* Bordures et séparateurs. */
+  --color-ligne: #e8ecf2;
+  /* Traits entre les étapes. */
+  --color-trait: #e0e5ee;
+  /* Bordure du bouton secondaire. */
+  --color-contour: #cfd6e2;
+  /*
+   * Bordure des champs de formulaire et des choix en pastille. Plus foncée que dans les maquettes
+   * (#d6dce6) : un champ doit se distinguer du fond avec un contraste de 3:1 (WCAG 1.4.11).
+   */
+  --color-champ: #7f8aa0;
+  /* Sur fond sombre : texte, surtitres, traits et pied de page. */
+  --color-nuit-texte: #c3cddd;
+  --color-nuit-discret: #9fb0cc;
+  --color-nuit-ligne: #1e3050;
+  --color-nuit-pied: #7f8fab;
+  /* Bouton blanc au survol, sur fond sombre. */
+  --color-nuit-survol: #dbe6f5;
+  /* Placeholders à compléter (texte entre crochets). */
+  --color-surligne: #fff5cc;
+  /* Pastille de l'option WhatsApp (page Sites web). */
+  --color-whatsapp: #25d366;
+
+  /* Largeur du contenu : 1200 px, plus les marges de 32 px. */
+  --container-site: 79rem;
+
+  /* Titres : graisse légère, interlettrage serré. Tailles fluides entre téléphone et ordinateur. */
+  --text-accroche: clamp(2.5rem, 6vw, 5rem);
+  --text-accroche--line-height: 1.04;
+  --text-accroche--letter-spacing: -0.035em;
+  --text-titre: clamp(2.25rem, 5.2vw, 4.25rem);
+  --text-titre--line-height: 1.05;
+  --text-titre--letter-spacing: -0.035em;
+  --text-titre-service: clamp(2.125rem, 4.6vw, 3.75rem);
+  --text-titre-service--line-height: 1.06;
+  --text-titre-service--letter-spacing: -0.035em;
+  --text-section: clamp(1.875rem, 3.6vw, 2.875rem);
+  --text-section--line-height: 1.1;
+  --text-section--letter-spacing: -0.03em;
+  --text-encadre: clamp(1.75rem, 3.2vw, 2.5rem);
+  --text-encadre--line-height: 1.12;
+  --text-encadre--letter-spacing: -0.025em;
+  --text-appel: clamp(2.5rem, 5.4vw, 4.25rem);
+  --text-appel--line-height: 1.05;
+  --text-appel--letter-spacing: -0.035em;
 }
 
 @layer base {
   html {
-    @apply scroll-smooth bg-white text-slate-800 antialiased;
+    @apply scroll-smooth bg-white font-sans text-encre antialiased;
+    /* L'en-tête reste en haut de l'écran : une ancre ne doit pas finir sous lui. */
+    scroll-padding-top: 6rem;
   }
 
-  h1,
-  h2,
+  h1 {
+    @apply font-light text-balance;
+  }
+
+  h2 {
+    @apply font-light;
+  }
+
   h3 {
-    @apply font-semibold text-balance text-slate-900;
+    @apply font-semibold;
   }
 
+  p {
+    text-wrap: pretty;
+  }
+
+  /* Contour du focus clavier. Sur fond sombre, le conteneur définit --anneau (blanc). */
   :focus-visible {
-    @apply outline-2 outline-offset-2 outline-brand-700;
+    outline: 2px solid var(--anneau, var(--color-bleu));
+    outline-offset: 2px;
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -37,7 +107,8 @@
   @media (prefers-reduced-motion: no-preference) {
     /* Liens : la couleur et le soulignement changent en douceur au survol. */
     a {
-      transition-property: color, text-decoration-color, text-underline-offset;
+      transition-property:
+        color, background-color, box-shadow, text-decoration-color, text-underline-offset;
       transition-duration: 150ms;
       transition-timing-function: ease-out;
     }
@@ -47,6 +118,38 @@
       animation: focus-anneau 0.2s ease-out;
     }
   }
+}
+
+/* Contenu centré, 1200 px au plus, avec des marges de 20 px (téléphone) ou 32 px. */
+@utility conteneur {
+  margin-inline: auto;
+  width: 100%;
+  max-width: var(--container-site);
+  padding-inline: 1.25rem;
+
+  @media (width >= 40rem) {
+    padding-inline: 2rem;
+  }
+}
+
+/* Surtitre au-dessus d'un titre : petites capitales espacées. La couleur est donnée à part. */
+@utility surtitre {
+  font-size: 0.75rem;
+  line-height: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+/* Placeholder entre crochets (information à confirmer) : surligné en jaune pour la relecture. */
+@utility a-completer {
+  border-radius: 0.25rem;
+  background-color: var(--color-surligne);
+  padding-inline: 0.375rem;
+  font-weight: 600;
+  color: var(--color-encre);
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
 }
 
 /*
@@ -73,25 +176,19 @@
   }
 }
 
-/* Délai d'une animation, en millisecondes. Les éléments enfants peuvent s'y référer (puis-*). */
+/* Délai d'une animation, en millisecondes. */
 @utility delai-* {
-  --delai: calc(--value(integer) * 1ms);
-  animation-delay: var(--delai);
+  animation-delay: calc(--value(integer) * 1ms);
 }
 
-/* Délai compté à partir du délai du parent (delai-*), en millisecondes. */
-@utility puis-* {
-  animation-delay: calc(var(--delai, 0ms) + --value(integer) * 1ms);
-}
-
-/* Illustrations : l'élément apparaît en montant. */
-@utility anim-entree {
+/* En-tête de page : le texte et le visuel montent en place (sans opacité : le texte reste lisible). */
+@utility anim-montee {
   @media (prefers-reduced-motion: no-preference) {
-    animation: entree 0.7s cubic-bezier(0.2, 0.7, 0.3, 1) both;
+    animation: montee 0.8s cubic-bezier(0.2, 0.7, 0.3, 1) both;
   }
 }
 
-/* Illustrations : l'élément grandit depuis son centre, avec un léger rebond. */
+/* Icônes des messages d'erreur et du message de confirmation : elles grandissent avec un rebond. */
 @utility anim-zoom {
   transform-box: fill-box;
   transform-origin: center;
@@ -101,7 +198,7 @@
   }
 }
 
-/* Illustrations : le trait se dessine. L'élément doit avoir l'attribut pathLength="1". */
+/* Coche du message de confirmation : le trait se dessine. L'élément a l'attribut pathLength="1". */
 @utility anim-trace {
   @media (prefers-reduced-motion: no-preference) {
     stroke-dasharray: 1;
@@ -109,131 +206,10 @@
   }
 }
 
-/* Illustrations : la barre pousse depuis le bas. */
-@utility anim-pousse {
-  transform-box: fill-box;
-  transform-origin: bottom;
-
-  @media (prefers-reduced-motion: no-preference) {
-    animation: pousse 0.8s cubic-bezier(0.2, 0.7, 0.3, 1) both;
-  }
-}
-
-/* Illustrations : la ligne de texte s'écrit de gauche à droite. */
-@utility anim-ecrit {
-  transform-box: fill-box;
-  transform-origin: left;
-
-  @media (prefers-reduced-motion: no-preference) {
-    animation: ecrit 0.6s cubic-bezier(0.2, 0.7, 0.3, 1) both;
-  }
-}
-
-/* Illustrations : l'élément arrive en tournant sur lui-même. */
-@utility anim-tourne {
-  transform-box: fill-box;
-  transform-origin: center;
-
-  @media (prefers-reduced-motion: no-preference) {
-    animation: tourne 1.2s cubic-bezier(0.2, 0.7, 0.3, 1) both;
-  }
-}
-
-/* Illustrations : la cloche sonne (elle oscille depuis son sommet). */
-@utility anim-sonne {
-  transform-box: fill-box;
-  transform-origin: top;
-
-  @media (prefers-reduced-motion: no-preference) {
-    animation: sonne 0.9s ease-in-out both;
-  }
-}
-
-/* Illustrations : les points « en train d'écrire » sautent trois fois. */
-@utility anim-saut {
-  @media (prefers-reduced-motion: no-preference) {
-    animation: saut 0.6s ease-in-out 3 both;
-  }
-}
-
-/* Illustrations : les pointillés (stroke-dasharray="2 10") circulent, puis s'arrêtent. */
-@utility anim-flux {
-  @media (prefers-reduced-motion: no-preference) {
-    animation: flux 2.5s cubic-bezier(0.2, 0.6, 0.4, 1) both;
-  }
-}
-
-/* Illustrations : l'aiguille tourne jusqu'à sa position. Donner le pivot avec origin-[x_y]. */
-@utility anim-aiguille {
-  @media (prefers-reduced-motion: no-preference) {
-    animation: aiguille 1.4s cubic-bezier(0.3, 1.3, 0.5, 1) both;
-  }
-}
-
-/* Illustrations : le fond apparaît en premier, avec un léger zoom. */
-@utility anim-fond {
-  transform-box: fill-box;
-  transform-origin: center;
-
-  @media (prefers-reduced-motion: no-preference) {
-    animation: fond 0.6s cubic-bezier(0.2, 0.7, 0.3, 1) both;
-  }
-}
-
-/* En-tête : la barre de couleur se remplit à l'ouverture de chaque page. */
-@utility anim-chargement {
-  transform-origin: left;
-
-  @media (prefers-reduced-motion: no-preference) {
-    animation: barre 0.9s cubic-bezier(0.4, 0, 0.2, 1) both;
-  }
-}
-
 /* Formulaires : le résumé des erreurs tremble et un halo rouge l'entoure (les champs ne bougent pas). */
 @utility anim-alerte {
   @media (prefers-reduced-motion: no-preference) {
     animation: alerte 0.6s ease-out both;
-  }
-}
-
-/* Illustrations : l'élément oscille autour de son centre (la boussole cherche le nord). */
-@utility anim-cherche {
-  transform-box: fill-box;
-  transform-origin: center;
-
-  @media (prefers-reduced-motion: no-preference) {
-    animation: cherche 1.6s ease-in-out both;
-  }
-}
-
-/* Héros : le texte monte en place à l'ouverture de la page (sans opacité : le texte reste lisible). */
-@utility anim-montee {
-  @media (prefers-reduced-motion: no-preference) {
-    animation: montee 0.8s cubic-bezier(0.2, 0.7, 0.3, 1) both;
-  }
-}
-
-/* Héros : un halo de couleur grandit doucement derrière l'illustration. */
-@utility anim-halo {
-  @media (prefers-reduced-motion: no-preference) {
-    animation: halo 1.6s cubic-bezier(0.2, 0.7, 0.3, 1) both;
-  }
-}
-
-/*
- * Héros : le décor descend moins vite que la page pendant le défilement (profondeur).
- * Distance réglable avec la variable --parallaxe.
- */
-@utility anim-parallaxe {
-  @media (prefers-reduced-motion: no-preference) {
-    @supports (animation-timeline: scroll()) {
-      animation-name: parallaxe;
-      animation-duration: auto;
-      animation-timing-function: linear;
-      animation-fill-mode: both;
-      animation-timeline: scroll(root);
-      animation-range: 0 100vh;
-    }
   }
 }
 
@@ -258,7 +234,7 @@
   }
 }
 
-/* Pastilles et icônes : elles grandissent quand elles entrent dans l'écran (défilement, sans opacité). */
+/* Numéros des étapes : ils grandissent quand ils entrent dans l'écran (défilement, sans opacité). */
 @utility apparition-zoom {
   transform-box: fill-box;
   transform-origin: center;
@@ -271,62 +247,6 @@
       animation-fill-mode: both;
       animation-timeline: view();
       animation-range: cover 0% cover 8rem;
-    }
-  }
-}
-
-/*
- * Élément dans un conteneur qui défile (tableau en overflow-x-auto) : view() y serait bloqué.
- * Le conteneur porte la classe « repere » et ses enfants suivent sa timeline (--repere).
- */
-@utility repere {
-  view-timeline-name: --repere;
-}
-
-@utility apparition-zoom-repere {
-  transform-box: fill-box;
-  transform-origin: center;
-
-  @media (prefers-reduced-motion: no-preference) {
-    @supports (animation-timeline: view()) {
-      animation-name: apparition-zoom;
-      animation-duration: auto;
-      animation-timing-function: linear;
-      animation-fill-mode: both;
-      animation-timeline: --repere;
-      animation-range: cover 0% cover 10rem;
-    }
-  }
-}
-
-/* Pied de page : la barre de couleur se remplit de gauche à droite pendant le défilement. */
-@utility anim-barre {
-  transform-origin: left;
-
-  @media (prefers-reduced-motion: no-preference) {
-    @supports (animation-timeline: view()) {
-      animation-name: barre;
-      animation-duration: auto;
-      animation-timing-function: linear;
-      animation-fill-mode: both;
-      animation-timeline: view();
-      animation-range: cover 0% cover 15rem;
-    }
-  }
-}
-
-/* Frise des étapes : elle se remplit pendant le défilement. */
-@utility anim-frise {
-  transform-origin: top;
-
-  @media (prefers-reduced-motion: no-preference) {
-    @supports (animation-timeline: view()) {
-      animation-name: frise;
-      animation-duration: auto;
-      animation-timing-function: linear;
-      animation-fill-mode: both;
-      animation-timeline: view();
-      animation-range: cover 30vh cover calc(100% - 50vh);
     }
   }
 }
@@ -398,13 +318,6 @@
   }
 }
 
-@keyframes entree {
-  from {
-    opacity: 0;
-    translate: 0 16px;
-  }
-}
-
 @keyframes zoom {
   from {
     opacity: 0;
@@ -424,78 +337,6 @@
 
   to {
     stroke-dashoffset: 0;
-  }
-}
-
-@keyframes pousse {
-  from {
-    scale: 1 0;
-  }
-}
-
-@keyframes ecrit {
-  from {
-    scale: 0 1;
-  }
-}
-
-@keyframes tourne {
-  from {
-    opacity: 0;
-    rotate: -180deg;
-    scale: 0.6;
-  }
-}
-
-@keyframes sonne {
-  20% {
-    rotate: 16deg;
-  }
-
-  40% {
-    rotate: -12deg;
-  }
-
-  60% {
-    rotate: 8deg;
-  }
-
-  80% {
-    rotate: -4deg;
-  }
-}
-
-@keyframes saut {
-  50% {
-    translate: 0 -6px;
-  }
-}
-
-@keyframes flux {
-  from {
-    opacity: 0;
-    stroke-dashoffset: 72;
-  }
-
-  20% {
-    opacity: 1;
-  }
-
-  to {
-    stroke-dashoffset: 0;
-  }
-}
-
-@keyframes aiguille {
-  from {
-    rotate: -155deg;
-  }
-}
-
-@keyframes fond {
-  from {
-    opacity: 0;
-    scale: 0.94;
   }
 }
 
@@ -550,36 +391,9 @@
   }
 }
 
-@keyframes cherche {
-  25% {
-    rotate: -20deg;
-  }
-
-  50% {
-    rotate: 14deg;
-  }
-
-  75% {
-    rotate: -6deg;
-  }
-}
-
 @keyframes montee {
   from {
     translate: 0 1.5rem;
-  }
-}
-
-@keyframes halo {
-  from {
-    opacity: 0;
-    scale: 0.6;
-  }
-}
-
-@keyframes parallaxe {
-  to {
-    translate: 0 var(--parallaxe, 8rem);
   }
 }
 
@@ -595,12 +409,6 @@
   }
 }
 
-@keyframes barre {
-  from {
-    scale: 0 1;
-  }
-}
-
 @keyframes progression {
   from {
     scale: 0 1;
@@ -608,11 +416,5 @@
 
   to {
     scale: 1;
-  }
-}
-
-@keyframes frise {
-  from {
-    scale: 1 0;
   }
 }

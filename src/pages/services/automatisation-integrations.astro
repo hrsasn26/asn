@@ -1,13 +1,9 @@
 ---
+// Surtitres des sections : docs/brief-agence.md, section 6.20.
 // Textes : docs/brief-agence.md, section 6.4 (section WhatsApp et deux questions : ajouts à valider).
-import BellRing from '@lucide/astro/icons/bell-ring';
-import Inbox from '@lucide/astro/icons/inbox';
-import MessageCircle from '@lucide/astro/icons/message-circle';
-import RefreshCw from '@lucide/astro/icons/refresh-cw';
-import Sparkles from '@lucide/astro/icons/sparkles';
-import Workflow from '@lucide/astro/icons/workflow';
 import ButtonLink from '~/components/ButtonLink.astro';
 import CtaFinal from '~/components/CtaFinal.astro';
+import Encadre from '~/components/Encadre.astro';
 import Faq from '~/components/Faq.astro';
 import FaqItem from '~/components/FaqItem.astro';
 import FeatureGrid from '~/components/FeatureGrid.astro';
@@ -16,7 +12,9 @@ import LienFleche from '~/components/LienFleche.astro';
 import ProblemList from '~/components/ProblemList.astro';
 import Section from '~/components/Section.astro';
 import Steps from '~/components/Steps.astro';
+import Texte from '~/components/Texte.astro';
 import { offre, site } from '~/data/site';
+import { surtitreService } from '~/data/navigation';
 import BaseLayout from '~/layouts/BaseLayout.astro';
 import { serviceJsonLd } from '~/lib/seo';
 
@@ -37,8 +35,9 @@ const ctaTaches = { label: 'Identifier mes tâches à automatiser', href: '/cont
 >
   <Hero
     maquette="automatisation-integrations"
+    surtitre={surtitreService('/services/automatisation-integrations')}
     title="Moins de saisie, moins d'erreurs, plus de temps pour votre métier"
-    motCle="votre métier"
+    motCle="plus de temps pour votre métier"
     subtitle="Nous connectons vos outils entre eux et automatisons les tâches répétitives. Vos informations circulent toutes seules, au bon endroit."
   >
     <ButtonLink href={ctaTaches.href}>{ctaTaches.label}</ButtonLink>
@@ -54,28 +53,30 @@ const ctaTaches = { label: 'Identifier mes tâches à automatiser', href: '/cont
     ]}
   />
 
-  <Section title="Trois façons de vous faire gagner du temps">
+  <Section
+    surtitre="Nos solutions"
+    title="Trois façons de vous faire gagner du temps"
+    disposition="centre"
+  >
     <FeatureGrid
-      columns={3}
+      variante="cartes"
+      min={300}
       items={[
         {
           title: 'Connecter vos outils',
-          icone: Workflow,
           text: 'Site web, boutique, CRM, comptabilité, agenda, e-mailing : nous les faisons communiquer. Chaque commande crée automatiquement sa facture, et chaque demande de contact arrive directement dans votre CRM.',
         },
         {
           title: 'Automatiser les tâches répétitives',
-          icone: RefreshCw,
           text: "Relances, rapports, notifications, synchronisation des stocks. Nous utilisons des outils éprouvés (n8n, Make, Zapier), ou un développement sur mesure quand c'est nécessaire.",
         },
         {
           title: "Intégrer l'IA, là où elle est utile",
-          icone: Sparkles,
           text: "Un assistant sur votre site qui répond aux questions fréquentes, le tri automatique de vos documents, l'extraction des informations de vos factures. Nous n'intégrons l'IA que là où elle vous fait vraiment gagner du temps, et vos données restent protégées.",
         },
       ]}
     />
-    <p class="apparition mt-8">
+    <p class="apparition mt-10 text-center">
       <LienFleche
         href="/services/intelligence-artificielle"
         label="Découvrir l'offre Intelligence artificielle"
@@ -83,63 +84,69 @@ const ctaTaches = { label: 'Identifier mes tâches à automatiser', href: '/cont
     </p>
   </Section>
 
-  <Section title="Quelques exemples concrets" tone="gris">
-    <ul class="grid max-w-3xl gap-4 text-slate-700">
-      <li class="apparition">
-        <strong class="text-slate-900">Pour un artisan :</strong> une demande de devis arrive sur le
-        site → la fiche client est créée → un devis prérempli est prêt à envoyer → une relance part
-        automatiquement sans réponse sous 7 jours.
+  <Section surtitre="Exemples" title="Quelques exemples concrets" disposition="colonnes">
+    <ul class="border-t border-ligne leading-[1.7] text-doux">
+      <li class="apparition border-b border-ligne py-6">
+        <strong class="font-semibold text-encre">Pour un artisan :</strong> une demande de devis
+        arrive sur le site → la fiche client est créée → un devis prérempli est prêt à envoyer → une
+        relance part automatiquement sans réponse sous 7 jours.
       </li>
-      <li class="apparition">
-        <strong class="text-slate-900">Pour une boutique en ligne :</strong> une commande est passée
-        → la facture est créée dans le logiciel de comptabilité → le stock est mis à jour → le
-        client reçoit son e-mail de suivi.
+      <li class="apparition border-b border-ligne py-6">
+        <strong class="font-semibold text-encre">Pour une boutique en ligne :</strong> une commande
+        est passée → la facture est créée dans le logiciel de comptabilité → le stock est mis à jour
+        → le client reçoit son e-mail de suivi.
       </li>
-      <li class="apparition">
-        <strong class="text-slate-900">Pour un cabinet ou un bureau :</strong> les documents reçus
-        par e-mail sont classés automatiquement dans le bon dossier client.
+      <li class="apparition border-b border-ligne py-6">
+        <strong class="font-semibold text-encre">Pour un cabinet ou un bureau :</strong> les
+        documents reçus par e-mail sont classés automatiquement dans le bon dossier client.
       </li>
     </ul>
   </Section>
 
   {/* Ajout à valider (section 6.4 du brief, « WhatsApp »). */}
-  <Section title="WhatsApp, connecté à vos outils" id="whatsapp">
-    <p class="apparition mb-8 max-w-3xl text-lg text-slate-700">
-      Vos clients vous écrivent déjà sur WhatsApp. Nous connectons WhatsApp Business à votre site et
-      à vos outils, pour répondre plus vite sans rien perdre.
-    </p>
-    <FeatureGrid
-      columns={3}
-      items={[
-        {
-          title: 'Un bouton WhatsApp sur votre site',
-          icone: MessageCircle,
-          text: 'Vos visiteurs vous écrivent en un clic, depuis leur téléphone ou leur ordinateur.',
-        },
-        {
-          title: 'Des messages automatiques',
-          icone: BellRing,
-          text: 'Confirmation de commande, rappel de rendez-vous, suivi de livraison : le message part tout seul, au bon moment.',
-        },
-        {
-          title: 'Vos conversations dans vos outils',
-          icone: Inbox,
-          text: "Chaque demande reçue sur WhatsApp arrive dans votre CRM. Votre équipe voit l'historique de chaque client.",
-        },
-      ]}
-    />
+  <Section id="whatsapp">
+    <Encadre surtitre="À la carte" title="WhatsApp, connecté à vos outils">
+      <p class="mb-10 max-w-3xl leading-[1.75] text-doux sm:text-[1.0625rem]">
+        Vos clients vous écrivent déjà sur WhatsApp. Nous connectons WhatsApp Business à votre site
+        et à vos outils, pour répondre plus vite sans rien perdre.
+      </p>
+      <FeatureGrid
+        min={240}
+        items={[
+          {
+            title: 'Un bouton WhatsApp sur votre site',
+            text: 'Vos visiteurs vous écrivent en un clic, depuis leur téléphone ou leur ordinateur.',
+          },
+          {
+            title: 'Des messages automatiques',
+            text: 'Confirmation de commande, rappel de rendez-vous, suivi de livraison : le message part tout seul, au bon moment.',
+          },
+          {
+            title: 'Vos conversations dans vos outils',
+            text: "Chaque demande reçue sur WhatsApp arrive dans votre CRM. Votre équipe voit l'historique de chaque client.",
+          },
+        ]}
+      />
+    </Encadre>
   </Section>
 
-  <Section title="Des automatisations fiables, pas du bricolage" tone="gris">
-    <p class="apparition max-w-3xl text-lg text-slate-700">
-      Une automatisation qui tombe en panne sans que personne ne le remarque peut faire plus de
-      dégâts que pas d'automatisation du tout. Nous testons chaque scénario avant la mise en
-      service, nous surveillons son fonctionnement et nous sommes alertés en cas d'erreur. Tout est
-      documenté : vous savez ce qui tourne et pourquoi.
-    </p>
+  <Section>
+    <Encadre
+      ton="sombre"
+      surtitre="Qualité"
+      title="Des automatisations fiables, pas du bricolage"
+      disposition="colonnes"
+    >
+      <p class="text-lg leading-[1.75] text-nuit-texte">
+        Une automatisation qui tombe en panne sans que personne ne le remarque peut faire plus de
+        dégâts que pas d'automatisation du tout. Nous testons chaque scénario avant la mise en
+        service, nous surveillons son fonctionnement et nous sommes alertés en cas d'erreur. Tout
+        est documenté : vous savez ce qui tourne et pourquoi.
+      </p>
+    </Encadre>
   </Section>
 
-  <Section title="Comment nous travaillons">
+  <Section surtitre="Méthode" title="Comment nous travaillons" disposition="centre">
     <Steps
       items={[
         {
@@ -163,7 +170,7 @@ const ctaTaches = { label: 'Identifier mes tâches à automatiser', href: '/cont
   </Section>
 
   <Faq>
-    <FaqItem question="Quels logiciels pouvez-vous connecter ?">
+    <FaqItem question="Quels logiciels pouvez-vous connecter ?" ouvert>
       <p>
         La plupart des logiciels récents peuvent être connectés : CRM, comptabilité, boutique en
         ligne, agenda, e-mailing. Dites-nous lesquels vous utilisez, nous vérifions pour vous.
@@ -193,8 +200,9 @@ const ctaTaches = { label: 'Identifier mes tâches à automatiser', href: '/cont
     </FaqItem>
     <FaqItem question="Mes données sont-elles en sécurité avec l'IA ?">
       <p>
-        Nous choisissons des services compatibles avec la loi 09-08 sur les données personnelles,
-        qui n'utilisent pas vos données pour entraîner leurs modèles. {offre.confidentialiteIA}
+        <Texte
+          texte={`Nous choisissons des services compatibles avec la loi 09-08 sur les données personnelles, qui n'utilisent pas vos données pour entraîner leurs modèles. ${offre.confidentialiteIA}`}
+        />
       </p>
     </FaqItem>
     <FaqItem question="Combien ça coûte ?">
@@ -208,6 +216,7 @@ const ctaTaches = { label: 'Identifier mes tâches à automatiser', href: '/cont
 
   <CtaFinal
     title="Quelles tâches pourriez-vous ne plus jamais faire ?"
+    motCle="ne plus jamais faire ?"
     text="Listez-nous les tâches répétitives qui vous prennent du temps. Nous vous disons gratuitement ce qui peut être automatisé."
     button={ctaTaches}
   />
