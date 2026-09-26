@@ -1133,16 +1133,16 @@ Votre code, vos comptes, votre nom de domaine et vos données restent à votre n
 
 Une carte par personne : initiales, nom, rôle et une phrase qui relie la personne aux services.
 
-**Hamza Legdani**, Développeur web et logiciels
+**Hamza Legdani**, Architecte web et logiciels
 Conçoit vos sites web, vos applications sur mesure et vos logiciels SaaS, puis les garde en ligne.
 
-**Saad Berrada**, Développeur mobile et IA
-Développe vos applications mobiles, vos automatisations, vos tableaux de bord et vos outils d'intelligence artificielle.
+**Saad Berrada**, Architecte mobile et IA
+Conçoit vos applications mobiles, vos automatisations, vos tableaux de bord et vos outils d'intelligence artificielle.
 
 **Mohammed Reda Benaghmouch**, Spécialiste qualité et tests
 Teste chaque site et chaque application avant la mise en ligne, et vérifie leur sécurité.
 
-> Noms et domaines de compétence donnés par l'agence le 26 septembre 2026 (ingénierie logicielle pour Hamza Legdani et Saad Berrada, QA pour Mohammed Reda Benaghmouch). Les titres traduisent ces domaines en mots compris des clients, d'après les services de chacun : pas de mot « ingénieur » ni « QA » (section 4). Titres, phrases de présentation et répartition des services entre Hamza Legdani et Saad Berrada : proposition à valider. Les initiales remplacent les photos jusqu'à leur réception.
+> Noms et domaines de compétence donnés par l'agence le 26 septembre 2026 (ingénierie logicielle pour Hamza Legdani et Saad Berrada, QA pour Mohammed Reda Benaghmouch). Les titres traduisent ces domaines en mots compris des clients, d'après les services de chacun : pas de mot « ingénieur » ni « QA » (section 4), et pas « développeur » : l'agence conçoit toute la solution, pas seulement le code (demande du 26 septembre 2026). Titres, phrases de présentation et répartition des services entre Hamza Legdani et Saad Berrada : proposition à valider. Les initiales remplacent les photos jusqu'à leur réception.
 
 #### Section : partenaires
 
