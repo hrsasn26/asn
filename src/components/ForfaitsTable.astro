@@ -14,7 +14,7 @@ const lignes: { label: string; valeur: (f: (typeof forfaitsMaintenance)[number])
 ---
 
 <div
-  class="overflow-x-auto rounded-lg border border-slate-200"
+  class="apparition overflow-x-auto rounded-lg border border-slate-200"
   role="region"
   aria-label="Comparatif des forfaits"
   tabindex="0"
@@ -44,7 +44,9 @@ const lignes: { label: string; valeur: (f: (typeof forfaitsMaintenance)[number])
               <td class="p-3 text-slate-700">
                 {valeur === '✓' ? (
                   <>
-                    <span aria-hidden="true">✓</span>
+                    <span aria-hidden="true" class="font-bold text-emerald-700">
+                      ✓
+                    </span>
                     <span class="sr-only">Inclus</span>
                   </>
                 ) : valeur === '—' ? (

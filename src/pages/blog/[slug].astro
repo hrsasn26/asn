@@ -1,5 +1,6 @@
 ---
 import { getCollection, render } from 'astro:content';
+import BarreLecture from '~/components/BarreLecture.astro';
 import CtaFinal from '~/components/CtaFinal.astro';
 import Prose from '~/components/Prose.astro';
 import Section from '~/components/Section.astro';
@@ -32,10 +33,11 @@ const formatDate = new Intl.DateTimeFormat('fr-FR', { dateStyle: 'long' });
     publisher: { '@type': 'Organization', name: site.nom },
   }}
 >
+  <BarreLecture />
   <Section>
     <article>
-      <h1 class="text-3xl sm:text-4xl">{article.data.title}</h1>
-      <p class="mt-2 text-slate-600">
+      <h1 class="anim-montee text-3xl sm:text-4xl">{article.data.title}</h1>
+      <p class="anim-montee mt-2 text-slate-600 delai-150">
         <time datetime={article.data.publishedAt.toISOString()}>
           {formatDate.format(article.data.publishedAt)}
         </time>

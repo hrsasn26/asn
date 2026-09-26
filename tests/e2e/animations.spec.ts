@@ -1,13 +1,19 @@
 import { expect, test } from '@playwright/test';
 
 // Pages dont les illustrations ont les animations les plus longues, pages avec formulaire,
-// et page avec la frise des étapes.
+// page avec la frise des étapes, contenus longs (barre de lecture) et page d'erreur.
 const chemins = [
   '/',
   '/contact',
   '/audit-gratuit',
   '/services/intelligence-artificielle',
+  '/services/hebergement-maintenance',
   '/methode',
+  '/realisations',
+  '/blog',
+  '/blog/maintenance-site-web',
+  '/mentions-legales',
+  '/page-inexistante',
 ];
 
 for (const chemin of chemins) {
@@ -37,3 +43,19 @@ for (const chemin of chemins) {
     });
   });
 }
+
+test.describe('barre de lecture', () => {
+  test('elle se remplit pendant le défilement', async ({ page }) => {
+    await page.goto('/blog/maintenance-site-web');
+    const compatible = await page.evaluate(() => CSS.supports('animation-timeline: scroll()'));
+    test.skip(!compatible, 'Navigateur sans animation liée au défilement : la barre reste vide.');
+
+    const largeur = async () => (await page.locator('.anim-progression').boundingBox())?.width ?? 0;
+    const ecran = page.viewportSize()?.width ?? 0;
+    // En haut de la page, la barre est vide.
+    expect(await largeur()).toBeLessThan(1);
+    // En bas de la page, elle occupe toute la largeur de l'écran.
+    await page.evaluate(() => window.scrollTo(0, document.documentElement.scrollHeight));
+    await expect.poll(largeur).toBeGreaterThan(ecran - 1);
+  });
+});

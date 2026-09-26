@@ -7,6 +7,7 @@ import Hero from '~/components/Hero.astro';
 import IllustrationRealisations from '~/components/illustrations/IllustrationRealisations.astro';
 import Placeholder from '~/components/Placeholder.astro';
 import Section from '~/components/Section.astro';
+import { couleurDuService } from '~/data/couleurs';
 import { services } from '~/data/navigation';
 import { cta, site } from '~/data/site';
 import BaseLayout from '~/layouts/BaseLayout.astro';
@@ -33,14 +34,22 @@ const nomService = (id: string) =>
 
   <Section>
     {etudes.length === 0 ? (
-      <div class="max-w-3xl">
+      <div class="apparition max-w-3xl">
         <Placeholder text="[À compléter : 2 ou 3 études de cas réelles, avec l'accord des clients]" />
       </div>
     ) : (
       <ul class="grid gap-6 md:grid-cols-2">
         {etudes.map((etude) => (
           <li class="apparition rounded-lg border border-slate-200 p-6 transition hover:border-slate-300 hover:shadow-lg motion-safe:hover:-translate-y-1">
-            <p class="text-sm font-medium text-brand-700">{nomService(etude.data.service)}</p>
+            {/* Le nom du service prend la couleur du service (src/data/couleurs.ts). */}
+            <p
+              class:list={[
+                'text-sm font-medium',
+                couleurDuService(`/services/${etude.data.service}`).icone,
+              ]}
+            >
+              {nomService(etude.data.service)}
+            </p>
             <h2 class="mt-1 text-xl">
               <a href={`/realisations/${etude.id}`} class="text-slate-900 hover:text-brand-700">
                 {etude.data.title}

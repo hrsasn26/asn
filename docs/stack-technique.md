@@ -103,12 +103,19 @@ deploy/                   Docker Compose, Caddyfile, script de déploiement
 
 **Animations.** Elles sont en CSS seul, dans `src/styles/global.css` :
 - le héros s'anime à l'ouverture de la page : le titre, le sous-titre et les boutons montent en place (`anim-montee`), un trait se dessine sous le mot clé du titre (propriété `motCle` du composant `Hero`), des points et des halos de couleur apparaissent derrière l'illustration (`anim-halo`) et descendent moins vite que la page au défilement (`anim-parallaxe`) ;
-- les illustrations s'animent à l'ouverture de la page (classes `anim-entree`, `anim-zoom`, `anim-trace`, `anim-pousse`, `anim-ecrit`, `anim-flux`, `anim-aiguille`, `anim-tourne`, `anim-sonne`, `anim-saut`) ;
+- les illustrations s'animent à l'ouverture de la page (classes `anim-entree`, `anim-zoom`, `anim-trace`, `anim-pousse`, `anim-ecrit`, `anim-flux`, `anim-aiguille`, `anim-tourne`, `anim-sonne`, `anim-saut`, `anim-cherche`) ;
 - l'ordre d'apparition se règle avec `delai-300` (300 ms) ; `puis-200` compte à partir du délai du parent ;
-- les cartes et les titres montent en place pendant le défilement (`apparition`, décalage possible avec la variable `--decalage`), la frise des étapes se remplit (`anim-frise`) ;
+- les cartes, les titres, les paragraphes et les questions de la FAQ montent en place pendant le défilement (`apparition`, décalage possible avec la variable `--decalage`), la frise des étapes se remplit (`anim-frise`) ;
+- le bandeau d'appel final (`CtaFinal`) : des halos de couleur grandissent quand il entre dans l'écran, la flèche du bouton avance au survol ;
+- les liens vers une autre page (« Voir l'offre … → », composant `LienFleche`) : la flèche avance au survol ;
 - page Contact : le titre monte en place avec le trait souligné (composant `Souligne`, aussi utilisé par `Hero`), les icônes de contact apparaissent, l'avion en papier du bouton s'envole au survol ;
 - page Méthode : une frise relie les cartes des étapes et se remplit au défilement, les numéros et les icônes grandissent en entrant dans l'écran (`apparition-zoom`), les points de l'étape des tests ont une coche verte ;
 - page L'agence : les points de « Ce que nous savons faire » ont une icône en couleur, les avatars de l'équipe grandissent en entrant dans l'écran, les paragraphes montent en place ;
+- pages Services : les paragraphes et les listes montent en place ; dans le tableau des forfaits, les coches sont vertes ;
+- page Réalisations : dans l'illustration, les lignes de texte s'écrivent et une pastille « projet livré » apparaît ; le nom du service d'une étude de cas prend la couleur du service ;
+- page Blog : le titre est souligné, chaque article a une icône de la couleur de la palette qui s'incline au survol ;
+- articles, études de cas et pages légales : une barre de lecture en haut de l'écran se remplit pendant le défilement (composant `BarreLecture`, classe `anim-progression`), les intertitres montent en place (composant `Prose`) ;
+- page 404 : le mot « introuvable » est souligné, la boussole arrive en tournant puis cherche le nord ;
 - page Audit gratuit : les quatre points vérifiés ont une icône en couleur qui apparaît, les éléments reçus ont une coche verte, la loupe du bouton s'incline au survol ;
 - formulaires (Contact et Audit gratuit) : le libellé et la bordure du champ actif passent en bleu ; le message de confirmation affiche une coche qui se dessine ;
 - dans le pied de page, une barre aux couleurs des services se remplit de gauche à droite (`anim-barre`), les trois colonnes montent en place l'une après l'autre, et chaque service a une pastille de sa couleur ;
@@ -123,7 +130,7 @@ Règles, vérifiées par `tests/e2e/animations.spec.ts` pour les deux premières
 
 Deux pièges pour les animations liées au défilement :
 - Lightning CSS (utilisé par Tailwind) fusionne `animation-timeline` dans le raccourci `animation`, que les navigateurs refusent. Écrivez les propriétés détaillées (`animation-name`, `animation-duration`, etc.) ;
-- un parent en `overflow: hidden` devient un conteneur de défilement et bloque la timeline `view()`. Utilisez `overflow: clip` ou rien.
+- un parent en `overflow: hidden` devient un conteneur de défilement et bloque la timeline `view()`. Utilisez `overflow: clip` ou rien (exemple : `CtaFinal`, qui coupe ses halos avec `overflow-clip`).
 
 Un lien qui glisse au survol doit être en `inline-block` ou `inline-flex`. Il perd alors l'exception des liens dans le texte : sa zone cliquable doit mesurer au moins 24 px de haut (WCAG 2.5.8, vérifié par Lighthouse). Les liens du pied de page ont donc `py-0.5`.
 
@@ -145,7 +152,7 @@ Un élément animé en `translate` ou avec un `view-transition-name` crée un co
 | Prettier, ESLint, `astro check` | Format, qualité et types du code. |
 | Vitest | Règles de validation des formulaires, limite de débit, règles de contenu. |
 | `check-content` | Placeholders, mots à éviter, points d'exclamation, espaces manquantes, sur le HTML final. |
-| Playwright | Chaque page du sitemap sur Chromium, Firefox et WebKit, en tailles ordinateur, mobile et tablette. Envoi des formulaires, erreurs, menu mobile, lien d'évitement, liens internes. Pas de défilement horizontal. Animations : moins de 5 secondes, aucune en mode « réduire les animations ». |
+| Playwright | Chaque page du sitemap sur Chromium, Firefox et WebKit, en tailles ordinateur, mobile et tablette. Envoi des formulaires, erreurs, menu mobile, lien d'évitement, liens internes. Pas de défilement horizontal. Animations : moins de 5 secondes, aucune en mode « réduire les animations », barre de lecture qui se remplit. |
 | axe-core | Accessibilité de chaque page (WCAG 2.1 AA). Il ne trouve qu'une partie des problèmes : faites aussi une vérification manuelle au clavier et au lecteur d'écran. |
 | Lighthouse CI | Seuils : performance 95, accessibilité 100, bonnes pratiques 100, SEO 100. Neuf pages clés. |
 | Build Docker | L'image se construit. |

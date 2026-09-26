@@ -13,6 +13,7 @@ import Faq from '~/components/Faq.astro';
 import FaqItem from '~/components/FaqItem.astro';
 import FeatureGrid from '~/components/FeatureGrid.astro';
 import Hero from '~/components/Hero.astro';
+import LienFleche from '~/components/LienFleche.astro';
 import ProblemList from '~/components/ProblemList.astro';
 import Section from '~/components/Section.astro';
 import Steps from '~/components/Steps.astro';
@@ -75,29 +76,27 @@ const ctaTaches = { label: 'Identifier mes tâches à automatiser', href: '/cont
         },
       ]}
     />
-    <p class="mt-8">
-      <a
+    <p class="apparition mt-8">
+      <LienFleche
         href="/services/intelligence-artificielle"
-        class="font-semibold text-brand-700 hover:text-brand-800"
-      >
-        Découvrir l'offre Intelligence artificielle<span aria-hidden="true"> →</span>
-      </a>
+        label="Découvrir l'offre Intelligence artificielle"
+      />
     </p>
   </Section>
 
   <Section title="Quelques exemples concrets" tone="gris">
     <ul class="grid max-w-3xl gap-4 text-slate-700">
-      <li>
+      <li class="apparition">
         <strong class="text-slate-900">Pour un artisan :</strong> une demande de devis arrive sur le
         site → la fiche client est créée → un devis prérempli est prêt à envoyer → une relance part
         automatiquement sans réponse sous 7 jours.
       </li>
-      <li>
+      <li class="apparition">
         <strong class="text-slate-900">Pour une boutique en ligne :</strong> une commande est passée
         → la facture est créée dans le logiciel de comptabilité → le stock est mis à jour → le
         client reçoit son e-mail de suivi.
       </li>
-      <li>
+      <li class="apparition">
         <strong class="text-slate-900">Pour un cabinet ou un bureau :</strong> les documents reçus
         par e-mail sont classés automatiquement dans le bon dossier client.
       </li>
@@ -106,7 +105,7 @@ const ctaTaches = { label: 'Identifier mes tâches à automatiser', href: '/cont
 
   {/* Ajout à valider (section 6.4 du brief, « WhatsApp »). */}
   <Section title="WhatsApp, connecté à vos outils" id="whatsapp">
-    <p class="mb-8 max-w-3xl text-lg text-slate-700">
+    <p class="apparition mb-8 max-w-3xl text-lg text-slate-700">
       Vos clients vous écrivent déjà sur WhatsApp. Nous connectons WhatsApp Business à votre site et
       à vos outils, pour répondre plus vite sans rien perdre.
     </p>
@@ -133,7 +132,7 @@ const ctaTaches = { label: 'Identifier mes tâches à automatiser', href: '/cont
   </Section>
 
   <Section title="Des automatisations fiables, pas du bricolage" tone="gris">
-    <p class="max-w-3xl text-lg text-slate-700">
+    <p class="apparition max-w-3xl text-lg text-slate-700">
       Une automatisation qui tombe en panne sans que personne ne le remarque peut faire plus de
       dégâts que pas d'automatisation du tout. Nous testons chaque scénario avant la mise en
       service, nous surveillons son fonctionnement et nous sommes alertés en cas d'erreur. Tout est

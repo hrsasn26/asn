@@ -17,6 +17,7 @@ import Faq from '~/components/Faq.astro';
 import FaqItem from '~/components/FaqItem.astro';
 import FeatureGrid from '~/components/FeatureGrid.astro';
 import Hero from '~/components/Hero.astro';
+import LienFleche from '~/components/LienFleche.astro';
 import OfferCard from '~/components/OfferCard.astro';
 import ProblemList from '~/components/ProblemList.astro';
 import Section from '~/components/Section.astro';
@@ -92,7 +93,7 @@ const description =
         ]}
       />
     </div>
-    <p class="mt-8 max-w-3xl text-lg text-slate-700">
+    <p class="apparition mt-8 max-w-3xl text-lg text-slate-700">
       Chaque projet fait l'objet d'un devis gratuit et détaillé, à prix fixe.
     </p>
   </Section>
@@ -161,18 +162,16 @@ const description =
         },
       ]}
     />
-    <p class="mt-8">
-      <a
+    <p class="apparition mt-8">
+      <LienFleche
         href="/services/automatisation-integrations#whatsapp"
-        class="font-semibold text-brand-700 hover:text-brand-800"
-      >
-        Voir l'offre Automatisation<span aria-hidden="true"> →</span>
-      </a>
+        label="Voir l'offre Automatisation"
+      />
     </p>
   </Section>
 
   <Section title="Testé avant la mise en ligne. Vraiment." tone="gris">
-    <p class="max-w-3xl text-lg text-slate-700">
+    <p class="apparition max-w-3xl text-lg text-slate-700">
       Avant de livrer votre site, nous vérifions chaque page sur les principaux navigateurs et
       tailles d'écran. Nous testons chaque formulaire, chaque lien et chaque paiement. Vous ne
       découvrez pas les problèmes par un client mécontent.
@@ -180,7 +179,7 @@ const description =
   </Section>
 
   <Section title="Un site à votre image">
-    <div class="max-w-3xl space-y-4 text-lg text-slate-700">
+    <div class="apparition max-w-3xl space-y-4 text-lg text-slate-700">
       <p>
         {offre.design}. Vous validez les maquettes avant le début du développement : pas de mauvaise
         surprise à la livraison.

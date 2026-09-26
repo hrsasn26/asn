@@ -11,6 +11,7 @@ import CtaFinal from '~/components/CtaFinal.astro';
 import FeatureGrid from '~/components/FeatureGrid.astro';
 import Hero from '~/components/Hero.astro';
 import IllustrationAccueil from '~/components/illustrations/IllustrationAccueil.astro';
+import LienFleche from '~/components/LienFleche.astro';
 import Placeholder from '~/components/Placeholder.astro';
 import PourQui from '~/components/PourQui.astro';
 import Section from '~/components/Section.astro';
@@ -79,16 +80,14 @@ const realisations = (await getCollection('realisations', ({ data }) => !data.dr
 
   <Section title="Un projet en cinq étapes claires" tone="gris">
     <Steps items={etapesProjet} />
-    <p class="mt-8">
-      <a href="/methode" class="font-semibold text-brand-700 hover:text-brand-800">
-        Découvrir notre méthode<span aria-hidden="true"> →</span>
-      </a>
+    <p class="apparition mt-8">
+      <LienFleche href="/methode" label="Découvrir notre méthode" />
     </p>
   </Section>
 
   <Section title="Nos réalisations">
     {realisations.length === 0 ? (
-      <div class="max-w-3xl">
+      <div class="apparition max-w-3xl">
         <Placeholder text="[À compléter : 2 ou 3 études de cas réelles, avec l'accord des clients]" />
       </div>
     ) : (
@@ -106,10 +105,8 @@ const realisations = (await getCollection('realisations', ({ data }) => !data.dr
         ))}
       </ul>
     )}
-    <p class="mt-8">
-      <a href="/realisations" class="font-semibold text-brand-700 hover:text-brand-800">
-        Voir nos réalisations<span aria-hidden="true"> →</span>
-      </a>
+    <p class="apparition mt-8">
+      <LienFleche href="/realisations" label="Voir nos réalisations" />
     </p>
   </Section>
 

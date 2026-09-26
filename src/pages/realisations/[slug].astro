@@ -1,5 +1,6 @@
 ---
 import { getCollection, render } from 'astro:content';
+import BarreLecture from '~/components/BarreLecture.astro';
 import Prose from '~/components/Prose.astro';
 import Section from '~/components/Section.astro';
 import { site } from '~/data/site';
@@ -22,10 +23,11 @@ const { Content } = await render(etude);
     { label: etude.data.title, href: `/realisations/${etude.id}` },
   ]}
 >
+  <BarreLecture />
   <Section>
     <article>
-      <h1 class="text-3xl sm:text-4xl">{etude.data.title}</h1>
-      <p class="mt-2 text-slate-600">{etude.data.client}</p>
+      <h1 class="anim-montee text-3xl sm:text-4xl">{etude.data.title}</h1>
+      <p class="anim-montee mt-2 text-slate-600 delai-150">{etude.data.client}</p>
       <div class="mt-8">
         <Prose>
           <Content />
