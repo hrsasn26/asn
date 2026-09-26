@@ -8,7 +8,6 @@ import FeatureGrid from '~/components/FeatureGrid.astro';
 import Hero from '~/components/Hero.astro';
 import LienFleche from '~/components/LienFleche.astro';
 import ListePoints from '~/components/ListePoints.astro';
-import PourQui from '~/components/PourQui.astro';
 import Section from '~/components/Section.astro';
 import ServiceCards from '~/components/ServiceCards.astro';
 import Steps from '~/components/Steps.astro';
@@ -19,14 +18,13 @@ import { organisationJsonLd } from '~/lib/seo';
 ---
 
 <BaseLayout
-  title={`Sites web et applications sur mesure pour TPE, PME et particuliers | ${site.nom}`}
+  title={`Sites web et applications sur mesure | ${site.nom}`}
   description="Nous créons, testons, hébergeons et maintenons vos sites et vos applications. Un interlocuteur direct, un devis à prix fixe et un suivi après la mise en ligne."
   jsonLd={organisationJsonLd(Astro.site ?? Astro.url.origin)}
 >
   <Hero
     centre
     maquette="accueil"
-    surtitre="TPE · PME · Particuliers"
     title="Des sites et des applications fiables, suivis dans la durée"
     motCle="suivis dans la durée"
     subtitle="Sites web, applications et automatisations : nous concevons des outils rapides, sécurisés et faciles à faire évoluer. Et nous restons disponibles après la mise en ligne."
@@ -71,8 +69,6 @@ import { organisationJsonLd } from '~/lib/seo';
   >
     <ServiceCards />
   </Section>
-
-  <PourQui />
 
   <Section surtitre="Méthode" title="Un projet en cinq étapes claires" disposition="centre">
     <Steps items={etapesProjet} />

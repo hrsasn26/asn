@@ -19,7 +19,7 @@ export const forfaitsMaintenance: ForfaitMaintenance[] = [
   {
     nom: 'Essentiel',
     recommande: false,
-    pourQui: 'Sites vitrines, particuliers',
+    pourQui: 'Sites vitrines',
     sauvegardes: 'Hebdomadaires',
     petitesModifications: false,
     rapportMensuel: false,
@@ -27,7 +27,7 @@ export const forfaitsMaintenance: ForfaitMaintenance[] = [
   {
     nom: 'Sérénité',
     recommande: true,
-    pourQui: 'TPE, PME, boutiques en ligne',
+    pourQui: 'Boutiques en ligne',
     sauvegardes: 'Quotidiennes',
     petitesModifications: true,
     rapportMensuel: true,
