@@ -1,0 +1,28 @@
+---
+/**
+ * Lien vers une autre page (« Voir l'offre … → ») : la flèche avance au survol.
+ * Le dernier mot et la flèche restent sur la même ligne.
+ */
+interface Props {
+  href: string;
+  label: string;
+}
+
+const { href, label } = Astro.props;
+const mots = label.split(' ');
+const fin = mots.pop();
+const debut = mots.join(' ');
+---
+
+<a href={href} class="group font-semibold text-brand-700 hover:text-brand-800">
+  {debut}{' '}
+  <span class="whitespace-nowrap">
+    {fin}
+    <span
+      aria-hidden="true"
+      class="ml-1 inline-block transition-transform motion-safe:group-hover:translate-x-1"
+    >
+      →
+    </span>
+  </span>
+</a>

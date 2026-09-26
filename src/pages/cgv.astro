@@ -1,6 +1,7 @@
 ---
 // Projet de texte à faire valider par un juriste (docs/brief-agence.md, section 7).
 // Droit marocain. Point imposé pour les particuliers : le droit de rétractation (loi 31-08).
+import BarreLecture from '~/components/BarreLecture.astro';
 import Placeholder from '~/components/Placeholder.astro';
 import Prose from '~/components/Prose.astro';
 import Section from '~/components/Section.astro';
@@ -14,8 +15,9 @@ import BaseLayout from '~/layouts/BaseLayout.astro';
   description={`Conditions générales de vente des prestations de ${site.nom} : devis, prix, délais, propriété, maintenance et droit de rétractation.`}
   breadcrumbs={[{ label: 'Conditions générales de vente', href: '/cgv' }]}
 >
+  <BarreLecture />
   <Section>
-    <h1 class="text-3xl sm:text-4xl">Conditions générales de vente</h1>
+    <h1 class="anim-montee text-3xl sm:text-4xl">Conditions générales de vente</h1>
     <div class="mt-6 max-w-3xl">
       <Placeholder text="[Projet de texte : à faire valider par un juriste avant la mise en ligne]" />
     </div>

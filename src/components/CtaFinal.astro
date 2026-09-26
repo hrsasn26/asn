@@ -1,4 +1,6 @@
 ---
+import ArrowRight from '@lucide/astro/icons/arrow-right';
+
 interface Props {
   title: string;
   text: string;
@@ -8,16 +10,27 @@ interface Props {
 const { title, text, button } = Astro.props;
 ---
 
-<section class="bg-brand-900 text-white">
-  <div class="mx-auto max-w-6xl px-4 py-14 sm:px-6">
+{/* overflow-clip, pas overflow-hidden : le bloc ne devient pas un conteneur de défilement (timeline view()). */}
+<section class="relative overflow-clip bg-brand-900 text-white">
+  {/* Halos de couleur : ils grandissent quand le bloc entre dans l'écran. */}
+  <div aria-hidden="true" class="pointer-events-none absolute inset-0 hidden md:block">
+    <div class="apparition-zoom absolute -top-40 -right-24 size-[26rem] rounded-full bg-radial from-emerald-400/20 to-transparent to-70%" />
+    <div class="apparition-zoom absolute -bottom-48 right-1/4 size-[30rem] rounded-full bg-radial from-violet-400/20 to-transparent to-70%" />
+  </div>
+  <div class="apparition relative mx-auto max-w-6xl px-4 py-14 sm:px-6">
     <h2 class="text-2xl text-white sm:text-3xl">{title}</h2>
     <p class="mt-4 max-w-2xl text-brand-100">{text}</p>
     <div class="mt-8">
       <a
         href={button.href}
-        class="inline-block rounded-md bg-white px-5 py-3 font-semibold text-brand-900 no-underline hover:bg-brand-50 transition hover:shadow-md motion-safe:hover:-translate-y-0.5"
+        class="group inline-flex items-center gap-2 rounded-md bg-white px-5 py-3 font-semibold text-brand-900 no-underline transition hover:bg-brand-50 hover:shadow-md motion-safe:hover:-translate-y-0.5"
       >
         {button.label}
+        <ArrowRight
+          size={18}
+          aria-hidden="true"
+          class="transition-transform motion-safe:group-hover:translate-x-1"
+        />
       </a>
     </div>
   </div>

@@ -97,22 +97,22 @@ const ctaForfait = { label: 'Choisir mon forfait', href: '/contact' };
 
   <Section title="Choisissez votre forfait" tone="gris" id="forfaits">
     <ForfaitsTable />
-    <p class="mt-4 text-slate-700">
+    <p class="apparition mt-4 text-slate-700">
       Le prix de chaque forfait dépend de votre site : il figure dans votre devis gratuit.{' '}
       {engagementMaintenance}
     </p>
-    <div class="mt-6">
+    <div class="apparition mt-6">
       <ButtonLink href={ctaForfait.href}>{ctaForfait.label}</ButtonLink>
     </div>
   </Section>
 
   <Section title="Votre prestataire a disparu ? Votre site est cassé ?">
-    <p class="max-w-3xl text-lg text-slate-700">
+    <p class="apparition max-w-3xl text-lg text-slate-700">
       Nous reprenons les sites et applications développés par d'autres. Nous commençons par un audit
       : état du code, sécurité, sauvegardes, accès. Ensuite, nous vous proposons un plan clair :
       corriger, stabiliser, ou reconstruire si c'est plus raisonnable.
     </p>
-    <div class="mt-6">
+    <div class="apparition mt-6">
       <ButtonLink href={cta.secondaire.href} variant="secondaire">
         {cta.secondaire.label}
       </ButtonLink>

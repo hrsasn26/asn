@@ -15,6 +15,7 @@ import Faq from '~/components/Faq.astro';
 import FaqItem from '~/components/FaqItem.astro';
 import FeatureGrid from '~/components/FeatureGrid.astro';
 import Hero from '~/components/Hero.astro';
+import LienFleche from '~/components/LienFleche.astro';
 import ProblemList from '~/components/ProblemList.astro';
 import Section from '~/components/Section.astro';
 import Steps from '~/components/Steps.astro';
@@ -82,22 +83,15 @@ const ctaProjet = { label: 'Parler de mon projet', href: '/contact' };
       ]}
     />
     <ul class="mt-8 space-y-2">
-      <li>
-        <a
+      <li class="apparition">
+        <LienFleche
           href="/services/applications-mobiles"
-          class="font-semibold text-brand-700 hover:text-brand-800"
-        >
-          Voir l'offre Applications mobiles<span aria-hidden="true"> →</span>
-        </a>
+          label="Voir l'offre Applications mobiles"
+        />
       </li>
-      <li>
+      <li class="apparition">
         Vous voulez vendre votre logiciel par abonnement ?{' '}
-        <a
-          href="/services/logiciels-saas"
-          class="font-semibold text-brand-700 hover:text-brand-800"
-        >
-          Voir l'offre Logiciels SaaS<span aria-hidden="true"> →</span>
-        </a>
+        <LienFleche href="/services/logiciels-saas" label="Voir l'offre Logiciels SaaS" />
       </li>
     </ul>
   </Section>
@@ -157,12 +151,12 @@ const ctaProjet = { label: 'Parler de mon projet', href: '/contact' };
   </Section>
 
   <Section title="Vous avez une idée d'application ? Commencez petit." tone="gris">
-    <p class="max-w-3xl text-lg text-slate-700">
+    <p class="apparition max-w-3xl text-lg text-slate-700">
       Plutôt que de tout développer d'un coup, nous construisons d'abord une version simple, avec
       les fonctionnalités essentielles. Vous la testez auprès de vrais utilisateurs, puis vous
       décidez de la suite en connaissance de cause. Vous dépensez moins, et vous apprenez plus vite.
     </p>
-    <div class="mt-6">
+    <div class="apparition mt-6">
       <ButtonLink href="/contact" variant="secondaire">
         Présenter mon idée
       </ButtonLink>
