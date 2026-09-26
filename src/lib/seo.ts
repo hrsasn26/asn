@@ -3,8 +3,7 @@ import { site } from '~/data/site';
 /**
  * Données structurées de l'agence (schema.org ProfessionalService).
  * Pas d'adresse (address) ni de zone servie (areaServed) tant que l'adresse de l'agence n'est pas
- * confirmée (brief, section 4 : « Aucune valeur non confirmée »). Pas d'e-mail tant qu'il est un
- * placeholder entre crochets.
+ * confirmée (brief, section 4 : « Aucune valeur non confirmée »).
  */
 export function organisationJsonLd(url: URL | string) {
   return {
@@ -13,7 +12,7 @@ export function organisationJsonLd(url: URL | string) {
     url: String(url),
     // Symbole du logo, 512 px (pnpm image:logo).
     logo: new URL('/logo.png', url).href,
-    ...(site.email.startsWith('[') ? {} : { email: site.email }),
+    email: site.email,
   };
 }
 
