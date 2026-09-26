@@ -11,7 +11,7 @@ import ListePoints from '~/components/ListePoints.astro';
 import Section from '~/components/Section.astro';
 import ServiceCards from '~/components/ServiceCards.astro';
 import Steps from '~/components/Steps.astro';
-import { etapesProjet } from '~/data/methode';
+import { etapesProjet } from '~/data/processus';
 import { cta, site } from '~/data/site';
 import BaseLayout from '~/layouts/BaseLayout.astro';
 import { organisationJsonLd } from '~/lib/seo';
@@ -70,7 +70,7 @@ import { organisationJsonLd } from '~/lib/seo';
     <ServiceCards />
   </Section>
 
-  <Section surtitre="Méthode" title="Un projet en cinq étapes claires" disposition="centre">
+  <Section surtitre="Processus" title="Un projet en cinq étapes claires" disposition="centre">
     <Steps items={etapesProjet} />
     <p class="apparition mt-12 text-center">
       <LienFleche href="/processus" label="Découvrir notre processus" />

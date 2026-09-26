@@ -10,7 +10,7 @@ import Hero from '~/components/Hero.astro';
 import Section from '~/components/Section.astro';
 import ServiceCards from '~/components/ServiceCards.astro';
 import Steps from '~/components/Steps.astro';
-import { etapesProjet } from '~/data/methode';
+import { etapesProjet } from '~/data/processus';
 import { cta, site } from '~/data/site';
 import BaseLayout from '~/layouts/BaseLayout.astro';
 ---
@@ -58,7 +58,7 @@ import BaseLayout from '~/layouts/BaseLayout.astro';
     />
   </Section>
 
-  <Section surtitre="Méthode" title="Comment se déroule votre projet" disposition="centre">
+  <Section surtitre="Processus" title="Comment se déroule votre projet" disposition="centre">
     <Steps items={etapesProjet} />
   </Section>
 

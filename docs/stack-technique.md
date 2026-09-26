@@ -76,7 +76,7 @@ src/
     site.ts               Nom, zone, délais, engagements (placeholders du brief)
     forfaits.ts           Forfaits de maintenance (sans prix)
     navigation.ts         Menus, numéro et surtitre des pages de services
-    methode.ts            Les cinq étapes d'un projet (accueil, services)
+    processus.ts          Les cinq étapes d'un projet (accueil, services)
     maquettes.ts          Visuels des en-têtes : textes alternatifs, légendes, largeurs affichées
   layouts/BaseLayout.astro  Structure commune : <head>, SEO, en-tête, pied de page
   lib/                    Schémas des formulaires, envoi d'e-mail, limite de débit, SEO

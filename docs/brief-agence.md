@@ -355,7 +355,7 @@ Du premier échange à la maintenance, vous parlez aux personnes qui construisen
 **Vous restez propriétaire**
 Votre code, votre nom de domaine et vos données vous appartiennent. Si un jour vous changez de prestataire, vous repartez avec tout.
 
-#### Section : notre méthode
+#### Section : notre processus
 
 **Titre :** Comment se déroule votre projet
 
@@ -603,7 +603,7 @@ Sauvegardes quotidiennes et accès sécurisés.
 **Un code qui vous appartient**
 Le code est documenté et vous appartient. Vous restez libre de changer de prestataire si vous le souhaitez.
 
-#### Section : méthode
+#### Section : processus
 
 **Titre :** Comment nous travaillons
 
@@ -720,7 +720,7 @@ Chaque demande reçue sur WhatsApp arrive dans votre CRM. Votre équipe voit l'h
 
 Une automatisation qui tombe en panne sans que personne ne le remarque peut faire plus de dégâts que pas d'automatisation du tout. Nous testons chaque scénario avant la mise en service, nous surveillons son fonctionnement et nous sommes alertés en cas d'erreur. Tout est documenté : vous savez ce qui tourne et pourquoi.
 
-#### Section : méthode
+#### Section : processus
 
 1. **Diagnostic.** Nous regardons avec vous les tâches qui vous prennent du temps et nous estimons le temps que vous pouvez gagner.
 2. **Proposition.** Nous classons les automatisations par gain de temps et vous choisissez les priorités.
@@ -964,7 +964,7 @@ Reprend les cartes de la section « Des solutions pour faire avancer votre activ
 
 Retirée le 26 septembre 2026, comme sur la page Services (6.1).
 
-#### Section : méthode en bref
+#### Section : processus en bref
 
 **Titre :** Un projet en cinq étapes claires
 
@@ -995,7 +995,7 @@ Reprend l'appel à l'action final de la page Services (6.1).
 ### 6.8 Page « Processus »
 
 > Proposition à valider. Le brief demande une étape de tests bien visible sur cette page (section 5).
-> Page renommée le 26 septembre 2026, à valider. Ancien nom : « Méthode », à l'adresse `/methode`. Les surtitres « Méthode » des sections sur les étapes (accueil, Services, pages de services) ne changent pas.
+> Page renommée le 26 septembre 2026, à valider. Ancien nom : « Méthode », à l'adresse `/methode`. Les surtitres des sections sur les étapes (accueil, Services, pages de services) passent aussi de « Méthode » à « Processus ».
 
 **URL :** `/processus`
 **Balise title :** Notre processus : un projet clair, testé et suivi | Digital Solutions
@@ -1275,7 +1275,7 @@ Connexion chiffrée, comptes utilisateurs sécurisés et respect de la loi 09-08
 **Toujours à jour**
 Apple et Google changent leurs règles chaque année. Avec un forfait de maintenance, nous mettons votre application à jour pour qu'elle reste disponible et compatible.
 
-#### Section : méthode
+#### Section : processus
 
 **Titre :** Comment nous travaillons
 
@@ -1378,7 +1378,7 @@ Connexions chiffrées, accès contrôlés, sauvegardes quotidiennes et surveilla
 **Des mises à jour sans surprise**
 Nous préparons chaque mise en ligne pour éviter les coupures de service. En cas de problème, nous revenons à la version précédente en quelques minutes.
 
-#### Section : méthode
+#### Section : processus
 
 **Titre :** Du cadrage aux premiers clients
 
@@ -1496,7 +1496,7 @@ Nous limitons les données envoyées au strict nécessaire. Avant de commencer, 
 **Suivie dans la durée**
 Nous surveillons la qualité des réponses et les coûts d'utilisation. Nous mettons l'assistant à jour quand vos informations changent.
 
-#### Section : méthode
+#### Section : processus
 
 **Titre :** Comment nous travaillons
 
@@ -1586,7 +1586,7 @@ Un tableau de bord faux est pire que pas de tableau de bord du tout. Nous vérif
 
 Nous mettons en place les outils et des chiffres fiables. L'analyse marketing, la publicité et les campagnes ne font pas partie de nos services. Si vous travaillez avec une agence marketing ou un consultant, nous leur donnons accès aux chiffres.
 
-#### Section : méthode
+#### Section : processus
 
 **Titre :** Comment nous travaillons
 
@@ -1679,7 +1679,7 @@ Les tests sont au cœur de notre métier : nous testons chacun de nos propres pr
 - Nous gardons vos informations confidentielles, et nous pouvons signer un accord de confidentialité.
 - Un audit réduit les risques, mais personne ne peut garantir qu'un site ne sera jamais piraté. Nous vous le disons honnêtement.
 
-#### Section : méthode
+#### Section : processus
 
 **Titre :** Comment nous travaillons
 
@@ -1768,15 +1768,15 @@ Les visuels des pages de services servent aussi de vignettes aux cartes des serv
 |---|---|---|
 | Accueil | Ce que vous y gagnez | Vos bénéfices |
 | Accueil | Des solutions digitales qui répondent à vos enjeux | Nos services |
-| Accueil | Un projet en cinq étapes claires | Méthode |
+| Accueil | Un projet en cinq étapes claires | Processus |
 | Accueil, Services | Encadré audit gratuit | Audit gratuit |
 | Accueil | Nos engagements | Engagements |
 | Services | Des solutions pour faire avancer votre activité | Nos services |
 | Services | Pourquoi travailler avec nous | Nos différences |
-| Services | Comment se déroule votre projet | Méthode |
+| Services | Comment se déroule votre projet | Processus |
 | Toutes les pages avec une FAQ | Questions fréquentes | FAQ |
 | Pages de services | Le problème | Le constat |
-| Pages de services | Les étapes (« Comment nous travaillons », « Du cadrage aux premiers clients ») | Méthode |
+| Pages de services | Les étapes (« Comment nous travaillons », « Du cadrage aux premiers clients ») | Processus |
 | Sites web | Trois façons de lancer ou de relancer votre présence en ligne | Nos formules |
 | Sites web | Inclus dans tous nos sites | Sans supplément |
 | Sites web | Les options | À la carte |
