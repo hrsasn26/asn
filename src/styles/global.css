@@ -164,7 +164,18 @@
  * personnalisable (appearance: base-select : Chrome et Edge 135 et plus, versions récentes de WebKit).
  * Les autres navigateurs affichent la liste du système. Sans animation : le texte des choix n'est
  * jamais animé en opacité.
+ *
+ * Position de la liste ouverte : sous le champ si tous les choix y ont la place, sinon au-dessus,
+ * sinon au centre de la fenêtre, sur le champ (comme la liste du système). Le navigateur place
+ * sinon la liste du côté le plus grand et la coupe au bord de la fenêtre : sur un ordinateur
+ * portable, les derniers choix étaient cachés. Si la fenêtre est plus basse que la liste, la liste
+ * défile, et une ombre en haut ou en bas montre les choix cachés.
  */
+@position-try --liste-centree {
+  position-area: span-all span-end;
+  align-self: center;
+}
+
 @utility liste-deroulante {
   appearance: none;
 
@@ -179,10 +190,42 @@
     /* Panneau des choix : même style que le menu de l'en-tête. */
     &::picker(select) {
       appearance: base-select;
+      /*
+       * Hauteur limitée par la fenêtre, pas par la place à côté du champ : une position où la liste
+       * ne tient pas entière est écartée. La dernière position (au centre) tient toujours.
+       */
+      max-block-size: calc(100dvh - 0.75rem);
+      position-area: end span-end;
+      position-try-order: normal;
+      position-try-fallbacks:
+        start span-end,
+        end span-start,
+        start span-start,
+        --liste-centree,
+        --liste-centree flip-inline;
       margin-block: 0.375rem;
       border: 1px solid var(--color-ligne);
       border-radius: 0.75rem;
-      background-color: var(--color-white);
+      /*
+       * Ombres de défilement : les deux premiers dégradés défilent avec les choix et cachent l'ombre
+       * du bord quand la liste est à ce bord.
+       */
+      background:
+        linear-gradient(var(--color-white) 40%, transparent) top / 100% 2rem no-repeat local,
+        linear-gradient(transparent, var(--color-white) 60%) bottom / 100% 2rem no-repeat local,
+        radial-gradient(
+            farthest-side at 50% 0,
+            color-mix(in oklab, var(--color-encre) 22%, transparent),
+            transparent
+          )
+          top / 100% 0.75rem no-repeat,
+        radial-gradient(
+            farthest-side at 50% 100%,
+            color-mix(in oklab, var(--color-encre) 22%, transparent),
+            transparent
+          )
+          bottom / 100% 0.75rem no-repeat,
+        var(--color-white);
       padding: 0.375rem;
       box-shadow: 0 24px 48px -28px color-mix(in oklab, var(--color-encre) 45%, transparent);
     }
