@@ -1,0 +1,32 @@
+---
+/**
+ * Mot souligné par un trait vert qui se dessine (titres du héros, page Contact).
+ * La classe (par exemple "delai-600") règle le moment où le trait se dessine.
+ */
+interface Props {
+  class?: string;
+}
+
+const { class: classe = 'delai-600' } = Astro.props;
+---
+
+<span class="relative inline-block">
+  <slot />
+  <svg
+    aria-hidden="true"
+    focusable="false"
+    viewBox="0 0 200 12"
+    preserveAspectRatio="none"
+    class="absolute -bottom-2 left-0 h-3 w-full overflow-visible text-emerald-500"
+  >
+    <path
+      d="M3 9C60 3 140 3 197 7"
+      pathLength="1"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="5"
+      stroke-linecap="round"
+      class:list={['anim-trace', classe]}
+    ></path>
+  </svg>
+</span>

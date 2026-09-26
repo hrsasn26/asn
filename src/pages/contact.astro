@@ -3,6 +3,7 @@
 import Mail from '@lucide/astro/icons/mail';
 import MapPin from '@lucide/astro/icons/map-pin';
 import Phone from '@lucide/astro/icons/phone';
+import Send from '@lucide/astro/icons/send';
 import { actions } from 'astro:actions';
 import ButtonLink from '~/components/ButtonLink.astro';
 import IllustrationContact from '~/components/illustrations/IllustrationContact.astro';
@@ -12,6 +13,7 @@ import Consent from '~/components/forms/Consent.astro';
 import Honeypot from '~/components/forms/Honeypot.astro';
 import Success from '~/components/forms/Success.astro';
 import Section from '~/components/Section.astro';
+import Souligne from '~/components/Souligne.astro';
 import { cta, site } from '~/data/site';
 import BaseLayout from '~/layouts/BaseLayout.astro';
 import { etatFormulaire } from '~/lib/formulaire';
@@ -37,8 +39,10 @@ const titre = `Contact et demande de devis gratuit | ${site.nom}`;
   breadcrumbs={[{ label: 'Contact', href: '/contact' }]}
 >
   <Section>
-    <h1 class="text-3xl sm:text-4xl">Parlons de votre projet</h1>
-    <p class="mt-4 max-w-2xl text-lg text-slate-700">
+    <h1 class="anim-montee text-3xl sm:text-4xl">
+      Parlons de <Souligne>votre projet</Souligne>
+    </h1>
+    <p class="anim-montee mt-4 max-w-2xl text-lg text-slate-700 delai-150">
       {`Décrivez-nous votre projet en quelques lignes. Nous revenons vers vous sous ${site.delaiReponse} avec une première estimation.`}
     </p>
 
@@ -51,7 +55,12 @@ const titre = `Contact et demande de devis gratuit | ${site.nom}`;
         ) : (
           <>
             <ErrorSummary errors={etat.resume} message={etat.messageGeneral} />
-            <form method="POST" action={actions.contact} novalidate class="relative space-y-6">
+            <form
+              method="POST"
+              action={actions.contact}
+              novalidate
+              class="anim-cascade relative space-y-6"
+            >
               <Field
                 name="nom"
                 label="Nom"
@@ -77,14 +86,17 @@ const titre = `Contact et demande de devis gratuit | ${site.nom}`;
                 value={etat.valeur('telephone')}
                 errors={etat.erreursChamps.telephone}
               />
-              <div>
-                <label for="champ-projet" class="block font-medium text-slate-900">
+              <div class="group">
+                <label
+                  for="champ-projet"
+                  class="block font-medium text-slate-900 transition-colors group-focus-within:text-brand-700"
+                >
                   Votre projet <span class="font-normal text-slate-600">(facultatif)</span>
                 </label>
                 <select
                   id="champ-projet"
                   name="projet"
-                  class="mt-1 block w-full rounded-md border border-slate-400 bg-white px-3 py-2 text-slate-900"
+                  class="mt-1 block w-full rounded-md border border-slate-400 bg-white px-3 py-2 text-slate-900 transition-colors focus:border-brand-700"
                 >
                   <option value="">Choisissez un type de projet</option>
                   {Object.entries(typesProjet).map(([valeur, libelle]) => (
@@ -110,9 +122,14 @@ const titre = `Contact et demande de devis gratuit | ${site.nom}`;
               <div>
                 <button
                   type="submit"
-                  class="rounded-md bg-brand-700 px-5 py-3 font-semibold text-white hover:bg-brand-800 transition hover:shadow-md motion-safe:hover:-translate-y-0.5"
+                  class="group inline-flex items-center gap-2 rounded-md bg-brand-700 px-5 py-3 font-semibold text-white transition hover:bg-brand-800 hover:shadow-md motion-safe:hover:-translate-y-0.5"
                 >
                   Envoyer ma demande
+                  <Send
+                    size={18}
+                    aria-hidden="true"
+                    class="transition-transform motion-safe:group-hover:translate-x-1 motion-safe:group-hover:-translate-y-1"
+                  />
                 </button>
                 <p class="mt-3 text-sm text-slate-600">
                   Gratuit et sans engagement. Vos informations servent uniquement à répondre à votre
@@ -128,7 +145,7 @@ const titre = `Contact et demande de devis gratuit | ${site.nom}`;
         <div class="hidden lg:block">
           <IllustrationContact />
         </div>
-        <div>
+        <div class="apparition">
           <h2 class="text-xl">Et ensuite ?</h2>
           <ol class="mt-4 list-decimal space-y-2 pl-5 text-slate-700">
             <li>Nous lisons votre demande et nous revenons vers vous sous {site.delaiReponse}.</li>
@@ -136,24 +153,24 @@ const titre = `Contact et demande de devis gratuit | ${site.nom}`;
             <li>Vous recevez un devis clair, à prix fixe, sans engagement.</li>
           </ol>
         </div>
-        <div>
+        <div class="apparition">
           <h2 class="text-xl">Autres moyens de nous joindre</h2>
           <ul class="mt-4 space-y-3 text-slate-700">
             <li class="flex items-center gap-3">
-              <Mail size={20} class="shrink-0 text-blue-700" />
+              <Mail size={20} class="anim-zoom shrink-0 text-blue-700 delai-400" />
               <span>E-mail : {site.email}</span>
             </li>
             <li class="flex items-center gap-3">
-              <Phone size={20} class="shrink-0 text-emerald-700" />
+              <Phone size={20} class="anim-zoom shrink-0 text-emerald-700 delai-550" />
               <span>Téléphone : {site.telephone}</span>
             </li>
             <li class="flex items-center gap-3">
-              <MapPin size={20} class="shrink-0 text-rose-700" />
+              <MapPin size={20} class="anim-zoom shrink-0 text-rose-700 delai-700" />
               <span>Zone : {site.zone}</span>
             </li>
           </ul>
         </div>
-        <div class="rounded-lg border border-slate-200 bg-brand-50 p-6">
+        <div class="apparition rounded-lg border border-slate-200 bg-brand-50 p-6">
           <h2 class="text-xl">Vous avez déjà un site ?</h2>
           <p class="mt-2 text-slate-700">
             Commencez par un audit gratuit : vitesse, sécurité, référencement technique et affichage
