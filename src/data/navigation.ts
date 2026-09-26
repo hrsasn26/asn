@@ -31,7 +31,7 @@ export function surtitreService(href: string): string {
 
 export const navigationPrincipale: LienNav[] = [
   { label: 'Services', href: '/services' },
-  { label: 'Méthode', href: '/methode' },
+  { label: 'Processus', href: '/processus' },
   { label: "L'agence", href: '/agence' },
   { label: 'Contact', href: '/contact' },
 ];

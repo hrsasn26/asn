@@ -8,7 +8,7 @@ const chemins = [
   '/audit-gratuit',
   '/services/intelligence-artificielle',
   '/services/hebergement-maintenance',
-  '/methode',
+  '/processus',
   '/mentions-legales',
   '/confidentialite',
   '/page-inexistante',

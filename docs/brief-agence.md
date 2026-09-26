@@ -215,7 +215,7 @@ Accueil                                   /
 │   ├── Tests & sécurité                  /services/tests-securite
 │   └── Hébergement & maintenance         /services/hebergement-maintenance
 ├── Audit gratuit                         /audit-gratuit
-├── Méthode                               /methode
+├── Processus                             /processus
 ├── L'agence (équipe, valeurs)            /agence
 ├── Contact / Demande de devis            /contact
 └── Mentions légales · CGV · Confidentialité
@@ -223,7 +223,7 @@ Accueil                                   /
 
 **Pied de page (toutes les pages) :** nom de l'agence et promesse, liens vers les services, liens légaux, puis la ligne « © [année] Digital Solutions. Tous droits réservés. » L'année est celle du dernier déploiement.
 
-La page « Méthode », avec une étape de tests bien visible, est l'endroit idéal pour mettre en avant la compétence QA.
+La page « Processus », avec une étape de tests bien visible, est l'endroit idéal pour mettre en avant la compétence QA.
 
 ---
 
@@ -967,7 +967,7 @@ Reprend la section « Nous accompagnons » de la page Services (6.1).
 
 Reprend les cinq étapes de la page Services (6.1).
 
-**Lien :** [Découvrir notre méthode]
+**Lien :** [Découvrir notre processus]
 
 #### Section : audit gratuit
 
@@ -989,12 +989,13 @@ Reprend l'appel à l'action final de la page Services (6.1).
 
 ---
 
-### 6.8 Page « Méthode »
+### 6.8 Page « Processus »
 
 > Proposition à valider. Le brief demande une étape de tests bien visible sur cette page (section 5).
+> Page renommée le 26 septembre 2026, à valider. Ancien nom : « Méthode », à l'adresse `/methode`. Les surtitres « Méthode » des sections sur les étapes (accueil, Services, pages de services) ne changent pas.
 
-**URL :** `/methode`
-**Balise title :** Notre méthode : un projet clair, testé et suivi | Digital Solutions
+**URL :** `/processus`
+**Balise title :** Notre processus : un projet clair, testé et suivi | Digital Solutions
 **Meta description :** Échange gratuit, devis à prix fixe, maquettes, développement par étapes, tests complets et suivi après la mise en ligne : découvrez comment se déroule votre projet.
 
 #### En-tête
@@ -1067,7 +1068,7 @@ Reprend l'appel à l'action final de la page Services (6.1).
 ### 6.9 Page « Tarifs » (supprimée)
 
 > Page supprimée le 25 septembre 2026 : aucun prix n'est affiché sur le site. Chaque prix est donné dans un devis.
-> Les informations utiles restent ailleurs : devis gratuit à prix fixe (Méthode, 6.8), forfaits de maintenance sans prix (6.5), modalités de paiement et droit de rétractation (CGV).
+> Les informations utiles restent ailleurs : devis gratuit à prix fixe (Processus, 6.8), forfaits de maintenance sans prix (6.5), modalités de paiement et droit de rétractation (CGV).
 
 ---
 
@@ -1717,7 +1718,7 @@ Un échange de 30 minutes, gratuit et confidentiel, pour définir ce qu'il faut 
 
 > Légende et textes alternatifs validés le 26 septembre 2026. Maquettes reçues du designer le 26 septembre 2026, adaptées aux règles de ce brief. Sources et détail des adaptations : [design/heros/README.md](../design/heros/README.md).
 
-Onze pages ont un visuel dans l'en-tête, à droite du texte (sous le texte sur téléphone) : des écrans sur ordinateur et sur téléphone, avec une ou deux cartes. Chaque visuel montre un projet du type décrit par la page, pour un client fictif. Les autres pages (Services, Méthode, L'agence, Contact, pages légales) ont un en-tête sans visuel (design du 26 septembre 2026).
+Onze pages ont un visuel dans l'en-tête, à droite du texte (sous le texte sur téléphone) : des écrans sur ordinateur et sur téléphone, avec une ou deux cartes. Chaque visuel montre un projet du type décrit par la page, pour un client fictif. Les autres pages (Services, Processus, L'agence, Contact, pages légales) ont un en-tête sans visuel (design du 26 septembre 2026).
 
 Les visuels des pages de services servent aussi de vignettes aux cartes des services (Accueil et Services). Le visuel de l'audit gratuit illustre l'encadré « Audit gratuit » de l'accueil.
 
@@ -1756,7 +1757,7 @@ Les visuels des pages de services servent aussi de vignettes aux cartes des serv
 - La fin de chaque grand titre est en gras, par exemple « Parlons de votre **projet** » ou « Des sites et des applications fiables, **suivis dans la durée** ».
 - En-tête des pages de services : « Service 01 · Sites web ». Le numéro suit l'ordre des services de la section 5. Les cartes des services portent le même numéro (01 à 09).
 - Accueil, en-tête : « TPE · PME · Particuliers ».
-- Libellés : « Idéal pour » (cartes d'offre, sans deux-points), « Vous recevez » (étapes de la page Méthode, sans deux-points), « (facultatif) » après le libellé des champs facultatifs (les champs obligatoires n'ont plus de mention), « recommandé » (forfait Sérénité), « Erreur 404 » (page introuvable).
+- Libellés : « Idéal pour » (cartes d'offre, sans deux-points), « Vous recevez » (étapes de la page Processus, sans deux-points), « (facultatif) » après le libellé des champs facultatifs (les champs obligatoires n'ont plus de mention), « recommandé » (forfait Sérénité), « Erreur 404 » (page introuvable).
 - Page Audit gratuit, « Ce que nous vérifions » : chaque point a un titre (« Vitesse ») et une phrase qui commence par une majuscule (« Combien de temps vos pages mettent à s'afficher, et ce qui les ralentit. »).
 - Page Contact : « Et ensuite ? » reste un titre, présenté comme un surtitre au-dessus des trois étapes.
 
@@ -1797,9 +1798,9 @@ Les visuels des pages de services servent aussi de vignettes aux cartes des serv
 | Audit gratuit | Ce que nous vérifions | Périmètre |
 | Audit gratuit | Ce que l'audit gratuit ne couvre pas | Limites |
 | Audit gratuit | Ce que vous recevez | Livrables |
-| Méthode | Les étapes de votre projet | 7 étapes |
-| Méthode | Pourquoi les tests comptent autant | Qualité |
-| Méthode | Ce dont nous avons besoin de votre part | Votre rôle |
+| Processus | Les étapes de votre projet | 7 étapes |
+| Processus | Pourquoi les tests comptent autant | Qualité |
+| Processus | Ce dont nous avons besoin de votre part | Votre rôle |
 | L'agence | Pourquoi Digital Solutions existe | Notre histoire |
 | L'agence | Ce que nous savons faire, en clair | Savoir-faire |
 | L'agence | Nos valeurs | Valeurs |
@@ -1848,7 +1849,7 @@ Les visuels des pages de services servent aussi de vignettes aux cartes des serv
 - [ ] Confirmer les engagements listés en [section 4](#engagements-à-confirmer-avant-publication)
 - [ ] Choisir l'option design : designer partenaire ou modèles personnalisés
 - [ ] Trouver les partenaires : graphiste, rédacteur, traducteur (arabe, anglais)
-- [ ] Relire et valider les textes proposés : Accueil, Méthode, L'agence, Contact (sections 6.7 à 6.11)
+- [ ] Relire et valider les textes proposés : Accueil, Processus, L'agence, Contact (sections 6.7 à 6.11)
 - [ ] Relire et valider les pages des nouveaux services : Applications mobiles, Logiciels SaaS, Intelligence artificielle, Données et tableaux de bord, Tests et sécurité (sections 6.14 à 6.18)
 - [ ] Relire et valider les ajouts dans les pages existantes : options Sites web (langues, WhatsApp), section WhatsApp (Automatisation), formation à l'IA
 - [x] Valider la légende et les textes alternatifs des visuels des en-têtes (section 6.19)

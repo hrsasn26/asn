@@ -11,7 +11,7 @@ Les choix techniques, l'organisation du code et la mise en service sont dans [do
 ## État du projet
 
 - Offre : neuf pôles de services (section 3 du brief). Textes des quatre premières pages Services validés, sauf les ajouts marqués « à valider » (options Sites web, WhatsApp, formation IA). Pages Applications mobiles, Logiciels SaaS, Intelligence artificielle, Données et tableaux de bord, Tests et sécurité : textes proposés (sections 6.14 à 6.18), à valider.
-- Autres pages (Accueil, Méthode, L'agence, Contact) : textes proposés dans le brief (sections 6.7 à 6.11) et intégrés. Ils restent à valider.
+- Autres pages (Accueil, Processus, L'agence, Contact) : textes proposés dans le brief (sections 6.7 à 6.11) et intégrés. Ils restent à valider.
 - Révision du 26 septembre 2026 (document « Recommandations de wording ») : en-têtes, boutons, cartes et FAQ revus sur tout le site, à valider. Plus de mot « ingénieurs ». Les phrases avec une valeur non confirmée (délais, pays d'hébergement, ville, garantie, sauvegardes) sont retirées, sauf dans les pages légales et les coordonnées. La section « L'équipe » de L'agence est masquée jusqu'à réception des vraies informations.
 - Pages Réalisations et Blog : supprimées le 26 septembre 2026 (sections 6.12 et 6.13 du brief).
 - Marché : projets au Maroc. Droit marocain (loi 09-08 et CNDP pour les données personnelles, loi 31-08 pour les consommateurs). Ne pas citer la France, le RGPD, la CNIL ou le droit français sur le site.
