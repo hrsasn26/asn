@@ -203,7 +203,7 @@ Renovate (`renovate.json`) propose les mises à jour des dépendances chaque lun
 
 ### Aperçu sur Vercel
 
-Le site peut aussi être déployé sur Vercel (projet `asn`, domaine `asn-tau.vercel.app`).
+Le site peut aussi être déployé sur Vercel (projet `asn`, équipe `hrs20`). La branche `main` va sur `www.digital-solutions.ma`. Chaque branche a aussi un aperçu. Les adresses en `*.vercel.app` (`asn-hrs20.vercel.app`, `asn-git-main-hrs20.vercel.app` et les aperçus) demandent une connexion à Vercel (Vercel Authentication).
 
 - Pendant un build Vercel (variable `VERCEL` définie), Astro utilise l'adaptateur `@astrojs/vercel`. Partout ailleurs (Docker, CI, poste de développement), il utilise l'adaptateur Node.
 - Sans `SITE_URL`, les URL canoniques utilisent le domaine de l'agence, `https://www.digital-solutions.ma` (champ `domaine` de `src/data/site.ts`).
@@ -224,7 +224,7 @@ Le domaine de l'agence est `digital-solutions.ma`. L'adresse officielle du site 
 2. Chez le bureau d'enregistrement du domaine, créez les enregistrements DNS que Vercel affiche : un enregistrement `A` pour `digital-solutions.ma` et un enregistrement `CNAME` pour `www`. Copiez les valeurs exactes depuis Vercel.
 3. Attendez la propagation DNS. Vercel crée le certificat HTTPS tout seul.
 
-**Indexation :** activée le 26 septembre 2026 sur `www.digital-solutions.ma`, avant la validation des textes et des pages légales (décision de l'agence). Pour cette raison, les pages légales n'affichent que les parties sans placeholder, et la ligne du téléphone est cachée (section 7 du brief). Les adresses `*.vercel.app` (dont `asn-tau.vercel.app` et les aperçus) gardent `X-Robots-Tag: noindex` (règle `has` sur l'hôte dans `vercel.json`), pour éviter un doublon du site dans Google.
+**Indexation :** activée le 26 septembre 2026 sur `www.digital-solutions.ma`, avant la validation des textes et des pages légales (décision de l'agence). Pour cette raison, les pages légales n'affichent que les parties sans placeholder, et la ligne du téléphone est cachée (section 7 du brief). Les adresses `*.vercel.app` (dont `asn-hrs20.vercel.app` et les aperçus) gardent `X-Robots-Tag: noindex` (règle `has` sur l'hôte dans `vercel.json`), pour éviter un doublon du site dans Google.
 
 **État au 26 septembre 2026 :** le domaine utilise les serveurs DNS de Vercel (`ns1.vercel-dns.com`, `ns2.vercel-dns.com`). `www.digital-solutions.ma` et `digital-solutions.ma` (redirection vers `www`) sont reliés au projet `asn`. Les enregistrements DNS se gèrent donc dans Vercel : **Domains → digital-solutions.ma → DNS Records**, et plus chez le bureau d'enregistrement.
 
