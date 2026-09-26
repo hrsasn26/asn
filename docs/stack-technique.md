@@ -224,6 +224,17 @@ Le domaine de l'agence est `digital-solutions.ma`. L'adresse officielle du site 
 
 Le site reste non indexé (`X-Robots-Tag: noindex` dans `vercel.json`) tant que les textes et les pages légales ne sont pas validés.
 
+**État au 26 septembre 2026 :** le domaine utilise les serveurs DNS de Vercel (`ns1.vercel-dns.com`, `ns2.vercel-dns.com`). `www.digital-solutions.ma` et `digital-solutions.ma` (redirection vers `www`) sont reliés au projet `asn`. Les enregistrements DNS se gèrent donc dans Vercel : **Domains → digital-solutions.ma → DNS Records**, et plus chez le bureau d'enregistrement.
+
+**Google Search Console :** propriété de type « Domaine » pour `digital-solutions.ma`, validée par un enregistrement DNS.
+
+1. Dans Vercel, **Domains → digital-solutions.ma → DNS Records**, ajoutez un enregistrement : nom vide (ou `@`), type `TXT`, valeur `google-site-verification=…` copiée depuis la Search Console.
+2. Dans la Search Console, cliquez sur **Valider**. Si la validation échoue, attendez quelques heures, puis réessayez.
+3. Gardez cet enregistrement : sans lui, la propriété n'est plus validée.
+4. Envoyez le sitemap `https://www.digital-solutions.ma/sitemap-index.xml` (menu **Sitemaps**).
+
+Tant que `vercel.json` envoie `X-Robots-Tag: noindex`, la Search Console affiche les pages comme exclues par la balise `noindex`. C'est normal.
+
 **Pour la production sur le VPS**, voir la section 8 : les mêmes enregistrements DNS pointent alors vers l'adresse IP du serveur.
 
 **E-mails :** pour envoyer les formulaires depuis une adresse `@digital-solutions.ma`, authentifiez le domaine dans Brevo (enregistrements DNS SPF, DKIM et DMARC fournis par Brevo).

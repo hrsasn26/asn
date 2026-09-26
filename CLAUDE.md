@@ -21,7 +21,7 @@ Les choix techniques, l'organisation du code et la mise en service sont dans [do
 - Logo : reçu le 26 septembre 2026, sources dans `design/logo/` (voir son README). Composant `Logo` (symbole de deux demi-disques et nom sur deux lignes) : version couleur dans l'en-tête, version blanche dans le pied de page. Le symbole sert aussi pour le favicon, l'icône Apple, les données structurées et l'image de partage.
 - Images : visuels des en-têtes (maquettes d'écrans pour des clients fictifs, section 6.19 du brief, sources dans `design/heros/` ; légende et textes alternatifs validés), aussi en vignette sur les cartes des services, image de partage `public/og.png`, icônes Lucide dans les messages d'erreur. Pas de photo de stock ni de photo d'équipe inventée.
 - Technologies : Astro 7, TypeScript, Tailwind CSS 4, Node.js 24, pnpm. Déploiement Docker + Caddy sur un VPS (hébergeur et pays à choisir).
-- Déploiement : désactivé tant que la mise en service n'est pas faite (section 8 de `docs/stack-technique.md`). Un aperçu tourne sur Vercel (`asn-tau.vercel.app`, non indexé). Le domaine est à relier à Vercel ou au VPS (section « Nom de domaine » de `docs/stack-technique.md`).
+- Déploiement : désactivé tant que la mise en service n'est pas faite (section 8 de `docs/stack-technique.md`). Un aperçu tourne sur Vercel (`asn-tau.vercel.app`, non indexé). Le domaine est relié au projet Vercel, avec les DNS de Vercel ; il passera au VPS à la mise en service (section « Nom de domaine » de `docs/stack-technique.md`, avec la validation Google Search Console).
 - Adaptateurs : Node par défaut, `@astrojs/vercel` seulement pendant un build Vercel. Tester les deux builds après un changement de configuration (`pnpm build` et `VERCEL=1 pnpm build`).
 
 ## Commandes
