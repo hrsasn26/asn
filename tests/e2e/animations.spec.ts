@@ -1,4 +1,4 @@
-import { expect, test } from '@playwright/test';
+import { expect, test, type Page } from '@playwright/test';
 
 // Pages avec un visuel dans l'en-tête, pages avec formulaire, page avec la frise des étapes,
 // pages légales (barre de lecture) et page d'erreur.
@@ -55,6 +55,40 @@ test.describe('barre de lecture', () => {
     // En bas de la page, elle occupe toute la largeur de l'écran.
     await page.evaluate(() => window.scrollTo(0, document.documentElement.scrollHeight));
     await expect.poll(largeur).toBeGreaterThan(ecran - 1);
+  });
+});
+
+test.describe('logo', () => {
+  const demiDisques = (page: Page) => page.locator('header a[href="/"] svg path');
+  const animations = (page: Page) =>
+    demiDisques(page).evaluateAll((formes) =>
+      formes.map((forme) => getComputedStyle(forme).animationName),
+    );
+
+  test('il s’anime à l’ouverture de l’accueil seulement', async ({ page }) => {
+    await page.goto('/');
+    expect(await animations(page)).toEqual(['logo-assemblage', 'logo-assemblage']);
+    await page.goto('/contact');
+    expect(await animations(page)).toEqual(['none', 'none']);
+  });
+
+  test('ses demi-disques se rejoignent au survol, sauf en mode réduit', async ({
+    page,
+    isMobile,
+  }) => {
+    test.skip(isMobile, 'Pas de survol sur un écran tactile.');
+    const decalages = () =>
+      demiDisques(page).evaluateAll((formes) =>
+        formes.map((forme) => getComputedStyle(forme).translate),
+      );
+    await page.goto('/contact');
+    await page.locator('header a[href="/"]').hover();
+    await expect.poll(decalages).toEqual(['6px 4px', '-6px -4px']);
+
+    await page.emulateMedia({ reducedMotion: 'reduce' });
+    await page.reload();
+    await page.locator('header a[href="/"]').hover();
+    expect(await decalages()).toEqual(['none', 'none']);
   });
 });
 
