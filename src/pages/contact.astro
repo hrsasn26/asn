@@ -12,10 +12,9 @@ import Honeypot from '~/components/forms/Honeypot.astro';
 import Success from '~/components/forms/Success.astro';
 import Section from '~/components/Section.astro';
 import Texte from '~/components/Texte.astro';
-import { cta, site } from '~/data/site';
+import { adresseComplete, cta, lienTelephone, site } from '~/data/site';
 import BaseLayout from '~/layouts/BaseLayout.astro';
 import { etatFormulaire } from '~/lib/formulaire';
-import { estConfirme } from '~/lib/placeholders';
 import { typesProjet } from '~/lib/schemas';
 
 export const prerender = false;
@@ -37,12 +36,12 @@ const ensuite = [
   'Vous recevez un devis clair, à prix fixe, sans engagement.',
 ];
 
-// Une coordonnée encore entre crochets n'est pas affichée : le téléphone apparaît quand le
-// numéro remplace le placeholder dans src/data/site.ts (section 6.11 du brief).
+// Coordonnées : section 6.11 du brief.
 const coordonnees = [
   { label: 'E-mail', valeur: site.email, href: `mailto:${site.email}` },
-  { label: 'Téléphone', valeur: site.telephone },
-].filter(({ valeur }) => estConfirme(valeur));
+  { label: 'Téléphone', valeur: site.telephone, href: lienTelephone },
+  { label: 'Adresse', valeur: adresseComplete },
+];
 ---
 
 <BaseLayout

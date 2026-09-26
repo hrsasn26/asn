@@ -9,7 +9,7 @@
  */
 import type { APIRoute } from 'astro';
 import { liensLegaux, navigationPrincipale, services, type LienNav } from '~/data/navigation';
-import { site } from '~/data/site';
+import { adresseComplete, site } from '~/data/site';
 
 /** Meta description de chaque page, identique à celle de la page. */
 const descriptions: Record<string, string> = {
@@ -80,6 +80,7 @@ export const GET: APIRoute = ({ site: adresse }) => {
     `> ${accueil}`,
     'Des sites et des applications fiables, testés, sécurisés et suivis dans la durée. ' +
       "Chaque projet fait l'objet d'un devis gratuit et détaillé, à prix fixe.",
+    `Adresse : ${adresseComplete}, Maroc. Téléphone : ${site.telephone}. E-mail : ${site.email}.`,
     ...sections.map(({ titre, liens }) => `## ${titre}\n\n${liens.map(ligne).join('\n')}`),
   ].join('\n\n');
 

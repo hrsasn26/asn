@@ -3,13 +3,12 @@
 // Droit marocain : identité et identifiants de l'entreprise (RC, ICE, IF, taxe professionnelle),
 // informations du fournisseur (loi 31-08, article 29) et données personnelles (loi 09-08).
 // Seules les parties confirmées sont affichées. Les parties qui attendent une information
-// (identifiants, directeur de la publication, hébergeur, récépissé de la CNDP) sont dans la
-// section 7 du brief, avec leurs placeholders.
+// (forme juridique, identifiants, directeur de la publication, hébergeur, récépissé de la CNDP)
+// sont dans la section 7 du brief, avec leurs placeholders.
 import BarreLecture from '~/components/BarreLecture.astro';
 import Prose from '~/components/Prose.astro';
-import { site } from '~/data/site';
+import { adresseComplete, lienTelephone, site } from '~/data/site';
 import BaseLayout from '~/layouts/BaseLayout.astro';
-import { estConfirme } from '~/lib/placeholders';
 ---
 
 <BaseLayout
@@ -25,7 +24,10 @@ import { estConfirme } from '~/lib/placeholders';
         <h2>Éditeur du site</h2>
         <p>{`Le site ${site.domaine} est édité par ${site.nom}.`}</p>
         <ul>
-          {estConfirme(site.telephone) && <li>Téléphone : {site.telephone}</li>}
+          <li>Adresse : {adresseComplete}</li>
+          <li>
+            Téléphone : <a href={lienTelephone}>{site.telephone}</a>
+          </li>
           <li>
             E-mail : <a href={`mailto:${site.email}`}>{site.email}</a>
           </li>

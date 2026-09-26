@@ -6,18 +6,32 @@
  * Le site n'affiche pas une valeur encore entre crochets (`estConfirme`, src/lib/placeholders.ts) :
  * la ligne qui la cite apparaît quand la vraie valeur remplace le placeholder.
  *
- * Les délais, le pays d'hébergement, la ville, l'adresse et la zone servie ne sont pas affichés
- * tant qu'ils ne sont pas confirmés (brief, section 4 : « Aucune valeur non confirmée »), ni sur
- * les pages, ni dans les données structurées, ni dans llms.txt.
+ * Les délais, le pays d'hébergement et la zone servie ne sont pas affichés tant qu'ils ne sont
+ * pas confirmés (brief, section 4 : « Aucune valeur non confirmée »), ni sur les pages, ni dans
+ * les données structurées, ni dans llms.txt.
  */
 export const site = {
   nom: 'Digital Solutions',
   /** Domaine du site. L'adresse sans « www » redirige vers celui-ci. */
   domaine: 'www.digital-solutions.ma',
   email: 'contact@digital-solutions.ma',
-  /** À remplacer quand le numéro sera disponible. D'ici là, il n'est pas affiché. */
-  telephone: '[numéro de téléphone]',
+  /** Reçu le 26 septembre 2026. Format d'affichage : le lien `tel:` retire les espaces. */
+  telephone: '+212 6 10 73 23 77',
+  /** Adresse de l'agence, reçue le 26 septembre 2026 (brief, section 6.11). */
+  adresse: {
+    rue: 'N° 7, rue Tantane',
+    codePostal: '30000',
+    ville: 'Fès',
+    /** Code du pays (ISO 3166-1), pour les données structurées. */
+    pays: 'MA',
+  },
 } as const;
+
+/** Adresse sur une ligne : « N° 7, rue Tantane, 30000 Fès ». */
+export const adresseComplete = `${site.adresse.rue}, ${site.adresse.codePostal} ${site.adresse.ville}`;
+
+/** Lien d'appel : « tel:+212610732377 ». */
+export const lienTelephone = `tel:${site.telephone.replaceAll(' ', '')}`;
 
 /**
  * Paramètres de l'offre cités dans les CGV (projet de texte à faire valider par un juriste).

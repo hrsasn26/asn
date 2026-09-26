@@ -26,7 +26,7 @@
 | **Clients cibles** | TPE, PME et particuliers, au Maroc |
 | **Compétences de l'équipe** | Ingénierie logicielle, développement fullstack, DevOps, QA (tests) |
 | **Compétences absentes** | Design graphique et UX/UI, marketing (publicité, réseaux sociaux, rédaction) |
-| **Zone géographique** | Maroc. Ville ou région : [à définir, utile pour le référencement local] |
+| **Zone géographique** | Maroc. L'agence est à Fès : N° 7, rue Tantane, 30000 Fès (reçu le 26 septembre 2026, utile pour le référencement local) |
 
 ---
 
@@ -246,7 +246,7 @@ La page « Processus », avec une étape de tests bien visible, est l'endroit id
 **URL :** `/services`
 **Balise title :** Création de sites web et d'applications sur mesure | Digital Solutions
 **Meta description :** Sites web, applications web et mobiles, logiciels SaaS, IA, automatisation et maintenance : des projets testés, mis en ligne et suivis par la même équipe.
-**Mots-clés visés (à valider) :** agence web [ville], création site web et application, développement application sur mesure
+**Mots-clés visés (à valider) :** agence web Fès, création site web et application, développement application sur mesure
 
 #### En-tête
 
@@ -422,7 +422,7 @@ Un échange de 30 minutes, gratuit et sans engagement, pour comprendre votre bes
 **URL :** `/services/sites-web`
 **Balise title :** Création de site vitrine et e-commerce | Digital Solutions
 **Meta description :** Site vitrine, boutique en ligne ou refonte : des sites rapides, sécurisés et prêts pour le référencement.
-**Mots-clés visés (à valider) :** création site vitrine, création site internet [ville], création boutique en ligne, refonte site web
+**Mots-clés visés (à valider) :** création site vitrine, création site internet Fès, création boutique en ligne, refonte site web
 
 #### En-tête
 
@@ -920,7 +920,7 @@ L'audit gratuit regarde votre site de l'extérieur, sans accès au code ni au se
 **URL :** `/`
 **Balise title :** Sites web et applications sur mesure | Digital Solutions
 **Meta description :** Nous créons, testons, hébergeons et maintenons vos sites et vos applications. Un interlocuteur direct, un devis à prix fixe et un suivi après la mise en ligne.
-**Mots-clés visés (à valider) :** agence web [ville], création site internet, application sur mesure
+**Mots-clés visés (à valider) :** agence web Fès, création site internet, application sur mesure
 
 #### En-tête
 
@@ -1087,9 +1087,9 @@ Reprend l'appel à l'action final de la page Services (6.1).
 
 **H1 :** Une équipe accessible, du premier échange au suivi
 
-**Sous-titre :** Nous concevons des sites et des applications solides, avec un interlocuteur direct et une responsabilité claire sur la qualité technique.
+**Sous-titre :** Nous concevons des sites et des applications solides, avec un interlocuteur direct et une responsabilité claire sur la qualité technique. Nous sommes basés à Fès.
 
-> Ancien H1 : « Une équipe d'ingénieurs, à la taille de votre projet ». La ville ([Ville ou région]) reviendra dans le sous-titre une fois choisie.
+> Ancien H1 : « Une équipe d'ingénieurs, à la taille de votre projet ». La ville est revenue dans le sous-titre le 26 septembre 2026, avec l'adresse de l'agence.
 
 #### Section : pourquoi nous avons créé l'agence
 
@@ -1200,9 +1200,10 @@ Expliquez-nous votre besoin en quelques lignes. Nous vous répondons avec les pr
 **Titre :** Autres moyens de nous joindre
 
 - E-mail : contact@digital-solutions.ma
-- Téléphone : [numéro de téléphone]
+- Téléphone : +212 6 10 73 23 77
+- Adresse : N° 7, rue Tantane, 30000 Fès
 
-> L'e-mail est confirmé le 26 septembre 2026. Depuis le 26 septembre 2026, la ligne « Téléphone » n'est pas affichée : elle revient seule quand le numéro remplace le placeholder dans `src/data/site.ts`. C'est une information obligatoire (loi 31-08, article 29) : à fournir au plus vite. La ligne « Zone : [Ville ou région] » est retirée tant que la ville n'est pas choisie.
+> L'e-mail, le téléphone et l'adresse sont confirmés le 26 septembre 2026. Ce sont des informations obligatoires (loi 31-08, article 29). Les valeurs sont dans `src/data/site.ts`. La ligne « Adresse » remplace l'ancienne ligne « Zone : [Ville ou région] ». Code postal reçu : « 300000 », corrigé en 30000 (code postal de Fès, cinq chiffres) : à confirmer.
 
 #### Encadré : audit
 
@@ -1233,7 +1234,7 @@ Commencez par un audit gratuit : vitesse, sécurité, référencement technique 
 **URL :** `/services/applications-mobiles`
 **Balise title :** Création d'application mobile iPhone et Android | Digital Solutions
 **Meta description :** Une application iPhone et Android pour vos clients ou vos équipes, testée sur de vrais téléphones et suivie après sa publication sur les stores.
-**Mots-clés visés (à valider) :** création application mobile [ville], développement application iPhone Android, application mobile entreprise
+**Mots-clés visés (à valider) :** création application mobile Fès, développement application iPhone Android, application mobile entreprise
 
 #### En-tête
 
@@ -1853,16 +1854,15 @@ Les visuels des pages de services servent aussi de vignettes aux cartes des serv
 
 Depuis le 26 septembre 2026, les pages Mentions légales, CGV et Confidentialité n'affichent que les parties sans placeholder. Le bandeau « Projet de texte : à faire valider par un juriste » n'est plus affiché, mais les textes restent des projets à faire valider. Les parties ci-dessous attendent une information ou une clause : quand elle est disponible, remettez la phrase sur la page.
 
-Les valeurs de `src/data/` (téléphone, modalités de paiement, garantie, durée d'engagement) reviennent seules : la phrase s'affiche quand la valeur n'a plus de crochets (fonction `estConfirme`).
+Les valeurs de `src/data/` (modalités de paiement, garantie, durée d'engagement) reviennent seules : la phrase s'affiche quand la valeur n'a plus de crochets (fonction `estConfirme`).
 
 **Mentions légales**
 - Éditeur : « Le site www.digital-solutions.ma est édité par Digital Solutions, [forme juridique] au capital de [montant] DH. » Attention : `pnpm check:content` bloque les montants en dirhams, la règle devra accepter le capital.
-- Siège social : [adresse]
+- Siège social : l'adresse de l'agence (N° 7, rue Tantane, 30000 Fès) est affichée depuis le 26 septembre 2026, avec l'intitulé « Adresse ». Si c'est aussi le siège social inscrit au registre du commerce, remplacez l'intitulé par « Siège social ».
 - Registre du commerce : [ville], numéro [numéro]
 - Identifiant commun de l'entreprise (ICE) : [numéro]
 - Identifiant fiscal (IF) : [numéro]
 - Taxe professionnelle : [numéro]
-- Téléphone : [numéro de téléphone] (valeur `site.telephone`, revient seule)
 - Directeur de la publication : « [Prénom Nom], [fonction]. »
 - Hébergement : « [Nom de l'hébergeur], [adresse], [téléphone]. »
 - Données personnelles : « Déclaration auprès de la CNDP : [numéro de récépissé]. »
@@ -1878,7 +1878,7 @@ Les valeurs de `src/data/` (téléphone, modalités de paiement, garantie, duré
 - Droit applicable : [Juridiction compétente : à définir]
 
 **Politique de confidentialité**
-- Responsable du traitement : « Digital Solutions, [adresse]. » et « Déclaration auprès de la CNDP : [numéro de récépissé]. »
+- Responsable du traitement : « Déclaration auprès de la CNDP : [numéro de récépissé]. » (l'adresse est affichée depuis le 26 septembre 2026)
 - Base légale (consentement, article 4 de la loi 09-08) : [À confirmer par le juriste]
 - Brevo : [Vérifier la localisation des données, le contrat de sous-traitance et la déclaration du transfert à la CNDP]
 - Destinataires : « Notre hébergeur : [nom de l'hébergeur, pays]. »
@@ -1902,9 +1902,9 @@ Les valeurs de `src/data/` (téléphone, modalités de paiement, garantie, duré
 - [x] Valider la légende et les textes alternatifs des visuels des en-têtes (section 6.19)
 - [ ] Remplacer les visuels des en-têtes par des projets réels quand des clients auront donné leur accord écrit (section 6.19)
 - [ ] Relire et valider la révision des textes du 26 septembre 2026 (recommandations de wording, section 6)
-- [ ] Confirmer les valeurs retirées du site, puis les réafficher : délai de réponse, délais des projets, pays d'hébergement, ville, adresse et zone servie (données structurées, llms.txt), durée de conservation des sauvegardes, volume de modifications et délais d'intervention des forfaits, durée d'engagement, garantie
-- [ ] Fournir l'histoire de l'agence, la ville et les photos de l'équipe (section 6.10). Les noms et les rôles sont reçus le 26 septembre 2026 : la section « L'équipe » est affichée.
-- [ ] Donner le numéro de téléphone de l'agence (Contact, mentions légales). La ligne est cachée jusque-là.
+- [ ] Confirmer les valeurs retirées du site, puis les réafficher : délai de réponse, délais des projets, pays d'hébergement, zone servie (données structurées, llms.txt), durée de conservation des sauvegardes, volume de modifications et délais d'intervention des forfaits, durée d'engagement, garantie
+- [ ] Fournir l'histoire de l'agence et les photos de l'équipe (section 6.10). Les noms, les rôles et la ville (Fès) sont reçus le 26 septembre 2026 : la section « L'équipe » est affichée.
+- [x] Donner le numéro de téléphone et l'adresse de l'agence : reçus le 26 septembre 2026, affichés sur Contact, les pages légales, L'agence (ville), dans les données structurées et dans llms.txt
 - [ ] Préparer des preuves concrètes : exemple de rapport d'audit, captures de tests, exemples de livrables, cas clients et témoignages avec l'accord écrit des clients
 - [x] Intégrer le design du site : maquettes du designer, intégrées le 26 septembre 2026 (section « Design » de [stack-technique.md](stack-technique.md))
 - [ ] Relire et valider les surtitres et les libellés ajoutés par le design (section 6.20)

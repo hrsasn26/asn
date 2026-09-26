@@ -3,11 +3,11 @@
 // Il décrit les traitements réels du site : formulaires, envoi par Brevo, limite d'envois.
 // Cadre : loi 09-08 et Commission nationale de contrôle de la protection des données (CNDP).
 // Seules les parties confirmées sont affichées. Les parties qui attendent une information
-// (adresse, récépissé de la CNDP, hébergeur, durée de conservation) sont dans la section 7 du
+// (récépissé de la CNDP, hébergeur, durée de conservation) sont dans la section 7 du
 // brief, avec leurs placeholders.
 import BarreLecture from '~/components/BarreLecture.astro';
 import Prose from '~/components/Prose.astro';
-import { site } from '~/data/site';
+import { adresseComplete, site } from '~/data/site';
 import BaseLayout from '~/layouts/BaseLayout.astro';
 ---
 
@@ -29,7 +29,8 @@ import BaseLayout from '~/layouts/BaseLayout.astro';
 
         <h2>Responsable du traitement</h2>
         <p>
-          {site.nom}. Contact : <a href={`mailto:${site.email}`}>{site.email}</a>.
+          {`${site.nom}, ${adresseComplete}.`} Contact :{' '}
+          <a href={`mailto:${site.email}`}>{site.email}</a>.
         </p>
 
         <h2>Les données que nous collectons</h2>

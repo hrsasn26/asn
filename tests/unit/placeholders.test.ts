@@ -13,9 +13,9 @@ describe('estConfirme', () => {
     expect(estConfirme('pendant [X mois] après la livraison')).toBe(false);
   });
 
-  it('cache les valeurs du site encore entre crochets', () => {
+  it('affiche les coordonnées confirmées et cache les conditions encore entre crochets', () => {
     expect(estConfirme(site.email)).toBe(true);
-    expect(estConfirme(site.telephone)).toBe(false);
+    expect(estConfirme(site.telephone)).toBe(true);
     expect(estConfirme(offre.garantie)).toBe(false);
   });
 });
