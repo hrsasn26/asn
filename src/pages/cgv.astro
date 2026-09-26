@@ -1,12 +1,22 @@
 ---
 // Projet de texte à faire valider par un juriste (docs/brief-agence.md, section 7).
 // Droit marocain. Point imposé pour les particuliers : le droit de rétractation (loi 31-08).
+// Seules les parties confirmées sont affichées. Les clauses à rédiger (acompte, paiement,
+// garantie, résiliation, responsabilité, juridiction…) sont dans la section 7 du brief, avec
+// leurs placeholders. Une condition de src/data/ apparaît quand sa valeur est confirmée.
 import BarreLecture from '~/components/BarreLecture.astro';
-import Placeholder from '~/components/Placeholder.astro';
 import Prose from '~/components/Prose.astro';
 import { offre, site } from '~/data/site';
 import { engagementMaintenance } from '~/data/forfaits';
 import BaseLayout from '~/layouts/BaseLayout.astro';
+import { estConfirme } from '~/lib/placeholders';
+
+const maintenance = [
+  "Les forfaits d'hébergement et de maintenance sont mensuels.",
+  engagementMaintenance,
+]
+  .filter(estConfirme)
+  .join(' ');
 ---
 
 <BaseLayout
@@ -17,10 +27,6 @@ import BaseLayout from '~/layouts/BaseLayout.astro';
   <BarreLecture />
   <section class="conteneur pt-12 pb-20 sm:pt-14 sm:pb-32">
     <h1 class="anim-montee text-titre">Conditions générales de vente</h1>
-    <Placeholder
-      class="anim-montee mt-7 max-w-3xl delai-150"
-      text="[Projet de texte : à faire valider par un juriste avant la mise en ligne]"
-    />
     <div class="mt-12">
       <Prose>
         <h2>1. Objet</h2>
@@ -38,7 +44,7 @@ import BaseLayout from '~/layouts/BaseLayout.astro';
         <h2>2. Devis et commande</h2>
         <p>
           Chaque prestation fait l'objet d'un devis gratuit et détaillé. La commande est ferme après
-          la signature du devis. [Conditions d'acompte à définir]
+          la signature du devis.
         </p>
 
         <h2>3. Prix et paiement</h2>
@@ -46,8 +52,9 @@ import BaseLayout from '~/layouts/BaseLayout.astro';
           Le prix est fixe pour ce qui est décrit dans le devis. Un changement demandé en cours de
           projet fait l'objet d'un devis complémentaire, que vous acceptez ou non.
         </p>
-        <p>Modalités de paiement : {offre.modalitesPaiement}</p>
-        <p>[Prix HT ou TTC, délais de paiement et pénalités de retard : à définir]</p>
+        {estConfirme(offre.modalitesPaiement) && (
+          <p>{`Modalités de paiement : ${offre.modalitesPaiement}`}</p>
+        )}
 
         <h2>4. Délais</h2>
         <p>
@@ -64,41 +71,34 @@ import BaseLayout from '~/layouts/BaseLayout.astro';
         <h2>6. Tests et livraison</h2>
         <p>
           Avant la livraison, nous testons le site ou l'application. Vous vérifiez ensuite la
-          version livrée et vous nous signalez les défauts. [Procédure de validation et délai : à
-          définir]
+          version livrée et vous nous signalez les défauts.
         </p>
-        <p>Garantie : nous corrigeons les défauts liés à notre travail {offre.garantie}.</p>
+        {estConfirme(offre.garantie) && (
+          <p>{`Garantie : nous corrigeons les défauts liés à notre travail ${offre.garantie}.`}</p>
+        )}
 
         <h2>7. Propriété</h2>
         <p>
           Après le paiement complet, vous êtes propriétaire du code développé pour vous, de votre
-          nom de domaine et de vos données. [Modalités de la cession des droits : à faire valider]
+          nom de domaine et de vos données.
         </p>
 
         <h2>8. Hébergement et maintenance</h2>
-        <p>
-          Les forfaits d'hébergement et de maintenance sont mensuels. {engagementMaintenance}{' '}
-          [Conditions de résiliation : à définir]
-        </p>
+        <p>{maintenance}</p>
 
         <h2>9. Droit de rétractation (clients particuliers)</h2>
         <p>
           Pour un contrat conclu à distance, vous disposez de 7 jours pour vous rétracter, sans
-          justification ni pénalité (article 36 de la loi 31-08). [Point de départ du délai, cas
-          d'un travail commencé avec votre accord avant la fin du délai, démarchage et remboursement
-          : à faire valider par un juriste]
+          justification ni pénalité (article 36 de la loi 31-08).
         </p>
 
-        <h2>10. Responsabilité</h2>
-        <p>[À définir]</p>
-
-        <h2>11. Données personnelles</h2>
+        <h2>10. Données personnelles</h2>
         <p>
           Lisez notre <a href="/confidentialite">politique de confidentialité</a>.
         </p>
 
-        <h2>12. Droit applicable</h2>
-        <p>Ces conditions sont soumises au droit marocain. [Juridiction compétente : à définir]</p>
+        <h2>11. Droit applicable</h2>
+        <p>Ces conditions sont soumises au droit marocain.</p>
       </Prose>
     </div>
   </section>

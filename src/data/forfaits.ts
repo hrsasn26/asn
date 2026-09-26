@@ -42,5 +42,8 @@ export const forfaitsMaintenance: ForfaitMaintenance[] = [
   },
 ];
 
-/** Durée d'engagement, citée dans les CGV (projet de texte à faire valider par un juriste). */
+/**
+ * Durée d'engagement, citée dans les CGV (projet de texte à faire valider par un juriste).
+ * Cachée tant qu'elle est entre crochets.
+ */
 export const engagementMaintenance = '[Sans engagement / Engagement de 12 mois]';

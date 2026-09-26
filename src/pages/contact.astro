@@ -12,7 +12,7 @@ import Honeypot from '~/components/forms/Honeypot.astro';
 import Success from '~/components/forms/Success.astro';
 import Section from '~/components/Section.astro';
 import Texte from '~/components/Texte.astro';
-import { cta, site } from '~/data/site';
+import { adresseComplete, cta, lienTelephone, site } from '~/data/site';
 import BaseLayout from '~/layouts/BaseLayout.astro';
 import { etatFormulaire } from '~/lib/formulaire';
 import { typesProjet } from '~/lib/schemas';
@@ -36,10 +36,11 @@ const ensuite = [
   'Vous recevez un devis clair, à prix fixe, sans engagement.',
 ];
 
-// Le téléphone reste un placeholder jusqu'à ce que le numéro soit disponible.
+// Coordonnées : section 6.11 du brief.
 const coordonnees = [
   { label: 'E-mail', valeur: site.email, href: `mailto:${site.email}` },
-  { label: 'Téléphone', valeur: site.telephone },
+  { label: 'Téléphone', valeur: site.telephone, href: lienTelephone },
+  { label: 'Adresse', valeur: adresseComplete },
 ];
 ---
 
