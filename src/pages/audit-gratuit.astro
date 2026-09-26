@@ -134,12 +134,7 @@ const verifications = [
         ) : (
           <>
             <ErrorSummary errors={etat.resume} message={etat.messageGeneral} />
-            <form
-              method="POST"
-              action={actions.audit}
-              novalidate
-              class="anim-cascade relative space-y-6"
-            >
+            <form method="POST" action={actions.audit} novalidate class="relative space-y-6">
               <Field
                 name="adresseSite"
                 label="Adresse de votre site"
