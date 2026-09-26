@@ -6,6 +6,8 @@ export function organisationJsonLd(url: URL | string) {
     '@type': 'ProfessionalService',
     name: site.nom,
     url: String(url),
+    // Symbole du logo, 512 px (pnpm image:logo).
+    logo: new URL('/logo.png', url).href,
     email: site.email,
     address: { '@type': 'PostalAddress', addressCountry: site.pays },
     areaServed: site.zone,

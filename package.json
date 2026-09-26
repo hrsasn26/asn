@@ -20,6 +20,7 @@
     "check:content": "node scripts/check-content.mjs",
     "image:partage": "node scripts/generer-image-partage.mjs",
     "image:heros": "node scripts/generer-heros.mjs",
+    "image:logo": "node scripts/generer-logo.mjs",
     "verify": "pnpm format:check && pnpm lint && pnpm check && pnpm test && pnpm build && pnpm check:content && pnpm test:e2e"
   },
   "dependencies": {

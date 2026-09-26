@@ -1,8 +1,8 @@
 ---
 import ButtonLink from '~/components/ButtonLink.astro';
-import Repere from '~/components/Repere.astro';
+import Logo from '~/components/Logo.astro';
 import { navigationPrincipale } from '~/data/navigation';
-import { cta, site } from '~/data/site';
+import { cta } from '~/data/site';
 import { cheminPublic } from '~/lib/url';
 
 const path = cheminPublic(Astro.url.pathname);
@@ -22,12 +22,8 @@ const delaisGlisse = [
 {/* L'en-tête reste en haut de l'écran pendant le défilement, sur un fond blanc translucide. */}
 <header class="sticky top-0 z-30 border-b border-ligne bg-white/90 backdrop-blur-md [view-transition-name:entete]">
   <div class="conteneur flex h-[4.75rem] items-center justify-between gap-6">
-    <a
-      href="/"
-      class="flex items-center gap-3 text-[1.0625rem] font-bold tracking-[0.01em] whitespace-nowrap text-encre no-underline"
-    >
-      <Repere />
-      {site.nom}
+    <a href="/" class="no-underline">
+      <Logo />
     </a>
 
     <nav aria-label="Navigation principale" class="hidden lg:block">

@@ -1,9 +1,10 @@
 #!/usr/bin/env node
 /**
  * Génère l'image de partage (Open Graph) : public/og.png, 1200 × 630 px.
- * Relancez ce script quand le nom de l'agence ou les couleurs changent :
+ * Relancez ce script quand le nom de l'agence, le logo ou les couleurs changent :
  *   pnpm image:partage
  * Le nom vient de src/data/site.ts. Tant qu'il reste un placeholder, l'image ne l'affiche pas.
+ * Le symbole du logo vient de design/logo/svg/symbole-couleur.svg.
  * Couleurs et police : celles du site (src/styles/global.css, Manrope dans src/assets/polices/).
  * Chromium est nécessaire (pnpm exec playwright install chromium) ; PW_CHROMIUM_PATH permet
  * d'utiliser un Chromium déjà installé.
@@ -15,10 +16,17 @@ import { site } from '../src/data/site.ts';
 // Les fonctions passées à page.evaluate() s'exécutent dans la page : document y existe.
 /* global document */
 
-const nom = site.nom.startsWith('[') ? '' : site.nom;
+// Nom sur deux lignes, comme dans le logo : le premier mot en gras, la suite en dessous.
+const [premierMot, ...suite] = site.nom.startsWith('[') ? [] : site.nom.split(' ');
+const nom = premierMot ? `<div><b>${premierMot}</b><br><span>${suite.join(' ')}</span></div>` : '';
 
 // Police intégrée en data URL : la page n'a besoin ni du réseau ni des polices du système.
 const manrope = readFileSync('src/assets/polices/manrope-latin.woff2').toString('base64');
+// Symbole du logo, sans les métadonnées de la source.
+const symbole = readFileSync('design/logo/svg/symbole-couleur.svg', 'utf8').replace(
+  /<metadata>[\s\S]*?<\/metadata>/,
+  '',
+);
 
 const html = `<!doctype html>
 <html lang="fr"><head><meta charset="utf-8"><style>
@@ -28,11 +36,10 @@ const html = `<!doctype html>
   body { width: 1200px; height: 630px; font-family: Manrope, sans-serif; color: #0b1b33;
          background: linear-gradient(#f4f6fa, #fff); display: flex; flex-direction: column;
          justify-content: space-between; padding: 72px 80px; -webkit-font-smoothing: antialiased; }
-  .nom { display: flex; align-items: center; gap: 16px; font-size: 30px; font-weight: 700;
-         min-height: 40px; }
-  .repere { width: 40px; height: 40px; border-radius: 50%; box-shadow: inset 0 0 0 2.5px #0b1b33;
-            display: grid; place-items: center; }
-  .repere span { width: 14px; height: 14px; border-radius: 50%; background: #0b1b33; }
+  .logo { display: flex; align-items: center; gap: 22px; font-size: 30px; line-height: 1.14; }
+  .logo svg { width: 64px; height: 64px; }
+  .logo b { font-weight: 600; }
+  .logo span { color: #4b5770; }
   h1 { font-size: 76px; line-height: 1.04; font-weight: 300; letter-spacing: -0.035em;
        max-width: 980px; }
   h1 b { font-weight: 600; }
@@ -41,7 +48,7 @@ const html = `<!doctype html>
   .services span { background: #0b1b33; color: #fff; font-size: 24px; font-weight: 600;
                    padding: 12px 26px; border-radius: 999px; }
 </style></head><body>
-  <div class="nom">${nom ? `<span class="repere"><span></span></span>${nom}` : ''}</div>
+  <div class="logo">${symbole}${nom}</div>
   <div>
     <h1>Des sites et des applications fiables, <b>suivis dans la durée</b></h1>
     <p class="promesse">Testés, sécurisés et faciles à faire évoluer.</p>
