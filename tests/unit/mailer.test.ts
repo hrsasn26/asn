@@ -35,7 +35,7 @@ describe('envoyerEmail (Mailjet)', () => {
     expect(JSON.parse(options.body as string)).toEqual({
       Messages: [
         {
-          From: { Email: 'site@exemple.ma', Name: 'Site web' },
+          From: { Email: 'site@exemple.ma', Name: 'Digital Solutions' },
           To: [{ Email: 'equipe@exemple.ma' }],
           ReplyTo: { Email: 'client@exemple.ma', Name: 'Client' },
           Subject: 'Nouvelle demande de contact',
