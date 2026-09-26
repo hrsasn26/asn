@@ -6,7 +6,6 @@ import HardDrive from '@lucide/astro/icons/hard-drive';
 import PencilLine from '@lucide/astro/icons/pencil-line';
 import Server from '@lucide/astro/icons/server';
 import ShieldCheck from '@lucide/astro/icons/shield-check';
-import IllustrationHebergement from '~/components/illustrations/IllustrationHebergement.astro';
 import ButtonLink from '~/components/ButtonLink.astro';
 import CtaFinal from '~/components/CtaFinal.astro';
 import Faq from '~/components/Faq.astro';
@@ -37,6 +36,7 @@ const ctaForfait = { label: 'Choisir mon forfait', href: '/contact' };
   jsonLd={serviceJsonLd({ name: title, description })}
 >
   <Hero
+    maquette="hebergement-maintenance"
     title="Votre site toujours en ligne. Vous n'avez plus à y penser."
     motCle="toujours en ligne"
     subtitle="Hébergement, sauvegardes, mises à jour de sécurité, surveillance et petites modifications : nous nous occupons de la technique, vous gardez l'esprit libre."
@@ -45,7 +45,6 @@ const ctaForfait = { label: 'Choisir mon forfait', href: '/contact' };
     <ButtonLink href="/contact" variant="secondaire">
       Demander un devis
     </ButtonLink>
-    <IllustrationHebergement slot="illustration" />
   </Hero>
 
   <ProblemList

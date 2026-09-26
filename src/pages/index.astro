@@ -9,7 +9,6 @@ import ButtonLink from '~/components/ButtonLink.astro';
 import CtaFinal from '~/components/CtaFinal.astro';
 import FeatureGrid from '~/components/FeatureGrid.astro';
 import Hero from '~/components/Hero.astro';
-import IllustrationAccueil from '~/components/illustrations/IllustrationAccueil.astro';
 import LienFleche from '~/components/LienFleche.astro';
 import PourQui from '~/components/PourQui.astro';
 import Section from '~/components/Section.astro';
@@ -27,6 +26,7 @@ import { organisationJsonLd } from '~/lib/seo';
   jsonLd={organisationJsonLd(Astro.site ?? Astro.url.origin)}
 >
   <Hero
+    maquette="accueil"
     title="Des sites et des applications conçus par des ingénieurs"
     motCle="ingénieurs"
     subtitle="Fiables, testés, sécurisés et suivis dans la durée. Nous construisons votre projet, puis nous nous en occupons, pour que vous puissiez vous concentrer sur votre activité."
@@ -35,7 +35,6 @@ import { organisationJsonLd } from '~/lib/seo';
     <ButtonLink href={cta.secondaire.href} variant="secondaire">
       {cta.secondaire.label}
     </ButtonLink>
-    <IllustrationAccueil slot="illustration" />
   </Hero>
 
   <Section title="Ce que vous y gagnez">

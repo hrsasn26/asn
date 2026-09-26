@@ -8,7 +8,6 @@ import Smartphone from '@lucide/astro/icons/smartphone';
 import Store from '@lucide/astro/icons/store';
 import TabletSmartphone from '@lucide/astro/icons/tablet-smartphone';
 import Workflow from '@lucide/astro/icons/workflow';
-import IllustrationMobile from '~/components/illustrations/IllustrationMobile.astro';
 import ButtonLink from '~/components/ButtonLink.astro';
 import CtaFinal from '~/components/CtaFinal.astro';
 import Faq from '~/components/Faq.astro';
@@ -38,12 +37,12 @@ const ctaProjet = { label: 'Parler de mon application', href: '/contact' };
   jsonLd={serviceJsonLd({ name: title, description })}
 >
   <Hero
+    maquette="applications-mobiles"
     title="Votre application iPhone et Android, solide et suivie dans la durée"
     motCle="solide"
     subtitle="Pour vos clients ou pour vos équipes : nous concevons, testons et publions votre application, puis nous la gardons à jour."
   >
     <ButtonLink href={ctaProjet.href}>{ctaProjet.label}</ButtonLink>
-    <IllustrationMobile slot="illustration" />
   </Hero>
 
   <ProblemList

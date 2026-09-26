@@ -7,4 +7,6 @@ test-results/
 .lighthouseci/
 # Le brief est rédigé à la main : Prettier ne le reformate pas.
 docs/
+# Maquettes des visuels des en-têtes : HTML du designer, gardé tel quel.
+design/
 CLAUDE.md

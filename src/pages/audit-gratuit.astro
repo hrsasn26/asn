@@ -6,7 +6,6 @@ import ScanSearch from '@lucide/astro/icons/scan-search';
 import Search from '@lucide/astro/icons/search';
 import ShieldCheck from '@lucide/astro/icons/shield-check';
 import Smartphone from '@lucide/astro/icons/smartphone';
-import IllustrationAudit from '~/components/illustrations/IllustrationAudit.astro';
 import { actions } from 'astro:actions';
 import Consent from '~/components/forms/Consent.astro';
 import ErrorSummary from '~/components/forms/ErrorSummary.astro';
@@ -69,12 +68,11 @@ const verifications = [
   breadcrumbs={[{ label: 'Audit gratuit', href: '/audit-gratuit' }]}
 >
   <Hero
+    maquette="audit-gratuit"
     title="Votre site est-il lent, vulnérable ou invisible sur Google ?"
     motCle="invisible"
     subtitle="Recevez gratuitement un audit technique de votre site. Un rapport clair, sans jargon, avec les actions prioritaires à mener."
-  >
-    <IllustrationAudit slot="illustration" />
-  </Hero>
+  />
 
   <Section>
     <div class="grid gap-12 lg:grid-cols-2">

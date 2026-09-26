@@ -6,7 +6,6 @@ import MessageCircle from '@lucide/astro/icons/message-circle';
 import RefreshCw from '@lucide/astro/icons/refresh-cw';
 import Sparkles from '@lucide/astro/icons/sparkles';
 import Workflow from '@lucide/astro/icons/workflow';
-import IllustrationAutomatisation from '~/components/illustrations/IllustrationAutomatisation.astro';
 import ButtonLink from '~/components/ButtonLink.astro';
 import CtaFinal from '~/components/CtaFinal.astro';
 import Faq from '~/components/Faq.astro';
@@ -37,12 +36,12 @@ const ctaTaches = { label: 'Identifier mes tâches à automatiser', href: '/cont
   jsonLd={serviceJsonLd({ name: title, description })}
 >
   <Hero
+    maquette="automatisation-integrations"
     title="Moins de saisie, moins d'erreurs, plus de temps pour votre métier"
     motCle="votre métier"
     subtitle="Nous connectons vos outils entre eux et automatisons les tâches répétitives. Vos informations circulent toutes seules, au bon endroit."
   >
     <ButtonLink href={ctaTaches.href}>{ctaTaches.label}</ButtonLink>
-    <IllustrationAutomatisation slot="illustration" />
   </Hero>
 
   <ProblemList

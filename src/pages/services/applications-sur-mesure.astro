@@ -8,7 +8,6 @@ import LockKeyhole from '@lucide/astro/icons/lock-keyhole';
 import Rocket from '@lucide/astro/icons/rocket';
 import Smartphone from '@lucide/astro/icons/smartphone';
 import Users from '@lucide/astro/icons/users';
-import IllustrationApplications from '~/components/illustrations/IllustrationApplications.astro';
 import ButtonLink from '~/components/ButtonLink.astro';
 import CtaFinal from '~/components/CtaFinal.astro';
 import Faq from '~/components/Faq.astro';
@@ -39,12 +38,12 @@ const ctaProjet = { label: 'Parler de mon projet', href: '/contact' };
   jsonLd={serviceJsonLd({ name: title, description })}
 >
   <Hero
+    maquette="applications-sur-mesure"
     title="Un outil conçu pour votre façon de travailler"
     motCle="travailler"
     subtitle="Réservation, devis, planning, espace client, application mobile : nous développons le logiciel dont vous avez besoin, et il évolue avec votre activité."
   >
     <ButtonLink href={ctaProjet.href}>{ctaProjet.label}</ButtonLink>
-    <IllustrationApplications slot="illustration" />
   </Hero>
 
   <ProblemList

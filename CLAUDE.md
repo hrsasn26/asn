@@ -17,7 +17,7 @@ Les choix techniques, l'organisation du code et la mise en service sont dans [do
 - Prix : aucun prix public. Pas de page Tarifs : chaque prix est donné en privé, dans un devis.
 - Pages légales : projets de texte avec placeholders, à faire valider par un juriste marocain.
 - Logo : à fournir par l'équipe. En attendant, l'en-tête affiche le nom en texte et le favicon est un carré bleu.
-- Images : illustrations SVG originales (`src/components/illustrations/`), icônes Lucide, image de partage `public/og.png`. Pas de photo de stock ni de photo d'équipe inventée.
+- Images : illustrations SVG originales (`src/components/illustrations/`), icônes Lucide, image de partage `public/og.png`, visuels des en-têtes (maquettes d'écrans pour des clients fictifs, section 6.19 du brief, sources dans `design/heros/`). Pas de photo de stock ni de photo d'équipe inventée.
 - Technologies : Astro 7, TypeScript, Tailwind CSS 4, Node.js 24, pnpm. Déploiement Docker + Caddy sur un VPS (hébergeur et pays à choisir).
 - Déploiement : désactivé tant que la mise en service n'est pas faite (section 8 de `docs/stack-technique.md`). Un aperçu tourne sur Vercel (`asn-tau.vercel.app`, non indexé). Le domaine est à relier à Vercel ou au VPS (section « Nom de domaine » de `docs/stack-technique.md`).
 - Adaptateurs : Node par défaut, `@astrojs/vercel` seulement pendant un build Vercel. Tester les deux builds après un changement de configuration (`pnpm build` et `VERCEL=1 pnpm build`).
@@ -29,6 +29,7 @@ Les choix techniques, l'organisation du code et la mise en service sont dans [do
 - `pnpm test` : tests unitaires. `pnpm test:e2e` : tests navigateurs (après `pnpm build`).
 - `pnpm verify` : tous les contrôles de la CI, dans l'ordre.
 - `pnpm image:partage` : régénère l'image de partage après un changement du nom de l'agence.
+- `pnpm image:heros [nom]` : régénère les visuels des en-têtes après un changement dans `design/heros/`.
 
 ## Règles de code
 
@@ -38,6 +39,7 @@ Les choix techniques, l'organisation du code et la mise en service sont dans [do
 - Pas de style en ligne (`style="…"`) ni de script externe sans mise à jour de la CSP (`astro.config.mjs`).
 - Toute nouvelle page doit passer les tests axe et Lighthouse de la CI.
 - Les illustrations sont décoratives (`aria-hidden`) et utilisent les classes de couleur Tailwind, jamais de couleur en dur ni de style en ligne.
+- Les visuels des en-têtes (`Hero maquette="…"`) sont des images avec un texte alternatif et la légende « Exemple fictif » (`src/data/maquettes.ts`). Leur texte respecte les mêmes règles que le site : aucun prix ni montant, aucune entreprise réelle, aucun engagement non confirmé. `pnpm test` et `pnpm image:heros` le vérifient sur les sources.
 - Couleurs des icônes : chaque service a sa couleur, la palette est dans `src/data/couleurs.ts`.
 - Animations : CSS seul, avec les utilitaires de `src/styles/global.css` (section « Animations » de `docs/stack-technique.md`). Aucune animation en mode « réduire les animations », aucune animation automatique de plus de 5 secondes, jamais d'animation d'opacité sur du texte, jamais de mouvement sur les champs d'un formulaire.
 - Une valeur `{…}` suivie de texte à la ligne suivante peut perdre son espace au rendu : écrire `{' '}` ou garder la valeur sur la même ligne. `pnpm check:content` détecte le cas pour les placeholders.

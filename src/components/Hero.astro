@@ -1,29 +1,40 @@
 ---
+import MaquetteHero from '~/components/MaquetteHero.astro';
 import Souligne from '~/components/Souligne.astro';
+import type { NomMaquette } from '~/data/maquettes';
 
 interface Props {
   title: string;
   subtitle?: string;
   /** Partie du titre soulignée par un trait qui se dessine. Elle doit figurer dans le titre. */
   motCle?: string;
+  /**
+   * Maquette d'écrans affichée à droite du texte (src/data/maquettes.ts). Contrairement à une
+   * illustration (slot « illustration »), elle reste visible sur téléphone, sous le texte.
+   */
+  maquette?: NomMaquette;
 }
 
-const { title, subtitle, motCle } = Astro.props;
+const { title, subtitle, motCle, maquette } = Astro.props;
 const avecIllustration = Astro.slots.has('illustration');
+const avecVisuel = avecIllustration || maquette !== undefined;
 
 // Le titre est découpé autour du mot clé. Les espaces font partie des morceaux.
 const position = motCle ? title.indexOf(motCle) : -1;
 const avant = position >= 0 ? title.slice(0, position) : title;
 const apres = position >= 0 && motCle ? title.slice(position + motCle.length) : '';
+// La ponctuation collée au mot clé (« rapide, ») reste avec lui : pas de virgule en début de ligne.
+const collee = apres.match(/^[^\s]+/)?.[0] ?? '';
+const suite = apres.slice(collee.length);
 ---
 
 <section class="relative bg-brand-50">
-  {/* Téléphone : l'illustration est cachée, deux halos de couleur restent dans les coins. */}
+  {/* Téléphone : l'illustration est cachée (la maquette reste visible), deux halos restent dans les coins. */}
   <div aria-hidden="true" class="pointer-events-none absolute inset-0 overflow-hidden md:hidden">
     <div class="anim-halo absolute -top-24 -right-24 size-72 rounded-full bg-radial from-emerald-200/70 to-transparent to-70%" />
     <div class="anim-halo absolute -bottom-32 -left-28 size-80 rounded-full bg-radial from-violet-200/60 to-transparent to-70% delai-300" />
   </div>
-  {avecIllustration && (
+  {avecVisuel && (
     <div
       aria-hidden="true"
       class="pointer-events-none absolute inset-y-0 right-0 hidden w-1/2 overflow-hidden md:block"
@@ -42,14 +53,22 @@ const apres = position >= 0 && motCle ? title.slice(position + motCle.length) : 
   <div
     class:list={[
       'relative mx-auto max-w-6xl px-4 py-14 sm:px-6 sm:py-20',
-      avecIllustration && 'grid items-center gap-10 md:grid-cols-2',
+      avecVisuel && 'grid items-center gap-10 md:grid-cols-2',
     ]}
   >
     <div>
       <h1 class="anim-montee max-w-3xl text-3xl sm:text-5xl">
         {avant}
-        {position >= 0 && <Souligne>{motCle}</Souligne>}
-        {apres}
+        {position >= 0 &&
+          (collee ? (
+            <span class="whitespace-nowrap">
+              <Souligne>{motCle}</Souligne>
+              {collee}
+            </span>
+          ) : (
+            <Souligne>{motCle}</Souligne>
+          ))}
+        {suite}
       </h1>
       {subtitle && (
         <p class="anim-montee mt-6 max-w-2xl text-lg text-slate-700 delai-150">{subtitle}</p>
@@ -60,6 +79,7 @@ const apres = position >= 0 && motCle ? title.slice(position + motCle.length) : 
         </div>
       )}
     </div>
+    {maquette && <MaquetteHero nom={maquette} />}
     {avecIllustration && (
       <div class="hidden md:block">
         <slot name="illustration" />

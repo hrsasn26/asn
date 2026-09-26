@@ -4,6 +4,7 @@ node_modules
 dist
 .astro
 docs
+design
 tests
 playwright-report
 test-results

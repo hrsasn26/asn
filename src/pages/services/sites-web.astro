@@ -10,7 +10,6 @@ import MonitorSmartphone from '@lucide/astro/icons/monitor-smartphone';
 import PencilLine from '@lucide/astro/icons/pencil-line';
 import Search from '@lucide/astro/icons/search';
 import ShieldCheck from '@lucide/astro/icons/shield-check';
-import IllustrationSitesWeb from '~/components/illustrations/IllustrationSitesWeb.astro';
 import ButtonLink from '~/components/ButtonLink.astro';
 import CtaFinal from '~/components/CtaFinal.astro';
 import Faq from '~/components/Faq.astro';
@@ -40,12 +39,12 @@ const description =
   jsonLd={serviceJsonLd({ name: title, description })}
 >
   <Hero
+    maquette="sites-web"
     title="Un site web rapide, sécurisé et facile à trouver sur Google"
     motCle="rapide"
     subtitle="Site vitrine, boutique en ligne ou refonte : nous créons des sites qui chargent vite, s'affichent parfaitement sur mobile et que vous pouvez modifier vous-même."
   >
     <ButtonLink href={cta.principal.href}>{cta.principal.label}</ButtonLink>
-    <IllustrationSitesWeb slot="illustration" />
   </Hero>
 
   <ProblemList

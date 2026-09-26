@@ -3,7 +3,6 @@
 import ChartColumn from '@lucide/astro/icons/chart-column';
 import ChartLine from '@lucide/astro/icons/chart-line';
 import MailCheck from '@lucide/astro/icons/mail-check';
-import IllustrationDonnees from '~/components/illustrations/IllustrationDonnees.astro';
 import ButtonLink from '~/components/ButtonLink.astro';
 import CtaFinal from '~/components/CtaFinal.astro';
 import Faq from '~/components/Faq.astro';
@@ -33,12 +32,12 @@ const ctaProjet = { label: 'Parler de mes chiffres', href: '/contact' };
   jsonLd={serviceJsonLd({ name: title, description })}
 >
   <Hero
+    maquette="donnees-tableaux-de-bord"
     title="Vos chiffres clés, sur un seul écran"
     motCle="un seul écran"
     subtitle="Visiteurs de votre site, ventes, stocks, rendez-vous : nous réunissons vos données dans des tableaux de bord clairs, mis à jour automatiquement."
   >
     <ButtonLink href={ctaProjet.href}>{ctaProjet.label}</ButtonLink>
-    <IllustrationDonnees slot="illustration" />
   </Hero>
 
   <ProblemList
