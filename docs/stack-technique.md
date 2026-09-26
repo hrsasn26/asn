@@ -206,7 +206,7 @@ Le site peut aussi être déployé sur Vercel (projet `asn`, domaine `asn-tau.ve
 
 - Pendant un build Vercel (variable `VERCEL` définie), Astro utilise l'adaptateur `@astrojs/vercel`. Partout ailleurs (Docker, CI, poste de développement), il utilise l'adaptateur Node.
 - Sans `SITE_URL`, les URL canoniques utilisent le domaine de l'agence, `https://www.digital-solutions.ma` (champ `domaine` de `src/data/site.ts`).
-- `vercel.json` ajoute les en-têtes de sécurité et `X-Robots-Tag: noindex` : Google n'indexe pas le site tant qu'il contient des placeholders.
+- `vercel.json` ajoute les en-têtes de sécurité, et `X-Robots-Tag: noindex` seulement sur les adresses `*.vercel.app`. Le domaine de l'agence est indexé (voir « Nom de domaine »).
 - Variables d'environnement à définir dans Vercel pour les formulaires :
   - `MAIL_TRANSPORT=log` pour tester : les demandes apparaissent dans les journaux Vercel, sans e-mail ;
   - ou `MAIL_TRANSPORT=brevo` avec `BREVO_API_KEY`, `MAIL_FROM` et `MAIL_TO` pour de vrais envois.
@@ -223,7 +223,18 @@ Le domaine de l'agence est `digital-solutions.ma`. L'adresse officielle du site 
 2. Chez le bureau d'enregistrement du domaine, créez les enregistrements DNS que Vercel affiche : un enregistrement `A` pour `digital-solutions.ma` et un enregistrement `CNAME` pour `www`. Copiez les valeurs exactes depuis Vercel.
 3. Attendez la propagation DNS. Vercel crée le certificat HTTPS tout seul.
 
-Le site reste non indexé (`X-Robots-Tag: noindex` dans `vercel.json`) tant que les textes et les pages légales ne sont pas validés.
+**Indexation :** activée le 26 septembre 2026 sur `www.digital-solutions.ma`, avant la validation des textes et des pages légales (décision de l'agence). Les pages avec des placeholders (coordonnées, pages légales) sont donc visibles dans Google. Les adresses `*.vercel.app` (dont `asn-tau.vercel.app` et les aperçus) gardent `X-Robots-Tag: noindex` (règle `has` sur l'hôte dans `vercel.json`), pour éviter un doublon du site dans Google.
+
+**État au 26 septembre 2026 :** le domaine utilise les serveurs DNS de Vercel (`ns1.vercel-dns.com`, `ns2.vercel-dns.com`). `www.digital-solutions.ma` et `digital-solutions.ma` (redirection vers `www`) sont reliés au projet `asn`. Les enregistrements DNS se gèrent donc dans Vercel : **Domains → digital-solutions.ma → DNS Records**, et plus chez le bureau d'enregistrement.
+
+**Google Search Console :** propriété de type « Domaine » pour `digital-solutions.ma`, validée par un enregistrement DNS.
+
+1. Dans Vercel, **Domains → digital-solutions.ma → DNS Records**, ajoutez un enregistrement : nom vide (ou `@`), type `TXT`, valeur `google-site-verification=…` copiée depuis la Search Console.
+2. Dans la Search Console, cliquez sur **Valider**. Si la validation échoue, attendez quelques heures, puis réessayez.
+3. Gardez cet enregistrement : sans lui, la propriété n'est plus validée.
+4. Envoyez le sitemap `https://www.digital-solutions.ma/sitemap-index.xml` (menu **Sitemaps**).
+
+**État au 26 septembre 2026 :** propriété validée, sitemap envoyé et lu (18 pages découvertes). Après le déploiement sans `noindex`, demandez l'indexation de la page d'accueil avec l'outil **Inspection de l'URL**.
 
 **Pour la production sur le VPS**, voir la section 8 : les mêmes enregistrements DNS pointent alors vers l'adresse IP du serveur.
 
@@ -255,5 +266,5 @@ En préproduction, mettez `ROBOTS_TAG=noindex` dans `.env` pour que Google n'ind
 | Design du site de l'agence | Décidé : maquettes du designer, intégrées le 26 septembre 2026 (section 5, « Design »). Logo reçu et intégré le 26 septembre 2026. | Jetons dans `global.css`, police Manrope avec l'API Fonts d'Astro. Logo : composant `Logo`, sources dans `design/logo/`, `pnpm image:logo` et `pnpm image:partage`. |
 | Interface d'édition (CMS) | À décider si nous vendons des sites Astro aux clients. | Ajouter Keystatic (contenus dans Git) pour le tester sur notre site d'abord. |
 | Mesure d'audience | Matomo ou Plausible, sans cookie si possible. À valider avec le juriste (loi 09-08, consentement aux cookies). | Pas encore intégrée. Il faudra ajouter son domaine à la CSP (`astro.config.mjs`). |
-| Vercel : aperçu ou production | Vercel sert d'aperçu. Vercel est une entreprise américaine : l'utiliser en production doit rester compatible avec l'engagement « Hébergement en [pays à définir] » (section 4 du brief) et avec les règles de transfert de données à l'étranger de la loi 09-08. À valider avec le juriste. | En production sur Vercel : retirer `X-Robots-Tag: noindex` de `vercel.json`, choisir la région des fonctions et remplacer la limite d'envois en mémoire. |
+| Vercel : aperçu ou production | Vercel sert d'aperçu. Vercel est une entreprise américaine : l'utiliser en production doit rester compatible avec l'engagement « Hébergement en [pays à définir] » (section 4 du brief) et avec les règles de transfert de données à l'étranger de la loi 09-08. À valider avec le juriste. | En production sur Vercel (le domaine y est déjà indexé) : choisir la région des fonctions et remplacer la limite d'envois en mémoire. |
 | Accusé de réception au prospect | Non mis en place. Un e-mail automatique vers une adresse saisie dans un formulaire peut servir à envoyer du spam à des tiers. | À ajouter avec un texte validé si le besoin est confirmé. |
