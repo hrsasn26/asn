@@ -167,11 +167,11 @@ const titre = `Audit gratuit de votre site web | ${site.nom}`;
               </legend>
               {/*
                * Boutons radio en forme de pastille : le bouton couvre toute la pastille
-               * (appearance-none), le choix est visible par le fond bleu nuit (has-checked).
+               * (appearance-none), le choix est visible par le fond bleu (has-checked).
                */}
               <div class="mt-2.5 flex flex-wrap gap-2">
                 {Object.entries(preoccupations).map(([valeur, libelle]) => (
-                  <label class="relative inline-flex cursor-pointer items-center rounded-full px-4 py-2.5 text-sm font-medium ring-1 ring-champ transition-colors ring-inset hover:ring-encre has-checked:bg-encre has-checked:text-white has-checked:ring-encre">
+                  <label class="relative inline-flex cursor-pointer items-center rounded-full px-4 py-2.5 text-sm font-medium ring-1 ring-champ transition-colors ring-inset hover:ring-bleu has-checked:bg-bleu has-checked:text-white has-checked:ring-bleu">
                     <input
                       type="radio"
                       id={`champ-preoccupation-${valeur}`}
@@ -192,7 +192,7 @@ const titre = `Audit gratuit de votre site web | ${site.nom}`;
             <Honeypot />
             <button
               type="submit"
-              class="w-full cursor-pointer rounded-full bg-encre px-7 py-4 text-base font-semibold text-white transition-colors hover:bg-bleu"
+              class="w-full cursor-pointer rounded-full bg-bleu px-7 py-4 text-base font-semibold text-white transition-colors hover:bg-encre"
             >
               Recevoir mon audit gratuit
             </button>
