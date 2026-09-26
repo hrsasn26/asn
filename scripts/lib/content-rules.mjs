@@ -11,12 +11,8 @@ export const MOTS_A_EVITER = [
   { mot: 'optimiser', motif: 'optimis\\p{L}*' },
   { mot: 'digitaliser', motif: 'digitalis\\p{L}*' },
   { mot: '360°', motif: '360\\s*°' },
-  // Décision du 26 septembre 2026 : le site ne parle plus d'« ingénieurs ». Seule exception,
-  // l'intitulé de poste « Ingénieur logiciel » dans la section « L'équipe » de L'agence.
-  {
-    mot: 'ingénieurs',
-    motif: '(?!ingénieur\\s+logiciel(?![\\p{L}\\p{N}]))ingénieu\\p{L}*',
-  },
+  // Décision du 26 septembre 2026 : le site ne parle plus d'« ingénieurs ».
+  { mot: 'ingénieurs', motif: 'ingénieu\\p{L}*' },
 ];
 
 /**

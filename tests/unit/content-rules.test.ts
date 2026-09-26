@@ -66,14 +66,10 @@ describe('analyserTexte', () => {
     'Une vision 360°',
     'Une équipe d’ingénieurs',
     'Échanger avec un ingénieur',
-    'Nos ingénieurs logiciels',
+    'Ingénieur logiciel',
   ])('refuse « %s »', (texte) => {
     const problemes = analyserTexte([texte], { strict: false });
     expect(problemes.some((p) => p.niveau === 'erreur')).toBe(true);
-  });
-
-  it('accepte l’intitulé de poste « Ingénieur logiciel » (section « L’équipe »)', () => {
-    expect(analyserTexte(['Ingénieur logiciel'], { strict: false })).toEqual([]);
   });
 
   it.each(['À partir de [X] DH', 'Site vitrine : 5 000 DH', '1 200 €', '300 MAD par mois'])(

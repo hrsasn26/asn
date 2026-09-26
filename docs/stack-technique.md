@@ -149,7 +149,7 @@ Limite connue : Firefox ne prend pas encore en charge les animations liées au d
 **Placeholders.** Les informations non confirmées restent entre crochets : `[Ville ou région]`, `[pays à définir]`, `[À rédiger : …]`. Le script `pnpm check:content` les liste. En mode `--strict`, il bloque la mise en production tant qu'il en reste.
 
 **Règles du brief vérifiées automatiquement** (section 4) :
-- mots à éviter : DevOps, QA, stack, CI/CD, framework, « solutions innovantes », « optimiser », « digitaliser », « 360° », « ingénieurs » (sauf l'intitulé de poste « Ingénieur logiciel », section « L'équipe ») ;
+- mots à éviter : DevOps, QA, stack, CI/CD, framework, « solutions innovantes », « optimiser », « digitaliser », « 360° », « ingénieurs » ;
 - pas de point d'exclamation ;
 - aucun prix affiché (« 5 000 DH », « [X] DH », « 300 € ») : les prix sont donnés dans les devis ;
 - aucune mention de la France, du RGPD ou de la CNIL : le site vise des projets au Maroc ;

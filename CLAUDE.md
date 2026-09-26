@@ -12,7 +12,7 @@ Les choix techniques, l'organisation du code et la mise en service sont dans [do
 
 - Offre : neuf pôles de services (section 3 du brief). Textes des quatre premières pages Services validés, sauf les ajouts marqués « à valider » (options Sites web, WhatsApp, formation IA). Pages Applications mobiles, Logiciels SaaS, Intelligence artificielle, Données et tableaux de bord, Tests et sécurité : textes proposés (sections 6.14 à 6.18), à valider.
 - Autres pages (Accueil, Processus, L'agence, Contact) : textes proposés dans le brief (sections 6.7 à 6.11) et intégrés. Ils restent à valider.
-- Révision du 26 septembre 2026 (document « Recommandations de wording ») : en-têtes, boutons, cartes et FAQ revus sur tout le site, à valider. Plus de mot « ingénieurs » (seule exception : l'intitulé de poste « Ingénieur logiciel » dans la section « L'équipe »). Les phrases avec une valeur non confirmée (délais, pays d'hébergement, ville, garantie, sauvegardes) sont retirées, sauf dans les pages légales et les coordonnées. La section « L'équipe » de L'agence est affichée avec les noms et les rôles reçus le 26 septembre 2026 (initiales à la place des photos).
+- Révision du 26 septembre 2026 (document « Recommandations de wording ») : en-têtes, boutons, cartes et FAQ revus sur tout le site, à valider. Plus de mot « ingénieurs », même dans les titres de l'équipe. Les phrases avec une valeur non confirmée (délais, pays d'hébergement, ville, garantie, sauvegardes) sont retirées, sauf dans les pages légales et les coordonnées. La section « L'équipe » de L'agence est affichée avec les noms et les rôles reçus le 26 septembre 2026 (initiales à la place des photos).
 - Pages Réalisations et Blog : supprimées le 26 septembre 2026 (sections 6.12 et 6.13 du brief).
 - Marché : projets au Maroc. Droit marocain (loi 09-08 et CNDP pour les données personnelles, loi 31-08 pour les consommateurs). Ne pas citer la France, le RGPD, la CNIL ou le droit français sur le site.
 - Prix : aucun prix public. Pas de page Tarifs : chaque prix est donné en privé, dans un devis.
@@ -54,7 +54,7 @@ Les choix techniques, l'organisation du code et la mise en service sont dans [do
 ## Règles de contenu
 
 - Tout le contenu du site est en **français**, avec vouvoiement.
-- Suivre le ton et les mots à éviter définis dans la section 4 du brief (pas de jargon technique comme DevOps, QA ou stack côté client, pas de mot « ingénieurs », sauf l'intitulé de poste « Ingénieur logiciel » dans la section « L'équipe »). `pnpm check:content` bloque ces mots.
+- Suivre le ton et les mots à éviter définis dans la section 4 du brief (pas de jargon technique comme DevOps, QA ou stack côté client, pas de mot « ingénieurs »). `pnpm check:content` bloque ces mots.
 - Ne pas nommer les publics visés (TPE, PME, particuliers) sur le site. Exception : les pages légales (clients particuliers, loi 31-08).
 - FAQ : chaque réponse commence par une réponse directe (« Oui », « Non », « Cela dépend de… »).
 - Ne jamais inventer de prix, de statistiques, de témoignages ou de références clients. Une phrase qui dépend d'une valeur non confirmée (délai, pays, ville, adresse, zone servie, durée) n'est pas publiée, ni sur les pages, ni dans les données structurées, ni dans `llms.txt` : elle reste dans le brief avec son placeholder. Exceptions : les pages légales et les coordonnées gardent leurs placeholders entre crochets (`[numéro de téléphone]`, etc.) jusqu'à validation.

@@ -188,7 +188,7 @@ Dès que possible, ajouter des preuves réelles : exemple de rapport, capture de
 - **FAQ** : chaque réponse commence par une réponse directe (« Oui », « Non », « Cela dépend de… »), puis explique, en deux à cinq phrases si possible.
 - **Aucune valeur non confirmée** : pas de délai, de durée, de ville, de pays, d'adresse ni de zone servie tant qu'ils ne sont pas confirmés, ni sur les pages, ni dans les données structurées, ni dans `llms.txt`. La phrase est retirée plutôt que publiée avec un placeholder (décision du 26 septembre 2026). Exceptions : les pages légales et les coordonnées de l'agence, obligatoires.
 - **Pas de points d'exclamation.**
-- **Mots à éviter sur le site** : DevOps, QA, stack, CI/CD, framework, « solutions innovantes », « optimiser », « digitaliser », « 360° », « ingénieurs ». Exception : l'intitulé de poste « Ingénieur logiciel » dans la section « L'équipe » de L'agence (décision du 26 septembre 2026).
+- **Mots à éviter sur le site** : DevOps, QA, stack, CI/CD, framework, « solutions innovantes », « optimiser », « digitaliser », « 360° », « ingénieurs ».
 - **Publics non nommés** : le site ne nomme pas les publics visés (TPE, PME, particuliers). Les mots-clés visés ne les contiennent pas non plus. Il n'est pas nécessaire de les préciser (décision du 26 septembre 2026, à valider). Exception : les pages légales, qui parlent des clients particuliers (loi 31-08).
 
 ### Engagements à confirmer avant publication
@@ -1133,16 +1133,16 @@ Votre code, vos comptes, votre nom de domaine et vos données restent à votre n
 
 Une carte par personne : initiales, nom, rôle et une phrase qui relie la personne aux services.
 
-**Hamza Legdani**, Ingénieur logiciel
+**Hamza Legdani**, Développeur web et logiciels
 Conçoit vos sites web, vos applications sur mesure et vos logiciels SaaS, puis les garde en ligne.
 
-**Saad Berrada**, Ingénieur logiciel
+**Saad Berrada**, Développeur mobile et IA
 Développe vos applications mobiles, vos automatisations, vos tableaux de bord et vos outils d'intelligence artificielle.
 
 **Mohammed Reda Benaghmouch**, Spécialiste qualité et tests
 Teste chaque site et chaque application avant la mise en ligne, et vérifie leur sécurité.
 
-> Noms et rôles donnés par l'agence le 26 septembre 2026 (« ingénieur logiciel » et « QA »). Phrases de présentation et répartition des services entre les deux ingénieurs logiciels : proposition à valider. « QA » devient « Spécialiste qualité et tests » : le mot QA n'est pas compris des clients (section 4). « Ingénieur logiciel » est le seul emploi autorisé du mot « ingénieur » sur le site (section 4). Les initiales remplacent les photos jusqu'à leur réception.
+> Noms et domaines de compétence donnés par l'agence le 26 septembre 2026 (ingénierie logicielle pour Hamza Legdani et Saad Berrada, QA pour Mohammed Reda Benaghmouch). Les titres traduisent ces domaines en mots compris des clients, d'après les services de chacun : pas de mot « ingénieur » ni « QA » (section 4). Titres, phrases de présentation et répartition des services entre Hamza Legdani et Saad Berrada : proposition à valider. Les initiales remplacent les photos jusqu'à leur réception.
 
 #### Section : partenaires
 
