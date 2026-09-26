@@ -11,7 +11,7 @@ Les choix techniques, l'organisation du code et la mise en service sont dans [do
 ## État du projet
 
 - Offre : neuf pôles de services (section 3 du brief). Textes des quatre premières pages Services validés, sauf les ajouts marqués « à valider » (options Sites web, WhatsApp, formation IA). Pages Applications mobiles, Logiciels SaaS, Intelligence artificielle, Données et tableaux de bord, Tests et sécurité : textes proposés (sections 6.14 à 6.18), à valider.
-- Autres pages (Accueil, Méthode, L'agence, Contact) : textes proposés dans le brief (sections 6.7 à 6.11) et intégrés. Ils restent à valider.
+- Autres pages (Accueil, Processus, L'agence, Contact) : textes proposés dans le brief (sections 6.7 à 6.11) et intégrés. Ils restent à valider.
 - Révision du 26 septembre 2026 (document « Recommandations de wording ») : en-têtes, boutons, cartes et FAQ revus sur tout le site, à valider. Plus de mot « ingénieurs ». Les phrases avec une valeur non confirmée (délais, pays d'hébergement, ville, garantie, sauvegardes) sont retirées, sauf dans les pages légales et les coordonnées. La section « L'équipe » de L'agence est masquée jusqu'à réception des vraies informations.
 - Pages Réalisations et Blog : supprimées le 26 septembre 2026 (sections 6.12 et 6.13 du brief).
 - Marché : projets au Maroc. Droit marocain (loi 09-08 et CNDP pour les données personnelles, loi 31-08 pour les consommateurs). Ne pas citer la France, le RGPD, la CNIL ou le droit français sur le site.
@@ -42,6 +42,7 @@ Les choix techniques, l'organisation du code et la mise en service sont dans [do
 - Les formulaires doivent fonctionner sans JavaScript. Tout nouveau formulaire utilise une Astro Action, un schéma Zod dans `src/lib/schemas.ts`, le champ piège et la case de consentement.
 - Pas de style en ligne (`style="…"`) ni de script externe sans mise à jour de la CSP (`astro.config.mjs`).
 - Toute nouvelle page doit passer les tests axe et Lighthouse de la CI.
+- `llms.txt` (GEO) : `src/pages/llms.txt.ts` reprend la meta description de chaque page. Une nouvelle page ou une meta description modifiée s'y reporte. `tests/e2e/llms.spec.ts` le vérifie, et `pnpm check:content` vérifie aussi ce fichier.
 - Couleurs, tailles de titres et largeur du contenu : les jetons de `src/styles/global.css` (`encre`, `bleu`, `doux`, `discret`, `surface`, `text-section`…), jamais de couleur en dur. Les mises en page passent par les composants `Hero`, `Section` (dispositions `colonnes`, `centre`, `pile`) et `Encadre` (tons `gris`, `sombre`, `cadre`).
 - Chaque section a un surtitre (petites capitales au-dessus du titre). Un nouveau surtitre s'ajoute d'abord dans la section 6.20 du brief.
 - Les visuels des en-têtes (`Hero maquette="…"`) sont des images avec un texte alternatif et la légende « Exemple fictif » (`src/data/maquettes.ts`). Leur texte respecte les mêmes règles que le site : aucun prix ni montant, aucune entreprise réelle, aucun engagement non confirmé. `pnpm test` et `pnpm image:heros` le vérifient sur les sources.
@@ -54,6 +55,7 @@ Les choix techniques, l'organisation du code et la mise en service sont dans [do
 
 - Tout le contenu du site est en **français**, avec vouvoiement.
 - Suivre le ton et les mots à éviter définis dans la section 4 du brief (pas de jargon technique comme DevOps, QA ou stack côté client, pas de mot « ingénieurs »). `pnpm check:content` bloque ces mots.
+- Ne pas nommer les publics visés (TPE, PME, particuliers) sur le site. Exception : les pages légales (clients particuliers, loi 31-08).
 - FAQ : chaque réponse commence par une réponse directe (« Oui », « Non », « Cela dépend de… »).
-- Ne jamais inventer de prix, de statistiques, de témoignages ou de références clients. Une phrase qui dépend d'une valeur non confirmée (délai, pays, ville, durée) n'est pas publiée : elle reste dans le brief avec son placeholder. Exceptions : les pages légales et les coordonnées gardent leurs placeholders entre crochets (`[numéro de téléphone]`, etc.) jusqu'à validation.
+- Ne jamais inventer de prix, de statistiques, de témoignages ou de références clients. Une phrase qui dépend d'une valeur non confirmée (délai, pays, ville, adresse, zone servie, durée) n'est pas publiée, ni sur les pages, ni dans les données structurées, ni dans `llms.txt` : elle reste dans le brief avec son placeholder. Exceptions : les pages légales et les coordonnées gardent leurs placeholders entre crochets (`[numéro de téléphone]`, etc.) jusqu'à validation.
 - Quand une décision change l'offre ou le positionnement, mettre à jour `docs/brief-agence.md` pour qu'il reste la source de vérité.

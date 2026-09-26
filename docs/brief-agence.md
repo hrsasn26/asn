@@ -186,9 +186,10 @@ Dès que possible, ajouter des preuves réelles : exemple de rapport, capture de
 - **Honnête** : aucune statistique, aucun témoignage ni aucune promesse de résultat inventés (ex. pas de « première place sur Google garantie »).
 - **Rassurant, pas alarmiste** : décrire les risques sans formule anxiogène.
 - **FAQ** : chaque réponse commence par une réponse directe (« Oui », « Non », « Cela dépend de… »), puis explique, en deux à cinq phrases si possible.
-- **Aucune valeur non confirmée** : pas de délai, de durée, de ville ni de pays tant qu'ils ne sont pas confirmés. La phrase est retirée plutôt que publiée avec un placeholder (décision du 26 septembre 2026). Exceptions : les pages légales et les coordonnées de l'agence, obligatoires.
+- **Aucune valeur non confirmée** : pas de délai, de durée, de ville, de pays, d'adresse ni de zone servie tant qu'ils ne sont pas confirmés, ni sur les pages, ni dans les données structurées, ni dans `llms.txt`. La phrase est retirée plutôt que publiée avec un placeholder (décision du 26 septembre 2026). Exceptions : les pages légales et les coordonnées de l'agence, obligatoires.
 - **Pas de points d'exclamation.**
 - **Mots à éviter sur le site** : DevOps, QA, stack, CI/CD, framework, « solutions innovantes », « optimiser », « digitaliser », « 360° », « ingénieurs ».
+- **Publics non nommés** : le site ne nomme pas les publics visés (TPE, PME, particuliers). Les mots-clés visés ne les contiennent pas non plus. Il n'est pas nécessaire de les préciser (décision du 26 septembre 2026, à valider). Exception : les pages légales, qui parlent des clients particuliers (loi 31-08).
 
 ### Engagements à confirmer avant publication
 Ces engagements sont forts commercialement, mais il faut pouvoir les tenir. Depuis le 26 septembre 2026, le pays d'hébergement et le délai de réponse ne sont plus affichés sur le site : ils reviendront une fois confirmés.
@@ -215,7 +216,7 @@ Accueil                                   /
 │   ├── Tests & sécurité                  /services/tests-securite
 │   └── Hébergement & maintenance         /services/hebergement-maintenance
 ├── Audit gratuit                         /audit-gratuit
-├── Méthode                               /methode
+├── Processus                             /processus
 ├── L'agence (équipe, valeurs)            /agence
 ├── Contact / Demande de devis            /contact
 └── Mentions légales · CGV · Confidentialité
@@ -223,7 +224,7 @@ Accueil                                   /
 
 **Pied de page (toutes les pages) :** nom de l'agence et promesse, liens vers les services, liens légaux, puis la ligne « © [année] Digital Solutions. Tous droits réservés. » L'année est celle du dernier déploiement.
 
-La page « Méthode », avec une étape de tests bien visible, est l'endroit idéal pour mettre en avant la compétence QA.
+La page « Processus », avec une étape de tests bien visible, est l'endroit idéal pour mettre en avant la compétence QA.
 
 ---
 
@@ -245,7 +246,7 @@ La page « Méthode », avec une étape de tests bien visible, est l'endroit id�
 **URL :** `/services`
 **Balise title :** Création de sites web et d'applications sur mesure | Digital Solutions
 **Meta description :** Sites web, applications web et mobiles, logiciels SaaS, IA, automatisation et maintenance : des projets testés, mis en ligne et suivis par la même équipe.
-**Mots-clés visés (à valider) :** agence web [ville], création site internet TPE, développement application sur mesure
+**Mots-clés visés (à valider) :** agence web [ville], création site web et application, développement application sur mesure
 
 #### En-tête
 
@@ -354,7 +355,7 @@ Du premier échange à la maintenance, vous parlez aux personnes qui construisen
 **Vous restez propriétaire**
 Votre code, votre nom de domaine et vos données vous appartiennent. Si un jour vous changez de prestataire, vous repartez avec tout.
 
-#### Section : notre méthode
+#### Section : notre processus
 
 **Titre :** Comment se déroule votre projet
 
@@ -364,7 +365,9 @@ Votre code, votre nom de domaine et vos données vous appartiennent. Si un jour 
 4. **On teste.** Tout est vérifié avant la mise en ligne, sur tous les écrans.
 5. **On met en ligne et on reste là.** On vous forme à l'utilisation, puis on assure la maintenance si vous le souhaitez.
 
-#### Section : pour qui
+#### Section : pour qui (retirée)
+
+> Section retirée du site le 26 septembre 2026, à valider : le site ne nomme pas les publics visés (section 4). Ancien texte ci-dessous.
 
 **Titre :** Nous accompagnons
 
@@ -418,7 +421,7 @@ Un échange de 30 minutes, gratuit et sans engagement, pour comprendre votre bes
 
 **URL :** `/services/sites-web`
 **Balise title :** Création de site vitrine et e-commerce | Digital Solutions
-**Meta description :** Site vitrine, boutique en ligne ou refonte : des sites rapides, sécurisés et prêts pour le référencement, pour les TPE, PME et particuliers.
+**Meta description :** Site vitrine, boutique en ligne ou refonte : des sites rapides, sécurisés et prêts pour le référencement.
 **Mots-clés visés (à valider) :** création site vitrine, création site internet [ville], création boutique en ligne, refonte site web
 
 #### En-tête
@@ -446,14 +449,14 @@ Un échange de 30 minutes, gratuit et sans engagement, pour comprendre votre bes
 
 **Site vitrine**
 Pour présenter clairement votre activité et vos réalisations, et être contacté facilement.
-*Idéal pour :* artisans, indépendants, TPE, particuliers.
+*Idéal pour :* artisans, indépendants.
 - Formulaire de contact
 - Prise de rendez-vous en ligne (en option)
 - Liens vers vos réseaux sociaux et votre fiche Google
 
 **Boutique en ligne**
 Pour vendre en ligne, avec un parcours d'achat simple, des paiements sécurisés et une gestion adaptée à votre activité.
-*Idéal pour :* commerçants, créateurs, PME.
+*Idéal pour :* commerçants, créateurs.
 - Paiement sécurisé (carte bancaire via le CMI, paiement à la livraison…) *(modifié pour le Maroc, à valider)*
 - Gestion des stocks et des commandes
 - Frais de livraison et factures automatiques
@@ -546,7 +549,7 @@ Décrivez-nous votre projet en quelques lignes. Nous revenons vers vous avec les
 **URL :** `/services/applications-sur-mesure`
 **Balise title :** Applications web et mobiles sur mesure | Digital Solutions
 **Meta description :** Outil métier, espace client, application mobile ou première version de votre projet : nous développons des applications sur mesure, testées et faites pour évoluer.
-**Mots-clés visés (à valider) :** développement application sur mesure, logiciel sur mesure PME, création application mobile, développement MVP
+**Mots-clés visés (à valider) :** développement application sur mesure, logiciel sur mesure, création application mobile, développement MVP
 
 #### En-tête
 
@@ -600,7 +603,7 @@ Sauvegardes quotidiennes et accès sécurisés.
 **Un code qui vous appartient**
 Le code est documenté et vous appartient. Vous restez libre de changer de prestataire si vous le souhaitez.
 
-#### Section : méthode
+#### Section : processus
 
 **Titre :** Comment nous travaillons
 
@@ -650,7 +653,7 @@ Un échange de 30 minutes, gratuit et confidentiel, pour comprendre votre besoin
 **URL :** `/services/automatisation-integrations`
 **Balise title :** Automatisation et connexion de vos logiciels | Digital Solutions
 **Meta description :** Connectez votre site, votre CRM et votre comptabilité. Automatisez les tâches répétitives et utilisez l'IA là où elle vous fait vraiment gagner du temps.
-**Mots-clés visés (à valider) :** automatisation tâches entreprise, intégration logiciels PME, automatisation n8n, chatbot site web
+**Mots-clés visés (à valider) :** automatisation tâches entreprise, intégration logiciels, automatisation n8n, chatbot site web
 
 #### En-tête
 
@@ -717,7 +720,7 @@ Chaque demande reçue sur WhatsApp arrive dans votre CRM. Votre équipe voit l'h
 
 Une automatisation qui tombe en panne sans que personne ne le remarque peut faire plus de dégâts que pas d'automatisation du tout. Nous testons chaque scénario avant la mise en service, nous surveillons son fonctionnement et nous sommes alertés en cas d'erreur. Tout est documenté : vous savez ce qui tourne et pourquoi.
 
-#### Section : méthode
+#### Section : processus
 
 1. **Diagnostic.** Nous regardons avec vous les tâches qui vous prennent du temps et nous estimons le temps que vous pouvez gagner.
 2. **Proposition.** Nous classons les automatisations par gain de temps et vous choisissez les priorités.
@@ -812,7 +815,7 @@ Chaque mois, un résumé clair : disponibilité du site, sauvegardes réalisées
 
 | | **Essentiel** | **Sérénité** *(recommandé)* | **Pro** |
 |---|---|---|---|
-| **Pour qui** | Sites vitrines, particuliers | TPE, PME, boutiques en ligne | Applications, sites critiques |
+| **Pour qui** | Sites vitrines | Boutiques en ligne | Applications, sites critiques |
 | Hébergement + HTTPS | ✓ | ✓ | ✓ |
 | Sauvegardes | Hebdomadaires | Quotidiennes | Quotidiennes + copie externe |
 | Surveillance 24 h/24 | ✓ | ✓ | ✓ |
@@ -915,7 +918,7 @@ L'audit gratuit regarde votre site de l'extérieur, sans accès au code ni au se
 > Proposition à valider. Elle reprend la promesse (section 4) et plusieurs blocs de la page Services (section 6.1).
 
 **URL :** `/`
-**Balise title :** Sites web et applications sur mesure pour TPE, PME et particuliers | Digital Solutions
+**Balise title :** Sites web et applications sur mesure | Digital Solutions
 **Meta description :** Nous créons, testons, hébergeons et maintenons vos sites et vos applications. Un interlocuteur direct, un devis à prix fixe et un suivi après la mise en ligne.
 **Mots-clés visés (à valider) :** agence web [ville], création site internet, application sur mesure
 
@@ -957,17 +960,17 @@ Reprend les cartes de la section « Des solutions pour faire avancer votre activ
 
 > Titre changé le 26 septembre 2026, à valider. Ancien titre : « Ce que nous faisons pour vous ».
 
-#### Section : pour qui
+#### Section : pour qui (retirée)
 
-Reprend la section « Nous accompagnons » de la page Services (6.1).
+Retirée le 26 septembre 2026, comme sur la page Services (6.1).
 
-#### Section : méthode en bref
+#### Section : processus en bref
 
 **Titre :** Un projet en cinq étapes claires
 
 Reprend les cinq étapes de la page Services (6.1).
 
-**Lien :** [Découvrir notre méthode]
+**Lien :** [Découvrir notre processus]
 
 #### Section : audit gratuit
 
@@ -989,12 +992,13 @@ Reprend l'appel à l'action final de la page Services (6.1).
 
 ---
 
-### 6.8 Page « Méthode »
+### 6.8 Page « Processus »
 
 > Proposition à valider. Le brief demande une étape de tests bien visible sur cette page (section 5).
+> Page renommée le 26 septembre 2026, à valider. Ancien nom : « Méthode », à l'adresse `/methode`. Les surtitres des sections sur les étapes (accueil, Services, pages de services) passent aussi de « Méthode » à « Processus ».
 
-**URL :** `/methode`
-**Balise title :** Notre méthode : un projet clair, testé et suivi | Digital Solutions
+**URL :** `/processus`
+**Balise title :** Notre processus : un projet clair, testé et suivi | Digital Solutions
 **Meta description :** Échange gratuit, devis à prix fixe, maquettes, développement par étapes, tests complets et suivi après la mise en ligne : découvrez comment se déroule votre projet.
 
 #### En-tête
@@ -1067,7 +1071,7 @@ Reprend l'appel à l'action final de la page Services (6.1).
 ### 6.9 Page « Tarifs » (supprimée)
 
 > Page supprimée le 25 septembre 2026 : aucun prix n'est affiché sur le site. Chaque prix est donné dans un devis.
-> Les informations utiles restent ailleurs : devis gratuit à prix fixe (Méthode, 6.8), forfaits de maintenance sans prix (6.5), modalités de paiement et droit de rétractation (CGV).
+> Les informations utiles restent ailleurs : devis gratuit à prix fixe (Processus, 6.8), forfaits de maintenance sans prix (6.5), modalités de paiement et droit de rétractation (CGV).
 
 ---
 
@@ -1077,13 +1081,13 @@ Reprend l'appel à l'action final de la page Services (6.1).
 
 **URL :** `/agence`
 **Balise title :** L'agence : une équipe technique à votre service | Digital Solutions
-**Meta description :** Une équipe qui conçoit, teste, héberge et maintient des sites et des applications pour les TPE, PME et porteurs de projet.
+**Meta description :** Une équipe qui conçoit, teste, héberge et maintient des sites et des applications, avec un interlocuteur direct.
 
 #### En-tête
 
 **H1 :** Une équipe accessible, du premier échange au suivi
 
-**Sous-titre :** Nous concevons des sites et des applications solides pour les TPE, les PME et les porteurs de projet, avec un interlocuteur direct et une responsabilité claire sur la qualité technique.
+**Sous-titre :** Nous concevons des sites et des applications solides, avec un interlocuteur direct et une responsabilité claire sur la qualité technique.
 
 > Ancien H1 : « Une équipe d'ingénieurs, à la taille de votre projet ». La ville ([Ville ou région]) reviendra dans le sous-titre une fois choisie.
 
@@ -1091,7 +1095,7 @@ Reprend l'appel à l'action final de la page Services (6.1).
 
 **Titre :** Pourquoi Digital Solutions existe
 
-Beaucoup de TPE et de PME ont vécu la même situation : un site livré sans tests, un prestataire qui ne répond plus, un site piraté faute de mises à jour. Nous avons créé Digital Solutions pour proposer autre chose : des projets construits avec méthode, testés, et un suivi dans la durée.
+Beaucoup d'entreprises ont vécu la même situation : un site livré sans tests, un prestataire qui ne répond plus, un site piraté faute de mises à jour. Nous avons créé Digital Solutions pour proposer autre chose : des projets construits avec méthode, testés, et un suivi dans la durée.
 
 > À ajouter quand elle sera rédigée : l'histoire de l'agence, en quelques phrases.
 
@@ -1271,7 +1275,7 @@ Connexion chiffrée, comptes utilisateurs sécurisés et respect de la loi 09-08
 **Toujours à jour**
 Apple et Google changent leurs règles chaque année. Avec un forfait de maintenance, nous mettons votre application à jour pour qu'elle reste disponible et compatible.
 
-#### Section : méthode
+#### Section : processus
 
 **Titre :** Comment nous travaillons
 
@@ -1374,7 +1378,7 @@ Connexions chiffrées, accès contrôlés, sauvegardes quotidiennes et surveilla
 **Des mises à jour sans surprise**
 Nous préparons chaque mise en ligne pour éviter les coupures de service. En cas de problème, nous revenons à la version précédente en quelques minutes.
 
-#### Section : méthode
+#### Section : processus
 
 **Titre :** Du cadrage aux premiers clients
 
@@ -1423,7 +1427,7 @@ Un échange de 30 minutes, gratuit et confidentiel, pour parler de votre idée, 
 **URL :** `/services/intelligence-artificielle`
 **Balise title :** Intégration de l'intelligence artificielle en entreprise | Digital Solutions
 **Meta description :** Assistant pour vos clients, recherche dans vos documents, lecture automatique des factures : nous intégrons l'IA là où elle vous fait gagner du temps.
-**Mots-clés visés (à valider) :** intelligence artificielle entreprise Maroc, chatbot site web, assistant WhatsApp, IA pour PME
+**Mots-clés visés (à valider) :** intelligence artificielle entreprise Maroc, chatbot site web, assistant WhatsApp, IA pour entreprise
 
 #### En-tête
 
@@ -1492,7 +1496,7 @@ Nous limitons les données envoyées au strict nécessaire. Avant de commencer, 
 **Suivie dans la durée**
 Nous surveillons la qualité des réponses et les coûts d'utilisation. Nous mettons l'assistant à jour quand vos informations changent.
 
-#### Section : méthode
+#### Section : processus
 
 **Titre :** Comment nous travaillons
 
@@ -1582,7 +1586,7 @@ Un tableau de bord faux est pire que pas de tableau de bord du tout. Nous vérif
 
 Nous mettons en place les outils et des chiffres fiables. L'analyse marketing, la publicité et les campagnes ne font pas partie de nos services. Si vous travaillez avec une agence marketing ou un consultant, nous leur donnons accès aux chiffres.
 
-#### Section : méthode
+#### Section : processus
 
 **Titre :** Comment nous travaillons
 
@@ -1675,7 +1679,7 @@ Les tests sont au cœur de notre métier : nous testons chacun de nos propres pr
 - Nous gardons vos informations confidentielles, et nous pouvons signer un accord de confidentialité.
 - Un audit réduit les risques, mais personne ne peut garantir qu'un site ne sera jamais piraté. Nous vous le disons honnêtement.
 
-#### Section : méthode
+#### Section : processus
 
 **Titre :** Comment nous travaillons
 
@@ -1717,7 +1721,7 @@ Un échange de 30 minutes, gratuit et confidentiel, pour définir ce qu'il faut 
 
 > Légende et textes alternatifs validés le 26 septembre 2026. Maquettes reçues du designer le 26 septembre 2026, adaptées aux règles de ce brief. Sources et détail des adaptations : [design/heros/README.md](../design/heros/README.md).
 
-Onze pages ont un visuel dans l'en-tête, à droite du texte (sous le texte sur téléphone) : des écrans sur ordinateur et sur téléphone, avec une ou deux cartes. Chaque visuel montre un projet du type décrit par la page, pour un client fictif. Les autres pages (Services, Méthode, L'agence, Contact, pages légales) ont un en-tête sans visuel (design du 26 septembre 2026).
+Onze pages ont un visuel dans l'en-tête, à droite du texte (sous le texte sur téléphone) : des écrans sur ordinateur et sur téléphone, avec une ou deux cartes. Chaque visuel montre un projet du type décrit par la page, pour un client fictif. Les autres pages (Services, Processus, L'agence, Contact, pages légales) ont un en-tête sans visuel (design du 26 septembre 2026).
 
 Les visuels des pages de services servent aussi de vignettes aux cartes des services (Accueil et Services). Le visuel de l'audit gratuit illustre l'encadré « Audit gratuit » de l'accueil.
 
@@ -1755,8 +1759,8 @@ Les visuels des pages de services servent aussi de vignettes aux cartes des serv
 - Chaque titre de section a un surtitre (tableau ci-dessous).
 - La fin de chaque grand titre est en gras, par exemple « Parlons de votre **projet** » ou « Des sites et des applications fiables, **suivis dans la durée** ».
 - En-tête des pages de services : « Service 01 · Sites web ». Le numéro suit l'ordre des services de la section 5. Les cartes des services portent le même numéro (01 à 09).
-- Accueil, en-tête : « TPE · PME · Particuliers ».
-- Libellés : « Idéal pour » (cartes d'offre, sans deux-points), « Vous recevez » (étapes de la page Méthode, sans deux-points), « (facultatif) » après le libellé des champs facultatifs (les champs obligatoires n'ont plus de mention), « recommandé » (forfait Sérénité), « Erreur 404 » (page introuvable).
+- Accueil, en-tête : pas de surtitre. Le surtitre « TPE · PME · Particuliers » est retiré le 26 septembre 2026 (section 4, publics non nommés).
+- Libellés : « Idéal pour » (cartes d'offre, sans deux-points), « Vous recevez » (étapes de la page Processus, sans deux-points), « (facultatif) » après le libellé des champs facultatifs (les champs obligatoires n'ont plus de mention), « recommandé » (forfait Sérénité), « Erreur 404 » (page introuvable).
 - Page Audit gratuit, « Ce que nous vérifions » : chaque point a un titre (« Vitesse ») et une phrase qui commence par une majuscule (« Combien de temps vos pages mettent à s'afficher, et ce qui les ralentit. »).
 - Page Contact : « Et ensuite ? » reste un titre, présenté comme un surtitre au-dessus des trois étapes.
 
@@ -1764,16 +1768,15 @@ Les visuels des pages de services servent aussi de vignettes aux cartes des serv
 |---|---|---|
 | Accueil | Ce que vous y gagnez | Vos bénéfices |
 | Accueil | Des solutions digitales qui répondent à vos enjeux | Nos services |
-| Accueil, Services | Nous accompagnons | Pour qui |
-| Accueil | Un projet en cinq étapes claires | Méthode |
+| Accueil | Un projet en cinq étapes claires | Processus |
 | Accueil, Services | Encadré audit gratuit | Audit gratuit |
 | Accueil | Nos engagements | Engagements |
 | Services | Des solutions pour faire avancer votre activité | Nos services |
 | Services | Pourquoi travailler avec nous | Nos différences |
-| Services | Comment se déroule votre projet | Méthode |
+| Services | Comment se déroule votre projet | Processus |
 | Toutes les pages avec une FAQ | Questions fréquentes | FAQ |
 | Pages de services | Le problème | Le constat |
-| Pages de services | Les étapes (« Comment nous travaillons », « Du cadrage aux premiers clients ») | Méthode |
+| Pages de services | Les étapes (« Comment nous travaillons », « Du cadrage aux premiers clients ») | Processus |
 | Sites web | Trois façons de lancer ou de relancer votre présence en ligne | Nos formules |
 | Sites web | Inclus dans tous nos sites | Sans supplément |
 | Sites web | Les options | À la carte |
@@ -1797,9 +1800,9 @@ Les visuels des pages de services servent aussi de vignettes aux cartes des serv
 | Audit gratuit | Ce que nous vérifions | Périmètre |
 | Audit gratuit | Ce que l'audit gratuit ne couvre pas | Limites |
 | Audit gratuit | Ce que vous recevez | Livrables |
-| Méthode | Les étapes de votre projet | 7 étapes |
-| Méthode | Pourquoi les tests comptent autant | Qualité |
-| Méthode | Ce dont nous avons besoin de votre part | Votre rôle |
+| Processus | Les étapes de votre projet | 7 étapes |
+| Processus | Pourquoi les tests comptent autant | Qualité |
+| Processus | Ce dont nous avons besoin de votre part | Votre rôle |
 | L'agence | Pourquoi Digital Solutions existe | Notre histoire |
 | L'agence | Ce que nous savons faire, en clair | Savoir-faire |
 | L'agence | Nos valeurs | Valeurs |
@@ -1848,13 +1851,13 @@ Les visuels des pages de services servent aussi de vignettes aux cartes des serv
 - [ ] Confirmer les engagements listés en [section 4](#engagements-à-confirmer-avant-publication)
 - [ ] Choisir l'option design : designer partenaire ou modèles personnalisés
 - [ ] Trouver les partenaires : graphiste, rédacteur, traducteur (arabe, anglais)
-- [ ] Relire et valider les textes proposés : Accueil, Méthode, L'agence, Contact (sections 6.7 à 6.11)
+- [ ] Relire et valider les textes proposés : Accueil, Processus, L'agence, Contact (sections 6.7 à 6.11)
 - [ ] Relire et valider les pages des nouveaux services : Applications mobiles, Logiciels SaaS, Intelligence artificielle, Données et tableaux de bord, Tests et sécurité (sections 6.14 à 6.18)
 - [ ] Relire et valider les ajouts dans les pages existantes : options Sites web (langues, WhatsApp), section WhatsApp (Automatisation), formation à l'IA
 - [x] Valider la légende et les textes alternatifs des visuels des en-têtes (section 6.19)
 - [ ] Remplacer les visuels des en-têtes par des projets réels quand des clients auront donné leur accord écrit (section 6.19)
 - [ ] Relire et valider la révision des textes du 26 septembre 2026 (recommandations de wording, section 6)
-- [ ] Confirmer les valeurs retirées du site, puis les réafficher : délai de réponse, délais des projets, pays d'hébergement, ville, durée de conservation des sauvegardes, volume de modifications et délais d'intervention des forfaits, durée d'engagement, garantie
+- [ ] Confirmer les valeurs retirées du site, puis les réafficher : délai de réponse, délais des projets, pays d'hébergement, ville, adresse et zone servie (données structurées, llms.txt), durée de conservation des sauvegardes, volume de modifications et délais d'intervention des forfaits, durée d'engagement, garantie
 - [ ] Fournir l'histoire de l'agence, la ville, les noms, les rôles et les photos de l'équipe, pour réafficher la section « L'équipe » (section 6.10)
 - [ ] Préparer des preuves concrètes : exemple de rapport d'audit, captures de tests, exemples de livrables, cas clients et témoignages avec l'accord écrit des clients
 - [x] Intégrer le design du site : maquettes du designer, intégrées le 26 septembre 2026 (section « Design » de [stack-technique.md](stack-technique.md))

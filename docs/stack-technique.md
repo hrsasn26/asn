@@ -35,7 +35,7 @@
 | Images | Visuels des en-têtes en AVIF, icônes Lucide (`@lucide/astro`, licence ISC) | Les visuels des en-têtes sont des maquettes d'écrans pour des clients fictifs, rendues en images (`pnpm image:heros`). Ils servent aussi de vignettes aux cartes des services. Aucune photo de stock. Les icônes Lucide ne restent que dans les messages d'erreur des formulaires. |
 | Formulaires | Astro Actions + Zod, adaptateur `@astrojs/node` | Validation côté serveur, messages d'erreur en français, champ piège anti-spam, limite de débit par adresse IP. |
 | E-mails | Brevo (API transactionnelle) | Chaque demande arrive par e-mail à l'équipe. Serveurs hors du Maroc : transfert à déclarer à la CNDP. |
-| SEO | `@astrojs/sitemap`, JSON-LD | Balises title et meta du brief. Données structurées : ProfessionalService, Service, BreadcrumbList. |
+| SEO et GEO | `@astrojs/sitemap`, JSON-LD, `llms.txt` | Balises title et meta du brief. Données structurées : ProfessionalService, Service, BreadcrumbList, sans adresse ni zone servie tant que l'adresse de l'agence n'est pas confirmée. Fichier `/llms.txt` (format llmstxt.org) pour les assistants et les moteurs à base d'IA : une ligne par page, avec sa meta description. |
 | Sécurité | CSP d'Astro + en-têtes HTTP dans Caddy | Astro calcule les empreintes des scripts et des styles de chaque page. Caddy ajoute HSTS, X-Frame-Options, etc. |
 | Serveur web | Caddy 2 | HTTPS automatique, compression, cache long des fichiers `/_astro/`. |
 | Hébergement | VPS (hébergeur et pays à choisir, voir section 9), Docker Compose | La même plateforme que notre offre « Hébergement géré » : le site est notre premier client. |
@@ -73,14 +73,15 @@ src/
   assets/polices/         Police Manrope (fichier woff2 et licence OFL)
   components/             Composants des pages (Hero, Section, Encadre, Texte, FAQ, formulaires…)
   data/
-    site.ts               Nom, zone, délais, engagements (placeholders du brief)
+    site.ts               Nom, domaine, coordonnées, conditions des CGV, appels à l'action
     forfaits.ts           Forfaits de maintenance (sans prix)
     navigation.ts         Menus, numéro et surtitre des pages de services
-    methode.ts            Les cinq étapes d'un projet (accueil, services)
+    processus.ts          Les cinq étapes d'un projet (accueil, services)
     maquettes.ts          Visuels des en-têtes : textes alternatifs, légendes, largeurs affichées
   layouts/BaseLayout.astro  Structure commune : <head>, SEO, en-tête, pied de page
   lib/                    Schémas des formulaires, envoi d'e-mail, limite de débit, SEO
   pages/                  Une page par URL de l'arborescence (section 5 du brief)
+  pages/llms.txt.ts       Fichier /llms.txt : une ligne par page, avec sa meta description
   styles/global.css       Tailwind, jetons de design, utilitaires (conteneur, surtitre…) et animations
 scripts/check-content.mjs Vérification des règles de contenu
 scripts/generer-image-partage.mjs  Image de partage public/og.png
@@ -96,19 +97,20 @@ deploy/                   Docker Compose, Caddyfile, script de déploiement
 ## 5. Modifier le contenu
 
 - **Textes des pages** : dans `src/pages/`. Chaque page indique la section du brief d'où viennent ses textes.
+- **Nouvelle page ou nouvelle meta description** : la reporter aussi dans `src/pages/llms.txt.ts`. Le test `tests/e2e/llms.spec.ts` échoue si une page du sitemap manque ou si une description est différente.
 - **Prix** : aucun sur le site. Chaque prix est donné dans un devis. Les forfaits de maintenance (sans prix) sont dans `src/data/forfaits.ts`.
-- **Nom, domaine, zone, délais, engagements** : dans `src/data/site.ts`. Le domaine sert aussi d'adresse de production dans `astro.config.mjs`.
+- **Nom, domaine, coordonnées, conditions des CGV, appels à l'action** : dans `src/data/site.ts`. Pas d'adresse, de ville ni de zone servie tant que l'adresse de l'agence n'est pas confirmée. Le domaine sert aussi d'adresse de production dans `astro.config.mjs`.
 - **Visuels des en-têtes** (onze pages, section 6.19 du brief) : des maquettes d'écrans pour des clients fictifs, avec la légende « Exemple fictif ». Les sources HTML sont dans `design/heros/`. Après une modification, lancez `pnpm image:heros` : le script vérifie les règles de contenu sur les sources (le texte d'une image échappe à `pnpm check:content`), puis écrit les images AVIF et WebP dans `src/assets/heros/`. Le composant `MaquetteHero` les sert telles quelles, sans conversion par Astro : la page Audit gratuit, rendue par le serveur, ne convertit rien à chaque visite. Textes alternatifs et légende : `src/data/maquettes.ts`. Les mêmes images servent de vignettes aux cartes des services (Accueil, Services), avec une légende sous la grille, et le visuel de l'audit gratuit illustre l'encadré de l'accueil. Détails : `design/heros/README.md`.
 - **Image de partage** (aperçu sur les réseaux sociaux) : lancez `pnpm image:partage` après un changement du nom de l'agence, du logo ou des couleurs. Le script affiche le nom dès qu'il n'est plus un placeholder.
 - **Logo** : sources dans `design/logo/`. Pour le changer, suivez `design/logo/README.md` (« Changer le logo ») : `pnpm image:logo` régénère le favicon ICO, l'icône Apple et le logo des données structurées.
 - **Placeholders surlignés** : tant qu'un placeholder n'est pas remplacé, il s'affiche sur fond jaune (classe `a-completer`), pour la relecture. Le composant `Texte` s'en charge pour une phrase, `Prose` pour les pages légales. Quand la valeur est confirmée dans `src/data/site.ts`, les crochets et le surlignage disparaissent.
 
-**Design.** Maquettes reçues du designer le 26 septembre 2026 (archive « website_site_redesign ») : accueil, Services, Sites web, Méthode, L'agence, Contact, Audit gratuit, en-tête et pied de page. Les autres pages de services, les pages légales et la page 404 suivent le même système, sur le modèle de la page Sites web.
+**Design.** Maquettes reçues du designer le 26 septembre 2026 (archive « website_site_redesign ») : accueil, Services, Sites web, Méthode (aujourd'hui Processus), L'agence, Contact, Audit gratuit, en-tête et pied de page. Les autres pages de services, les pages légales et la page 404 suivent le même système, sur le modèle de la page Sites web.
 - Logo (archive du 26 septembre 2026, `design/logo/`) : un symbole de deux demi-disques décalés et le nom sur deux lignes (composant `Logo`). Version couleur dans l'en-tête, version blanche dans le pied de page. Le même symbole sert pour le favicon, l'icône Apple, les données structurées et l'image de partage.
 - Couleurs : bleu nuit `encre` (#0b1b33) pour le texte, les boutons et les encadrés sombres, bleu `bleu` (#1d4ed8) pour les liens, gris pour le texte secondaire (`texte`, `doux`, `fonce`, `discret`) et les fonds (`surface`), jaune `surligne` pour les placeholders. Sur fond sombre, le logo utilise aussi `nuit-logo-bleu` et `nuit-logo-nom`.
 - Typographie : Manrope. Titres en graisse légère (300) avec une partie en gras (composant `Accent`, propriété `motCle`), tailles fluides (`text-accroche`, `text-titre`, `text-titre-service`, `text-section`, `text-encadre`, `text-appel`). Un surtitre en petites capitales au-dessus de chaque titre de section (utilitaire `surtitre`, textes dans la section 6.20 du brief).
 - Mise en page : contenu de 1200 px au plus (utilitaire `conteneur`). En-tête collant, fond blanc translucide. En haut de chaque page, un fond gris qui s'éclaircit vers le blanc (`BaseLayout`). Sections en trois dispositions (`Section` : `colonnes`, `centre`, `pile`), encadrés arrondis (`Encadre` : `gris`, `sombre`, `cadre`). Boutons en pilule (`ButtonLink`). Pied de page bleu nuit.
-- En-tête des pages (`Hero`) : centré avec le visuel en dessous (accueil), texte et visuel côte à côte (pages de services, audit gratuit) ou texte seul (Services, Méthode, L'agence).
+- En-tête des pages (`Hero`) : centré avec le visuel en dessous (accueil), texte et visuel côte à côte (pages de services, audit gratuit) ou texte seul (Services, Processus, L'agence).
 - Écarts avec les maquettes, pour l'accessibilité : les liens dans le texte sont soulignés (la couleur seule ne suffit pas, WCAG 1.4.1) ; la bordure des champs est plus foncée (contraste de 3:1, WCAG 1.4.11) ; le gris des surtitres, des numéros et des mentions « facultatif » est un peu plus foncé (#647089 au lieu de #6b7690 et #8a94a8 : contraste de 4,5:1 sur le fond gris) ; l'exemple de l'adresse du site (audit) est une aide visible sous le libellé, pas un texte d'exemple dans le champ, qui disparaît pendant la saisie.
 - Écarts avec les maquettes, pour les règles du site : la légende « Exemple fictif » reste sous chaque visuel (et sous la grille des cartes) ; la section « L'équipe » de la maquette de L'agence est masquée jusqu'à réception des vraies informations (révision des textes du 26 septembre 2026) ; les textes des pages sont ceux de cette révision, pas ceux des maquettes.
 

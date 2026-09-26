@@ -108,6 +108,24 @@ export function extraireTexte(html) {
 }
 
 /**
+ * Extrait le texte d'un fichier Markdown (llms.txt) : le texte des liens reste, leurs adresses
+ * et les marques de titre, de citation et de liste sont retirées.
+ * @param {string} markdown
+ * @returns {string[]} Un fragment de texte par ligne.
+ */
+export function extraireTexteMarkdown(markdown) {
+  return markdown
+    .split('\n')
+    .map((ligne) =>
+      ligne
+        .replace(/\[([^\]]*)\]\([^)]*\)/g, '$1')
+        .replace(/^\s*(?:#{1,6}|>|[-*])\s+/, '')
+        .trim(),
+    )
+    .filter(Boolean);
+}
+
+/**
  * @typedef {{ niveau: 'erreur' | 'avertissement', regle: string, extrait: string }} Probleme
  */
 

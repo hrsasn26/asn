@@ -5,17 +5,14 @@
  * Ne les remplacez que par des informations confirmées.
  * Le script `pnpm check:content --strict` bloque la mise en production tant qu'il en reste.
  *
- * Les délais, le pays d'hébergement et la ville ne sont plus affichés tant qu'ils ne sont pas
- * confirmés (brief, section 4 : « Aucune valeur non confirmée »).
+ * Les délais, le pays d'hébergement, la ville, l'adresse et la zone servie ne sont pas affichés
+ * tant qu'ils ne sont pas confirmés (brief, section 4 : « Aucune valeur non confirmée »), ni sur
+ * les pages, ni dans les données structurées, ni dans llms.txt.
  */
 export const site = {
   nom: 'Digital Solutions',
   /** Domaine du site. L'adresse sans « www » redirige vers celui-ci. */
   domaine: 'www.digital-solutions.ma',
-  /** Code du pays (ISO 3166-1), pour les données structurées. */
-  pays: 'MA',
-  /** Zone servie, pour les données structurées. La ville reste à choisir (brief, section 1). */
-  zone: 'Maroc',
   email: '[contact@digital-solutions.ma : adresse à créer]',
   telephone: '[numéro de téléphone]',
 } as const;
