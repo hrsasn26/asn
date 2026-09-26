@@ -1087,9 +1087,9 @@ Reprend l'appel à l'action final de la page Services (6.1).
 
 **H1 :** Une équipe accessible, du premier échange au suivi
 
-**Sous-titre :** Nous concevons des sites et des applications solides, avec un interlocuteur direct et une responsabilité claire sur la qualité technique. Nous sommes basés à Fès.
+**Sous-titre :** Nous concevons des sites et des applications solides, avec un interlocuteur direct et une responsabilité claire sur la qualité technique.
 
-> Ancien H1 : « Une équipe d'ingénieurs, à la taille de votre projet ». La ville est revenue dans le sous-titre le 26 septembre 2026, avec l'adresse de l'agence.
+> Ancien H1 : « Une équipe d'ingénieurs, à la taille de votre projet ». La phrase « Nous sommes basés à Fès. » est retirée du sous-titre le 26 septembre 2026 : l'adresse est sur Contact et dans le pied de page.
 
 #### Section : pourquoi nous avons créé l'agence
 
