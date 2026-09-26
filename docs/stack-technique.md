@@ -102,6 +102,7 @@ deploy/                   Docker Compose, Caddyfile, script de déploiement
 - **Image de partage** (aperçu sur les réseaux sociaux) : lancez `pnpm image:partage` après un changement du nom de l'agence. Le script affiche le nom dès qu'il n'est plus un placeholder.
 
 **Animations.** Elles sont en CSS seul, dans `src/styles/global.css` :
+- le héros s'anime à l'ouverture de la page : le titre, le sous-titre et les boutons montent en place (`anim-montee`), un trait se dessine sous le mot clé du titre (propriété `motCle` du composant `Hero`), des points et des halos de couleur apparaissent derrière l'illustration (`anim-halo`) et descendent moins vite que la page au défilement (`anim-parallaxe`) ;
 - les illustrations s'animent à l'ouverture de la page (classes `anim-entree`, `anim-zoom`, `anim-trace`, `anim-pousse`, `anim-ecrit`, `anim-flux`, `anim-aiguille`, `anim-tourne`, `anim-sonne`, `anim-saut`) ;
 - l'ordre d'apparition se règle avec `delai-300` (300 ms) ; `puis-200` compte à partir du délai du parent ;
 - les cartes et les titres montent en place pendant le défilement (`apparition`), la frise des étapes se remplit (`anim-frise`) ;
@@ -116,6 +117,8 @@ Règles, vérifiées par `tests/e2e/animations.spec.ts` pour les deux premières
 Deux pièges pour les animations liées au défilement :
 - Lightning CSS (utilisé par Tailwind) fusionne `animation-timeline` dans le raccourci `animation`, que les navigateurs refusent. Écrivez les propriétés détaillées (`animation-name`, `animation-duration`, etc.) ;
 - un parent en `overflow: hidden` devient un conteneur de défilement et bloque la timeline `view()`. Utilisez `overflow: clip` ou rien.
+
+Un élément animé en `translate` ou avec un `view-transition-name` crée un contexte d'empilement. L'en-tête a donc `relative z-30` : sans cela, le titre animé du héros passe au-dessus du menu mobile ouvert.
 
 **Placeholders.** Les informations non confirmées restent entre crochets : `[Ville ou région]`, `[pays à définir]`, `[À rédiger : …]`. Le script `pnpm check:content` les liste. En mode `--strict`, il bloque la mise en production tant qu'il en reste.
 

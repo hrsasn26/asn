@@ -147,6 +147,37 @@
   }
 }
 
+/* Héros : le texte monte en place à l'ouverture de la page (sans opacité : le texte reste lisible). */
+@utility anim-montee {
+  @media (prefers-reduced-motion: no-preference) {
+    animation: montee 0.8s cubic-bezier(0.2, 0.7, 0.3, 1) both;
+  }
+}
+
+/* Héros : un halo de couleur grandit doucement derrière l'illustration. */
+@utility anim-halo {
+  @media (prefers-reduced-motion: no-preference) {
+    animation: halo 1.6s cubic-bezier(0.2, 0.7, 0.3, 1) both;
+  }
+}
+
+/*
+ * Héros : le décor descend moins vite que la page pendant le défilement (profondeur).
+ * Distance réglable avec la variable --parallaxe.
+ */
+@utility anim-parallaxe {
+  @media (prefers-reduced-motion: no-preference) {
+    @supports (animation-timeline: scroll()) {
+      animation-name: parallaxe;
+      animation-duration: auto;
+      animation-timing-function: linear;
+      animation-fill-mode: both;
+      animation-timeline: scroll(root);
+      animation-range: 0 100vh;
+    }
+  }
+}
+
 /*
  * Blocs de la page : ils montent en place quand ils entrent dans l'écran (défilement).
  * Propriétés détaillées obligatoires : le raccourci « animation » n'accepte pas animation-timeline.
@@ -304,6 +335,25 @@
 @keyframes aiguille {
   from {
     rotate: -155deg;
+  }
+}
+
+@keyframes montee {
+  from {
+    translate: 0 1.5rem;
+  }
+}
+
+@keyframes halo {
+  from {
+    opacity: 0;
+    scale: 0.6;
+  }
+}
+
+@keyframes parallaxe {
+  to {
+    translate: 0 var(--parallaxe, 8rem);
   }
 }
 

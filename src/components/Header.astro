@@ -8,7 +8,7 @@ const path = cheminPublic(Astro.url.pathname);
 const isCurrent = (href: string) => path === href || path.startsWith(`${href}/`);
 ---
 
-<header class="border-b border-slate-200 bg-white [view-transition-name:entete]">
+<header class="relative z-30 border-b border-slate-200 bg-white [view-transition-name:entete]">
   <div class="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-4 sm:px-6">
     <a href="/" class="text-lg font-bold text-slate-900 no-underline">
       {site.nom}
