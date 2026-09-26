@@ -5,8 +5,9 @@ services:
     image: ${IMAGE:-ghcr.io/hrsasn26/asn}:${IMAGE_TAG:-latest}
     restart: unless-stopped
     environment:
-      MAIL_TRANSPORT: ${MAIL_TRANSPORT:-brevo}
-      BREVO_API_KEY: ${BREVO_API_KEY:?BREVO_API_KEY manquant}
+      MAIL_TRANSPORT: ${MAIL_TRANSPORT:-mailjet}
+      MAILJET_API_KEY: ${MAILJET_API_KEY:?MAILJET_API_KEY manquant}
+      MAILJET_SECRET_KEY: ${MAILJET_SECRET_KEY:?MAILJET_SECRET_KEY manquant}
       MAIL_FROM: ${MAIL_FROM:?MAIL_FROM manquant}
       MAIL_TO: ${MAIL_TO:?MAIL_TO manquant}
       FORM_RATE_LIMIT_MAX: ${FORM_RATE_LIMIT_MAX:-5}

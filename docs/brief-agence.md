@@ -1838,7 +1838,7 @@ Les visuels des pages de services servent aussi de vignettes aux cartes des serv
 
 **Données personnelles (loi 09-08, CNDP)**
 - **Déclaration préalable à la CNDP** des traitements du site (formulaires de contact et d'audit), avant la mise en ligne. Indiquer le numéro de récépissé dans les mentions légales et dans la politique de confidentialité.
-- **Transfert de données à l'étranger** (article 43) : Brevo (envoi des e-mails), WhatsApp (Meta, messages reçus sur le numéro de l'agence) et un hébergeur hors du Maroc reçoivent des données. Le transfert est à déclarer à la CNDP. Vérifier que le pays de destination est sur la liste des pays reconnus par la CNDP.
+- **Transfert de données à l'étranger** (article 43) : Mailjet (envoi des e-mails), WhatsApp (Meta, messages reçus sur le numéro de l'agence) et un hébergeur hors du Maroc reçoivent des données. Le transfert est à déclarer à la CNDP. Vérifier que le pays de destination est sur la liste des pays reconnus par la CNDP.
 - **Droits des personnes** : information (article 5), accès (article 7), rectification et suppression (article 8), opposition (article 9).
 - **Cookies** : consentement avant tout cookie de suivi. Le site n'en utilise pas pour l'instant.
 
@@ -1883,7 +1883,7 @@ Les valeurs de `src/data/` (modalités de paiement, garantie, durée d'engagemen
 **Politique de confidentialité**
 - Responsable du traitement : « Déclaration auprès de la CNDP : [numéro de récépissé]. » (l'adresse est affichée depuis le 26 septembre 2026)
 - Base légale (consentement, article 4 de la loi 09-08, donné par la case du formulaire ou en écrivant sur WhatsApp) : [À confirmer par le juriste]
-- Brevo : [Vérifier la localisation des données, le contrat de sous-traitance et la déclaration du transfert à la CNDP]
+- Mailjet : [Vérifier la localisation des données, le contrat de sous-traitance et la déclaration du transfert à la CNDP]
 - WhatsApp (Meta) : [Vérifier les conditions de WhatsApp Business et la déclaration du transfert à la CNDP]
 - Destinataires : « Notre hébergeur : [nom de l'hébergeur, pays]. »
 - Section « Combien de temps nous les gardons » : [Durée à définir, par exemple 3 ans après notre dernier échange]. Après son retour, remettez aussi « combien de temps nous les gardons » dans la meta description et dans `llms.txt`.
@@ -1918,4 +1918,4 @@ Les valeurs de `src/data/` (modalités de paiement, garantie, durée d'engagemen
 - [x] Choisir les technologies du site et commencer le développement (voir [stack-technique.md](stack-technique.md))
 - [ ] Faire valider les CGV, les mentions légales et la politique de confidentialité par un juriste (droit marocain)
 - [ ] Fournir les informations et les clauses des pages légales, puis remettre les parties retirées (section 7, « Parties retirées des pages légales »)
-- [ ] Déclarer les traitements du site à la CNDP, avec le transfert des données vers Brevo, WhatsApp (Meta) et l'hébergeur
+- [ ] Déclarer les traitements du site à la CNDP, avec le transfert des données vers Mailjet, WhatsApp (Meta) et l'hébergeur
