@@ -71,6 +71,23 @@ test.describe('formulaire de contact', () => {
     expect(envois, "Entrée n'envoie pas le formulaire").toEqual([]);
   });
 
+  test('affiche tous les choix de la liste « Votre projet » dans la fenêtre', async ({ page }) => {
+    await page.goto('/contact');
+    test.skip(
+      !(await page.evaluate(() => CSS.supports('appearance', 'base-select'))),
+      'Liste du système : elle ne s’affiche pas dans la page.',
+    );
+    // Ordinateur (1280 × 720) : la liste n'a la place ni au-dessus ni au-dessous du champ. Avant la
+    // correction, elle était coupée au bord de la fenêtre et les derniers choix étaient cachés.
+    const liste = page.getByLabel(/^Votre projet/);
+    await liste.click();
+    const choix = await liste.getByRole('option').all();
+    expect(choix.length, 'Choix de la liste').toBeGreaterThan(1);
+    for (const unChoix of choix) {
+      await expect(unChoix).toBeInViewport({ ratio: 1 });
+    }
+  });
+
   test('propose WhatsApp avec un message déjà rempli', async ({ page }) => {
     await page.goto('/contact');
     // Le pied de page a le même lien : on vérifie celui du contenu de la page.
