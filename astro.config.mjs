@@ -68,6 +68,22 @@ export default defineConfig({
       // Les pages rendues par le serveur ne sont pas détectées automatiquement.
       customPages: ['/contact', '/audit-gratuit'].map((chemin) => new URL(chemin, site).href),
     }),
+    {
+      // Aperçu des e-mails des formulaires (src/lib/emails.ts), avec `pnpm dev` seulement :
+      // /apercu-email/contact et /apercu-email/audit. Absent du site construit.
+      name: 'apercu-email',
+      hooks: {
+        'astro:config:setup': ({ command, injectRoute }) => {
+          if (command === 'dev') {
+            injectRoute({
+              pattern: '/apercu-email/[formulaire]',
+              entrypoint: './src/dev/apercu-email.ts',
+              prerender: false,
+            });
+          }
+        },
+      },
+    },
   ],
   build: {
     format: 'directory',
