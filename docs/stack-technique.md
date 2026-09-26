@@ -35,7 +35,7 @@
 | Images | Visuels des en-têtes en AVIF, icônes Lucide (`@lucide/astro`, licence ISC) | Les visuels des en-têtes sont des maquettes d'écrans pour des clients fictifs, rendues en images (`pnpm image:heros`). Ils servent aussi de vignettes aux cartes des services. Aucune photo de stock. Les icônes Lucide ne restent que dans les messages d'erreur des formulaires. |
 | Formulaires | Astro Actions + Zod, adaptateur `@astrojs/node` | Validation côté serveur, messages d'erreur en français, champ piège anti-spam, limite de débit par adresse IP. |
 | E-mails | Brevo (API transactionnelle) | Chaque demande arrive par e-mail à l'équipe. Serveurs hors du Maroc : transfert à déclarer à la CNDP. |
-| SEO et GEO | `@astrojs/sitemap`, JSON-LD, `llms.txt` | Balises title et meta du brief. Données structurées : ProfessionalService, Service, BreadcrumbList. Fichier `/llms.txt` (format llmstxt.org) pour les assistants et les moteurs à base d'IA : une ligne par page, avec sa meta description. |
+| SEO et GEO | `@astrojs/sitemap`, JSON-LD, `llms.txt` | Balises title et meta du brief. Données structurées : ProfessionalService, Service, BreadcrumbList, sans adresse ni zone servie tant que l'adresse de l'agence n'est pas confirmée. Fichier `/llms.txt` (format llmstxt.org) pour les assistants et les moteurs à base d'IA : une ligne par page, avec sa meta description. |
 | Sécurité | CSP d'Astro + en-têtes HTTP dans Caddy | Astro calcule les empreintes des scripts et des styles de chaque page. Caddy ajoute HSTS, X-Frame-Options, etc. |
 | Serveur web | Caddy 2 | HTTPS automatique, compression, cache long des fichiers `/_astro/`. |
 | Hébergement | VPS (hébergeur et pays à choisir, voir section 9), Docker Compose | La même plateforme que notre offre « Hébergement géré » : le site est notre premier client. |
@@ -73,7 +73,7 @@ src/
   assets/polices/         Police Manrope (fichier woff2 et licence OFL)
   components/             Composants des pages (Hero, Section, Encadre, Texte, FAQ, formulaires…)
   data/
-    site.ts               Nom, zone, délais, engagements (placeholders du brief)
+    site.ts               Nom, domaine, coordonnées, conditions des CGV, appels à l'action
     forfaits.ts           Forfaits de maintenance (sans prix)
     navigation.ts         Menus, numéro et surtitre des pages de services
     processus.ts          Les cinq étapes d'un projet (accueil, services)
@@ -99,7 +99,7 @@ deploy/                   Docker Compose, Caddyfile, script de déploiement
 - **Textes des pages** : dans `src/pages/`. Chaque page indique la section du brief d'où viennent ses textes.
 - **Nouvelle page ou nouvelle meta description** : la reporter aussi dans `src/pages/llms.txt.ts`. Le test `tests/e2e/llms.spec.ts` échoue si une page du sitemap manque ou si une description est différente.
 - **Prix** : aucun sur le site. Chaque prix est donné dans un devis. Les forfaits de maintenance (sans prix) sont dans `src/data/forfaits.ts`.
-- **Nom, domaine, zone, délais, engagements** : dans `src/data/site.ts`. Le domaine sert aussi d'adresse de production dans `astro.config.mjs`.
+- **Nom, domaine, coordonnées, conditions des CGV, appels à l'action** : dans `src/data/site.ts`. Pas d'adresse, de ville ni de zone servie tant que l'adresse de l'agence n'est pas confirmée. Le domaine sert aussi d'adresse de production dans `astro.config.mjs`.
 - **Visuels des en-têtes** (onze pages, section 6.19 du brief) : des maquettes d'écrans pour des clients fictifs, avec la légende « Exemple fictif ». Les sources HTML sont dans `design/heros/`. Après une modification, lancez `pnpm image:heros` : le script vérifie les règles de contenu sur les sources (le texte d'une image échappe à `pnpm check:content`), puis écrit les images AVIF et WebP dans `src/assets/heros/`. Le composant `MaquetteHero` les sert telles quelles, sans conversion par Astro : la page Audit gratuit, rendue par le serveur, ne convertit rien à chaque visite. Textes alternatifs et légende : `src/data/maquettes.ts`. Les mêmes images servent de vignettes aux cartes des services (Accueil, Services), avec une légende sous la grille, et le visuel de l'audit gratuit illustre l'encadré de l'accueil. Détails : `design/heros/README.md`.
 - **Image de partage** (aperçu sur les réseaux sociaux) : lancez `pnpm image:partage` après un changement du nom de l'agence, du logo ou des couleurs. Le script affiche le nom dès qu'il n'est plus un placeholder.
 - **Logo** : sources dans `design/logo/`. Pour le changer, suivez `design/logo/README.md` (« Changer le logo ») : `pnpm image:logo` régénère le favicon ICO, l'icône Apple et le logo des données structurées.

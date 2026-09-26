@@ -79,7 +79,6 @@ export const GET: APIRoute = ({ site: adresse }) => {
     `# ${site.nom}`,
     `> ${accueil}`,
     'Des sites et des applications fiables, testés, sécurisés et suivis dans la durée. ' +
-      `Zone servie : ${site.zone}. ` +
       "Chaque projet fait l'objet d'un devis gratuit et détaillé, à prix fixe.",
     ...sections.map(({ titre, liens }) => `## ${titre}\n\n${liens.map(ligne).join('\n')}`),
   ].join('\n\n');

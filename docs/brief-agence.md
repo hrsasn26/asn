@@ -186,7 +186,7 @@ Dès que possible, ajouter des preuves réelles : exemple de rapport, capture de
 - **Honnête** : aucune statistique, aucun témoignage ni aucune promesse de résultat inventés (ex. pas de « première place sur Google garantie »).
 - **Rassurant, pas alarmiste** : décrire les risques sans formule anxiogène.
 - **FAQ** : chaque réponse commence par une réponse directe (« Oui », « Non », « Cela dépend de… »), puis explique, en deux à cinq phrases si possible.
-- **Aucune valeur non confirmée** : pas de délai, de durée, de ville ni de pays tant qu'ils ne sont pas confirmés. La phrase est retirée plutôt que publiée avec un placeholder (décision du 26 septembre 2026). Exceptions : les pages légales et les coordonnées de l'agence, obligatoires.
+- **Aucune valeur non confirmée** : pas de délai, de durée, de ville, de pays, d'adresse ni de zone servie tant qu'ils ne sont pas confirmés, ni sur les pages, ni dans les données structurées, ni dans `llms.txt`. La phrase est retirée plutôt que publiée avec un placeholder (décision du 26 septembre 2026). Exceptions : les pages légales et les coordonnées de l'agence, obligatoires.
 - **Pas de points d'exclamation.**
 - **Mots à éviter sur le site** : DevOps, QA, stack, CI/CD, framework, « solutions innovantes », « optimiser », « digitaliser », « 360° », « ingénieurs ».
 - **Publics non nommés** : le site ne nomme pas les publics visés (TPE, PME, particuliers). Les mots-clés visés ne les contiennent pas non plus. Il n'est pas nécessaire de les préciser (décision du 26 septembre 2026, à valider). Exception : les pages légales, qui parlent des clients particuliers (loi 31-08).
@@ -1857,7 +1857,7 @@ Les visuels des pages de services servent aussi de vignettes aux cartes des serv
 - [x] Valider la légende et les textes alternatifs des visuels des en-têtes (section 6.19)
 - [ ] Remplacer les visuels des en-têtes par des projets réels quand des clients auront donné leur accord écrit (section 6.19)
 - [ ] Relire et valider la révision des textes du 26 septembre 2026 (recommandations de wording, section 6)
-- [ ] Confirmer les valeurs retirées du site, puis les réafficher : délai de réponse, délais des projets, pays d'hébergement, ville, durée de conservation des sauvegardes, volume de modifications et délais d'intervention des forfaits, durée d'engagement, garantie
+- [ ] Confirmer les valeurs retirées du site, puis les réafficher : délai de réponse, délais des projets, pays d'hébergement, ville, adresse et zone servie (données structurées, llms.txt), durée de conservation des sauvegardes, volume de modifications et délais d'intervention des forfaits, durée d'engagement, garantie
 - [ ] Fournir l'histoire de l'agence, la ville, les noms, les rôles et les photos de l'équipe, pour réafficher la section « L'équipe » (section 6.10)
 - [ ] Préparer des preuves concrètes : exemple de rapport d'audit, captures de tests, exemples de livrables, cas clients et témoignages avec l'accord écrit des clients
 - [x] Intégrer le design du site : maquettes du designer, intégrées le 26 septembre 2026 (section « Design » de [stack-technique.md](stack-technique.md))
