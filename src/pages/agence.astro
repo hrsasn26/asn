@@ -1,14 +1,20 @@
 ---
 // Textes : docs/brief-agence.md, section 6.10 (proposition à valider). Surtitres : section 6.20.
-// Équipe : noms et rôles donnés par l'agence le 26 septembre 2026. Pas de photo : les initiales
-// la remplacent jusqu'à réception des vraies photos.
+// Équipe : src/data/equipe.ts. Pas de photo : les initiales la remplacent jusqu'à réception des
+// vraies photos.
 import CtaFinal from '~/components/CtaFinal.astro';
 import Encadre from '~/components/Encadre.astro';
 import FeatureGrid from '~/components/FeatureGrid.astro';
 import Hero from '~/components/Hero.astro';
 import Section from '~/components/Section.astro';
+import { equipe } from '~/data/equipe';
 import { cta, site } from '~/data/site';
 import BaseLayout from '~/layouts/BaseLayout.astro';
+import { pageAgenceJsonLd, personneJsonLd } from '~/lib/seo';
+
+const title = `L'agence : une équipe technique à votre service | ${site.nom}`;
+const description =
+  'Une équipe qui conçoit, teste, héberge et maintient des sites et des applications, avec un interlocuteur direct.';
 
 const valeurs = [
   { title: 'Fiabilité', text: 'Nous livrons ce que nous avons vérifié.' },
@@ -30,25 +36,6 @@ const valeurs = [
   },
 ];
 
-// Rôles : titres choisis d'après le domaine de compétence de chacun (brief, section 6.10).
-const equipe = [
-  {
-    nom: 'Hamza Legdani',
-    role: 'Architecte web et logiciels',
-    text: 'Conçoit vos sites web, vos applications sur mesure et vos logiciels SaaS, puis les garde en ligne.',
-  },
-  {
-    nom: 'Mohammed Reda Benaghmouch',
-    role: 'Expert qualité et tests',
-    text: 'Teste chaque site et chaque application avant la mise en ligne, et vérifie leur sécurité.',
-  },
-  {
-    nom: 'Saad Berrada',
-    role: 'Architecte mobile et IA',
-    text: "Conçoit vos applications mobiles, vos automatisations, vos tableaux de bord et vos outils d'intelligence artificielle.",
-  },
-];
-
 /** Initiales du prénom et du nom de famille (dernier mot) : « Mohammed Reda Benaghmouch » donne « MB ». */
 const initiales = (nom: string) => {
   const mots = nom.split(' ');
@@ -60,14 +47,20 @@ const decalages = ['', 'sm:[--decalage:1.5rem]', 'lg:[--decalage:3rem]'];
 ---
 
 <BaseLayout
-  title={`L'agence : une équipe technique à votre service | ${site.nom}`}
-  description="Une équipe qui conçoit, teste, héberge et maintient des sites et des applications, avec un interlocuteur direct."
+  {title}
+  {description}
   breadcrumbs={[{ label: "L'agence", href: '/agence' }]}
+  jsonLd={{
+    '@graph': [
+      pageAgenceJsonLd(new URL('/agence', Astro.site ?? Astro.url.origin), title, description),
+      ...equipe.map(personneJsonLd),
+    ],
+  }}
 >
   <Hero
     title="Une équipe accessible, du premier échange au suivi"
     motCle="du premier échange au suivi"
-    subtitle={`Nous concevons des sites et des applications solides, avec un interlocuteur direct et une responsabilité claire sur la qualité technique. Nous sommes basés à ${site.adresse.ville}.`}
+    subtitle="Nous concevons des sites et des applications solides, avec un interlocuteur direct et une responsabilité claire sur la qualité technique."
   />
 
   <Section surtitre="Notre histoire" title={`Pourquoi ${site.nom} existe`} disposition="colonnes">

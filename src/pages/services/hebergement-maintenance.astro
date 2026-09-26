@@ -55,7 +55,10 @@ const faq: QuestionFaq[] = [
     { label: 'Services', href: '/services' },
     { label: 'Hébergement et maintenance', href: '/services/hebergement-maintenance' },
   ]}
-  jsonLd={serviceJsonLd({ name: title, description })}
+  jsonLd={serviceJsonLd(
+    { name: title, description, href: '/services/hebergement-maintenance' },
+    Astro.site ?? Astro.url.origin,
+  )}
 >
   <Hero
     maquette="hebergement-maintenance"

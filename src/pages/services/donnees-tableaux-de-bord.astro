@@ -59,7 +59,10 @@ const faq: QuestionFaq[] = [
     { label: 'Services', href: '/services' },
     { label: 'Données et tableaux de bord', href: '/services/donnees-tableaux-de-bord' },
   ]}
-  jsonLd={serviceJsonLd({ name: title, description })}
+  jsonLd={serviceJsonLd(
+    { name: title, description, href: '/services/donnees-tableaux-de-bord' },
+    Astro.site ?? Astro.url.origin,
+  )}
 >
   <Hero
     maquette="donnees-tableaux-de-bord"

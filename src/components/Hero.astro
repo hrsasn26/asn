@@ -2,8 +2,10 @@
 /**
  * En-tête de page (maquettes). Trois mises en page :
  * - centre : accueil. Texte centré, grand titre, visuel sous les boutons ;
- * - avec `maquette` : pages de services et audit gratuit. Texte à gauche, visuel à droite
- *   (sous le texte sur téléphone) ;
+ * - avec `maquette` : pages de services et audit gratuit. Titre à gauche, sous-titre et boutons
+ *   à droite (grand écran), visuel en dessous sur toute la largeur du contenu. Écart avec les
+ *   maquettes (visuel à droite du texte) : à côté du texte, les écrans étaient trop petits pour
+ *   être lisibles (voir docs/stack-technique.md, section « Design ») ;
  * - sans visuel : Services, Processus, L'agence. Texte seul.
  * Les boutons sont passés dans le slot par défaut.
  */
@@ -27,7 +29,7 @@ interface Props {
 
 const { title, motCle, subtitle, surtitre, maquette, centre = false } = Astro.props;
 const avecBoutons = Astro.slots.has('default');
-const enColonnes = maquette !== undefined && !centre;
+const visuelDessous = maquette !== undefined && !centre;
 ---
 
 <section
@@ -39,56 +41,63 @@ const enColonnes = maquette !== undefined && !centre;
   <div
     class:list={[
       'conteneur',
-      centre && 'flex flex-col items-center pt-20 text-center sm:pt-28',
-      enColonnes && 'flex flex-wrap items-center gap-x-16 gap-y-12 pt-12 sm:pt-14',
-      !centre && !enColonnes && 'pt-12 sm:pt-14',
+      centre ? 'flex flex-col items-center pt-20 text-center sm:pt-28' : 'pt-12 sm:pt-14',
     ]}
   >
-    <div class:list={[enColonnes && 'min-w-0 flex-[1_1_26.25rem]']}>
-      {surtitre && <p class="anim-montee surtitre text-discret">{surtitre}</p>}
-      <h1
-        class:list={[
-          'anim-montee',
-          surtitre && (centre ? 'mt-7' : 'mt-5'),
-          centre && 'max-w-[61.25rem] text-accroche',
-          enColonnes && 'text-titre-service',
-          !centre && !enColonnes && 'max-w-[56.25rem] text-titre',
-        ]}
-      >
-        <Accent texte={title} motCle={motCle} />
-      </h1>
-      {subtitle && (
-        <p
+    <div
+      class:list={[
+        visuelDessous &&
+          'lg:grid lg:grid-cols-[minmax(0,1.1fr)_minmax(0,1fr)] lg:items-end lg:gap-x-16',
+      ]}
+    >
+      <div>
+        {surtitre && <p class="anim-montee surtitre text-discret">{surtitre}</p>}
+        <h1
           class:list={[
-            'anim-montee mt-7 text-lg leading-[1.65] text-texte delai-150 sm:text-[1.1875rem]',
-            enColonnes ? 'max-w-[32.5rem]' : 'max-w-[40rem]',
-            centre && 'mx-auto',
+            'anim-montee',
+            surtitre && (centre ? 'mt-7' : 'mt-5'),
+            centre && 'max-w-[61.25rem] text-accroche',
+            visuelDessous && 'text-titre-service',
+            !centre && !visuelDessous && 'max-w-[56.25rem] text-titre',
           ]}
         >
-          <Texte texte={subtitle} />
-        </p>
-      )}
-      {avecBoutons && (
-        <div
-          class:list={[
-            'anim-montee flex flex-wrap gap-3 delai-300',
-            centre ? 'mt-10 justify-center' : 'mt-9',
-          ]}
-        >
-          <slot />
+          <Accent texte={title} motCle={motCle} />
+        </h1>
+      </div>
+      {(subtitle || avecBoutons) && (
+        <div>
+          {subtitle && (
+            <p
+              class:list={[
+                'anim-montee mt-7 max-w-[40rem] text-lg leading-[1.65] text-texte delai-150 sm:text-[1.1875rem]',
+                visuelDessous && 'lg:mt-0',
+                centre && 'mx-auto',
+              ]}
+            >
+              <Texte texte={subtitle} />
+            </p>
+          )}
+          {avecBoutons && (
+            <div
+              class:list={[
+                'anim-montee flex flex-wrap gap-3 delai-300',
+                centre ? 'mt-10 justify-center' : 'mt-9',
+              ]}
+            >
+              <slot />
+            </div>
+          )}
         </div>
       )}
     </div>
     {maquette && (
       <MaquetteHero
         nom={maquette}
-        sizes={centre ? TAILLES_MAQUETTE.centre : TAILLES_MAQUETTE.colonne}
+        sizes={centre ? TAILLES_MAQUETTE.centre : TAILLES_MAQUETTE.dessous}
         prioritaire
         class:list={[
           'anim-montee delai-300',
-          centre
-            ? 'mt-16 w-full max-w-[65rem] sm:mt-20'
-            : 'max-w-full min-w-0 flex-[1.2_1_28.75rem]',
+          centre ? 'mt-16 w-full max-w-[65rem] sm:mt-20' : 'mt-8 w-full sm:mt-10',
         ]}
       />
     )}

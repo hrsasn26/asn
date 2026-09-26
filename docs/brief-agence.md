@@ -26,7 +26,7 @@
 | **Clients cibles** | TPE, PME et particuliers, au Maroc |
 | **Compétences de l'équipe** | Ingénierie logicielle, développement fullstack, DevOps, QA (tests) |
 | **Compétences absentes** | Design graphique et UX/UI, marketing (publicité, réseaux sociaux, rédaction) |
-| **Zone géographique** | Maroc. L'agence est à Fès : N° 7, rue Tantane, 30000 Fès (reçu le 26 septembre 2026, utile pour le référencement local) |
+| **Zone géographique** | Maroc. L'agence est à Fès : N° 7, rue Tantane, 30000 Fès, Maroc (reçu le 26 septembre 2026, utile pour le référencement local) |
 
 ---
 
@@ -1087,9 +1087,9 @@ Reprend l'appel à l'action final de la page Services (6.1).
 
 **H1 :** Une équipe accessible, du premier échange au suivi
 
-**Sous-titre :** Nous concevons des sites et des applications solides, avec un interlocuteur direct et une responsabilité claire sur la qualité technique. Nous sommes basés à Fès.
+**Sous-titre :** Nous concevons des sites et des applications solides, avec un interlocuteur direct et une responsabilité claire sur la qualité technique.
 
-> Ancien H1 : « Une équipe d'ingénieurs, à la taille de votre projet ». La ville est revenue dans le sous-titre le 26 septembre 2026, avec l'adresse de l'agence.
+> Ancien H1 : « Une équipe d'ingénieurs, à la taille de votre projet ». La phrase « Nous sommes basés à Fès. » est retirée du sous-titre le 26 septembre 2026 : l'adresse est sur Contact et dans le pied de page.
 
 #### Section : pourquoi nous avons créé l'agence
 
@@ -1202,9 +1202,9 @@ Expliquez-nous votre besoin en quelques lignes. Nous vous répondons avec les pr
 - E-mail : contact@digital-solutions.ma
 - Téléphone : +212 6 10 73 23 77
 - WhatsApp : lien « Nous écrire sur WhatsApp » *(ajout du 26 septembre 2026, à valider)*
-- Adresse : N° 7, rue Tantane, 30000 Fès
+- Adresse : N° 7, rue Tantane, 30000 Fès, Maroc
 
-> WhatsApp : compte WhatsApp Business de l'agence (application gratuite), sur le même numéro que le téléphone, partagé par l'équipe : un téléphone principal et jusqu'à 4 postes reliés. Le lien « Nous écrire sur WhatsApp » (lien `wa.me`) ouvre la conversation avec un message déjà rempli : « Bonjour, je vous contacte depuis votre site. Mon projet : » *(à valider)*. Le texte du lien n'est pas le numéro : le lien du téléphone l'affiche déjà. Le lien a le logo de WhatsApp devant son texte, et il est aussi dans le pied de page, avec l'e-mail et le téléphone (26 septembre 2026). Pas de bouton flottant sur les autres pages : il cacherait du contenu sur téléphone et concurrencerait le bouton principal.
+> WhatsApp : compte WhatsApp Business de l'agence (application gratuite), sur le même numéro que le téléphone, partagé par l'équipe : un téléphone principal et jusqu'à 4 postes reliés. Le lien « Nous écrire sur WhatsApp » (lien `wa.me`) ouvre la conversation avec un message déjà rempli : « Bonjour, je vous contacte depuis votre site. Mon projet : » *(à valider)*. Le texte du lien n'est pas le numéro : le lien du téléphone l'affiche déjà. Le lien a le logo de WhatsApp devant son texte, et il est aussi dans le pied de page, avec l'e-mail, le téléphone et l'adresse (26 septembre 2026). Pas de bouton flottant sur les autres pages : il cacherait du contenu sur téléphone et concurrencerait le bouton principal.
 
 > L'e-mail, le téléphone et l'adresse sont confirmés le 26 septembre 2026. Ce sont des informations obligatoires (loi 31-08, article 29). Les valeurs sont dans `src/data/site.ts`. La ligne « Adresse » remplace l'ancienne ligne « Zone : [Ville ou région] ». Code postal reçu : « 300000 », corrigé en 30000 (code postal de Fès, cinq chiffres) : à confirmer.
 
@@ -1861,7 +1861,7 @@ Les valeurs de `src/data/` (modalités de paiement, garantie, durée d'engagemen
 
 **Mentions légales**
 - Éditeur : « Le site www.digital-solutions.ma est édité par Digital Solutions, [forme juridique] au capital de [montant] DH. » Attention : `pnpm check:content` bloque les montants en dirhams, la règle devra accepter le capital.
-- Siège social : l'adresse de l'agence (N° 7, rue Tantane, 30000 Fès) est affichée depuis le 26 septembre 2026, avec l'intitulé « Adresse ». Si c'est aussi le siège social inscrit au registre du commerce, remplacez l'intitulé par « Siège social ».
+- Siège social : l'adresse de l'agence (N° 7, rue Tantane, 30000 Fès, Maroc) est affichée depuis le 26 septembre 2026, avec l'intitulé « Adresse ». Si c'est aussi le siège social inscrit au registre du commerce, remplacez l'intitulé par « Siège social ».
 - Registre du commerce : [ville], numéro [numéro]
 - Identifiant commun de l'entreprise (ICE) : [numéro]
 - Identifiant fiscal (IF) : [numéro]
