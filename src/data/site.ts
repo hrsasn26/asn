@@ -32,11 +32,13 @@ export const site = {
     ville: 'Fès',
     /** Code du pays (ISO 3166-1), pour les données structurées. */
     pays: 'MA',
+    /** Nom du pays, affiché après la ville (« Fès, Maroc »). */
+    nomPays: 'Maroc',
   },
 } as const;
 
-/** Adresse sur une ligne : « N° 7, rue Tantane, 30000 Fès ». */
-export const adresseComplete = `${site.adresse.rue}, ${site.adresse.codePostal} ${site.adresse.ville}`;
+/** Adresse sur une ligne : « N° 7, rue Tantane, 30000 Fès, Maroc ». */
+export const adresseComplete = `${site.adresse.rue}, ${site.adresse.codePostal} ${site.adresse.ville}, ${site.adresse.nomPays}`;
 
 /** Lien d'appel : « tel:+212610732377 ». */
 export const lienTelephone = `tel:${site.telephone.replaceAll(' ', '')}`;
