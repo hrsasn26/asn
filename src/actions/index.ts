@@ -1,9 +1,10 @@
 import { ActionError, defineAction, type ActionAPIContext } from 'astro:actions';
 import { FORM_RATE_LIMIT_MAX } from 'astro:env/server';
 import { site } from '~/data/site';
+import { emailAudit, emailContact } from '~/lib/emails';
 import { envoyerEmail, type Email } from '~/lib/mailer';
 import { creerLimiteur } from '~/lib/rate-limit';
-import { preoccupations, schemaAudit, schemaContact, typesProjet } from '~/lib/schemas';
+import { schemaAudit, schemaContact } from '~/lib/schemas';
 
 // Par défaut, 5 demandes par adresse IP toutes les 10 minutes, tous formulaires confondus.
 const limiteur = creerLimiteur({ maxEnvois: FORM_RATE_LIMIT_MAX, fenetreMs: 10 * 60 * 1000 });
@@ -46,21 +47,7 @@ export const server = {
       // Champ piège rempli : c'est un robot. On répond comme si tout allait bien.
       if (demande.website) return { envoye: true };
 
-      await traiterDemande(
-        {
-          sujet: `Nouvelle demande de contact : ${demande.nom}`,
-          texte: [
-            `Nom : ${demande.nom}`,
-            `E-mail : ${demande.email}`,
-            `Téléphone : ${demande.telephone || '—'}`,
-            `Projet : ${demande.projet ? typesProjet[demande.projet] : '—'}`,
-            '',
-            demande.message,
-          ].join('\n'),
-          repondreA: { email: demande.email, nom: demande.nom },
-        },
-        context,
-      );
+      await traiterDemande(emailContact(demande), context);
       return { envoye: true };
     },
   }),
@@ -71,20 +58,7 @@ export const server = {
     handler: async (demande, context) => {
       if (demande.website) return { envoye: true };
 
-      await traiterDemande(
-        {
-          sujet: `Nouvelle demande d'audit : ${demande.adresseSite}`,
-          texte: [
-            `Site : ${demande.adresseSite}`,
-            `Nom : ${demande.nom}`,
-            `E-mail : ${demande.email}`,
-            `Téléphone : ${demande.telephone || '—'}`,
-            `Préoccupation : ${preoccupations[demande.preoccupation]}`,
-          ].join('\n'),
-          repondreA: { email: demande.email, nom: demande.nom },
-        },
-        context,
-      );
+      await traiterDemande(emailAudit(demande), context);
       return { envoye: true };
     },
   }),

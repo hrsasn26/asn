@@ -5,10 +5,13 @@ import {
   MAILJET_API_KEY,
   MAILJET_SECRET_KEY,
 } from 'astro:env/server';
+import { site } from '../data/site';
 
 export interface Email {
   sujet: string;
   texte: string;
+  /** Version HTML (src/lib/emails.ts). Le texte reste pour les messageries sans HTML. */
+  html?: string;
   repondreA: { email: string; nom: string };
 }
 
@@ -49,11 +52,12 @@ export async function envoyerEmail(email: Email): Promise<void> {
     body: JSON.stringify({
       Messages: [
         {
-          From: { Email: MAIL_FROM, Name: 'Site web' },
+          From: { Email: MAIL_FROM, Name: site.nom },
           To: [{ Email: MAIL_TO }],
           ReplyTo: { Email: email.repondreA.email, Name: email.repondreA.nom },
           Subject: email.sujet.replace(/[\r\n]+/g, ' '),
           TextPart: email.texte,
+          HTMLPart: email.html,
         },
       ],
     }),

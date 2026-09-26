@@ -35,7 +35,7 @@ describe('envoyerEmail (Mailjet)', () => {
     expect(JSON.parse(options.body as string)).toEqual({
       Messages: [
         {
-          From: { Email: 'site@exemple.ma', Name: 'Site web' },
+          From: { Email: 'site@exemple.ma', Name: 'Digital Solutions' },
           To: [{ Email: 'equipe@exemple.ma' }],
           ReplyTo: { Email: 'client@exemple.ma', Name: 'Client' },
           Subject: 'Nouvelle demande de contact',
@@ -43,6 +43,18 @@ describe('envoyerEmail (Mailjet)', () => {
         },
       ],
     });
+  });
+
+  it('ajoute la version HTML si elle existe', async () => {
+    const fetchSimule = vi.fn().mockResolvedValue(new Response('{}', { status: 200 }));
+    vi.stubGlobal('fetch', fetchSimule);
+
+    await envoyerEmail({ ...email, html: '<p>Bonjour</p>' });
+
+    const [, options] = fetchSimule.mock.calls[0] as [string, RequestInit];
+    const [message] = JSON.parse(options.body as string).Messages;
+    expect(message.TextPart).toBe('Bonjour');
+    expect(message.HTMLPart).toBe('<p>Bonjour</p>');
   });
 
   it('lève une erreur si Mailjet refuse la demande', async () => {
