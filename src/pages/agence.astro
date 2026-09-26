@@ -1,7 +1,11 @@
 ---
 // Textes : docs/brief-agence.md, section 6.10 (proposition à valider).
 // Aucune information sur l'équipe n'est inventée : les membres restent des placeholders.
+import Activity from '@lucide/astro/icons/activity';
+import BadgeCheck from '@lucide/astro/icons/badge-check';
+import Blocks from '@lucide/astro/icons/blocks';
 import Clock from '@lucide/astro/icons/clock';
+import Layers from '@lucide/astro/icons/layers';
 import Eye from '@lucide/astro/icons/eye';
 import KeyRound from '@lucide/astro/icons/key-round';
 import Scale from '@lucide/astro/icons/scale';
@@ -13,8 +17,25 @@ import Hero from '~/components/Hero.astro';
 import IllustrationAgence from '~/components/illustrations/IllustrationAgence.astro';
 import Placeholder from '~/components/Placeholder.astro';
 import Section from '~/components/Section.astro';
+import { couleurPalette } from '~/data/couleurs';
 import { cta, site } from '~/data/site';
 import BaseLayout from '~/layouts/BaseLayout.astro';
+
+// Ce que nous savons faire : le début de chaque phrase est en gras, chaque point a son icône.
+const savoirFaire = [
+  {
+    Icone: Blocks,
+    titre: 'Concevoir des outils solides',
+    suite: ', qui évoluent avec votre activité.',
+  },
+  {
+    Icone: Layers,
+    titre: 'Prendre en charge tout votre projet',
+    suite: ", de l'écran au serveur : vous avez un seul interlocuteur.",
+  },
+  { Icone: Activity, titre: 'Garder votre site en ligne', suite: ', rapide et sauvegardé.' },
+  { Icone: BadgeCheck, titre: 'Tout tester', suite: ' avant chaque mise en ligne.' },
+];
 ---
 
 <BaseLayout
@@ -32,7 +53,7 @@ import BaseLayout from '~/layouts/BaseLayout.astro';
 
   <Section title={`Pourquoi ${site.nom} existe`}>
     <div class="max-w-3xl space-y-4 text-lg text-slate-700">
-      <p>
+      <p class="apparition">
         Beaucoup de TPE et de PME ont vécu la même situation : un site livré sans tests, un
         prestataire qui ne répond plus, un site piraté faute de mises à jour. Nous avons créé{' '}
         {site.nom} pour proposer autre chose : des projets construits avec les méthodes des
@@ -43,21 +64,23 @@ import BaseLayout from '~/layouts/BaseLayout.astro';
   </Section>
 
   <Section title="Ce que nous savons faire, en clair" tone="gris">
-    <ul class="grid max-w-3xl gap-3 text-slate-700">
-      <li>
-        <strong class="text-slate-900">Concevoir des outils solides</strong>, qui évoluent avec
-        votre activité.
-      </li>
-      <li>
-        <strong class="text-slate-900">Prendre en charge tout votre projet</strong>, de l'écran au
-        serveur : vous avez un seul interlocuteur.
-      </li>
-      <li>
-        <strong class="text-slate-900">Garder votre site en ligne</strong>, rapide et sauvegardé.
-      </li>
-      <li>
-        <strong class="text-slate-900">Tout tester</strong> avant chaque mise en ligne.
-      </li>
+    <ul class="grid max-w-3xl gap-4 text-slate-700">
+      {savoirFaire.map(({ Icone, titre, suite }, index) => (
+        <li class="apparition flex items-start gap-3">
+          <span
+            class:list={[
+              'apparition-zoom inline-flex size-9 shrink-0 items-center justify-center rounded-lg',
+              couleurPalette(index).douce,
+            ]}
+          >
+            <Icone size={20} />
+          </span>
+          <p class="pt-1.5">
+            <strong class="text-slate-900">{titre}</strong>
+            {suite}
+          </p>
+        </li>
+      ))}
     </ul>
   </Section>
 
@@ -98,7 +121,7 @@ import BaseLayout from '~/layouts/BaseLayout.astro';
     <ul class="grid gap-6 md:grid-cols-3">
       {[1, 2, 3].map(() => (
         <li class="apparition rounded-lg border border-slate-200 bg-white p-6">
-          <span class="inline-flex size-16 items-center justify-center rounded-full bg-slate-200 text-slate-500">
+          <span class="apparition-zoom inline-flex size-16 items-center justify-center rounded-full bg-slate-200 text-slate-500">
             <UserRound size={32} />
           </span>
           <p class="mt-4 font-semibold text-slate-900">[Prénom Nom]</p>
@@ -113,7 +136,7 @@ import BaseLayout from '~/layouts/BaseLayout.astro';
   </Section>
 
   <Section title="Nos partenaires">
-    <p class="max-w-3xl text-lg text-slate-700">
+    <p class="apparition max-w-3xl text-lg text-slate-700">
       Pour le design, le logo et la rédaction, nous travaillons avec des indépendants de confiance :
       [graphiste partenaire], [rédacteur partenaire]. Le développement, lui, n'est jamais
       sous-traité.
