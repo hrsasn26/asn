@@ -214,7 +214,7 @@ La page « Méthode », avec une étape de tests bien visible, est l'endroit id�
 
 ## 6. Contenus des pages
 
-> Sections 6.1 à 6.6 : textes validés, sauf les ajouts marqués « à valider ». Sections 6.7 à 6.13 et 6.14 à 6.18 (nouveaux services) : propositions à valider. Section 6.19 (visuels des en-têtes) : proposition à valider.
+> Sections 6.1 à 6.6 : textes validés, sauf les ajouts marqués « à valider ». Sections 6.7 à 6.13 et 6.14 à 6.18 (nouveaux services) : propositions à valider. Section 6.19 (visuels des en-têtes) : légende et textes alternatifs validés.
 > Adaptation au Maroc (25 septembre 2026) : prix en DH, loi 09-08 à la place du RGPD, délai de rétractation de 7 jours. Ces changements sont à revalider, y compris dans les sections 6.1 à 6.6.
 
 **Appel à l'action principal (tout le site) :** « Demander un devis gratuit »
@@ -1652,7 +1652,7 @@ Un échange de 30 minutes, gratuit et confidentiel, pour définir ce qu'il faut 
 
 ### 6.19 Visuels des en-têtes
 
-> Proposition à valider. Maquettes reçues du designer le 26 septembre 2026, adaptées aux règles de ce brief. Sources et détail des adaptations : [design/heros/README.md](../design/heros/README.md).
+> Légende et textes alternatifs validés le 26 septembre 2026. Maquettes reçues du designer le 26 septembre 2026, adaptées aux règles de ce brief. Sources et détail des adaptations : [design/heros/README.md](../design/heros/README.md).
 
 Onze pages ont un visuel dans l'en-tête, à droite du texte (sous le texte sur téléphone) : des écrans sur ordinateur et sur téléphone, avec une ou deux cartes. Chaque visuel montre un projet du type décrit par la page, pour un client fictif. Les autres pages (Services, Méthode, L'agence, Contact, pages légales) gardent leurs illustrations.
 
@@ -1723,7 +1723,8 @@ Onze pages ont un visuel dans l'en-tête, à droite du texte (sous le texte sur 
 - [ ] Relire et valider les textes proposés : Accueil, Méthode, L'agence, Contact (sections 6.7 à 6.11)
 - [ ] Relire et valider les pages des nouveaux services : Applications mobiles, Logiciels SaaS, Intelligence artificielle, Données et tableaux de bord, Tests et sécurité (sections 6.14 à 6.18)
 - [ ] Relire et valider les ajouts dans les pages existantes : options Sites web (langues, WhatsApp), section WhatsApp (Automatisation), formation à l'IA
-- [ ] Relire et valider les visuels des en-têtes (section 6.19). Les remplacer par des projets réels quand des clients auront donné leur accord écrit.
+- [x] Valider la légende et les textes alternatifs des visuels des en-têtes (section 6.19)
+- [ ] Remplacer les visuels des en-têtes par des projets réels quand des clients auront donné leur accord écrit (section 6.19)
 - [ ] Préparer un modèle d'autorisation de test pour les audits de sécurité, validé par le juriste
 - [ ] Choisir les fournisseurs d'IA (données non utilisées pour l'entraînement, transfert hors du Maroc à déclarer à la CNDP)
 - [x] Choisir les technologies du site et commencer le développement (voir [stack-technique.md](stack-technique.md))
