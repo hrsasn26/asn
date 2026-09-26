@@ -1,0 +1,29 @@
+---
+/**
+ * Google Tag Manager, pour Google Ads (section 6.21 du brief).
+ *
+ * Décision de l'agence du 26 septembre 2026 : pas de bandeau des cookies ni de lien pour les
+ * refuser. Tag Manager se charge pour tous les visiteurs, sur le domaine de production
+ * seulement (src/lib/tag-manager.ts). Sans JavaScript, il ne se charge pas.
+ */
+---
+
+<script>
+  import { site } from '~/data/site';
+  import { tagManagerAutorise, urlTagManager } from '~/lib/tag-manager';
+
+  if (tagManagerAutorise(location.hostname, site.domaine)) {
+    const fenetre = window as typeof window & { dataLayer?: Record<string, unknown>[] };
+    const dataLayer = (fenetre.dataLayer ??= []);
+    dataLayer.push({ 'gtm.start': Date.now(), event: 'gtm.js' });
+    // Formulaire envoyé (Contact, Audit gratuit) : événement pour les conversions Google Ads.
+    const envoi = document.querySelector<HTMLElement>('[data-formulaire-envoye]');
+    if (envoi) {
+      dataLayer.push({ event: 'formulaire_envoye', formulaire: envoi.dataset.formulaireEnvoye });
+    }
+    const script = document.createElement('script');
+    script.async = true;
+    script.src = urlTagManager(site.tagManager);
+    document.head.append(script);
+  }
+</script>

@@ -4,6 +4,7 @@ import { Font } from 'astro:assets';
 import Breadcrumbs from '~/components/Breadcrumbs.astro';
 import Footer from '~/components/Footer.astro';
 import Header from '~/components/Header.astro';
+import TagManager from '~/components/TagManager.astro';
 import JsonLd from '~/components/JsonLd.astro';
 import type { LienNav } from '~/data/navigation';
 import { site } from '~/data/site';
@@ -75,5 +76,6 @@ const imagePartage = new URL('/og.png', Astro.site);
       <slot />
     </main>
     <Footer />
+    <TagManager />
   </body>
 </html>

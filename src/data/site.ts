@@ -35,6 +35,13 @@ export const site = {
     /** Nom du pays, affiché après la ville (« Fès, Maroc »). */
     nomPays: 'Maroc',
   },
+  /**
+   * Conteneur Google Tag Manager de l'agence (26 septembre 2026), pour Google Ads. Il se charge
+   * pour tous les visiteurs, sur le domaine de production (src/lib/tag-manager.ts).
+   * Une nouvelle sorte de balise dans Tag Manager demande souvent une mise à jour de la CSP
+   * (astro.config.mjs, `google`).
+   */
+  tagManager: 'GTM-WRR53MWN',
 } as const;
 
 /** Adresse sur une ligne : « N° 7, rue Tantane, 30000 Fès, Maroc ». */

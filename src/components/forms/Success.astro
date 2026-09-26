@@ -1,12 +1,14 @@
 ---
 interface Props {
   title: string;
+  /** Nom du formulaire, pour l'événement « formulaire_envoye » de Tag Manager (TagManager). */
+  formulaire: 'contact' | 'audit';
 }
 
-const { title } = Astro.props;
+const { title, formulaire } = Astro.props;
 ---
 
-<div role="status" class="flex items-start gap-4">
+<div role="status" data-formulaire-envoye={formulaire} class="flex items-start gap-4">
   {/* Coche verte : le cercle apparaît, puis la coche se dessine. */}
   <svg aria-hidden="true" focusable="false" viewBox="0 0 48 48" class="size-11 shrink-0">
     <circle cx="24" cy="24" r="22" class="anim-zoom fill-green-700"></circle>
