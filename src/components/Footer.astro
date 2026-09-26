@@ -1,7 +1,9 @@
 ---
+import IconeWhatsApp from '~/components/IconeWhatsApp.astro';
 import Logo from '~/components/Logo.astro';
 import { liensLegaux, services } from '~/data/navigation';
-import { cta, site } from '~/data/site';
+import { cta, lienTelephone, site } from '~/data/site';
+import { lienWhatsApp } from '~/lib/whatsapp';
 
 // Année du build : le site est reconstruit à chaque déploiement.
 const annee = new Date().getFullYear();
@@ -9,6 +11,10 @@ const annee = new Date().getFullYear();
 // py-0.5 : zone cliquable de 24 px de haut au moins (WCAG 2.5.8).
 const lien = 'inline-block py-0.5 text-nuit-texte no-underline hover:text-white';
 const titreColonne = 'text-[0.6875rem] font-semibold tracking-[0.2em] text-nuit-pied uppercase';
+
+// Coordonnées : mêmes valeurs et même texte du lien WhatsApp que la page Contact (section 6.11
+// du brief). La ligne WhatsApp reste cachée tant que le numéro est un placeholder.
+const whatsapp = lienWhatsApp(site.whatsapp, site.messageWhatsApp);
 ---
 
 {/* --anneau : contour du focus en blanc, visible sur le fond sombre. */}
@@ -60,6 +66,32 @@ const titreColonne = 'text-[0.6875rem] font-semibold tracking-[0.2em] text-nuit-
         ))}
       </ul>
     </nav>
+    <div class="apparition min-w-0 flex-[1_1_13.75rem] md:[--decalage:4.5rem]">
+      <p class={titreColonne}>Contact</p>
+      <address class="mt-4 grid gap-y-1.5 text-sm not-italic">
+        <p>
+          <a href={`mailto:${site.email}`} class={lien}>
+            {site.email}
+          </a>
+        </p>
+        <p>
+          <a href={lienTelephone} class:list={[lien, 'whitespace-nowrap']}>
+            {site.telephone}
+          </a>
+        </p>
+        {whatsapp && (
+          <p>
+            <a
+              href={whatsapp}
+              class="inline-flex items-center gap-2 py-0.5 text-nuit-texte no-underline hover:text-white"
+            >
+              <IconeWhatsApp class="size-4" />
+              Nous écrire sur WhatsApp
+            </a>
+          </p>
+        )}
+      </address>
+    </div>
   </div>
   <div class="conteneur border-t border-nuit-ligne pt-6 pb-10 text-[0.8125rem] text-nuit-pied">
     <p>{`© ${annee} ${site.nom}. Tous droits réservés.`}</p>

@@ -222,7 +222,7 @@ Accueil                                   /
 └── Mentions légales · CGV · Confidentialité
 ```
 
-**Pied de page (toutes les pages) :** nom de l'agence et promesse, liens vers les services, liens légaux, puis la ligne « © [année] Digital Solutions. Tous droits réservés. » L'année est celle du dernier déploiement.
+**Pied de page (toutes les pages) :** nom de l'agence et promesse, liens vers les services, liens légaux, coordonnées (e-mail, téléphone et lien « Nous écrire sur WhatsApp » avec le logo de WhatsApp, ajout du 26 septembre 2026, à valider), puis la ligne « © [année] Digital Solutions. Tous droits réservés. » L'année est celle du dernier déploiement.
 
 La page « Processus », avec une étape de tests bien visible, est l'endroit idéal pour mettre en avant la compétence QA.
 
@@ -1204,7 +1204,7 @@ Expliquez-nous votre besoin en quelques lignes. Nous vous répondons avec les pr
 - WhatsApp : lien « Nous écrire sur WhatsApp » *(ajout du 26 septembre 2026, à valider)*
 - Adresse : N° 7, rue Tantane, 30000 Fès
 
-> WhatsApp : compte WhatsApp Business de l'agence (application gratuite), sur le même numéro que le téléphone, partagé par l'équipe : un téléphone principal et jusqu'à 4 postes reliés. Le lien « Nous écrire sur WhatsApp » (lien `wa.me`) ouvre la conversation avec un message déjà rempli : « Bonjour, je vous contacte depuis votre site. Mon projet : » *(à valider)*. Le texte du lien n'est pas le numéro : le lien du téléphone l'affiche déjà. Pas de bouton flottant sur les autres pages : il cacherait du contenu sur téléphone et concurrencerait le bouton principal.
+> WhatsApp : compte WhatsApp Business de l'agence (application gratuite), sur le même numéro que le téléphone, partagé par l'équipe : un téléphone principal et jusqu'à 4 postes reliés. Le lien « Nous écrire sur WhatsApp » (lien `wa.me`) ouvre la conversation avec un message déjà rempli : « Bonjour, je vous contacte depuis votre site. Mon projet : » *(à valider)*. Le texte du lien n'est pas le numéro : le lien du téléphone l'affiche déjà. Le lien a le logo de WhatsApp devant son texte, et il est aussi dans le pied de page, avec l'e-mail et le téléphone (26 septembre 2026). Pas de bouton flottant sur les autres pages : il cacherait du contenu sur téléphone et concurrencerait le bouton principal.
 
 > L'e-mail, le téléphone et l'adresse sont confirmés le 26 septembre 2026. Ce sont des informations obligatoires (loi 31-08, article 29). Les valeurs sont dans `src/data/site.ts`. La ligne « Adresse » remplace l'ancienne ligne « Zone : [Ville ou région] ». Code postal reçu : « 300000 », corrigé en 30000 (code postal de Fès, cinq chiffres) : à confirmer.
 

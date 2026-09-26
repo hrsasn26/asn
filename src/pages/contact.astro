@@ -9,6 +9,7 @@ import Consent from '~/components/forms/Consent.astro';
 import ErrorSummary from '~/components/forms/ErrorSummary.astro';
 import Field from '~/components/forms/Field.astro';
 import Honeypot from '~/components/forms/Honeypot.astro';
+import IconeWhatsApp from '~/components/IconeWhatsApp.astro';
 import Success from '~/components/forms/Success.astro';
 import Section from '~/components/Section.astro';
 import Texte from '~/components/Texte.astro';
@@ -44,7 +45,9 @@ const whatsapp = lienWhatsApp(site.whatsapp, site.messageWhatsApp);
 const coordonnees = [
   { label: 'E-mail', valeur: site.email, href: `mailto:${site.email}` },
   { label: 'Téléphone', valeur: site.telephone, href: lienTelephone },
-  ...(whatsapp ? [{ label: 'WhatsApp', valeur: 'Nous écrire sur WhatsApp', href: whatsapp }] : []),
+  ...(whatsapp
+    ? [{ label: 'WhatsApp', valeur: 'Nous écrire sur WhatsApp', href: whatsapp, icone: true }]
+    : []),
   { label: 'Adresse', valeur: adresseComplete },
 ];
 ---
@@ -193,7 +196,7 @@ const coordonnees = [
         class="flex-[1_1_23.75rem]"
       >
         <dl class="mt-2 border-t border-ligne">
-          {coordonnees.map(({ label, valeur, href }) => (
+          {coordonnees.map(({ label, valeur, href, icone }) => (
             <div class="flex flex-wrap gap-x-6 gap-y-1 border-b border-ligne py-4 text-[0.9375rem]">
               <dt class="w-25 text-discret">{label}</dt>
               <dd class="min-w-0">
@@ -202,6 +205,9 @@ const coordonnees = [
                     href={href}
                     class="text-bleu underline underline-offset-2 hover:text-encre hover:underline-offset-4"
                   >
+                    {icone && (
+                      <IconeWhatsApp class="mr-2 inline-block size-[1.125em] align-[-0.2em]" />
+                    )}
                     {valeur}
                   </a>
                 ) : (

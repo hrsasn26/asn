@@ -21,3 +21,20 @@ test('le lien d’évitement mène au contenu principal', async ({ page, browser
   await lien.press('Enter');
   await expect(page).toHaveURL(/#contenu$/);
 });
+
+test('le pied de page donne l’e-mail, le téléphone et WhatsApp', async ({ page }) => {
+  await page.goto('/');
+  const pied = page.getByRole('contentinfo');
+  await expect(pied.getByRole('link', { name: 'contact@digital-solutions.ma' })).toHaveAttribute(
+    'href',
+    'mailto:contact@digital-solutions.ma',
+  );
+  await expect(pied.getByRole('link', { name: '+212 6 10 73 23 77' })).toHaveAttribute(
+    'href',
+    'tel:+212610732377',
+  );
+  await expect(pied.getByRole('link', { name: 'Nous écrire sur WhatsApp' })).toHaveAttribute(
+    'href',
+    /^https:\/\/wa\.me\/212610732377\?text=Bonjour/,
+  );
+});
