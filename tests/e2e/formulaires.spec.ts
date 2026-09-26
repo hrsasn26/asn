@@ -34,7 +34,7 @@ test.describe('formulaire de contact', () => {
 
   test('propose WhatsApp avec un message déjà rempli', async ({ page }) => {
     await page.goto('/contact');
-    const lien = page.getByRole('link', { name: '+212 6 10 73 23 77' });
+    const lien = page.getByRole('link', { name: 'Nous écrire sur WhatsApp' });
     await expect(lien).toHaveAttribute('href', /^https:\/\/wa\.me\/212610732377\?text=Bonjour/);
   });
 });

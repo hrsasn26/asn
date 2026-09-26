@@ -1,3 +1,5 @@
+import { estConfirme } from './placeholders';
+
 /**
  * Lien « wa.me » qui ouvre une conversation WhatsApp avec un message déjà rempli.
  * C'est un simple lien : il fonctionne sans JavaScript et ne demande aucun script externe.
@@ -7,7 +9,7 @@
  * @returns `undefined` tant que le numéro est un placeholder entre crochets.
  */
 export function lienWhatsApp(numero: string, message?: string): string | undefined {
-  if (numero.includes('[')) return undefined;
+  if (!estConfirme(numero)) return undefined;
 
   const chiffres = numero.replace(/[\s.-]/g, '');
   // wa.me attend l'indicatif du pays, sans « + » ni zéro initial (8 à 15 chiffres, E.164).

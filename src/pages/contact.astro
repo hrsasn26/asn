@@ -12,7 +12,7 @@ import Honeypot from '~/components/forms/Honeypot.astro';
 import Success from '~/components/forms/Success.astro';
 import Section from '~/components/Section.astro';
 import Texte from '~/components/Texte.astro';
-import { cta, site } from '~/data/site';
+import { adresseComplete, cta, lienTelephone, site } from '~/data/site';
 import BaseLayout from '~/layouts/BaseLayout.astro';
 import { etatFormulaire } from '~/lib/formulaire';
 import { typesProjet } from '~/lib/schemas';
@@ -37,16 +37,15 @@ const ensuite = [
   'Vous recevez un devis clair, à prix fixe, sans engagement.',
 ];
 
-// Le téléphone reste un placeholder jusqu'à ce que le numéro soit disponible.
-// WhatsApp : ajout du 26 septembre 2026, à valider (section 6.11 du brief).
+// Coordonnées : section 6.11 du brief.
+// WhatsApp (ajout du 26 septembre 2026, à valider) : même numéro que le téléphone, donc un
+// texte de lien distinct. La ligne reste cachée tant que le numéro est un placeholder.
+const whatsapp = lienWhatsApp(site.whatsapp, site.messageWhatsApp);
 const coordonnees = [
   { label: 'E-mail', valeur: site.email, href: `mailto:${site.email}` },
-  { label: 'Téléphone', valeur: site.telephone },
-  {
-    label: 'WhatsApp',
-    valeur: site.whatsapp,
-    href: lienWhatsApp(site.whatsapp, site.messageWhatsApp),
-  },
+  { label: 'Téléphone', valeur: site.telephone, href: lienTelephone },
+  ...(whatsapp ? [{ label: 'WhatsApp', valeur: 'Nous écrire sur WhatsApp', href: whatsapp }] : []),
+  { label: 'Adresse', valeur: adresseComplete },
 ];
 ---
 

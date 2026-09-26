@@ -2,48 +2,36 @@
 // Projet de texte à faire valider par un juriste (docs/brief-agence.md, section 7).
 // Droit marocain : identité et identifiants de l'entreprise (RC, ICE, IF, taxe professionnelle),
 // informations du fournisseur (loi 31-08, article 29) et données personnelles (loi 09-08).
+// Seules les parties confirmées sont affichées. Les parties qui attendent une information
+// (forme juridique, identifiants, directeur de la publication, hébergeur, récépissé de la CNDP)
+// sont dans la section 7 du brief, avec leurs placeholders.
 import BarreLecture from '~/components/BarreLecture.astro';
-import Placeholder from '~/components/Placeholder.astro';
 import Prose from '~/components/Prose.astro';
-import { site } from '~/data/site';
+import { adresseComplete, lienTelephone, site } from '~/data/site';
 import BaseLayout from '~/layouts/BaseLayout.astro';
 ---
 
 <BaseLayout
   title={`Mentions légales | ${site.nom}`}
-  description={`Mentions légales du site ${site.nom} : éditeur, directeur de la publication, hébergeur et propriété intellectuelle.`}
+  description={`Mentions légales du site ${site.nom} : éditeur, propriété intellectuelle et données personnelles.`}
   breadcrumbs={[{ label: 'Mentions légales', href: '/mentions-legales' }]}
 >
   <BarreLecture />
   <section class="conteneur pt-12 pb-20 sm:pt-14 sm:pb-32">
     <h1 class="anim-montee text-titre">Mentions légales</h1>
-    <Placeholder
-      class="anim-montee mt-7 max-w-3xl delai-150"
-      text="[Projet de texte : à faire valider par un juriste avant la mise en ligne]"
-    />
     <div class="mt-12">
       <Prose>
         <h2>Éditeur du site</h2>
-        <p>
-          {`Le site ${site.domaine} est édité par ${site.nom}, [forme juridique] au capital de [montant] DH.`}
-        </p>
+        <p>{`Le site ${site.domaine} est édité par ${site.nom}.`}</p>
         <ul>
-          <li>Siège social : [adresse]</li>
-          <li>Registre du commerce : [ville], numéro [numéro]</li>
-          <li>Identifiant commun de l'entreprise (ICE) : [numéro]</li>
-          <li>Identifiant fiscal (IF) : [numéro]</li>
-          <li>Taxe professionnelle : [numéro]</li>
-          <li>Téléphone : {site.telephone}</li>
+          <li>Adresse : {adresseComplete}</li>
+          <li>
+            Téléphone : <a href={lienTelephone}>{site.telephone}</a>
+          </li>
           <li>
             E-mail : <a href={`mailto:${site.email}`}>{site.email}</a>
           </li>
         </ul>
-
-        <h2>Directeur de la publication</h2>
-        <p>[Prénom Nom], [fonction].</p>
-
-        <h2>Hébergement</h2>
-        <p>[Nom de l'hébergeur], [adresse], [téléphone].</p>
 
         <h2>Propriété intellectuelle</h2>
         <p>
@@ -55,7 +43,7 @@ import BaseLayout from '~/layouts/BaseLayout.astro';
         <p>
           Les données collectées sur ce site sont traitées conformément à la loi 09-08 relative à la
           protection des personnes physiques à l'égard du traitement des données à caractère
-          personnel. Déclaration auprès de la CNDP : [numéro de récépissé].
+          personnel.
         </p>
         <p>
           Pour savoir comment nous utilisons vos données, lisez notre{' '}

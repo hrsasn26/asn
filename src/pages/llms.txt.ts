@@ -9,7 +9,7 @@
  */
 import type { APIRoute } from 'astro';
 import { liensLegaux, navigationPrincipale, services, type LienNav } from '~/data/navigation';
-import { site } from '~/data/site';
+import { adresseComplete, site } from '~/data/site';
 
 /** Meta description de chaque page, identique à celle de la page. */
 const descriptions: Record<string, string> = {
@@ -41,10 +41,10 @@ const descriptions: Record<string, string> = {
     'Vitesse, sécurité, référencement, affichage mobile : recevez gratuitement un audit technique de votre site, avec un rapport clair et les actions prioritaires.',
   '/contact':
     'Décrivez votre projet en quelques lignes : nous revenons vers vous avec les prochaines étapes. Échange gratuit et sans engagement.',
-  '/mentions-legales': `Mentions légales du site ${site.nom} : éditeur, directeur de la publication, hébergeur et propriété intellectuelle.`,
+  '/mentions-legales': `Mentions légales du site ${site.nom} : éditeur, propriété intellectuelle et données personnelles.`,
   '/cgv': `Conditions générales de vente des prestations de ${site.nom} : devis, prix, délais, propriété, maintenance et droit de rétractation.`,
   '/confidentialite':
-    'Quelles données nous collectons avec nos formulaires, pourquoi, combien de temps nous les gardons et comment exercer vos droits.',
+    'Quelles données nous collectons avec nos formulaires et sur WhatsApp, pourquoi, qui les reçoit et comment exercer vos droits.',
 };
 
 const accueil =
@@ -80,6 +80,7 @@ export const GET: APIRoute = ({ site: adresse }) => {
     `> ${accueil}`,
     'Des sites et des applications fiables, testés, sécurisés et suivis dans la durée. ' +
       "Chaque projet fait l'objet d'un devis gratuit et détaillé, à prix fixe.",
+    `Adresse : ${adresseComplete}, Maroc. Téléphone : ${site.telephone}. E-mail : ${site.email}.`,
     ...sections.map(({ titre, liens }) => `## ${titre}\n\n${liens.map(ligne).join('\n')}`),
   ].join('\n\n');
 
