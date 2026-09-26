@@ -2,7 +2,7 @@
 import IconeWhatsApp from '~/components/IconeWhatsApp.astro';
 import Logo from '~/components/Logo.astro';
 import { liensLegaux, services } from '~/data/navigation';
-import { cta, lienTelephone, site } from '~/data/site';
+import { adresseComplete, cta, lienTelephone, site } from '~/data/site';
 import { lienWhatsApp } from '~/lib/whatsapp';
 
 // Année du build : le site est reconstruit à chaque déploiement.
@@ -90,6 +90,7 @@ const whatsapp = lienWhatsApp(site.whatsapp, site.messageWhatsApp);
             </a>
           </p>
         )}
+        <p class="py-0.5">{adresseComplete}</p>
       </address>
     </div>
   </div>
