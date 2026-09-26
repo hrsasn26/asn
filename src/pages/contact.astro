@@ -31,21 +31,20 @@ const projetChoisi = etat.valeur('projet') ?? '';
 const titre = `Contact et demande de devis gratuit | ${site.nom}`;
 
 const ensuite = [
-  `Nous lisons votre demande et nous revenons vers vous sous ${site.delaiReponse}.`,
-  'Nous organisons un appel de 30 minutes, gratuit, pour comprendre votre besoin.',
+  'Nous étudions votre demande.',
+  'Si nécessaire, nous organisons un appel gratuit pour mieux comprendre votre besoin.',
   'Vous recevez un devis clair, à prix fixe, sans engagement.',
 ];
 
 const coordonnees = [
   { label: 'E-mail', valeur: site.email },
   { label: 'Téléphone', valeur: site.telephone },
-  { label: 'Zone', valeur: site.zone },
 ];
 ---
 
 <BaseLayout
   title={etat.enErreur ? `Erreur : ${titre}` : titre}
-  description="Décrivez votre projet en quelques lignes : nous revenons vers vous avec une première estimation. Devis gratuit et sans engagement."
+  description="Décrivez votre projet en quelques lignes : nous revenons vers vous avec les prochaines étapes. Échange gratuit et sans engagement."
   breadcrumbs={[{ label: 'Contact', href: '/contact' }]}
 >
   <section class="conteneur flex flex-wrap items-start gap-x-20 gap-y-12 pt-12 sm:pt-14">
@@ -54,9 +53,8 @@ const coordonnees = [
         <Accent texte="Parlons de votre projet" motCle="projet" />
       </h1>
       <p class="anim-montee mt-7 max-w-[28.75rem] text-lg leading-[1.65] text-texte delai-150 sm:text-[1.1875rem]">
-        <Texte
-          texte={`Décrivez-nous votre projet en quelques lignes. Nous revenons vers vous sous ${site.delaiReponse} avec une première estimation.`}
-        />
+        Expliquez-nous votre besoin en quelques lignes. Nous vous répondons avec les prochaines
+        étapes et, lorsque c'est possible, une première orientation sur le périmètre.
       </p>
 
       <div class="anim-montee mt-14 delai-300">
@@ -87,9 +85,7 @@ const coordonnees = [
     <CarteFormulaire class="max-w-full min-w-0 flex-[1.2_1_27.5rem]">
       {etat.envoye ? (
         <Success title="Votre demande est envoyée">
-          <p>
-            <Texte texte={`Nous revenons vers vous sous ${site.delaiReponse}.`} />
-          </p>
+          <p>Nous revenons vers vous avec les prochaines étapes.</p>
         </Success>
       ) : (
         <form
@@ -156,6 +152,7 @@ const coordonnees = [
             label="Votre message"
             type="textarea"
             required
+            hint="Quelques lignes suffisent : objectif, utilisateurs, fonctionnalités importantes et délai souhaité."
             value={etat.valeur('message')}
             errors={etat.erreursChamps.message}
           />
@@ -171,8 +168,8 @@ const coordonnees = [
             Envoyer ma demande
           </button>
           <p class="text-center text-[0.8125rem] text-discret">
-            Gratuit et sans engagement. Vos informations servent uniquement à répondre à votre
-            demande.
+            Gratuit et sans engagement. Vos informations servent uniquement à traiter votre demande.
+            Pas de relance commerciale insistante.
           </p>
         </form>
       )}

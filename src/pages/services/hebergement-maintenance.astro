@@ -11,9 +11,7 @@ import ForfaitsTable from '~/components/ForfaitsTable.astro';
 import Hero from '~/components/Hero.astro';
 import ProblemList from '~/components/ProblemList.astro';
 import Section from '~/components/Section.astro';
-import Texte from '~/components/Texte.astro';
-import { cta, delais, site } from '~/data/site';
-import { engagementMaintenance } from '~/data/forfaits';
+import { cta, site } from '~/data/site';
 import { surtitreService } from '~/data/navigation';
 import BaseLayout from '~/layouts/BaseLayout.astro';
 import { serviceJsonLd } from '~/lib/seo';
@@ -36,18 +34,18 @@ const ctaForfait = { label: 'Choisir mon forfait', href: '/contact' };
   <Hero
     maquette="hebergement-maintenance"
     surtitre={surtitreService('/services/hebergement-maintenance')}
-    title="Votre site toujours en ligne. Vous n'avez plus à y penser."
-    motCle="Vous n'avez plus à y penser."
-    subtitle="Hébergement, sauvegardes, mises à jour de sécurité, surveillance et petites modifications : nous nous occupons de la technique, vous gardez l'esprit libre."
+    title="Votre site reste disponible, sauvegardé et à jour"
+    motCle="disponible, sauvegardé et à jour"
+    subtitle="Nous gérons l'hébergement, les sauvegardes, la surveillance et les mises à jour, pour que vous n'ayez pas à vous occuper de la technique au quotidien."
   >
     <ButtonLink href="#forfaits">Voir les forfaits</ButtonLink>
-    <ButtonLink href="/contact" variant="secondaire">
-      Demander un devis
+    <ButtonLink href={cta.devis.href} variant="secondaire">
+      {cta.devis.label}
     </ButtonLink>
   </Hero>
 
   <ProblemList
-    title="Un site sans maintenance est un site en danger"
+    title="Pourquoi un site a besoin de maintenance"
     items={[
       "Les extensions et logiciels non mis à jour sont l'une des principales portes d'entrée des pirates.",
       'Un site en panne un week-end, ce sont des clients perdus sans que vous le sachiez.',
@@ -61,15 +59,15 @@ const ctaForfait = { label: 'Choisir mon forfait', href: '/contact' };
       items={[
         {
           title: 'Hébergement géré',
-          text: `Serveurs en ${site.hebergement}, connexion HTTPS, nom de domaine et e-mails professionnels.`,
+          text: 'Un hébergement sécurisé, configuré et suivi, avec connexion HTTPS, nom de domaine et e-mails professionnels.',
         },
         {
           title: 'Sauvegardes vérifiées',
-          text: `Des sauvegardes automatiques, conservées ${delais.retentionSauvegardes} jours. Nous testons régulièrement leur restauration : une sauvegarde jamais testée n'est pas une vraie sauvegarde.`,
+          text: "Des sauvegardes automatiques, dont nous testons régulièrement la restauration : une sauvegarde jamais testée n'est pas une vraie sauvegarde.",
         },
         {
           title: 'Surveillance 24 h/24',
-          text: 'Si votre site ne répond plus, nous sommes alertés immédiatement et nous intervenons.',
+          text: 'Si votre site ne répond plus, nous sommes alertés immédiatement. Nous intervenons selon votre forfait.',
         },
         {
           title: 'Mises à jour de sécurité testées',
@@ -77,7 +75,7 @@ const ctaForfait = { label: 'Choisir mon forfait', href: '/contact' };
         },
         {
           title: 'Petites modifications',
-          text: 'Un texte à changer, une image à remplacer, une page à ajouter : envoyez-nous un message, nous nous en occupons.',
+          text: 'Un texte à changer, une image à remplacer, une page à ajouter : envoyez-nous un message. Le volume inclus dépend de votre forfait.',
         },
         {
           title: 'Rapport mensuel',
@@ -90,9 +88,8 @@ const ctaForfait = { label: 'Choisir mon forfait', href: '/contact' };
   <Section surtitre="Forfaits" title="Choisissez votre forfait" id="forfaits">
     <ForfaitsTable />
     <p class="apparition mt-6 text-[0.9375rem] leading-[1.65] text-doux">
-      <Texte
-        texte={`Le prix de chaque forfait dépend de votre site : il figure dans votre devis gratuit. ${engagementMaintenance}`}
-      />
+      Le prix de chaque forfait dépend de votre site : il figure dans votre devis gratuit, avec le
+      volume de modifications inclus.
     </p>
     <div class="apparition mt-8">
       <ButtonLink href={ctaForfait.href}>{ctaForfait.label}</ButtonLink>

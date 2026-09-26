@@ -10,7 +10,7 @@ import Hero from '~/components/Hero.astro';
 import ProblemList from '~/components/ProblemList.astro';
 import Section from '~/components/Section.astro';
 import Steps from '~/components/Steps.astro';
-import { delais, site } from '~/data/site';
+import { site } from '~/data/site';
 import { surtitreService } from '~/data/navigation';
 import BaseLayout from '~/layouts/BaseLayout.astro';
 import { serviceJsonLd } from '~/lib/seo';
@@ -33,9 +33,9 @@ const ctaProjet = { label: 'Parler de mon application', href: '/contact' };
   <Hero
     maquette="applications-mobiles"
     surtitre={surtitreService('/services/applications-mobiles')}
-    title="Votre application iPhone et Android, solide et suivie dans la durée"
-    motCle="solide et suivie dans la durée"
-    subtitle="Pour vos clients ou pour vos équipes : nous concevons, testons et publions votre application, puis nous la gardons à jour."
+    title="Votre application iPhone et Android, de la conception à la publication"
+    motCle="de la conception à la publication"
+    subtitle="Pour vos clients ou pour vos équipes : une seule équipe conçoit les écrans, développe l'application, la teste sur de vrais téléphones et assure son suivi."
   >
     <ButtonLink href={ctaProjet.href}>{ctaProjet.label}</ButtonLink>
   </Hero>
@@ -69,7 +69,7 @@ const ctaProjet = { label: 'Parler de mon application', href: '/contact' };
         },
         {
           title: 'Un seul développement pour iPhone et Android',
-          text: 'Nous développons une seule application qui fonctionne sur les deux systèmes. Vous payez un seul projet, et les deux versions évoluent ensemble.',
+          text: "Quand c'est adapté à votre projet, nous développons une seule application pour les deux systèmes. Vous payez un seul projet, et les deux versions évoluent ensemble.",
         },
         {
           title: "La publication sur l'App Store et Google Play",
@@ -119,7 +119,7 @@ const ctaProjet = { label: 'Parler de mon application', href: '/contact' };
         },
         {
           title: 'Développement par étapes.',
-          text: `Une nouvelle version à installer sur votre téléphone toutes les ${delais.iteration} semaines.`,
+          text: 'Vous installez régulièrement une nouvelle version sur votre téléphone.',
         },
         {
           title: 'Tests.',

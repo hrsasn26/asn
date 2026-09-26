@@ -1,7 +1,6 @@
 ---
 // Surtitres des sections : docs/brief-agence.md, section 6.20.
 // Textes : docs/brief-agence.md, section 6.16 (proposition à valider, avec la section Formation).
-import Placeholder from '~/components/Placeholder.astro';
 import ButtonLink from '~/components/ButtonLink.astro';
 import CtaFinal from '~/components/CtaFinal.astro';
 import Encadre from '~/components/Encadre.astro';
@@ -13,8 +12,7 @@ import ListePoints from '~/components/ListePoints.astro';
 import ProblemList from '~/components/ProblemList.astro';
 import Section from '~/components/Section.astro';
 import Steps from '~/components/Steps.astro';
-import Texte from '~/components/Texte.astro';
-import { offre, site } from '~/data/site';
+import { site } from '~/data/site';
 import { surtitreService } from '~/data/navigation';
 import BaseLayout from '~/layouts/BaseLayout.astro';
 import { serviceJsonLd } from '~/lib/seo';
@@ -37,9 +35,9 @@ const ctaProjet = { label: 'Parler de mon projet IA', href: '/contact' };
   <Hero
     maquette="intelligence-artificielle"
     surtitre={surtitreService('/services/intelligence-artificielle')}
-    title="L'intelligence artificielle, là où elle vous fait vraiment gagner du temps"
-    motCle="gagner du temps"
-    subtitle="Assistants pour vos clients et pour vos équipes, traitement de documents, rédaction assistée : nous intégrons l'IA dans vos outils, avec des résultats vérifiés et vos données protégées."
+    title="Intégrez l'IA là où elle apporte un gain concret"
+    motCle="un gain concret"
+    subtitle="Assistants, traitement de documents et rédaction assistée : nous partons de vos tâches réelles, nous testons les résultats et nous encadrons l'utilisation de vos données."
   >
     <ButtonLink href={ctaProjet.href}>{ctaProjet.label}</ButtonLink>
   </Hero>
@@ -65,7 +63,7 @@ const ctaProjet = { label: 'Parler de mon projet IA', href: '/contact' };
         },
         {
           title: 'Un assistant pour vos équipes',
-          text: "Vos collaborateurs posent leurs questions sur vos procédures, vos catalogues ou vos contrats. Ils reçoivent une réponse avec le document d'origine.",
+          text: "Vos collaborateurs retrouvent plus vite une procédure, une information produit ou un passage de contrat. Chaque réponse indique le document d'origine.",
         },
         {
           title: 'Le traitement de vos documents',
@@ -99,7 +97,6 @@ const ctaProjet = { label: 'Parler de mon projet IA', href: '/contact' };
           À la fin de l'atelier, vous recevez des règles d'utilisation simples, adaptées à votre
           entreprise.
         </p>
-        <Placeholder text="[Durée et nombre de participants : à définir]" />
       </div>
       <div class="mt-8">
         <ButtonLink href="/contact">Organiser un atelier</ButtonLink>
@@ -119,8 +116,8 @@ const ctaProjet = { label: 'Parler de mon projet IA', href: '/contact' };
           text: "L'assistant cite ses sources et dit quand il ne sait pas. Pour les décisions importantes, une personne valide toujours le résultat.",
         },
         {
-          title: 'Vos données protégées',
-          text: `Nous choisissons des services d'IA qui n'utilisent pas vos données pour entraîner leurs modèles, et nous respectons la loi 09-08. ${offre.confidentialiteIA}`,
+          title: 'Vos données encadrées',
+          text: "Nous limitons les données envoyées au strict nécessaire. Avant de commencer, nous vous disons quel service d'IA traite vos données, et dans quel pays.",
         },
         {
           title: 'Suivie dans la durée',
@@ -174,9 +171,9 @@ const ctaProjet = { label: 'Parler de mon projet IA', href: '/contact' };
     </FaqItem>
     <FaqItem question="Mes données sont-elles en sécurité ?">
       <p>
-        <Texte
-          texte={`Nous choisissons des services d'IA qui n'utilisent pas vos données pour entraîner leurs modèles. Nous limitons les données envoyées au strict nécessaire. ${offre.confidentialiteIA}`}
-        />
+        Cela dépend du service d'IA choisi. Nous limitons les données envoyées au strict nécessaire.
+        Avant de commencer, nous vous disons quel service traite vos données, dans quel pays, et
+        s'il peut les utiliser pour entraîner ses modèles. Vous décidez en connaissance de cause.
       </p>
     </FaqItem>
     <FaqItem question="Combien ça coûte ?">

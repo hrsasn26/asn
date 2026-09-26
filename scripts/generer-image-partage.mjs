@@ -43,8 +43,8 @@ const html = `<!doctype html>
 </style></head><body>
   <div class="nom">${nom ? `<span class="repere"><span></span></span>${nom}` : ''}</div>
   <div>
-    <h1>Des sites et des applications conçus par des <b>ingénieurs</b></h1>
-    <p class="promesse">Fiables, testés, sécurisés et suivis dans la durée.</p>
+    <h1>Des sites et des applications fiables, <b>suivis dans la durée</b></h1>
+    <p class="promesse">Testés, sécurisés et faciles à faire évoluer.</p>
   </div>
   <div class="services"><span>Sites web</span><span>Applications</span><span>Intelligence artificielle</span><span>Maintenance</span></div>
 </body></html>`;

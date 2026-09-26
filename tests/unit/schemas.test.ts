@@ -1,5 +1,11 @@
 import { describe, expect, it } from 'vitest';
-import { normaliserAdresseSite, schemaAudit, schemaContact } from '../../src/lib/schemas';
+import { services } from '../../src/data/navigation';
+import {
+  normaliserAdresseSite,
+  schemaAudit,
+  schemaContact,
+  typesProjet,
+} from '../../src/lib/schemas';
 
 const contactValide = {
   nom: 'Camille Martin',
@@ -28,6 +34,17 @@ describe('schemaContact', () => {
 
   it('refuse un nom composé uniquement d’espaces', () => {
     expect(schemaContact.safeParse({ ...contactValide, nom: '   ' }).success).toBe(false);
+  });
+
+  it.each(['application-mobile', 'saas', 'ia', 'donnees', 'tests-securite'])(
+    'accepte le type de projet « %s »',
+    (projet) => {
+      expect(schemaContact.safeParse({ ...contactValide, projet }).success).toBe(true);
+    },
+  );
+
+  it('propose un type de projet par pôle de services, plus « Autre »', () => {
+    expect(Object.keys(typesProjet)).toHaveLength(services.length + 1);
   });
 
   it('refuse un type de projet inconnu', () => {

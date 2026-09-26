@@ -1,6 +1,6 @@
 /**
  * Visuels des en-têtes : maquettes d'écrans pour des clients fictifs.
- * Textes (texte alternatif, légende) : docs/brief-agence.md, section 6.19 (proposition à valider).
+ * Textes (texte alternatif, légende) : docs/brief-agence.md, section 6.19 (validés le 26 septembre 2026).
  * Images : `pnpm image:heros` les génère depuis design/heros/<nom>.html dans src/assets/heros/,
  * une image AVIF par largeur (<nom>-<largeur>.avif) et une image WebP pour les anciens navigateurs
  * (<nom>.webp). Voir design/heros/README.md.

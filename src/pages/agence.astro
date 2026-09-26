@@ -1,41 +1,45 @@
 ---
 // Textes : docs/brief-agence.md, section 6.10 (proposition à valider). Surtitres : section 6.20.
-// Aucune information sur l'équipe n'est inventée : les membres restent des placeholders.
+// Aucune information sur l'équipe n'est inventée : la section « L'équipe » est masquée
+// jusqu'à réception des vrais noms, rôles et photos.
 import CtaFinal from '~/components/CtaFinal.astro';
 import Encadre from '~/components/Encadre.astro';
-import EnteteSection from '~/components/EnteteSection.astro';
 import FeatureGrid from '~/components/FeatureGrid.astro';
 import Hero from '~/components/Hero.astro';
-import Placeholder from '~/components/Placeholder.astro';
 import Section from '~/components/Section.astro';
-import Texte from '~/components/Texte.astro';
 import { cta, site } from '~/data/site';
 import BaseLayout from '~/layouts/BaseLayout.astro';
 
 const valeurs = [
-  { title: 'Fiabilité', text: 'Nous livrons ce que nous avons testé.' },
-  { title: 'Transparence', text: 'Un prix fixe, et des explications sans jargon.' },
+  { title: 'Fiabilité', text: 'Nous livrons ce que nous avons vérifié.' },
+  {
+    title: 'Transparence',
+    text: 'Un périmètre, un prix fixe et des choix expliqués clairement, sans jargon.',
+  },
   {
     title: 'Honnêteté',
     text: "Nous vous disons quand un projet n'est pas raisonnable. Nous ne promettons jamais de résultat que nous ne maîtrisons pas.",
   },
-  { title: 'Engagement dans la durée', text: 'Nous restons là après la mise en ligne.' },
   {
-    title: 'Liberté',
-    text: 'Vous restez propriétaire de votre code, de votre nom de domaine et de vos données.',
+    title: 'Continuité',
+    text: "Nous pouvons rester responsables de l'hébergement, de la maintenance et des évolutions.",
+  },
+  {
+    title: 'Indépendance',
+    text: 'Votre code, vos comptes, votre nom de domaine et vos données restent à votre nom.',
   },
 ];
 ---
 
 <BaseLayout
-  title={`L'agence : une équipe d'ingénieurs à votre service | ${site.nom}`}
-  description="Une équipe d'ingénieurs qui conçoit, teste, héberge et maintient des sites et des applications pour les TPE, PME et particuliers."
+  title={`L'agence : une équipe technique à votre service | ${site.nom}`}
+  description="Une équipe qui conçoit, teste, héberge et maintient des sites et des applications pour les TPE, PME et porteurs de projet."
   breadcrumbs={[{ label: "L'agence", href: '/agence' }]}
 >
   <Hero
-    title="Une équipe d'ingénieurs, à la taille de votre projet"
-    motCle="à la taille de votre projet"
-    subtitle={`Nous construisons des sites et des applications solides, et nous les suivons dans la durée. Nous sommes basés à ${site.zone}.`}
+    title="Une équipe accessible, du premier échange au suivi"
+    motCle="du premier échange au suivi"
+    subtitle="Nous concevons des sites et des applications solides pour les TPE, les PME et les porteurs de projet, avec un interlocuteur direct et une responsabilité claire sur la qualité technique."
   />
 
   <Section surtitre="Notre histoire" title={`Pourquoi ${site.nom} existe`} disposition="colonnes">
@@ -45,12 +49,8 @@ const valeurs = [
         prestataire qui ne répond plus, un site piraté faute de mises à jour.
       </p>
       <p class="mt-5 leading-[1.75] text-doux sm:text-[1.0625rem]">
-        {`Nous avons créé ${site.nom} pour proposer autre chose : des projets construits avec les méthodes des ingénieurs, et un suivi dans la durée.`}
+        {`Nous avons créé ${site.nom} pour proposer autre chose : des projets construits avec méthode, testés, et un suivi dans la durée.`}
       </p>
-      <Placeholder
-        text="[À rédiger : l'histoire de l'agence, en quelques phrases]"
-        class="mt-5 sm:text-[1.0625rem]"
-      />
     </div>
   </Section>
 
@@ -79,7 +79,7 @@ const valeurs = [
   <Section surtitre="Valeurs" title="Nos valeurs" disposition="centre">
     <ul class="flex flex-wrap gap-4">
       {valeurs.map(({ title, text }, index) => {
-        // La dernière valeur (Liberté) est sur fond sombre, comme dans les maquettes.
+        // La dernière valeur (Indépendance) est sur fond sombre, comme dans les maquettes.
         const sombre = index === valeurs.length - 1;
         return (
           <li
@@ -113,36 +113,10 @@ const valeurs = [
   </Section>
 
   <Section>
-    <div class="apparition flex flex-wrap items-end justify-between gap-4">
-      <EnteteSection surtitre="Équipe" title="L'équipe" />
-      <Placeholder text="[Photos : à fournir]" class="text-sm" />
-    </div>
-    <ul class="mt-12 grid grid-cols-[repeat(auto-fit,minmax(min(100%,16.25rem),1fr))] gap-6">
-      {[1, 2, 3].map(() => (
-        <li class="apparition">
-          {/* Emplacement de la photo, à fournir : aucune photo n'est inventée. */}
-          <div
-            aria-hidden="true"
-            class="aspect-[4/5] rounded-[1.25rem] bg-[repeating-linear-gradient(135deg,var(--color-ligne)_0_10px,var(--color-surface)_10px_20px)]"
-          />
-          <p class="mt-5 text-[1.1875rem] font-semibold">
-            <Texte texte="[Prénom Nom]" />
-          </p>
-          <p class="mt-1 text-sm text-discret">
-            <Texte texte="[Rôle]" />
-          </p>
-          <p class="mt-2.5 text-[0.9375rem] leading-[1.6] text-doux">
-            <Texte texte="[Une phrase de présentation]" />
-          </p>
-        </li>
-      ))}
-    </ul>
-  </Section>
-
-  <Section>
     <Encadre ton="cadre" surtitre="Réseau" title="Nos partenaires" disposition="colonnes">
       <p class="leading-[1.75] text-doux sm:text-[1.0625rem]">
-        <Texte texte="Pour le design, le logo et la rédaction, nous travaillons avec des indépendants de confiance : [graphiste partenaire], [rédacteur partenaire]." />{' '}
+        Pour le design, le logo et la rédaction, nous travaillons avec des indépendants de
+        confiance.{' '}
         <strong class="font-semibold text-encre">
           Le développement, lui, n'est jamais sous-traité.
         </strong>

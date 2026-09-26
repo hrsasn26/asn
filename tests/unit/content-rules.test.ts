@@ -39,6 +39,8 @@ describe('analyserTexte', () => {
     'Nous optimisons votre site',
     'Digitalisez votre activité',
     'Une vision 360°',
+    'Une équipe d’ingénieurs',
+    'Échanger avec un ingénieur',
   ])('refuse « %s »', (texte) => {
     const problemes = analyserTexte([texte], { strict: false });
     expect(problemes.some((p) => p.niveau === 'erreur')).toBe(true);

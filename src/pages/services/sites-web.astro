@@ -11,15 +11,15 @@ import LienFleche from '~/components/LienFleche.astro';
 import OfferCard from '~/components/OfferCard.astro';
 import ProblemList from '~/components/ProblemList.astro';
 import Section from '~/components/Section.astro';
-import Texte from '~/components/Texte.astro';
 import { surtitreService } from '~/data/navigation';
-import { cta, delais, offre, site } from '~/data/site';
+import { site } from '~/data/site';
 import BaseLayout from '~/layouts/BaseLayout.astro';
 import { serviceJsonLd } from '~/lib/seo';
 
 const title = 'Création de site vitrine et e-commerce';
 const description =
-  'Site vitrine, boutique en ligne ou refonte : des sites rapides, sécurisés et bien référencés, conçus par des ingénieurs pour les TPE, PME et particuliers.';
+  'Site vitrine, boutique en ligne ou refonte : des sites rapides, sécurisés et prêts pour le référencement, pour les TPE, PME et particuliers.';
+const ctaSite = { label: 'Parler de mon futur site', href: '/contact' };
 ---
 
 <BaseLayout
@@ -34,11 +34,11 @@ const description =
   <Hero
     maquette="sites-web"
     surtitre={surtitreService('/services/sites-web')}
-    title="Un site web rapide, sécurisé et facile à trouver sur Google"
-    motCle="facile à trouver sur Google"
-    subtitle="Site vitrine, boutique en ligne ou refonte : nous créons des sites qui chargent vite, s'affichent parfaitement sur mobile et que vous pouvez modifier vous-même."
+    title="Un site rapide, crédible et pensé pour générer des contacts"
+    motCle="pensé pour générer des contacts"
+    subtitle="Site vitrine, boutique en ligne ou refonte : nous créons un site adapté au mobile, simple à modifier vous-même et techniquement prêt pour le référencement."
   >
-    <ButtonLink href={cta.principal.href}>{cta.principal.label}</ButtonLink>
+    <ButtonLink href={ctaSite.href}>{ctaSite.label}</ButtonLink>
   </Hero>
 
   <ProblemList
@@ -59,10 +59,9 @@ const description =
     <div class="flex flex-wrap gap-6">
       <OfferCard
         title="Site vitrine"
-        text="Pour présenter votre activité, montrer vos réalisations et être contacté facilement."
+        text="Pour présenter clairement votre activité et vos réalisations, et être contacté facilement."
         idealPour="artisans, indépendants, TPE, particuliers."
         items={[
-          `Jusqu'à ${offre.pagesSiteVitrine} pages`,
           'Formulaire de contact',
           'Prise de rendez-vous en ligne (en option)',
           'Liens vers vos réseaux sociaux et votre fiche Google',
@@ -70,7 +69,7 @@ const description =
       />
       <OfferCard
         title="Boutique en ligne"
-        text="Pour vendre vos produits sur Internet, 24 h/24."
+        text="Pour vendre en ligne, avec un parcours d'achat simple, des paiements sécurisés et une gestion adaptée à votre activité."
         idealPour="commerçants, créateurs, PME."
         items={[
           'Paiement sécurisé (carte bancaire via le CMI, paiement à la livraison…)',
@@ -81,8 +80,8 @@ const description =
       />
       <OfferCard
         title="Refonte de site"
-        text="Pour moderniser un site vieillissant sans perdre votre place sur Google."
-        idealPour={`tout site de plus de ${offre.ageRefonte} ans ou qui ne vous apporte plus de contacts.`}
+        text="Pour moderniser votre site sans perdre ce qui fonctionne : contenus, redirections, vitesse et affichage mobile sont traités dès le départ."
+        idealPour="tout site vieillissant ou qui ne vous apporte plus de contacts."
         items={[
           'Reprise de vos contenus',
           'Redirections des anciennes pages pour conserver votre référencement',
@@ -188,9 +187,8 @@ const description =
       >
         <div class="space-y-3.5 leading-[1.75] text-doux">
           <p>
-            <Texte
-              texte={`${offre.design}. Vous validez les maquettes avant le début du développement : pas de mauvaise surprise à la livraison.`}
-            />
+            Vous validez les maquettes avant le début du développement : pas de mauvaise surprise à
+            la livraison.
           </p>
           <p>
             Vous n'avez pas encore de logo ? Nous pouvons vous mettre en relation avec un graphiste
@@ -210,31 +208,30 @@ const description =
     </FaqItem>
     <FaqItem question="Vous occupez-vous des textes et des photos ?">
       <p>
-        Vous nous fournissez vos textes et vos photos, et nous vous aidons à les organiser. Si vous
-        préférez déléguer, nous pouvons vous mettre en relation avec un rédacteur ou un photographe
-        partenaire.
+        Pas directement. Vous nous fournissez vos textes et vos photos, et nous vous aidons à les
+        organiser. Si vous préférez déléguer, nous pouvons vous mettre en relation avec un rédacteur
+        ou un photographe partenaire.
       </p>
     </FaqItem>
     <FaqItem question="Mon site sera-t-il bien référencé sur Google ?">
       <p>
-        Nous nous occupons de toute la partie technique du référencement : vitesse, structure,
-        balises, compatibilité mobile. Votre position dans Google dépend aussi de vos contenus et de
-        la concurrence dans votre secteur : personne ne peut honnêtement vous garantir la première
-        place. En revanche, nous vous donnons toutes les bases pour y arriver.
+        Il sera techniquement prêt. Nous nous occupons de toute la partie technique du référencement
+        : vitesse, structure, balises, compatibilité mobile. Votre position dans Google dépend aussi
+        de vos contenus et de la concurrence dans votre secteur : personne ne peut honnêtement vous
+        garantir la première place.
       </p>
     </FaqItem>
     <FaqItem question="WordPress ou développement sur mesure ?">
       <p>
-        Nous vous conseillons selon votre besoin. WordPress convient très bien à la plupart des
-        sites vitrines. Le sur-mesure devient intéressant quand vous avez des fonctionnalités
-        spécifiques ou de gros volumes.
+        Cela dépend de votre besoin. WordPress convient très bien à la plupart des sites vitrines.
+        Le sur-mesure devient intéressant quand vous avez des fonctionnalités spécifiques ou de gros
+        volumes.
       </p>
     </FaqItem>
     <FaqItem question="Combien de temps faut-il pour créer mon site ?">
       <p>
-        <Texte
-          texte={`Comptez ${delais.siteVitrine} pour un site vitrine et ${delais.boutique} pour une boutique en ligne, selon la rapidité à laquelle nous recevons vos contenus.`}
-        />
+        Cela dépend du site et de la rapidité à laquelle nous recevons vos contenus. Nous fixons le
+        planning ensemble, et il figure dans le devis.
       </p>
     </FaqItem>
     <FaqItem question="Que se passe-t-il après la mise en ligne ?">
@@ -249,7 +246,7 @@ const description =
   <CtaFinal
     title="Parlons de votre futur site"
     motCle="futur site"
-    text={`Décrivez-nous votre projet en quelques lignes. Nous revenons vers vous sous ${site.delaiReponse} avec une première estimation.`}
-    button={cta.principal}
+    text="Décrivez-nous votre projet en quelques lignes. Nous revenons vers vous avec les prochaines étapes."
+    button={ctaSite}
   />
 </BaseLayout>

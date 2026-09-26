@@ -8,8 +8,7 @@ const lignes: { label: string; valeur: (f: (typeof forfaitsMaintenance)[number])
   { label: 'Sauvegardes', valeur: (f) => f.sauvegardes },
   { label: 'Surveillance 24 h/24', valeur: () => '✓' },
   { label: 'Mises à jour de sécurité', valeur: () => '✓' },
-  { label: 'Modifications incluses', valeur: (f) => f.modifications },
-  { label: "Délai d'intervention", valeur: (f) => f.delaiIntervention },
+  { label: 'Petites modifications', valeur: (f) => (f.petitesModifications ? '✓' : '—') },
   { label: 'Rapport mensuel', valeur: (f) => (f.rapportMensuel ? '✓' : '—') },
 ];
 ---

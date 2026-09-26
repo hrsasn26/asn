@@ -1,10 +1,15 @@
 import { z } from 'astro/zod';
 
-/** Types de projet proposés dans le formulaire de contact. */
+/** Types de projet proposés dans le formulaire de contact : un par pôle (section 6.11 du brief). */
 export const typesProjet = {
   'site-web': 'Site web',
   application: 'Application sur mesure',
+  'application-mobile': 'Application mobile',
+  saas: 'Logiciel SaaS',
+  ia: 'Intelligence artificielle',
   automatisation: 'Automatisation et intégrations',
+  donnees: 'Données et tableaux de bord',
+  'tests-securite': 'Tests et sécurité',
   hebergement: 'Hébergement et maintenance',
   autre: 'Autre',
 } as const;

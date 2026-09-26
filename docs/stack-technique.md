@@ -106,7 +106,7 @@ deploy/                   Docker Compose, Caddyfile, script de déploiement
 - Mise en page : contenu de 1200 px au plus (utilitaire `conteneur`). En-tête collant, fond blanc translucide. En haut de chaque page, un fond gris qui s'éclaircit vers le blanc (`BaseLayout`). Sections en trois dispositions (`Section` : `colonnes`, `centre`, `pile`), encadrés arrondis (`Encadre` : `gris`, `sombre`, `cadre`). Boutons en pilule (`ButtonLink`). Pied de page bleu nuit.
 - En-tête des pages (`Hero`) : centré avec le visuel en dessous (accueil), texte et visuel côte à côte (pages de services, audit gratuit) ou texte seul (Services, Méthode, L'agence).
 - Écarts avec les maquettes, pour l'accessibilité : les liens dans le texte sont soulignés (la couleur seule ne suffit pas, WCAG 1.4.1) ; la bordure des champs est plus foncée (contraste de 3:1, WCAG 1.4.11) ; le gris des surtitres, des numéros et des mentions « facultatif » est un peu plus foncé (#647089 au lieu de #6b7690 et #8a94a8 : contraste de 4,5:1 sur le fond gris) ; l'exemple de l'adresse du site (audit) est une aide visible sous le libellé, pas un texte d'exemple dans le champ, qui disparaît pendant la saisie.
-- Écarts avec les maquettes, pour les règles du site : la légende « Exemple fictif » reste sous chaque visuel (et sous la grille des cartes) ; l'équipe n'a pas de photo, seulement un emplacement rayé tant que les photos ne sont pas fournies.
+- Écarts avec les maquettes, pour les règles du site : la légende « Exemple fictif » reste sous chaque visuel (et sous la grille des cartes) ; la section « L'équipe » de la maquette de L'agence est masquée jusqu'à réception des vraies informations (révision des textes du 26 septembre 2026) ; les textes des pages sont ceux de cette révision, pas ceux des maquettes.
 
 **Animations.** Le design est sobre : elles sont discrètes, en CSS seul, dans `src/styles/global.css` :
 - en-tête du site : au survol, un trait se dessine sous le lien du menu (la page courante a déjà le sien) ; sur téléphone, les trois traits du bouton « Menu » se changent en croix et les liens du menu glissent en place l'un après l'autre (`animate-glisse`, délai `--delai-glisse`) ;
@@ -156,7 +156,7 @@ Limite connue : Firefox ne prend pas encore en charge les animations liées au d
 | `check-content` | Placeholders, mots à éviter, points d'exclamation, espaces manquantes, sur le HTML final. |
 | Playwright | Chaque page du sitemap sur Chromium, Firefox et WebKit, en tailles ordinateur, mobile et tablette. Envoi des formulaires, erreurs, menu mobile, lien d'évitement, liens internes. Pas de défilement horizontal. Animations : moins de 5 secondes, aucune en mode « réduire les animations » (pages, formulaire en erreur, menu mobile), barre de lecture qui se remplit. |
 | axe-core | Accessibilité de chaque page (WCAG 2.1 AA). Il ne trouve qu'une partie des problèmes : faites aussi une vérification manuelle au clavier et au lecteur d'écran. |
-| Lighthouse CI | Seuils : performance 95, accessibilité 100, bonnes pratiques 100, SEO 100. Dix pages clés. |
+| Lighthouse CI | Seuils : performance 95, accessibilité 100, bonnes pratiques 100, SEO 100. Dix pages clés, trois passages par page : chaque seuil s'applique à la médiane des trois passages (le premier passage, sur un navigateur qui démarre, est plus lent). Rapports dans l'artefact `rapports-lighthouse`. |
 | Build Docker | L'image se construit. |
 
 La CI (`.github/workflows/ci.yml`) lance tous ces contrôles sur chaque pull request et sur `main`.

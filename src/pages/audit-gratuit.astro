@@ -2,6 +2,7 @@
 // Textes : docs/brief-agence.md, section 6.6. Surtitres des sections : section 6.20.
 import { actions } from 'astro:actions';
 import ButtonLink from '~/components/ButtonLink.astro';
+import Encadre from '~/components/Encadre.astro';
 import EnteteSection from '~/components/EnteteSection.astro';
 import FeatureGrid from '~/components/FeatureGrid.astro';
 import CarteFormulaire from '~/components/forms/CarteFormulaire.astro';
@@ -11,10 +12,10 @@ import Field from '~/components/forms/Field.astro';
 import Honeypot from '~/components/forms/Honeypot.astro';
 import Success from '~/components/forms/Success.astro';
 import Hero from '~/components/Hero.astro';
+import LienFleche from '~/components/LienFleche.astro';
 import ListePoints from '~/components/ListePoints.astro';
 import Section from '~/components/Section.astro';
-import Texte from '~/components/Texte.astro';
-import { delais, site } from '~/data/site';
+import { site } from '~/data/site';
 import BaseLayout from '~/layouts/BaseLayout.astro';
 import { etatFormulaire } from '~/lib/formulaire';
 import { preoccupations } from '~/lib/schemas';
@@ -41,9 +42,9 @@ const titre = `Audit gratuit de votre site web | ${site.nom}`;
   <Hero
     maquette="audit-gratuit"
     surtitre="Audit gratuit"
-    title="Votre site est-il lent, vulnérable ou invisible sur Google ?"
-    motCle="invisible sur Google ?"
-    subtitle="Recevez gratuitement un audit technique de votre site. Un rapport clair, sans jargon, avec les actions prioritaires à mener."
+    title="Obtenez un diagnostic clair de votre site"
+    motCle="un diagnostic clair de votre site"
+    subtitle="Nous vérifions gratuitement les principaux points techniques qui peuvent freiner votre site : vitesse, sécurité de base, référencement technique et affichage mobile."
   >
     <ButtonLink href="#demande">Demander mon audit</ButtonLink>
   </Hero>
@@ -51,18 +52,42 @@ const titre = `Audit gratuit de votre site web | ${site.nom}`;
   <Section surtitre="Périmètre" title="Ce que nous vérifions" disposition="colonnes">
     <FeatureGrid
       items={[
-        { title: 'Vitesse', text: "Combien de temps vos pages mettent à s'afficher, et pourquoi." },
-        { title: 'Sécurité', text: 'Certificat HTTPS, mises à jour, failles connues.' },
+        {
+          title: 'Vitesse',
+          text: "Combien de temps vos pages mettent à s'afficher, et ce qui les ralentit.",
+        },
+        {
+          title: 'Sécurité de base',
+          text: "Certificat HTTPS, mises à jour et failles visibles de l'extérieur.",
+        },
         {
           title: 'Référencement technique',
           text: 'Ce qui empêche Google de bien comprendre votre site.',
         },
         {
           title: 'Affichage mobile',
-          text: 'Comment vos visiteurs voient votre site sur téléphone.',
+          text: 'Comment vos visiteurs voient et utilisent votre site sur téléphone.',
         },
       ]}
     />
+  </Section>
+
+  <Section>
+    <Encadre
+      ton="cadre"
+      surtitre="Limites"
+      title="Ce que l'audit gratuit ne couvre pas"
+      disposition="colonnes"
+    >
+      <p class="leading-[1.75] text-doux sm:text-[1.0625rem]">
+        L'audit gratuit regarde votre site de l'extérieur, sans accès au code ni au serveur. Il ne
+        remplace pas un audit de sécurité complet. Les corrections ne sont pas incluses : vous les
+        faites avec votre prestataire, ou nous vous proposons un devis.
+      </p>
+      <p class="mt-6">
+        <LienFleche href="/services/tests-securite" label="Voir l'offre Tests et sécurité" />
+      </p>
+    </Encadre>
   </Section>
 
   <Section id="demande" class="pb-20 sm:pb-32">
@@ -73,9 +98,9 @@ const titre = `Audit gratuit de votre site web | ${site.nom}`;
           variante="lignes"
           class="mt-8 leading-[1.6] [&_li]:py-4.5"
           items={[
-            `Un rapport écrit sous ${delais.rapportAudit}`,
-            'La liste des problèmes, classés par priorité',
-            delais.appelAudit,
+            'Un rapport écrit, sans jargon',
+            'Les problèmes classés par priorité : ce qui est urgent, ce qui peut attendre',
+            'Les actions recommandées pour chaque problème',
           ]}
         />
       </div>
@@ -85,9 +110,7 @@ const titre = `Audit gratuit de votre site web | ${site.nom}`;
         {etat.envoye ? (
           <div class="mt-6">
             <Success title="Votre demande d'audit est envoyée">
-              <p>
-                <Texte texte={`Vous recevez votre rapport sous ${delais.rapportAudit}.`} />
-              </p>
+              <p>Nous revenons vers vous avec votre rapport.</p>
             </Success>
           </div>
         ) : (

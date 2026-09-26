@@ -12,8 +12,7 @@ import LienFleche from '~/components/LienFleche.astro';
 import ProblemList from '~/components/ProblemList.astro';
 import Section from '~/components/Section.astro';
 import Steps from '~/components/Steps.astro';
-import Texte from '~/components/Texte.astro';
-import { offre, site } from '~/data/site';
+import { site } from '~/data/site';
 import { surtitreService } from '~/data/navigation';
 import BaseLayout from '~/layouts/BaseLayout.astro';
 import { serviceJsonLd } from '~/lib/seo';
@@ -21,7 +20,7 @@ import { serviceJsonLd } from '~/lib/seo';
 const title = 'Automatisation et connexion de vos logiciels';
 const description =
   "Connectez votre site, votre CRM et votre comptabilité. Automatisez les tâches répétitives et utilisez l'IA là où elle vous fait vraiment gagner du temps.";
-const ctaTaches = { label: 'Identifier mes tâches à automatiser', href: '/contact' };
+const ctaTaches = { label: 'Parler de mes tâches répétitives', href: '/contact' };
 ---
 
 <BaseLayout
@@ -36,9 +35,9 @@ const ctaTaches = { label: 'Identifier mes tâches à automatiser', href: '/cont
   <Hero
     maquette="automatisation-integrations"
     surtitre={surtitreService('/services/automatisation-integrations')}
-    title="Moins de saisie, moins d'erreurs, plus de temps pour votre métier"
-    motCle="plus de temps pour votre métier"
-    subtitle="Nous connectons vos outils entre eux et automatisons les tâches répétitives. Vos informations circulent toutes seules, au bon endroit."
+    title="Faites circuler l'information sans la recopier"
+    motCle="sans la recopier"
+    subtitle="Nous connectons vos outils et automatisons les tâches répétitives pour réduire la saisie manuelle, les oublis et les erreurs."
   >
     <ButtonLink href={ctaTaches.href}>{ctaTaches.label}</ButtonLink>
   </Hero>
@@ -64,15 +63,15 @@ const ctaTaches = { label: 'Identifier mes tâches à automatiser', href: '/cont
       items={[
         {
           title: 'Connecter vos outils',
-          text: 'Site web, boutique, CRM, comptabilité, agenda, e-mailing : nous les faisons communiquer. Chaque commande crée automatiquement sa facture, et chaque demande de contact arrive directement dans votre CRM.',
+          text: 'Site web, boutique, CRM, comptabilité, agenda, e-mailing : nous les relions pour éviter les doubles saisies. Chaque commande crée automatiquement sa facture, et chaque demande de contact arrive directement dans votre CRM.',
         },
         {
           title: 'Automatiser les tâches répétitives',
-          text: "Relances, rapports, notifications, synchronisation des stocks. Nous utilisons des outils éprouvés (n8n, Make, Zapier), ou un développement sur mesure quand c'est nécessaire.",
+          text: 'Relances, notifications, rapports, mise à jour des stocks : chaque tâche part au bon moment, sans action de votre part. Selon le besoin, nous utilisons des outils éprouvés (n8n, Make, Zapier) ou un développement sur mesure.',
         },
         {
           title: "Intégrer l'IA, là où elle est utile",
-          text: "Un assistant sur votre site qui répond aux questions fréquentes, le tri automatique de vos documents, l'extraction des informations de vos factures. Nous n'intégrons l'IA que là où elle vous fait vraiment gagner du temps, et vos données restent protégées.",
+          text: "Un assistant sur votre site qui répond aux questions fréquentes, le tri automatique de vos documents, l'extraction des informations de vos factures. Nous n'intégrons l'IA que là où elle vous fait vraiment gagner du temps, et nous vous expliquons où vont vos données.",
         },
       ]}
     />
@@ -200,9 +199,9 @@ const ctaTaches = { label: 'Identifier mes tâches à automatiser', href: '/cont
     </FaqItem>
     <FaqItem question="Mes données sont-elles en sécurité avec l'IA ?">
       <p>
-        <Texte
-          texte={`Nous choisissons des services compatibles avec la loi 09-08 sur les données personnelles, qui n'utilisent pas vos données pour entraîner leurs modèles. ${offre.confidentialiteIA}`}
-        />
+        Cela dépend du service d'IA choisi. Avant de commencer, nous vous disons quel service traite
+        vos données, dans quel pays, et s'il peut les utiliser pour entraîner ses modèles. Vous
+        décidez en connaissance de cause.
       </p>
     </FaqItem>
     <FaqItem question="Combien ça coûte ?">
