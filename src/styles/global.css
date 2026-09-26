@@ -33,6 +33,20 @@
       @apply scroll-auto;
     }
   }
+
+  @media (prefers-reduced-motion: no-preference) {
+    /* Liens : la couleur et le soulignement changent en douceur au survol. */
+    a {
+      transition-property: color, text-decoration-color, text-underline-offset;
+      transition-duration: 150ms;
+      transition-timing-function: ease-out;
+    }
+
+    /* Focus clavier : le contour se resserre autour de l'élément. */
+    :focus-visible {
+      animation: focus-anneau 0.2s ease-out;
+    }
+  }
 }
 
 /*
@@ -47,6 +61,15 @@
 @media (prefers-reduced-motion: no-preference) {
   @view-transition {
     navigation: auto;
+  }
+
+  /* L'ancienne page monte en s'effaçant, la nouvelle arrive par le bas. L'en-tête ne bouge pas. */
+  ::view-transition-old(root) {
+    animation: page-sortie 0.2s ease-in both;
+  }
+
+  ::view-transition-new(root) {
+    animation: page-entree 0.35s cubic-bezier(0.2, 0.7, 0.3, 1) both;
   }
 }
 
@@ -147,6 +170,32 @@
   }
 }
 
+/* Illustrations : le fond apparaît en premier, avec un léger zoom. */
+@utility anim-fond {
+  transform-box: fill-box;
+  transform-origin: center;
+
+  @media (prefers-reduced-motion: no-preference) {
+    animation: fond 0.6s cubic-bezier(0.2, 0.7, 0.3, 1) both;
+  }
+}
+
+/* En-tête : la barre de couleur se remplit à l'ouverture de chaque page. */
+@utility anim-chargement {
+  transform-origin: left;
+
+  @media (prefers-reduced-motion: no-preference) {
+    animation: barre 0.9s cubic-bezier(0.4, 0, 0.2, 1) both;
+  }
+}
+
+/* Formulaires : le résumé des erreurs tremble et un halo rouge l'entoure (les champs ne bougent pas). */
+@utility anim-alerte {
+  @media (prefers-reduced-motion: no-preference) {
+    animation: alerte 0.6s ease-out both;
+  }
+}
+
 /* Illustrations : l'élément oscille autour de son centre (la boussole cherche le nord). */
 @utility anim-cherche {
   transform-box: fill-box;
@@ -226,6 +275,30 @@
   }
 }
 
+/*
+ * Élément dans un conteneur qui défile (tableau en overflow-x-auto) : view() y serait bloqué.
+ * Le conteneur porte la classe « repere » et ses enfants suivent sa timeline (--repere).
+ */
+@utility repere {
+  view-timeline-name: --repere;
+}
+
+@utility apparition-zoom-repere {
+  transform-box: fill-box;
+  transform-origin: center;
+
+  @media (prefers-reduced-motion: no-preference) {
+    @supports (animation-timeline: view()) {
+      animation-name: apparition-zoom;
+      animation-duration: auto;
+      animation-timing-function: linear;
+      animation-fill-mode: both;
+      animation-timeline: --repere;
+      animation-range: cover 0% cover 10rem;
+    }
+  }
+}
+
 /* Pied de page : la barre de couleur se remplit de gauche à droite pendant le défilement. */
 @utility anim-barre {
   transform-origin: left;
@@ -259,7 +332,7 @@
 }
 
 /*
- * Articles, études de cas et pages légales : la barre de lecture se remplit pendant le défilement.
+ * Pages légales : la barre de lecture se remplit pendant le défilement.
  * Sans animation (mode « réduire les animations », navigateur sans timeline), la barre reste vide.
  */
 @utility anim-progression {
@@ -300,11 +373,27 @@
 @theme {
   /* Menu mobile : le panneau glisse en ouvrant. */
   --animate-deroule: deroule 0.2s ease-out;
+  /* Menu mobile : les liens glissent en place l'un après l'autre (délai : --delai-glisse). */
+  --animate-glisse: glisse 0.3s cubic-bezier(0.2, 0.7, 0.3, 1) var(--delai-glisse, 0ms) both;
+  /* Lien d'évitement : il descend en place quand il reçoit le focus. */
+  --animate-descend: descend 0.2s ease-out;
 
   @keyframes deroule {
     from {
       opacity: 0;
       translate: 0 -0.5rem;
+    }
+  }
+
+  @keyframes glisse {
+    from {
+      translate: 1rem 0;
+    }
+  }
+
+  @keyframes descend {
+    from {
+      translate: 0 -0.75rem;
     }
   }
 }
@@ -400,6 +489,64 @@
 @keyframes aiguille {
   from {
     rotate: -155deg;
+  }
+}
+
+@keyframes fond {
+  from {
+    opacity: 0;
+    scale: 0.94;
+  }
+}
+
+@keyframes alerte {
+  0% {
+    box-shadow: 0 0 0 0 color-mix(in oklab, var(--color-red-700) 35%, transparent);
+  }
+
+  15% {
+    translate: -6px 0;
+  }
+
+  30% {
+    translate: 5px 0;
+  }
+
+  45% {
+    translate: -3px 0;
+  }
+
+  60% {
+    translate: 2px 0;
+  }
+
+  75%,
+  100% {
+    translate: 0;
+  }
+
+  100% {
+    box-shadow: 0 0 0 12px transparent;
+  }
+}
+
+@keyframes focus-anneau {
+  from {
+    outline-offset: 6px;
+  }
+}
+
+@keyframes page-sortie {
+  to {
+    opacity: 0;
+    translate: 0 -0.75rem;
+  }
+}
+
+@keyframes page-entree {
+  from {
+    opacity: 0;
+    translate: 0 1rem;
   }
 }
 

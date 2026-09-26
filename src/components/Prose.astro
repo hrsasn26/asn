@@ -1,10 +1,10 @@
 ---
 /**
- * Mise en forme des contenus longs : articles, études de cas, pages légales.
- * Les intertitres montent en place quand ils entrent dans l'écran.
+ * Mise en forme des contenus longs (pages légales).
+ * Les intertitres, les paragraphes et les listes montent en place quand ils entrent dans l'écran.
  */
 ---
 
-<div class="max-w-3xl space-y-4 [&_a]:text-brand-700 [&_a]:underline [&_h2]:mt-10 [&_h2]:text-2xl [&_h2]:apparition [&_h3]:mt-6 [&_h3]:text-xl [&_li]:ml-5 [&_ol]:list-decimal [&_ul]:list-disc">
+<div class="max-w-3xl space-y-4 [&_a]:text-brand-700 [&_a]:underline [&_a]:underline-offset-2 [&_a:hover]:text-brand-800 [&_a:hover]:underline-offset-4 [&_h2]:mt-10 [&_h2]:text-2xl [&_h2]:apparition [&_ol]:apparition [&_p]:apparition [&_ul]:apparition [&_h3]:mt-6 [&_h3]:text-xl [&_li]:ml-5 [&_ol]:list-decimal [&_ul]:list-disc">
   <slot />
 </div>

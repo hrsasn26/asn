@@ -1,4 +1,5 @@
 ---
+import TriangleAlert from '@lucide/astro/icons/triangle-alert';
 import Section from '~/components/Section.astro';
 
 interface Props {
@@ -12,7 +13,15 @@ const { title, items } = Astro.props;
 <Section title={title} tone="gris">
   <ul class="grid max-w-3xl gap-3">
     {items.map((item) => (
-      <li class="apparition rounded-md border border-slate-200 bg-white px-4 py-3">{item}</li>
+      <li class="apparition flex items-start gap-3 rounded-md border border-slate-200 bg-white px-4 py-3">
+        {/* L'icône d'alerte grandit quand elle entre dans l'écran. */}
+        <TriangleAlert
+          size={20}
+          aria-hidden="true"
+          class="apparition-zoom mt-0.5 shrink-0 text-orange-600"
+        />
+        <span>{item}</span>
+      </li>
     ))}
   </ul>
 </Section>

@@ -1,4 +1,6 @@
 ---
+import Check from '@lucide/astro/icons/check';
+
 interface Props {
   title: string;
   text: string;
@@ -15,9 +17,17 @@ const { title, text, idealPour, items } = Astro.props;
   <p class="mt-3 text-sm text-slate-700">
     <em>Idéal pour :</em> {idealPour}
   </p>
-  <ul class="mt-4 list-disc space-y-1 pl-5 text-slate-700">
+  <ul class="mt-4 space-y-1 text-slate-700">
     {items.map((item) => (
-      <li>{item}</li>
+      <li class="flex items-start gap-2">
+        {/* La coche grandit quand elle entre dans l'écran. */}
+        <Check
+          size={18}
+          aria-hidden="true"
+          class="apparition-zoom mt-1 shrink-0 text-emerald-600"
+        />
+        <span>{item}</span>
+      </li>
     ))}
   </ul>
 </article>

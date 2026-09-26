@@ -13,7 +13,7 @@
         "http://localhost:4321/agence",
         "http://localhost:4321/audit-gratuit",
         "http://localhost:4321/contact",
-        "http://localhost:4321/blog/site-vitrine-elements-indispensables"
+        "http://localhost:4321/services/hebergement-maintenance"
       ],
       "numberOfRuns": 1
     },

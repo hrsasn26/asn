@@ -1,15 +1,23 @@
 ---
+import DecorTitre from '~/components/DecorTitre.astro';
+
 interface Props {
   title?: string;
   tone?: 'clair' | 'gris';
   id?: string;
+  /** Halos et points derrière le titre (pages sans héros illustré). */
+  decor?: boolean;
 }
 
-const { title, tone = 'clair', id } = Astro.props;
+const { title, tone = 'clair', id, decor = false } = Astro.props;
 ---
 
-<section id={id} class:list={['scroll-mt-4', tone === 'gris' && 'bg-slate-50']}>
-  <div class="mx-auto max-w-6xl px-4 py-14 sm:px-6">
+<section
+  id={id}
+  class:list={['scroll-mt-4', tone === 'gris' && 'bg-slate-50', decor && 'relative']}
+>
+  {decor && <DecorTitre />}
+  <div class:list={['mx-auto max-w-6xl px-4 py-14 sm:px-6', decor && 'relative']}>
     {title && <h2 class="apparition mb-8 text-2xl sm:text-3xl">{title}</h2>}
     <slot />
   </div>

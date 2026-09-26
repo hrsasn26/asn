@@ -1,0 +1,15 @@
+---
+/**
+ * Décor derrière le titre des pages sans illustration (Contact, pages légales, 404) :
+ * halos de couleur et trame de points, comme dans le héros. Décoratif.
+ */
+---
+
+<div
+  aria-hidden="true"
+  class="pointer-events-none absolute inset-x-0 top-0 h-96 overflow-hidden mask-t-from-70% mask-b-from-50%"
+>
+  <div class="anim-halo absolute -top-40 -right-24 size-[26rem] rounded-full bg-radial from-emerald-100 to-transparent to-70%"></div>
+  <div class="anim-halo absolute -top-32 right-1/3 hidden size-80 rounded-full bg-radial from-violet-100 to-transparent to-70% delai-300 md:block"></div>
+  <div class="anim-entree absolute inset-y-0 right-0 hidden w-1/2 bg-[radial-gradient(currentColor_1.5px,transparent_1.5px)] bg-size-[24px_24px] text-brand-600/20 mask-radial-from-10% mask-radial-to-70% delai-200 md:block"></div>
+</div>

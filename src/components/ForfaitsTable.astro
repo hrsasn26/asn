@@ -14,7 +14,7 @@ const lignes: { label: string; valeur: (f: (typeof forfaitsMaintenance)[number])
 ---
 
 <div
-  class="apparition overflow-x-auto rounded-lg border border-slate-200"
+  class="apparition repere overflow-x-auto rounded-lg border border-slate-200"
   role="region"
   aria-label="Comparatif des forfaits"
   tabindex="0"
@@ -25,9 +25,16 @@ const lignes: { label: string; valeur: (f: (typeof forfaitsMaintenance)[number])
       <tr>
         <td class="p-3"></td>
         {forfaitsMaintenance.map((f) => (
-          <th scope="col" class="p-3 text-slate-900">
+          <th scope="col" class:list={['p-3 text-slate-900', f.recommande && 'bg-emerald-50']}>
             {f.nom}
-            {f.recommande && <span class="block text-sm font-normal italic">(recommandé)</span>}
+            {f.recommande && (
+              <span class="block">
+                {/* Le tableau défile sur téléphone : la pastille suit la timeline du tableau (repere). */}
+                <span class="apparition-zoom-repere mt-1 inline-block rounded-full bg-emerald-100 px-2 py-0.5 text-sm font-medium text-emerald-800">
+                  recommandé
+                </span>
+              </span>
+            )}
           </th>
         ))}
       </tr>
@@ -41,7 +48,7 @@ const lignes: { label: string; valeur: (f: (typeof forfaitsMaintenance)[number])
           {forfaitsMaintenance.map((f) => {
             const valeur = ligne.valeur(f);
             return (
-              <td class="p-3 text-slate-700">
+              <td class:list={['p-3 text-slate-700', f.recommande && 'bg-emerald-50/60']}>
                 {valeur === '✓' ? (
                   <>
                     <span aria-hidden="true" class="font-bold text-emerald-700">

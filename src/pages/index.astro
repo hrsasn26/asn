@@ -4,7 +4,6 @@ import Activity from '@lucide/astro/icons/activity';
 import BadgeCheck from '@lucide/astro/icons/badge-check';
 import Blocks from '@lucide/astro/icons/blocks';
 import Handshake from '@lucide/astro/icons/handshake';
-import { getCollection } from 'astro:content';
 import AuditTeaser from '~/components/AuditTeaser.astro';
 import ButtonLink from '~/components/ButtonLink.astro';
 import CtaFinal from '~/components/CtaFinal.astro';
@@ -12,7 +11,6 @@ import FeatureGrid from '~/components/FeatureGrid.astro';
 import Hero from '~/components/Hero.astro';
 import IllustrationAccueil from '~/components/illustrations/IllustrationAccueil.astro';
 import LienFleche from '~/components/LienFleche.astro';
-import Placeholder from '~/components/Placeholder.astro';
 import PourQui from '~/components/PourQui.astro';
 import Section from '~/components/Section.astro';
 import ServiceCards from '~/components/ServiceCards.astro';
@@ -21,10 +19,6 @@ import { etapesProjet } from '~/data/methode';
 import { cta, site } from '~/data/site';
 import BaseLayout from '~/layouts/BaseLayout.astro';
 import { organisationJsonLd } from '~/lib/seo';
-
-const realisations = (await getCollection('realisations', ({ data }) => !data.draft))
-  .sort((a, b) => b.data.publishedAt.getTime() - a.data.publishedAt.getTime())
-  .slice(0, 3);
 ---
 
 <BaseLayout
@@ -85,34 +79,9 @@ const realisations = (await getCollection('realisations', ({ data }) => !data.dr
     </p>
   </Section>
 
-  <Section title="Nos réalisations">
-    {realisations.length === 0 ? (
-      <div class="apparition max-w-3xl">
-        <Placeholder text="[À compléter : 2 ou 3 études de cas réelles, avec l'accord des clients]" />
-      </div>
-    ) : (
-      <ul class="grid gap-6 md:grid-cols-3">
-        {realisations.map((etude) => (
-          <li class="apparition rounded-lg border border-slate-200 p-6 transition hover:border-slate-300 hover:shadow-lg motion-safe:hover:-translate-y-1">
-            <h3 class="text-lg">
-              <a href={`/realisations/${etude.id}`} class="text-slate-900 hover:text-brand-700">
-                {etude.data.title}
-              </a>
-            </h3>
-            <p class="mt-1 text-sm text-slate-600">{etude.data.client}</p>
-            <p class="mt-2 text-slate-700">{etude.data.description}</p>
-          </li>
-        ))}
-      </ul>
-    )}
-    <p class="apparition mt-8">
-      <LienFleche href="/realisations" label="Voir nos réalisations" />
-    </p>
-  </Section>
+  <AuditTeaser />
 
-  <AuditTeaser tone="gris" />
-
-  <Section title="Nos engagements">
+  <Section title="Nos engagements" tone="gris">
     <ul class="grid max-w-3xl gap-3">
       {[
         'Vous restez propriétaire de votre code, de votre nom de domaine et de vos données.',
@@ -121,7 +90,7 @@ const realisations = (await getCollection('realisations', ({ data }) => !data.dr
         `Un hébergement en ${site.hebergement}.`,
       ].map((engagement) => (
         <li class="apparition flex gap-3 rounded-md border border-slate-200 bg-white px-4 py-3">
-          <BadgeCheck class="mt-0.5 shrink-0 text-emerald-600" size={20} />
+          <BadgeCheck class="apparition-zoom mt-0.5 shrink-0 text-emerald-600" size={20} />
           <span>{engagement}</span>
         </li>
       ))}

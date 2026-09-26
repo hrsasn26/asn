@@ -1,4 +1,6 @@
 ---
+import CircleAlert from '@lucide/astro/icons/circle-alert';
+
 interface Props {
   name: string;
   label: string;
@@ -73,7 +75,8 @@ const classes = [
     />
   )}
   {erreur && (
-    <p id={`${id}-erreur`} class="mt-1 text-sm font-medium text-red-700">
+    <p id={`${id}-erreur`} class="mt-1 flex items-center gap-1.5 text-sm font-medium text-red-700">
+      <CircleAlert size={16} aria-hidden="true" class="anim-zoom shrink-0 delai-300" />
       {erreur}
     </p>
   )}

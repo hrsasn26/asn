@@ -12,7 +12,7 @@ const surVercel = Boolean(process.env.VERCEL);
 // Adresse de production : domaine de l'agence (src/data/site.ts).
 const urlProduction = `https://${infos.domaine}`;
 
-// Adresse publique du site. Elle sert aux URL canoniques, au sitemap et au flux RSS.
+// Adresse publique du site. Elle sert aux URL canoniques et au sitemap.
 // En production, la CI la fournit avec la variable SITE_URL. Sur Vercel, sans SITE_URL,
 // on utilise le domaine de l'agence : les aperçus pointent vers les pages de production.
 // Ailleurs (poste de développement, CI), l'adresse locale garde les tests sur le même domaine.
