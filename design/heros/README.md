@@ -20,6 +20,7 @@ Sources des images affichées dans l'en-tête de onze pages : des écrans (ordin
 
 - Chaque source est une page HTML de 1040 × 720 px, avec des styles en ligne. Elle n'est pas servie par le site : seules les images le sont. La règle « pas de style en ligne » du site ne s'applique donc pas ici.
 - `polices/` : Inter, Cormorant Garamond, JetBrains Mono et Source Serif 4 (licence SIL Open Font License, fichiers `OFL-*.txt`), sous-ensemble latin.
+- Les images servent aussi ailleurs : vignettes des cartes des services (composant `ServiceCards`, accueil et page Services) et encadré de l'audit gratuit de l'accueil (`AuditTeaser`). Leur largeur affichée selon la page est dans `TAILLES_MAQUETTE` (`src/data/maquettes.ts`).
 
 ## Régénérer les images
 
@@ -40,7 +41,7 @@ Pour ajouter un visuel : créez `design/heros/<nom>.html` (élément racine `id=
 
 ## Origine et adaptations
 
-Maquettes reçues du designer le 26 septembre 2026 (archive « Hero mockups for Digital Solutions »). Les écrans, les couleurs et la mise en page sont repris tels quels. Changements faits pour respecter les règles du site (`CLAUDE.md`) :
+Maquettes reçues du designer le 26 septembre 2026 (archive « Hero mockups for Digital Solutions »). L'archive du design du site (« website_site_redesign », même jour) contient les mêmes maquettes : leur texte ne diffère que par les changements listés ci-dessous. Les écrans, les couleurs et la mise en page sont repris tels quels. Changements faits pour respecter les règles du site (`CLAUDE.md`) :
 
 - **Aucun prix ni montant en dirhams**, même dans les écrans d'un client : prix des soins, des chambres, des cafés et des abonnements, devis du garage, revenu mensuel du logiciel, montants du tableau de bord.
 - **Aucune photo de stock** : les photos Pexels (cabinet dentaire, praticienne, patio et chambres du riad) sont remplacées par des dessins en SVG et par des initiales.

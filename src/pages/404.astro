@@ -1,29 +1,21 @@
 ---
+import Accent from '~/components/Accent.astro';
 import ButtonLink from '~/components/ButtonLink.astro';
-import IllustrationIntrouvable from '~/components/illustrations/IllustrationIntrouvable.astro';
-import Section from '~/components/Section.astro';
-import Souligne from '~/components/Souligne.astro';
 import { site } from '~/data/site';
 import BaseLayout from '~/layouts/BaseLayout.astro';
 ---
 
 <BaseLayout title={`Page introuvable | ${site.nom}`} description="Cette page n'existe pas.">
-  <Section decor>
-    <div class="grid items-center gap-10 md:grid-cols-2">
-      <div>
-        <h1 class="anim-montee text-3xl sm:text-4xl">
-          Page <Souligne>introuvable</Souligne>
-        </h1>
-        <p class="anim-montee mt-4 text-lg text-slate-700 delai-150">
-          Cette page n'existe pas ou a été déplacée. Vérifiez l'adresse, ou revenez à l'accueil.
-        </p>
-        <div class="anim-montee mt-8 delai-300">
-          <ButtonLink href="/">Revenir à l'accueil</ButtonLink>
-        </div>
-      </div>
-      <div class="mx-auto w-full max-w-sm md:max-w-none">
-        <IllustrationIntrouvable />
-      </div>
+  <section class="conteneur pt-20 pb-24 sm:pt-28 sm:pb-36">
+    <p class="anim-montee surtitre text-discret">Erreur 404</p>
+    <h1 class="anim-montee mt-5 text-titre">
+      <Accent texte="Page introuvable" motCle="introuvable" />
+    </h1>
+    <p class="anim-montee mt-7 max-w-[40rem] text-lg leading-[1.65] text-texte delai-150 sm:text-[1.1875rem]">
+      Cette page n'existe pas ou a été déplacée. Vérifiez l'adresse, ou revenez à l'accueil.
+    </p>
+    <div class="anim-montee mt-9 delai-300">
+      <ButtonLink href="/">Revenir à l'accueil</ButtonLink>
     </div>
-  </Section>
+  </section>
 </BaseLayout>

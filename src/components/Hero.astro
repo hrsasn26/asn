@@ -1,89 +1,96 @@
 ---
+/**
+ * En-tête de page (maquettes). Trois mises en page :
+ * - centre : accueil. Texte centré, grand titre, visuel sous les boutons ;
+ * - avec `maquette` : pages de services et audit gratuit. Texte à gauche, visuel à droite
+ *   (sous le texte sur téléphone) ;
+ * - sans visuel : Services, Méthode, L'agence. Texte seul.
+ * Les boutons sont passés dans le slot par défaut.
+ */
+import Accent from '~/components/Accent.astro';
 import MaquetteHero from '~/components/MaquetteHero.astro';
-import Souligne from '~/components/Souligne.astro';
-import type { NomMaquette } from '~/data/maquettes';
+import Texte from '~/components/Texte.astro';
+import { TAILLES_MAQUETTE, type NomMaquette } from '~/data/maquettes';
 
 interface Props {
   title: string;
-  subtitle?: string;
-  /** Partie du titre soulignée par un trait qui se dessine. Elle doit figurer dans le titre. */
+  /** Partie du titre en gras. Elle doit figurer dans le titre. */
   motCle?: string;
-  /**
-   * Maquette d'écrans affichée à droite du texte (src/data/maquettes.ts). Contrairement à une
-   * illustration (slot « illustration »), elle reste visible sur téléphone, sous le texte.
-   */
+  subtitle?: string;
+  /** Petites capitales au-dessus du titre (« Service 01 · Sites web »). */
+  surtitre?: string;
+  /** Maquette d'écrans (src/data/maquettes.ts), avec la légende « Exemple fictif ». */
   maquette?: NomMaquette;
+  /** Texte centré et titre plus grand (accueil). */
+  centre?: boolean;
 }
 
-const { title, subtitle, motCle, maquette } = Astro.props;
-const avecIllustration = Astro.slots.has('illustration');
-const avecVisuel = avecIllustration || maquette !== undefined;
-
-// Le titre est découpé autour du mot clé. Les espaces font partie des morceaux.
-const position = motCle ? title.indexOf(motCle) : -1;
-const avant = position >= 0 ? title.slice(0, position) : title;
-const apres = position >= 0 && motCle ? title.slice(position + motCle.length) : '';
-// La ponctuation collée au mot clé (« rapide, ») reste avec lui : pas de virgule en début de ligne.
-const collee = apres.match(/^[^\s]+/)?.[0] ?? '';
-const suite = apres.slice(collee.length);
+const { title, motCle, subtitle, surtitre, maquette, centre = false } = Astro.props;
+const avecBoutons = Astro.slots.has('default');
+const enColonnes = maquette !== undefined && !centre;
 ---
 
-<section class="relative bg-brand-50">
-  {/* Téléphone : l'illustration est cachée (la maquette reste visible), deux halos restent dans les coins. */}
-  <div aria-hidden="true" class="pointer-events-none absolute inset-0 overflow-hidden md:hidden">
-    <div class="anim-halo absolute -top-24 -right-24 size-72 rounded-full bg-radial from-emerald-200/70 to-transparent to-70%" />
-    <div class="anim-halo absolute -bottom-32 -left-28 size-80 rounded-full bg-radial from-violet-200/60 to-transparent to-70% delai-300" />
-  </div>
-  {avecVisuel && (
-    <div
-      aria-hidden="true"
-      class="pointer-events-none absolute inset-y-0 right-0 hidden w-1/2 overflow-hidden md:block"
-    >
-      <div class="anim-parallaxe absolute inset-0 [--parallaxe:4rem]">
-        <div class="anim-entree absolute inset-0 bg-[radial-gradient(currentColor_1.5px,transparent_1.5px)] bg-size-[24px_24px] text-brand-600/35 mask-radial-from-20% mask-radial-to-75% delai-200" />
-      </div>
-      <div class="anim-parallaxe absolute -top-32 right-0">
-        <div class="anim-halo size-[28rem] rounded-full bg-radial from-emerald-200/70 to-transparent to-70%" />
-      </div>
-      <div class="anim-parallaxe absolute -bottom-40 left-0 [--parallaxe:12rem]">
-        <div class="anim-halo size-[32rem] rounded-full bg-radial from-violet-200/60 to-transparent to-70% delai-300" />
-      </div>
-    </div>
-  )}
+<section
+  class:list={[
+    // Accueil (sans fil d'Ariane) : le fond gris descend jusqu'au visuel.
+    centre && 'bg-linear-to-b from-surface to-white to-70%',
+  ]}
+>
   <div
     class:list={[
-      'relative mx-auto max-w-6xl px-4 py-14 sm:px-6 sm:py-20',
-      avecVisuel && 'grid items-center gap-10 md:grid-cols-2',
+      'conteneur',
+      centre && 'flex flex-col items-center pt-20 text-center sm:pt-28',
+      enColonnes && 'flex flex-wrap items-center gap-x-16 gap-y-12 pt-12 sm:pt-14',
+      !centre && !enColonnes && 'pt-12 sm:pt-14',
     ]}
   >
-    <div>
-      <h1 class="anim-montee max-w-3xl text-3xl sm:text-5xl">
-        {avant}
-        {position >= 0 &&
-          (collee ? (
-            <span class="whitespace-nowrap">
-              <Souligne>{motCle}</Souligne>
-              {collee}
-            </span>
-          ) : (
-            <Souligne>{motCle}</Souligne>
-          ))}
-        {suite}
+    <div class:list={[enColonnes && 'min-w-0 flex-[1_1_26.25rem]']}>
+      {surtitre && <p class="anim-montee surtitre text-discret">{surtitre}</p>}
+      <h1
+        class:list={[
+          'anim-montee',
+          surtitre && (centre ? 'mt-7' : 'mt-5'),
+          centre && 'max-w-[61.25rem] text-accroche',
+          enColonnes && 'text-titre-service',
+          !centre && !enColonnes && 'max-w-[56.25rem] text-titre',
+        ]}
+      >
+        <Accent texte={title} motCle={motCle} />
       </h1>
       {subtitle && (
-        <p class="anim-montee mt-6 max-w-2xl text-lg text-slate-700 delai-150">{subtitle}</p>
+        <p
+          class:list={[
+            'anim-montee mt-7 text-lg leading-[1.65] text-texte delai-150 sm:text-[1.1875rem]',
+            enColonnes ? 'max-w-[32.5rem]' : 'max-w-[40rem]',
+            centre && 'mx-auto',
+          ]}
+        >
+          <Texte texte={subtitle} />
+        </p>
       )}
-      {Astro.slots.has('default') && (
-        <div class="anim-montee mt-8 flex flex-wrap gap-4 delai-300">
+      {avecBoutons && (
+        <div
+          class:list={[
+            'anim-montee flex flex-wrap gap-3 delai-300',
+            centre ? 'mt-10 justify-center' : 'mt-9',
+          ]}
+        >
           <slot />
         </div>
       )}
     </div>
-    {maquette && <MaquetteHero nom={maquette} />}
-    {avecIllustration && (
-      <div class="hidden md:block">
-        <slot name="illustration" />
-      </div>
+    {maquette && (
+      <MaquetteHero
+        nom={maquette}
+        sizes={centre ? TAILLES_MAQUETTE.centre : TAILLES_MAQUETTE.colonne}
+        prioritaire
+        class:list={[
+          'anim-montee delai-300',
+          centre
+            ? 'mt-16 w-full max-w-[65rem] sm:mt-20'
+            : 'max-w-full min-w-0 flex-[1.2_1_28.75rem]',
+        ]}
+      />
     )}
   </div>
 </section>

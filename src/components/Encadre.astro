@@ -1,0 +1,84 @@
+---
+/**
+ * Encadré aux coins arrondis (maquettes) :
+ * - gris : fond gris clair (le constat, les options) ;
+ * - sombre : fond bleu nuit, texte clair (audit gratuit, qualité) ;
+ * - cadre : fond blanc et bordure fine (design, partenaires, coordonnées).
+ * Sur fond sombre, le contenu utilise text-nuit-texte pour les paragraphes.
+ */
+import EnteteSection from '~/components/EnteteSection.astro';
+
+interface Props {
+  ton?: 'gris' | 'sombre' | 'cadre';
+  title?: string;
+  motCle?: string;
+  surtitre?: string;
+  /** colonnes : titre à gauche, contenu à droite. pile : contenu sous le titre. */
+  disposition?: 'colonnes' | 'pile';
+  /**
+   * Marges intérieures : « moyen » pour deux encadrés côte à côte, « petit » pour des cartes
+   * (40 px), qui ont aussi un titre plus petit.
+   */
+  espace?: 'normal' | 'moyen' | 'petit';
+  class?: string;
+}
+
+const {
+  ton = 'gris',
+  title,
+  motCle,
+  surtitre,
+  disposition = 'pile',
+  espace = 'normal',
+  class: classe,
+} = Astro.props;
+const sombre = ton === 'sombre';
+---
+
+<div
+  class:list={[
+    'apparition min-w-0 rounded-[1.75rem]',
+    espace === 'normal' && 'p-[clamp(2rem,5vw,4rem)]',
+    espace === 'moyen' && 'p-[clamp(2rem,4vw,3.5rem)]',
+    espace === 'petit' && 'p-8 sm:p-10',
+    ton === 'gris' && 'bg-surface',
+    // --anneau : contour du focus en blanc, visible sur le fond sombre.
+    sombre && 'bg-encre text-white [--anneau:var(--color-white)]',
+    ton === 'cadre' && 'ring-1 ring-ligne ring-inset',
+    disposition === 'colonnes' && 'flex flex-wrap gap-x-20 gap-y-8',
+    classe,
+  ]}
+>
+  {disposition === 'colonnes' ? (
+    <>
+      <div class="min-w-0 flex-[1_1_17.5rem]">
+        {title && (
+          <EnteteSection
+            title={title}
+            motCle={motCle}
+            surtitre={surtitre}
+            taille={espace === 'petit' ? 'carte' : 'encadre'}
+            sombre={sombre}
+          />
+        )}
+      </div>
+      <div class="min-w-0 flex-[1.6_1_27.5rem]">
+        <slot />
+      </div>
+    </>
+  ) : (
+    <>
+      {title && (
+        <EnteteSection
+          title={title}
+          motCle={motCle}
+          surtitre={surtitre}
+          taille={espace === 'petit' ? 'carte' : 'encadre'}
+          sombre={sombre}
+          class="mb-5"
+        />
+      )}
+      <slot />
+    </>
+  )}
+</div>

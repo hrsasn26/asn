@@ -1,15 +1,13 @@
 ---
 // Textes : docs/brief-agence.md, section 6.7 (proposition à valider).
-import BadgeCheck from '@lucide/astro/icons/badge-check';
-import Blocks from '@lucide/astro/icons/blocks';
-import Handshake from '@lucide/astro/icons/handshake';
-import ShieldCheck from '@lucide/astro/icons/shield-check';
+// Surtitres des sections : section 6.20 du brief.
 import AuditTeaser from '~/components/AuditTeaser.astro';
 import ButtonLink from '~/components/ButtonLink.astro';
 import CtaFinal from '~/components/CtaFinal.astro';
 import FeatureGrid from '~/components/FeatureGrid.astro';
 import Hero from '~/components/Hero.astro';
 import LienFleche from '~/components/LienFleche.astro';
+import ListePoints from '~/components/ListePoints.astro';
 import PourQui from '~/components/PourQui.astro';
 import Section from '~/components/Section.astro';
 import ServiceCards from '~/components/ServiceCards.astro';
@@ -26,9 +24,11 @@ import { organisationJsonLd } from '~/lib/seo';
   jsonLd={organisationJsonLd(Astro.site ?? Astro.url.origin)}
 >
   <Hero
+    centre
     maquette="accueil"
+    surtitre="TPE · PME · Particuliers"
     title="Des sites et des applications fiables, suivis dans la durée"
-    motCle="fiables"
+    motCle="suivis dans la durée"
     subtitle="Sites web, applications et automatisations : nous concevons des outils rapides, sécurisés et faciles à faire évoluer. Et nous restons disponibles après la mise en ligne."
   >
     <ButtonLink href={cta.principal.href}>{cta.principal.label}</ButtonLink>
@@ -37,70 +37,62 @@ import { organisationJsonLd } from '~/lib/seo';
     </ButtonLink>
   </Hero>
 
-  <Section title="Ce que vous y gagnez">
-    <p class="apparition mb-8 max-w-3xl text-lg text-slate-700">
+  <Section surtitre="Vos bénéfices" title="Ce que vous y gagnez" disposition="colonnes">
+    <p class="apparition mb-12 text-lg leading-[1.7] text-doux">
       Un projet qui fonctionne dès le lancement, qui reste facile à faire évoluer et qui ne vous
       rend pas dépendant d'un prestataire.
     </p>
     <FeatureGrid
-      columns={4}
       items={[
         {
           title: 'Surveillé et sauvegardé',
           text: 'Hébergement surveillé, sauvegardes et maintenance pour limiter les interruptions.',
-          icone: ShieldCheck,
         },
         {
           title: 'Testé avant la mise en ligne',
           text: 'Pages, formulaires, parcours et affichage sur mobile sont vérifiés avant la mise en ligne.',
-          icone: BadgeCheck,
         },
         {
           title: 'Conçu pour évoluer',
           text: 'Une base technique propre pour ajouter des fonctionnalités sans repartir de zéro.',
-          icone: Blocks,
         },
         {
           title: 'Un interlocuteur direct',
           text: "Vous échangez avec l'équipe qui conçoit et développe votre projet.",
-          icone: Handshake,
         },
       ]}
     />
   </Section>
 
-  <Section title="Ce que nous faisons pour vous" tone="gris">
+  <Section surtitre="Nos services" title="Ce que nous faisons pour vous" disposition="centre">
     <ServiceCards />
   </Section>
 
-  <PourQui tone="clair" />
+  <PourQui />
 
-  <Section title="Un projet en cinq étapes claires" tone="gris">
+  <Section surtitre="Méthode" title="Un projet en cinq étapes claires" disposition="centre">
     <Steps items={etapesProjet} />
-    <p class="apparition mt-8">
+    <p class="apparition mt-12 text-center">
       <LienFleche href="/methode" label="Découvrir notre méthode" />
     </p>
   </Section>
 
-  <AuditTeaser />
+  <AuditTeaser maquette />
 
-  <Section title="Nos engagements" tone="gris">
-    <ul class="grid max-w-3xl gap-3">
-      {[
+  <Section surtitre="Engagements" title="Nos engagements" disposition="colonnes">
+    <ListePoints
+      variante="grille"
+      items={[
         'Vous restez propriétaire de votre code, de votre nom de domaine et de vos données.',
         'Un périmètre, un prix fixe et un planning écrits avant de commencer.',
         'Des tests avant chaque mise en ligne.',
-      ].map((engagement) => (
-        <li class="apparition flex gap-3 rounded-md border border-slate-200 bg-white px-4 py-3">
-          <BadgeCheck class="apparition-zoom mt-0.5 shrink-0 text-emerald-600" size={20} />
-          <span>{engagement}</span>
-        </li>
-      ))}
-    </ul>
+      ]}
+    />
   </Section>
 
   <CtaFinal
     title="Parlons de votre projet"
+    motCle="projet"
     text="Un échange de 30 minutes, gratuit et sans engagement, pour comprendre votre besoin et vous dire honnêtement ce que nous pouvons faire pour vous."
     button={cta.principal}
   />

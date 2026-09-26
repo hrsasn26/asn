@@ -16,6 +16,19 @@ export const services: LienNav[] = [
   { label: 'Hébergement et maintenance', href: '/services/hebergement-maintenance' },
 ];
 
+/** Numéro d'un service sur deux chiffres (« 01 »), dans l'ordre de la liste des services. */
+export function numeroService(href: string): string {
+  const index = services.findIndex((service) => service.href === href);
+  if (index < 0) throw new Error(`Service inconnu : ${href}`);
+  return String(index + 1).padStart(2, '0');
+}
+
+/** Surtitre de l'en-tête d'une page de service : « Service 01 · Sites web ». */
+export function surtitreService(href: string): string {
+  const service = services.find((element) => element.href === href);
+  return `Service ${numeroService(href)} · ${service?.label ?? ''}`;
+}
+
 export const navigationPrincipale: LienNav[] = [
   { label: 'Services', href: '/services' },
   { label: 'Méthode', href: '/methode' },

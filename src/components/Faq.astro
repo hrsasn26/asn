@@ -1,4 +1,5 @@
 ---
+/** Questions fréquentes : titre à gauche, questions dépliables à droite (maquettes). */
 import Section from '~/components/Section.astro';
 
 interface Props {
@@ -8,8 +9,8 @@ interface Props {
 const { title = 'Questions fréquentes' } = Astro.props;
 ---
 
-<Section title={title}>
-  <div class="max-w-3xl divide-y divide-slate-200 border-y border-slate-200">
+<Section surtitre="FAQ" title={title} disposition="colonnes">
+  <div class="border-t border-ligne">
     <slot />
   </div>
 </Section>

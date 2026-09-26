@@ -3,7 +3,7 @@ import node from '@astrojs/node';
 import sitemap from '@astrojs/sitemap';
 import vercel from '@astrojs/vercel';
 import tailwindcss from '@tailwindcss/vite';
-import { defineConfig, envField } from 'astro/config';
+import { defineConfig, envField, fontProviders } from 'astro/config';
 import { site as infos } from './src/data/site.ts';
 
 // Vercel définit la variable VERCEL pendant ses builds.
@@ -36,6 +36,25 @@ export default defineConfig({
   build: {
     format: 'directory',
   },
+  // Police du site : Manrope (licence SIL OFL), servie par le site lui-même, sans requête vers
+  // un service externe. Fichier variable (graisses 200 à 800), sous-ensemble latin.
+  fonts: [
+    {
+      provider: fontProviders.local(),
+      name: 'Manrope',
+      cssVariable: '--font-manrope',
+      fallbacks: ['sans-serif'],
+      options: {
+        variants: [
+          {
+            src: ['./src/assets/polices/manrope-latin.woff2'],
+            weight: '200 800',
+            style: 'normal',
+          },
+        ],
+      },
+    },
+  ],
   markdown: {
     // Shiki utilise des styles en ligne, incompatibles avec la CSP.
     syntaxHighlight: false,

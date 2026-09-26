@@ -1,24 +1,68 @@
 ---
-import DecorTitre from '~/components/DecorTitre.astro';
+/**
+ * Section d'une page, dans la largeur du contenu. Trois dispositions (maquettes) :
+ * - colonnes : surtitre et titre à gauche, contenu à droite (sous le titre sur téléphone) ;
+ * - centre : titre centré au-dessus du contenu ;
+ * - pile : titre à gauche au-dessus du contenu.
+ * Sans titre, la section donne seulement la largeur et l'espace au-dessus (encadrés).
+ */
+import EnteteSection from '~/components/EnteteSection.astro';
 
 interface Props {
   title?: string;
-  tone?: 'clair' | 'gris';
+  /** Partie du titre en gras. */
+  motCle?: string;
+  surtitre?: string;
+  disposition?: 'colonnes' | 'centre' | 'pile';
   id?: string;
-  /** Halos et points derrière le titre (pages sans héros illustré). */
-  decor?: boolean;
+  /** Disposition « colonnes » : le titre reste visible pendant le défilement (grand écran). */
+  titreCollant?: boolean;
+  /** Classes ajoutées à la section (par exemple un espace en bas : pb-20 sm:pb-32). */
+  class?: string;
 }
 
-const { title, tone = 'clair', id, decor = false } = Astro.props;
+const {
+  title,
+  motCle,
+  surtitre,
+  disposition = 'pile',
+  id,
+  titreCollant = false,
+  class: classe,
+} = Astro.props;
 ---
 
-<section
-  id={id}
-  class:list={['scroll-mt-4', tone === 'gris' && 'bg-slate-50', decor && 'relative']}
->
-  {decor && <DecorTitre />}
-  <div class:list={['mx-auto max-w-6xl px-4 py-14 sm:px-6', decor && 'relative']}>
-    {title && <h2 class="apparition mb-8 text-2xl sm:text-3xl">{title}</h2>}
+<section id={id} class:list={['conteneur pt-20 sm:pt-32', classe]}>
+  {title && disposition === 'colonnes' ? (
+    <div class="flex flex-wrap gap-x-20 gap-y-10">
+      <div class="min-w-0 flex-[1_1_17.5rem]">
+        <EnteteSection
+          title={title}
+          motCle={motCle}
+          surtitre={surtitre}
+          class:list={[titreCollant ? 'lg:sticky lg:top-30' : 'apparition']}
+        />
+      </div>
+      <div class="min-w-0 flex-[2.2_1_32.5rem]">
+        <slot />
+      </div>
+    </div>
+  ) : title ? (
+    <>
+      <EnteteSection
+        title={title}
+        motCle={motCle}
+        surtitre={surtitre}
+        class:list={[
+          'apparition',
+          disposition === 'centre' && 'mx-auto max-w-3xl text-center text-balance',
+        ]}
+      />
+      <div class:list={[disposition === 'centre' ? 'mt-14' : 'mt-12']}>
+        <slot />
+      </div>
+    </>
+  ) : (
     <slot />
-  </div>
+  )}
 </section>

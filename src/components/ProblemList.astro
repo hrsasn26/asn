@@ -1,6 +1,11 @@
 ---
-import TriangleAlert from '@lucide/astro/icons/triangle-alert';
+/**
+ * Section « le problème » des pages de services (maquettes : « Le constat ») :
+ * un encadré gris, le titre à gauche, les problèmes dans des cases blanches à droite.
+ */
+import Encadre from '~/components/Encadre.astro';
 import Section from '~/components/Section.astro';
+import Texte from '~/components/Texte.astro';
 
 interface Props {
   title: string;
@@ -10,18 +15,14 @@ interface Props {
 const { title, items } = Astro.props;
 ---
 
-<Section title={title} tone="gris">
-  <ul class="grid max-w-3xl gap-3">
-    {items.map((item) => (
-      <li class="apparition flex items-start gap-3 rounded-md border border-slate-200 bg-white px-4 py-3">
-        {/* L'icône d'alerte grandit quand elle entre dans l'écran. */}
-        <TriangleAlert
-          size={20}
-          aria-hidden="true"
-          class="apparition-zoom mt-0.5 shrink-0 text-orange-600"
-        />
-        <span>{item}</span>
-      </li>
-    ))}
-  </ul>
+<Section>
+  <Encadre ton="gris" surtitre="Le constat" title={title} disposition="colonnes">
+    <ul class="grid grid-cols-[repeat(auto-fit,minmax(min(100%,18.75rem),1fr))] gap-3">
+      {items.map((item) => (
+        <li class="rounded-2xl bg-white px-5.5 py-5 leading-[1.55]">
+          <Texte texte={item} />
+        </li>
+      ))}
+    </ul>
+  </Encadre>
 </Section>

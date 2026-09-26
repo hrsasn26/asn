@@ -1,7 +1,7 @@
 import { expect, test } from '@playwright/test';
 
-// Pages dont les illustrations ont les animations les plus longues, pages avec formulaire,
-// page avec la frise des étapes, pages légales (barre de lecture) et page d'erreur.
+// Pages avec un visuel dans l'en-tête, pages avec formulaire, page avec la frise des étapes,
+// pages légales (barre de lecture) et page d'erreur.
 const chemins = [
   '/',
   '/contact',
@@ -26,7 +26,7 @@ for (const chemin of chemins) {
           .filter((animation) => animation.timeline instanceof DocumentTimeline)
           .map((animation) => Number(animation.effect?.getComputedTiming().endTime)),
       );
-      // Sur ordinateur, l'illustration est visible : ses animations doivent exister.
+      // Sur ordinateur, le titre et le texte de l'en-tête montent en place : ces animations existent.
       if (!isMobile) expect(fins.length).toBeGreaterThan(0);
       for (const fin of fins) {
         expect(fin).toBeLessThanOrEqual(5000);

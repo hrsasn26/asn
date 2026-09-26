@@ -1,39 +1,33 @@
 ---
-// Textes : docs/brief-agence.md, section 6.10 (proposition à valider).
+// Textes : docs/brief-agence.md, section 6.10 (proposition à valider). Surtitres : section 6.20.
 // Aucune information sur l'équipe n'est inventée : la section « L'équipe » est masquée
 // jusqu'à réception des vrais noms, rôles et photos.
-import Activity from '@lucide/astro/icons/activity';
-import BadgeCheck from '@lucide/astro/icons/badge-check';
-import Blocks from '@lucide/astro/icons/blocks';
-import Clock from '@lucide/astro/icons/clock';
-import Layers from '@lucide/astro/icons/layers';
-import Eye from '@lucide/astro/icons/eye';
-import KeyRound from '@lucide/astro/icons/key-round';
-import Scale from '@lucide/astro/icons/scale';
-import ShieldCheck from '@lucide/astro/icons/shield-check';
 import CtaFinal from '~/components/CtaFinal.astro';
+import Encadre from '~/components/Encadre.astro';
 import FeatureGrid from '~/components/FeatureGrid.astro';
 import Hero from '~/components/Hero.astro';
-import IllustrationAgence from '~/components/illustrations/IllustrationAgence.astro';
 import Section from '~/components/Section.astro';
-import { couleurPalette } from '~/data/couleurs';
 import { cta, site } from '~/data/site';
 import BaseLayout from '~/layouts/BaseLayout.astro';
 
-// Ce que nous savons faire : le début de chaque phrase est en gras, chaque point a son icône.
-const savoirFaire = [
+const valeurs = [
+  { title: 'Fiabilité', text: 'Nous livrons ce que nous avons vérifié.' },
   {
-    Icone: Blocks,
-    titre: 'Concevoir des outils solides',
-    suite: ', qui évoluent avec votre activité.',
+    title: 'Transparence',
+    text: 'Un périmètre, un prix fixe et des choix expliqués clairement, sans jargon.',
   },
   {
-    Icone: Layers,
-    titre: 'Prendre en charge tout votre projet',
-    suite: ", de l'écran au serveur : vous avez un seul interlocuteur.",
+    title: 'Honnêteté',
+    text: "Nous vous disons quand un projet n'est pas raisonnable. Nous ne promettons jamais de résultat que nous ne maîtrisons pas.",
   },
-  { Icone: Activity, titre: 'Garder votre site en ligne', suite: ', rapide et sauvegardé.' },
-  { Icone: BadgeCheck, titre: 'Tout tester', suite: ' avant chaque mise en ligne.' },
+  {
+    title: 'Continuité',
+    text: "Nous pouvons rester responsables de l'hébergement, de la maintenance et des évolutions.",
+  },
+  {
+    title: 'Indépendance',
+    text: 'Votre code, vos comptes, votre nom de domaine et vos données restent à votre nom.',
+  },
 ];
 ---
 
@@ -44,84 +38,95 @@ const savoirFaire = [
 >
   <Hero
     title="Une équipe accessible, du premier échange au suivi"
-    motCle="accessible"
+    motCle="du premier échange au suivi"
     subtitle="Nous concevons des sites et des applications solides pour les TPE, les PME et les porteurs de projet, avec un interlocuteur direct et une responsabilité claire sur la qualité technique."
+  />
+
+  <Section surtitre="Notre histoire" title={`Pourquoi ${site.nom} existe`} disposition="colonnes">
+    <div class="apparition">
+      <p class="text-lg leading-[1.7] sm:text-xl">
+        Beaucoup de TPE et de PME ont vécu la même situation : un site livré sans tests, un
+        prestataire qui ne répond plus, un site piraté faute de mises à jour.
+      </p>
+      <p class="mt-5 leading-[1.75] text-doux sm:text-[1.0625rem]">
+        {`Nous avons créé ${site.nom} pour proposer autre chose : des projets construits avec méthode, testés, et un suivi dans la durée.`}
+      </p>
+    </div>
+  </Section>
+
+  <Section
+    surtitre="Savoir-faire"
+    title="Ce que nous savons faire, en clair"
+    disposition="colonnes"
   >
-    <IllustrationAgence slot="illustration" />
-  </Hero>
-
-  <Section title={`Pourquoi ${site.nom} existe`}>
-    <p class="apparition max-w-3xl text-lg text-slate-700">
-      Beaucoup de TPE et de PME ont vécu la même situation : un site livré sans tests, un
-      prestataire qui ne répond plus, un site piraté faute de mises à jour. Nous avons créé{' '}
-      {site.nom} pour proposer autre chose : des projets construits avec méthode, testés, et un
-      suivi dans la durée.
-    </p>
-  </Section>
-
-  <Section title="Ce que nous savons faire, en clair" tone="gris">
-    <ul class="grid max-w-3xl gap-4 text-slate-700">
-      {savoirFaire.map(({ Icone, titre, suite }, index) => (
-        <li class="apparition flex items-start gap-3">
-          <span
-            class:list={[
-              'apparition-zoom inline-flex size-9 shrink-0 items-center justify-center rounded-lg',
-              couleurPalette(index).douce,
-            ]}
-          >
-            <Icone size={20} />
-          </span>
-          <p class="pt-1.5">
-            <strong class="text-slate-900">{titre}</strong>
-            {suite}
-          </p>
-        </li>
-      ))}
-    </ul>
-  </Section>
-
-  <Section title="Nos valeurs">
     <FeatureGrid
-      columns={3}
+      titresEnLigne
       items={[
         {
-          title: 'Fiabilité',
-          text: 'Nous livrons ce que nous avons vérifié.',
-          icone: ShieldCheck,
+          title: 'Concevoir des outils solides',
+          text: ', qui évoluent avec votre activité.',
         },
         {
-          title: 'Transparence',
-          text: 'Un périmètre, un prix fixe et des choix expliqués clairement, sans jargon.',
-          icone: Eye,
+          title: 'Prendre en charge tout votre projet',
+          text: ", de l'écran au serveur : vous avez un seul interlocuteur.",
         },
-        {
-          title: 'Honnêteté',
-          text: "Nous vous disons quand un projet n'est pas raisonnable. Nous ne promettons jamais de résultat que nous ne maîtrisons pas.",
-          icone: Scale,
-        },
-        {
-          title: 'Continuité',
-          text: "Nous pouvons rester responsables de l'hébergement, de la maintenance et des évolutions.",
-          icone: Clock,
-        },
-        {
-          title: 'Indépendance',
-          text: 'Votre code, vos comptes, votre nom de domaine et vos données restent à votre nom.',
-          icone: KeyRound,
-        },
+        { title: 'Garder votre site en ligne', text: ', rapide et sauvegardé.' },
+        { title: 'Tout tester', text: ' avant chaque mise en ligne.' },
       ]}
     />
   </Section>
 
-  <Section title="Nos partenaires" tone="gris">
-    <p class="apparition max-w-3xl text-lg text-slate-700">
-      Pour le design, le logo et la rédaction, nous travaillons avec des indépendants de confiance.
-      Le développement, lui, n'est jamais sous-traité.
-    </p>
+  <Section surtitre="Valeurs" title="Nos valeurs" disposition="centre">
+    <ul class="flex flex-wrap gap-4">
+      {valeurs.map(({ title, text }, index) => {
+        // La dernière valeur (Indépendance) est sur fond sombre, comme dans les maquettes.
+        const sombre = index === valeurs.length - 1;
+        return (
+          <li
+            class:list={[
+              'apparition min-w-0 flex-[1_1_9.375rem] rounded-[1.25rem] p-6',
+              sombre ? 'bg-encre text-white' : 'bg-surface',
+            ]}
+          >
+            <p
+              aria-hidden="true"
+              class:list={[
+                'text-[0.8125rem] font-semibold',
+                sombre ? 'text-nuit-discret' : 'text-discret',
+              ]}
+            >
+              {String(index + 1).padStart(2, '0')}
+            </p>
+            <h3 class="mt-7 text-xl">{title}</h3>
+            <p
+              class:list={[
+                'mt-2 text-[0.9375rem] leading-[1.6]',
+                sombre ? 'text-nuit-texte' : 'text-doux',
+              ]}
+            >
+              {text}
+            </p>
+          </li>
+        );
+      })}
+    </ul>
+  </Section>
+
+  <Section>
+    <Encadre ton="cadre" surtitre="Réseau" title="Nos partenaires" disposition="colonnes">
+      <p class="leading-[1.75] text-doux sm:text-[1.0625rem]">
+        Pour le design, le logo et la rédaction, nous travaillons avec des indépendants de
+        confiance.{' '}
+        <strong class="font-semibold text-encre">
+          Le développement, lui, n'est jamais sous-traité.
+        </strong>
+      </p>
+    </Encadre>
   </Section>
 
   <CtaFinal
     title="Parlons de votre projet"
+    motCle="projet"
     text="Un échange de 30 minutes, gratuit et sans engagement, pour comprendre votre besoin et vous dire honnêtement ce que nous pouvons faire pour vous."
     button={cta.principal}
   />

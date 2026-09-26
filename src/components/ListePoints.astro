@@ -1,0 +1,49 @@
+---
+/**
+ * Liste avec un point bleu devant chaque élément (maquettes).
+ * - simple : éléments serrés, sans trait (liste dans un texte) ;
+ * - lignes : un trait entre les éléments (cartes d'offre, ce que vous recevez) ;
+ * - grille : deux colonnes sur grand écran, un trait au-dessus de chaque élément (engagements).
+ * Les placeholders entre crochets sont surlignés.
+ */
+import Texte from '~/components/Texte.astro';
+
+interface Props {
+  items: string[];
+  variante?: 'simple' | 'lignes' | 'grille';
+  class?: string;
+}
+
+const { items, variante = 'simple', class: classe } = Astro.props;
+---
+
+<ul
+  class:list={[
+    variante === 'simple' && 'flex flex-col gap-2 text-[0.9375rem] leading-[1.6] text-fonce',
+    variante === 'lignes' && 'border-t border-ligne',
+    variante === 'grille' &&
+      'grid grid-cols-[repeat(auto-fit,minmax(min(100%,18.75rem),1fr))] gap-x-14 leading-[1.6]',
+    classe,
+  ]}
+>
+  {items.map((item) => (
+    <li
+      class:list={[
+        'flex gap-3',
+        variante === 'lignes' && 'border-b border-ligne py-3',
+        variante === 'grille' && 'apparition gap-4 border-t border-ligne py-5.5',
+      ]}
+    >
+      <span
+        aria-hidden="true"
+        class:list={[
+          'shrink-0 rounded-full bg-bleu',
+          variante === 'grille' ? 'mt-2.5 size-1.5' : 'mt-[0.5625rem] size-[5px]',
+        ]}
+      />
+      <span>
+        <Texte texte={item} />
+      </span>
+    </li>
+  ))}
+</ul>

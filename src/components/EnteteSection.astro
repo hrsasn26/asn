@@ -1,0 +1,37 @@
+---
+/**
+ * Surtitre et titre d'une section ou d'un encadré (maquettes : petites capitales grises,
+ * puis titre léger avec une partie en gras).
+ */
+import Accent from '~/components/Accent.astro';
+
+interface Props {
+  title: string;
+  motCle?: string | undefined;
+  surtitre?: string | undefined;
+  /** Titre de section (grand), d'encadré (plus petit) ou de carte (32 px). */
+  taille?: 'section' | 'encadre' | 'carte';
+  /** Sur fond sombre. */
+  sombre?: boolean;
+  class?: string;
+}
+
+const { title, motCle, surtitre, taille = 'section', sombre = false, class: classe } = Astro.props;
+---
+
+<div class={classe}>
+  {surtitre && (
+    <p class:list={['surtitre', sombre ? 'text-nuit-discret' : 'text-discret']}>{surtitre}</p>
+  )}
+  <h2
+    class:list={[
+      surtitre && 'mt-4.5',
+      taille === 'section' && 'text-section',
+      taille === 'encadre' && 'text-encadre',
+      taille === 'carte' && 'text-[1.75rem] leading-[1.15] tracking-[-0.025em] sm:text-[2rem]',
+      sombre && 'text-white',
+    ]}
+  >
+    <Accent texte={title} motCle={motCle} />
+  </h2>
+</div>

@@ -1,4 +1,11 @@
 ---
+/**
+ * Étapes d'un projet, côte à côte (maquettes) : un numéro dans un cercle, un trait jusqu'à
+ * l'étape suivante, puis le titre et le texte. La dernière étape a un cercle plein.
+ * Sur téléphone, les étapes passent à la ligne.
+ */
+import Texte from '~/components/Texte.astro';
+
 export interface Step {
   title: string;
   text: string;
@@ -11,26 +18,29 @@ interface Props {
 const { items } = Astro.props;
 ---
 
-<ol class="grid max-w-3xl gap-6">
-  {items.map((item, index) => (
-    <li class="apparition relative flex gap-4">
-      {index < items.length - 1 && (
-        <span
-          aria-hidden="true"
-          class="absolute top-9 -bottom-6 left-[1.0625rem] w-0.5 bg-brand-100"
-        >
-          <span class="anim-frise block h-full bg-brand-700" />
-        </span>
-      )}
-      <span
-        aria-hidden="true"
-        class="apparition-zoom flex size-9 shrink-0 items-center justify-center rounded-full bg-brand-700 font-semibold text-white"
-      >
-        {index + 1}
-      </span>
-      <p class="pt-1">
-        <strong class="text-slate-900">{item.title}</strong> {item.text}
-      </p>
-    </li>
-  ))}
+<ol class="flex flex-wrap gap-x-6 gap-y-8">
+  {items.map((item, index) => {
+    const derniere = index === items.length - 1;
+    return (
+      <li class="apparition min-w-0 flex-[1_1_9.375rem]">
+        <div aria-hidden="true" class="flex items-center gap-3.5">
+          <span
+            class:list={[
+              'apparition-zoom grid size-11 shrink-0 place-items-center rounded-full text-[0.9375rem] font-semibold',
+              derniere ? 'bg-encre text-white' : 'ring-1 ring-encre ring-inset',
+            ]}
+          >
+            {index + 1}
+          </span>
+          {!derniere && <span class="h-px flex-1 bg-trait" />}
+        </div>
+        <p class="mt-5.5">
+          <strong class="block text-[1.0625rem] font-semibold">{item.title}</strong>{' '}
+          <span class="mt-2 block text-[0.9375rem] leading-[1.6] text-doux">
+            <Texte texte={item.text} />
+          </span>
+        </p>
+      </li>
+    );
+  })}
 </ol>

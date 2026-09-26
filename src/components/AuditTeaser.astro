@@ -1,23 +1,56 @@
 ---
-// Section « audit gratuit » (docs/brief-agence.md, section 6.1).
+// Section « audit gratuit » (docs/brief-agence.md, section 6.1) : encadré bleu nuit.
 import ButtonLink from '~/components/ButtonLink.astro';
+import Encadre from '~/components/Encadre.astro';
+import EnteteSection from '~/components/EnteteSection.astro';
+import MaquetteHero from '~/components/MaquetteHero.astro';
 import Section from '~/components/Section.astro';
+import { legendeMaquette, TAILLES_MAQUETTE } from '~/data/maquettes';
 
 interface Props {
-  tone?: 'clair' | 'gris';
+  /** Visuel du rapport d'audit à droite du texte (accueil). Sinon, le bouton est à droite. */
+  maquette?: boolean;
 }
 
-const { tone = 'clair' } = Astro.props;
+const { maquette = false } = Astro.props;
+const title = 'Votre site actuel est-il lent, vulnérable ou introuvable sur Google ?';
+const texte =
+  'Nous analysons gratuitement sa vitesse, sa sécurité et son référencement technique. Vous recevez un rapport clair, sans jargon, avec les actions prioritaires.';
+const bouton = { label: 'Demander mon audit gratuit', href: '/audit-gratuit' };
 ---
 
-<Section title="Votre site actuel est-il lent, vulnérable ou introuvable sur Google ?" tone={tone}>
-  <p class="apparition max-w-2xl text-lg text-slate-700">
-    Nous analysons gratuitement sa vitesse, sa sécurité et son référencement technique. Vous recevez
-    un rapport clair, sans jargon, avec les actions prioritaires.
-  </p>
-  <div class="apparition mt-6">
-    <ButtonLink href="/audit-gratuit" variant="secondaire">
-      Demander mon audit gratuit
-    </ButtonLink>
-  </div>
+<Section>
+  {maquette ? (
+    // overflow-clip, pas overflow-hidden : le bloc ne devient pas un conteneur de défilement.
+    <div class="apparition flex flex-wrap items-center overflow-clip rounded-[1.75rem] bg-encre text-white [--anneau:var(--color-white)]">
+      <div class="min-w-0 flex-[1_1_25rem] p-[clamp(2.25rem,5vw,4.5rem)]">
+        <EnteteSection surtitre="Audit gratuit" title={title} taille="encadre" sombre />
+        <p class="mt-5 max-w-[28.75rem] leading-[1.7] text-nuit-texte">{texte}</p>
+        <ButtonLink href={bouton.href} variant="clair" class="mt-8">
+          {bouton.label}
+        </ButtonLink>
+      </div>
+      <div class="max-w-full min-w-0 flex-[1.1_1_27.5rem] px-6 pb-6 sm:p-8">
+        <div class="rounded-2xl bg-surface">
+          <MaquetteHero
+            nom="audit-gratuit"
+            sizes={TAILLES_MAQUETTE.encadre}
+            decoratif
+            legende={false}
+          />
+        </div>
+        <p class="mt-2 text-center text-xs text-nuit-discret">{legendeMaquette}</p>
+      </div>
+    </div>
+  ) : (
+    <Encadre ton="sombre" class="flex flex-wrap items-center justify-between gap-x-16 gap-y-8">
+      <div class="min-w-0 flex-[1_1_27.5rem]">
+        <EnteteSection surtitre="Audit gratuit" title={title} taille="encadre" sombre />
+        <p class="mt-4.5 max-w-[35rem] leading-[1.7] text-nuit-texte">{texte}</p>
+      </div>
+      <ButtonLink href={bouton.href} variant="clair" class="sm:whitespace-nowrap">
+        {bouton.label}
+      </ButtonLink>
+    </Encadre>
+  )}
 </Section>

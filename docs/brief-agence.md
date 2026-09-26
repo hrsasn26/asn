@@ -229,7 +229,7 @@ La page « Méthode », avec une étape de tests bien visible, est l'endroit id�
 
 ## 6. Contenus des pages
 
-> Sections 6.1 à 6.6 : textes validés, sauf les ajouts marqués « à valider ». Sections 6.7 à 6.13 et 6.14 à 6.18 (nouveaux services) : propositions à valider. Section 6.19 (visuels des en-têtes) : légende et textes alternatifs validés.
+> Sections 6.1 à 6.6 : textes validés, sauf les ajouts marqués « à valider ». Sections 6.7 à 6.13 et 6.14 à 6.18 (nouveaux services) : propositions à valider. Section 6.19 (visuels des en-têtes) : légende et textes alternatifs validés. Section 6.20 (surtitres et libellés du design) : proposition à valider.
 > Adaptation au Maroc (25 septembre 2026) : prix en DH, loi 09-08 à la place du RGPD, délai de rétractation de 7 jours. Ces changements sont à revalider, y compris dans les sections 6.1 à 6.6.
 > Révision du 26 septembre 2026, à valider : textes revus selon le document « Digital Solutions - Recommandations de wording ». Les en-têtes, les boutons, plusieurs cartes et les FAQ changent, y compris dans les sections 6.1 à 6.6. Les phrases qui contenaient une valeur non confirmée (délais, pays d'hébergement, ville, garantie, durée des sauvegardes) sont retirées. La section « L'équipe » de la page L'agence est masquée jusqu'à réception des vraies informations.
 
@@ -469,7 +469,9 @@ Pour moderniser votre site sans perdre ce qui fonctionne : contenus, redirection
 
 #### Section : inclus dans chaque site
 
-**Titre :** Inclus dans tous nos sites, sans supplément
+**Titre :** Inclus dans tous nos sites
+
+**Surtitre :** Sans supplément *(design du 26 septembre 2026 : le surtitre reprend la fin de l'ancien titre « Inclus dans tous nos sites, sans supplément »)*
 
 - **Adapté à tous les écrans** : ordinateur, tablette et téléphone.
 - **Rapide** : nous mesurons la vitesse de chaque page avant la livraison.
@@ -868,6 +870,8 @@ Votre site est entre de bonnes mains, et vous pouvez vous concentrer sur votre a
 **Sous-titre :** Nous vérifions gratuitement les principaux points techniques qui peuvent freiner votre site : vitesse, sécurité de base, référencement technique et affichage mobile.
 
 > Ancien H1 : « Votre site est-il lent, vulnérable ou invisible sur Google ? » (la question reste le titre de l'encadré audit, section 6.1).
+
+**Bouton :** [Demander mon audit] : il mène au formulaire, plus bas dans la page *(ajout du design du 26 septembre 2026)*.
 
 #### Section : ce que nous vérifions
 
@@ -1708,7 +1712,9 @@ Un échange de 30 minutes, gratuit et confidentiel, pour définir ce qu'il faut 
 
 > Légende et textes alternatifs validés le 26 septembre 2026. Maquettes reçues du designer le 26 septembre 2026, adaptées aux règles de ce brief. Sources et détail des adaptations : [design/heros/README.md](../design/heros/README.md).
 
-Onze pages ont un visuel dans l'en-tête, à droite du texte (sous le texte sur téléphone) : des écrans sur ordinateur et sur téléphone, avec une ou deux cartes. Chaque visuel montre un projet du type décrit par la page, pour un client fictif. Les autres pages (Services, Méthode, L'agence, Contact, pages légales) gardent leurs illustrations.
+Onze pages ont un visuel dans l'en-tête, à droite du texte (sous le texte sur téléphone) : des écrans sur ordinateur et sur téléphone, avec une ou deux cartes. Chaque visuel montre un projet du type décrit par la page, pour un client fictif. Les autres pages (Services, Méthode, L'agence, Contact, pages légales) ont un en-tête sans visuel (design du 26 septembre 2026).
+
+Les visuels des pages de services servent aussi de vignettes aux cartes des services (Accueil et Services). Le visuel de l'audit gratuit illustre l'encadré « Audit gratuit » de l'accueil.
 
 **Règles :**
 - Les clients, les noms, les chiffres et les adresses sont inventés. Aucun visuel ne présente un client fictif comme une réalisation de l'agence. La légende le dit sous chaque visuel.
@@ -1719,6 +1725,8 @@ Onze pages ont un visuel dans l'en-tête, à droite du texte (sous le texte sur 
 - Quand des clients auront donné leur accord écrit, leurs projets réels pourront remplacer ces exemples (voir section 6.12).
 
 **Légende (sous chaque visuel) :** Exemple fictif : le client et les chiffres sont inventés.
+
+**Légende (sous la grille des cartes des services) :** Visuels des cartes : exemples fictifs, les clients et les chiffres sont inventés. *(Ajout du design du 26 septembre 2026, à valider.)*
 
 | Page | Visuel (client fictif) | Texte alternatif |
 |---|---|---|
@@ -1733,6 +1741,67 @@ Onze pages ont un visuel dans l'en-tête, à droite du texte (sous le texte sur 
 | Tests et sécurité | Recette de la boutique Maison Argan | Rapport de tests avant une mise en ligne : parcours clients, audit de sécurité et test de charge |
 | Hébergement et maintenance | Espace client du Riad Mogador, forfait Sérénité | Espace client d'un site hébergé : disponibilité, sauvegardes, certificat et mises à jour, avec les notifications sur téléphone |
 | Audit gratuit | Rapport d'audit de www.votre-site.ma | Rapport d'audit gratuit : notes de vitesse, de sécurité et de référencement, avec les actions prioritaires |
+
+### 6.20 Surtitres et libellés du design
+
+> Proposition à valider. Ajoutés avec les maquettes du designer du 26 septembre 2026. Ils ne changent ni l'offre ni le sens des textes : ce sont des petites capitales au-dessus des titres, et quelques libellés. Les textes eux-mêmes sont ceux de la révision du 26 septembre 2026 (recommandations de wording) : les maquettes montraient encore les anciens textes.
+
+**Présentation :**
+- Chaque titre de section a un surtitre (tableau ci-dessous).
+- La fin de chaque grand titre est en gras, par exemple « Parlons de votre **projet** » ou « Des sites et des applications fiables, **suivis dans la durée** ».
+- En-tête des pages de services : « Service 01 · Sites web ». Le numéro suit l'ordre des services de la section 5. Les cartes des services portent le même numéro (01 à 09).
+- Accueil, en-tête : « TPE · PME · Particuliers ».
+- Libellés : « Idéal pour » (cartes d'offre, sans deux-points), « Vous recevez » (étapes de la page Méthode, sans deux-points), « (facultatif) » après le libellé des champs facultatifs (les champs obligatoires n'ont plus de mention), « recommandé » (forfait Sérénité), « Erreur 404 » (page introuvable).
+- Page Audit gratuit, « Ce que nous vérifions » : chaque point a un titre (« Vitesse ») et une phrase qui commence par une majuscule (« Combien de temps vos pages mettent à s'afficher, et ce qui les ralentit. »).
+- Page Contact : « Et ensuite ? » reste un titre, présenté comme un surtitre au-dessus des trois étapes.
+
+| Page | Section | Surtitre |
+|---|---|---|
+| Accueil | Ce que vous y gagnez | Vos bénéfices |
+| Accueil | Ce que nous faisons pour vous | Nos services |
+| Accueil, Services | Nous accompagnons | Pour qui |
+| Accueil | Un projet en cinq étapes claires | Méthode |
+| Accueil, Services | Encadré audit gratuit | Audit gratuit |
+| Accueil | Nos engagements | Engagements |
+| Services | Ce que nous faisons pour vous | Nos services |
+| Services | Pourquoi travailler avec nous | Nos différences |
+| Services | Comment se déroule votre projet | Méthode |
+| Toutes les pages avec une FAQ | Questions fréquentes | FAQ |
+| Pages de services | Le problème | Le constat |
+| Pages de services | Les étapes (« Comment nous travaillons », « Du cadrage aux premiers clients ») | Méthode |
+| Sites web | Trois façons de lancer ou de relancer votre présence en ligne | Nos formules |
+| Sites web | Inclus dans tous nos sites | Sans supplément |
+| Sites web | Les options | À la carte |
+| Sites web | Testé avant la mise en ligne. Vraiment. | Qualité |
+| Sites web | Un site à votre image | Design |
+| Applications sur mesure, Applications mobiles, Logiciels SaaS, Intelligence artificielle, Automatisation, Données, Tests et sécurité | Ce que nous faisons (première section de l'offre) | Nos solutions |
+| Applications sur mesure, Applications mobiles, Logiciels SaaS, Intelligence artificielle, Tests et sécurité | Notre différence | Notre différence |
+| Applications sur mesure | Vous avez une idée d'application ? Commencez petit. | Porteurs de projet |
+| Logiciels SaaS | Un SaaS, en clair | Définition |
+| Intelligence artificielle | Former vos équipes à l'IA | Formation |
+| Automatisation et intégrations | Quelques exemples concrets | Exemples |
+| Automatisation et intégrations | WhatsApp, connecté à vos outils | À la carte |
+| Automatisation et intégrations | Des automatisations fiables, pas du bricolage | Qualité |
+| Données et tableaux de bord | Des chiffres fiables | Qualité |
+| Données et tableaux de bord | Ce que nous ne faisons pas | Nos limites |
+| Tests et sécurité | Nos règles | Confiance |
+| Hébergement et maintenance | Tout ce dont votre site a besoin | Inclus |
+| Hébergement et maintenance | Choisissez votre forfait | Forfaits |
+| Hébergement et maintenance | Votre prestataire a disparu ? Votre site est cassé ? | Reprise de site |
+| Audit gratuit | En-tête | Audit gratuit |
+| Audit gratuit | Ce que nous vérifions | Périmètre |
+| Audit gratuit | Ce que l'audit gratuit ne couvre pas | Limites |
+| Audit gratuit | Ce que vous recevez | Livrables |
+| Méthode | Les étapes de votre projet | 7 étapes |
+| Méthode | Pourquoi les tests comptent autant | Qualité |
+| Méthode | Ce dont nous avons besoin de votre part | Votre rôle |
+| L'agence | Pourquoi Digital Solutions existe | Notre histoire |
+| L'agence | Ce que nous savons faire, en clair | Savoir-faire |
+| L'agence | Nos valeurs | Valeurs |
+| L'agence | L'équipe (masquée pour l'instant) | Équipe |
+| L'agence | Nos partenaires | Réseau |
+| Contact | Autres moyens de nous joindre | Coordonnées |
+| Contact | Vous avez déjà un site ? | Audit gratuit |
 
 ---
 
@@ -1783,6 +1852,8 @@ Onze pages ont un visuel dans l'en-tête, à droite du texte (sous le texte sur 
 - [ ] Confirmer les valeurs retirées du site, puis les réafficher : délai de réponse, délais des projets, pays d'hébergement, ville, durée de conservation des sauvegardes, volume de modifications et délais d'intervention des forfaits, durée d'engagement, garantie
 - [ ] Fournir l'histoire de l'agence, la ville, les noms, les rôles et les photos de l'équipe, pour réafficher la section « L'équipe » (section 6.10)
 - [ ] Préparer des preuves concrètes : exemple de rapport d'audit, captures de tests, exemples de livrables, cas clients et témoignages avec l'accord écrit des clients
+- [x] Intégrer le design du site : maquettes du designer, intégrées le 26 septembre 2026 (section « Design » de [stack-technique.md](stack-technique.md))
+- [ ] Relire et valider les surtitres et les libellés ajoutés par le design (section 6.20)
 - [ ] Préparer un modèle d'autorisation de test pour les audits de sécurité, validé par le juriste
 - [ ] Choisir les fournisseurs d'IA (données non utilisées pour l'entraînement, transfert hors du Maroc à déclarer à la CNDP)
 - [x] Choisir les technologies du site et commencer le développement (voir [stack-technique.md](stack-technique.md))

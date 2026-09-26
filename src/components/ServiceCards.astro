@@ -1,121 +1,178 @@
 ---
-// Cartes des neuf pôles (docs/brief-agence.md, section 6.1).
-import AppWindow from '@lucide/astro/icons/app-window';
-import ChartColumn from '@lucide/astro/icons/chart-column';
-import Cloud from '@lucide/astro/icons/cloud';
-import Globe from '@lucide/astro/icons/globe';
-import ServerCog from '@lucide/astro/icons/server-cog';
-import ShieldCheck from '@lucide/astro/icons/shield-check';
-import Smartphone from '@lucide/astro/icons/smartphone';
-import Sparkles from '@lucide/astro/icons/sparkles';
-import Workflow from '@lucide/astro/icons/workflow';
-import ServiceCard from '~/components/ServiceCard.astro';
----
+/**
+ * Cartes des neuf pôles (docs/brief-agence.md, section 6.1), avec en vignette le visuel de
+ * l'en-tête de chaque page de service (maquette d'écrans pour un client fictif).
+ * Toute la carte est cliquable : le lien « Découvrir… » s'étend sur la carte (after:inset-0).
+ */
+import MaquetteHero from '~/components/MaquetteHero.astro';
+import { legendeVignettes, TAILLES_MAQUETTE, type NomMaquette } from '~/data/maquettes';
+import { numeroService } from '~/data/navigation';
 
-<div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-  <ServiceCard
-    title="Sites web"
-    icone={Globe}
-    text="Des sites rapides et crédibles, qui facilitent la prise de contact et l'achat."
-    items={[
+interface CarteService {
+  title: string;
+  text: string;
+  items: string[];
+  link: { label: string; href: string };
+  maquette: NomMaquette;
+}
+
+const cartes: CarteService[] = [
+  {
+    title: 'Sites web',
+    text: "Des sites rapides et crédibles, qui facilitent la prise de contact et l'achat.",
+    items: [
       'Site vitrine',
       'Boutique en ligne',
       'Refonte de site existant',
       'Sites en français, arabe et anglais',
-    ]}
-    link={{ label: "Découvrir l'offre Sites web", href: '/services/sites-web' }}
-  />
-  <ServiceCard
-    title="Applications sur mesure"
-    icone={AppWindow}
-    text="Des outils adaptés à votre façon de travailler, et non l'inverse."
-    items={[
+    ],
+    link: { label: "Découvrir l'offre Sites web", href: '/services/sites-web' },
+    maquette: 'sites-web',
+  },
+  {
+    title: 'Applications sur mesure',
+    text: "Des outils adaptés à votre façon de travailler, et non l'inverse.",
+    items: [
       'Outils métier',
       'Espaces clients et portails',
       "Première version de votre projet d'application",
-    ]}
-    link={{ label: "Découvrir l'offre Applications", href: '/services/applications-sur-mesure' }}
-  />
-  <ServiceCard
-    title="Applications mobiles"
-    icone={Smartphone}
-    text="Une application iPhone et Android conçue, publiée et maintenue par la même équipe."
-    items={[
+    ],
+    link: { label: "Découvrir l'offre Applications", href: '/services/applications-sur-mesure' },
+    maquette: 'applications-sur-mesure',
+  },
+  {
+    title: 'Applications mobiles',
+    text: 'Une application iPhone et Android conçue, publiée et maintenue par la même équipe.',
+    items: [
       'Applications pour vos clients',
       'Applications pour vos équipes',
       "Publication sur l'App Store et Google Play",
-    ]}
-    link={{
+    ],
+    link: {
       label: "Découvrir l'offre Applications mobiles",
       href: '/services/applications-mobiles',
-    }}
-  />
-  <ServiceCard
-    title="Logiciels SaaS"
-    icone={Cloud}
-    text="Une première version prête à vendre, puis un logiciel qui évolue avec vos clients."
-    items={[
+    },
+    maquette: 'applications-mobiles',
+  },
+  {
+    title: 'Logiciels SaaS',
+    text: 'Une première version prête à vendre, puis un logiciel qui évolue avec vos clients.',
+    items: [
       'Comptes clients et abonnements',
       'Paiement en ligne',
       'Première version, puis évolutions',
-    ]}
-    link={{ label: "Découvrir l'offre Logiciels SaaS", href: '/services/logiciels-saas' }}
-  />
-  <ServiceCard
-    title="Intelligence artificielle"
-    icone={Sparkles}
-    text="L'IA là où elle apporte un gain concret, avec des usages encadrés et des résultats vérifiés."
-    items={[
+    ],
+    link: { label: "Découvrir l'offre Logiciels SaaS", href: '/services/logiciels-saas' },
+    maquette: 'logiciels-saas',
+  },
+  {
+    title: 'Intelligence artificielle',
+    text: "L'IA là où elle apporte un gain concret, avec des usages encadrés et des résultats vérifiés.",
+    items: [
       'Assistants pour vos clients et vos équipes',
       'Traitement de documents',
       'Formation de vos équipes',
-    ]}
-    link={{
+    ],
+    link: {
       label: "Découvrir l'offre Intelligence artificielle",
       href: '/services/intelligence-artificielle',
-    }}
-  />
-  <ServiceCard
-    title="Automatisation et intégrations"
-    icone={Workflow}
-    text="Vos outils connectés entre eux : l'information circule sans être recopiée à la main."
-    items={[
+    },
+    maquette: 'intelligence-artificielle',
+  },
+  {
+    title: 'Automatisation et intégrations',
+    text: "Vos outils connectés entre eux : l'information circule sans être recopiée à la main.",
+    items: [
       'Connexion de vos outils',
       'Automatisation des tâches',
       'WhatsApp connecté à vos outils',
-    ]}
-    link={{
+    ],
+    link: {
       label: "Découvrir l'offre Automatisation",
       href: '/services/automatisation-integrations',
-    }}
-  />
-  <ServiceCard
-    title="Données et tableaux de bord"
-    icone={ChartColumn}
-    text="Des chiffres fiables et lisibles pour piloter votre activité."
-    items={[
+    },
+    maquette: 'automatisation-integrations',
+  },
+  {
+    title: 'Données et tableaux de bord',
+    text: 'Des chiffres fiables et lisibles pour piloter votre activité.',
+    items: [
       "Mesure d'audience de votre site",
       'Tableaux de bord de votre activité',
       'Rapports automatiques',
-    ]}
-    link={{ label: "Découvrir l'offre Données", href: '/services/donnees-tableaux-de-bord' }}
-  />
-  <ServiceCard
-    title="Tests et sécurité"
-    icone={ShieldCheck}
-    text="Les problèmes trouvés avant vos utilisateurs, même si nous n'avons pas développé votre projet."
-    items={[
+    ],
+    link: { label: "Découvrir l'offre Données", href: '/services/donnees-tableaux-de-bord' },
+    maquette: 'donnees-tableaux-de-bord',
+  },
+  {
+    title: 'Tests et sécurité',
+    text: "Les problèmes trouvés avant vos utilisateurs, même si nous n'avons pas développé votre projet.",
+    items: [
       'Audit de sécurité',
       'Tests avant une mise en ligne',
       'Tests automatiques et tests de charge',
-    ]}
-    link={{ label: "Découvrir l'offre Tests et sécurité", href: '/services/tests-securite' }}
-  />
-  <ServiceCard
-    title="Hébergement et maintenance"
-    icone={ServerCog}
-    text="Votre site disponible, sauvegardé et à jour, sans vous occuper de la technique."
-    items={['Hébergement sécurisé', 'Sauvegardes et mises à jour', 'Reprise de site existant']}
-    link={{ label: 'Découvrir nos forfaits', href: '/services/hebergement-maintenance' }}
-  />
+    ],
+    link: { label: "Découvrir l'offre Tests et sécurité", href: '/services/tests-securite' },
+    maquette: 'tests-securite',
+  },
+  {
+    title: 'Hébergement et maintenance',
+    text: 'Votre site disponible, sauvegardé et à jour, sans vous occuper de la technique.',
+    items: ['Hébergement sécurisé', 'Sauvegardes et mises à jour', 'Reprise de site existant'],
+    link: { label: 'Découvrir nos forfaits', href: '/services/hebergement-maintenance' },
+    maquette: 'hebergement-maintenance',
+  },
+];
+
+const debut = (label: string) => label.split(' ').slice(0, -1).join(' ');
+const fin = (label: string) => label.split(' ').at(-1);
+---
+
+<div class="grid grid-cols-[repeat(auto-fill,minmax(min(100%,20rem),1fr))] gap-6">
+  {cartes.map(({ title, text, items, link, maquette }) => (
+    <article class="group apparition relative flex flex-col overflow-hidden rounded-[1.25rem] bg-white ring-1 ring-ligne transition-shadow has-[a:focus-visible]:outline-2 has-[a:focus-visible]:outline-offset-2 has-[a:focus-visible]:outline-bleu hover:shadow-[0_24px_48px_-28px_rgb(11_27_51/0.35)] hover:ring-contour">
+      {/* Vignette : le haut du visuel, dans un cadre gris de hauteur fixe. */}
+      <div class="h-[13.125rem] overflow-hidden border-b border-ligne bg-surface px-5.5 pt-5.5">
+        <MaquetteHero
+          nom={maquette}
+          sizes={TAILLES_MAQUETTE.vignette}
+          decoratif
+          legende={false}
+          class="transition-transform duration-300 motion-safe:group-hover:-translate-y-1"
+        />
+      </div>
+      <div class="flex flex-1 flex-col px-7 pt-6.5 pb-7">
+        <p aria-hidden="true" class="text-xs font-semibold tracking-[0.14em] text-discret">
+          {numeroService(link.href)}
+        </p>
+        <h3 class="mt-2.5 text-[1.3125rem] tracking-[-0.01em]">{title}</h3>
+        <p class="mt-2.5 text-[0.9375rem] leading-[1.6] text-doux">{text}</p>
+        <ul class="mt-4.5 flex flex-wrap gap-1.5">
+          {items.map((item) => (
+            <li class="rounded-full bg-surface px-2.5 py-1 text-[0.8125rem] font-medium text-fonce">
+              {item}
+            </li>
+          ))}
+        </ul>
+        <p class="mt-auto pt-5.5">
+          <a
+            href={link.href}
+            class="text-sm font-semibold text-bleu no-underline group-hover:text-encre after:absolute after:inset-0 focus-visible:outline-none"
+          >
+            {debut(link.label)} {/* Le dernier mot et la flèche restent sur la même ligne. */}
+            <span class="whitespace-nowrap">
+              {fin(link.label)}{' '}
+              <span
+                aria-hidden="true"
+                class="inline-block transition-transform motion-safe:group-hover:translate-x-1"
+              >
+                →
+              </span>
+            </span>
+          </a>
+        </p>
+      </div>
+    </article>
+  ))}
 </div>
+<p class="mt-6 text-center text-xs text-discret">{legendeVignettes}</p>

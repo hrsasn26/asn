@@ -1,0 +1,23 @@
+---
+/**
+ * Titre dont une partie est en gras, comme dans les maquettes (« Parlons de votre **projet** »).
+ * Le reste du titre garde la graisse légère des titres.
+ */
+interface Props {
+  texte: string;
+  /** Partie du titre en gras. Elle doit figurer dans le titre. */
+  motCle?: string | undefined;
+}
+
+const { texte, motCle } = Astro.props;
+const position = motCle ? texte.indexOf(motCle) : -1;
+if (motCle && position < 0) {
+  throw new Error(`« ${motCle} » est absent du titre « ${texte} ».`);
+}
+const avant = position >= 0 ? texte.slice(0, position) : texte;
+const apres = position >= 0 && motCle ? texte.slice(position + motCle.length) : '';
+---
+
+{avant}
+{position >= 0 && <span class="font-semibold">{motCle}</span>}
+{apres}

@@ -1,15 +1,17 @@
 ---
 /**
- * Bloc de contenu à rédiger. Le texte doit rester entre crochets :
- * `pnpm check:content --strict` bloque la mise en production tant qu'il en reste.
+ * Bloc de contenu à rédiger, surligné en jaune comme les autres placeholders.
+ * Le texte doit rester entre crochets : `pnpm check:content --strict` bloque la mise en
+ * production tant qu'il en reste.
  */
 interface Props {
   text: string;
+  class?: string;
 }
 
-const { text } = Astro.props;
+const { text, class: classe } = Astro.props;
 ---
 
-<p class="rounded-md border-2 border-dashed border-amber-400 bg-amber-50 px-4 py-3 text-amber-900">
-  {text}
+<p class:list={['leading-[1.75]', classe]}>
+  <span class="a-completer">{text}</span>
 </p>

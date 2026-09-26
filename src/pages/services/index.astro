@@ -1,10 +1,5 @@
 ---
-// Textes : docs/brief-agence.md, section 6.1.
-import BadgeCheck from '@lucide/astro/icons/badge-check';
-import Blocks from '@lucide/astro/icons/blocks';
-import Handshake from '@lucide/astro/icons/handshake';
-import KeyRound from '@lucide/astro/icons/key-round';
-import IllustrationServices from '~/components/illustrations/IllustrationServices.astro';
+// Textes : docs/brief-agence.md, section 6.1. Surtitres des sections : section 6.20.
 import AuditTeaser from '~/components/AuditTeaser.astro';
 import ButtonLink from '~/components/ButtonLink.astro';
 import CtaFinal from '~/components/CtaFinal.astro';
@@ -28,48 +23,43 @@ import BaseLayout from '~/layouts/BaseLayout.astro';
 >
   <Hero
     title="Un partenaire technique pour créer, connecter et faire durer vos outils numériques"
-    motCle="faire durer"
+    motCle="faire durer vos outils numériques"
     subtitle="Du site vitrine au logiciel métier, nous prenons en charge la conception, le développement, les tests, la mise en ligne et le suivi."
   >
     <ButtonLink href={cta.principal.href}>{cta.principal.label}</ButtonLink>
     <ButtonLink href={cta.secondaire.href} variant="secondaire">
       {cta.secondaire.label}
     </ButtonLink>
-    <IllustrationServices slot="illustration" />
   </Hero>
 
-  <Section title="Ce que nous faisons pour vous">
+  <Section surtitre="Nos services" title="Ce que nous faisons pour vous">
     <ServiceCards />
   </Section>
 
-  <Section title="Pourquoi travailler avec nous" tone="gris">
+  <Section surtitre="Nos différences" title="Pourquoi travailler avec nous" disposition="colonnes">
     <FeatureGrid
       items={[
         {
           title: 'Des méthodes solides',
-          icone: Blocks,
           text: 'Votre projet est construit avec les méthodes des grandes entreprises, adaptées à la taille de la vôtre.',
         },
         {
           title: 'Tout est testé avant la mise en ligne',
-          icone: BadgeCheck,
           text: 'Chaque page, chaque formulaire et chaque paiement est vérifié sur ordinateur, tablette et mobile. Vous ne découvrez pas les bugs à la place de vos clients.',
         },
         {
           title: 'Un seul interlocuteur',
-          icone: Handshake,
           text: 'Du premier échange à la maintenance, vous parlez aux personnes qui construisent votre projet. Pas de sous-traitance cachée.',
         },
         {
           title: 'Vous restez propriétaire',
-          icone: KeyRound,
           text: 'Votre code, votre nom de domaine et vos données vous appartiennent. Si un jour vous changez de prestataire, vous repartez avec tout.',
         },
       ]}
     />
   </Section>
 
-  <Section title="Comment se déroule votre projet">
+  <Section surtitre="Méthode" title="Comment se déroule votre projet" disposition="centre">
     <Steps items={etapesProjet} />
   </Section>
 
@@ -78,7 +68,7 @@ import BaseLayout from '~/layouts/BaseLayout.astro';
   <AuditTeaser />
 
   <Faq>
-    <FaqItem question="Combien coûte un site ou une application ?">
+    <FaqItem question="Combien coûte un site ou une application ?" ouvert>
       <p>
         Cela dépend du projet. Après un premier échange, nous vous remettons un devis gratuit,
         détaillé et à prix fixe : vous savez exactement ce que vous payez avant de vous engager.
@@ -109,6 +99,7 @@ import BaseLayout from '~/layouts/BaseLayout.astro';
 
   <CtaFinal
     title="Parlons de votre projet"
+    motCle="projet"
     text="Un échange de 30 minutes, gratuit et sans engagement, pour comprendre votre besoin et vous dire honnêtement ce que nous pouvons faire pour vous."
     button={cta.principal}
   />

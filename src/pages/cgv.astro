@@ -4,7 +4,6 @@
 import BarreLecture from '~/components/BarreLecture.astro';
 import Placeholder from '~/components/Placeholder.astro';
 import Prose from '~/components/Prose.astro';
-import Section from '~/components/Section.astro';
 import { offre, site } from '~/data/site';
 import { engagementMaintenance } from '~/data/forfaits';
 import BaseLayout from '~/layouts/BaseLayout.astro';
@@ -16,12 +15,13 @@ import BaseLayout from '~/layouts/BaseLayout.astro';
   breadcrumbs={[{ label: 'Conditions générales de vente', href: '/cgv' }]}
 >
   <BarreLecture />
-  <Section decor>
-    <h1 class="anim-montee text-3xl sm:text-4xl">Conditions générales de vente</h1>
-    <div class="mt-6 max-w-3xl">
-      <Placeholder text="[Projet de texte : à faire valider par un juriste avant la mise en ligne]" />
-    </div>
-    <div class="mt-8">
+  <section class="conteneur pt-12 pb-20 sm:pt-14 sm:pb-32">
+    <h1 class="anim-montee text-titre">Conditions générales de vente</h1>
+    <Placeholder
+      class="anim-montee mt-7 max-w-3xl delai-150"
+      text="[Projet de texte : à faire valider par un juriste avant la mise en ligne]"
+    />
+    <div class="mt-12">
       <Prose>
         <h2>1. Objet</h2>
         <p>
@@ -96,5 +96,5 @@ import BaseLayout from '~/layouts/BaseLayout.astro';
         <p>Ces conditions sont soumises au droit marocain. [Juridiction compétente : à définir]</p>
       </Prose>
     </div>
-  </Section>
+  </section>
 </BaseLayout>

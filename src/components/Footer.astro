@@ -1,82 +1,68 @@
 ---
-import { couleurDuService } from '~/data/couleurs';
+import Repere from '~/components/Repere.astro';
 import { liensLegaux, services } from '~/data/navigation';
 import { cta, site } from '~/data/site';
 
 // Année du build : le site est reconstruit à chaque déploiement.
 const annee = new Date().getFullYear();
 
-// Au survol, le lien glisse légèrement vers la droite.
 // py-0.5 : zone cliquable de 24 px de haut au moins (WCAG 2.5.8).
-const lienAnime =
-  'py-0.5 text-slate-700 transition hover:text-brand-700 motion-safe:hover:translate-x-1';
+const lien = 'inline-block py-0.5 text-nuit-texte no-underline hover:text-white';
+const titreColonne = 'text-[0.6875rem] font-semibold tracking-[0.2em] text-nuit-pied uppercase';
 ---
 
-<footer class="mt-16 bg-slate-50">
-  {/* Barre aux couleurs des services : elle se remplit quand le pied de page entre dans l'écran. */}
-  <div
-    aria-hidden="true"
-    class="anim-barre h-1 bg-linear-to-r from-blue-700 via-emerald-500 to-violet-600"
-  ></div>
-  <div class="mx-auto grid max-w-6xl gap-8 px-4 py-10 sm:px-6 md:grid-cols-3">
-    <div class="apparition">
-      <p class="font-bold text-slate-900">{site.nom}</p>
-      <p class="mt-2 text-sm text-slate-700">
+{/* --anneau : contour du focus en blanc, visible sur le fond sombre. */}
+<footer class="bg-encre text-nuit-texte [--anneau:var(--color-white)]">
+  <div class="conteneur flex flex-wrap gap-8 pt-16 pb-8 sm:pt-18">
+    <div class="apparition max-w-[23.75rem] min-w-0 flex-[1.6_1_13.75rem]">
+      <p class="flex items-center gap-3 text-[1.0625rem] font-bold text-white">
+        <Repere />
+        {site.nom}
+      </p>
+      <p class="mt-4 text-sm leading-[1.7]">
         Des sites et des applications fiables, testés, sécurisés et suivis dans la durée.
       </p>
     </div>
-    <nav aria-label="Services" class="apparition md:[--decalage:1.5rem]">
-      <p class="font-semibold text-slate-900">Services</p>
-      <ul class="mt-2 space-y-0.5 text-sm">
-        {services.map((lien) => (
+    {/* Les dix liens des services forment deux colonnes de cinq sur les écrans moyens et grands. */}
+    <nav aria-label="Services" class="apparition min-w-0 flex-[2_1_17.5rem] md:[--decalage:1.5rem]">
+      <p class={titreColonne}>Services</p>
+      <ul class="mt-4 grid gap-x-8 gap-y-1.5 text-sm sm:grid-flow-col sm:grid-rows-5">
+        {services.map(({ label, href }) => (
           <li>
-            <a href={lien.href} class:list={['group inline-flex items-center gap-2', lienAnime]}>
-              <span
-                aria-hidden="true"
-                class:list={[
-                  'size-2 shrink-0 rounded-full transition-transform motion-safe:group-hover:scale-150',
-                  couleurDuService(lien.href).tuile,
-                ]}
-              />
-              {lien.label}
+            <a href={href} class={lien}>
+              {label}
             </a>
           </li>
         ))}
         <li>
-          <a
-            href={cta.secondaire.href}
-            class:list={['group inline-flex items-center gap-2', lienAnime]}
-          >
-            <span
-              aria-hidden="true"
-              class="size-2 shrink-0 rounded-full bg-slate-400 transition-transform motion-safe:group-hover:scale-150"
-            />
+          <a href={cta.secondaire.href} class={lien}>
             Audit gratuit
           </a>
         </li>
       </ul>
     </nav>
-    <nav aria-label="Informations légales" class="apparition md:[--decalage:3rem]">
-      <p class="font-semibold text-slate-900">Informations</p>
-      <ul class="mt-2 space-y-0.5 text-sm">
+    <nav
+      aria-label="Informations légales"
+      class="apparition min-w-0 flex-[1_1_8.75rem] md:[--decalage:3rem]"
+    >
+      <p class={titreColonne}>Informations</p>
+      <ul class="mt-4 grid gap-y-1.5 text-sm">
         <li>
-          <a href="/contact" class:list={['inline-block', lienAnime]}>
+          <a href="/contact" class={lien}>
             Contact
           </a>
         </li>
-        {liensLegaux.map((lien) => (
+        {liensLegaux.map(({ label, href }) => (
           <li>
-            <a href={lien.href} class:list={['inline-block', lienAnime]}>
-              {lien.label}
+            <a href={href} class={lien}>
+              {label}
             </a>
           </li>
         ))}
       </ul>
     </nav>
   </div>
-  <div class="border-t border-slate-200">
-    <p class="apparition mx-auto max-w-6xl px-4 py-4 text-sm text-slate-700 sm:px-6">
-      {`© ${annee} ${site.nom}. Tous droits réservés.`}
-    </p>
+  <div class="conteneur border-t border-nuit-ligne pt-6 pb-10 text-[0.8125rem] text-nuit-pied">
+    <p>{`© ${annee} ${site.nom}. Tous droits réservés.`}</p>
   </div>
 </footer>

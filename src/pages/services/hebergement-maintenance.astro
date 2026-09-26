@@ -1,13 +1,9 @@
 ---
+// Surtitres des sections : docs/brief-agence.md, section 6.20.
 // Textes : docs/brief-agence.md, section 6.5.
-import Activity from '@lucide/astro/icons/activity';
-import FileText from '@lucide/astro/icons/file-text';
-import HardDrive from '@lucide/astro/icons/hard-drive';
-import PencilLine from '@lucide/astro/icons/pencil-line';
-import Server from '@lucide/astro/icons/server';
-import ShieldCheck from '@lucide/astro/icons/shield-check';
 import ButtonLink from '~/components/ButtonLink.astro';
 import CtaFinal from '~/components/CtaFinal.astro';
+import Encadre from '~/components/Encadre.astro';
 import Faq from '~/components/Faq.astro';
 import FaqItem from '~/components/FaqItem.astro';
 import FeatureGrid from '~/components/FeatureGrid.astro';
@@ -16,6 +12,7 @@ import Hero from '~/components/Hero.astro';
 import ProblemList from '~/components/ProblemList.astro';
 import Section from '~/components/Section.astro';
 import { cta, site } from '~/data/site';
+import { surtitreService } from '~/data/navigation';
 import BaseLayout from '~/layouts/BaseLayout.astro';
 import { serviceJsonLd } from '~/lib/seo';
 
@@ -36,8 +33,9 @@ const ctaForfait = { label: 'Choisir mon forfait', href: '/contact' };
 >
   <Hero
     maquette="hebergement-maintenance"
+    surtitre={surtitreService('/services/hebergement-maintenance')}
     title="Votre site reste disponible, sauvegardé et à jour"
-    motCle="disponible"
+    motCle="disponible, sauvegardé et à jour"
     subtitle="Nous gérons l'hébergement, les sauvegardes, la surveillance et les mises à jour, pour que vous n'ayez pas à vous occuper de la technique au quotidien."
   >
     <ButtonLink href="#forfaits">Voir les forfaits</ButtonLink>
@@ -55,70 +53,71 @@ const ctaForfait = { label: 'Choisir mon forfait', href: '/contact' };
     ]}
   />
 
-  <Section title="Tout ce dont votre site a besoin">
+  <Section surtitre="Inclus" title="Tout ce dont votre site a besoin" disposition="colonnes">
     <FeatureGrid
-      columns={3}
+      min={240}
       items={[
         {
           title: 'Hébergement géré',
-          icone: Server,
           text: 'Un hébergement sécurisé, configuré et suivi, avec connexion HTTPS, nom de domaine et e-mails professionnels.',
         },
         {
           title: 'Sauvegardes vérifiées',
-          icone: HardDrive,
           text: "Des sauvegardes automatiques, dont nous testons régulièrement la restauration : une sauvegarde jamais testée n'est pas une vraie sauvegarde.",
         },
         {
           title: 'Surveillance 24 h/24',
-          icone: Activity,
           text: 'Si votre site ne répond plus, nous sommes alertés immédiatement. Nous intervenons selon votre forfait.',
         },
         {
           title: 'Mises à jour de sécurité testées',
-          icone: ShieldCheck,
           text: "Nous appliquons les mises à jour après avoir vérifié qu'elles ne cassent rien.",
         },
         {
           title: 'Petites modifications',
-          icone: PencilLine,
           text: 'Un texte à changer, une image à remplacer, une page à ajouter : envoyez-nous un message. Le volume inclus dépend de votre forfait.',
         },
         {
           title: 'Rapport mensuel',
-          icone: FileText,
           text: 'Chaque mois, un résumé clair : disponibilité du site, sauvegardes réalisées, mises à jour effectuées.',
         },
       ]}
     />
   </Section>
 
-  <Section title="Choisissez votre forfait" tone="gris" id="forfaits">
+  <Section surtitre="Forfaits" title="Choisissez votre forfait" id="forfaits">
     <ForfaitsTable />
-    <p class="apparition mt-4 text-slate-700">
+    <p class="apparition mt-6 text-[0.9375rem] leading-[1.65] text-doux">
       Le prix de chaque forfait dépend de votre site : il figure dans votre devis gratuit, avec le
       volume de modifications inclus.
     </p>
-    <div class="apparition mt-6">
+    <div class="apparition mt-8">
       <ButtonLink href={ctaForfait.href}>{ctaForfait.label}</ButtonLink>
     </div>
   </Section>
 
-  <Section title="Votre prestataire a disparu ? Votre site est cassé ?">
-    <p class="apparition max-w-3xl text-lg text-slate-700">
-      Nous reprenons les sites et applications développés par d'autres. Nous commençons par un audit
-      : état du code, sécurité, sauvegardes, accès. Ensuite, nous vous proposons un plan clair :
-      corriger, stabiliser, ou reconstruire si c'est plus raisonnable.
-    </p>
-    <div class="apparition mt-6">
-      <ButtonLink href={cta.secondaire.href} variant="secondaire">
-        {cta.secondaire.label}
-      </ButtonLink>
-    </div>
+  <Section>
+    <Encadre
+      ton="sombre"
+      surtitre="Reprise de site"
+      title="Votre prestataire a disparu ? Votre site est cassé ?"
+      disposition="colonnes"
+    >
+      <p class="text-lg leading-[1.75] text-nuit-texte">
+        Nous reprenons les sites et applications développés par d'autres. Nous commençons par un
+        audit : état du code, sécurité, sauvegardes, accès. Ensuite, nous vous proposons un plan
+        clair : corriger, stabiliser, ou reconstruire si c'est plus raisonnable.
+      </p>
+      <div class="mt-8">
+        <ButtonLink href={cta.secondaire.href} variant="clair">
+          {cta.secondaire.label}
+        </ButtonLink>
+      </div>
+    </Encadre>
   </Section>
 
   <Faq>
-    <FaqItem question="Pouvez-vous héberger un site que vous n'avez pas créé ?">
+    <FaqItem question="Pouvez-vous héberger un site que vous n'avez pas créé ?" ouvert>
       <p>
         Oui. Nous faisons d'abord un audit pour vérifier son état, puis nous le migrons sur nos
         serveurs sans interruption de service.
@@ -140,6 +139,7 @@ const ctaForfait = { label: 'Choisir mon forfait', href: '/contact' };
 
   <CtaFinal
     title="Confiez-nous la technique"
+    motCle="la technique"
     text="Votre site est entre de bonnes mains, et vous pouvez vous concentrer sur votre activité."
     button={ctaForfait}
   />

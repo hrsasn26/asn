@@ -57,11 +57,18 @@ function chainesJson(valeur) {
   return [];
 }
 
+/** Balises en ligne : leur texte fait partie de la phrase qui les entoure. */
+const BALISES_EN_LIGNE =
+  /<\/?(?:a|abbr|b|bdi|bdo|cite|code|data|dfn|em|i|kbd|mark|q|s|samp|small|span|strong|sub|sup|time|u|var|wbr)\b[^>]*>/gi;
+
 /**
  * Extrait le texte lu par les visiteurs et par les moteurs de recherche :
  * titre, méta-descriptions, données structurées, attributs textuels et contenu visible.
+ * Les balises en ligne (span, a, strong…) ne coupent pas le texte : un placeholder surligné
+ * (« sous <span>[48 h ouvrées]</span>. ») reste dans sa phrase, et une espace manquante autour
+ * de lui reste visible.
  * @param {string} html
- * @returns {string[]} Un fragment de texte par élément.
+ * @returns {string[]} Un fragment de texte par bloc.
  */
 export function extraireTexte(html) {
   /** @type {string[]} */
@@ -90,6 +97,7 @@ export function extraireTexte(html) {
   const corps = html
     .replace(/<!--[\s\S]*?-->/g, ' ')
     .replace(/<(script|style|noscript)[^>]*>[\s\S]*?<\/\1>/gi, ' ')
+    .replace(BALISES_EN_LIGNE, '')
     .replace(/<[^>]+>/g, '\n');
   for (const ligne of decoderEntites(corps).split('\n')) {
     const texte = ligne.replace(/\s+/g, ' ').trim();

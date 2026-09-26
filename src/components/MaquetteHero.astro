@@ -1,14 +1,11 @@
 ---
 /**
- * Visuel de l'en-tête : maquette d'écrans (ordinateur, téléphone, cartes) pour un client fictif.
+ * Maquette d'écrans (ordinateur, téléphone, cartes) pour un client fictif : visuel de l'en-tête
+ * des pages, vignette des cartes de services, encadré de l'audit gratuit.
  *
  * Les images sont déjà aux bonnes tailles (`pnpm image:heros`) : Astro les copie telles quelles.
  * Avec le composant Picture d'Astro, une page rendue par le serveur (Audit gratuit) convertirait
  * l'image à chaque visite.
- *
- * L'image est chargée en priorité : c'est souvent le plus grand élément du haut de la page.
- * Sur grand écran, elle déborde un peu dans la marge de droite (xl:-mr-16). Les tailles de
- * `sizes` suivent la grille du composant Hero.
  */
 import type { ImageMetadata } from 'astro';
 import {
@@ -22,9 +19,28 @@ import {
 
 interface Props {
   nom: NomMaquette;
+  /** Largeur affichée selon l'écran (attribut sizes) : voir TAILLES_MAQUETTE dans src/data/maquettes.ts. */
+  sizes: string;
+  /** Haut de la page : l'image est chargée en priorité (souvent le plus grand élément affiché). */
+  prioritaire?: boolean;
+  /** Le texte voisin dit déjà ce que montre l'image (vignette, encadré) : texte alternatif vide. */
+  decoratif?: boolean;
+  /** Légende « Exemple fictif » sous l'image. */
+  legende?: boolean;
+  /** Légende sur fond sombre. */
+  sombre?: boolean;
+  class?: string;
 }
 
-const { nom } = Astro.props;
+const {
+  nom,
+  sizes,
+  prioritaire = false,
+  decoratif = false,
+  legende = true,
+  sombre = false,
+  class: classe,
+} = Astro.props;
 
 const images = import.meta.glob<ImageMetadata>('/src/assets/heros/*.{avif,webp}', {
   eager: true,
@@ -43,22 +59,28 @@ function image(fichier: string) {
 
 const avif = LARGEURS_AVIF.map((largeur) => `${image(`${nom}-${largeur}.avif`).src} ${largeur}w`);
 const webp = image(`${nom}.webp`);
-const sizes =
-  '(min-width: 1280px) 596px, (min-width: 1152px) 532px, (min-width: 768px) calc(50vw - 44px), (min-width: 640px) calc(100vw - 48px), calc(100vw - 32px)';
+const Conteneur = legende ? 'figure' : 'div';
 ---
 
-<figure class="anim-montee delai-300 xl:-mr-16">
+<Conteneur class={classe}>
   <picture>
     <source type="image/avif" srcset={avif.join(', ')} sizes={sizes} />
     <img
       src={webp.src}
-      alt={maquettes[nom]}
+      alt={decoratif ? '' : maquettes[nom]}
       width={LARGEUR_MAQUETTE}
       height={HAUTEUR_MAQUETTE}
-      loading="eager"
-      fetchpriority="high"
+      loading={prioritaire ? 'eager' : 'lazy'}
+      fetchpriority={prioritaire ? 'high' : undefined}
+      decoding={prioritaire ? undefined : 'async'}
       class="h-auto w-full"
     />
   </picture>
-  <figcaption class="mt-2 text-center text-xs text-slate-600">{legendeMaquette}</figcaption>
-</figure>
+  {legende && (
+    <figcaption
+      class:list={['mt-2 text-center text-xs', sombre ? 'text-nuit-discret' : 'text-discret']}
+    >
+      {legendeMaquette}
+    </figcaption>
+  )}
+</Conteneur>

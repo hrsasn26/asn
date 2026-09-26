@@ -1,22 +1,25 @@
 ---
 interface Props {
   question: string;
+  /** Réponse visible à l'ouverture de la page (la première question, dans les maquettes). */
+  ouvert?: boolean;
 }
 
-const { question } = Astro.props;
+const { question, ouvert = false } = Astro.props;
 ---
 
-<details class="group deroulant apparition py-4">
-  <summary class="flex cursor-pointer list-none items-start justify-between gap-4 font-semibold text-slate-900 [&::-webkit-details-marker]:hidden">
+<details class="group deroulant apparition border-b border-ligne py-6" open={ouvert}>
+  <summary class="flex cursor-pointer list-none items-start justify-between gap-6 text-[1.0625rem] font-semibold sm:text-lg [&::-webkit-details-marker]:hidden">
     <span>{question}</span>
+    {/* Le « + » tourne en « × » quand la réponse est ouverte. */}
     <span
       aria-hidden="true"
-      class="text-brand-700 group-open:rotate-45 motion-safe:transition-transform"
+      class="text-2xl leading-none font-light text-discret group-open:rotate-45 motion-safe:transition-transform"
     >
       +
     </span>
   </summary>
-  <div class="mt-3 text-slate-700">
+  <div class="mt-3.5 max-w-[40rem] leading-[1.7] text-doux [&_a]:text-bleu [&_a]:underline [&_a]:underline-offset-2 [&_a:hover]:text-encre [&_a:hover]:underline-offset-4">
     <slot />
   </div>
 </details>
