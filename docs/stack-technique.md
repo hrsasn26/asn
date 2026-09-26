@@ -235,6 +235,8 @@ Le site reste non indexé (`X-Robots-Tag: noindex` dans `vercel.json`) tant que 
 
 Tant que `vercel.json` envoie `X-Robots-Tag: noindex`, la Search Console affiche les pages comme exclues par la balise `noindex`. C'est normal.
 
+**État au 26 septembre 2026 :** propriété validée, sitemap envoyé et lu (18 pages découvertes). Quand l'en-tête `noindex` est retiré, demandez l'indexation de la page d'accueil avec l'outil **Inspection de l'URL**.
+
 **Pour la production sur le VPS**, voir la section 8 : les mêmes enregistrements DNS pointent alors vers l'adresse IP du serveur.
 
 **E-mails :** pour envoyer les formulaires depuis une adresse `@digital-solutions.ma`, authentifiez le domaine dans Brevo (enregistrements DNS SPF, DKIM et DMARC fournis par Brevo).
