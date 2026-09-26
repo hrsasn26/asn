@@ -22,8 +22,12 @@ const delaisGlisse = [
 {/* L'en-tête reste en haut de l'écran pendant le défilement, sur un fond blanc translucide. */}
 <header class="sticky top-0 z-30 border-b border-ligne bg-white/90 backdrop-blur-md [view-transition-name:entete]">
   <div class="conteneur flex h-[4.75rem] items-center justify-between gap-6">
+    {/*
+      Le logo s'anime à l'ouverture de l'accueil seulement : sur les autres pages, l'en-tête reste
+      immobile pendant la transition de page.
+    */}
     <a href="/" class="no-underline">
-      <Logo />
+      <Logo anime={path === '/'} />
     </a>
 
     <nav aria-label="Navigation principale" class="hidden lg:block">

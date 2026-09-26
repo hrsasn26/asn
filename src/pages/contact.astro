@@ -36,8 +36,9 @@ const ensuite = [
   'Vous recevez un devis clair, à prix fixe, sans engagement.',
 ];
 
+// Le téléphone reste un placeholder jusqu'à ce que le numéro soit disponible.
 const coordonnees = [
-  { label: 'E-mail', valeur: site.email },
+  { label: 'E-mail', valeur: site.email, href: `mailto:${site.email}` },
   { label: 'Téléphone', valeur: site.telephone },
 ];
 ---
@@ -186,11 +187,20 @@ const coordonnees = [
         class="flex-[1_1_23.75rem]"
       >
         <dl class="mt-2 border-t border-ligne">
-          {coordonnees.map(({ label, valeur }) => (
+          {coordonnees.map(({ label, valeur, href }) => (
             <div class="flex flex-wrap gap-x-6 gap-y-1 border-b border-ligne py-4 text-[0.9375rem]">
               <dt class="w-25 text-discret">{label}</dt>
               <dd class="min-w-0">
-                <Texte texte={valeur} />
+                {href ? (
+                  <a
+                    href={href}
+                    class="text-bleu underline underline-offset-2 hover:text-encre hover:underline-offset-4"
+                  >
+                    {valeur}
+                  </a>
+                ) : (
+                  <Texte texte={valeur} />
+                )}
               </dd>
             </div>
           ))}
