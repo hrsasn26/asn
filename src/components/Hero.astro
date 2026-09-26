@@ -2,24 +2,74 @@
 interface Props {
   title: string;
   subtitle?: string;
+  /** Partie du titre soulignée par un trait qui se dessine. Elle doit figurer dans le titre. */
+  motCle?: string;
 }
 
-const { title, subtitle } = Astro.props;
+const { title, subtitle, motCle } = Astro.props;
 const avecIllustration = Astro.slots.has('illustration');
+
+// Le titre est découpé autour du mot clé. Les espaces font partie des morceaux.
+const position = motCle ? title.indexOf(motCle) : -1;
+const avant = position >= 0 ? title.slice(0, position) : title;
+const apres = position >= 0 && motCle ? title.slice(position + motCle.length) : '';
 ---
 
-<section class="bg-brand-50">
+<section class="relative bg-brand-50">
+  {avecIllustration && (
+    <div
+      aria-hidden="true"
+      class="pointer-events-none absolute inset-y-0 right-0 hidden w-1/2 overflow-hidden md:block"
+    >
+      <div class="anim-parallaxe absolute inset-0 [--parallaxe:4rem]">
+        <div class="anim-entree absolute inset-0 bg-[radial-gradient(currentColor_1.5px,transparent_1.5px)] bg-size-[24px_24px] text-brand-600/35 mask-radial-from-20% mask-radial-to-75% delai-200" />
+      </div>
+      <div class="anim-parallaxe absolute -top-32 right-0">
+        <div class="anim-halo size-[28rem] rounded-full bg-radial from-emerald-200/70 to-transparent to-70%" />
+      </div>
+      <div class="anim-parallaxe absolute -bottom-40 left-0 [--parallaxe:12rem]">
+        <div class="anim-halo size-[32rem] rounded-full bg-radial from-violet-200/60 to-transparent to-70% delai-300" />
+      </div>
+    </div>
+  )}
   <div
     class:list={[
-      'mx-auto max-w-6xl px-4 py-14 sm:px-6 sm:py-20',
+      'relative mx-auto max-w-6xl px-4 py-14 sm:px-6 sm:py-20',
       avecIllustration && 'grid items-center gap-10 md:grid-cols-2',
     ]}
   >
     <div>
-      <h1 class="max-w-3xl text-3xl sm:text-5xl">{title}</h1>
-      {subtitle && <p class="mt-6 max-w-2xl text-lg text-slate-700">{subtitle}</p>}
+      <h1 class="anim-montee max-w-3xl text-3xl sm:text-5xl">
+        {avant}
+        {position >= 0 && (
+          <span class="relative inline-block">
+            {motCle}
+            <svg
+              aria-hidden="true"
+              focusable="false"
+              viewBox="0 0 200 12"
+              preserveAspectRatio="none"
+              class="absolute -bottom-2 left-0 h-3 w-full overflow-visible text-emerald-500"
+            >
+              <path
+                d="M3 9C60 3 140 3 197 7"
+                pathLength="1"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="5"
+                stroke-linecap="round"
+                class="anim-trace delai-600"
+              />
+            </svg>
+          </span>
+        )}
+        {apres}
+      </h1>
+      {subtitle && (
+        <p class="anim-montee mt-6 max-w-2xl text-lg text-slate-700 delai-150">{subtitle}</p>
+      )}
       {Astro.slots.has('default') && (
-        <div class="mt-8 flex flex-wrap gap-4">
+        <div class="anim-montee mt-8 flex flex-wrap gap-4 delai-300">
           <slot />
         </div>
       )}
