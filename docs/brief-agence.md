@@ -189,7 +189,7 @@ Dès que possible, ajouter des preuves réelles : exemple de rapport, capture de
 - **Aucune valeur non confirmée** : pas de délai, de durée, de ville ni de pays tant qu'ils ne sont pas confirmés. La phrase est retirée plutôt que publiée avec un placeholder (décision du 26 septembre 2026). Exceptions : les pages légales et les coordonnées de l'agence, obligatoires.
 - **Pas de points d'exclamation.**
 - **Mots à éviter sur le site** : DevOps, QA, stack, CI/CD, framework, « solutions innovantes », « optimiser », « digitaliser », « 360° », « ingénieurs ».
-- **Publics non nommés** : le site ne nomme pas les publics visés (TPE, PME, particuliers). Il n'est pas nécessaire de les préciser (décision du 26 septembre 2026, à valider). Exception : les pages légales, qui parlent des clients particuliers (loi 31-08).
+- **Publics non nommés** : le site ne nomme pas les publics visés (TPE, PME, particuliers). Les mots-clés visés ne les contiennent pas non plus. Il n'est pas nécessaire de les préciser (décision du 26 septembre 2026, à valider). Exception : les pages légales, qui parlent des clients particuliers (loi 31-08).
 
 ### Engagements à confirmer avant publication
 Ces engagements sont forts commercialement, mais il faut pouvoir les tenir. Depuis le 26 septembre 2026, le pays d'hébergement et le délai de réponse ne sont plus affichés sur le site : ils reviendront une fois confirmés.
@@ -246,7 +246,7 @@ La page « Processus », avec une étape de tests bien visible, est l'endroit id
 **URL :** `/services`
 **Balise title :** Création de sites web et d'applications sur mesure | Digital Solutions
 **Meta description :** Sites web, applications web et mobiles, logiciels SaaS, IA, automatisation et maintenance : des projets testés, mis en ligne et suivis par la même équipe.
-**Mots-clés visés (à valider) :** agence web [ville], création site internet TPE, développement application sur mesure
+**Mots-clés visés (à valider) :** agence web [ville], création site web et application, développement application sur mesure
 
 #### En-tête
 
@@ -549,7 +549,7 @@ Décrivez-nous votre projet en quelques lignes. Nous revenons vers vous avec les
 **URL :** `/services/applications-sur-mesure`
 **Balise title :** Applications web et mobiles sur mesure | Digital Solutions
 **Meta description :** Outil métier, espace client, application mobile ou première version de votre projet : nous développons des applications sur mesure, testées et faites pour évoluer.
-**Mots-clés visés (à valider) :** développement application sur mesure, logiciel sur mesure PME, création application mobile, développement MVP
+**Mots-clés visés (à valider) :** développement application sur mesure, logiciel sur mesure, création application mobile, développement MVP
 
 #### En-tête
 
@@ -653,7 +653,7 @@ Un échange de 30 minutes, gratuit et confidentiel, pour comprendre votre besoin
 **URL :** `/services/automatisation-integrations`
 **Balise title :** Automatisation et connexion de vos logiciels | Digital Solutions
 **Meta description :** Connectez votre site, votre CRM et votre comptabilité. Automatisez les tâches répétitives et utilisez l'IA là où elle vous fait vraiment gagner du temps.
-**Mots-clés visés (à valider) :** automatisation tâches entreprise, intégration logiciels PME, automatisation n8n, chatbot site web
+**Mots-clés visés (à valider) :** automatisation tâches entreprise, intégration logiciels, automatisation n8n, chatbot site web
 
 #### En-tête
 
@@ -1427,7 +1427,7 @@ Un échange de 30 minutes, gratuit et confidentiel, pour parler de votre idée, 
 **URL :** `/services/intelligence-artificielle`
 **Balise title :** Intégration de l'intelligence artificielle en entreprise | Digital Solutions
 **Meta description :** Assistant pour vos clients, recherche dans vos documents, lecture automatique des factures : nous intégrons l'IA là où elle vous fait gagner du temps.
-**Mots-clés visés (à valider) :** intelligence artificielle entreprise Maroc, chatbot site web, assistant WhatsApp, IA pour PME
+**Mots-clés visés (à valider) :** intelligence artificielle entreprise Maroc, chatbot site web, assistant WhatsApp, IA pour entreprise
 
 #### En-tête
 
