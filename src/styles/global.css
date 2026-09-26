@@ -159,6 +159,64 @@
 }
 
 /*
+ * Liste déroulante (<select>). Fermée : même apparence partout, sans la flèche du navigateur (la page
+ * place une icône à côté). Ouverte : design du site dans les navigateurs qui acceptent le select
+ * personnalisable (appearance: base-select : Chrome et Edge 135 et plus, versions récentes de WebKit).
+ * Les autres navigateurs affichent la liste du système. Sans animation : le texte des choix n'est
+ * jamais animé en opacité.
+ */
+@utility liste-deroulante {
+  appearance: none;
+
+  @supports (appearance: base-select) {
+    appearance: base-select;
+
+    /* Flèche du select personnalisable : remplacée par l'icône de la page. */
+    &::picker-icon {
+      display: none;
+    }
+
+    /* Panneau des choix : même style que le menu de l'en-tête. */
+    &::picker(select) {
+      appearance: base-select;
+      margin-block: 0.375rem;
+      border: 1px solid var(--color-ligne);
+      border-radius: 0.75rem;
+      background-color: var(--color-white);
+      padding: 0.375rem;
+      box-shadow: 0 24px 48px -28px color-mix(in oklab, var(--color-encre) 45%, transparent);
+    }
+
+    & option {
+      gap: 0.75rem;
+      border-radius: 0.5rem;
+      padding: 0.625rem 0.75rem;
+      color: var(--color-encre);
+    }
+
+    & option:is(:hover, :focus-visible) {
+      background-color: var(--color-surface);
+    }
+
+    /* Le contour du focus reste dans le panneau (sinon, il est coupé par ses bords). */
+    & option:focus-visible {
+      outline-offset: -2px;
+    }
+
+    & option:checked {
+      font-weight: 600;
+    }
+
+    /* Coche du choix actif, à droite. */
+    & option::checkmark {
+      order: 1;
+      margin-inline-start: auto;
+      color: var(--color-bleu);
+    }
+  }
+}
+
+/*
  * Animations (docs/stack-technique.md, section « Animations »).
  * - CSS seul, sans JavaScript.
  * - Elles ne jouent que si le visiteur n'a pas demandé à réduire les animations.

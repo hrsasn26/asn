@@ -1,5 +1,6 @@
 ---
 // Textes : docs/brief-agence.md, section 6.11 (proposition à valider). Surtitres : section 6.20.
+import ChevronDown from '@lucide/astro/icons/chevron-down';
 import { actions } from 'astro:actions';
 import Accent from '~/components/Accent.astro';
 import ButtonLink from '~/components/ButtonLink.astro';
@@ -143,18 +144,30 @@ const coordonnees = [
               >
                 Votre projet <span class="font-normal text-discret">(facultatif)</span>
               </label>
-              <select
-                id="champ-projet"
-                name="projet"
-                class="block w-full rounded-xl border border-champ bg-white px-4 py-3.5 text-[0.9375rem] text-encre transition-colors focus:border-bleu"
-              >
-                <option value="">Choisissez un type de projet</option>
-                {Object.entries(typesProjet).map(([valeur, libelle]) => (
-                  <option value={valeur} selected={projetChoisi === valeur}>
-                    {libelle}
-                  </option>
-                ))}
-              </select>
+              {/*
+               * Flèche du site à la place de celle du navigateur (liste-deroulante) : même marge
+               * intérieure que les autres champs, même rendu sur tous les navigateurs. Liste
+               * ouverte : design du site si le navigateur le permet (global.css).
+               */}
+              <div class="relative">
+                <select
+                  id="champ-projet"
+                  name="projet"
+                  class="liste-deroulante block w-full rounded-xl border border-champ bg-white py-3.5 pr-11 pl-4 text-[0.9375rem] text-encre transition-colors focus:border-bleu"
+                >
+                  <option value="">Choisissez un type de projet</option>
+                  {Object.entries(typesProjet).map(([valeur, libelle]) => (
+                    <option value={valeur} selected={projetChoisi === valeur}>
+                      {libelle}
+                    </option>
+                  ))}
+                </select>
+                <ChevronDown
+                  size={20}
+                  aria-hidden="true"
+                  class="pointer-events-none absolute top-1/2 right-4 -translate-y-1/2 text-discret transition-colors group-focus-within:text-bleu"
+                />
+              </div>
             </div>
           </div>
           <Field
@@ -238,3 +251,27 @@ const coordonnees = [
     </div>
   </Section>
 </BaseLayout>
+
+<script>
+  /*
+   * Liste « Votre projet » en select personnalisable (utilitaire liste-deroulante, global.css) :
+   * dans Chrome, la touche Entrée envoie le formulaire au lieu d'ouvrir la liste. Elle l'ouvre ici,
+   * comme la liste du système. Selon le navigateur, le focus reste sur la liste ouverte ou passe sur
+   * un choix : seul l'état de la liste (:open) compte. Les navigateurs sans :open ni showPicker()
+   * gardent leur comportement. Sans JavaScript, le formulaire fonctionne toujours.
+   */
+  if (
+    CSS.supports('appearance', 'base-select') &&
+    CSS.supports('selector(:open)') &&
+    'showPicker' in HTMLSelectElement.prototype
+  ) {
+    for (const liste of document.querySelectorAll<HTMLSelectElement>('select.liste-deroulante')) {
+      liste.addEventListener('keydown', (evenement) => {
+        // Liste ouverte : le navigateur gère la touche Entrée (il enregistre le choix).
+        if (evenement.key !== 'Enter' || liste.matches(':open')) return;
+        evenement.preventDefault();
+        liste.showPicker();
+      });
+    }
+  }
+</script>
