@@ -1,48 +1,73 @@
 ---
+import { couleurDuService } from '~/data/couleurs';
 import { liensLegaux, services } from '~/data/navigation';
 import { cta, site } from '~/data/site';
 
 // Année du build : le site est reconstruit à chaque déploiement.
 const annee = new Date().getFullYear();
+
+// Au survol, le lien glisse légèrement vers la droite.
+// py-0.5 : zone cliquable de 24 px de haut au moins (WCAG 2.5.8).
+const lienAnime =
+  'py-0.5 text-slate-700 transition hover:text-brand-700 motion-safe:hover:translate-x-1';
 ---
 
-<footer class="mt-16 border-t border-slate-200 bg-slate-50">
+<footer class="mt-16 bg-slate-50">
+  {/* Barre aux couleurs des services : elle se remplit quand le pied de page entre dans l'écran. */}
+  <div
+    aria-hidden="true"
+    class="anim-barre h-1 bg-linear-to-r from-blue-700 via-emerald-500 to-violet-600"
+  ></div>
   <div class="mx-auto grid max-w-6xl gap-8 px-4 py-10 sm:px-6 md:grid-cols-3">
-    <div>
+    <div class="apparition">
       <p class="font-bold text-slate-900">{site.nom}</p>
       <p class="mt-2 text-sm text-slate-700">
         Des sites et des applications conçus par des ingénieurs : fiables, testés, sécurisés et
         suivis dans la durée.
       </p>
     </div>
-    <nav aria-label="Services">
+    <nav aria-label="Services" class="apparition md:[--decalage:1.5rem]">
       <p class="font-semibold text-slate-900">Services</p>
-      <ul class="mt-2 space-y-1 text-sm">
+      <ul class="mt-2 space-y-0.5 text-sm">
         {services.map((lien) => (
           <li>
-            <a href={lien.href} class="text-slate-700 hover:text-brand-700">
+            <a href={lien.href} class:list={['group inline-flex items-center gap-2', lienAnime]}>
+              <span
+                aria-hidden="true"
+                class:list={[
+                  'size-2 shrink-0 rounded-full transition-transform motion-safe:group-hover:scale-150',
+                  couleurDuService(lien.href).tuile,
+                ]}
+              />
               {lien.label}
             </a>
           </li>
         ))}
         <li>
-          <a href={cta.secondaire.href} class="text-slate-700 hover:text-brand-700">
+          <a
+            href={cta.secondaire.href}
+            class:list={['group inline-flex items-center gap-2', lienAnime]}
+          >
+            <span
+              aria-hidden="true"
+              class="size-2 shrink-0 rounded-full bg-slate-400 transition-transform motion-safe:group-hover:scale-150"
+            />
             Audit gratuit
           </a>
         </li>
       </ul>
     </nav>
-    <nav aria-label="Informations légales">
+    <nav aria-label="Informations légales" class="apparition md:[--decalage:3rem]">
       <p class="font-semibold text-slate-900">Informations</p>
-      <ul class="mt-2 space-y-1 text-sm">
+      <ul class="mt-2 space-y-0.5 text-sm">
         <li>
-          <a href="/contact" class="text-slate-700 hover:text-brand-700">
+          <a href="/contact" class:list={['inline-block', lienAnime]}>
             Contact
           </a>
         </li>
         {liensLegaux.map((lien) => (
           <li>
-            <a href={lien.href} class="text-slate-700 hover:text-brand-700">
+            <a href={lien.href} class:list={['inline-block', lienAnime]}>
               {lien.label}
             </a>
           </li>

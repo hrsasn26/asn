@@ -105,7 +105,8 @@ deploy/                   Docker Compose, Caddyfile, script de déploiement
 - le héros s'anime à l'ouverture de la page : le titre, le sous-titre et les boutons montent en place (`anim-montee`), un trait se dessine sous le mot clé du titre (propriété `motCle` du composant `Hero`), des points et des halos de couleur apparaissent derrière l'illustration (`anim-halo`) et descendent moins vite que la page au défilement (`anim-parallaxe`) ;
 - les illustrations s'animent à l'ouverture de la page (classes `anim-entree`, `anim-zoom`, `anim-trace`, `anim-pousse`, `anim-ecrit`, `anim-flux`, `anim-aiguille`, `anim-tourne`, `anim-sonne`, `anim-saut`) ;
 - l'ordre d'apparition se règle avec `delai-300` (300 ms) ; `puis-200` compte à partir du délai du parent ;
-- les cartes et les titres montent en place pendant le défilement (`apparition`), la frise des étapes se remplit (`anim-frise`) ;
+- les cartes et les titres montent en place pendant le défilement (`apparition`, décalage possible avec la variable `--decalage`), la frise des étapes se remplit (`anim-frise`) ;
+- dans le pied de page, une barre aux couleurs des services se remplit de gauche à droite (`anim-barre`), les trois colonnes montent en place l'une après l'autre, et chaque service a une pastille de sa couleur ;
 - les cartes des services, les boutons et les liens du menu réagissent au survol ; les réponses de la FAQ se déroulent ; les pages s'enchaînent en fondu (transitions de page du navigateur).
 
 Règles, vérifiées par `tests/e2e/animations.spec.ts` pour les deux premières :
@@ -117,6 +118,8 @@ Règles, vérifiées par `tests/e2e/animations.spec.ts` pour les deux premières
 Deux pièges pour les animations liées au défilement :
 - Lightning CSS (utilisé par Tailwind) fusionne `animation-timeline` dans le raccourci `animation`, que les navigateurs refusent. Écrivez les propriétés détaillées (`animation-name`, `animation-duration`, etc.) ;
 - un parent en `overflow: hidden` devient un conteneur de défilement et bloque la timeline `view()`. Utilisez `overflow: clip` ou rien.
+
+Un lien qui glisse au survol doit être en `inline-block` ou `inline-flex`. Il perd alors l'exception des liens dans le texte : sa zone cliquable doit mesurer au moins 24 px de haut (WCAG 2.5.8, vérifié par Lighthouse). Les liens du pied de page ont donc `py-0.5`.
 
 Un élément animé en `translate` ou avec un `view-transition-name` crée un contexte d'empilement. L'en-tête a donc `relative z-30` : sans cela, le titre animé du héros passe au-dessus du menu mobile ouvert.
 
