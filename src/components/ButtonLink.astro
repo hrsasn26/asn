@@ -1,10 +1,10 @@
 ---
 /**
  * Lien en forme de bouton (pilule).
- * - primaire : fond bleu nuit, bleu au survol ;
- * - secondaire : contour gris, bleu nuit au survol ;
- * - contour : contour bleu nuit, rempli au survol (en-tête) ;
- * - clair : fond blanc, pour les encadrés sombres.
+ * - primaire : fond bleu, bleu nuit au survol ;
+ * - secondaire : contour gris, bleu au survol ;
+ * - contour : contour bleu, rempli au survol (en-tête) ;
+ * - clair : fond blanc, pour les encadrés sombres (le bleu sur le bleu nuit manque de contraste).
  */
 interface Props {
   href: string;
@@ -24,10 +24,10 @@ const { href, variant = 'primaire', taille = 'normal', class: classe } = Astro.p
     taille === 'petit' && 'px-5 py-2.5 text-sm whitespace-nowrap',
     taille === 'normal' && 'px-7 py-4 text-[0.9375rem]',
     taille === 'grand' && 'px-8 py-[1.125rem] text-base',
-    variant === 'primaire' && 'bg-encre text-white hover:bg-bleu',
-    variant === 'secondaire' && 'text-encre ring-1 ring-contour ring-inset hover:ring-encre',
-    variant === 'contour' &&
-      'text-encre ring-1 ring-encre ring-inset hover:bg-encre hover:text-white',
+    variant === 'primaire' && 'bg-bleu text-white hover:bg-encre',
+    variant === 'secondaire' &&
+      'text-encre ring-1 ring-contour ring-inset hover:text-bleu hover:ring-bleu',
+    variant === 'contour' && 'text-bleu ring-1 ring-bleu ring-inset hover:bg-bleu hover:text-white',
     variant === 'clair' && 'bg-white text-encre hover:bg-nuit-survol',
     classe,
   ]}
