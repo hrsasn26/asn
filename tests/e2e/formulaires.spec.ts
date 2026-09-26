@@ -32,6 +32,36 @@ test.describe('formulaire de contact', () => {
     await expect(page.getByRole('status')).toContainText('Votre demande est envoyée');
   });
 
+  test('ouvre la liste « Votre projet » dans la page, à la souris et au clavier', async ({
+    page,
+  }) => {
+    await page.goto('/contact');
+    // Select personnalisable (appearance: base-select). Ailleurs, la liste du système s'affiche.
+    test.skip(
+      !(await page.evaluate(() => CSS.supports('appearance', 'base-select'))),
+      'Liste du système : elle ne s’affiche pas dans la page.',
+    );
+    const liste = page.getByLabel(/^Votre projet/);
+    const choix = page.getByRole('option', { name: 'Application mobile' });
+    await expect(liste).toHaveCSS('appearance', 'base-select');
+
+    await liste.click();
+    await expect(choix).toBeVisible();
+    await choix.click();
+    await expect(liste).toHaveValue('application-mobile');
+    await expect(choix).toBeHidden();
+
+    // La touche Entrée ouvre la liste, comme la liste du système : elle n'envoie pas le formulaire.
+    await liste.focus();
+    await page.keyboard.press('Enter');
+    await expect(choix).toBeFocused();
+    await page.keyboard.press('ArrowDown');
+    await page.keyboard.press('Enter');
+    await expect(liste).toHaveValue('saas');
+    await expect(liste).toBeFocused();
+    await expect(page).not.toHaveTitle(/^Erreur : /);
+  });
+
   test('propose WhatsApp avec un message déjà rempli', async ({ page }) => {
     await page.goto('/contact');
     // Le pied de page a le même lien : on vérifie celui du contenu de la page.

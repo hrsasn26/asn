@@ -145,14 +145,15 @@ const coordonnees = [
                 Votre projet <span class="font-normal text-discret">(facultatif)</span>
               </label>
               {/*
-               * Flèche du site à la place de celle du navigateur (appearance-none) : même marge
-               * intérieure que les autres champs, même rendu sur tous les navigateurs.
+               * Flèche du site à la place de celle du navigateur (liste-deroulante) : même marge
+               * intérieure que les autres champs, même rendu sur tous les navigateurs. Liste
+               * ouverte : design du site si le navigateur le permet (global.css).
                */}
               <div class="relative">
                 <select
                   id="champ-projet"
                   name="projet"
-                  class="block w-full appearance-none rounded-xl border border-champ bg-white py-3.5 pr-11 pl-4 text-[0.9375rem] text-encre transition-colors focus:border-bleu"
+                  class="liste-deroulante block w-full rounded-xl border border-champ bg-white py-3.5 pr-11 pl-4 text-[0.9375rem] text-encre transition-colors focus:border-bleu"
                 >
                   <option value="">Choisissez un type de projet</option>
                   {Object.entries(typesProjet).map(([valeur, libelle]) => (
@@ -250,3 +251,21 @@ const coordonnees = [
     </div>
   </Section>
 </BaseLayout>
+
+<script>
+  /*
+   * Liste « Votre projet » en select personnalisable (utilitaire liste-deroulante, global.css) :
+   * la touche Entrée envoie le formulaire au lieu d'ouvrir la liste. Elle l'ouvre ici, comme la
+   * liste du système. Sans JavaScript, le formulaire fonctionne toujours.
+   */
+  if (CSS.supports('appearance', 'base-select')) {
+    for (const liste of document.querySelectorAll<HTMLSelectElement>('select.liste-deroulante')) {
+      liste.addEventListener('keydown', (evenement) => {
+        if (evenement.key === 'Enter' && evenement.target === liste && !liste.matches(':open')) {
+          evenement.preventDefault();
+          liste.showPicker();
+        }
+      });
+    }
+  }
+</script>

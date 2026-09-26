@@ -44,6 +44,7 @@ Les choix techniques, l'organisation du code et la mise en service sont dans [do
 - Appels à l'action : trois familles (section 6 du brief). « Parler de mon projet » (bouton principal, avec une variante par page de service), « Demander un devis » (besoin déjà cadré), « Faire auditer mon site » (audit gratuit).
 - Chaque page reprend les textes du brief mot pour mot et indique la section d'origine en commentaire.
 - Les formulaires doivent fonctionner sans JavaScript. Tout nouveau formulaire utilise une Astro Action, un schéma Zod dans `src/lib/schemas.ts`, le champ piège et la case de consentement.
+- Listes déroulantes (`<select>`) : utilitaire `liste-deroulante` (liste ouverte au design du site dans Chrome et Edge, liste du système ailleurs), icône `ChevronDown` à côté et script de la touche Entrée. Modèle : liste « Votre projet » de `src/pages/contact.astro`.
 - Pas de style en ligne (`style="…"`) ni de script externe sans mise à jour de la CSP (`astro.config.mjs`). Une nouvelle sorte de balise dans Google Tag Manager demande aussi ses adresses dans la CSP (constante `google`), et une mise à jour de la politique de confidentialité.
 - Toute nouvelle page doit passer les tests axe et Lighthouse de la CI.
 - `llms.txt` (GEO) : `src/pages/llms.txt.ts` reprend la meta description de chaque page. Une nouvelle page ou une meta description modifiée s'y reporte. `tests/e2e/llms.spec.ts` le vérifie, et `pnpm check:content` vérifie aussi ce fichier.
