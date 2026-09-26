@@ -158,7 +158,7 @@ Limite connue : Firefox ne prend pas encore en charge les animations liées au d
 | `check-content` | Placeholders, mots à éviter, points d'exclamation, espaces manquantes, sur le HTML final. |
 | Playwright | Chaque page du sitemap sur Chromium, Firefox et WebKit, en tailles ordinateur, mobile et tablette. Envoi des formulaires, erreurs, menu mobile, lien d'évitement, liens internes. Pas de défilement horizontal. Animations : moins de 5 secondes, aucune en mode « réduire les animations » (pages, formulaire en erreur, menu mobile), barre de lecture qui se remplit. |
 | axe-core | Accessibilité de chaque page (WCAG 2.1 AA). Il ne trouve qu'une partie des problèmes : faites aussi une vérification manuelle au clavier et au lecteur d'écran. |
-| Lighthouse CI | Seuils : performance 95, accessibilité 100, bonnes pratiques 100, SEO 100. Dix pages clés. |
+| Lighthouse CI | Seuils : performance 95, accessibilité 100, bonnes pratiques 100, SEO 100. Dix pages clés, trois passages par page : chaque seuil s'applique à la médiane des trois passages (le premier passage, sur un navigateur qui démarre, est plus lent). Rapports dans l'artefact `rapports-lighthouse`. |
 | Build Docker | L'image se construit. |
 
 La CI (`.github/workflows/ci.yml`) lance tous ces contrôles sur chaque pull request et sur `main`.
