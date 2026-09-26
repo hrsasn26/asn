@@ -190,8 +190,27 @@
       animation-timing-function: linear;
       animation-fill-mode: both;
       animation-timeline: view();
-      /* L'effet se termine après 12 rem de défilement, même pour un bloc plus haut que l'écran. */
-      animation-range: cover 0% cover 12rem;
+      /*
+       * L'effet se termine après 12 rem de défilement, même pour un bloc plus haut que l'écran.
+       * --decalage retarde l'effet (colonnes côte à côte qui arrivent l'une après l'autre).
+       */
+      animation-range: cover var(--decalage, 0rem) cover calc(12rem + var(--decalage, 0rem));
+    }
+  }
+}
+
+/* Pied de page : la barre de couleur se remplit de gauche à droite pendant le défilement. */
+@utility anim-barre {
+  transform-origin: left;
+
+  @media (prefers-reduced-motion: no-preference) {
+    @supports (animation-timeline: view()) {
+      animation-name: barre;
+      animation-duration: auto;
+      animation-timing-function: linear;
+      animation-fill-mode: both;
+      animation-timeline: view();
+      animation-range: cover 0% cover 15rem;
     }
   }
 }
@@ -360,6 +379,12 @@
 @keyframes apparition {
   from {
     transform: translateY(3rem) scale(0.95);
+  }
+}
+
+@keyframes barre {
+  from {
+    scale: 0 1;
   }
 }
 
