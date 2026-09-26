@@ -1,16 +1,45 @@
 ---
-/** Questions fréquentes : titre à gauche, questions dépliables à droite (maquettes). */
+/**
+ * Questions fréquentes : titre à gauche, questions dépliables à droite (maquettes).
+ * Les mêmes questions produisent les données structurées FAQPage (src/lib/faq.ts).
+ */
+import FaqItem from '~/components/FaqItem.astro';
+import JsonLd from '~/components/JsonLd.astro';
 import Section from '~/components/Section.astro';
+import Texte from '~/components/Texte.astro';
+import { decouperParagraphe, faqJsonLd, lienSepare, type QuestionFaq } from '~/lib/faq';
 
 interface Props {
   title?: string;
+  questions: QuestionFaq[];
 }
 
-const { title = 'Questions fréquentes' } = Astro.props;
+const { title = 'Questions fréquentes', questions } = Astro.props;
+const jsonLd = faqJsonLd(questions);
 ---
 
 <Section surtitre="FAQ" title={title} disposition="colonnes">
   <div class="border-t border-ligne">
-    <slot />
+    {questions.map((item) => (
+      <FaqItem question={item.question} ouvert={item.ouvert ?? false}>
+        {item.reponse.map((paragraphe) => (
+          <p>
+            {decouperParagraphe(paragraphe, item.lien).map((morceau) =>
+              typeof morceau === 'string' ? (
+                <Texte texte={morceau} />
+              ) : (
+                <a href={morceau.href}>{morceau.label}</a>
+              ),
+            )}
+          </p>
+        ))}
+        {lienSepare(item) && item.lien && (
+          <p>
+            <a href={item.lien.href}>{item.lien.label}</a>
+          </p>
+        )}
+      </FaqItem>
+    ))}
   </div>
 </Section>
+{jsonLd.mainEntity.length > 0 && <JsonLd data={jsonLd} />}

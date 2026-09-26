@@ -4,7 +4,6 @@ import AuditTeaser from '~/components/AuditTeaser.astro';
 import ButtonLink from '~/components/ButtonLink.astro';
 import CtaFinal from '~/components/CtaFinal.astro';
 import Faq from '~/components/Faq.astro';
-import FaqItem from '~/components/FaqItem.astro';
 import FeatureGrid from '~/components/FeatureGrid.astro';
 import Hero from '~/components/Hero.astro';
 import Section from '~/components/Section.astro';
@@ -13,6 +12,41 @@ import Steps from '~/components/Steps.astro';
 import { etapesProjet } from '~/data/processus';
 import { cta, site } from '~/data/site';
 import BaseLayout from '~/layouts/BaseLayout.astro';
+import type { QuestionFaq } from '~/lib/faq';
+
+// Questions fréquentes : affichées par le composant Faq et reprises dans les données
+// structurées FAQPage.
+const faq: QuestionFaq[] = [
+  {
+    question: 'Combien coûte un site ou une application ?',
+    ouvert: true,
+    reponse: [
+      'Cela dépend du projet. Après un premier échange, nous vous remettons un devis gratuit, détaillé et à prix fixe : vous savez exactement ce que vous payez avant de vous engager.',
+    ],
+  },
+  {
+    question: 'Combien de temps faut-il ?',
+    reponse: [
+      'Cela dépend du projet. Nous fixons le planning ensemble après le premier échange, et il figure dans le devis.',
+    ],
+  },
+  {
+    question: "Je n'y connais rien en informatique. Est-ce un problème ?",
+    reponse: [
+      "Non. Nous vous expliquons chaque choix simplement, et nous vous formons à l'utilisation de votre site ou de votre outil à la livraison.",
+    ],
+  },
+  {
+    question: 'Vous occupez-vous du design ?',
+    reponse: ['Oui. Vous validez les maquettes avant le début du développement.'],
+  },
+  {
+    question: "J'ai déjà un site ou une application. Pouvez-vous le reprendre ?",
+    reponse: [
+      "Oui. Nous commençons par un audit pour faire le point, puis nous vous proposons un plan : corriger, améliorer ou reconstruire si c'est plus raisonnable.",
+    ],
+  },
+];
 ---
 
 <BaseLayout
@@ -64,35 +98,7 @@ import BaseLayout from '~/layouts/BaseLayout.astro';
 
   <AuditTeaser />
 
-  <Faq>
-    <FaqItem question="Combien coûte un site ou une application ?" ouvert>
-      <p>
-        Cela dépend du projet. Après un premier échange, nous vous remettons un devis gratuit,
-        détaillé et à prix fixe : vous savez exactement ce que vous payez avant de vous engager.
-      </p>
-    </FaqItem>
-    <FaqItem question="Combien de temps faut-il ?">
-      <p>
-        Cela dépend du projet. Nous fixons le planning ensemble après le premier échange, et il
-        figure dans le devis.
-      </p>
-    </FaqItem>
-    <FaqItem question="Je n'y connais rien en informatique. Est-ce un problème ?">
-      <p>
-        Non. Nous vous expliquons chaque choix simplement, et nous vous formons à l'utilisation de
-        votre site ou de votre outil à la livraison.
-      </p>
-    </FaqItem>
-    <FaqItem question="Vous occupez-vous du design ?">
-      <p>Oui. Vous validez les maquettes avant le début du développement.</p>
-    </FaqItem>
-    <FaqItem question="J'ai déjà un site ou une application. Pouvez-vous le reprendre ?">
-      <p>
-        Oui. Nous commençons par un audit pour faire le point, puis nous vous proposons un plan :
-        corriger, améliorer ou reconstruire si c'est plus raisonnable.
-      </p>
-    </FaqItem>
-  </Faq>
+  <Faq questions={faq} />
 
   <CtaFinal
     title="Parlons de votre projet"

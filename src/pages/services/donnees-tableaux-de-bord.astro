@@ -5,7 +5,6 @@ import ButtonLink from '~/components/ButtonLink.astro';
 import CtaFinal from '~/components/CtaFinal.astro';
 import Encadre from '~/components/Encadre.astro';
 import Faq from '~/components/Faq.astro';
-import FaqItem from '~/components/FaqItem.astro';
 import FeatureGrid from '~/components/FeatureGrid.astro';
 import Hero from '~/components/Hero.astro';
 import ProblemList from '~/components/ProblemList.astro';
@@ -14,12 +13,43 @@ import Steps from '~/components/Steps.astro';
 import { site } from '~/data/site';
 import { surtitreService } from '~/data/navigation';
 import BaseLayout from '~/layouts/BaseLayout.astro';
+import type { QuestionFaq } from '~/lib/faq';
 import { serviceJsonLd } from '~/lib/seo';
 
 const title = "Tableaux de bord et mesure d'audience";
 const description =
   "Mesure d'audience de votre site et tableaux de bord de votre activité : vos chiffres clés sur un seul écran, fiables et mis à jour automatiquement.";
 const ctaProjet = { label: 'Parler de mes chiffres', href: '/contact' };
+
+// Questions fréquentes : affichées par le composant Faq et reprises dans les données
+// structurées FAQPage.
+const faq: QuestionFaq[] = [
+  {
+    question: 'Quels outils utilisez-vous ?',
+    ouvert: true,
+    reponse: [
+      "Pour la mesure d'audience : Matomo, Plausible ou Google Analytics, selon vos besoins. Pour les tableaux de bord : des outils éprouvés comme Looker Studio ou Metabase, ou un tableau de bord sur mesure dans votre application.",
+    ],
+  },
+  {
+    question: 'Faut-il un bandeau cookies ?',
+    reponse: [
+      "Cela dépend de l'outil de mesure. Certains outils fonctionnent sans cookie de suivi. Nous vous conseillons la solution la plus simple qui respecte la loi 09-08.",
+    ],
+  },
+  {
+    question: 'Qui peut voir mes chiffres ?',
+    reponse: [
+      'Seulement les personnes que vous choisissez. Chaque accès est personnel, et vous décidez qui voit quoi.',
+    ],
+  },
+  {
+    question: 'Combien ça coûte ?',
+    reponse: [
+      "Cela dépend du nombre de sources et d'indicateurs. Chaque projet fait l'objet d'un devis gratuit, à prix fixe.",
+    ],
+  },
+];
 ---
 
 <BaseLayout
@@ -131,33 +161,7 @@ const ctaProjet = { label: 'Parler de mes chiffres', href: '/contact' };
     />
   </Section>
 
-  <Faq>
-    <FaqItem question="Quels outils utilisez-vous ?" ouvert>
-      <p>
-        Pour la mesure d'audience : Matomo, Plausible ou Google Analytics, selon vos besoins. Pour
-        les tableaux de bord : des outils éprouvés comme Looker Studio ou Metabase, ou un tableau de
-        bord sur mesure dans votre application.
-      </p>
-    </FaqItem>
-    <FaqItem question="Faut-il un bandeau cookies ?">
-      <p>
-        Cela dépend de l'outil de mesure. Certains outils fonctionnent sans cookie de suivi. Nous
-        vous conseillons la solution la plus simple qui respecte la loi 09-08.
-      </p>
-    </FaqItem>
-    <FaqItem question="Qui peut voir mes chiffres ?">
-      <p>
-        Seulement les personnes que vous choisissez. Chaque accès est personnel, et vous décidez qui
-        voit quoi.
-      </p>
-    </FaqItem>
-    <FaqItem question="Combien ça coûte ?">
-      <p>
-        Cela dépend du nombre de sources et d'indicateurs. Chaque projet fait l'objet d'un devis
-        gratuit, à prix fixe.
-      </p>
-    </FaqItem>
-  </Faq>
+  <Faq questions={faq} />
 
   <CtaFinal
     title="Quels chiffres aimeriez-vous voir chaque matin ?"

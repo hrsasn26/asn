@@ -5,13 +5,13 @@
 import CtaFinal from '~/components/CtaFinal.astro';
 import Encadre from '~/components/Encadre.astro';
 import Faq from '~/components/Faq.astro';
-import FaqItem from '~/components/FaqItem.astro';
 import FeatureGrid from '~/components/FeatureGrid.astro';
 import Hero from '~/components/Hero.astro';
 import ListePoints from '~/components/ListePoints.astro';
 import Section from '~/components/Section.astro';
 import { cta, site } from '~/data/site';
 import BaseLayout from '~/layouts/BaseLayout.astro';
+import type { QuestionFaq } from '~/lib/faq';
 
 interface Etape {
   title: string;
@@ -65,6 +65,30 @@ const etapes: Etape[] = [
     title: 'Le suivi.',
     text: 'Si vous le souhaitez, nous hébergeons et maintenons votre projet avec un forfait mensuel : sauvegardes, mises à jour de sécurité, surveillance et petites modifications.',
     recu: 'selon votre forfait, un rapport mensuel clair.',
+  },
+];
+
+// Questions fréquentes : affichées par le composant Faq et reprises dans les données
+// structurées FAQPage.
+const faq: QuestionFaq[] = [
+  {
+    question: 'Combien de temps dure un projet ?',
+    ouvert: true,
+    reponse: [
+      'Cela dépend du projet. Nous fixons le planning ensemble après le premier échange, et il figure dans le devis.',
+    ],
+  },
+  {
+    question: 'Puis-je demander des changements en cours de projet ?',
+    reponse: [
+      "Oui. Nous estimons l'effet sur le prix et sur le délai, puis vous décidez. Rien n'est ajouté à la facture sans votre accord.",
+    ],
+  },
+  {
+    question: 'Que se passe-t-il si un problème apparaît après la mise en ligne ?',
+    reponse: [
+      "Nous le corrigeons s'il est lié à notre travail, dans les conditions prévues au devis. Avec un forfait de maintenance, nous surveillons votre site et nous intervenons rapidement.",
+    ],
   },
 ];
 ---
@@ -155,26 +179,7 @@ const etapes: Etape[] = [
     />
   </Section>
 
-  <Faq>
-    <FaqItem question="Combien de temps dure un projet ?" ouvert>
-      <p>
-        Cela dépend du projet. Nous fixons le planning ensemble après le premier échange, et il
-        figure dans le devis.
-      </p>
-    </FaqItem>
-    <FaqItem question="Puis-je demander des changements en cours de projet ?">
-      <p>
-        Oui. Nous estimons l'effet sur le prix et sur le délai, puis vous décidez. Rien n'est ajouté
-        à la facture sans votre accord.
-      </p>
-    </FaqItem>
-    <FaqItem question="Que se passe-t-il si un problème apparaît après la mise en ligne ?">
-      <p>
-        Nous le corrigeons s'il est lié à notre travail, dans les conditions prévues au devis. Avec
-        un forfait de maintenance, nous surveillons votre site et nous intervenons rapidement.
-      </p>
-    </FaqItem>
-  </Faq>
+  <Faq questions={faq} />
 
   <CtaFinal
     title="Parlons de votre projet"

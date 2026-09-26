@@ -5,7 +5,6 @@ import ButtonLink from '~/components/ButtonLink.astro';
 import CtaFinal from '~/components/CtaFinal.astro';
 import Encadre from '~/components/Encadre.astro';
 import Faq from '~/components/Faq.astro';
-import FaqItem from '~/components/FaqItem.astro';
 import FeatureGrid from '~/components/FeatureGrid.astro';
 import Hero from '~/components/Hero.astro';
 import ListePoints from '~/components/ListePoints.astro';
@@ -15,12 +14,50 @@ import Steps from '~/components/Steps.astro';
 import { cta, site } from '~/data/site';
 import { surtitreService } from '~/data/navigation';
 import BaseLayout from '~/layouts/BaseLayout.astro';
+import type { QuestionFaq } from '~/lib/faq';
 import { serviceJsonLd } from '~/lib/seo';
 
 const title = "Audit de sécurité et tests de sites et d'applications";
 const description =
   'Audit de sécurité, tests avant une mise en ligne, tests automatiques et tests de charge : nous vérifions vos sites et vos applications.';
 const ctaAudit = { label: 'Faire vérifier mon projet', href: '/contact' };
+
+// Questions fréquentes : affichées par le composant Faq et reprises dans les données
+// structurées FAQPage.
+const faq: QuestionFaq[] = [
+  {
+    question: "Quelle différence avec l'audit gratuit ?",
+    ouvert: true,
+    reponse: [
+      "L'audit gratuit regarde votre site de l'extérieur : vitesse, sécurité de base, référencement technique et affichage mobile. L'audit de sécurité va plus loin : avec votre accord, nous examinons aussi le code, le serveur et les accès.",
+    ],
+    lien: cta.secondaire,
+  },
+  {
+    question: 'Pouvez-vous tester un projet développé par un autre prestataire ?',
+    reponse: [
+      "Oui, c'est même le cas le plus fréquent. Nous avons besoin de votre accord écrit et, pour aller plus loin, d'un accès au code ou au serveur.",
+    ],
+  },
+  {
+    question: 'Les tests vont-ils perturber mon site ?',
+    reponse: [
+      "Non. Nous planifions les tests avec vous. Les tests de charge se font hors des heures d'affluence, ou sur une copie de votre site.",
+    ],
+  },
+  {
+    question: 'Combien ça coûte ?',
+    reponse: [
+      "Cela dépend de la taille du site ou de l'application et des tests choisis. Après le cadrage, nous vous remettons un devis gratuit, à prix fixe.",
+    ],
+  },
+  {
+    question: "Que se passe-t-il après l'audit ?",
+    reponse: [
+      'Vous êtes libre : vous corrigez avec votre prestataire, ou nous nous en chargeons. Avec un forfait de maintenance, nous surveillons ensuite votre site dans la durée.',
+    ],
+  },
+];
 ---
 
 <BaseLayout
@@ -145,42 +182,7 @@ const ctaAudit = { label: 'Faire vérifier mon projet', href: '/contact' };
     />
   </Section>
 
-  <Faq>
-    <FaqItem question="Quelle différence avec l'audit gratuit ?" ouvert>
-      <p>
-        L'audit gratuit regarde votre site de l'extérieur : vitesse, sécurité de base, référencement
-        technique et affichage mobile. L'audit de sécurité va plus loin : avec votre accord, nous
-        examinons aussi le code, le serveur et les accès.
-      </p>
-      <p>
-        <a href={cta.secondaire.href}>{cta.secondaire.label}</a>
-      </p>
-    </FaqItem>
-    <FaqItem question="Pouvez-vous tester un projet développé par un autre prestataire ?">
-      <p>
-        Oui, c'est même le cas le plus fréquent. Nous avons besoin de votre accord écrit et, pour
-        aller plus loin, d'un accès au code ou au serveur.
-      </p>
-    </FaqItem>
-    <FaqItem question="Les tests vont-ils perturber mon site ?">
-      <p>
-        Non. Nous planifions les tests avec vous. Les tests de charge se font hors des heures
-        d'affluence, ou sur une copie de votre site.
-      </p>
-    </FaqItem>
-    <FaqItem question="Combien ça coûte ?">
-      <p>
-        Cela dépend de la taille du site ou de l'application et des tests choisis. Après le cadrage,
-        nous vous remettons un devis gratuit, à prix fixe.
-      </p>
-    </FaqItem>
-    <FaqItem question="Que se passe-t-il après l'audit ?">
-      <p>
-        Vous êtes libre : vous corrigez avec votre prestataire, ou nous nous en chargeons. Avec un
-        forfait de maintenance, nous surveillons ensuite votre site dans la durée.
-      </p>
-    </FaqItem>
-  </Faq>
+  <Faq questions={faq} />
 
   <CtaFinal
     title="Faites vérifier votre site ou votre application"

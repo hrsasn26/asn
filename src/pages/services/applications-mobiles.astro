@@ -4,7 +4,6 @@
 import ButtonLink from '~/components/ButtonLink.astro';
 import CtaFinal from '~/components/CtaFinal.astro';
 import Faq from '~/components/Faq.astro';
-import FaqItem from '~/components/FaqItem.astro';
 import FeatureGrid from '~/components/FeatureGrid.astro';
 import Hero from '~/components/Hero.astro';
 import ProblemList from '~/components/ProblemList.astro';
@@ -13,12 +12,49 @@ import Steps from '~/components/Steps.astro';
 import { site } from '~/data/site';
 import { surtitreService } from '~/data/navigation';
 import BaseLayout from '~/layouts/BaseLayout.astro';
+import type { QuestionFaq } from '~/lib/faq';
 import { serviceJsonLd } from '~/lib/seo';
 
 const title = "Création d'application mobile iPhone et Android";
 const description =
   'Une application iPhone et Android pour vos clients ou vos équipes, testée sur de vrais téléphones et suivie après sa publication sur les stores.';
 const ctaProjet = { label: 'Parler de mon application', href: '/contact' };
+
+// Questions fréquentes : affichées par le composant Faq et reprises dans les données
+// structurées FAQPage.
+const faq: QuestionFaq[] = [
+  {
+    question: "Ai-je besoin d'une application ou d'un site adapté au mobile ?",
+    ouvert: true,
+    reponse: [
+      "Pas toujours. Si vos clients vous consultent de temps en temps, un site rapide et adapté au mobile suffit souvent, et il coûte moins cher. Une application devient utile quand vos clients l'utilisent souvent, ou quand ils ont besoin des notifications, de l'appareil photo, de la localisation ou d'un mode sans connexion. Nous vous le disons honnêtement dès le premier échange.",
+    ],
+  },
+  {
+    question: 'Combien coûte une application mobile ?',
+    reponse: [
+      'Cela dépend des écrans et des fonctionnalités. Après le cadrage, nous vous remettons un devis gratuit, à prix fixe.',
+    ],
+  },
+  {
+    question: 'Combien de temps faut-il ?',
+    reponse: [
+      "Nous fixons le planning ensemble après le cadrage. Il faut aussi prévoir quelques jours pour la validation de l'application par Apple et Google.",
+    ],
+  },
+  {
+    question: "À qui appartient l'application ?",
+    reponse: [
+      'À vous. Elle est publiée avec vos propres comptes développeur Apple et Google, et le code vous appartient. Apple et Google facturent ces comptes directement : nous vous aidons à les créer.',
+    ],
+  },
+  {
+    question: 'Pouvez-vous reprendre une application existante ?',
+    reponse: [
+      'Oui. Nous commençons par un audit du code pour faire le point, puis nous vous proposons un plan : corriger, faire évoluer ou reconstruire certaines parties.',
+    ],
+  },
+];
 ---
 
 <BaseLayout
@@ -133,42 +169,7 @@ const ctaProjet = { label: 'Parler de mon application', href: '/contact' };
     />
   </Section>
 
-  <Faq>
-    <FaqItem question="Ai-je besoin d'une application ou d'un site adapté au mobile ?" ouvert>
-      <p>
-        Pas toujours. Si vos clients vous consultent de temps en temps, un site rapide et adapté au
-        mobile suffit souvent, et il coûte moins cher. Une application devient utile quand vos
-        clients l'utilisent souvent, ou quand ils ont besoin des notifications, de l'appareil photo,
-        de la localisation ou d'un mode sans connexion. Nous vous le disons honnêtement dès le
-        premier échange.
-      </p>
-    </FaqItem>
-    <FaqItem question="Combien coûte une application mobile ?">
-      <p>
-        Cela dépend des écrans et des fonctionnalités. Après le cadrage, nous vous remettons un
-        devis gratuit, à prix fixe.
-      </p>
-    </FaqItem>
-    <FaqItem question="Combien de temps faut-il ?">
-      <p>
-        Nous fixons le planning ensemble après le cadrage. Il faut aussi prévoir quelques jours pour
-        la validation de l'application par Apple et Google.
-      </p>
-    </FaqItem>
-    <FaqItem question="À qui appartient l'application ?">
-      <p>
-        À vous. Elle est publiée avec vos propres comptes développeur Apple et Google, et le code
-        vous appartient. Apple et Google facturent ces comptes directement : nous vous aidons à les
-        créer.
-      </p>
-    </FaqItem>
-    <FaqItem question="Pouvez-vous reprendre une application existante ?">
-      <p>
-        Oui. Nous commençons par un audit du code pour faire le point, puis nous vous proposons un
-        plan : corriger, faire évoluer ou reconstruire certaines parties.
-      </p>
-    </FaqItem>
-  </Faq>
+  <Faq questions={faq} />
 
   <CtaFinal
     title="Parlons de votre application"
