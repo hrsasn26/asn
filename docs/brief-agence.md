@@ -214,7 +214,7 @@ La page « Méthode », avec une étape de tests bien visible, est l'endroit id�
 
 ## 6. Contenus des pages
 
-> Sections 6.1 à 6.6 : textes validés, sauf les ajouts marqués « à valider ». Sections 6.7 à 6.13 et 6.14 à 6.18 (nouveaux services) : propositions à valider.
+> Sections 6.1 à 6.6 : textes validés, sauf les ajouts marqués « à valider ». Sections 6.7 à 6.13 et 6.14 à 6.18 (nouveaux services) : propositions à valider. Section 6.19 (visuels des en-têtes) : proposition à valider.
 > Adaptation au Maroc (25 septembre 2026) : prix en DH, loi 09-08 à la place du RGPD, délai de rétractation de 7 jours. Ces changements sont à revalider, y compris dans les sections 6.1 à 6.6.
 
 **Appel à l'action principal (tout le site) :** « Demander un devis gratuit »
@@ -1650,6 +1650,38 @@ Un échange de 30 minutes, gratuit et confidentiel, pour définir ce qu'il faut 
 
 ---
 
+### 6.19 Visuels des en-têtes
+
+> Proposition à valider. Maquettes reçues du designer le 26 septembre 2026, adaptées aux règles de ce brief. Sources et détail des adaptations : [design/heros/README.md](../design/heros/README.md).
+
+Onze pages ont un visuel dans l'en-tête, à droite du texte (sous le texte sur téléphone) : des écrans sur ordinateur et sur téléphone, avec une ou deux cartes. Chaque visuel montre un projet du type décrit par la page, pour un client fictif. Les autres pages (Services, Méthode, L'agence, Contact, pages légales) gardent leurs illustrations.
+
+**Règles :**
+- Les clients, les noms, les chiffres et les adresses sont inventés. Aucun visuel ne présente un client fictif comme une réalisation de l'agence. La légende le dit sous chaque visuel.
+- Aucun prix ni montant en dirhams, même dans les écrans d'un client.
+- Aucune photo de stock : les photos des maquettes sont remplacées par des dessins.
+- Aucun nom d'entreprise réelle, aucun membre de l'équipe inventé.
+- Aucun engagement qui n'est pas encore confirmé (délai du rapport d'audit, durée de l'appel).
+- Quand des clients auront donné leur accord écrit, leurs projets réels pourront remplacer ces exemples (voir section 6.12).
+
+**Légende (sous chaque visuel) :** Exemple fictif : le client et les chiffres sont inventés.
+
+| Page | Visuel (client fictif) | Texte alternatif |
+|---|---|---|
+| Accueil | Site et prise de rendez-vous d'Anfa Dentaire, cabinet dentaire à Casablanca | Site et application de réservation d'un cabinet dentaire, sur ordinateur et sur téléphone |
+| Sites web | Site du Riad Dar Nour, à Marrakech | Site d'un riad à Marrakech avec réservation en ligne, sur ordinateur et sur téléphone |
+| Applications sur mesure | Planning d'atelier et devis du Garage Atlas | Application d'un garage : planning de l'atelier sur ordinateur, devis signé par le client sur téléphone |
+| Applications mobiles | Carte de fidélité du Café Nour, application d'un technicien | Deux applications mobiles : la carte de fidélité d'un café et les interventions du jour d'un technicien |
+| Logiciels SaaS | Kalendo, logiciel de réservation pour salons | Logiciel de réservation pour salons de beauté : agenda de l'équipe et page de réservation sur téléphone |
+| Intelligence artificielle | Factures fournisseurs et assistant client de Transports Sebou | Lecture automatique des factures fournisseurs avec une erreur de TVA signalée, et assistant qui répond aux clients |
+| Automatisation et intégrations | Demandes de devis de la Menuiserie Alami | Automatisation d'une demande de devis : contact créé, équipe prévenue et confirmation envoyée au client sur WhatsApp |
+| Données et tableaux de bord | Tableau de bord de Maison Argan | Tableau de bord des ventes d'une boutique, sur ordinateur et sur téléphone, avec une alerte de stock faible |
+| Tests et sécurité | Recette de la boutique Maison Argan | Rapport de tests avant une mise en ligne : parcours clients, audit de sécurité et test de charge |
+| Hébergement et maintenance | Espace client du Riad Mogador, forfait Sérénité | Espace client d'un site hébergé : disponibilité, sauvegardes, certificat et mises à jour, avec les notifications sur téléphone |
+| Audit gratuit | Rapport d'audit de www.votre-site.ma | Rapport d'audit gratuit : notes de vitesse, de sécurité et de référencement, avec les actions prioritaires |
+
+---
+
 ## 7. Points légaux
 
 > À faire valider par un juriste avant la mise en ligne.
@@ -1691,6 +1723,7 @@ Un échange de 30 minutes, gratuit et confidentiel, pour définir ce qu'il faut 
 - [ ] Relire et valider les textes proposés : Accueil, Méthode, L'agence, Contact (sections 6.7 à 6.11)
 - [ ] Relire et valider les pages des nouveaux services : Applications mobiles, Logiciels SaaS, Intelligence artificielle, Données et tableaux de bord, Tests et sécurité (sections 6.14 à 6.18)
 - [ ] Relire et valider les ajouts dans les pages existantes : options Sites web (langues, WhatsApp), section WhatsApp (Automatisation), formation à l'IA
+- [ ] Relire et valider les visuels des en-têtes (section 6.19). Les remplacer par des projets réels quand des clients auront donné leur accord écrit.
 - [ ] Préparer un modèle d'autorisation de test pour les audits de sécurité, validé par le juriste
 - [ ] Choisir les fournisseurs d'IA (données non utilisées pour l'entraînement, transfert hors du Maroc à déclarer à la CNDP)
 - [x] Choisir les technologies du site et commencer le développement (voir [stack-technique.md](stack-technique.md))

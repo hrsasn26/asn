@@ -8,7 +8,6 @@ import Plug from '@lucide/astro/icons/plug';
 import RefreshCw from '@lucide/astro/icons/refresh-cw';
 import ShieldCheck from '@lucide/astro/icons/shield-check';
 import UsersRound from '@lucide/astro/icons/users-round';
-import IllustrationSaas from '~/components/illustrations/IllustrationSaas.astro';
 import ButtonLink from '~/components/ButtonLink.astro';
 import CtaFinal from '~/components/CtaFinal.astro';
 import Faq from '~/components/Faq.astro';
@@ -38,12 +37,12 @@ const ctaProjet = { label: 'Présenter mon idée', href: '/contact' };
   jsonLd={serviceJsonLd({ name: title, description })}
 >
   <Hero
+    maquette="logiciels-saas"
     title="Votre logiciel en ligne, vendu par abonnement"
     motCle="abonnement"
     subtitle="Vous avez une idée de logiciel pour les entreprises ou pour les particuliers ? Nous développons votre plateforme, de la première version au lancement, puis nous la faisons évoluer avec vous."
   >
     <ButtonLink href={ctaProjet.href}>{ctaProjet.label}</ButtonLink>
-    <IllustrationSaas slot="illustration" />
   </Hero>
 
   <Section title="Un SaaS, en clair">

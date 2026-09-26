@@ -4,7 +4,6 @@ import BadgeCheck from '@lucide/astro/icons/badge-check';
 import Gauge from '@lucide/astro/icons/gauge';
 import MonitorSmartphone from '@lucide/astro/icons/monitor-smartphone';
 import ShieldCheck from '@lucide/astro/icons/shield-check';
-import IllustrationTests from '~/components/illustrations/IllustrationTests.astro';
 import ButtonLink from '~/components/ButtonLink.astro';
 import CtaFinal from '~/components/CtaFinal.astro';
 import Faq from '~/components/Faq.astro';
@@ -34,12 +33,12 @@ const ctaAudit = { label: 'Demander un audit de sécurité', href: '/contact' };
   jsonLd={serviceJsonLd({ name: title, description })}
 >
   <Hero
+    maquette="tests-securite"
     title="Vos sites et vos applications, vérifiés avant vos clients"
     motCle="vérifiés"
     subtitle="Audit de sécurité, tests avant une mise en ligne, tests automatiques : nous trouvons les problèmes avant qu'ils vous coûtent des clients. Même si nous n'avons pas développé votre projet."
   >
     <ButtonLink href={ctaAudit.href}>{ctaAudit.label}</ButtonLink>
-    <IllustrationTests slot="illustration" />
   </Hero>
 
   <ProblemList

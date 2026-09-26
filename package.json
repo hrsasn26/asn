@@ -19,6 +19,7 @@
     "test:e2e": "playwright test",
     "check:content": "node scripts/check-content.mjs",
     "image:partage": "node scripts/generer-image-partage.mjs",
+    "image:heros": "node scripts/generer-heros.mjs",
     "verify": "pnpm format:check && pnpm lint && pnpm check && pnpm test && pnpm build && pnpm check:content && pnpm test:e2e"
   },
   "dependencies": {
@@ -42,6 +43,7 @@
     "prettier": "^3.9.9",
     "prettier-plugin-astro": "^1.1.0",
     "prettier-plugin-tailwindcss": "^0.8.1",
+    "sharp": "0.35.4",
     "typescript": "~6.0.3",
     "typescript-eslint": "^8.70.1",
     "vitest": "^5.0.2"

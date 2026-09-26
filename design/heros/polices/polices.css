@@ -1,0 +1,30 @@
+/*
+ * Polices des visuels des en-têtes, chargées par scripts/generer-heros.mjs.
+ * Polices libres (SIL Open Font License 1.1, voir les fichiers OFL-*.txt), sous-ensemble latin
+ * téléchargé depuis Google Fonts. Les autres caractères (flèches, étoiles) viennent de la police
+ * du système.
+ */
+@font-face {
+  font-family: 'Inter';
+  font-weight: 400 800;
+  font-display: block;
+  src: url('inter.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-weight: 500 600;
+  font-display: block;
+  src: url('cormorant-garamond.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-weight: 400 700;
+  font-display: block;
+  src: url('jetbrains-mono.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Source Serif 4';
+  font-weight: 400 700;
+  font-display: block;
+  src: url('source-serif-4.woff2') format('woff2');
+}
