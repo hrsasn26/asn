@@ -33,6 +33,13 @@ export const site = {
     /** Code du pays (ISO 3166-1), pour les données structurées. */
     pays: 'MA',
   },
+  /**
+   * Conteneur Google Tag Manager de l'agence (26 septembre 2026), pour Google Ads. Il se charge
+   * seulement après l'accord du visiteur, sur le domaine de production (src/lib/consentement.ts).
+   * Une nouvelle sorte de balise dans Tag Manager demande souvent une mise à jour de la CSP
+   * (astro.config.mjs, `google`).
+   */
+  tagManager: 'GTM-WRR53MWN',
 } as const;
 
 /** Adresse sur une ligne : « N° 7, rue Tantane, 30000 Fès ». */

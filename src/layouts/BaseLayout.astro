@@ -1,6 +1,7 @@
 ---
 import '~/styles/global.css';
 import { Font } from 'astro:assets';
+import BandeauCookies from '~/components/BandeauCookies.astro';
 import Breadcrumbs from '~/components/Breadcrumbs.astro';
 import Footer from '~/components/Footer.astro';
 import Header from '~/components/Header.astro';
@@ -63,6 +64,8 @@ const imagePartage = new URL('/og.png', Astro.site);
     >
       Aller au contenu
     </a>
+    {/* Tôt dans la page : au clavier, les boutons du bandeau viennent juste après ce lien. */}
+    <BandeauCookies />
     <Header />
     {/* isolate : le fond dégradé (-z-10) reste derrière le contenu, dans la zone principale. */}
     <main id="contenu" class="relative isolate flex-1" tabindex="-1">

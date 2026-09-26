@@ -64,6 +64,12 @@ const whatsapp = lienWhatsApp(site.whatsapp, site.messageWhatsApp);
             </a>
           </li>
         ))}
+        {/* Affiche le bandeau des cookies (BandeauCookies). Caché sans JavaScript. */}
+        <li>
+          <button type="button" data-gerer-cookies hidden class:list={[lien, 'cursor-pointer']}>
+            Gérer les cookies
+          </button>
+        </li>
       </ul>
     </nav>
     <div class="apparition min-w-0 flex-[1_1_13.75rem] md:[--decalage:4.5rem]">

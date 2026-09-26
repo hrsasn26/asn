@@ -20,6 +20,42 @@ const urlProduction = `https://${infos.domaine}`;
 const site = process.env.SITE_URL || (surVercel ? urlProduction : 'http://localhost:4321');
 const { hostname, protocol } = new URL(site);
 
+// Adresses de Google Tag Manager et de Google Ads (conversions et remarketing), pour la CSP.
+// Tag Manager ne se charge qu'après l'accord du visiteur (src/components/BandeauCookies.astro).
+// Une autre sorte de balise (Google Analytics, par exemple) demande ses propres adresses.
+// Les balises « HTML personnalisé » et les variables « JavaScript personnalisé » de Tag
+// Manager ne fonctionnent pas : elles demandent 'unsafe-inline' ou 'unsafe-eval'.
+const google = {
+  script: [
+    'https://www.googletagmanager.com',
+    'https://www.googleadservices.com',
+    'https://googleads.g.doubleclick.net',
+    'https://www.google.com',
+    'https://pagead2.googlesyndication.com',
+  ],
+  img: [
+    'https://www.googletagmanager.com',
+    'https://googleads.g.doubleclick.net',
+    'https://www.google.com',
+    'https://www.google.co.ma',
+    'https://pagead2.googlesyndication.com',
+  ],
+  connect: [
+    'https://www.googletagmanager.com',
+    'https://www.googleadservices.com',
+    'https://googleads.g.doubleclick.net',
+    'https://www.google.com',
+    'https://www.google.co.ma',
+    'https://google.com',
+    'https://pagead2.googlesyndication.com',
+  ],
+  frame: [
+    'https://www.googletagmanager.com',
+    'https://td.doubleclick.net',
+    'https://bid.g.doubleclick.net',
+  ],
+};
+
 export default defineConfig({
   site,
   trailingSlash: 'never',
@@ -64,11 +100,16 @@ export default defineConfig({
     csp: {
       directives: [
         "default-src 'self'",
-        "img-src 'self' data:",
+        `img-src 'self' data: ${google.img.join(' ')}`,
+        `connect-src 'self' ${google.connect.join(' ')}`,
+        `frame-src ${google.frame.join(' ')}`,
         "form-action 'self'",
         "base-uri 'self'",
         "object-src 'none'",
       ],
+      scriptDirective: {
+        resources: ["'self'", ...google.script],
+      },
     },
     // Caddy transmet l'adresse IP du visiteur dans X-Forwarded-For.
     // Astro ne lit cet en-tête que pour les domaines listés ici.
