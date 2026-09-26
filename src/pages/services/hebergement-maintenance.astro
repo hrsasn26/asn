@@ -5,7 +5,6 @@ import ButtonLink from '~/components/ButtonLink.astro';
 import CtaFinal from '~/components/CtaFinal.astro';
 import Encadre from '~/components/Encadre.astro';
 import Faq from '~/components/Faq.astro';
-import FaqItem from '~/components/FaqItem.astro';
 import FeatureGrid from '~/components/FeatureGrid.astro';
 import ForfaitsTable from '~/components/ForfaitsTable.astro';
 import Hero from '~/components/Hero.astro';
@@ -14,12 +13,39 @@ import Section from '~/components/Section.astro';
 import { cta, site } from '~/data/site';
 import { surtitreService } from '~/data/navigation';
 import BaseLayout from '~/layouts/BaseLayout.astro';
+import type { QuestionFaq } from '~/lib/faq';
 import { serviceJsonLd } from '~/lib/seo';
 
 const title = 'Hébergement et maintenance de site web';
 const description =
   'Hébergement sécurisé, sauvegardes, mises à jour et support : nous gardons votre site et vos applications en ligne, rapides et protégés. Forfaits mensuels.';
 const ctaForfait = { label: 'Choisir mon forfait', href: '/contact' };
+
+// Questions fréquentes : affichées par le composant Faq et reprises dans les données
+// structurées FAQPage.
+const faq: QuestionFaq[] = [
+  {
+    question: "Pouvez-vous héberger un site que vous n'avez pas créé ?",
+    ouvert: true,
+    reponse: [
+      "Oui. Nous faisons d'abord un audit pour vérifier son état, puis nous le migrons sur nos serveurs sans interruption de service.",
+    ],
+  },
+  {
+    question: 'Que se passe-t-il si mon site est piraté ?',
+    reponse: [
+      'Nous le restaurons à partir de la dernière sauvegarde saine, nous corrigeons la faille et nous renforçons la sécurité.',
+    ],
+  },
+  {
+    question: 'À qui appartient mon nom de domaine ?',
+    reponse: ['À vous. Il est enregistré à votre nom.'],
+  },
+  {
+    question: "Puis-je partir si je change d'avis ?",
+    reponse: ['Oui. Nous vous remettons votre site complet, votre code et vos données.'],
+  },
+];
 ---
 
 <BaseLayout
@@ -116,26 +142,7 @@ const ctaForfait = { label: 'Choisir mon forfait', href: '/contact' };
     </Encadre>
   </Section>
 
-  <Faq>
-    <FaqItem question="Pouvez-vous héberger un site que vous n'avez pas créé ?" ouvert>
-      <p>
-        Oui. Nous faisons d'abord un audit pour vérifier son état, puis nous le migrons sur nos
-        serveurs sans interruption de service.
-      </p>
-    </FaqItem>
-    <FaqItem question="Que se passe-t-il si mon site est piraté ?">
-      <p>
-        Nous le restaurons à partir de la dernière sauvegarde saine, nous corrigeons la faille et
-        nous renforçons la sécurité.
-      </p>
-    </FaqItem>
-    <FaqItem question="À qui appartient mon nom de domaine ?">
-      <p>À vous. Il est enregistré à votre nom.</p>
-    </FaqItem>
-    <FaqItem question="Puis-je partir si je change d'avis ?">
-      <p>Oui. Nous vous remettons votre site complet, votre code et vos données.</p>
-    </FaqItem>
-  </Faq>
+  <Faq questions={faq} />
 
   <CtaFinal
     title="Confiez-nous la technique"

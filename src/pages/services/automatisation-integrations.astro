@@ -5,7 +5,6 @@ import ButtonLink from '~/components/ButtonLink.astro';
 import CtaFinal from '~/components/CtaFinal.astro';
 import Encadre from '~/components/Encadre.astro';
 import Faq from '~/components/Faq.astro';
-import FaqItem from '~/components/FaqItem.astro';
 import FeatureGrid from '~/components/FeatureGrid.astro';
 import Hero from '~/components/Hero.astro';
 import LienFleche from '~/components/LienFleche.astro';
@@ -15,12 +14,59 @@ import Steps from '~/components/Steps.astro';
 import { site } from '~/data/site';
 import { surtitreService } from '~/data/navigation';
 import BaseLayout from '~/layouts/BaseLayout.astro';
+import type { QuestionFaq } from '~/lib/faq';
 import { serviceJsonLd } from '~/lib/seo';
 
 const title = 'Automatisation et connexion de vos logiciels';
 const description =
   "Connectez votre site, votre CRM et votre comptabilité. Automatisez les tâches répétitives et utilisez l'IA là où elle vous fait vraiment gagner du temps.";
 const ctaTaches = { label: 'Parler de mes tâches répétitives', href: '/contact' };
+
+// Questions fréquentes : affichées par le composant Faq et reprises dans les données
+// structurées FAQPage.
+const faq: QuestionFaq[] = [
+  {
+    question: 'Quels logiciels pouvez-vous connecter ?',
+    ouvert: true,
+    reponse: [
+      'La plupart des logiciels récents peuvent être connectés : CRM, comptabilité, boutique en ligne, agenda, e-mailing. Dites-nous lesquels vous utilisez, nous vérifions pour vous.',
+    ],
+  },
+  {
+    question: 'Dois-je changer mes outils ?',
+    reponse: ['Non. Nous partons de ceux que vous utilisez déjà.'],
+  },
+  {
+    question: 'Que se passe-t-il si une automatisation tombe en panne ?',
+    reponse: [
+      'Nous sommes alertés et nous intervenons. Avec un forfait de maintenance, la correction est incluse.',
+    ],
+  },
+  {
+    question: 'Faut-il un compte WhatsApp particulier ?',
+    reponse: [
+      'Pour les messages automatiques, oui : un compte WhatsApp Business relié à la plateforme officielle de Meta. Nous le créons avec vous. Meta facture certains messages : nous estimons ce coût avec vous avant de commencer.',
+    ],
+  },
+  {
+    question: 'Puis-je envoyer des promotions sur WhatsApp ?',
+    reponse: [
+      "Seulement aux clients qui ont donné leur accord. Nous prévoyons la demande d'accord et la possibilité de se désinscrire.",
+    ],
+  },
+  {
+    question: "Mes données sont-elles en sécurité avec l'IA ?",
+    reponse: [
+      "Cela dépend du service d'IA choisi. Avant de commencer, nous vous disons quel service traite vos données, dans quel pays, et s'il peut les utiliser pour entraîner ses modèles. Vous décidez en connaissance de cause.",
+    ],
+  },
+  {
+    question: 'Combien ça coûte ?',
+    reponse: [
+      'Cela dépend de la tâche à automatiser. Avant de commencer, nous estimons avec vous le temps gagné, puis nous vous remettons un devis gratuit, à prix fixe. Vous décidez en connaissance de cause.',
+    ],
+  },
+];
 ---
 
 <BaseLayout
@@ -168,50 +214,7 @@ const ctaTaches = { label: 'Parler de mes tâches répétitives', href: '/contac
     />
   </Section>
 
-  <Faq>
-    <FaqItem question="Quels logiciels pouvez-vous connecter ?" ouvert>
-      <p>
-        La plupart des logiciels récents peuvent être connectés : CRM, comptabilité, boutique en
-        ligne, agenda, e-mailing. Dites-nous lesquels vous utilisez, nous vérifions pour vous.
-      </p>
-    </FaqItem>
-    <FaqItem question="Dois-je changer mes outils ?">
-      <p>Non. Nous partons de ceux que vous utilisez déjà.</p>
-    </FaqItem>
-    <FaqItem question="Que se passe-t-il si une automatisation tombe en panne ?">
-      <p>
-        Nous sommes alertés et nous intervenons. Avec un forfait de maintenance, la correction est
-        incluse.
-      </p>
-    </FaqItem>
-    <FaqItem question="Faut-il un compte WhatsApp particulier ?">
-      <p>
-        Pour les messages automatiques, oui : un compte WhatsApp Business relié à la plateforme
-        officielle de Meta. Nous le créons avec vous. Meta facture certains messages : nous estimons
-        ce coût avec vous avant de commencer.
-      </p>
-    </FaqItem>
-    <FaqItem question="Puis-je envoyer des promotions sur WhatsApp ?">
-      <p>
-        Seulement aux clients qui ont donné leur accord. Nous prévoyons la demande d'accord et la
-        possibilité de se désinscrire.
-      </p>
-    </FaqItem>
-    <FaqItem question="Mes données sont-elles en sécurité avec l'IA ?">
-      <p>
-        Cela dépend du service d'IA choisi. Avant de commencer, nous vous disons quel service traite
-        vos données, dans quel pays, et s'il peut les utiliser pour entraîner ses modèles. Vous
-        décidez en connaissance de cause.
-      </p>
-    </FaqItem>
-    <FaqItem question="Combien ça coûte ?">
-      <p>
-        Cela dépend de la tâche à automatiser. Avant de commencer, nous estimons avec vous le temps
-        gagné, puis nous vous remettons un devis gratuit, à prix fixe. Vous décidez en connaissance
-        de cause.
-      </p>
-    </FaqItem>
-  </Faq>
+  <Faq questions={faq} />
 
   <CtaFinal
     title="Quelles tâches pourriez-vous ne plus jamais faire ?"

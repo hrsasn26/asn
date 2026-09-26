@@ -6,6 +6,7 @@ import Footer from '~/components/Footer.astro';
 import Header from '~/components/Header.astro';
 import JsonLd from '~/components/JsonLd.astro';
 import type { LienNav } from '~/data/navigation';
+import { site } from '~/data/site';
 import { cheminPublic } from '~/lib/url';
 
 interface Props {
@@ -39,7 +40,9 @@ const imagePartage = new URL('/og.png', Astro.site);
     <link rel="sitemap" href="/sitemap-index.xml" />
     <Font cssVariable="--font-manrope" preload />
     <meta property="og:type" content="website" />
-    <meta property="og:locale" content="fr_FR" />
+    <meta property="og:site_name" content={site.nom} />
+    {/* Français du Maroc : le marché de l'agence (CLAUDE.md, « Marché »). */}
+    <meta property="og:locale" content="fr_MA" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />

@@ -4,7 +4,6 @@
 import ButtonLink from '~/components/ButtonLink.astro';
 import CtaFinal from '~/components/CtaFinal.astro';
 import Faq from '~/components/Faq.astro';
-import FaqItem from '~/components/FaqItem.astro';
 import FeatureGrid from '~/components/FeatureGrid.astro';
 import Hero from '~/components/Hero.astro';
 import ProblemList from '~/components/ProblemList.astro';
@@ -13,12 +12,55 @@ import Steps from '~/components/Steps.astro';
 import { site } from '~/data/site';
 import { surtitreService } from '~/data/navigation';
 import BaseLayout from '~/layouts/BaseLayout.astro';
+import type { QuestionFaq } from '~/lib/faq';
 import { serviceJsonLd } from '~/lib/seo';
 
 const title = 'Développement de logiciel SaaS par abonnement';
 const description =
   'Vous voulez vendre un logiciel en ligne par abonnement ? Nous développons votre SaaS : comptes clients, abonnements, paiement en ligne, sécurité et suivi.';
 const ctaProjet = { label: 'Parler de mon idée de SaaS', href: '/contact' };
+
+// Questions fréquentes : affichées par le composant Faq et reprises dans les données
+// structurées FAQPage.
+const faq: QuestionFaq[] = [
+  {
+    question: "Combien coûte le développement d'un SaaS ?",
+    ouvert: true,
+    reponse: [
+      "Cela dépend des fonctionnalités. Après l'atelier de cadrage, nous vous remettons un devis gratuit, à prix fixe, pour la première version.",
+    ],
+  },
+  {
+    question: 'Combien de temps faut-il ?',
+    reponse: [
+      'Cela dépend des fonctions de la première version. Nous fixons le planning ensemble après le cadrage, et il figure dans le devis.',
+    ],
+  },
+  {
+    question: 'Qui est propriétaire du logiciel ?',
+    reponse: [
+      'Vous. Le code, les données et les comptes (hébergement, paiement, nom de domaine) sont à votre nom.',
+    ],
+  },
+  {
+    question: 'Mon idée sera-t-elle protégée ?',
+    reponse: [
+      "Oui. Nous pouvons signer un accord de confidentialité avant d'entrer dans les détails de votre projet.",
+    ],
+  },
+  {
+    question: 'Pouvez-vous héberger et maintenir le logiciel après le lancement ?',
+    reponse: [
+      "Oui. Nous proposons l'hébergement, la surveillance et les évolutions dans un forfait mensuel adapté à votre nombre de clients.",
+    ],
+  },
+  {
+    question: "Mes clients sont à l'étranger. Est-ce un problème ?",
+    reponse: [
+      'Non, mais les règles changent selon les pays : protection des données, facturation, paiement. Nous en tenons compte dès le cadrage.',
+    ],
+  },
+];
 ---
 
 <BaseLayout
@@ -133,44 +175,7 @@ const ctaProjet = { label: 'Parler de mon idée de SaaS', href: '/contact' };
     />
   </Section>
 
-  <Faq>
-    <FaqItem question="Combien coûte le développement d'un SaaS ?" ouvert>
-      <p>
-        Cela dépend des fonctionnalités. Après l'atelier de cadrage, nous vous remettons un devis
-        gratuit, à prix fixe, pour la première version.
-      </p>
-    </FaqItem>
-    <FaqItem question="Combien de temps faut-il ?">
-      <p>
-        Cela dépend des fonctions de la première version. Nous fixons le planning ensemble après le
-        cadrage, et il figure dans le devis.
-      </p>
-    </FaqItem>
-    <FaqItem question="Qui est propriétaire du logiciel ?">
-      <p>
-        Vous. Le code, les données et les comptes (hébergement, paiement, nom de domaine) sont à
-        votre nom.
-      </p>
-    </FaqItem>
-    <FaqItem question="Mon idée sera-t-elle protégée ?">
-      <p>
-        Oui. Nous pouvons signer un accord de confidentialité avant d'entrer dans les détails de
-        votre projet.
-      </p>
-    </FaqItem>
-    <FaqItem question="Pouvez-vous héberger et maintenir le logiciel après le lancement ?">
-      <p>
-        Oui. Nous proposons l'hébergement, la surveillance et les évolutions dans un forfait mensuel
-        adapté à votre nombre de clients.
-      </p>
-    </FaqItem>
-    <FaqItem question="Mes clients sont à l'étranger. Est-ce un problème ?">
-      <p>
-        Non, mais les règles changent selon les pays : protection des données, facturation,
-        paiement. Nous en tenons compte dès le cadrage.
-      </p>
-    </FaqItem>
-  </Faq>
+  <Faq questions={faq} />
 
   <CtaFinal
     title="Parlons de votre idée de SaaS"

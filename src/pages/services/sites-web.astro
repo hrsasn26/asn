@@ -4,7 +4,6 @@ import ButtonLink from '~/components/ButtonLink.astro';
 import CtaFinal from '~/components/CtaFinal.astro';
 import Encadre from '~/components/Encadre.astro';
 import Faq from '~/components/Faq.astro';
-import FaqItem from '~/components/FaqItem.astro';
 import FeatureGrid from '~/components/FeatureGrid.astro';
 import Hero from '~/components/Hero.astro';
 import IconeWhatsApp from '~/components/IconeWhatsApp.astro';
@@ -15,12 +14,56 @@ import Section from '~/components/Section.astro';
 import { surtitreService } from '~/data/navigation';
 import { site } from '~/data/site';
 import BaseLayout from '~/layouts/BaseLayout.astro';
+import type { QuestionFaq } from '~/lib/faq';
 import { serviceJsonLd } from '~/lib/seo';
 
 const title = 'Création de site vitrine et e-commerce';
 const description =
   'Site vitrine, boutique en ligne ou refonte : des sites rapides, sécurisés et prêts pour le référencement.';
 const ctaSite = { label: 'Parler de mon futur site', href: '/contact' };
+
+// Questions fréquentes : affichées par le composant Faq et reprises dans les données
+// structurées FAQPage.
+const faq: QuestionFaq[] = [
+  {
+    question: 'Pourrai-je modifier mon site moi-même ?',
+    ouvert: true,
+    reponse: [
+      "Oui. Vous disposez d'un espace d'administration pour changer vos textes, vos images et ajouter des pages ou des articles. Nous vous formons à son utilisation à la livraison.",
+    ],
+  },
+  {
+    question: 'Vous occupez-vous des textes et des photos ?',
+    reponse: [
+      'Pas directement. Vous nous fournissez vos textes et vos photos, et nous vous aidons à les organiser. Si vous préférez déléguer, nous pouvons vous mettre en relation avec un rédacteur ou un photographe partenaire.',
+    ],
+  },
+  {
+    question: 'Mon site sera-t-il bien référencé sur Google ?',
+    reponse: [
+      'Il sera techniquement prêt. Nous nous occupons de toute la partie technique du référencement : vitesse, structure, balises, compatibilité mobile. Votre position dans Google dépend aussi de vos contenus et de la concurrence dans votre secteur : personne ne peut honnêtement vous garantir la première place.',
+    ],
+  },
+  {
+    question: 'WordPress ou développement sur mesure ?',
+    reponse: [
+      'Cela dépend de votre besoin. WordPress convient très bien à la plupart des sites vitrines. Le sur-mesure devient intéressant quand vous avez des fonctionnalités spécifiques ou de gros volumes.',
+    ],
+  },
+  {
+    question: 'Combien de temps faut-il pour créer mon site ?',
+    reponse: [
+      'Cela dépend du site et de la rapidité à laquelle nous recevons vos contenus. Nous fixons le planning ensemble, et il figure dans le devis.',
+    ],
+  },
+  {
+    question: 'Que se passe-t-il après la mise en ligne ?',
+    reponse: [
+      "Votre site vous appartient. Vous pouvez le gérer seul, ou nous confier son hébergement et sa maintenance avec l'un de nos forfaits mensuels.",
+    ],
+    lien: { label: 'forfaits mensuels', href: '/services/hebergement-maintenance#forfaits' },
+  },
+];
 ---
 
 <BaseLayout
@@ -202,49 +245,7 @@ const ctaSite = { label: 'Parler de mon futur site', href: '/contact' };
     </div>
   </Section>
 
-  <Faq>
-    <FaqItem question="Pourrai-je modifier mon site moi-même ?" ouvert>
-      <p>
-        Oui. Vous disposez d'un espace d'administration pour changer vos textes, vos images et
-        ajouter des pages ou des articles. Nous vous formons à son utilisation à la livraison.
-      </p>
-    </FaqItem>
-    <FaqItem question="Vous occupez-vous des textes et des photos ?">
-      <p>
-        Pas directement. Vous nous fournissez vos textes et vos photos, et nous vous aidons à les
-        organiser. Si vous préférez déléguer, nous pouvons vous mettre en relation avec un rédacteur
-        ou un photographe partenaire.
-      </p>
-    </FaqItem>
-    <FaqItem question="Mon site sera-t-il bien référencé sur Google ?">
-      <p>
-        Il sera techniquement prêt. Nous nous occupons de toute la partie technique du référencement
-        : vitesse, structure, balises, compatibilité mobile. Votre position dans Google dépend aussi
-        de vos contenus et de la concurrence dans votre secteur : personne ne peut honnêtement vous
-        garantir la première place.
-      </p>
-    </FaqItem>
-    <FaqItem question="WordPress ou développement sur mesure ?">
-      <p>
-        Cela dépend de votre besoin. WordPress convient très bien à la plupart des sites vitrines.
-        Le sur-mesure devient intéressant quand vous avez des fonctionnalités spécifiques ou de gros
-        volumes.
-      </p>
-    </FaqItem>
-    <FaqItem question="Combien de temps faut-il pour créer mon site ?">
-      <p>
-        Cela dépend du site et de la rapidité à laquelle nous recevons vos contenus. Nous fixons le
-        planning ensemble, et il figure dans le devis.
-      </p>
-    </FaqItem>
-    <FaqItem question="Que se passe-t-il après la mise en ligne ?">
-      <p>
-        Votre site vous appartient. Vous pouvez le gérer seul, ou nous confier son hébergement et sa
-        maintenance avec l'un de nos{' '}
-        <a href="/services/hebergement-maintenance#forfaits">forfaits mensuels</a>.
-      </p>
-    </FaqItem>
-  </Faq>
+  <Faq questions={faq} />
 
   <CtaFinal
     title="Parlons de votre futur site"

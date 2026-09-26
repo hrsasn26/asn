@@ -5,7 +5,6 @@ import ButtonLink from '~/components/ButtonLink.astro';
 import CtaFinal from '~/components/CtaFinal.astro';
 import Encadre from '~/components/Encadre.astro';
 import Faq from '~/components/Faq.astro';
-import FaqItem from '~/components/FaqItem.astro';
 import FeatureGrid from '~/components/FeatureGrid.astro';
 import Hero from '~/components/Hero.astro';
 import ListePoints from '~/components/ListePoints.astro';
@@ -15,12 +14,49 @@ import Steps from '~/components/Steps.astro';
 import { site } from '~/data/site';
 import { surtitreService } from '~/data/navigation';
 import BaseLayout from '~/layouts/BaseLayout.astro';
+import type { QuestionFaq } from '~/lib/faq';
 import { serviceJsonLd } from '~/lib/seo';
 
 const title = "Intégration de l'intelligence artificielle en entreprise";
 const description =
   "Assistant pour vos clients, recherche dans vos documents, lecture automatique des factures : nous intégrons l'IA là où elle vous fait gagner du temps.";
 const ctaProjet = { label: 'Parler de mon projet IA', href: '/contact' };
+
+// Questions fréquentes : affichées par le composant Faq et reprises dans les données
+// structurées FAQPage.
+const faq: QuestionFaq[] = [
+  {
+    question: "L'IA peut-elle se tromper ?",
+    ouvert: true,
+    reponse: [
+      "Oui. C'est pourquoi nous testons les réponses avant la mise en service, nous limitons l'assistant à vos informations et nous prévoyons une vérification par une personne là où une erreur aurait des conséquences.",
+    ],
+  },
+  {
+    question: "L'assistant comprend-il l'arabe et la darija ?",
+    reponse: [
+      "Les services d'IA actuels comprennent le français, l'arabe et l'anglais. Pour la darija, les résultats varient : nous faisons des essais avec vos propres exemples avant de vous proposer une solution.",
+    ],
+  },
+  {
+    question: 'Mes données sont-elles en sécurité ?',
+    reponse: [
+      "Cela dépend du service d'IA choisi. Nous limitons les données envoyées au strict nécessaire. Avant de commencer, nous vous disons quel service traite vos données, dans quel pays, et s'il peut les utiliser pour entraîner ses modèles. Vous décidez en connaissance de cause.",
+    ],
+  },
+  {
+    question: 'Combien ça coûte ?',
+    reponse: [
+      "Cela dépend de l'assistant et de vos données. Nous vous remettons un devis gratuit, à prix fixe. Le service d'IA est facturé en plus, selon l'utilisation : nous estimons ce coût avec vous avant de commencer.",
+    ],
+  },
+  {
+    question: 'Dois-je changer mes outils ?',
+    reponse: [
+      "Non. Nous intégrons l'IA dans les outils que vous utilisez déjà : site, messagerie, CRM, dossiers partagés.",
+    ],
+  },
+];
 ---
 
 <BaseLayout
@@ -154,42 +190,7 @@ const ctaProjet = { label: 'Parler de mon projet IA', href: '/contact' };
     />
   </Section>
 
-  <Faq>
-    <FaqItem question="L'IA peut-elle se tromper ?" ouvert>
-      <p>
-        Oui. C'est pourquoi nous testons les réponses avant la mise en service, nous limitons
-        l'assistant à vos informations et nous prévoyons une vérification par une personne là où une
-        erreur aurait des conséquences.
-      </p>
-    </FaqItem>
-    <FaqItem question="L'assistant comprend-il l'arabe et la darija ?">
-      <p>
-        Les services d'IA actuels comprennent le français, l'arabe et l'anglais. Pour la darija, les
-        résultats varient : nous faisons des essais avec vos propres exemples avant de vous proposer
-        une solution.
-      </p>
-    </FaqItem>
-    <FaqItem question="Mes données sont-elles en sécurité ?">
-      <p>
-        Cela dépend du service d'IA choisi. Nous limitons les données envoyées au strict nécessaire.
-        Avant de commencer, nous vous disons quel service traite vos données, dans quel pays, et
-        s'il peut les utiliser pour entraîner ses modèles. Vous décidez en connaissance de cause.
-      </p>
-    </FaqItem>
-    <FaqItem question="Combien ça coûte ?">
-      <p>
-        Cela dépend de l'assistant et de vos données. Nous vous remettons un devis gratuit, à prix
-        fixe. Le service d'IA est facturé en plus, selon l'utilisation : nous estimons ce coût avec
-        vous avant de commencer.
-      </p>
-    </FaqItem>
-    <FaqItem question="Dois-je changer mes outils ?">
-      <p>
-        Non. Nous intégrons l'IA dans les outils que vous utilisez déjà : site, messagerie, CRM,
-        dossiers partagés.
-      </p>
-    </FaqItem>
-  </Faq>
+  <Faq questions={faq} />
 
   <CtaFinal
     title="Où l'IA peut-elle vous faire gagner du temps ?"

@@ -14,13 +14,21 @@ import Steps from '~/components/Steps.astro';
 import { etapesProjet } from '~/data/processus';
 import { cta, site } from '~/data/site';
 import BaseLayout from '~/layouts/BaseLayout.astro';
-import { organisationJsonLd } from '~/lib/seo';
+import { organisationJsonLd, siteWebJsonLd } from '~/lib/seo';
+
+const description =
+  'Nous créons, testons, hébergeons et maintenons vos sites et vos applications. Un interlocuteur direct, un devis à prix fixe et un suivi après la mise en ligne.';
 ---
 
 <BaseLayout
   title={`Sites web et applications sur mesure | ${site.nom}`}
-  description="Nous créons, testons, hébergeons et maintenons vos sites et vos applications. Un interlocuteur direct, un devis à prix fixe et un suivi après la mise en ligne."
-  jsonLd={organisationJsonLd(Astro.site ?? Astro.url.origin)}
+  {description}
+  jsonLd={{
+    '@graph': [
+      organisationJsonLd(Astro.site ?? Astro.url.origin, description),
+      siteWebJsonLd(Astro.site ?? Astro.url.origin),
+    ],
+  }}
 >
   <Hero
     centre

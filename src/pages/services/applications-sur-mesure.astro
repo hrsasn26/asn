@@ -5,7 +5,6 @@ import ButtonLink from '~/components/ButtonLink.astro';
 import CtaFinal from '~/components/CtaFinal.astro';
 import Encadre from '~/components/Encadre.astro';
 import Faq from '~/components/Faq.astro';
-import FaqItem from '~/components/FaqItem.astro';
 import FeatureGrid from '~/components/FeatureGrid.astro';
 import Hero from '~/components/Hero.astro';
 import LienFleche from '~/components/LienFleche.astro';
@@ -15,12 +14,48 @@ import Steps from '~/components/Steps.astro';
 import { site } from '~/data/site';
 import { surtitreService } from '~/data/navigation';
 import BaseLayout from '~/layouts/BaseLayout.astro';
+import type { QuestionFaq } from '~/lib/faq';
 import { serviceJsonLd } from '~/lib/seo';
 
 const title = 'Applications web et mobiles sur mesure';
 const description =
   'Outil métier, espace client, application mobile ou première version de votre projet : nous développons des applications sur mesure, testées et faites pour évoluer.';
 const ctaProjet = { label: 'Parler de mon projet', href: '/contact' };
+
+// Questions fréquentes : affichées par le composant Faq et reprises dans les données
+// structurées FAQPage.
+const faq: QuestionFaq[] = [
+  {
+    question: 'Combien coûte une application sur mesure ?',
+    ouvert: true,
+    reponse: [
+      "Cela dépend des fonctionnalités. Après l'atelier de cadrage, nous vous remettons un devis gratuit, à prix fixe.",
+    ],
+  },
+  {
+    question: 'Combien de temps faut-il ?',
+    reponse: [
+      'Cela dépend des fonctionnalités. Nous fixons le planning ensemble après le cadrage, et il figure dans le devis.',
+    ],
+  },
+  {
+    question: 'Mon idée sera-t-elle protégée ?',
+    reponse: [
+      "Oui. Nous pouvons signer un accord de confidentialité avant d'entrer dans les détails de votre projet.",
+    ],
+  },
+  {
+    question: 'Serai-je propriétaire du code ?',
+    reponse: ['Oui. La cession des droits sur le code est prévue dans le contrat.'],
+  },
+  {
+    question:
+      "J'ai déjà une application développée par un autre prestataire. Pouvez-vous la reprendre ?",
+    reponse: [
+      'Oui. Nous commençons par un audit du code pour faire le point, puis nous vous proposons un plan : corriger, faire évoluer ou reconstruire certaines parties.',
+    ],
+  },
+];
 ---
 
 <BaseLayout
@@ -165,35 +200,7 @@ const ctaProjet = { label: 'Parler de mon projet', href: '/contact' };
     </Encadre>
   </Section>
 
-  <Faq>
-    <FaqItem question="Combien coûte une application sur mesure ?" ouvert>
-      <p>
-        Cela dépend des fonctionnalités. Après l'atelier de cadrage, nous vous remettons un devis
-        gratuit, à prix fixe.
-      </p>
-    </FaqItem>
-    <FaqItem question="Combien de temps faut-il ?">
-      <p>
-        Cela dépend des fonctionnalités. Nous fixons le planning ensemble après le cadrage, et il
-        figure dans le devis.
-      </p>
-    </FaqItem>
-    <FaqItem question="Mon idée sera-t-elle protégée ?">
-      <p>
-        Oui. Nous pouvons signer un accord de confidentialité avant d'entrer dans les détails de
-        votre projet.
-      </p>
-    </FaqItem>
-    <FaqItem question="Serai-je propriétaire du code ?">
-      <p>Oui. La cession des droits sur le code est prévue dans le contrat.</p>
-    </FaqItem>
-    <FaqItem question="J'ai déjà une application développée par un autre prestataire. Pouvez-vous la reprendre ?">
-      <p>
-        Oui. Nous commençons par un audit du code pour faire le point, puis nous vous proposons un
-        plan : corriger, faire évoluer ou reconstruire certaines parties.
-      </p>
-    </FaqItem>
-  </Faq>
+  <Faq questions={faq} />
 
   <CtaFinal
     title="Parlons de votre projet"
