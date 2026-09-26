@@ -18,10 +18,8 @@ export const services: LienNav[] = [
 
 export const navigationPrincipale: LienNav[] = [
   { label: 'Services', href: '/services' },
-  { label: 'Réalisations', href: '/realisations' },
   { label: 'Méthode', href: '/methode' },
   { label: "L'agence", href: '/agence' },
-  { label: 'Blog', href: '/blog' },
   { label: 'Contact', href: '/contact' },
 ];
 

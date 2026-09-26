@@ -1,7 +1,7 @@
 import { expect, test } from '@playwright/test';
 
 // Pages dont les illustrations ont les animations les plus longues, pages avec formulaire,
-// page avec la frise des étapes, contenus longs (barre de lecture) et page d'erreur.
+// page avec la frise des étapes, pages légales (barre de lecture) et page d'erreur.
 const chemins = [
   '/',
   '/contact',
@@ -9,10 +9,8 @@ const chemins = [
   '/services/intelligence-artificielle',
   '/services/hebergement-maintenance',
   '/methode',
-  '/realisations',
-  '/blog',
-  '/blog/maintenance-site-web',
   '/mentions-legales',
+  '/confidentialite',
   '/page-inexistante',
 ];
 
@@ -46,7 +44,7 @@ for (const chemin of chemins) {
 
 test.describe('barre de lecture', () => {
   test('elle se remplit pendant le défilement', async ({ page }) => {
-    await page.goto('/blog/maintenance-site-web');
+    await page.goto('/confidentialite');
     const compatible = await page.evaluate(() => CSS.supports('animation-timeline: scroll()'));
     test.skip(!compatible, 'Navigateur sans animation liée au défilement : la barre reste vide.');
 
@@ -57,5 +55,48 @@ test.describe('barre de lecture', () => {
     // En bas de la page, elle occupe toute la largeur de l'écran.
     await page.evaluate(() => window.scrollTo(0, document.documentElement.scrollHeight));
     await expect.poll(largeur).toBeGreaterThan(ecran - 1);
+  });
+});
+
+test.describe('formulaire en erreur', () => {
+  test('le résumé des erreurs s’anime moins de 5 secondes', async ({ page }) => {
+    await page.goto('/contact');
+    await page.getByRole('button', { name: 'Envoyer ma demande' }).click();
+    await expect(page.getByRole('alert')).toBeVisible();
+    const fins = await page.evaluate(() =>
+      document
+        .getAnimations()
+        .filter((animation) => animation.timeline instanceof DocumentTimeline)
+        .map((animation) => Number(animation.effect?.getComputedTiming().endTime)),
+    );
+    expect(fins.length).toBeGreaterThan(0);
+    for (const fin of fins) expect(fin).toBeLessThanOrEqual(5000);
+  });
+
+  test('aucune animation quand le visiteur a réduit les animations', async ({ page }) => {
+    await page.emulateMedia({ reducedMotion: 'reduce' });
+    await page.goto('/contact');
+    await page.getByRole('button', { name: 'Envoyer ma demande' }).click();
+    await expect(page.getByRole('alert')).toBeVisible();
+    expect(await page.evaluate(() => document.getAnimations().length)).toBe(0);
+  });
+});
+
+test.describe('menu mobile', () => {
+  test('les liens s’animent à l’ouverture, sauf en mode réduit', async ({ page, isMobile }) => {
+    test.skip(!isMobile, 'Menu réservé aux petits écrans.');
+    await page.goto('/');
+    await page.getByText('Menu', { exact: true }).click();
+    const menu = page.getByRole('navigation', { name: 'Navigation principale (mobile)' });
+    await expect(menu.getByRole('link', { name: 'Contact' })).toBeVisible();
+    const nombre = () => menu.evaluate((nav) => nav.getAnimations({ subtree: true }).length);
+    expect(await nombre()).toBeGreaterThan(0);
+
+    // Mode « réduire les animations » : le menu s'ouvre sans animation.
+    await page.emulateMedia({ reducedMotion: 'reduce' });
+    await page.reload();
+    await page.getByText('Menu', { exact: true }).click();
+    await expect(menu.getByRole('link', { name: 'Contact' })).toBeVisible();
+    expect(await nombre()).toBe(0);
   });
 });

@@ -32,10 +32,9 @@
 | Environnement | Node.js 24 LTS, pnpm 10 | Astro 7 demande Node 22.12 ou plus. |
 | Styles | Tailwind CSS 4 | Les couleurs sont des jetons dans `src/styles/global.css`. Elles changeront avec le design. |
 | Images | Illustrations SVG originales, icônes Lucide (`@lucide/astro`, licence ISC) | SVG intégré dans la page : aucune requête, aucune photo de stock, couleurs du site. |
-| Contenu long | Content collections Astro (Markdown + schéma Zod) | Le blog et les réalisations sont dans Git. Le build échoue si un champ obligatoire manque. |
 | Formulaires | Astro Actions + Zod, adaptateur `@astrojs/node` | Validation côté serveur, messages d'erreur en français, champ piège anti-spam, limite de débit par adresse IP. |
 | E-mails | Brevo (API transactionnelle) | Chaque demande arrive par e-mail à l'équipe. Serveurs hors du Maroc : transfert à déclarer à la CNDP. |
-| SEO | `@astrojs/sitemap`, `@astrojs/rss`, JSON-LD | Balises title et meta du brief. Données structurées : ProfessionalService, Service, BreadcrumbList, BlogPosting. |
+| SEO | `@astrojs/sitemap`, JSON-LD | Balises title et meta du brief. Données structurées : ProfessionalService, Service, BreadcrumbList. |
 | Sécurité | CSP d'Astro + en-têtes HTTP dans Caddy | Astro calcule les empreintes des scripts et des styles de chaque page. Caddy ajoute HSTS, X-Frame-Options, etc. |
 | Serveur web | Caddy 2 | HTTPS automatique, compression, cache long des fichiers `/_astro/`. |
 | Hébergement | VPS (hébergeur et pays à choisir, voir section 9), Docker Compose | La même plateforme que notre offre « Hébergement géré » : le site est notre premier client. |
@@ -71,8 +70,6 @@ src/
   actions/index.ts        Formulaires : validation, anti-spam, envoi de l'e-mail
   components/             Composants des pages (Hero, Section, FAQ, formulaires…)
     illustrations/        Illustrations SVG des en-têtes (une par page)
-  content/                Blog et réalisations (Markdown)
-  content.config.ts       Schéma des articles et des études de cas
   data/
     site.ts               Nom, zone, délais, engagements (placeholders du brief)
     forfaits.ts           Forfaits de maintenance (sans prix)
@@ -95,31 +92,31 @@ deploy/                   Docker Compose, Caddyfile, script de déploiement
 - **Textes des pages** : dans `src/pages/`. Chaque page indique la section du brief d'où viennent ses textes.
 - **Prix** : aucun sur le site. Chaque prix est donné dans un devis. Les forfaits de maintenance (sans prix) sont dans `src/data/forfaits.ts`.
 - **Nom, domaine, zone, délais, engagements** : dans `src/data/site.ts`. Le domaine sert aussi d'adresse de production dans `astro.config.mjs`.
-- **Article de blog** : ajoutez un fichier Markdown dans `src/content/blog/`. Les champs obligatoires sont dans `src/content.config.ts`.
-- **Étude de cas** : copiez `docs/modele-etude-de-cas.md` dans `src/content/realisations/`. Uniquement des projets réels, avec l'accord du client.
 - **Illustrations** : dans `src/components/illustrations/`. Elles sont décoratives (`aria-hidden`) et utilisent les jetons de couleur de `global.css` : elles suivent le design quand il change.
 - **Couleurs des icônes** : dans `src/data/couleurs.ts`. Chaque service a sa couleur : carte du service et illustration de la page Services. Les icônes des grilles d'avantages suivent la palette, dans l'ordre. Les classes sont écrites en entier (`bg-teal-700`) : Tailwind ne détecte pas les classes construites.
 - **Image de partage** (aperçu sur les réseaux sociaux) : lancez `pnpm image:partage` après un changement du nom de l'agence. Le script affiche le nom dès qu'il n'est plus un placeholder.
 
 **Animations.** Elles sont en CSS seul, dans `src/styles/global.css` :
-- le héros s'anime à l'ouverture de la page : le titre, le sous-titre et les boutons montent en place (`anim-montee`), un trait se dessine sous le mot clé du titre (propriété `motCle` du composant `Hero`), des points et des halos de couleur apparaissent derrière l'illustration (`anim-halo`) et descendent moins vite que la page au défilement (`anim-parallaxe`) ;
-- les illustrations s'animent à l'ouverture de la page (classes `anim-entree`, `anim-zoom`, `anim-trace`, `anim-pousse`, `anim-ecrit`, `anim-flux`, `anim-aiguille`, `anim-tourne`, `anim-sonne`, `anim-saut`, `anim-cherche`) ;
+- en-tête : une barre aux couleurs des services se remplit à l'ouverture de chaque page (`anim-chargement`), le nom de l'agence change de couleur au survol ; sur téléphone, les trois traits du bouton « Menu » se changent en croix et les liens du menu glissent en place l'un après l'autre (`animate-glisse`, délai `--delai-glisse`) ;
+- le héros s'anime à l'ouverture de la page : le titre, le sous-titre et les boutons montent en place (`anim-montee`), un trait se dessine sous le mot clé du titre (propriété `motCle` du composant `Hero`), des points et des halos de couleur apparaissent derrière l'illustration (`anim-halo`) et descendent moins vite que la page au défilement (`anim-parallaxe`) ; sur téléphone, l'illustration est cachée et deux halos restent dans les coins ;
+- les pages sans héros illustré (Contact, pages légales, 404) ont des halos et des points derrière le titre (propriété `decor` du composant `Section`, composant `DecorTitre`) ;
+- les illustrations s'animent à l'ouverture de la page : le fond d'abord (`anim-fond`), puis les éléments (classes `anim-entree`, `anim-zoom`, `anim-trace`, `anim-pousse`, `anim-ecrit`, `anim-flux`, `anim-aiguille`, `anim-tourne`, `anim-sonne`, `anim-saut`, `anim-cherche`) ;
 - l'ordre d'apparition se règle avec `delai-300` (300 ms) ; `puis-200` compte à partir du délai du parent ;
-- les cartes, les titres, les paragraphes et les questions de la FAQ montent en place pendant le défilement (`apparition`, décalage possible avec la variable `--decalage`), la frise des étapes se remplit (`anim-frise`) ;
+- les cartes, les titres, les paragraphes, les listes et les questions de la FAQ montent en place pendant le défilement (`apparition`, décalage possible avec la variable `--decalage`), la frise des étapes se remplit (`anim-frise`) ;
+- les icônes des cartes, les numéros des étapes, les coches et les icônes d'alerte grandissent quand elles entrent dans l'écran (`apparition-zoom`) ;
 - le bandeau d'appel final (`CtaFinal`) : des halos de couleur grandissent quand il entre dans l'écran, la flèche du bouton avance au survol ;
-- les liens vers une autre page (« Voir l'offre … → », composant `LienFleche`) : la flèche avance au survol ;
+- les liens vers une autre page (« Voir l'offre … → », composant `LienFleche`) : la flèche avance au survol ; tous les liens changent de couleur en douceur, et le soulignement des liens dans le texte s'éloigne au survol ;
 - page Contact : le titre monte en place avec le trait souligné (composant `Souligne`, aussi utilisé par `Hero`), les icônes de contact apparaissent, l'avion en papier du bouton s'envole au survol ;
-- page Méthode : une frise relie les cartes des étapes et se remplit au défilement, les numéros et les icônes grandissent en entrant dans l'écran (`apparition-zoom`), les points de l'étape des tests ont une coche verte ;
+- page Méthode : une frise relie les cartes des étapes et se remplit au défilement, les numéros et les icônes grandissent en entrant dans l'écran, les points de l'étape des tests ont une coche verte ;
 - page L'agence : les points de « Ce que nous savons faire » ont une icône en couleur, les avatars de l'équipe grandissent en entrant dans l'écran, les paragraphes montent en place ;
-- pages Services : les paragraphes et les listes montent en place ; dans le tableau des forfaits, les coches sont vertes ;
-- page Réalisations : dans l'illustration, les lignes de texte s'écrivent et une pastille « projet livré » apparaît ; le nom du service d'une étude de cas prend la couleur du service ;
-- page Blog : le titre est souligné, chaque article a une icône de la couleur de la palette qui s'incline au survol ;
-- articles, études de cas et pages légales : une barre de lecture en haut de l'écran se remplit pendant le défilement (composant `BarreLecture`, classe `anim-progression`), les intertitres montent en place (composant `Prose`) ;
+- pages Services : les listes de problèmes ont une icône d'alerte orange, les cartes d'offre ont des coches vertes ; dans le tableau des forfaits, la colonne recommandée est en couleur et sa pastille grandit (le tableau défile sur téléphone : classes `repere` et `apparition-zoom-repere`) ;
+- pages légales : une barre de lecture en haut de l'écran se remplit pendant le défilement (composant `BarreLecture`, classe `anim-progression`), les intertitres, les paragraphes et les listes montent en place (composant `Prose`) ;
 - page 404 : le mot « introuvable » est souligné, la boussole arrive en tournant puis cherche le nord ;
-- page Audit gratuit : les quatre points vérifiés ont une icône en couleur qui apparaît, les éléments reçus ont une coche verte, la loupe du bouton s'incline au survol ;
-- formulaires (Contact et Audit gratuit) : le libellé et la bordure du champ actif passent en bleu ; le message de confirmation affiche une coche qui se dessine ;
-- dans le pied de page, une barre aux couleurs des services se remplit de gauche à droite (`anim-barre`), les trois colonnes montent en place l'une après l'autre, et chaque service a une pastille de sa couleur ;
-- les cartes des services, les boutons et les liens du menu réagissent au survol ; les réponses de la FAQ se déroulent ; les pages s'enchaînent en fondu (transitions de page du navigateur).
+- page Audit gratuit : les titres montent en place, les quatre points vérifiés ont une icône en couleur qui apparaît, les éléments reçus ont une coche verte, la loupe du bouton s'incline au survol ;
+- formulaires (Contact et Audit gratuit) : le libellé et la bordure du champ actif passent en bleu ; en cas d'erreur, le résumé des erreurs tremble et un halo rouge l'entoure (`anim-alerte`), et une icône d'alerte apparaît devant chaque message d'erreur ; le message de confirmation affiche une coche qui se dessine ;
+- dans le pied de page, une barre aux couleurs des services se remplit de gauche à droite (`anim-barre`), les trois colonnes et la ligne du copyright montent en place, et chaque service a une pastille de sa couleur ;
+- clavier : le lien « Aller au contenu » descend en place (`animate-descend`), le contour du focus se resserre autour de l'élément ;
+- les cartes des services, les boutons et les liens du menu réagissent au survol ; les réponses de la FAQ se déroulent ; entre deux pages, l'ancienne page monte en s'effaçant et la nouvelle arrive par le bas, l'en-tête reste en place (transitions de page du navigateur).
 
 Règles, vérifiées par `tests/e2e/animations.spec.ts` pour les deux premières :
 - aucune animation si le visiteur a demandé à réduire les animations sur son appareil ;
@@ -130,11 +127,13 @@ Règles, vérifiées par `tests/e2e/animations.spec.ts` pour les deux premières
 
 Deux pièges pour les animations liées au défilement :
 - Lightning CSS (utilisé par Tailwind) fusionne `animation-timeline` dans le raccourci `animation`, que les navigateurs refusent. Écrivez les propriétés détaillées (`animation-name`, `animation-duration`, etc.) ;
-- un parent en `overflow: hidden` devient un conteneur de défilement et bloque la timeline `view()`. Utilisez `overflow: clip` ou rien (exemple : `CtaFinal`, qui coupe ses halos avec `overflow-clip`).
+- un parent en `overflow: hidden` ou `overflow: auto` devient un conteneur de défilement et bloque la timeline `view()`. Utilisez `overflow: clip` ou rien (exemple : `CtaFinal`, qui coupe ses halos avec `overflow-clip`). Si le conteneur doit défiler (tableau des forfaits), donnez-lui la classe `repere` et utilisez `apparition-zoom-repere` dans ses enfants.
 
 Un lien qui glisse au survol doit être en `inline-block` ou `inline-flex`. Il perd alors l'exception des liens dans le texte : sa zone cliquable doit mesurer au moins 24 px de haut (WCAG 2.5.8, vérifié par Lighthouse). Les liens du pied de page ont donc `py-0.5`.
 
 Un élément animé en `translate` ou avec un `view-transition-name` crée un contexte d'empilement. L'en-tête a donc `relative z-30` : sans cela, le titre animé du héros passe au-dessus du menu mobile ouvert.
+
+Limite connue : Firefox ne prend pas encore en charge les animations liées au défilement. Il affiche ces blocs sans mouvement (le contenu reste complet). Les animations à l'ouverture de la page fonctionnent dans tous les navigateurs.
 
 **Placeholders.** Les informations non confirmées restent entre crochets : `[Ville ou région]`, `[pays à définir]`, `[À rédiger : …]`. Le script `pnpm check:content` les liste. En mode `--strict`, il bloque la mise en production tant qu'il en reste.
 
@@ -152,9 +151,9 @@ Un élément animé en `translate` ou avec un `view-transition-name` crée un co
 | Prettier, ESLint, `astro check` | Format, qualité et types du code. |
 | Vitest | Règles de validation des formulaires, limite de débit, règles de contenu. |
 | `check-content` | Placeholders, mots à éviter, points d'exclamation, espaces manquantes, sur le HTML final. |
-| Playwright | Chaque page du sitemap sur Chromium, Firefox et WebKit, en tailles ordinateur, mobile et tablette. Envoi des formulaires, erreurs, menu mobile, lien d'évitement, liens internes. Pas de défilement horizontal. Animations : moins de 5 secondes, aucune en mode « réduire les animations », barre de lecture qui se remplit. |
+| Playwright | Chaque page du sitemap sur Chromium, Firefox et WebKit, en tailles ordinateur, mobile et tablette. Envoi des formulaires, erreurs, menu mobile, lien d'évitement, liens internes. Pas de défilement horizontal. Animations : moins de 5 secondes, aucune en mode « réduire les animations » (pages, formulaire en erreur, menu mobile), barre de lecture qui se remplit. |
 | axe-core | Accessibilité de chaque page (WCAG 2.1 AA). Il ne trouve qu'une partie des problèmes : faites aussi une vérification manuelle au clavier et au lecteur d'écran. |
-| Lighthouse CI | Seuils : performance 95, accessibilité 100, bonnes pratiques 100, SEO 100. Neuf pages clés. |
+| Lighthouse CI | Seuils : performance 95, accessibilité 100, bonnes pratiques 100, SEO 100. Dix pages clés. |
 | Build Docker | L'image se construit. |
 
 La CI (`.github/workflows/ci.yml`) lance tous ces contrôles sur chaque pull request et sur `main`.

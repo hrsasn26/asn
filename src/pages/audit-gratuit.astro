@@ -80,7 +80,7 @@ const verifications = [
     <div class="grid gap-12 lg:grid-cols-2">
       <div class="space-y-10">
         <div>
-          <h2 class="text-2xl">Ce que nous vérifions</h2>
+          <h2 class="apparition text-2xl">Ce que nous vérifions</h2>
           <ul class="mt-4 space-y-4 text-slate-700">
             {verifications.map(({ Icone, titre, texte, delai }, index) => (
               <li class="apparition flex items-start gap-3">
@@ -102,7 +102,7 @@ const verifications = [
           </ul>
         </div>
         <div>
-          <h2 class="text-2xl">Ce que vous recevez</h2>
+          <h2 class="apparition text-2xl">Ce que vous recevez</h2>
           <ul class="mt-4 space-y-2 text-slate-700">
             {[
               `Un rapport écrit sous ${delais.rapportAudit}`,
@@ -126,7 +126,7 @@ const verifications = [
       </div>
 
       <div>
-        <h2 class="mb-6 text-2xl">Demander mon audit</h2>
+        <h2 class="apparition mb-6 text-2xl">Demander mon audit</h2>
         {etat.envoye ? (
           <Success title="Votre demande d'audit est envoyée">
             <p>Vous recevez votre rapport sous {delais.rapportAudit}.</p>

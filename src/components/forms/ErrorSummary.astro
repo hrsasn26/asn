@@ -14,7 +14,7 @@ const { errors, message } = Astro.props;
     role="alert"
     id="erreurs-formulaire"
     tabindex="-1"
-    class="mb-6 rounded-md border-2 border-red-700 bg-red-50 p-4 text-red-900"
+    class="anim-alerte mb-6 rounded-md border-2 border-red-700 bg-red-50 p-4 text-red-900"
   >
     {errors.length > 0 ? (
       <>
@@ -26,7 +26,10 @@ const { errors, message } = Astro.props;
         <ul class="mt-2 list-disc pl-5">
           {errors.map((erreur) => (
             <li>
-              <a href={`#champ-${erreur.name}`} class="underline">
+              <a
+                href={`#champ-${erreur.name}`}
+                class="underline underline-offset-2 hover:underline-offset-4"
+              >
                 {erreur.message}
               </a>
             </li>

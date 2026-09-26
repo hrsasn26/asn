@@ -18,6 +18,11 @@ const apres = position >= 0 && motCle ? title.slice(position + motCle.length) : 
 ---
 
 <section class="relative bg-brand-50">
+  {/* Téléphone : l'illustration est cachée, deux halos de couleur restent dans les coins. */}
+  <div aria-hidden="true" class="pointer-events-none absolute inset-0 overflow-hidden md:hidden">
+    <div class="anim-halo absolute -top-24 -right-24 size-72 rounded-full bg-radial from-emerald-200/70 to-transparent to-70%" />
+    <div class="anim-halo absolute -bottom-32 -left-28 size-80 rounded-full bg-radial from-violet-200/60 to-transparent to-70% delai-300" />
+  </div>
   {avecIllustration && (
     <div
       aria-hidden="true"

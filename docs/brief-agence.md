@@ -200,10 +200,8 @@ Accueil                                   /
 │   ├── Tests & sécurité                  /services/tests-securite
 │   └── Hébergement & maintenance         /services/hebergement-maintenance
 ├── Audit gratuit                         /audit-gratuit
-├── Réalisations (études de cas)          /realisations
 ├── Méthode                               /methode
 ├── L'agence (équipe, valeurs)            /agence
-├── Blog (référencement)                  /blog
 ├── Contact / Demande de devis            /contact
 └── Mentions légales · CGV · Confidentialité
 ```
@@ -932,14 +930,6 @@ Reprend les cinq étapes de la page Services (6.1).
 
 **Lien :** [Découvrir notre méthode]
 
-#### Section : réalisations
-
-**Titre :** Nos réalisations
-
-Les trois dernières études de cas. Tant qu'il n'y en a pas : [À compléter : 2 ou 3 études de cas réelles, avec l'accord des clients]
-
-**Lien :** [Voir nos réalisations]
-
 #### Section : audit gratuit
 
 Reprend la section « audit gratuit » de la page Services (6.1).
@@ -1160,58 +1150,15 @@ Commencez par un audit gratuit : vitesse, sécurité, référencement technique 
 
 ---
 
-### 6.12 Page « Réalisations »
+### 6.12 Page « Réalisations » (supprimée)
 
-> Proposition à valider. Uniquement des projets réels, avec l'accord écrit du client.
-
-**URL :** `/realisations`
-**Balise title :** Réalisations : nos projets de sites et d'applications | Digital Solutions
-**Meta description :** Des projets réalisés pour nos clients : le besoin de départ, la solution mise en place et ce que le client y a gagné.
-
-#### En-tête
-
-**H1 :** Nos réalisations
-
-**Sous-titre :** Chaque étude de cas présente le besoin de départ, la solution mise en place et ce que le client y a gagné.
-
-Tant qu'il n'y a pas d'étude de cas : [À compléter : 2 ou 3 études de cas réelles, avec l'accord des clients]
-
-#### Structure d'une étude de cas
-
-Un fichier Markdown par projet dans `src/content/realisations/` (modèle : `docs/modele-etude-de-cas.md`) :
-
-1. **Le client** : secteur, taille, zone.
-2. **Le besoin** : la situation de départ, avec les mots du client.
-3. **La solution** : ce que nous avons construit.
-4. **Les tests et la mise en ligne.**
-5. **Le résultat** : uniquement des faits vérifiables, validés par le client. Aucun chiffre inventé.
-
-#### Appel à l'action final
-
-**Titre :** Et si le prochain projet était le vôtre ?
-
-Un échange de 30 minutes, gratuit et sans engagement, pour parler de votre besoin.
-
-**Bouton :** [Demander un devis gratuit]
+> Page retirée du site le 26 septembre 2026, avec la section « Nos réalisations » de l'accueil. Elle pourra revenir quand des études de cas réelles, avec l'accord écrit des clients, seront prêtes.
 
 ---
 
-### 6.13 Page « Blog »
+### 6.13 Page « Blog » (supprimée)
 
-> Proposition à valider.
-
-**URL :** `/blog`
-**Balise title :** Blog : conseils pour votre site web et vos outils numériques | Digital Solutions
-**Meta description :** Des conseils pratiques et sans jargon pour créer, entretenir et faire connaître votre site web.
-
-**H1 :** Blog
-
-**Sous-titre :** Des conseils pratiques et sans jargon pour créer, entretenir et faire connaître votre site web.
-
-**Premiers articles (dans `src/content/blog/`) :**
-- Site vitrine : les éléments indispensables pour inspirer confiance
-- Maintenance de site web : ce qu'il faut surveiller, et pourquoi
-- Refonte de site : comment garder votre place sur Google
+> Page retirée du site le 26 septembre 2026, avec ses trois premiers articles et le flux RSS. Les textes restent dans l'historique Git.
 
 ---
 
@@ -1741,12 +1688,11 @@ Un échange de 30 minutes, gratuit et confidentiel, pour définir ce qu'il faut 
 - [ ] Confirmer les engagements listés en [section 4](#engagements-à-confirmer-avant-publication)
 - [ ] Choisir l'option design : designer partenaire ou modèles personnalisés
 - [ ] Trouver les partenaires : graphiste, rédacteur, traducteur (arabe, anglais)
-- [ ] Relire et valider les textes proposés : Accueil, Méthode, L'agence, Contact, Réalisations, Blog (sections 6.7 à 6.13) et les trois premiers articles
+- [ ] Relire et valider les textes proposés : Accueil, Méthode, L'agence, Contact (sections 6.7 à 6.11)
 - [ ] Relire et valider les pages des nouveaux services : Applications mobiles, Logiciels SaaS, Intelligence artificielle, Données et tableaux de bord, Tests et sécurité (sections 6.14 à 6.18)
 - [ ] Relire et valider les ajouts dans les pages existantes : options Sites web (langues, WhatsApp), section WhatsApp (Automatisation), formation à l'IA
 - [ ] Préparer un modèle d'autorisation de test pour les audits de sécurité, validé par le juriste
 - [ ] Choisir les fournisseurs d'IA (données non utilisées pour l'entraînement, transfert hors du Maroc à déclarer à la CNDP)
-- [ ] Préparer 2 ou 3 études de cas réelles pour la page Réalisations
 - [x] Choisir les technologies du site et commencer le développement (voir [stack-technique.md](stack-technique.md))
 - [ ] Faire valider les CGV et les mentions légales par un juriste (droit marocain)
 - [ ] Déclarer les traitements du site à la CNDP, avec le transfert des données vers Brevo et l'hébergeur

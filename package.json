@@ -23,7 +23,6 @@
   },
   "dependencies": {
     "@astrojs/node": "^11.1.6",
-    "@astrojs/rss": "^4.0.19",
     "@astrojs/sitemap": "^3.7.4",
     "@lucide/astro": "^1.48.0",
     "@tailwindcss/vite": "^4.3.3",
