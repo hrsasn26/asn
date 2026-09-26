@@ -1,10 +1,9 @@
 /**
- * Consentement aux cookies de Google (Tag Manager et Google Ads).
+ * Cookies de Google (Tag Manager et Google Ads).
  *
- * Loi 09-08 : aucun cookie de suivi sans l'accord du visiteur (brief, section 7). Le site ne
- * charge Google Tag Manager qu'après un clic sur « Accepter » dans le bandeau (composant
- * `BandeauCookies`). Sans choix, après un refus ou sans JavaScript, aucune requête ne part vers
- * Google.
+ * Décision de l'agence du 26 septembre 2026 : pas de bandeau des cookies. Tag Manager se charge
+ * pour tous les visiteurs (composant `TagManager`), sauf après un refus avec le bouton
+ * « Refuser les cookies » du pied de page (droit d'opposition, article 9 de la loi 09-08).
  */
 
 /** Clé du choix du visiteur dans le stockage local du navigateur. */
@@ -12,9 +11,14 @@ export const CLE_CONSENTEMENT = 'consentement-cookies';
 
 export type ChoixCookies = 'accepte' | 'refuse';
 
-/** Choix enregistré, ou `undefined` si le visiteur n'a pas encore choisi. */
+/** Choix enregistré, ou `undefined` si le visiteur n'a rien choisi. */
 export function lireChoix(valeur: string | null): ChoixCookies | undefined {
   return valeur === 'accepte' || valeur === 'refuse' ? valeur : undefined;
+}
+
+/** Tag Manager est actif par défaut. Seul un refus l'arrête. */
+export function tagManagerActif(choix: ChoixCookies | undefined): boolean {
+  return choix !== 'refuse';
 }
 
 /**
@@ -35,7 +39,7 @@ export function urlTagManager(identifiant: string): string {
 
 /**
  * Cookies déposés par les balises de Google sur le domaine du site (Google Ads : `_gcl_…`,
- * Google Analytics : `_ga…`, `_gid`). Ils sont effacés quand le visiteur retire son accord.
+ * Google Analytics : `_ga…`, `_gid`). Ils sont effacés quand le visiteur refuse les cookies.
  */
 export function cookiesGoogle(cookies: string): string[] {
   return cookies

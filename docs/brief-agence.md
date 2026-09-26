@@ -230,7 +230,7 @@ La page « Processus », avec une étape de tests bien visible, est l'endroit id
 
 ## 6. Contenus des pages
 
-> Sections 6.1 à 6.6 : textes validés, sauf les ajouts marqués « à valider ». Sections 6.7 à 6.13 et 6.14 à 6.18 (nouveaux services) : propositions à valider. Section 6.19 (visuels des en-têtes) : légende et textes alternatifs validés. Section 6.20 (surtitres et libellés du design) : proposition à valider. Section 6.21 (bandeau des cookies) : proposition à valider.
+> Sections 6.1 à 6.6 : textes validés, sauf les ajouts marqués « à valider ». Sections 6.7 à 6.13 et 6.14 à 6.18 (nouveaux services) : propositions à valider. Section 6.19 (visuels des en-têtes) : légende et textes alternatifs validés. Section 6.20 (surtitres et libellés du design) : proposition à valider. Section 6.21 (cookies et Google Tag Manager) : proposition à valider.
 > Adaptation au Maroc (25 septembre 2026) : prix en DH, loi 09-08 à la place du RGPD, délai de rétractation de 7 jours. Ces changements sont à revalider, y compris dans les sections 6.1 à 6.6.
 > Révision du 26 septembre 2026, à valider : textes revus selon le document « Digital Solutions - Recommandations de wording ». Les en-têtes, les boutons, plusieurs cartes et les FAQ changent, y compris dans les sections 6.1 à 6.6. Les phrases qui contenaient une valeur non confirmée (délais, pays d'hébergement, ville, garantie, durée des sauvegardes) sont retirées. La section « L'équipe » de la page L'agence, masquée jusqu'à réception des vraies informations, est de nouveau affichée depuis la réception des noms et des rôles (section 6.10).
 
@@ -1824,32 +1824,27 @@ Les visuels des pages de services servent aussi de vignettes aux cartes des serv
 | Contact | Autres moyens de nous joindre | Coordonnées |
 | Contact | Vous avez déjà un site ? | Audit gratuit |
 
-### 6.21 Bandeau des cookies
+### 6.21 Cookies et Google Tag Manager
 
 > Proposition à valider. Ajouté le 26 septembre 2026 avec Google Tag Manager (conteneur `GTM-WRR53MWN`), pour mesurer les annonces Google Ads de l'agence. L'agence fait ses propres annonces : l'offre ne change pas (Google Ads reste hors de notre offre, section 3).
 
+**Décision de l'agence (26 septembre 2026) : pas de bandeau des cookies.** Tag Manager se charge pour tous les visiteurs, par défaut. Un premier essai avec un bandeau (« Refuser », « Accepter ») est retiré le même jour. Risques signalés à l'agence avant la décision : la loi 09-08 (consentement, article 4) ; la règle de Google Ads sur le consentement des visiteurs de l'Union européenne, du Royaume-Uni et de la Suisse ; la promesse « bandeau cookies » de la page Sites web (section 6.2), faite aux clients. À faire valider par le juriste.
+
 **Règles :**
-- Google Tag Manager se charge seulement après un clic sur « Accepter ». Sans choix, après un refus ou sans JavaScript, le site n'envoie aucune donnée à Google.
-- « Refuser » et « Accepter » ont le même style : refuser est aussi simple qu'accepter.
-- Le choix est enregistré dans le navigateur. Le lien « Gérer les cookies », en bas de chaque page, affiche de nouveau le bandeau. Après un retrait de l'accord, le site efface les cookies de Google enregistrés sur son domaine.
-- Tag Manager se charge seulement sur `www.digital-solutions.ma`, pas sur les aperçus Vercel.
+- Tag Manager se charge seulement sur `www.digital-solutions.ma`, pas sur les aperçus Vercel. Sans JavaScript, il ne se charge pas.
+- Droit d'opposition (article 9 de la loi 09-08) : le lien « Refuser les cookies », en bas de chaque page, arrête Tag Manager et efface les cookies de Google enregistrés sur le domaine du site. Le choix est enregistré dans le navigateur. Après un refus, le lien devient « Accepter les cookies ».
 
-**Bandeau (en bas de l'écran) :**
-- Titre : Cookies
-- Texte : Avec votre accord, nous utilisons des cookies de Google pour mesurer l'efficacité de nos annonces. Vous pouvez changer d'avis à tout moment avec le lien « Gérer les cookies », en bas de chaque page. Détails dans notre politique de confidentialité.
-- Boutons : « Refuser », « Accepter »
-
-**Pied de page, colonne « Informations » :** Gérer les cookies
+**Pied de page, colonne « Informations » :** Refuser les cookies (après un refus : Accepter les cookies)
 
 **Politique de confidentialité :**
 - Meta description : Quelles données nous collectons avec nos formulaires, sur WhatsApp et avec les cookies, pourquoi, qui les reçoit et comment exercer vos droits.
 - « Les données que nous collectons » : la liste commence par « Avec nos formulaires et sur WhatsApp, nous collectons uniquement les données que vous nous envoyez : ».
-- Base légale : votre consentement, donné en cochant la case du formulaire, en nous écrivant sur WhatsApp ou en acceptant les cookies (article 4 de la loi 09-08).
-- « Qui reçoit vos données » : Google, si vous acceptez les cookies (voir « Cookies » ci-dessous). Ses serveurs sont situés hors du Maroc : ces données sont donc transférées à l'étranger. Google applique aussi sa propre politique de confidentialité.
+- Base légale : votre consentement, donné en cochant la case du formulaire ou en nous écrivant sur WhatsApp (article 4 de la loi 09-08). Pour les cookies : notre intérêt légitime à mesurer l'efficacité de nos annonces (article 4 de la loi 09-08). [À confirmer par le juriste : l'intérêt légitime suffit-il pour les cookies publicitaires ?]
+- « Qui reçoit vos données » : Google, par les cookies du site (voir « Cookies » ci-dessous). Ses serveurs sont situés hors du Maroc : ces données sont donc transférées à l'étranger. Google applique aussi sa propre politique de confidentialité.
 - « Cookies » :
-  - Avec votre accord seulement, le site utilise Google Tag Manager et des cookies de Google Ads. Ils nous permettent de mesurer l'efficacité de nos annonces : par exemple, savoir si une visite venue d'une annonce Google mène à une demande de contact.
-  - Ces outils se chargent uniquement si vous cliquez sur « Accepter » dans le bandeau des cookies. Si vous refusez, ou tant que vous n'avez pas choisi, le site n'envoie aucune donnée à Google. Si vous acceptez, Google reçoit des informations sur votre visite : les pages vues, l'annonce sur laquelle vous avez cliqué, votre adresse IP et des informations sur votre navigateur.
-  - Votre choix est enregistré dans votre navigateur. Vous pouvez le changer à tout moment avec le lien « Gérer les cookies », en bas de chaque page. Si vous retirez votre accord, Tag Manager ne se charge plus et le site efface les cookies de Google enregistrés sur son domaine.
+  - Le site utilise Google Tag Manager et des cookies de Google Ads. Ils nous permettent de mesurer l'efficacité de nos annonces : par exemple, savoir si une visite venue d'une annonce Google mène à une demande de contact.
+  - Google reçoit des informations sur votre visite : les pages vues, l'annonce sur laquelle vous avez cliqué, votre adresse IP et des informations sur votre navigateur.
+  - Vous pouvez refuser ces cookies à tout moment avec le lien « Refuser les cookies », en bas de chaque page. Tag Manager ne se charge plus et le site efface les cookies de Google enregistrés sur son domaine. Votre choix est enregistré dans votre navigateur. Vous pouvez aussi bloquer les cookies dans les réglages de votre navigateur.
 
 ---
 
@@ -1865,9 +1860,9 @@ Les visuels des pages de services servent aussi de vignettes aux cartes des serv
 
 **Données personnelles (loi 09-08, CNDP)**
 - **Déclaration préalable à la CNDP** des traitements du site (formulaires de contact et d'audit), avant la mise en ligne. Indiquer le numéro de récépissé dans les mentions légales et dans la politique de confidentialité.
-- **Transfert de données à l'étranger** (article 43) : Brevo (envoi des e-mails), WhatsApp (Meta, messages reçus sur le numéro de l'agence), Google (Tag Manager et Google Ads, après l'accord du visiteur) et un hébergeur hors du Maroc reçoivent des données. Le transfert est à déclarer à la CNDP. Vérifier que le pays de destination est sur la liste des pays reconnus par la CNDP.
+- **Transfert de données à l'étranger** (article 43) : Brevo (envoi des e-mails), WhatsApp (Meta, messages reçus sur le numéro de l'agence), Google (Tag Manager et Google Ads) et un hébergeur hors du Maroc reçoivent des données. Le transfert est à déclarer à la CNDP. Vérifier que le pays de destination est sur la liste des pays reconnus par la CNDP.
 - **Droits des personnes** : information (article 5), accès (article 7), rectification et suppression (article 8), opposition (article 9).
-- **Cookies** : consentement avant tout cookie de suivi. Depuis le 26 septembre 2026, le site utilise Google Tag Manager et Google Ads, seulement après un clic sur « Accepter » dans le bandeau des cookies (section 6.21). À faire valider par le juriste : le texte du bandeau, la durée de conservation du choix (aujourd'hui sans limite, jusqu'à ce que le visiteur efface les données de son navigateur) et la déclaration du traitement à la CNDP.
+- **Cookies** : depuis le 26 septembre 2026, le site utilise Google Tag Manager et Google Ads pour tous les visiteurs, sans bandeau des cookies (décision de l'agence, section 6.21). Le visiteur peut refuser avec le lien « Refuser les cookies » du pied de page. À faire valider par le juriste : l'absence de consentement préalable (article 4 de la loi 09-08), la base légale (intérêt légitime), le texte de la politique de confidentialité et la déclaration du traitement à la CNDP.
 
 **Site de l'agence**
 - Mentions légales : raison sociale, forme juridique, capital, siège, registre du commerce, ICE, identifiant fiscal, taxe professionnelle, directeur de la publication, hébergeur.
@@ -1942,7 +1937,7 @@ Les valeurs de `src/data/` (modalités de paiement, garantie, durée d'engagemen
 - [ ] Préparer des preuves concrètes : exemple de rapport d'audit, captures de tests, exemples de livrables, cas clients et témoignages avec l'accord écrit des clients
 - [x] Intégrer le design du site : maquettes du designer, intégrées le 26 septembre 2026 (section « Design » de [stack-technique.md](stack-technique.md))
 - [ ] Relire et valider les surtitres et les libellés ajoutés par le design (section 6.20)
-- [ ] Relire et valider le bandeau des cookies et la partie « Cookies » de la politique de confidentialité (section 6.21), avec le juriste
+- [ ] Faire valider par le juriste le choix sans bandeau des cookies et la partie « Cookies » de la politique de confidentialité (section 6.21)
 - [ ] Préparer un modèle d'autorisation de test pour les audits de sécurité, validé par le juriste
 - [ ] Choisir les fournisseurs d'IA (données non utilisées pour l'entraînement, transfert hors du Maroc à déclarer à la CNDP)
 - [x] Choisir les technologies du site et commencer le développement (voir [stack-technique.md](stack-technique.md))

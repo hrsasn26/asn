@@ -22,17 +22,6 @@ export default defineConfig({
     baseURL: `http://127.0.0.1:${PORT}`,
     locale: 'fr-FR',
     trace: 'retain-on-failure',
-    // Choix des cookies déjà fait : le bandeau ne cache pas le bas des pages pendant les tests.
-    // tests/e2e/cookies.spec.ts teste le bandeau sans ce choix.
-    storageState: {
-      cookies: [],
-      origins: [
-        {
-          origin: `http://127.0.0.1:${PORT}`,
-          localStorage: [{ name: 'consentement-cookies', value: 'refuse' }],
-        },
-      ],
-    },
   },
   projects: [
     { name: 'ordinateur-chromium', use: { ...devices['Desktop Chrome'], ...chromium } },

@@ -21,7 +21,7 @@ const site = process.env.SITE_URL || (surVercel ? urlProduction : 'http://localh
 const { hostname, protocol } = new URL(site);
 
 // Adresses de Google Tag Manager et de Google Ads (conversions et remarketing), pour la CSP.
-// Tag Manager ne se charge qu'après l'accord du visiteur (src/components/BandeauCookies.astro).
+// Tag Manager se charge pour tous les visiteurs, sauf après un refus (src/components/TagManager.astro).
 // Une autre sorte de balise (Google Analytics, par exemple) demande ses propres adresses.
 // Les balises « HTML personnalisé » et les variables « JavaScript personnalisé » de Tag
 // Manager ne fonctionnent pas : elles demandent 'unsafe-inline' ou 'unsafe-eval'.

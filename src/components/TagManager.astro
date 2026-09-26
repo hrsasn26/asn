@@ -1,0 +1,84 @@
+---
+/**
+ * Google Tag Manager, pour Google Ads (section 6.21 du brief).
+ *
+ * Décision de l'agence du 26 septembre 2026 : pas de bandeau des cookies. Tag Manager se
+ * charge pour tous les visiteurs, sur le domaine de production seulement
+ * (src/lib/consentement.ts). Le bouton du pied de page (`data-choix-cookies`) permet de refuser
+ * les cookies, puis de les accepter de nouveau : droit d'opposition, article 9 de la loi 09-08.
+ * Sans JavaScript, Tag Manager ne se charge pas et le bouton reste caché.
+ */
+---
+
+<script>
+  import { site } from '~/data/site';
+  import {
+    CLE_CONSENTEMENT,
+    type ChoixCookies,
+    cookiesGoogle,
+    lireChoix,
+    tagManagerActif,
+    tagManagerAutorise,
+    urlTagManager,
+  } from '~/lib/consentement';
+
+  const fenetre = window as typeof window & { dataLayer?: Record<string, unknown>[] };
+
+  // Le stockage local peut être bloqué (navigation privée, réglages du navigateur) :
+  // Tag Manager se charge alors, comme pour un visiteur qui n'a rien choisi.
+  function choixEnregistre(): ChoixCookies | undefined {
+    try {
+      return lireChoix(localStorage.getItem(CLE_CONSENTEMENT));
+    } catch {
+      return undefined;
+    }
+  }
+
+  function enregistrer(choix: ChoixCookies) {
+    try {
+      localStorage.setItem(CLE_CONSENTEMENT, choix);
+    } catch {
+      // Choix valable pour cette page seulement.
+    }
+  }
+
+  function chargerTagManager() {
+    if (!tagManagerAutorise(location.hostname, site.domaine)) return;
+    const dataLayer = (fenetre.dataLayer ??= []);
+    dataLayer.push({ 'gtm.start': Date.now(), event: 'gtm.js' });
+    // Formulaire envoyé (Contact, Audit gratuit) : événement pour les conversions Google Ads.
+    const envoi = document.querySelector<HTMLElement>('[data-formulaire-envoye]');
+    if (envoi) {
+      dataLayer.push({ event: 'formulaire_envoye', formulaire: envoi.dataset.formulaireEnvoye });
+    }
+    const script = document.createElement('script');
+    script.async = true;
+    script.src = urlTagManager(site.tagManager);
+    document.head.append(script);
+  }
+
+  // Refus : les cookies de Google sont effacés (sur le domaine et sur ses sous-domaines).
+  function effacerCookiesGoogle() {
+    const domaine = location.hostname.replace(/^www\./, '');
+    for (const nom of cookiesGoogle(document.cookie)) {
+      for (const cible of ['', `; domain=${location.hostname}`, `; domain=.${domaine}`]) {
+        document.cookie = `${nom}=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/${cible}`;
+      }
+    }
+  }
+
+  const actif = tagManagerActif(choixEnregistre());
+  if (actif) chargerTagManager();
+
+  // Bouton du pied de page : « Refuser les cookies » ou « Accepter les cookies ».
+  // La page est rechargée pour arrêter ou démarrer Tag Manager.
+  for (const bouton of document.querySelectorAll<HTMLButtonElement>('[data-choix-cookies]')) {
+    bouton.textContent = actif ? 'Refuser les cookies' : 'Accepter les cookies';
+    bouton.hidden = false;
+    bouton.addEventListener('click', () => {
+      enregistrer(actif ? 'refuse' : 'accepte');
+      if (actif) effacerCookiesGoogle();
+      location.reload();
+    });
+  }
+</script>

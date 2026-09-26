@@ -1,10 +1,6 @@
-import AxeBuilder from '@axe-core/playwright';
 import { expect, type Page, test } from '@playwright/test';
 
-// Visiteur qui n'a pas encore choisi (playwright.config.ts enregistre un refus par défaut).
-test.use({ storageState: { cookies: [], origins: [] } });
-
-const bandeau = (page: Page) => page.getByRole('region', { name: 'Cookies' });
+const pied = (page: Page) => page.getByRole('contentinfo');
 
 /**
  * Sert le site construit sous le domaine de production, seul domaine où Tag Manager se charge
@@ -25,37 +21,19 @@ async function simulerProduction(page: Page, baseURL: string) {
   return requetes;
 }
 
-test('le bandeau s’affiche tant que le visiteur n’a pas choisi', async ({ page }) => {
+const gtmCharge = (page: Page) => page.evaluate(() => 'gtmCharge' in window);
+
+test('pas de bandeau des cookies', async ({ page }) => {
   await page.goto('/');
-  await expect(bandeau(page)).toBeVisible();
-  await expect(bandeau(page).getByRole('button', { name: 'Accepter' })).toBeVisible();
-  await expect(bandeau(page).getByRole('button', { name: 'Refuser' })).toBeVisible();
-
-  const resultat = await new AxeBuilder({ page }).include('[data-bandeau-cookies]').analyze();
-  expect(resultat.violations).toEqual([]);
-
-  await bandeau(page).getByRole('button', { name: 'Refuser' }).click();
-  await expect(bandeau(page)).toBeHidden();
-  await page.goto('/contact');
-  await expect(bandeau(page)).toBeHidden();
+  await expect(page.getByRole('region', { name: 'Cookies' })).toHaveCount(0);
+  await expect(page.getByRole('button', { name: 'Accepter', exact: true })).toHaveCount(0);
 });
 
-test('le lien du pied de page affiche de nouveau le bandeau', async ({ page }) => {
-  await page.goto('/');
-  await bandeau(page).getByRole('button', { name: 'Accepter' }).click();
-  await expect(bandeau(page)).toBeHidden();
-
-  await page.getByRole('contentinfo').getByRole('button', { name: 'Gérer les cookies' }).click();
-  await expect(bandeau(page)).toBeVisible();
-  await expect(bandeau(page).getByRole('button', { name: 'Refuser' })).toBeFocused();
-});
-
-test('sans JavaScript, ni bandeau ni lien « Gérer les cookies »', async ({ browser }) => {
+test('sans JavaScript, pas de bouton pour les cookies', async ({ browser }) => {
   const contexte = await browser.newContext({ javaScriptEnabled: false });
   const page = await contexte.newPage();
   await page.goto('/');
-  await expect(bandeau(page)).toBeHidden();
-  await expect(page.getByRole('button', { name: 'Gérer les cookies' })).toBeHidden();
+  await expect(page.getByRole('button', { name: /les cookies/ })).toBeHidden();
   await contexte.close();
 });
 
@@ -65,13 +43,11 @@ test('hors du domaine de production, Tag Manager ne se charge jamais', async ({ 
     if (requete.url().includes('googletagmanager.com')) requetes.push(requete.url());
   });
   await page.goto('/');
-  await bandeau(page).getByRole('button', { name: 'Accepter' }).click();
-  await page.reload();
-  await expect(bandeau(page)).toBeHidden();
+  await expect(pied(page).getByRole('button', { name: 'Refuser les cookies' })).toBeVisible();
   expect(requetes).toEqual([]);
 });
 
-test('sur le domaine de production, Tag Manager se charge après « Accepter » seulement', async ({
+test('sur le domaine de production, Tag Manager se charge par défaut, sauf après un refus', async ({
   page,
   baseURL,
 }) => {
@@ -82,25 +58,27 @@ test('sur le domaine de production, Tag Manager se charge après « Accepter » 
   });
 
   await page.goto('http://www.digital-solutions.ma/');
-  await expect(bandeau(page)).toBeVisible();
-  expect(requetes).toEqual([]);
-
-  await bandeau(page).getByRole('button', { name: 'Accepter' }).click();
-  await expect.poll(() => page.evaluate(() => 'gtmCharge' in window)).toBe(true);
+  await expect.poll(() => gtmCharge(page)).toBe(true);
   expect(requetes).toEqual(['https://www.googletagmanager.com/gtm.js?id=GTM-WRR53MWN']);
 
-  // Le choix reste enregistré : Tag Manager se charge dès l'ouverture des pages suivantes.
-  await page.goto('http://www.digital-solutions.ma/agence');
-  await expect.poll(() => page.evaluate(() => 'gtmCharge' in window)).toBe(true);
-  await expect(bandeau(page)).toBeHidden();
-
-  // Retrait de l'accord : la page se recharge sans Tag Manager.
-  await page.getByRole('contentinfo').getByRole('button', { name: 'Gérer les cookies' }).click();
+  // Refus : la page se recharge sans Tag Manager, et le choix reste enregistré.
   await Promise.all([
     page.waitForEvent('load'),
-    bandeau(page).getByRole('button', { name: 'Refuser' }).click(),
+    pied(page).getByRole('button', { name: 'Refuser les cookies' }).click(),
   ]);
-  expect(await page.evaluate(() => 'gtmCharge' in window)).toBe(false);
+  await expect(pied(page).getByRole('button', { name: 'Accepter les cookies' })).toBeVisible();
+  expect(await gtmCharge(page)).toBe(false);
+  await page.goto('http://www.digital-solutions.ma/agence');
+  await expect(pied(page).getByRole('button', { name: 'Accepter les cookies' })).toBeVisible();
+  expect(await gtmCharge(page)).toBe(false);
+  expect(requetes).toHaveLength(1);
+
+  // Nouvel accord : Tag Manager se charge de nouveau.
+  await Promise.all([
+    page.waitForEvent('load'),
+    pied(page).getByRole('button', { name: 'Accepter les cookies' }).click(),
+  ]);
+  await expect.poll(() => gtmCharge(page)).toBe(true);
   expect(requetes).toHaveLength(2);
   expect(erreursCsp).toEqual([]);
 });

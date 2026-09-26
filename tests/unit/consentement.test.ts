@@ -3,16 +3,23 @@ import { site } from '../../src/data/site';
 import {
   cookiesGoogle,
   lireChoix,
+  tagManagerActif,
   tagManagerAutorise,
   urlTagManager,
 } from '../../src/lib/consentement';
 
-describe('consentement aux cookies', () => {
+describe('cookies de Google', () => {
   it('lit seulement un choix connu', () => {
     expect(lireChoix('accepte')).toBe('accepte');
     expect(lireChoix('refuse')).toBe('refuse');
     expect(lireChoix(null)).toBeUndefined();
     expect(lireChoix('oui')).toBeUndefined();
+  });
+
+  it('active Tag Manager par défaut, sauf après un refus', () => {
+    expect(tagManagerActif(undefined)).toBe(true);
+    expect(tagManagerActif('accepte')).toBe(true);
+    expect(tagManagerActif('refuse')).toBe(false);
   });
 
   it('charge Tag Manager seulement sur le domaine de production', () => {

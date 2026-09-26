@@ -64,10 +64,10 @@ const whatsapp = lienWhatsApp(site.whatsapp, site.messageWhatsApp);
             </a>
           </li>
         ))}
-        {/* Affiche le bandeau des cookies (BandeauCookies). Caché sans JavaScript. */}
+        {/* « Refuser les cookies » ou « Accepter les cookies » (TagManager). Caché sans JavaScript. */}
         <li>
-          <button type="button" data-gerer-cookies hidden class:list={[lien, 'cursor-pointer']}>
-            Gérer les cookies
+          <button type="button" data-choix-cookies hidden class:list={[lien, 'cursor-pointer']}>
+            Refuser les cookies
           </button>
         </li>
       </ul>
