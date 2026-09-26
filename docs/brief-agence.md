@@ -260,9 +260,10 @@ La page « Méthode », avec une étape de tests bien visible, est l'endroit id�
 
 #### Section : nos services
 
-**Titre :** Ce que nous faisons pour vous
+**Titre :** Des solutions pour faire avancer votre activité
 
-> Cette section aide le visiteur à choisir la bonne page : une phrase par service, sans répéter le contenu de chaque offre. Elle est reprise sur l'accueil.
+> Cette section aide le visiteur à choisir la bonne page : une phrase par service, sans répéter le contenu de chaque offre. Elle est reprise sur l'accueil, avec un autre titre (section 6.7).
+> Titre changé le 26 septembre 2026, à valider. Ancien titre : « Ce que nous faisons pour vous ».
 
 **Carte 1 : Sites web**
 Des sites rapides et crédibles, qui facilitent la prise de contact et l'achat.
@@ -950,7 +951,11 @@ Vous échangez avec l'équipe qui conçoit et développe votre projet.
 
 #### Section : nos services
 
-Reprend la section « Ce que nous faisons pour vous » de la page Services (6.1).
+**Titre :** Des solutions digitales qui répondent à vos enjeux
+
+Reprend les cartes de la section « Des solutions pour faire avancer votre activité » de la page Services (6.1).
+
+> Titre changé le 26 septembre 2026, à valider. Ancien titre : « Ce que nous faisons pour vous ».
 
 #### Section : pour qui
 
@@ -1758,12 +1763,12 @@ Les visuels des pages de services servent aussi de vignettes aux cartes des serv
 | Page | Section | Surtitre |
 |---|---|---|
 | Accueil | Ce que vous y gagnez | Vos bénéfices |
-| Accueil | Ce que nous faisons pour vous | Nos services |
+| Accueil | Des solutions digitales qui répondent à vos enjeux | Nos services |
 | Accueil, Services | Nous accompagnons | Pour qui |
 | Accueil | Un projet en cinq étapes claires | Méthode |
 | Accueil, Services | Encadré audit gratuit | Audit gratuit |
 | Accueil | Nos engagements | Engagements |
-| Services | Ce que nous faisons pour vous | Nos services |
+| Services | Des solutions pour faire avancer votre activité | Nos services |
 | Services | Pourquoi travailler avec nous | Nos différences |
 | Services | Comment se déroule votre projet | Méthode |
 | Toutes les pages avec une FAQ | Questions fréquentes | FAQ |
