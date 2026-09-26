@@ -6,7 +6,6 @@ import CalendarCheck from '@lucide/astro/icons/calendar-check';
 import KeyRound from '@lucide/astro/icons/key-round';
 import LockKeyhole from '@lucide/astro/icons/lock-keyhole';
 import Rocket from '@lucide/astro/icons/rocket';
-import Smartphone from '@lucide/astro/icons/smartphone';
 import Users from '@lucide/astro/icons/users';
 import ButtonLink from '~/components/ButtonLink.astro';
 import CtaFinal from '~/components/CtaFinal.astro';
@@ -18,7 +17,7 @@ import LienFleche from '~/components/LienFleche.astro';
 import ProblemList from '~/components/ProblemList.astro';
 import Section from '~/components/Section.astro';
 import Steps from '~/components/Steps.astro';
-import { delais, site } from '~/data/site';
+import { site } from '~/data/site';
 import BaseLayout from '~/layouts/BaseLayout.astro';
 import { serviceJsonLd } from '~/lib/seo';
 
@@ -39,9 +38,9 @@ const ctaProjet = { label: 'Parler de mon projet', href: '/contact' };
 >
   <Hero
     maquette="applications-sur-mesure"
-    title="Un outil conçu pour votre façon de travailler"
-    motCle="travailler"
-    subtitle="Réservation, devis, planning, espace client, application mobile : nous développons le logiciel dont vous avez besoin, et il évolue avec votre activité."
+    title="Un logiciel qui s'adapte à votre métier"
+    motCle="votre métier"
+    subtitle="Réservation, devis, planning, espace client ou outil interne : nous développons les fonctions dont vous avez réellement besoin, puis nous les faisons évoluer avec vous."
   >
     <ButtonLink href={ctaProjet.href}>{ctaProjet.label}</ButtonLink>
   </Hero>
@@ -58,26 +57,22 @@ const ctaProjet = { label: 'Parler de mon projet', href: '/contact' };
 
   <Section title="Ce que nous pouvons construire pour vous">
     <FeatureGrid
+      columns={3}
       items={[
         {
           title: 'Outils métier',
           icone: CalendarCheck,
-          text: "Prise de rendez-vous, devis et factures, gestion de stock, planning d'équipe, suivi de chantier. Un seul outil, pensé pour votre activité, à la place de trois logiciels mal adaptés.",
-        },
-        {
-          title: 'Espaces clients et portails',
-          icone: Users,
-          text: 'Vos clients suivent leurs commandes, téléchargent leurs documents et font leurs demandes en ligne, sans vous appeler.',
-        },
-        {
-          title: 'Applications mobiles',
-          icone: Smartphone,
-          text: "Une application iPhone et Android à partir d'un seul développement, pour un coût maîtrisé. Nous nous occupons aussi de la publication sur l'App Store et Google Play.",
+          text: "Prise de rendez-vous, devis et factures, gestion de stock, planning d'équipe : réunissez dans un seul outil ce qui est aujourd'hui dispersé entre tableurs, e-mails et logiciels mal adaptés.",
         },
         {
           title: 'Première version de votre projet (MVP)',
           icone: Rocket,
-          text: "Vous avez une idée d'application ? Nous construisons une première version avec l'essentiel, pour la tester auprès de vrais utilisateurs avant d'investir davantage.",
+          text: "Vous avez une idée d'application ? Lancez une première version utile, testez-la avec de vrais utilisateurs, puis investissez dans ce qui fonctionne.",
+        },
+        {
+          title: 'Espaces clients et portails',
+          icone: Users,
+          text: 'Vos clients consultent leurs demandes, leurs documents et leur suivi en ligne, sans vous appeler.',
         },
       ]}
     />
@@ -111,7 +106,7 @@ const ctaProjet = { label: 'Parler de mon projet', href: '/contact' };
         {
           title: 'Vos données protégées',
           icone: LockKeyhole,
-          text: `Sauvegardes quotidiennes, accès sécurisés, hébergement en ${site.hebergement}.`,
+          text: 'Sauvegardes quotidiennes et accès sécurisés.',
         },
         {
           title: 'Un code qui vous appartient',
@@ -135,7 +130,7 @@ const ctaProjet = { label: 'Parler de mon projet', href: '/contact' };
         },
         {
           title: 'Développement par étapes.',
-          text: `Une nouvelle version à tester toutes les ${delais.iteration} semaines. Vous suivez l'avancement concrètement.`,
+          text: "Une nouvelle version à tester régulièrement. Vous suivez l'avancement concrètement.",
         },
         {
           title: 'Tests.',
@@ -157,7 +152,7 @@ const ctaProjet = { label: 'Parler de mon projet', href: '/contact' };
     </p>
     <div class="apparition mt-6">
       <ButtonLink href="/contact" variant="secondaire">
-        Présenter mon idée
+        Parler de mon idée
       </ButtonLink>
     </div>
   </Section>
@@ -171,8 +166,8 @@ const ctaProjet = { label: 'Parler de mon projet', href: '/contact' };
     </FaqItem>
     <FaqItem question="Combien de temps faut-il ?">
       <p>
-        Une première version demande en général {delais.mvp}. Nous fixons le planning ensemble après
-        le cadrage.
+        Cela dépend des fonctionnalités. Nous fixons le planning ensemble après le cadrage, et il
+        figure dans le devis.
       </p>
     </FaqItem>
     <FaqItem question="Mon idée sera-t-elle protégée ?">

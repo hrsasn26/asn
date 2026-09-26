@@ -11,6 +11,8 @@ export const MOTS_A_EVITER = [
   { mot: 'optimiser', motif: 'optimis\\p{L}*' },
   { mot: 'digitaliser', motif: 'digitalis\\p{L}*' },
   { mot: '360°', motif: '360\\s*°' },
+  // Décision du 26 septembre 2026 : le site ne parle plus d'« ingénieurs ».
+  { mot: 'ingénieurs', motif: 'ingénieu\\p{L}*' },
 ];
 
 /**

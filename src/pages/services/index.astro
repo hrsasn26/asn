@@ -17,19 +17,19 @@ import Section from '~/components/Section.astro';
 import ServiceCards from '~/components/ServiceCards.astro';
 import Steps from '~/components/Steps.astro';
 import { etapesProjet } from '~/data/methode';
-import { cta, delais, offre, site } from '~/data/site';
+import { cta, site } from '~/data/site';
 import BaseLayout from '~/layouts/BaseLayout.astro';
 ---
 
 <BaseLayout
   title={`Création de sites web et d'applications sur mesure | ${site.nom}`}
-  description="Sites web, applications web et mobiles, logiciels SaaS, IA, automatisation et maintenance : des projets conçus par des ingénieurs, testés et suivis."
+  description="Sites web, applications web et mobiles, logiciels SaaS, IA, automatisation et maintenance : des projets testés, mis en ligne et suivis par la même équipe."
   breadcrumbs={[{ label: 'Services', href: '/services' }]}
 >
   <Hero
-    title="Des sites et des applications qui fonctionnent. Aujourd'hui, et dans cinq ans."
-    motCle="fonctionnent"
-    subtitle="Nous sommes une équipe d'ingénieurs. Nous concevons, testons, hébergeons et maintenons vos projets web, pour que vous puissiez vous concentrer sur votre activité."
+    title="Un partenaire technique pour créer, connecter et faire durer vos outils numériques"
+    motCle="faire durer"
+    subtitle="Du site vitrine au logiciel métier, nous prenons en charge la conception, le développement, les tests, la mise en ligne et le suivi."
   >
     <ButtonLink href={cta.principal.href}>{cta.principal.label}</ButtonLink>
     <ButtonLink href={cta.secondaire.href} variant="secondaire">
@@ -46,9 +46,9 @@ import BaseLayout from '~/layouts/BaseLayout.astro';
     <FeatureGrid
       items={[
         {
-          title: 'Conçu par des ingénieurs',
+          title: 'Des méthodes solides',
           icone: Blocks,
-          text: 'Votre projet est développé par des ingénieurs logiciels, avec les méthodes des grandes entreprises, adaptées à la taille de la vôtre.',
+          text: 'Votre projet est construit avec les méthodes des grandes entreprises, adaptées à la taille de la vôtre.',
         },
         {
           title: 'Tout est testé avant la mise en ligne',
@@ -80,14 +80,14 @@ import BaseLayout from '~/layouts/BaseLayout.astro';
   <Faq>
     <FaqItem question="Combien coûte un site ou une application ?">
       <p>
-        Chaque projet est différent. Après un premier échange, nous vous remettons un devis gratuit,
+        Cela dépend du projet. Après un premier échange, nous vous remettons un devis gratuit,
         détaillé et à prix fixe : vous savez exactement ce que vous payez avant de vous engager.
       </p>
     </FaqItem>
     <FaqItem question="Combien de temps faut-il ?">
       <p>
-        Comptez {delais.siteVitrine} pour un site vitrine et {delais.boutique} pour une boutique en
-        ligne. Pour une application, nous fixons le délai ensemble après le cadrage.
+        Cela dépend du projet. Nous fixons le planning ensemble après le premier échange, et il
+        figure dans le devis.
       </p>
     </FaqItem>
     <FaqItem question="Je n'y connais rien en informatique. Est-ce un problème ?">
@@ -97,7 +97,7 @@ import BaseLayout from '~/layouts/BaseLayout.astro';
       </p>
     </FaqItem>
     <FaqItem question="Vous occupez-vous du design ?">
-      <p>Oui. {offre.design}. Vous validez les maquettes avant le début du développement.</p>
+      <p>Oui. Vous validez les maquettes avant le début du développement.</p>
     </FaqItem>
     <FaqItem question="J'ai déjà un site ou une application. Pouvez-vous le reprendre ?">
       <p>

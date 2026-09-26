@@ -1,7 +1,6 @@
 ---
 // Textes : docs/brief-agence.md, section 6.11 (proposition à valider).
 import Mail from '@lucide/astro/icons/mail';
-import MapPin from '@lucide/astro/icons/map-pin';
 import Phone from '@lucide/astro/icons/phone';
 import Send from '@lucide/astro/icons/send';
 import { actions } from 'astro:actions';
@@ -35,7 +34,7 @@ const titre = `Contact et demande de devis gratuit | ${site.nom}`;
 
 <BaseLayout
   title={etat.enErreur ? `Erreur : ${titre}` : titre}
-  description="Décrivez votre projet en quelques lignes : nous revenons vers vous avec une première estimation. Devis gratuit et sans engagement."
+  description="Décrivez votre projet en quelques lignes : nous revenons vers vous avec les prochaines étapes. Échange gratuit et sans engagement."
   breadcrumbs={[{ label: 'Contact', href: '/contact' }]}
 >
   <Section decor>
@@ -43,14 +42,15 @@ const titre = `Contact et demande de devis gratuit | ${site.nom}`;
       Parlons de <Souligne>votre projet</Souligne>
     </h1>
     <p class="anim-montee mt-4 max-w-2xl text-lg text-slate-700 delai-150">
-      {`Décrivez-nous votre projet en quelques lignes. Nous revenons vers vous sous ${site.delaiReponse} avec une première estimation.`}
+      Expliquez-nous votre besoin en quelques lignes. Nous vous répondons avec les prochaines étapes
+      et, lorsque c'est possible, une première orientation sur le périmètre.
     </p>
 
     <div class="mt-10 grid gap-12 lg:grid-cols-[minmax(0,2fr)_minmax(0,1fr)]">
       <div>
         {etat.envoye ? (
           <Success title="Votre demande est envoyée">
-            <p>Nous revenons vers vous sous {site.delaiReponse}.</p>
+            <p>Nous revenons vers vous avec les prochaines étapes.</p>
           </Success>
         ) : (
           <>
@@ -106,6 +106,7 @@ const titre = `Contact et demande de devis gratuit | ${site.nom}`;
                 label="Votre message"
                 type="textarea"
                 required
+                hint="Quelques lignes suffisent : objectif, utilisateurs, fonctionnalités importantes et délai souhaité."
                 value={etat.valeur('message')}
                 errors={etat.erreursChamps.message}
               />
@@ -127,8 +128,8 @@ const titre = `Contact et demande de devis gratuit | ${site.nom}`;
                   />
                 </button>
                 <p class="mt-3 text-sm text-slate-600">
-                  Gratuit et sans engagement. Vos informations servent uniquement à répondre à votre
-                  demande.
+                  Gratuit et sans engagement. Vos informations servent uniquement à traiter votre
+                  demande. Pas de relance commerciale insistante.
                 </p>
               </div>
             </form>
@@ -143,8 +144,10 @@ const titre = `Contact et demande de devis gratuit | ${site.nom}`;
         <div class="apparition">
           <h2 class="text-xl">Et ensuite ?</h2>
           <ol class="mt-4 list-decimal space-y-2 pl-5 text-slate-700">
-            <li>Nous lisons votre demande et nous revenons vers vous sous {site.delaiReponse}.</li>
-            <li>Nous organisons un appel de 30 minutes, gratuit, pour comprendre votre besoin.</li>
+            <li>Nous étudions votre demande.</li>
+            <li>
+              Si nécessaire, nous organisons un appel gratuit pour mieux comprendre votre besoin.
+            </li>
             <li>Vous recevez un devis clair, à prix fixe, sans engagement.</li>
           </ol>
         </div>
@@ -158,10 +161,6 @@ const titre = `Contact et demande de devis gratuit | ${site.nom}`;
             <li class="flex items-center gap-3">
               <Phone size={20} class="anim-zoom shrink-0 text-emerald-700 delai-550" />
               <span>Téléphone : {site.telephone}</span>
-            </li>
-            <li class="flex items-center gap-3">
-              <MapPin size={20} class="anim-zoom shrink-0 text-rose-700 delai-700" />
-              <span>Zone : {site.zone}</span>
             </li>
           </ul>
         </div>
