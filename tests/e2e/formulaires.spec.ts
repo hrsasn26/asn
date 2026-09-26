@@ -41,6 +41,11 @@ test.describe('formulaire de contact', () => {
       !(await page.evaluate(() => CSS.supports('appearance', 'base-select'))),
       'Liste du système : elle ne s’affiche pas dans la page.',
     );
+    // Toute requête POST serait un envoi du formulaire.
+    const envois: string[] = [];
+    page.on('request', (requete) => {
+      if (requete.method() === 'POST') envois.push(requete.url());
+    });
     const liste = page.getByLabel(/^Votre projet/);
     const choix = page.getByRole('option', { name: 'Application mobile' });
     await expect(liste).toHaveCSS('appearance', 'base-select');
@@ -52,14 +57,18 @@ test.describe('formulaire de contact', () => {
     await expect(choix).toBeHidden();
 
     // La touche Entrée ouvre la liste, comme la liste du système : elle n'envoie pas le formulaire.
+    // Le focus reste sur la liste ou passe sur un choix, selon le navigateur : le test ne le vérifie
+    // pas. Assertions « soft » : en cas d'échec, le rapport donne toutes les étapes en erreur.
     await liste.focus();
     await page.keyboard.press('Enter');
-    await expect(choix).toBeFocused();
+    await expect.soft(choix, 'Entrée ouvre la liste').toBeVisible();
     await page.keyboard.press('ArrowDown');
     await page.keyboard.press('Enter');
-    await expect(liste).toHaveValue('saas');
-    await expect(liste).toBeFocused();
-    await expect(page).not.toHaveTitle(/^Erreur : /);
+    await expect
+      .soft(liste, 'Flèche vers le bas, puis Entrée : autre choix')
+      .not.toHaveValue('application-mobile');
+    await expect.soft(choix, 'Entrée ferme la liste').toBeHidden();
+    expect(envois, "Entrée n'envoie pas le formulaire").toEqual([]);
   });
 
   test('propose WhatsApp avec un message déjà rempli', async ({ page }) => {

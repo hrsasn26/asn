@@ -255,16 +255,22 @@ const coordonnees = [
 <script>
   /*
    * Liste « Votre projet » en select personnalisable (utilitaire liste-deroulante, global.css) :
-   * la touche Entrée envoie le formulaire au lieu d'ouvrir la liste. Elle l'ouvre ici, comme la
-   * liste du système. Sans JavaScript, le formulaire fonctionne toujours.
+   * dans Chrome, la touche Entrée envoie le formulaire au lieu d'ouvrir la liste. Elle l'ouvre ici,
+   * comme la liste du système. Selon le navigateur, le focus reste sur la liste ouverte ou passe sur
+   * un choix : seul l'état de la liste (:open) compte. Les navigateurs sans :open ni showPicker()
+   * gardent leur comportement. Sans JavaScript, le formulaire fonctionne toujours.
    */
-  if (CSS.supports('appearance', 'base-select')) {
+  if (
+    CSS.supports('appearance', 'base-select') &&
+    CSS.supports('selector(:open)') &&
+    'showPicker' in HTMLSelectElement.prototype
+  ) {
     for (const liste of document.querySelectorAll<HTMLSelectElement>('select.liste-deroulante')) {
       liste.addEventListener('keydown', (evenement) => {
-        if (evenement.key === 'Enter' && evenement.target === liste && !liste.matches(':open')) {
-          evenement.preventDefault();
-          liste.showPicker();
-        }
+        // Liste ouverte : le navigateur gère la touche Entrée (il enregistre le choix).
+        if (evenement.key !== 'Enter' || liste.matches(':open')) return;
+        evenement.preventDefault();
+        liste.showPicker();
       });
     }
   }

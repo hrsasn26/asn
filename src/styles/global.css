@@ -161,8 +161,9 @@
 /*
  * Liste déroulante (<select>). Fermée : même apparence partout, sans la flèche du navigateur (la page
  * place une icône à côté). Ouverte : design du site dans les navigateurs qui acceptent le select
- * personnalisable (appearance: base-select, Chrome et Edge 135 et plus). Les autres navigateurs
- * affichent la liste du système. Sans animation : le texte des choix n'est jamais animé en opacité.
+ * personnalisable (appearance: base-select : Chrome et Edge 135 et plus, versions récentes de WebKit).
+ * Les autres navigateurs affichent la liste du système. Sans animation : le texte des choix n'est
+ * jamais animé en opacité.
  */
 @utility liste-deroulante {
   appearance: none;
