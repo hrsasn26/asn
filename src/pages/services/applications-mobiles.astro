@@ -64,7 +64,10 @@ const faq: QuestionFaq[] = [
     { label: 'Services', href: '/services' },
     { label: 'Applications mobiles', href: '/services/applications-mobiles' },
   ]}
-  jsonLd={serviceJsonLd({ name: title, description })}
+  jsonLd={serviceJsonLd(
+    { name: title, description, href: '/services/applications-mobiles' },
+    Astro.site ?? Astro.url.origin,
+  )}
 >
   <Hero
     maquette="applications-mobiles"
