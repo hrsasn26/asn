@@ -1828,13 +1828,11 @@ Les visuels des pages de services servent aussi de vignettes aux cartes des serv
 
 > Proposition à valider. Ajouté le 26 septembre 2026 avec Google Tag Manager (conteneur `GTM-WRR53MWN`), pour mesurer les annonces Google Ads de l'agence. L'agence fait ses propres annonces : l'offre ne change pas (Google Ads reste hors de notre offre, section 3).
 
-**Décision de l'agence (26 septembre 2026) : pas de bandeau des cookies.** Tag Manager se charge pour tous les visiteurs, par défaut. Un premier essai avec un bandeau (« Refuser », « Accepter ») est retiré le même jour. Risques signalés à l'agence avant la décision : la loi 09-08 (consentement, article 4) ; la règle de Google Ads sur le consentement des visiteurs de l'Union européenne, du Royaume-Uni et de la Suisse ; la promesse « bandeau cookies » de la page Sites web (section 6.2), faite aux clients. À faire valider par le juriste.
+**Décision de l'agence (26 septembre 2026) : pas de bandeau des cookies, ni de lien pour les refuser.** Tag Manager se charge pour tous les visiteurs. Un premier essai avec un bandeau (« Refuser », « Accepter »), puis un lien « Refuser les cookies » dans le pied de page, sont retirés le même jour. Risques signalés à l'agence avant la décision : la loi 09-08 (consentement, article 4 ; droit d'opposition, article 9) ; la règle de Google Ads sur le consentement des visiteurs de l'Union européenne, du Royaume-Uni et de la Suisse ; la promesse « bandeau cookies » de la page Sites web (section 6.2), faite aux clients. À faire valider par le juriste.
 
 **Règles :**
 - Tag Manager se charge seulement sur `www.digital-solutions.ma`, pas sur les aperçus Vercel. Sans JavaScript, il ne se charge pas.
-- Droit d'opposition (article 9 de la loi 09-08) : le lien « Refuser les cookies », en bas de chaque page, arrête Tag Manager et efface les cookies de Google enregistrés sur le domaine du site. Le choix est enregistré dans le navigateur. Après un refus, le lien devient « Accepter les cookies ».
-
-**Pied de page, colonne « Informations » :** Refuser les cookies (après un refus : Accepter les cookies)
+- Le visiteur peut seulement bloquer ou effacer les cookies dans les réglages de son navigateur.
 
 **Politique de confidentialité :**
 - Meta description : Quelles données nous collectons avec nos formulaires, sur WhatsApp et avec les cookies, pourquoi, qui les reçoit et comment exercer vos droits.
@@ -1844,7 +1842,7 @@ Les visuels des pages de services servent aussi de vignettes aux cartes des serv
 - « Cookies » :
   - Le site utilise Google Tag Manager et des cookies de Google Ads. Ils nous permettent de mesurer l'efficacité de nos annonces : par exemple, savoir si une visite venue d'une annonce Google mène à une demande de contact.
   - Google reçoit des informations sur votre visite : les pages vues, l'annonce sur laquelle vous avez cliqué, votre adresse IP et des informations sur votre navigateur.
-  - Vous pouvez refuser ces cookies à tout moment avec le lien « Refuser les cookies », en bas de chaque page. Tag Manager ne se charge plus et le site efface les cookies de Google enregistrés sur son domaine. Votre choix est enregistré dans votre navigateur. Vous pouvez aussi bloquer les cookies dans les réglages de votre navigateur.
+  - Vous pouvez bloquer ou effacer ces cookies dans les réglages de votre navigateur.
 
 ---
 
@@ -1862,7 +1860,7 @@ Les visuels des pages de services servent aussi de vignettes aux cartes des serv
 - **Déclaration préalable à la CNDP** des traitements du site (formulaires de contact et d'audit), avant la mise en ligne. Indiquer le numéro de récépissé dans les mentions légales et dans la politique de confidentialité.
 - **Transfert de données à l'étranger** (article 43) : Brevo (envoi des e-mails), WhatsApp (Meta, messages reçus sur le numéro de l'agence), Google (Tag Manager et Google Ads) et un hébergeur hors du Maroc reçoivent des données. Le transfert est à déclarer à la CNDP. Vérifier que le pays de destination est sur la liste des pays reconnus par la CNDP.
 - **Droits des personnes** : information (article 5), accès (article 7), rectification et suppression (article 8), opposition (article 9).
-- **Cookies** : depuis le 26 septembre 2026, le site utilise Google Tag Manager et Google Ads pour tous les visiteurs, sans bandeau des cookies (décision de l'agence, section 6.21). Le visiteur peut refuser avec le lien « Refuser les cookies » du pied de page. À faire valider par le juriste : l'absence de consentement préalable (article 4 de la loi 09-08), la base légale (intérêt légitime), le texte de la politique de confidentialité et la déclaration du traitement à la CNDP.
+- **Cookies** : depuis le 26 septembre 2026, le site utilise Google Tag Manager et Google Ads pour tous les visiteurs, sans bandeau des cookies ni lien pour les refuser (décision de l'agence, section 6.21). À faire valider par le juriste : l'absence de consentement préalable (article 4 de la loi 09-08), l'absence de moyen de refus sur le site (droit d'opposition, article 9), la base légale (intérêt légitime), le texte de la politique de confidentialité et la déclaration du traitement à la CNDP.
 
 **Site de l'agence**
 - Mentions légales : raison sociale, forme juridique, capital, siège, registre du commerce, ICE, identifiant fiscal, taxe professionnelle, directeur de la publication, hébergeur.
