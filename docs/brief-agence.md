@@ -1201,7 +1201,10 @@ Expliquez-nous votre besoin en quelques lignes. Nous vous répondons avec les pr
 
 - E-mail : contact@digital-solutions.ma
 - Téléphone : +212 6 10 73 23 77
+- WhatsApp : lien « Nous écrire sur WhatsApp » *(ajout du 26 septembre 2026, à valider)*
 - Adresse : N° 7, rue Tantane, 30000 Fès
+
+> WhatsApp : compte WhatsApp Business de l'agence (application gratuite), sur le même numéro que le téléphone, partagé par l'équipe : un téléphone principal et jusqu'à 4 postes reliés. Le lien « Nous écrire sur WhatsApp » (lien `wa.me`) ouvre la conversation avec un message déjà rempli : « Bonjour, je vous contacte depuis votre site. Mon projet : » *(à valider)*. Le texte du lien n'est pas le numéro : le lien du téléphone l'affiche déjà. Pas de bouton flottant sur les autres pages : il cacherait du contenu sur téléphone et concurrencerait le bouton principal.
 
 > L'e-mail, le téléphone et l'adresse sont confirmés le 26 septembre 2026. Ce sont des informations obligatoires (loi 31-08, article 29). Les valeurs sont dans `src/data/site.ts`. La ligne « Adresse » remplace l'ancienne ligne « Zone : [Ville ou région] ». Code postal reçu : « 300000 », corrigé en 30000 (code postal de Fès, cinq chiffres) : à confirmer.
 
@@ -1835,7 +1838,7 @@ Les visuels des pages de services servent aussi de vignettes aux cartes des serv
 
 **Données personnelles (loi 09-08, CNDP)**
 - **Déclaration préalable à la CNDP** des traitements du site (formulaires de contact et d'audit), avant la mise en ligne. Indiquer le numéro de récépissé dans les mentions légales et dans la politique de confidentialité.
-- **Transfert de données à l'étranger** (article 43) : Brevo (envoi des e-mails) et un hébergeur hors du Maroc reçoivent des données. Le transfert est à déclarer à la CNDP. Vérifier que le pays de destination est sur la liste des pays reconnus par la CNDP.
+- **Transfert de données à l'étranger** (article 43) : Brevo (envoi des e-mails), WhatsApp (Meta, messages reçus sur le numéro de l'agence) et un hébergeur hors du Maroc reçoivent des données. Le transfert est à déclarer à la CNDP. Vérifier que le pays de destination est sur la liste des pays reconnus par la CNDP.
 - **Droits des personnes** : information (article 5), accès (article 7), rectification et suppression (article 8), opposition (article 9).
 - **Cookies** : consentement avant tout cookie de suivi. Le site n'en utilise pas pour l'instant.
 
@@ -1879,8 +1882,9 @@ Les valeurs de `src/data/` (modalités de paiement, garantie, durée d'engagemen
 
 **Politique de confidentialité**
 - Responsable du traitement : « Déclaration auprès de la CNDP : [numéro de récépissé]. » (l'adresse est affichée depuis le 26 septembre 2026)
-- Base légale (consentement, article 4 de la loi 09-08) : [À confirmer par le juriste]
+- Base légale (consentement, article 4 de la loi 09-08, donné par la case du formulaire ou en écrivant sur WhatsApp) : [À confirmer par le juriste]
 - Brevo : [Vérifier la localisation des données, le contrat de sous-traitance et la déclaration du transfert à la CNDP]
+- WhatsApp (Meta) : [Vérifier les conditions de WhatsApp Business et la déclaration du transfert à la CNDP]
 - Destinataires : « Notre hébergeur : [nom de l'hébergeur, pays]. »
 - Section « Combien de temps nous les gardons » : [Durée à définir, par exemple 3 ans après notre dernier échange]. Après son retour, remettez aussi « combien de temps nous les gardons » dans la meta description et dans `llms.txt`.
 - Cookies : [À mettre à jour si un outil de mesure d'audience est ajouté]
@@ -1905,6 +1909,7 @@ Les valeurs de `src/data/` (modalités de paiement, garantie, durée d'engagemen
 - [ ] Confirmer les valeurs retirées du site, puis les réafficher : délai de réponse, délais des projets, pays d'hébergement, zone servie (données structurées, llms.txt), durée de conservation des sauvegardes, volume de modifications et délais d'intervention des forfaits, durée d'engagement, garantie
 - [ ] Fournir l'histoire de l'agence et les photos de l'équipe (section 6.10). Les noms, les rôles et la ville (Fès) sont reçus le 26 septembre 2026 : la section « L'équipe » est affichée.
 - [x] Donner le numéro de téléphone et l'adresse de l'agence : reçus le 26 septembre 2026, affichés sur Contact, les pages légales, L'agence (ville), dans les données structurées et dans llms.txt
+- [ ] Créer le compte WhatsApp Business de l'agence sur le +212 6 10 73 23 77 (lien affiché sur la page Contact depuis le 26 septembre 2026) : profil sans prix, vérification en deux étapes, jusqu'à 4 postes de l'équipe reliés
 - [ ] Préparer des preuves concrètes : exemple de rapport d'audit, captures de tests, exemples de livrables, cas clients et témoignages avec l'accord écrit des clients
 - [x] Intégrer le design du site : maquettes du designer, intégrées le 26 septembre 2026 (section « Design » de [stack-technique.md](stack-technique.md))
 - [ ] Relire et valider les surtitres et les libellés ajoutés par le design (section 6.20)
@@ -1913,4 +1918,4 @@ Les valeurs de `src/data/` (modalités de paiement, garantie, durée d'engagemen
 - [x] Choisir les technologies du site et commencer le développement (voir [stack-technique.md](stack-technique.md))
 - [ ] Faire valider les CGV, les mentions légales et la politique de confidentialité par un juriste (droit marocain)
 - [ ] Fournir les informations et les clauses des pages légales, puis remettre les parties retirées (section 7, « Parties retirées des pages légales »)
-- [ ] Déclarer les traitements du site à la CNDP, avec le transfert des données vers Brevo et l'hébergeur
+- [ ] Déclarer les traitements du site à la CNDP, avec le transfert des données vers Brevo, WhatsApp (Meta) et l'hébergeur

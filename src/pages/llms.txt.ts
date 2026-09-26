@@ -44,7 +44,7 @@ const descriptions: Record<string, string> = {
   '/mentions-legales': `Mentions légales du site ${site.nom} : éditeur, propriété intellectuelle et données personnelles.`,
   '/cgv': `Conditions générales de vente des prestations de ${site.nom} : devis, prix, délais, propriété, maintenance et droit de rétractation.`,
   '/confidentialite':
-    'Quelles données nous collectons avec nos formulaires, pourquoi, qui les reçoit et comment exercer vos droits.',
+    'Quelles données nous collectons avec nos formulaires et sur WhatsApp, pourquoi, qui les reçoit et comment exercer vos droits.',
 };
 
 const accueil =

@@ -17,6 +17,14 @@ export const site = {
   email: 'contact@digital-solutions.ma',
   /** Reçu le 26 septembre 2026. Format d'affichage : le lien `tel:` retire les espaces. */
   telephone: '+212 6 10 73 23 77',
+  /**
+   * Compte WhatsApp Business de l'agence, partagé par l'équipe : même numéro que le téléphone
+   * (26 septembre 2026). Format international obligatoire : le lien wa.me en dépend
+   * (src/lib/whatsapp.ts).
+   */
+  whatsapp: '+212 6 10 73 23 77',
+  /** Message déjà rempli à l'ouverture de la conversation (brief, section 6.11, à valider). */
+  messageWhatsApp: 'Bonjour, je vous contacte depuis votre site. Mon projet : ',
   /** Adresse de l'agence, reçue le 26 septembre 2026 (brief, section 6.11). */
   adresse: {
     rue: 'N° 7, rue Tantane',

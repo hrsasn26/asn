@@ -1,6 +1,7 @@
 ---
 // Projet de texte à faire valider par un juriste (docs/brief-agence.md, section 7).
-// Il décrit les traitements réels du site : formulaires, envoi par Brevo, limite d'envois.
+// Il décrit les traitements réels du site : formulaires, envoi par Brevo, limite d'envois,
+// messages reçus sur le WhatsApp de l'agence.
 // Cadre : loi 09-08 et Commission nationale de contrôle de la protection des données (CNDP).
 // Seules les parties confirmées sont affichées. Les parties qui attendent une information
 // (récépissé de la CNDP, hébergeur, durée de conservation) sont dans la section 7 du
@@ -13,7 +14,7 @@ import BaseLayout from '~/layouts/BaseLayout.astro';
 
 <BaseLayout
   title={`Politique de confidentialité | ${site.nom}`}
-  description="Quelles données nous collectons avec nos formulaires, pourquoi, qui les reçoit et comment exercer vos droits."
+  description="Quelles données nous collectons avec nos formulaires et sur WhatsApp, pourquoi, qui les reçoit et comment exercer vos droits."
   breadcrumbs={[{ label: 'Politique de confidentialité', href: '/confidentialite' }]}
 >
   <BarreLecture />
@@ -34,7 +35,7 @@ import BaseLayout from '~/layouts/BaseLayout.astro';
         </p>
 
         <h2>Les données que nous collectons</h2>
-        <p>Nous collectons uniquement les données que vous saisissez dans nos formulaires :</p>
+        <p>Nous collectons uniquement les données que vous nous envoyez :</p>
         <ul>
           <li>
             formulaire de contact : nom, adresse e-mail, téléphone (facultatif), type de projet
@@ -42,7 +43,11 @@ import BaseLayout from '~/layouts/BaseLayout.astro';
           </li>
           <li>
             formulaire d'audit gratuit : adresse de votre site, nom, adresse e-mail, téléphone
-            (facultatif) et principale préoccupation (facultative).
+            (facultatif) et principale préoccupation (facultative) ;
+          </li>
+          <li>
+            message sur WhatsApp : votre numéro de téléphone, votre nom de profil WhatsApp et le
+            contenu de vos messages.
           </li>
         </ul>
         <p>
@@ -56,8 +61,8 @@ import BaseLayout from '~/layouts/BaseLayout.astro';
           question. Nous ne les vendons pas et nous ne les utilisons pas pour de la publicité.
         </p>
         <p>
-          Base légale : votre consentement, donné en cochant la case du formulaire (article 4 de la
-          loi 09-08).
+          Base légale : votre consentement, donné en cochant la case du formulaire ou en nous
+          écrivant sur WhatsApp (article 4 de la loi 09-08).
         </p>
 
         <h2>Qui reçoit vos données</h2>
@@ -66,6 +71,11 @@ import BaseLayout from '~/layouts/BaseLayout.astro';
           <li>
             Brevo, notre prestataire d'envoi d'e-mails, qui nous transmet votre demande. Ses
             serveurs sont situés hors du Maroc : vos données sont donc transférées à l'étranger.
+          </li>
+          <li>
+            WhatsApp (Meta), si vous nous écrivez sur WhatsApp. Ses serveurs sont situés hors du
+            Maroc : vos messages sont donc transférés à l'étranger. WhatsApp applique aussi sa
+            propre politique de confidentialité.
           </li>
         </ul>
 

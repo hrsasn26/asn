@@ -16,6 +16,7 @@ import { adresseComplete, cta, lienTelephone, site } from '~/data/site';
 import BaseLayout from '~/layouts/BaseLayout.astro';
 import { etatFormulaire } from '~/lib/formulaire';
 import { typesProjet } from '~/lib/schemas';
+import { lienWhatsApp } from '~/lib/whatsapp';
 
 export const prerender = false;
 
@@ -37,9 +38,13 @@ const ensuite = [
 ];
 
 // Coordonnées : section 6.11 du brief.
+// WhatsApp (ajout du 26 septembre 2026, à valider) : même numéro que le téléphone, donc un
+// texte de lien distinct. La ligne reste cachée tant que le numéro est un placeholder.
+const whatsapp = lienWhatsApp(site.whatsapp, site.messageWhatsApp);
 const coordonnees = [
   { label: 'E-mail', valeur: site.email, href: `mailto:${site.email}` },
   { label: 'Téléphone', valeur: site.telephone, href: lienTelephone },
+  ...(whatsapp ? [{ label: 'WhatsApp', valeur: 'Nous écrire sur WhatsApp', href: whatsapp }] : []),
   { label: 'Adresse', valeur: adresseComplete },
 ];
 ---
