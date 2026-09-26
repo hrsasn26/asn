@@ -45,6 +45,18 @@ describe('envoyerEmail (Mailjet)', () => {
     });
   });
 
+  it('ajoute la version HTML si elle existe', async () => {
+    const fetchSimule = vi.fn().mockResolvedValue(new Response('{}', { status: 200 }));
+    vi.stubGlobal('fetch', fetchSimule);
+
+    await envoyerEmail({ ...email, html: '<p>Bonjour</p>' });
+
+    const [, options] = fetchSimule.mock.calls[0] as [string, RequestInit];
+    const [message] = JSON.parse(options.body as string).Messages;
+    expect(message.TextPart).toBe('Bonjour');
+    expect(message.HTMLPart).toBe('<p>Bonjour</p>');
+  });
+
   it('lève une erreur si Mailjet refuse la demande', async () => {
     vi.stubGlobal('fetch', vi.fn().mockResolvedValue(new Response('refus', { status: 401 })));
 

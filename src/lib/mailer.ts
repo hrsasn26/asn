@@ -9,6 +9,8 @@ import {
 export interface Email {
   sujet: string;
   texte: string;
+  /** Version HTML (src/lib/emails.ts). Le texte reste pour les messageries sans HTML. */
+  html?: string;
   repondreA: { email: string; nom: string };
 }
 
@@ -54,6 +56,7 @@ export async function envoyerEmail(email: Email): Promise<void> {
           ReplyTo: { Email: email.repondreA.email, Name: email.repondreA.nom },
           Subject: email.sujet.replace(/[\r\n]+/g, ' '),
           TextPart: email.texte,
+          HTMLPart: email.html,
         },
       ],
     }),
