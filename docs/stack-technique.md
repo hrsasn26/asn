@@ -126,7 +126,7 @@ deploy/                   Docker Compose, Caddyfile, script de déploiement
 - questions fréquentes : la réponse se déroule (`deroulant`), le « + » tourne en « × » ;
 - pages légales : une barre de lecture en haut de l'écran se remplit pendant le défilement (composant `BarreLecture`, classe `anim-progression`) ;
 - formulaires (Contact et Audit gratuit) : le libellé et la bordure du champ actif passent en bleu ; en cas d'erreur, le résumé des erreurs tremble et un halo rouge l'entoure (`anim-alerte`), et une icône d'alerte apparaît devant chaque message d'erreur (`anim-zoom`) ; le message de confirmation affiche une coche qui se dessine (`anim-trace`) ;
-- pied de page : les trois colonnes montent en place ;
+- pied de page : les quatre colonnes montent en place ;
 - clavier : le lien « Aller au contenu » descend en place (`animate-descend`), le contour du focus se resserre autour de l'élément (blanc sur les fonds sombres : variable `--anneau`) ;
 - entre deux pages, l'ancienne page monte en s'effaçant et la nouvelle arrive par le bas, l'en-tête reste en place (transitions de page du navigateur).
 
