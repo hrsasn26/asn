@@ -481,7 +481,7 @@ Pour moderniser votre site sans perdre ce qui fonctionne : contenus, redirection
 - **Rapide** : nous mesurons la vitesse de chaque page avant la livraison.
 - **Référencement technique** : structure des pages, balises, plan du site et données structurées pour que Google comprenne votre activité.
 - **Sécurisé** : connexion HTTPS, protections contre le spam et les attaques courantes.
-- **Conforme à la loi 09-08** : données personnelles protégées, bandeau cookies et pages légales mises en place.
+- **Conforme à la loi 09-08** : données personnelles protégées et pages légales mises en place. *(« bandeau cookies » retiré le 26 septembre 2026, décision de l'agence, section 6.21)*
 - **Accessible** : lisible par tous, y compris par les personnes en situation de handicap.
 - **Modifiable par vous** : un espace d'administration simple pour changer vos textes et vos images.
 - **Formation incluse** : nous vous montrons comment gérer votre site.
@@ -1613,10 +1613,7 @@ Nous mettons en place les outils et des chiffres fiables. L'analyse marketing, l
 **Quels outils utilisez-vous ?**
 Pour la mesure d'audience : Matomo, Plausible ou Google Analytics, selon vos besoins. Pour les tableaux de bord : des outils éprouvés comme Looker Studio ou Metabase, ou un tableau de bord sur mesure dans votre application.
 
-**Faut-il un bandeau cookies ?**
-Cela dépend de l'outil de mesure. Certains outils fonctionnent sans cookie de suivi. Nous vous conseillons la solution la plus simple qui respecte la loi 09-08.
-
-> À valider avec le juriste.
+*(Question « Faut-il un bandeau cookies ? » retirée le 26 septembre 2026, décision de l'agence, section 6.21.)*
 
 **Qui peut voir mes chiffres ?**
 Seulement les personnes que vous choisissez. Chaque accès est personnel, et vous décidez qui voit quoi.
@@ -1828,11 +1825,10 @@ Les visuels des pages de services servent aussi de vignettes aux cartes des serv
 
 > Proposition à valider. Ajouté le 26 septembre 2026 avec Google Tag Manager (conteneur `GTM-WRR53MWN`), pour mesurer les annonces Google Ads de l'agence. L'agence fait ses propres annonces : l'offre ne change pas (Google Ads reste hors de notre offre, section 3).
 
-**Décision de l'agence (26 septembre 2026) : pas de bandeau des cookies, ni de lien pour les refuser.** Tag Manager se charge pour tous les visiteurs. Un premier essai avec un bandeau (« Refuser », « Accepter »), puis un lien « Refuser les cookies » dans le pied de page, sont retirés le même jour. Risques signalés à l'agence avant la décision : la loi 09-08 (consentement, article 4 ; droit d'opposition, article 9) ; la règle de Google Ads sur le consentement des visiteurs de l'Union européenne, du Royaume-Uni et de la Suisse ; la promesse « bandeau cookies » de la page Sites web (section 6.2), faite aux clients. À faire valider par le juriste.
+**Décision de l'agence (26 septembre 2026) : pas de bandeau des cookies, ni de lien pour les refuser, ni de mention d'un bandeau sur le site.** Tag Manager se charge pour tous les visiteurs. Retirés aussi : « bandeau cookies » dans les inclus de la page Sites web (section 6.2), la question « Faut-il un bandeau cookies ? » de la page Données et tableaux de bord (section 6.17), et la phrase sur le blocage des cookies dans le navigateur (politique de confidentialité). Un premier essai avec un bandeau (« Refuser », « Accepter »), puis un lien « Refuser les cookies » dans le pied de page, sont retirés le même jour. Risques signalés à l'agence avant la décision : la loi 09-08 (consentement, article 4 ; droit d'opposition, article 9) ; la règle de Google Ads sur le consentement des visiteurs de l'Union européenne, du Royaume-Uni et de la Suisse ; la promesse « bandeau cookies » de la page Sites web (section 6.2), faite aux clients. À faire valider par le juriste.
 
 **Règles :**
 - Tag Manager se charge seulement sur `www.digital-solutions.ma`, pas sur les aperçus Vercel. Sans JavaScript, il ne se charge pas.
-- Le visiteur peut seulement bloquer ou effacer les cookies dans les réglages de son navigateur.
 
 **Politique de confidentialité :**
 - Meta description : Quelles données nous collectons avec nos formulaires, sur WhatsApp et avec les cookies, pourquoi, qui les reçoit et comment exercer vos droits.
@@ -1842,7 +1838,6 @@ Les visuels des pages de services servent aussi de vignettes aux cartes des serv
 - « Cookies » :
   - Le site utilise Google Tag Manager et des cookies de Google Ads. Ils nous permettent de mesurer l'efficacité de nos annonces : par exemple, savoir si une visite venue d'une annonce Google mène à une demande de contact.
   - Google reçoit des informations sur votre visite : les pages vues, l'annonce sur laquelle vous avez cliqué, votre adresse IP et des informations sur votre navigateur.
-  - Vous pouvez bloquer ou effacer ces cookies dans les réglages de votre navigateur.
 
 ---
 
@@ -1864,7 +1859,7 @@ Les visuels des pages de services servent aussi de vignettes aux cartes des serv
 
 **Site de l'agence**
 - Mentions légales : raison sociale, forme juridique, capital, siège, registre du commerce, ICE, identifiant fiscal, taxe professionnelle, directeur de la publication, hébergeur.
-- Politique de confidentialité, gestion des cookies.
+- Politique de confidentialité, avec la partie « Cookies ».
 - Consentement explicite sur tous les formulaires (contact, devis, audit).
 
 **Offre aux clients**

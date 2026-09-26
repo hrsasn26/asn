@@ -80,7 +80,7 @@ src/
     processus.ts          Les cinq étapes d'un projet (accueil, services)
     maquettes.ts          Visuels des en-têtes : textes alternatifs, légendes, largeurs affichées
   layouts/BaseLayout.astro  Structure commune : <head>, SEO, en-tête, pied de page
-  lib/                    Schémas des formulaires, envoi d'e-mail, limite de débit, SEO, consentement aux cookies
+  lib/                    Schémas des formulaires, envoi d'e-mail, limite de débit, SEO, Google Tag Manager
   pages/                  Une page par URL de l'arborescence (section 5 du brief)
   pages/llms.txt.ts       Fichier /llms.txt : une ligne par page, avec sa meta description
   styles/global.css       Tailwind, jetons de design, utilitaires (conteneur, surtitre…) et animations
