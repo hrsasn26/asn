@@ -1,5 +1,6 @@
 ---
 // Textes : docs/brief-agence.md, section 6.11 (proposition à valider). Surtitres : section 6.20.
+import ChevronDown from '@lucide/astro/icons/chevron-down';
 import { actions } from 'astro:actions';
 import Accent from '~/components/Accent.astro';
 import ButtonLink from '~/components/ButtonLink.astro';
@@ -143,18 +144,29 @@ const coordonnees = [
               >
                 Votre projet <span class="font-normal text-discret">(facultatif)</span>
               </label>
-              <select
-                id="champ-projet"
-                name="projet"
-                class="block w-full rounded-xl border border-champ bg-white px-4 py-3.5 text-[0.9375rem] text-encre transition-colors focus:border-bleu"
-              >
-                <option value="">Choisissez un type de projet</option>
-                {Object.entries(typesProjet).map(([valeur, libelle]) => (
-                  <option value={valeur} selected={projetChoisi === valeur}>
-                    {libelle}
-                  </option>
-                ))}
-              </select>
+              {/*
+               * Flèche du site à la place de celle du navigateur (appearance-none) : même marge
+               * intérieure que les autres champs, même rendu sur tous les navigateurs.
+               */}
+              <div class="relative">
+                <select
+                  id="champ-projet"
+                  name="projet"
+                  class="block w-full appearance-none rounded-xl border border-champ bg-white py-3.5 pr-11 pl-4 text-[0.9375rem] text-encre transition-colors focus:border-bleu"
+                >
+                  <option value="">Choisissez un type de projet</option>
+                  {Object.entries(typesProjet).map(([valeur, libelle]) => (
+                    <option value={valeur} selected={projetChoisi === valeur}>
+                      {libelle}
+                    </option>
+                  ))}
+                </select>
+                <ChevronDown
+                  size={20}
+                  aria-hidden="true"
+                  class="pointer-events-none absolute top-1/2 right-4 -translate-y-1/2 text-discret transition-colors group-focus-within:text-bleu"
+                />
+              </div>
             </div>
           </div>
           <Field
