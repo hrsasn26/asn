@@ -1203,7 +1203,7 @@ Expliquez-nous votre besoin en quelques lignes. Nous vous répondons avec les pr
 - Téléphone : +212 6 10 73 23 77
 - Adresse : N° 7, rue Tantane, 30000 Fès
 
-> L'e-mail, le téléphone et l'adresse sont confirmés le 26 septembre 2026. Ce sont des informations obligatoires (loi 31-08, article 29). Les valeurs sont dans `src/data/site.ts`. La ligne « Adresse » remplace l'ancienne ligne « Zone : [Ville ou région] ». Code postal reçu : « 300000 », corrigé en 30000 (code postal de Fès, cinq chiffres) : à confirmer.
+> L'e-mail, le téléphone et l'adresse sont confirmés le 26 septembre 2026. Ce sont des informations obligatoires (loi 31-08, article 29). Les valeurs sont dans `src/data/site.ts`. La ligne « Adresse » remplace l'ancienne ligne « Zone : [Ville ou région] ». Code postal 30000 confirmé le 26 septembre 2026.
 
 #### Encadré : audit
 
