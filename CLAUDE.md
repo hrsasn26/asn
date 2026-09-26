@@ -42,6 +42,7 @@ Les choix techniques, l'organisation du code et la mise en service sont dans [do
 - Les formulaires doivent fonctionner sans JavaScript. Tout nouveau formulaire utilise une Astro Action, un schéma Zod dans `src/lib/schemas.ts`, le champ piège et la case de consentement.
 - Pas de style en ligne (`style="…"`) ni de script externe sans mise à jour de la CSP (`astro.config.mjs`).
 - Toute nouvelle page doit passer les tests axe et Lighthouse de la CI.
+- `llms.txt` (GEO) : `src/pages/llms.txt.ts` reprend la meta description de chaque page. Une nouvelle page ou une meta description modifiée s'y reporte. `tests/e2e/llms.spec.ts` le vérifie, et `pnpm check:content` vérifie aussi ce fichier.
 - Couleurs, tailles de titres et largeur du contenu : les jetons de `src/styles/global.css` (`encre`, `bleu`, `doux`, `discret`, `surface`, `text-section`…), jamais de couleur en dur. Les mises en page passent par les composants `Hero`, `Section` (dispositions `colonnes`, `centre`, `pile`) et `Encadre` (tons `gris`, `sombre`, `cadre`).
 - Chaque section a un surtitre (petites capitales au-dessus du titre). Un nouveau surtitre s'ajoute d'abord dans la section 6.20 du brief.
 - Les visuels des en-têtes (`Hero maquette="…"`) sont des images avec un texte alternatif et la légende « Exemple fictif » (`src/data/maquettes.ts`). Leur texte respecte les mêmes règles que le site : aucun prix ni montant, aucune entreprise réelle, aucun engagement non confirmé. `pnpm test` et `pnpm image:heros` le vérifient sur les sources.

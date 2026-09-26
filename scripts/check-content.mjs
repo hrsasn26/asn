@@ -12,7 +12,7 @@
 import { spawn } from 'node:child_process';
 import { existsSync, readFileSync } from 'node:fs';
 import { parseArgs } from 'node:util';
-import { analyserTexte, extraireTexte } from './lib/content-rules.mjs';
+import { analyserTexte, extraireTexte, extraireTexteMarkdown } from './lib/content-rules.mjs';
 
 const { values: options } = parseArgs({
   options: {
@@ -27,12 +27,13 @@ if (!existsSync(SITEMAP)) {
   process.exit(1);
 }
 
-// Toutes les pages du sitemap, plus la page 404.
+// Toutes les pages du sitemap, plus la page 404 et le fichier llms.txt (Markdown).
 const chemins = [
   ...[...readFileSync(SITEMAP, 'utf8').matchAll(/<loc>([^<]+)<\/loc>/g)].map(
     ([, url]) => new URL(url ?? '').pathname,
   ),
   '/404',
+  '/llms.txt',
 ];
 
 let serveur;
@@ -53,10 +54,13 @@ let avertissements = 0;
 try {
   for (const chemin of chemins) {
     const reponse = await fetch(new URL(chemin, baseUrl));
-    const html = await reponse.text();
-    const problemes = analyserTexte(extraireTexte(html), { strict: options.strict });
+    const contenu = await reponse.text();
+    const fragments = chemin.endsWith('.txt')
+      ? extraireTexteMarkdown(contenu)
+      : extraireTexte(contenu);
+    const problemes = analyserTexte(fragments, { strict: options.strict });
 
-    const canonique = html.match(/<link rel="canonical" href="([^"]+)"/)?.[1] ?? '';
+    const canonique = contenu.match(/<link rel="canonical" href="([^"]+)"/)?.[1] ?? '';
     if (options.strict && /\/\/(localhost|127\.0\.0\.1)/.test(canonique)) {
       problemes.push({
         niveau: 'erreur',
@@ -80,7 +84,7 @@ try {
 }
 
 console.log(
-  `\n${chemins.length} pages vérifiées : ${erreurs} erreur(s), ${avertissements} avertissement(s).`,
+  `\n${chemins.length} pages et fichiers vérifiés : ${erreurs} erreur(s), ${avertissements} avertissement(s).`,
 );
 if (avertissements > 0 && !options.strict) {
   console.log('Les placeholders bloqueront la mise en production (mode --strict).');

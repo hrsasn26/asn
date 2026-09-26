@@ -1,5 +1,9 @@
 import { describe, expect, it } from 'vitest';
-import { analyserTexte, extraireTexte } from '../../scripts/lib/content-rules.mjs';
+import {
+  analyserTexte,
+  extraireTexte,
+  extraireTexteMarkdown,
+} from '../../scripts/lib/content-rules.mjs';
 
 describe('extraireTexte', () => {
   it('lit le titre, la description, les données structurées et le texte visible', () => {
@@ -14,6 +18,27 @@ describe('extraireTexte', () => {
     expect(fragments).toContain("Photo de l'équipe");
     expect(fragments).toContain('Bonjour à vous');
     expect(fragments.join(' ')).not.toContain('ignoré');
+  });
+});
+
+describe('extraireTexteMarkdown', () => {
+  it('garde le texte des liens et retire les adresses et les marques Markdown', () => {
+    const markdown = `# Agence\n\n> Des sites fiables.\n\n## Services\n\n- [Sites web](https://exemple.ma/sites-web): Un site rapide.\n`;
+    expect(extraireTexteMarkdown(markdown)).toEqual([
+      'Agence',
+      'Des sites fiables.',
+      'Services',
+      'Sites web: Un site rapide.',
+    ]);
+  });
+
+  it('laisse les placeholders visibles pour analyserTexte', () => {
+    const fragments = extraireTexteMarkdown(
+      '- [Contact](https://exemple.ma/contact): Écrivez à [adresse].',
+    );
+    expect(analyserTexte(fragments, { strict: false })).toEqual([
+      { niveau: 'avertissement', regle: 'placeholder', extrait: '[adresse]' },
+    ]);
   });
 });
 
