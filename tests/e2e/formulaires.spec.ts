@@ -31,6 +31,12 @@ test.describe('formulaire de contact', () => {
 
     await expect(page.getByRole('status')).toContainText('Votre demande est envoyée');
   });
+
+  test('propose WhatsApp avec un message déjà rempli', async ({ page }) => {
+    await page.goto('/contact');
+    const lien = page.getByRole('link', { name: '+212 6 10 73 23 77' });
+    await expect(lien).toHaveAttribute('href', /^https:\/\/wa\.me\/212610732377\?text=Bonjour/);
+  });
 });
 
 test.describe("formulaire d'audit gratuit", () => {

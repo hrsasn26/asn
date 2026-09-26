@@ -1201,6 +1201,9 @@ Expliquez-nous votre besoin en quelques lignes. Nous vous répondons avec les pr
 
 - E-mail : contact@digital-solutions.ma
 - Téléphone : [numéro de téléphone]
+- WhatsApp : +212 6 10 73 23 77 *(ajout du 26 septembre 2026, à valider)*
+
+> WhatsApp : compte WhatsApp Business de l'agence (application gratuite), partagé par l'équipe : un téléphone principal et jusqu'à 4 postes reliés. Le numéro est un lien `wa.me` qui ouvre la conversation avec un message déjà rempli : « Bonjour, je vous contacte depuis votre site. Mon projet : » *(à valider)*. Pas de bouton flottant sur les autres pages : il cacherait du contenu sur téléphone et concurrencerait le bouton principal.
 
 > L'e-mail est confirmé le 26 septembre 2026. Le téléphone reste en placeholder jusqu'à ce que le numéro soit disponible : c'est une information obligatoire (loi 31-08, article 29). La ligne « Zone : [Ville ou région] » est retirée tant que la ville n'est pas choisie.
 
@@ -1834,7 +1837,7 @@ Les visuels des pages de services servent aussi de vignettes aux cartes des serv
 
 **Données personnelles (loi 09-08, CNDP)**
 - **Déclaration préalable à la CNDP** des traitements du site (formulaires de contact et d'audit), avant la mise en ligne. Indiquer le numéro de récépissé dans les mentions légales et dans la politique de confidentialité.
-- **Transfert de données à l'étranger** (article 43) : Brevo (envoi des e-mails) et un hébergeur hors du Maroc reçoivent des données. Le transfert est à déclarer à la CNDP. Vérifier que le pays de destination est sur la liste des pays reconnus par la CNDP.
+- **Transfert de données à l'étranger** (article 43) : Brevo (envoi des e-mails), WhatsApp (Meta, messages reçus sur le numéro de l'agence) et un hébergeur hors du Maroc reçoivent des données. Le transfert est à déclarer à la CNDP. Vérifier que le pays de destination est sur la liste des pays reconnus par la CNDP.
 - **Droits des personnes** : information (article 5), accès (article 7), rectification et suppression (article 8), opposition (article 9).
 - **Cookies** : consentement avant tout cookie de suivi. Le site n'en utilise pas pour l'instant.
 
@@ -1869,6 +1872,7 @@ Les visuels des pages de services servent aussi de vignettes aux cartes des serv
 - [ ] Confirmer les valeurs retirées du site, puis les réafficher : délai de réponse, délais des projets, pays d'hébergement, ville, adresse et zone servie (données structurées, llms.txt), durée de conservation des sauvegardes, volume de modifications et délais d'intervention des forfaits, durée d'engagement, garantie
 - [ ] Fournir l'histoire de l'agence, la ville et les photos de l'équipe (section 6.10). Les noms et les rôles sont reçus le 26 septembre 2026 : la section « L'équipe » est affichée.
 - [ ] Donner le numéro de téléphone de l'agence (Contact, mentions légales)
+- [ ] Créer le compte WhatsApp Business de l'agence sur le +212 6 10 73 23 77 (affiché sur la page Contact depuis le 26 septembre 2026) : profil sans prix, vérification en deux étapes, jusqu'à 4 postes de l'équipe reliés
 - [ ] Préparer des preuves concrètes : exemple de rapport d'audit, captures de tests, exemples de livrables, cas clients et témoignages avec l'accord écrit des clients
 - [x] Intégrer le design du site : maquettes du designer, intégrées le 26 septembre 2026 (section « Design » de [stack-technique.md](stack-technique.md))
 - [ ] Relire et valider les surtitres et les libellés ajoutés par le design (section 6.20)
@@ -1876,4 +1880,4 @@ Les visuels des pages de services servent aussi de vignettes aux cartes des serv
 - [ ] Choisir les fournisseurs d'IA (données non utilisées pour l'entraînement, transfert hors du Maroc à déclarer à la CNDP)
 - [x] Choisir les technologies du site et commencer le développement (voir [stack-technique.md](stack-technique.md))
 - [ ] Faire valider les CGV et les mentions légales par un juriste (droit marocain)
-- [ ] Déclarer les traitements du site à la CNDP, avec le transfert des données vers Brevo et l'hébergeur
+- [ ] Déclarer les traitements du site à la CNDP, avec le transfert des données vers Brevo, WhatsApp (Meta) et l'hébergeur

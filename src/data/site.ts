@@ -16,6 +16,13 @@ export const site = {
   email: 'contact@digital-solutions.ma',
   /** À remplacer quand le numéro sera disponible. */
   telephone: '[numéro de téléphone]',
+  /**
+   * Compte WhatsApp Business de l'agence, partagé par l'équipe (reçu le 26 septembre 2026).
+   * Format international obligatoire : le lien wa.me en dépend (src/lib/whatsapp.ts).
+   */
+  whatsapp: '+212 6 10 73 23 77',
+  /** Message déjà rempli à l'ouverture de la conversation (brief, section 6.11, à valider). */
+  messageWhatsApp: 'Bonjour, je vous contacte depuis votre site. Mon projet : ',
 } as const;
 
 /** Paramètres de l'offre cités dans les CGV (projet de texte à faire valider par un juriste). */
