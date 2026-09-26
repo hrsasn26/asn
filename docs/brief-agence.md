@@ -1155,7 +1155,7 @@ Expliquez-nous votre besoin en quelques lignes. Nous vous répondons avec les pr
 - Nom *(obligatoire)*
 - E-mail *(obligatoire)*
 - Téléphone *(facultatif)*
-- Votre projet : Site web / Application sur mesure / Automatisation et intégrations / Hébergement et maintenance / Autre *(facultatif)*
+- Votre projet : Site web / Application sur mesure / Application mobile / Logiciel SaaS / Intelligence artificielle / Automatisation et intégrations / Données et tableaux de bord / Tests et sécurité / Hébergement et maintenance / Autre *(facultatif)*. Un choix par pôle de services (ajout du 26 septembre 2026).
 - Votre message *(obligatoire)*, avec l'aide : « Quelques lignes suffisent : objectif, utilisateurs, fonctionnalités importantes et délai souhaité. »
 - Case de consentement (loi 09-08) + lien vers la politique de confidentialité
 
