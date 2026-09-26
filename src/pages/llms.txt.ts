@@ -80,7 +80,7 @@ export const GET: APIRoute = ({ site: adresse }) => {
     `> ${accueil}`,
     'Des sites et des applications fiables, testés, sécurisés et suivis dans la durée. ' +
       "Chaque projet fait l'objet d'un devis gratuit et détaillé, à prix fixe.",
-    `Adresse : ${adresseComplete}, Maroc. Téléphone : ${site.telephone}. E-mail : ${site.email}.`,
+    `Adresse : ${adresseComplete}. Téléphone : ${site.telephone}. E-mail : ${site.email}.`,
     ...sections.map(({ titre, liens }) => `## ${titre}\n\n${liens.map(ligne).join('\n')}`),
   ].join('\n\n');
 

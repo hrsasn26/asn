@@ -11,8 +11,11 @@
 export const LARGEUR_MAQUETTE = 1040;
 export const HAUTEUR_MAQUETTE = 720;
 
-/** Largeurs des images AVIF, en pixels : téléphones, tablettes et ordinateurs, écrans haute densité. */
-export const LARGEURS_AVIF = [480, 720, 960, 1200, 1600];
+/**
+ * Largeurs des images AVIF, en pixels : téléphones, tablettes et ordinateurs, écrans haute densité.
+ * La plus grande couvre un visuel de 1200 px (pages de services) sur un écran de densité 2.
+ */
+export const LARGEURS_AVIF = [480, 720, 960, 1200, 1600, 2000, 2400];
 
 /** Largeur de l'image WebP, pour les navigateurs qui ne lisent pas l'AVIF. */
 export const LARGEUR_WEBP = 1200;
@@ -57,9 +60,8 @@ export const legendeVignettes =
  * les mises en page : contenu de 1200 px au plus, marges de 32 px (20 px sur téléphone).
  */
 export const TAILLES_MAQUETTE = {
-  /** En-tête en deux colonnes (pages de services, audit gratuit) : à droite du texte. */
-  colonne:
-    '(min-width: 1264px) 620px, (min-width: 1008px) calc((100vw - 128px) * 0.545), (min-width: 640px) calc(100vw - 64px), calc(100vw - 40px)',
+  /** En-tête des pages de services et de l'audit gratuit : sous le texte, sur toute la largeur. */
+  dessous: '(min-width: 1264px) 1200px, (min-width: 640px) calc(100vw - 64px), calc(100vw - 40px)',
   /** En-tête centré (accueil) : sous le texte, 1040 px au plus. */
   centre: '(min-width: 1104px) 1040px, (min-width: 640px) calc(100vw - 64px), calc(100vw - 40px)',
   /** Vignette d'une carte de service : grille de une à trois colonnes. */

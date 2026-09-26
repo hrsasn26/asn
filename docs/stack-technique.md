@@ -34,7 +34,7 @@
 | Police | Manrope (licence SIL OFL), API Fonts d'Astro, fichier local | Servie par le site (aucune requête vers Google Fonts) : un seul fichier variable de 25 Ko, préchargé. Astro calcule une police de secours aux mêmes dimensions : pas de décalage du texte au chargement. |
 | Images | Visuels des en-têtes en AVIF, icônes Lucide (`@lucide/astro`, licence ISC) | Les visuels des en-têtes sont des maquettes d'écrans pour des clients fictifs, rendues en images (`pnpm image:heros`). Ils servent aussi de vignettes aux cartes des services. Aucune photo de stock. Les icônes Lucide ne restent que dans les messages d'erreur des formulaires. |
 | Formulaires | Astro Actions + Zod, adaptateur `@astrojs/node` | Validation côté serveur, messages d'erreur en français, champ piège anti-spam, limite de débit par adresse IP. |
-| E-mails | Brevo (API transactionnelle) | Chaque demande arrive par e-mail à l'équipe. Serveurs hors du Maroc : transfert à déclarer à la CNDP. |
+| E-mails | Mailjet (API Send v3.1) | Chaque demande arrive par e-mail à l'équipe. Mailjet remplace Brevo depuis le 26 septembre 2026. Serveurs hors du Maroc : transfert à déclarer à la CNDP. |
 | SEO et GEO | `@astrojs/sitemap`, JSON-LD, `llms.txt` | Balises title et meta du brief. Données structurées : ProfessionalService (avec l'adresse, le téléphone et l'équipe de l'agence, identifiant `@id` repris par Service, WebSite, AboutPage et Person), WebSite, Service (avec son adresse et son type, le libellé du menu), AboutPage et Person sur L'agence (équipe de `src/data/equipe.ts`), BreadcrumbList, FAQPage (produit par le composant `Faq` à partir des questions affichées), sans zone servie tant qu'elle n'est pas confirmée. Fichier `/llms.txt` (format llmstxt.org) pour les assistants et les moteurs à base d'IA : les coordonnées de l'agence, puis une ligne par page, avec sa meta description. |
 | Annonces | Google Tag Manager (`GTM-WRR53MWN`) pour Google Ads, sans bandeau des cookies (décision de l'agence) | Composant `TagManager` : Tag Manager se charge pour tous les visiteurs, seulement sur `www.digital-solutions.ma`. Sans JavaScript, pas de Tag Manager. Détails en section 5, « Cookies et Google Tag Manager ». |
 | Sécurité | CSP d'Astro + en-têtes HTTP dans Caddy | Astro calcule les empreintes des scripts et des styles de chaque page. Caddy ajoute HSTS, X-Frame-Options, etc. |
@@ -58,7 +58,7 @@ Visiteur ──HTTPS──▶ Caddy (certificat, en-têtes de sécurité, compre
                       └── /contact et /audit-gratuit, rendues à la demande
                               │
                               ▼
-                            Brevo ──▶ e-mail à l'équipe
+                          Mailjet ──▶ e-mail à l'équipe
 ```
 
 - Un formulaire envoyé sans JavaScript revient sur la même page, avec les erreurs ou le message de confirmation.
@@ -116,9 +116,10 @@ deploy/                   Docker Compose, Caddyfile, script de déploiement
 - Couleurs : bleu nuit `encre` (#0b1b33) pour le texte et les encadrés sombres, bleu `bleu` (#1d4ed8) pour les liens et les boutons, gris pour le texte secondaire (`texte`, `doux`, `fonce`, `discret`) et les fonds (`surface`), jaune `surligne` pour les placeholders. Sur fond sombre, le logo utilise aussi `nuit-logo-bleu` et `nuit-logo-nom`.
 - Typographie : Manrope. Titres en graisse légère (300) avec une partie en gras (composant `Accent`, propriété `motCle`), tailles fluides (`text-accroche`, `text-titre`, `text-titre-service`, `text-section`, `text-encadre`, `text-appel`). Un surtitre en petites capitales au-dessus de chaque titre de section (utilitaire `surtitre`, textes dans la section 6.20 du brief).
 - Mise en page : contenu de 1200 px au plus (utilitaire `conteneur`). En-tête collant, fond blanc translucide. En haut de chaque page, un fond gris qui s'éclaircit vers le blanc (`BaseLayout`). Sections en trois dispositions (`Section` : `colonnes`, `centre`, `pile`), encadrés arrondis (`Encadre` : `gris`, `sombre`, `cadre`). Boutons en pilule (`ButtonLink`). Pied de page bleu nuit.
-- En-tête des pages (`Hero`) : centré avec le visuel en dessous (accueil), texte et visuel côte à côte (pages de services, audit gratuit) ou texte seul (Services, Processus, L'agence).
+- En-tête des pages (`Hero`) : centré avec le visuel en dessous (accueil), texte puis visuel sur toute la largeur du contenu (pages de services, audit gratuit) ou texte seul (Services, Processus, L'agence).
 - Écarts avec les maquettes, pour l'accessibilité : les liens dans le texte sont soulignés (la couleur seule ne suffit pas, WCAG 1.4.1) ; la bordure des champs est plus foncée (contraste de 3:1, WCAG 1.4.11) ; le gris des surtitres, des numéros et des mentions « facultatif » est un peu plus foncé (#647089 au lieu de #6b7690 et #8a94a8 : contraste de 4,5:1 sur le fond gris) ; l'exemple de l'adresse du site (audit) est une aide visible sous le libellé, pas un texte d'exemple dans le champ, qui disparaît pendant la saisie.
 - Écarts avec les maquettes, pour les règles du site : la légende « Exemple fictif » reste sous chaque visuel (et sous la grille des cartes) ; la section « L'équipe » de L'agence affiche les initiales à la place des photos, jusqu'à réception des vraies photos ; les textes des pages sont ceux de cette révision, pas ceux des maquettes.
+- Écart avec les maquettes, à la demande de l'agence (26 septembre 2026) : sur les pages de services et l'audit gratuit, le visuel de l'en-tête est sous le texte, sur toute la largeur du contenu (1200 px au plus), et non à droite du texte. À côté du texte, il ne faisait que 620 px de large : les écrans étaient trop petits pour être lisibles. Sur grand écran, le titre est à gauche, le sous-titre et les boutons à droite.
 - Écart avec les maquettes, à la demande de l'agence (26 septembre 2026) : les boutons sont bleus (`bleu`), pas bleu nuit. Bouton principal et bouton d'envoi des formulaires : fond bleu, bleu nuit au survol. Bouton de l'en-tête : contour bleu, rempli au survol. Bouton secondaire : contour gris, bleu au survol. Choix en pastille (Audit gratuit) : fond bleu quand ils sont cochés. Sur les encadrés sombres, le bouton reste blanc : le bleu sur le bleu nuit n'a qu'un contraste de 2,6:1.
 
 **Animations.** Le design est sobre : elles sont discrètes, en CSS seul, dans `src/styles/global.css` :
@@ -215,7 +216,8 @@ Le site peut aussi être déployé sur Vercel (projet `asn`, équipe `hrs20`). L
 - `vercel.json` ajoute les en-têtes de sécurité, et `X-Robots-Tag: noindex` seulement sur les adresses `*.vercel.app`. Le domaine de l'agence est indexé (voir « Nom de domaine »).
 - Variables d'environnement à définir dans Vercel pour les formulaires :
   - `MAIL_TRANSPORT=log` pour tester : les demandes apparaissent dans les journaux Vercel, sans e-mail ;
-  - ou `MAIL_TRANSPORT=brevo` avec `BREVO_API_KEY`, `MAIL_FROM` et `MAIL_TO` pour de vrais envois.
+  - ou `MAIL_TRANSPORT=mailjet` avec `MAILJET_API_KEY`, `MAILJET_SECRET_KEY`, `MAIL_FROM` et `MAIL_TO` pour de vrais envois. `MAIL_FROM` doit être une adresse validée dans Mailjet (**Account settings → Sender addresses & domains**).
+  Marquez les deux clés de Mailjet comme **Sensitive** dans Vercel. Après un changement de variable, redéployez le site.
   Sans ces variables, les formulaires affichent un message d'erreur.
 - La limite d'envois est en mémoire. Sur Vercel, chaque instance de fonction a son propre compteur : la protection contre le spam est plus faible que sur le VPS.
 
@@ -244,7 +246,7 @@ Le domaine de l'agence est `digital-solutions.ma`. L'adresse officielle du site 
 
 **Pour la production sur le VPS**, voir la section 8 : les mêmes enregistrements DNS pointent alors vers l'adresse IP du serveur.
 
-**E-mails :** pour envoyer les formulaires depuis une adresse `@digital-solutions.ma`, authentifiez le domaine dans Brevo (enregistrements DNS SPF, DKIM et DMARC fournis par Brevo).
+**E-mails :** pour envoyer les formulaires depuis une adresse `@digital-solutions.ma`, authentifiez le domaine dans Mailjet (enregistrements DNS SPF et DKIM fournis par Mailjet, plus un enregistrement DMARC).
 
 ## 8. Mise en service
 
@@ -254,7 +256,7 @@ Le déploiement est désactivé tant que ces étapes ne sont pas faites.
 2. **Configuration du serveur** : copiez `.env.example` dans ce dossier sous le nom `.env`, puis remplissez les valeurs. En production : `SITE_DOMAIN=www.digital-solutions.ma` et `DOMAINES_REDIRIGES=digital-solutions.ma`.
 3. **Accès à l'image** : sur le serveur, connectez Docker à `ghcr.io` avec un jeton GitHub en lecture seule (`read:packages`), ou rendez le paquet public.
 4. **DNS** : faites pointer `digital-solutions.ma` et `www.digital-solutions.ma` vers le serveur (enregistrements `A`, et `AAAA` si le serveur a une adresse IPv6). Caddy obtient les certificats HTTPS tout seul et redirige l'adresse sans `www`.
-5. **Brevo** : créez une clé d'API et authentifiez le domaine `digital-solutions.ma` (voir « Nom de domaine » ci-dessus).
+5. **Mailjet** : utilisez la clé d'API et la clé secrète de Mailjet, et authentifiez le domaine `digital-solutions.ma` (voir « Nom de domaine » ci-dessus).
 6. **GitHub** :
    - variables du dépôt : `DEPLOY_ENABLED=true`, `SITE_URL=https://www.digital-solutions.ma` ;
    - environnements `preprod` et `production`, chacun avec les variables `DEPLOY_HOST`, `DEPLOY_USER`, `DEPLOY_PATH`, `DEPLOY_URL` et les secrets `DEPLOY_SSH_KEY`, `DEPLOY_KNOWN_HOSTS` ;

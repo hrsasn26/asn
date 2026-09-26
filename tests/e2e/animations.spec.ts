@@ -52,9 +52,14 @@ test.describe('barre de lecture', () => {
     const ecran = page.viewportSize()?.width ?? 0;
     // En haut de la page, la barre est vide.
     expect(await largeur()).toBeLessThan(1);
-    // En bas de la page, elle occupe toute la largeur de l'écran.
-    await page.evaluate(() => window.scrollTo(0, document.documentElement.scrollHeight));
-    await expect.poll(largeur).toBeGreaterThan(ecran - 1);
+    // En bas de la page, elle occupe toute la largeur de l'écran. La page peut encore grandir
+    // (chargement de la police) : on redescend en bas avant chaque mesure.
+    await expect
+      .poll(async () => {
+        await page.evaluate(() => window.scrollTo(0, document.documentElement.scrollHeight));
+        return largeur();
+      })
+      .toBeGreaterThan(ecran - 1);
   });
 });
 

@@ -22,7 +22,7 @@ test('le lien d’évitement mène au contenu principal', async ({ page, browser
   await expect(page).toHaveURL(/#contenu$/);
 });
 
-test('le pied de page donne l’e-mail, le téléphone et WhatsApp', async ({ page }) => {
+test('le pied de page donne l’e-mail, le téléphone, WhatsApp et l’adresse', async ({ page }) => {
   await page.goto('/');
   const pied = page.getByRole('contentinfo');
   await expect(pied.getByRole('link', { name: 'contact@digital-solutions.ma' })).toHaveAttribute(
@@ -37,4 +37,5 @@ test('le pied de page donne l’e-mail, le téléphone et WhatsApp', async ({ pa
     'href',
     /^https:\/\/wa\.me\/212610732377\?text=Bonjour/,
   );
+  await expect(pied.getByText('N° 7, rue Tantane, 30000 Fès, Maroc')).toBeVisible();
 });

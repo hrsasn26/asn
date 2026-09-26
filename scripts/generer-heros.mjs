@@ -63,10 +63,10 @@ mkdirSync(DOSSIER_IMAGES, { recursive: true });
 const navigateur = await chromium.launch(
   process.env.PW_CHROMIUM_PATH ? { executablePath: process.env.PW_CHROMIUM_PATH } : {},
 );
-// Rendu au double de la taille CSS : assez de pixels pour la plus grande image (1600 px).
+// Rendu assez grand pour la plus grande image (2400 px, soit 2,3 fois la taille CSS).
 const page = await navigateur.newPage({
   viewport: { width: LARGEUR_MAQUETTE, height: HAUTEUR_MAQUETTE },
-  deviceScaleFactor: 2,
+  deviceScaleFactor: Math.max(...LARGEURS_AVIF) / LARGEUR_MAQUETTE,
 });
 
 for (const nom of noms) {

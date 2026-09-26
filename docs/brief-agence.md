@@ -26,7 +26,7 @@
 | **Clients cibles** | TPE, PME et particuliers, au Maroc |
 | **Compétences de l'équipe** | Ingénierie logicielle, développement fullstack, DevOps, QA (tests) |
 | **Compétences absentes** | Design graphique et UX/UI, marketing (publicité, réseaux sociaux, rédaction) |
-| **Zone géographique** | Maroc. L'agence est à Fès : N° 7, rue Tantane, 30000 Fès (reçu le 26 septembre 2026, utile pour le référencement local) |
+| **Zone géographique** | Maroc. L'agence est à Fès : N° 7, rue Tantane, 30000 Fès, Maroc (reçu le 26 septembre 2026, utile pour le référencement local) |
 
 ---
 
@@ -1087,9 +1087,9 @@ Reprend l'appel à l'action final de la page Services (6.1).
 
 **H1 :** Une équipe accessible, du premier échange au suivi
 
-**Sous-titre :** Nous concevons des sites et des applications solides, avec un interlocuteur direct et une responsabilité claire sur la qualité technique. Nous sommes basés à Fès.
+**Sous-titre :** Nous concevons des sites et des applications solides, avec un interlocuteur direct et une responsabilité claire sur la qualité technique.
 
-> Ancien H1 : « Une équipe d'ingénieurs, à la taille de votre projet ». La ville est revenue dans le sous-titre le 26 septembre 2026, avec l'adresse de l'agence.
+> Ancien H1 : « Une équipe d'ingénieurs, à la taille de votre projet ». La phrase « Nous sommes basés à Fès. » est retirée du sous-titre le 26 septembre 2026 : l'adresse est sur Contact et dans le pied de page.
 
 #### Section : pourquoi nous avons créé l'agence
 
@@ -1202,9 +1202,9 @@ Expliquez-nous votre besoin en quelques lignes. Nous vous répondons avec les pr
 - E-mail : contact@digital-solutions.ma
 - Téléphone : +212 6 10 73 23 77
 - WhatsApp : lien « Nous écrire sur WhatsApp » *(ajout du 26 septembre 2026, à valider)*
-- Adresse : N° 7, rue Tantane, 30000 Fès
+- Adresse : N° 7, rue Tantane, 30000 Fès, Maroc
 
-> WhatsApp : compte WhatsApp Business de l'agence (application gratuite), sur le même numéro que le téléphone, partagé par l'équipe : un téléphone principal et jusqu'à 4 postes reliés. Le lien « Nous écrire sur WhatsApp » (lien `wa.me`) ouvre la conversation avec un message déjà rempli : « Bonjour, je vous contacte depuis votre site. Mon projet : » *(à valider)*. Le texte du lien n'est pas le numéro : le lien du téléphone l'affiche déjà. Le lien a le logo de WhatsApp devant son texte, et il est aussi dans le pied de page, avec l'e-mail et le téléphone (26 septembre 2026). Pas de bouton flottant sur les autres pages : il cacherait du contenu sur téléphone et concurrencerait le bouton principal.
+> WhatsApp : compte WhatsApp Business de l'agence (application gratuite), sur le même numéro que le téléphone, partagé par l'équipe : un téléphone principal et jusqu'à 4 postes reliés. Le lien « Nous écrire sur WhatsApp » (lien `wa.me`) ouvre la conversation avec un message déjà rempli : « Bonjour, je vous contacte depuis votre site. Mon projet : » *(à valider)*. Le texte du lien n'est pas le numéro : le lien du téléphone l'affiche déjà. Le lien a le logo de WhatsApp devant son texte, et il est aussi dans le pied de page, avec l'e-mail, le téléphone et l'adresse (26 septembre 2026). Pas de bouton flottant sur les autres pages : il cacherait du contenu sur téléphone et concurrencerait le bouton principal.
 
 > L'e-mail, le téléphone et l'adresse sont confirmés le 26 septembre 2026. Ce sont des informations obligatoires (loi 31-08, article 29). Les valeurs sont dans `src/data/site.ts`. La ligne « Adresse » remplace l'ancienne ligne « Zone : [Ville ou région] ». Code postal reçu : « 300000 », corrigé en 30000 (code postal de Fès, cinq chiffres) : à confirmer.
 
@@ -1853,7 +1853,7 @@ Les visuels des pages de services servent aussi de vignettes aux cartes des serv
 
 **Données personnelles (loi 09-08, CNDP)**
 - **Déclaration préalable à la CNDP** des traitements du site (formulaires de contact et d'audit), avant la mise en ligne. Indiquer le numéro de récépissé dans les mentions légales et dans la politique de confidentialité.
-- **Transfert de données à l'étranger** (article 43) : Brevo (envoi des e-mails), WhatsApp (Meta, messages reçus sur le numéro de l'agence), Google (Tag Manager et Google Ads) et un hébergeur hors du Maroc reçoivent des données. Le transfert est à déclarer à la CNDP. Vérifier que le pays de destination est sur la liste des pays reconnus par la CNDP.
+- **Transfert de données à l'étranger** (article 43) : Mailjet (envoi des e-mails), WhatsApp (Meta, messages reçus sur le numéro de l'agence), Google (Tag Manager et Google Ads) et un hébergeur hors du Maroc reçoivent des données. Le transfert est à déclarer à la CNDP. Vérifier que le pays de destination est sur la liste des pays reconnus par la CNDP.
 - **Droits des personnes** : information (article 5), accès (article 7), rectification et suppression (article 8), opposition (article 9).
 - **Cookies** : depuis le 26 septembre 2026, le site utilise Google Tag Manager et Google Ads pour tous les visiteurs, sans bandeau des cookies ni lien pour les refuser (décision de l'agence, section 6.21). À faire valider par le juriste : l'absence de consentement préalable (article 4 de la loi 09-08), l'absence de moyen de refus sur le site (droit d'opposition, article 9), la base légale (intérêt légitime), le texte de la politique de confidentialité et la déclaration du traitement à la CNDP.
 
@@ -1876,7 +1876,7 @@ Les valeurs de `src/data/` (modalités de paiement, garantie, durée d'engagemen
 
 **Mentions légales**
 - Éditeur : « Le site www.digital-solutions.ma est édité par Digital Solutions, [forme juridique] au capital de [montant] DH. » Attention : `pnpm check:content` bloque les montants en dirhams, la règle devra accepter le capital.
-- Siège social : l'adresse de l'agence (N° 7, rue Tantane, 30000 Fès) est affichée depuis le 26 septembre 2026, avec l'intitulé « Adresse ». Si c'est aussi le siège social inscrit au registre du commerce, remplacez l'intitulé par « Siège social ».
+- Siège social : l'adresse de l'agence (N° 7, rue Tantane, 30000 Fès, Maroc) est affichée depuis le 26 septembre 2026, avec l'intitulé « Adresse ». Si c'est aussi le siège social inscrit au registre du commerce, remplacez l'intitulé par « Siège social ».
 - Registre du commerce : [ville], numéro [numéro]
 - Identifiant commun de l'entreprise (ICE) : [numéro]
 - Identifiant fiscal (IF) : [numéro]
@@ -1898,7 +1898,7 @@ Les valeurs de `src/data/` (modalités de paiement, garantie, durée d'engagemen
 **Politique de confidentialité**
 - Responsable du traitement : « Déclaration auprès de la CNDP : [numéro de récépissé]. » (l'adresse est affichée depuis le 26 septembre 2026)
 - Base légale (consentement, article 4 de la loi 09-08, donné par la case du formulaire ou en écrivant sur WhatsApp) : [À confirmer par le juriste]
-- Brevo : [Vérifier la localisation des données, le contrat de sous-traitance et la déclaration du transfert à la CNDP]
+- Mailjet : [Vérifier la localisation des données, le contrat de sous-traitance et la déclaration du transfert à la CNDP]
 - WhatsApp (Meta) : [Vérifier les conditions de WhatsApp Business et la déclaration du transfert à la CNDP]
 - Destinataires : « Notre hébergeur : [nom de l'hébergeur, pays]. »
 - Section « Combien de temps nous les gardons » : [Durée à définir, par exemple 3 ans après notre dernier échange]. Après son retour, remettez aussi « combien de temps nous les gardons » dans la meta description et dans `llms.txt`.
@@ -1936,4 +1936,4 @@ Les valeurs de `src/data/` (modalités de paiement, garantie, durée d'engagemen
 - [x] Choisir les technologies du site et commencer le développement (voir [stack-technique.md](stack-technique.md))
 - [ ] Faire valider les CGV, les mentions légales et la politique de confidentialité par un juriste (droit marocain)
 - [ ] Fournir les informations et les clauses des pages légales, puis remettre les parties retirées (section 7, « Parties retirées des pages légales »)
-- [ ] Déclarer les traitements du site à la CNDP, avec le transfert des données vers Brevo, WhatsApp (Meta), Google (Tag Manager et Google Ads) et l'hébergeur
+- [ ] Déclarer les traitements du site à la CNDP, avec le transfert des données vers Mailjet, WhatsApp (Meta), Google (Tag Manager et Google Ads) et l'hébergeur

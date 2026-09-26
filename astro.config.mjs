@@ -120,10 +120,11 @@ export default defineConfig({
       MAIL_TRANSPORT: envField.enum({
         context: 'server',
         access: 'secret',
-        values: ['brevo', 'log'],
+        values: ['mailjet', 'log'],
         optional: true,
       }),
-      BREVO_API_KEY: envField.string({ context: 'server', access: 'secret', optional: true }),
+      MAILJET_API_KEY: envField.string({ context: 'server', access: 'secret', optional: true }),
+      MAILJET_SECRET_KEY: envField.string({ context: 'server', access: 'secret', optional: true }),
       MAIL_FROM: envField.string({ context: 'server', access: 'secret', optional: true }),
       MAIL_TO: envField.string({ context: 'server', access: 'secret', optional: true }),
       // Demandes autorisées par adresse IP toutes les 10 minutes (formulaires).

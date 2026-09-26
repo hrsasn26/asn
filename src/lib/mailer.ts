@@ -1,4 +1,10 @@
-import { BREVO_API_KEY, MAIL_FROM, MAIL_TO, MAIL_TRANSPORT } from 'astro:env/server';
+import {
+  MAIL_FROM,
+  MAIL_TO,
+  MAIL_TRANSPORT,
+  MAILJET_API_KEY,
+  MAILJET_SECRET_KEY,
+} from 'astro:env/server';
 
 export interface Email {
   sujet: string;
@@ -9,7 +15,7 @@ export interface Email {
 /**
  * Envoie un e-mail à l'équipe.
  *
- * - `MAIL_TRANSPORT=brevo` : envoi par l'API transactionnelle de Brevo.
+ * - `MAIL_TRANSPORT=mailjet` : envoi par l'API Send (v3.1) de Mailjet.
  * - `MAIL_TRANSPORT=log` : affichage dans la console (développement et tests).
  * Sans valeur, le transport `log` est utilisé en développement seulement.
  */
@@ -21,30 +27,40 @@ export async function envoyerEmail(email: Email): Promise<void> {
     return;
   }
 
-  if (transport !== 'brevo' || !BREVO_API_KEY || !MAIL_FROM || !MAIL_TO) {
+  if (
+    transport !== 'mailjet' ||
+    !MAILJET_API_KEY ||
+    !MAILJET_SECRET_KEY ||
+    !MAIL_FROM ||
+    !MAIL_TO
+  ) {
     throw new Error(
-      "Envoi d'e-mail non configuré : définissez MAIL_TRANSPORT, BREVO_API_KEY, MAIL_FROM et MAIL_TO.",
+      "Envoi d'e-mail non configuré : définissez MAIL_TRANSPORT, MAILJET_API_KEY, MAILJET_SECRET_KEY, MAIL_FROM et MAIL_TO.",
     );
   }
 
-  const reponse = await fetch('https://api.brevo.com/v3/smtp/email', {
+  const reponse = await fetch('https://api.mailjet.com/v3.1/send', {
     method: 'POST',
     headers: {
-      'api-key': BREVO_API_KEY,
+      authorization: `Basic ${btoa(`${MAILJET_API_KEY}:${MAILJET_SECRET_KEY}`)}`,
       'content-type': 'application/json',
       accept: 'application/json',
     },
     body: JSON.stringify({
-      sender: { email: MAIL_FROM, name: 'Site web' },
-      to: [{ email: MAIL_TO }],
-      replyTo: { email: email.repondreA.email, name: email.repondreA.nom },
-      subject: email.sujet.replace(/[\r\n]+/g, ' '),
-      textContent: email.texte,
+      Messages: [
+        {
+          From: { Email: MAIL_FROM, Name: 'Site web' },
+          To: [{ Email: MAIL_TO }],
+          ReplyTo: { Email: email.repondreA.email, Name: email.repondreA.nom },
+          Subject: email.sujet.replace(/[\r\n]+/g, ' '),
+          TextPart: email.texte,
+        },
+      ],
     }),
     signal: AbortSignal.timeout(10_000),
   });
 
   if (!reponse.ok) {
-    throw new Error(`Brevo a répondu ${reponse.status} : ${await reponse.text()}`);
+    throw new Error(`Mailjet a répondu ${reponse.status} : ${await reponse.text()}`);
   }
 }
