@@ -1,0 +1,38 @@
+---
+/**
+ * Logo de l'agence (archive du 26 septembre 2026, design/logo/) : le symbole, deux demi-disques
+ * décalés, et le nom sur deux lignes, comme dans logo-horizontal-couleur.svg.
+ * - couleur : sur fond clair (en-tête) ;
+ * - blanc : sur fond sombre (pied de page).
+ * Le nom vient de src/data/site.ts : le premier mot en gras, la suite en dessous.
+ * Le <br> garde l'espace entre les deux mots dans le nom lu par les lecteurs d'écran.
+ */
+import { site } from '~/data/site';
+
+interface Props {
+  version?: 'couleur' | 'blanc';
+}
+
+const { version = 'couleur' } = Astro.props;
+const blanc = version === 'blanc';
+const [premierMot, ...suite] = site.nom.split(' ');
+---
+
+<span class="flex items-center gap-3 whitespace-nowrap">
+  {/* Même dessin que design/logo/svg/symbole-couleur.svg (vérifié par tests/unit/logo.test.ts). */}
+  <svg aria-hidden="true" focusable="false" viewBox="0 0 100 100" class="size-9 shrink-0">
+    <path d="M4 46A40 40 0 0 1 84 46Z" class={blanc ? 'fill-white' : 'fill-encre'}></path>
+    <path d="M16 54A40 40 0 0 0 96 54Z" class={blanc ? 'fill-nuit-logo-bleu' : 'fill-bleu'}></path>
+  </svg>
+  <span class="text-[1.0625rem] leading-[1.14]">
+    <span class:list={['font-semibold', blanc ? 'text-white' : 'text-encre']}>{premierMot}</span>
+    {suite.length > 0 && (
+      <>
+        <br />
+        <span class:list={['font-normal', blanc ? 'text-nuit-logo-nom' : 'text-texte']}>
+          {suite.join(' ')}
+        </span>
+      </>
+    )}
+  </span>
+</span>

@@ -40,6 +40,12 @@
   --color-nuit-pied: #7f8fab;
   /* Bouton blanc au survol, sur fond sombre. */
   --color-nuit-survol: #dbe6f5;
+  /*
+   * Logo, version blanche (fond sombre) : demi-disque du bas et second mot du nom.
+   * La version couleur utilise encre, bleu et texte.
+   */
+  --color-nuit-logo-bleu: #6d9bff;
+  --color-nuit-logo-nom: #b8c2d6;
   /* Placeholders à compléter (texte entre crochets). */
   --color-surligne: #fff5cc;
   /* Pastille de l'option WhatsApp (page Sites web). */

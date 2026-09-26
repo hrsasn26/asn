@@ -85,7 +85,9 @@ src/
 scripts/check-content.mjs Vérification des règles de contenu
 scripts/generer-image-partage.mjs  Image de partage public/og.png
 scripts/generer-heros.mjs Visuels des en-têtes, depuis les maquettes de design/heros/
+scripts/generer-logo.mjs  Icônes du logo (favicon ICO, icône Apple, logo des données structurées)
 design/heros/             Maquettes HTML des visuels des en-têtes et leurs polices (non servies)
+design/logo/              Sources du logo, SVG et PNG (non servies)
 tests/unit/               Tests unitaires (Vitest)
 tests/e2e/                Tests dans les navigateurs (Playwright + axe)
 deploy/                   Docker Compose, Caddyfile, script de déploiement
@@ -97,11 +99,13 @@ deploy/                   Docker Compose, Caddyfile, script de déploiement
 - **Prix** : aucun sur le site. Chaque prix est donné dans un devis. Les forfaits de maintenance (sans prix) sont dans `src/data/forfaits.ts`.
 - **Nom, domaine, zone, délais, engagements** : dans `src/data/site.ts`. Le domaine sert aussi d'adresse de production dans `astro.config.mjs`.
 - **Visuels des en-têtes** (onze pages, section 6.19 du brief) : des maquettes d'écrans pour des clients fictifs, avec la légende « Exemple fictif ». Les sources HTML sont dans `design/heros/`. Après une modification, lancez `pnpm image:heros` : le script vérifie les règles de contenu sur les sources (le texte d'une image échappe à `pnpm check:content`), puis écrit les images AVIF et WebP dans `src/assets/heros/`. Le composant `MaquetteHero` les sert telles quelles, sans conversion par Astro : la page Audit gratuit, rendue par le serveur, ne convertit rien à chaque visite. Textes alternatifs et légende : `src/data/maquettes.ts`. Les mêmes images servent de vignettes aux cartes des services (Accueil, Services), avec une légende sous la grille, et le visuel de l'audit gratuit illustre l'encadré de l'accueil. Détails : `design/heros/README.md`.
-- **Image de partage** (aperçu sur les réseaux sociaux) : lancez `pnpm image:partage` après un changement du nom de l'agence ou des couleurs. Le script affiche le nom dès qu'il n'est plus un placeholder.
+- **Image de partage** (aperçu sur les réseaux sociaux) : lancez `pnpm image:partage` après un changement du nom de l'agence, du logo ou des couleurs. Le script affiche le nom dès qu'il n'est plus un placeholder.
+- **Logo** : sources dans `design/logo/`. Pour le changer, suivez `design/logo/README.md` (« Changer le logo ») : `pnpm image:logo` régénère le favicon ICO, l'icône Apple et le logo des données structurées.
 - **Placeholders surlignés** : tant qu'un placeholder n'est pas remplacé, il s'affiche sur fond jaune (classe `a-completer`), pour la relecture. Le composant `Texte` s'en charge pour une phrase, `Prose` pour les pages légales. Quand la valeur est confirmée dans `src/data/site.ts`, les crochets et le surlignage disparaissent.
 
 **Design.** Maquettes reçues du designer le 26 septembre 2026 (archive « website_site_redesign ») : accueil, Services, Sites web, Méthode, L'agence, Contact, Audit gratuit, en-tête et pied de page. Les autres pages de services, les pages légales et la page 404 suivent le même système, sur le modèle de la page Sites web.
-- Couleurs : bleu nuit `encre` (#0b1b33) pour le texte, les boutons et les encadrés sombres, bleu `bleu` (#1d4ed8) pour les liens, gris pour le texte secondaire (`texte`, `doux`, `fonce`, `discret`) et les fonds (`surface`), jaune `surligne` pour les placeholders.
+- Logo (archive du 26 septembre 2026, `design/logo/`) : un symbole de deux demi-disques décalés et le nom sur deux lignes (composant `Logo`). Version couleur dans l'en-tête, version blanche dans le pied de page. Le même symbole sert pour le favicon, l'icône Apple, les données structurées et l'image de partage.
+- Couleurs : bleu nuit `encre` (#0b1b33) pour le texte, les boutons et les encadrés sombres, bleu `bleu` (#1d4ed8) pour les liens, gris pour le texte secondaire (`texte`, `doux`, `fonce`, `discret`) et les fonds (`surface`), jaune `surligne` pour les placeholders. Sur fond sombre, le logo utilise aussi `nuit-logo-bleu` et `nuit-logo-nom`.
 - Typographie : Manrope. Titres en graisse légère (300) avec une partie en gras (composant `Accent`, propriété `motCle`), tailles fluides (`text-accroche`, `text-titre`, `text-titre-service`, `text-section`, `text-encadre`, `text-appel`). Un surtitre en petites capitales au-dessus de chaque titre de section (utilitaire `surtitre`, textes dans la section 6.20 du brief).
 - Mise en page : contenu de 1200 px au plus (utilitaire `conteneur`). En-tête collant, fond blanc translucide. En haut de chaque page, un fond gris qui s'éclaircit vers le blanc (`BaseLayout`). Sections en trois dispositions (`Section` : `colonnes`, `centre`, `pile`), encadrés arrondis (`Encadre` : `gris`, `sombre`, `cadre`). Boutons en pilule (`ButtonLink`). Pied de page bleu nuit.
 - En-tête des pages (`Hero`) : centré avec le visuel en dessous (accueil), texte et visuel côte à côte (pages de services, audit gratuit) ou texte seul (Services, Méthode, L'agence).
@@ -173,6 +177,7 @@ pnpm test:e2e         # tests navigateurs (après pnpm build)
 pnpm check:content    # règles de contenu (après pnpm build)
 pnpm image:partage    # régénère public/og.png (Chromium nécessaire)
 pnpm image:heros      # régénère les visuels des en-têtes (Chromium nécessaire)
+pnpm image:logo       # régénère les icônes du logo (favicon ICO, icône Apple, public/logo.png)
 pnpm verify           # tous les contrôles, dans l'ordre de la CI
 ```
 
@@ -243,7 +248,7 @@ En préproduction, mettez `ROBOTS_TAG=noindex` dans `.env` pour que Google n'ind
 | Sujet | État | Effet sur la stack |
 |---|---|---|
 | Hébergeur précis | Scaleway ou OVHcloud, à choisir. Alternative : Clever Cloud (moins d'exploitation). Un hébergement hors du Maroc est un transfert de données à l'étranger (loi 09-08, article 43) : à déclarer à la CNDP. Un hébergeur au Maroc évite ce transfert. À valider avec le juriste. | Avec Clever Cloud, `deploy/` est remplacé par un déploiement par `git push`. Avec un hébergeur au Maroc, `deploy/` ne change pas. |
-| Design du site de l'agence | Décidé : maquettes du designer, intégrées le 26 septembre 2026 (section 5, « Design »). Reste à fournir : le logo, qui remplacera le repère provisoire. | Jetons dans `global.css`, police Manrope avec l'API Fonts d'Astro. Logo : composant `Repere`, `public/favicon.svg`, `pnpm image:partage`. |
+| Design du site de l'agence | Décidé : maquettes du designer, intégrées le 26 septembre 2026 (section 5, « Design »). Logo reçu et intégré le 26 septembre 2026. | Jetons dans `global.css`, police Manrope avec l'API Fonts d'Astro. Logo : composant `Logo`, sources dans `design/logo/`, `pnpm image:logo` et `pnpm image:partage`. |
 | Interface d'édition (CMS) | À décider si nous vendons des sites Astro aux clients. | Ajouter Keystatic (contenus dans Git) pour le tester sur notre site d'abord. |
 | Mesure d'audience | Matomo ou Plausible, sans cookie si possible. À valider avec le juriste (loi 09-08, consentement aux cookies). | Pas encore intégrée. Il faudra ajouter son domaine à la CSP (`astro.config.mjs`). |
 | Vercel : aperçu ou production | Vercel sert d'aperçu. Vercel est une entreprise américaine : l'utiliser en production doit rester compatible avec l'engagement « Hébergement en [pays à définir] » (section 4 du brief) et avec les règles de transfert de données à l'étranger de la loi 09-08. À valider avec le juriste. | En production sur Vercel : retirer `X-Robots-Tag: noindex` de `vercel.json`, choisir la région des fonctions et remplacer la limite d'envois en mémoire. |

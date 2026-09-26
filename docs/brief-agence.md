@@ -1837,7 +1837,7 @@ Les visuels des pages de services servent aussi de vignettes aux cartes des serv
 ## 8. Prochaines étapes
 
 - [x] Choisir le nom de l'agence et réserver le nom de domaine : Digital Solutions, `digital-solutions.ma`
-- [ ] Créer le logo (fait par l'équipe), puis l'intégrer : en-tête, pied de page, favicon et image de partage (`pnpm image:partage`)
+- [x] Créer le logo (fait par l'équipe), puis l'intégrer : en-tête, pied de page, favicon et image de partage (`pnpm image:partage`). Reçu et intégré le 26 septembre 2026 (sources dans `design/logo/`).
 - [ ] Relier le domaine au site et créer l'adresse e-mail de contact (voir la section « Nom de domaine » de [stack-technique.md](stack-technique.md))
 - [ ] Fixer la grille de prix interne, pour les devis. Elle n'est pas publiée sur le site.
 - [ ] Confirmer les engagements listés en [section 4](#engagements-à-confirmer-avant-publication)

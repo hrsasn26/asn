@@ -1,5 +1,5 @@
 ---
-import Repere from '~/components/Repere.astro';
+import Logo from '~/components/Logo.astro';
 import { liensLegaux, services } from '~/data/navigation';
 import { cta, site } from '~/data/site';
 
@@ -15,9 +15,8 @@ const titreColonne = 'text-[0.6875rem] font-semibold tracking-[0.2em] text-nuit-
 <footer class="bg-encre text-nuit-texte [--anneau:var(--color-white)]">
   <div class="conteneur flex flex-wrap gap-8 pt-16 pb-8 sm:pt-18">
     <div class="apparition max-w-[23.75rem] min-w-0 flex-[1.6_1_13.75rem]">
-      <p class="flex items-center gap-3 text-[1.0625rem] font-bold text-white">
-        <Repere />
-        {site.nom}
+      <p>
+        <Logo version="blanc" />
       </p>
       <p class="mt-4 text-sm leading-[1.7]">
         Des sites et des applications fiables, testés, sécurisés et suivis dans la durée.
