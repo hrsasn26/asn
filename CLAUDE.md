@@ -39,7 +39,7 @@ Les choix techniques, l'organisation du code et la mise en service sont dans [do
 - Toute nouvelle page doit passer les tests axe et Lighthouse de la CI.
 - Les illustrations sont décoratives (`aria-hidden`) et utilisent les classes de couleur Tailwind, jamais de couleur en dur ni de style en ligne.
 - Couleurs des icônes : chaque service a sa couleur, la palette est dans `src/data/couleurs.ts`.
-- Animations : CSS seul, avec les utilitaires de `src/styles/global.css` (section « Animations » de `docs/stack-technique.md`). Aucune animation en mode « réduire les animations », aucune animation automatique de plus de 5 secondes, jamais d'animation d'opacité sur du texte.
+- Animations : CSS seul, avec les utilitaires de `src/styles/global.css` (section « Animations » de `docs/stack-technique.md`). Aucune animation en mode « réduire les animations », aucune animation automatique de plus de 5 secondes, jamais d'animation d'opacité sur du texte, jamais de mouvement sur les champs d'un formulaire.
 - Une valeur `{…}` suivie de texte à la ligne suivante peut perdre son espace au rendu : écrire `{' '}` ou garder la valeur sur la même ligne. `pnpm check:content` détecte le cas pour les placeholders.
 
 ## Règles de contenu

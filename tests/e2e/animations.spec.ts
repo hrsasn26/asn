@@ -1,7 +1,14 @@
 import { expect, test } from '@playwright/test';
 
-// Pages dont les illustrations ont les animations les plus longues, et page avec la frise des étapes.
-const chemins = ['/', '/contact', '/services/intelligence-artificielle', '/methode'];
+// Pages dont les illustrations ont les animations les plus longues, pages avec formulaire,
+// et page avec la frise des étapes.
+const chemins = [
+  '/',
+  '/contact',
+  '/audit-gratuit',
+  '/services/intelligence-artificielle',
+  '/methode',
+];
 
 for (const chemin of chemins) {
   test.describe(chemin, () => {
