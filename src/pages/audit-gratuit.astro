@@ -1,5 +1,11 @@
 ---
 // Textes : docs/brief-agence.md, section 6.6.
+import CircleCheck from '@lucide/astro/icons/circle-check';
+import Gauge from '@lucide/astro/icons/gauge';
+import ScanSearch from '@lucide/astro/icons/scan-search';
+import Search from '@lucide/astro/icons/search';
+import ShieldCheck from '@lucide/astro/icons/shield-check';
+import Smartphone from '@lucide/astro/icons/smartphone';
 import IllustrationAudit from '~/components/illustrations/IllustrationAudit.astro';
 import { actions } from 'astro:actions';
 import Consent from '~/components/forms/Consent.astro';
@@ -9,6 +15,7 @@ import Honeypot from '~/components/forms/Honeypot.astro';
 import Success from '~/components/forms/Success.astro';
 import Hero from '~/components/Hero.astro';
 import Section from '~/components/Section.astro';
+import { couleurPalette } from '~/data/couleurs';
 import { delais, site } from '~/data/site';
 import BaseLayout from '~/layouts/BaseLayout.astro';
 import { etatFormulaire } from '~/lib/formulaire';
@@ -26,6 +33,34 @@ const etat = await etatFormulaire(Astro.getActionResult(actions.audit), Astro.re
 ]);
 const preoccupationChoisie = etat.valeur('preoccupation');
 const titre = `Audit gratuit de votre site web | ${site.nom}`;
+
+// Les quatre points vérifiés, chacun avec son icône (apparition en cascade).
+const verifications = [
+  {
+    Icone: Gauge,
+    titre: 'Vitesse',
+    texte: "combien de temps vos pages mettent à s'afficher, et pourquoi.",
+    delai: 'delai-300',
+  },
+  {
+    Icone: ShieldCheck,
+    titre: 'Sécurité',
+    texte: 'certificat HTTPS, mises à jour, failles connues.',
+    delai: 'delai-400',
+  },
+  {
+    Icone: Search,
+    titre: 'Référencement technique',
+    texte: 'ce qui empêche Google de bien comprendre votre site.',
+    delai: 'delai-500',
+  },
+  {
+    Icone: Smartphone,
+    titre: 'Affichage mobile',
+    texte: 'comment vos visiteurs voient votre site sur téléphone.',
+    delai: 'delai-600',
+  },
+];
 ---
 
 <BaseLayout
@@ -46,31 +81,46 @@ const titre = `Audit gratuit de votre site web | ${site.nom}`;
       <div class="space-y-10">
         <div>
           <h2 class="text-2xl">Ce que nous vérifions</h2>
-          <ul class="mt-4 space-y-3 text-slate-700">
-            <li>
-              <strong class="text-slate-900">Vitesse</strong> : combien de temps vos pages mettent à
-              s'afficher, et pourquoi.
-            </li>
-            <li>
-              <strong class="text-slate-900">Sécurité</strong> : certificat HTTPS, mises à jour,
-              failles connues.
-            </li>
-            <li>
-              <strong class="text-slate-900">Référencement technique</strong> : ce qui empêche
-              Google de bien comprendre votre site.
-            </li>
-            <li>
-              <strong class="text-slate-900">Affichage mobile</strong> : comment vos visiteurs
-              voient votre site sur téléphone.
-            </li>
+          <ul class="mt-4 space-y-4 text-slate-700">
+            {verifications.map(({ Icone, titre, texte, delai }, index) => (
+              <li class="apparition flex items-start gap-3">
+                <span
+                  class:list={[
+                    'anim-zoom inline-flex size-9 shrink-0 items-center justify-center rounded-lg',
+                    couleurPalette(index).douce,
+                    delai,
+                  ]}
+                >
+                  <Icone size={20} />
+                </span>
+                <p class="pt-1.5">
+                  <strong class="text-slate-900">{titre}</strong>
+                  {` : ${texte}`}
+                </p>
+              </li>
+            ))}
           </ul>
         </div>
         <div>
           <h2 class="text-2xl">Ce que vous recevez</h2>
-          <ul class="mt-4 list-disc space-y-2 pl-5 text-slate-700">
-            <li>Un rapport écrit sous {delais.rapportAudit}</li>
-            <li>La liste des problèmes, classés par priorité</li>
-            <li>{delais.appelAudit}</li>
+          <ul class="mt-4 space-y-2 text-slate-700">
+            {[
+              `Un rapport écrit sous ${delais.rapportAudit}`,
+              'La liste des problèmes, classés par priorité',
+              delais.appelAudit,
+            ].map((element, index) => (
+              <li class="apparition flex items-start gap-3">
+                <CircleCheck
+                  size={20}
+                  aria-hidden="true"
+                  class:list={[
+                    'anim-zoom mt-0.5 shrink-0 text-emerald-600',
+                    ['delai-700', 'delai-800', 'delai-900'][index],
+                  ]}
+                />
+                <span>{element}</span>
+              </li>
+            ))}
           </ul>
         </div>
       </div>
@@ -84,7 +134,12 @@ const titre = `Audit gratuit de votre site web | ${site.nom}`;
         ) : (
           <>
             <ErrorSummary errors={etat.resume} message={etat.messageGeneral} />
-            <form method="POST" action={actions.audit} novalidate class="relative space-y-6">
+            <form
+              method="POST"
+              action={actions.audit}
+              novalidate
+              class="anim-cascade relative space-y-6"
+            >
               <Field
                 name="adresseSite"
                 label="Adresse de votre site"
@@ -120,8 +175,8 @@ const titre = `Audit gratuit de votre site web | ${site.nom}`;
                 value={etat.valeur('telephone')}
                 errors={etat.erreursChamps.telephone}
               />
-              <fieldset>
-                <legend class="font-medium text-slate-900">
+              <fieldset class="group">
+                <legend class="font-medium text-slate-900 transition-colors group-focus-within:text-brand-700">
                   Votre principale préoccupation{' '}
                   <span class="font-normal text-slate-600">(facultatif)</span>
                 </legend>
@@ -149,9 +204,14 @@ const titre = `Audit gratuit de votre site web | ${site.nom}`;
               <div>
                 <button
                   type="submit"
-                  class="rounded-md bg-brand-700 px-5 py-3 font-semibold text-white hover:bg-brand-800 transition hover:shadow-md motion-safe:hover:-translate-y-0.5"
+                  class="group inline-flex items-center gap-2 rounded-md bg-brand-700 px-5 py-3 font-semibold text-white transition hover:bg-brand-800 hover:shadow-md motion-safe:hover:-translate-y-0.5"
                 >
                   Recevoir mon audit gratuit
+                  <ScanSearch
+                    size={18}
+                    aria-hidden="true"
+                    class="transition-transform motion-safe:group-hover:scale-110 motion-safe:group-hover:-rotate-12"
+                  />
                 </button>
                 <p class="mt-3 text-sm text-slate-600">
                   Gratuit, sans engagement et sans relances insistantes.
