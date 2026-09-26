@@ -1,12 +1,17 @@
 ---
 // Textes : docs/brief-agence.md, section 6.8 (proposition à valider).
 // Le brief demande une étape de tests bien visible sur cette page (section 5).
+import CircleCheck from '@lucide/astro/icons/circle-check';
+import FileImage from '@lucide/astro/icons/file-image';
+import KeyRound from '@lucide/astro/icons/key-round';
+import UserCheck from '@lucide/astro/icons/user-check';
 import CtaFinal from '~/components/CtaFinal.astro';
 import Faq from '~/components/Faq.astro';
 import FaqItem from '~/components/FaqItem.astro';
 import Hero from '~/components/Hero.astro';
 import IllustrationMethode from '~/components/illustrations/IllustrationMethode.astro';
 import Section from '~/components/Section.astro';
+import { couleurPalette } from '~/data/couleurs';
 import { cta, delais, offre, site } from '~/data/site';
 import BaseLayout from '~/layouts/BaseLayout.astro';
 
@@ -66,6 +71,17 @@ const etapes: Etape[] = [
     recu: 'selon votre forfait, un rapport mensuel clair.',
   },
 ];
+
+// Ce dont nous avons besoin de votre part, chaque point avec son icône.
+const besoins = [
+  {
+    Icone: FileImage,
+    texte:
+      'Vos textes et vos photos. Si vous préférez déléguer, nous vous mettons en relation avec un rédacteur ou un photographe partenaire.',
+  },
+  { Icone: KeyRound, texte: 'Vos accès : nom de domaine, hébergement actuel, outils à connecter.' },
+  { Icone: UserCheck, texte: 'Un interlocuteur disponible pour valider chaque étape.' },
+];
 ---
 
 <BaseLayout
@@ -82,45 +98,58 @@ const etapes: Etape[] = [
   </Hero>
 
   <Section title="Les étapes de votre projet">
-    <ol class="grid max-w-3xl gap-6">
-      {etapes.map((etape, index) => (
-        <li
-          class:list={[
-            'apparition flex gap-4 rounded-lg border p-6',
-            etape.tests ? 'border-emerald-600 bg-emerald-50' : 'border-slate-200 bg-white',
-          ]}
-        >
-          <span
-            aria-hidden="true"
+    <div class="relative max-w-3xl">
+      {/* Frise qui relie les étapes : visible entre les cartes, elle se remplit au défilement. */}
+      <div aria-hidden="true" class="absolute top-11 bottom-11 left-[2.6875rem] w-0.5 bg-slate-200">
+        <div class="anim-frise h-full bg-brand-700" />
+      </div>
+      <ol class="relative grid gap-8">
+        {etapes.map((etape, index) => (
+          <li
             class:list={[
-              'flex size-10 shrink-0 items-center justify-center rounded-full font-semibold text-white',
-              etape.tests ? 'bg-emerald-700' : 'bg-brand-700',
+              'apparition flex gap-4 rounded-lg border p-6',
+              etape.tests ? 'border-emerald-600 bg-emerald-50' : 'border-slate-200 bg-white',
             ]}
           >
-            {index + 1}
-          </span>
-          <div>
-            <h3 class="text-lg">{etape.title}</h3>
-            <p class="mt-2 text-slate-700">{etape.text}</p>
-            {etape.liste && (
-              <ul class="mt-3 list-disc space-y-1 pl-5 text-slate-700">
-                {etape.liste.map((point) => (
-                  <li>{point}</li>
-                ))}
-              </ul>
-            )}
-            {etape.complement && <p class="mt-3 text-slate-700">{etape.complement}</p>}
-            <p class="mt-3 text-slate-900">
-              <em>Vous recevez :</em> {etape.recu}
-            </p>
-          </div>
-        </li>
-      ))}
-    </ol>
+            <span
+              aria-hidden="true"
+              class:list={[
+                'apparition-zoom flex size-10 shrink-0 items-center justify-center rounded-full font-semibold text-white',
+                etape.tests ? 'bg-emerald-700' : 'bg-brand-700',
+              ]}
+            >
+              {index + 1}
+            </span>
+            <div>
+              <h3 class="text-lg">{etape.title}</h3>
+              <p class="mt-2 text-slate-700">{etape.text}</p>
+              {etape.liste && (
+                <ul class="mt-3 space-y-1.5 text-slate-700">
+                  {etape.liste.map((point) => (
+                    <li class="flex items-start gap-2">
+                      <CircleCheck
+                        size={18}
+                        aria-hidden="true"
+                        class="apparition-zoom mt-0.5 shrink-0 text-emerald-700"
+                      />
+                      <span>{point}</span>
+                    </li>
+                  ))}
+                </ul>
+              )}
+              {etape.complement && <p class="mt-3 text-slate-700">{etape.complement}</p>}
+              <p class="mt-3 text-slate-900">
+                <em>Vous recevez :</em> {etape.recu}
+              </p>
+            </div>
+          </li>
+        ))}
+      </ol>
+    </div>
   </Section>
 
   <Section title="Pourquoi les tests comptent autant" tone="gris">
-    <p class="max-w-3xl text-lg text-slate-700">
+    <p class="apparition max-w-3xl text-lg text-slate-700">
       Un bug découvert par un client coûte plus cher qu'un bug trouvé avant la mise en ligne : une
       vente perdue, une demande de contact jamais reçue, une image dégradée. C'est pourquoi les
       tests font partie de chaque projet et de chaque mise à jour.
@@ -128,13 +157,20 @@ const etapes: Etape[] = [
   </Section>
 
   <Section title="Ce dont nous avons besoin de votre part">
-    <ul class="grid max-w-3xl list-disc gap-2 pl-5 text-slate-700">
-      <li>
-        Vos textes et vos photos. Si vous préférez déléguer, nous vous mettons en relation avec un
-        rédacteur ou un photographe partenaire.
-      </li>
-      <li>Vos accès : nom de domaine, hébergement actuel, outils à connecter.</li>
-      <li>Un interlocuteur disponible pour valider chaque étape.</li>
+    <ul class="grid max-w-3xl gap-3 text-slate-700">
+      {besoins.map(({ Icone, texte }, index) => (
+        <li class="apparition flex items-start gap-3">
+          <span
+            class:list={[
+              'apparition-zoom inline-flex size-9 shrink-0 items-center justify-center rounded-lg',
+              couleurPalette(index).douce,
+            ]}
+          >
+            <Icone size={20} />
+          </span>
+          <span class="pt-1.5">{texte}</span>
+        </li>
+      ))}
     </ul>
   </Section>
 

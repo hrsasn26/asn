@@ -199,6 +199,23 @@
   }
 }
 
+/* Pastilles et icônes : elles grandissent quand elles entrent dans l'écran (défilement, sans opacité). */
+@utility apparition-zoom {
+  transform-box: fill-box;
+  transform-origin: center;
+
+  @media (prefers-reduced-motion: no-preference) {
+    @supports (animation-timeline: view()) {
+      animation-name: apparition-zoom;
+      animation-duration: auto;
+      animation-timing-function: linear;
+      animation-fill-mode: both;
+      animation-timeline: view();
+      animation-range: cover 0% cover 8rem;
+    }
+  }
+}
+
 /* Pied de page : la barre de couleur se remplit de gauche à droite pendant le défilement. */
 @utility anim-barre {
   transform-origin: left;
@@ -379,6 +396,12 @@
 @keyframes apparition {
   from {
     transform: translateY(3rem) scale(0.95);
+  }
+}
+
+@keyframes apparition-zoom {
+  from {
+    scale: 0.3;
   }
 }
 
