@@ -31,7 +31,7 @@ import BaseLayout from '~/layouts/BaseLayout.astro';
 
         <h2>Responsable du traitement</h2>
         <p>
-          {site.nom}, [adresse]. Contact : {site.email}.
+          {site.nom}, [adresse]. Contact : <a href={`mailto:${site.email}`}>{site.email}</a>.
         </p>
         <p>Déclaration auprès de la CNDP : [numéro de récépissé].</p>
 
@@ -87,7 +87,8 @@ import BaseLayout from '~/layouts/BaseLayout.astro';
         <p>
           Vous pouvez accéder à vos données, les corriger ou les supprimer, et vous opposer à leur
           utilisation (articles 7, 8 et 9 de la loi 09-08). Vous pouvez aussi retirer votre
-          consentement à tout moment. Écrivez-nous à {site.email}.
+          consentement à tout moment. Écrivez-nous à{' '}
+          <a href={`mailto:${site.email}`}>{site.email}</a>.
         </p>
         <p>
           Si vous pensez que vos droits ne sont pas respectés, vous pouvez déposer une plainte

@@ -13,7 +13,8 @@ export const site = {
   nom: 'Digital Solutions',
   /** Domaine du site. L'adresse sans « www » redirige vers celui-ci. */
   domaine: 'www.digital-solutions.ma',
-  email: '[contact@digital-solutions.ma : adresse à créer]',
+  email: 'contact@digital-solutions.ma',
+  /** À remplacer quand le numéro sera disponible. */
   telephone: '[numéro de téléphone]',
 } as const;
 

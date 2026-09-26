@@ -232,7 +232,7 @@ La page « Processus », avec une étape de tests bien visible, est l'endroit id
 
 > Sections 6.1 à 6.6 : textes validés, sauf les ajouts marqués « à valider ». Sections 6.7 à 6.13 et 6.14 à 6.18 (nouveaux services) : propositions à valider. Section 6.19 (visuels des en-têtes) : légende et textes alternatifs validés. Section 6.20 (surtitres et libellés du design) : proposition à valider.
 > Adaptation au Maroc (25 septembre 2026) : prix en DH, loi 09-08 à la place du RGPD, délai de rétractation de 7 jours. Ces changements sont à revalider, y compris dans les sections 6.1 à 6.6.
-> Révision du 26 septembre 2026, à valider : textes revus selon le document « Digital Solutions - Recommandations de wording ». Les en-têtes, les boutons, plusieurs cartes et les FAQ changent, y compris dans les sections 6.1 à 6.6. Les phrases qui contenaient une valeur non confirmée (délais, pays d'hébergement, ville, garantie, durée des sauvegardes) sont retirées. La section « L'équipe » de la page L'agence est masquée jusqu'à réception des vraies informations.
+> Révision du 26 septembre 2026, à valider : textes revus selon le document « Digital Solutions - Recommandations de wording ». Les en-têtes, les boutons, plusieurs cartes et les FAQ changent, y compris dans les sections 6.1 à 6.6. Les phrases qui contenaient une valeur non confirmée (délais, pays d'hébergement, ville, garantie, durée des sauvegardes) sont retirées. La section « L'équipe » de la page L'agence, masquée jusqu'à réception des vraies informations, est de nouveau affichée depuis la réception des noms et des rôles (section 6.10).
 
 **Appels à l'action (tout le site) : trois familles**
 - **« Parler de mon projet »** : bouton principal (en-tête, accueil), pour un premier échange. Chaque page de service a sa variante : « Parler de mon futur site », « Parler de mon application », etc.
@@ -1077,7 +1077,7 @@ Reprend l'appel à l'action final de la page Services (6.1).
 
 ### 6.10 Page « L'agence »
 
-> Proposition à valider. Aucune information sur l'équipe n'est inventée. Le document de recommandations demande une page plus humaine : vraie histoire, ville ou région, noms, rôles et photos. En attendant ces informations, la section « L'équipe » est masquée (décision du 26 septembre 2026).
+> Proposition à valider. Aucune information sur l'équipe n'est inventée. Le document de recommandations demande une page plus humaine : vraie histoire, ville ou région, noms, rôles et photos. Les noms et les rôles sont reçus le 26 septembre 2026 : la section « L'équipe » est de nouveau affichée. L'histoire, la ville et les photos restent à fournir.
 
 **URL :** `/agence`
 **Balise title :** L'agence : une équipe technique à votre service | Digital Solutions
@@ -1127,13 +1127,22 @@ Nous pouvons rester responsables de l'hébergement, de la maintenance et des év
 **Indépendance**
 Votre code, vos comptes, votre nom de domaine et vos données restent à votre nom.
 
-#### Section : l'équipe (masquée)
+#### Section : l'équipe
 
 **Titre :** L'équipe
 
-Une carte par personne : [Prénom Nom], [Rôle], [Une phrase de présentation]. [Photos : à fournir]
+Une carte par personne : initiales, nom, rôle et une phrase qui relie la personne aux services.
 
-> Section masquée sur le site depuis le 26 septembre 2026. Elle reviendra avec les vrais noms, rôles et photos.
+**Hamza Legdani**, Architecte web et logiciels
+Conçoit vos sites web, vos applications sur mesure et vos logiciels SaaS, puis les garde en ligne.
+
+**Mohammed Reda Benaghmouch**, Expert qualité et tests
+Teste chaque site et chaque application avant la mise en ligne, et vérifie leur sécurité.
+
+**Saad Berrada**, Architecte mobile et IA
+Conçoit vos applications mobiles, vos automatisations, vos tableaux de bord et vos outils d'intelligence artificielle.
+
+> Noms et domaines de compétence donnés par l'agence le 26 septembre 2026 (ingénierie logicielle pour Hamza Legdani et Saad Berrada, QA pour Mohammed Reda Benaghmouch). Les titres traduisent ces domaines en mots compris des clients, d'après les services de chacun : pas de mot « ingénieur » ni « QA » (section 4), et pas « développeur » : l'agence conçoit toute la solution, pas seulement le code (demande du 26 septembre 2026). Ordre des cartes demandé par l'agence : Mohammed Reda Benaghmouch entre Hamza Legdani et Saad Berrada. Phrases de présentation et répartition des services entre Hamza Legdani et Saad Berrada : proposition à valider. Les initiales remplacent les photos jusqu'à leur réception.
 
 #### Section : partenaires
 
@@ -1190,10 +1199,10 @@ Expliquez-nous votre besoin en quelques lignes. Nous vous répondons avec les pr
 
 **Titre :** Autres moyens de nous joindre
 
-- E-mail : [adresse e-mail de contact]
+- E-mail : contact@digital-solutions.ma
 - Téléphone : [numéro de téléphone]
 
-> L'e-mail et le téléphone restent en placeholder : ce sont des informations obligatoires (loi 31-08, article 29). La ligne « Zone : [Ville ou région] » est retirée tant que la ville n'est pas choisie.
+> L'e-mail est confirmé le 26 septembre 2026. Le téléphone reste en placeholder jusqu'à ce que le numéro soit disponible : c'est une information obligatoire (loi 31-08, article 29). La ligne « Zone : [Ville ou région] » est retirée tant que la ville n'est pas choisie.
 
 #### Encadré : audit
 
@@ -1806,7 +1815,7 @@ Les visuels des pages de services servent aussi de vignettes aux cartes des serv
 | L'agence | Pourquoi Digital Solutions existe | Notre histoire |
 | L'agence | Ce que nous savons faire, en clair | Savoir-faire |
 | L'agence | Nos valeurs | Valeurs |
-| L'agence | L'équipe (masquée pour l'instant) | Équipe |
+| L'agence | L'équipe | Équipe |
 | L'agence | Nos partenaires | Réseau |
 | Contact | Autres moyens de nous joindre | Coordonnées |
 | Contact | Vous avez déjà un site ? | Audit gratuit |
@@ -1846,7 +1855,7 @@ Les visuels des pages de services servent aussi de vignettes aux cartes des serv
 
 - [x] Choisir le nom de l'agence et réserver le nom de domaine : Digital Solutions, `digital-solutions.ma`
 - [x] Créer le logo (fait par l'équipe), puis l'intégrer : en-tête, pied de page, favicon et image de partage (`pnpm image:partage`). Reçu et intégré le 26 septembre 2026 (sources dans `design/logo/`).
-- [ ] Relier le domaine au site et créer l'adresse e-mail de contact (voir la section « Nom de domaine » de [stack-technique.md](stack-technique.md))
+- [ ] Relier le domaine au site et créer l'adresse e-mail de contact, `contact@digital-solutions.ma` (affichée sur le site depuis le 26 septembre 2026 ; voir la section « Nom de domaine » de [stack-technique.md](stack-technique.md))
 - [ ] Fixer la grille de prix interne, pour les devis. Elle n'est pas publiée sur le site.
 - [ ] Confirmer les engagements listés en [section 4](#engagements-à-confirmer-avant-publication)
 - [ ] Choisir l'option design : designer partenaire ou modèles personnalisés
@@ -1858,7 +1867,8 @@ Les visuels des pages de services servent aussi de vignettes aux cartes des serv
 - [ ] Remplacer les visuels des en-têtes par des projets réels quand des clients auront donné leur accord écrit (section 6.19)
 - [ ] Relire et valider la révision des textes du 26 septembre 2026 (recommandations de wording, section 6)
 - [ ] Confirmer les valeurs retirées du site, puis les réafficher : délai de réponse, délais des projets, pays d'hébergement, ville, adresse et zone servie (données structurées, llms.txt), durée de conservation des sauvegardes, volume de modifications et délais d'intervention des forfaits, durée d'engagement, garantie
-- [ ] Fournir l'histoire de l'agence, la ville, les noms, les rôles et les photos de l'équipe, pour réafficher la section « L'équipe » (section 6.10)
+- [ ] Fournir l'histoire de l'agence, la ville et les photos de l'équipe (section 6.10). Les noms et les rôles sont reçus le 26 septembre 2026 : la section « L'équipe » est affichée.
+- [ ] Donner le numéro de téléphone de l'agence (Contact, mentions légales)
 - [ ] Préparer des preuves concrètes : exemple de rapport d'audit, captures de tests, exemples de livrables, cas clients et témoignages avec l'accord écrit des clients
 - [x] Intégrer le design du site : maquettes du designer, intégrées le 26 septembre 2026 (section « Design » de [stack-technique.md](stack-technique.md))
 - [ ] Relire et valider les surtitres et les libellés ajoutés par le design (section 6.20)

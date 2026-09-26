@@ -66,6 +66,7 @@ describe('analyserTexte', () => {
     'Une vision 360°',
     'Une équipe d’ingénieurs',
     'Échanger avec un ingénieur',
+    'Ingénieur logiciel',
   ])('refuse « %s »', (texte) => {
     const problemes = analyserTexte([texte], { strict: false });
     expect(problemes.some((p) => p.niveau === 'erreur')).toBe(true);

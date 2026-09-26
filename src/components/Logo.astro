@@ -6,14 +6,20 @@
  * - blanc : sur fond sombre (pied de page).
  * Le nom vient de src/data/site.ts : le premier mot en gras, la suite en dessous.
  * Le <br> garde l'espace entre les deux mots dans le nom lu par les lecteurs d'écran.
+ *
+ * Animations (src/styles/global.css) : dans un lien, les demi-disques se rejoignent en un disque
+ * plein au survol et au focus clavier (logo-demi). Avec `anime`, ils arrivent des côtés à
+ * l'ouverture de la page (anim-logo). Le nom n'est pas animé.
  */
 import { site } from '~/data/site';
 
 interface Props {
   version?: 'couleur' | 'blanc';
+  /** Animation à l'ouverture de la page (en-tête de l'accueil). */
+  anime?: boolean;
 }
 
-const { version = 'couleur' } = Astro.props;
+const { version = 'couleur', anime = false } = Astro.props;
 const blanc = version === 'blanc';
 const [premierMot, ...suite] = site.nom.split(' ');
 ---
@@ -21,8 +27,24 @@ const [premierMot, ...suite] = site.nom.split(' ');
 <span class="flex items-center gap-3 whitespace-nowrap">
   {/* Même dessin que design/logo/svg/symbole-couleur.svg (vérifié par tests/unit/logo.test.ts). */}
   <svg aria-hidden="true" focusable="false" viewBox="0 0 100 100" class="size-9 shrink-0">
-    <path d="M4 46A40 40 0 0 1 84 46Z" class={blanc ? 'fill-white' : 'fill-encre'}></path>
-    <path d="M16 54A40 40 0 0 0 96 54Z" class={blanc ? 'fill-nuit-logo-bleu' : 'fill-bleu'}></path>
+    {/* Demi-disque du haut, centré en (44, 46) : il arrive de la gauche. */}
+    <path
+      d="M4 46A40 40 0 0 1 84 46Z"
+      class:list={[
+        'logo-demi [--depart:-56px_4px] [--joint:6px_4px]',
+        anime && 'anim-logo',
+        blanc ? 'fill-white' : 'fill-encre',
+      ]}
+    ></path>
+    {/* Demi-disque du bas, centré en (56, 54) : il arrive de la droite. */}
+    <path
+      d="M16 54A40 40 0 0 0 96 54Z"
+      class:list={[
+        'logo-demi [--depart:56px_-4px] [--joint:-6px_-4px]',
+        anime && 'anim-logo',
+        blanc ? 'fill-nuit-logo-bleu' : 'fill-bleu',
+      ]}
+    ></path>
   </svg>
   <span class="text-[1.0625rem] leading-[1.14]">
     <span class:list={['font-semibold', blanc ? 'text-white' : 'text-encre']}>{premierMot}</span>
