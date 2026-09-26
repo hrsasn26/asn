@@ -87,6 +87,8 @@ jobs:
         with:
           name: rapports-lighthouse
           path: .lighthouseci/
+          # Le dossier commence par un point : sans cette option, il n'est pas envoyé.
+          include-hidden-files: true
           retention-days: 7
 
   docker:

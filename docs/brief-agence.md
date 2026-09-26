@@ -229,7 +229,7 @@ La page « Méthode », avec une étape de tests bien visible, est l'endroit id�
 
 ## 6. Contenus des pages
 
-> Sections 6.1 à 6.6 : textes validés, sauf les ajouts marqués « à valider ». Sections 6.7 à 6.13 et 6.14 à 6.18 (nouveaux services) : propositions à valider. Section 6.19 (visuels des en-têtes) : proposition à valider.
+> Sections 6.1 à 6.6 : textes validés, sauf les ajouts marqués « à valider ». Sections 6.7 à 6.13 et 6.14 à 6.18 (nouveaux services) : propositions à valider. Section 6.19 (visuels des en-têtes) : légende et textes alternatifs validés.
 > Adaptation au Maroc (25 septembre 2026) : prix en DH, loi 09-08 à la place du RGPD, délai de rétractation de 7 jours. Ces changements sont à revalider, y compris dans les sections 6.1 à 6.6.
 > Révision du 26 septembre 2026, à valider : textes revus selon le document « Digital Solutions - Recommandations de wording ». Les en-têtes, les boutons, plusieurs cartes et les FAQ changent, y compris dans les sections 6.1 à 6.6. Les phrases qui contenaient une valeur non confirmée (délais, pays d'hébergement, ville, garantie, durée des sauvegardes) sont retirées. La section « L'équipe » de la page L'agence est masquée jusqu'à réception des vraies informations.
 
@@ -1706,7 +1706,7 @@ Un échange de 30 minutes, gratuit et confidentiel, pour définir ce qu'il faut 
 
 ### 6.19 Visuels des en-têtes
 
-> Proposition à valider. Maquettes reçues du designer le 26 septembre 2026, adaptées aux règles de ce brief. Sources et détail des adaptations : [design/heros/README.md](../design/heros/README.md).
+> Légende et textes alternatifs validés le 26 septembre 2026. Maquettes reçues du designer le 26 septembre 2026, adaptées aux règles de ce brief. Sources et détail des adaptations : [design/heros/README.md](../design/heros/README.md).
 
 Onze pages ont un visuel dans l'en-tête, à droite du texte (sous le texte sur téléphone) : des écrans sur ordinateur et sur téléphone, avec une ou deux cartes. Chaque visuel montre un projet du type décrit par la page, pour un client fictif. Les autres pages (Services, Méthode, L'agence, Contact, pages légales) gardent leurs illustrations.
 
@@ -1777,7 +1777,8 @@ Onze pages ont un visuel dans l'en-tête, à droite du texte (sous le texte sur 
 - [ ] Relire et valider les textes proposés : Accueil, Méthode, L'agence, Contact (sections 6.7 à 6.11)
 - [ ] Relire et valider les pages des nouveaux services : Applications mobiles, Logiciels SaaS, Intelligence artificielle, Données et tableaux de bord, Tests et sécurité (sections 6.14 à 6.18)
 - [ ] Relire et valider les ajouts dans les pages existantes : options Sites web (langues, WhatsApp), section WhatsApp (Automatisation), formation à l'IA
-- [ ] Relire et valider les visuels des en-têtes (section 6.19). Les remplacer par des projets réels quand des clients auront donné leur accord écrit.
+- [x] Valider la légende et les textes alternatifs des visuels des en-têtes (section 6.19)
+- [ ] Remplacer les visuels des en-têtes par des projets réels quand des clients auront donné leur accord écrit (section 6.19)
 - [ ] Relire et valider la révision des textes du 26 septembre 2026 (recommandations de wording, section 6)
 - [ ] Confirmer les valeurs retirées du site, puis les réafficher : délai de réponse, délais des projets, pays d'hébergement, ville, durée de conservation des sauvegardes, volume de modifications et délais d'intervention des forfaits, durée d'engagement, garantie
 - [ ] Fournir l'histoire de l'agence, la ville, les noms, les rôles et les photos de l'équipe, pour réafficher la section « L'équipe » (section 6.10)

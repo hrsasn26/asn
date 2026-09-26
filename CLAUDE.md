@@ -18,7 +18,7 @@ Les choix techniques, l'organisation du code et la mise en service sont dans [do
 - Prix : aucun prix public. Pas de page Tarifs : chaque prix est donné en privé, dans un devis.
 - Pages légales : projets de texte avec placeholders, à faire valider par un juriste marocain.
 - Logo : à fournir par l'équipe. En attendant, l'en-tête affiche le nom en texte et le favicon est un carré bleu.
-- Images : illustrations SVG originales (`src/components/illustrations/`), icônes Lucide, image de partage `public/og.png`, visuels des en-têtes (maquettes d'écrans pour des clients fictifs, section 6.19 du brief, sources dans `design/heros/`). Pas de photo de stock ni de photo d'équipe inventée.
+- Images : illustrations SVG originales (`src/components/illustrations/`), icônes Lucide, image de partage `public/og.png`, visuels des en-têtes (maquettes d'écrans pour des clients fictifs, section 6.19 du brief, sources dans `design/heros/` ; légende et textes alternatifs validés). Pas de photo de stock ni de photo d'équipe inventée.
 - Technologies : Astro 7, TypeScript, Tailwind CSS 4, Node.js 24, pnpm. Déploiement Docker + Caddy sur un VPS (hébergeur et pays à choisir).
 - Déploiement : désactivé tant que la mise en service n'est pas faite (section 8 de `docs/stack-technique.md`). Un aperçu tourne sur Vercel (`asn-tau.vercel.app`, non indexé). Le domaine est à relier à Vercel ou au VPS (section « Nom de domaine » de `docs/stack-technique.md`).
 - Adaptateurs : Node par défaut, `@astrojs/vercel` seulement pendant un build Vercel. Tester les deux builds après un changement de configuration (`pnpm build` et `VERCEL=1 pnpm build`).

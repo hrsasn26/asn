@@ -15,9 +15,10 @@
         "http://localhost:4321/contact",
         "http://localhost:4321/services/hebergement-maintenance"
       ],
-      "numberOfRuns": 1
+      "numberOfRuns": 3
     },
     "assert": {
+      "aggregationMethod": "median",
       "assertions": {
         "categories:performance": [
           "error",
