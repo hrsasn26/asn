@@ -106,6 +106,8 @@ deploy/                   Docker Compose, Caddyfile, script de déploiement
 - les illustrations s'animent à l'ouverture de la page (classes `anim-entree`, `anim-zoom`, `anim-trace`, `anim-pousse`, `anim-ecrit`, `anim-flux`, `anim-aiguille`, `anim-tourne`, `anim-sonne`, `anim-saut`) ;
 - l'ordre d'apparition se règle avec `delai-300` (300 ms) ; `puis-200` compte à partir du délai du parent ;
 - les cartes et les titres montent en place pendant le défilement (`apparition`, décalage possible avec la variable `--decalage`), la frise des étapes se remplit (`anim-frise`) ;
+- page Contact : le titre monte en place avec le trait souligné (composant `Souligne`, aussi utilisé par `Hero`), les champs du formulaire arrivent l'un après l'autre (`anim-cascade`), les icônes de contact apparaissent, l'avion en papier du bouton s'envole au survol ;
+- formulaires (Contact et Audit gratuit) : le libellé et la bordure du champ actif passent en bleu ; le message de confirmation affiche une coche qui se dessine ;
 - dans le pied de page, une barre aux couleurs des services se remplit de gauche à droite (`anim-barre`), les trois colonnes montent en place l'une après l'autre, et chaque service a une pastille de sa couleur ;
 - les cartes des services, les boutons et les liens du menu réagissent au survol ; les réponses de la FAQ se déroulent ; les pages s'enchaînent en fondu (transitions de page du navigateur).
 
