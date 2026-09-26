@@ -32,7 +32,7 @@ pnpm image:heros accueil    # un seul visuel
 Le script `scripts/generer-heros.mjs` :
 
 1. vérifie chaque source avec les règles de contenu du site (aucun prix, mots à éviter, pas de « ! », aucune ressource externe) ;
-2. ouvre la source dans Chromium et fait une capture au double de sa taille, sur fond transparent ;
+2. ouvre la source dans Chromium et fait une capture à 2,3 fois sa taille (2400 px de large, la plus grande image), sur fond transparent ;
 3. écrit dans `src/assets/heros/` une image AVIF par largeur (`<nom>-<largeur>.avif`) et une image WebP pour les anciens navigateurs (`<nom>.webp`).
 
 Les largeurs, les textes alternatifs et la légende sont dans `src/data/maquettes.ts`. `pnpm test` vérifie que chaque visuel a sa source, ses images et un texte alternatif, et que les sources respectent les règles de contenu.
