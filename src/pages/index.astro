@@ -1,9 +1,9 @@
 ---
 // Textes : docs/brief-agence.md, section 6.7 (proposition à valider).
-import Activity from '@lucide/astro/icons/activity';
 import BadgeCheck from '@lucide/astro/icons/badge-check';
 import Blocks from '@lucide/astro/icons/blocks';
 import Handshake from '@lucide/astro/icons/handshake';
+import ShieldCheck from '@lucide/astro/icons/shield-check';
 import AuditTeaser from '~/components/AuditTeaser.astro';
 import ButtonLink from '~/components/ButtonLink.astro';
 import CtaFinal from '~/components/CtaFinal.astro';
@@ -22,14 +22,14 @@ import { organisationJsonLd } from '~/lib/seo';
 
 <BaseLayout
   title={`Sites web et applications sur mesure pour TPE, PME et particuliers | ${site.nom}`}
-  description="Nous créons, testons, hébergeons et maintenons vos sites et vos applications. Une équipe d'ingénieurs, un seul interlocuteur et un devis à prix fixe."
+  description="Nous créons, testons, hébergeons et maintenons vos sites et vos applications. Un interlocuteur direct, un devis à prix fixe et un suivi après la mise en ligne."
   jsonLd={organisationJsonLd(Astro.site ?? Astro.url.origin)}
 >
   <Hero
     maquette="accueil"
-    title="Des sites et des applications conçus par des ingénieurs"
-    motCle="ingénieurs"
-    subtitle="Fiables, testés, sécurisés et suivis dans la durée. Nous construisons votre projet, puis nous nous en occupons, pour que vous puissiez vous concentrer sur votre activité."
+    title="Des sites et des applications fiables, suivis dans la durée"
+    motCle="fiables"
+    subtitle="Sites web, applications et automatisations : nous concevons des outils rapides, sécurisés et faciles à faire évoluer. Et nous restons disponibles après la mise en ligne."
   >
     <ButtonLink href={cta.principal.href}>{cta.principal.label}</ButtonLink>
     <ButtonLink href={cta.secondaire.href} variant="secondaire">
@@ -38,27 +38,31 @@ import { organisationJsonLd } from '~/lib/seo';
   </Hero>
 
   <Section title="Ce que vous y gagnez">
+    <p class="apparition mb-8 max-w-3xl text-lg text-slate-700">
+      Un projet qui fonctionne dès le lancement, qui reste facile à faire évoluer et qui ne vous
+      rend pas dépendant d'un prestataire.
+    </p>
     <FeatureGrid
       columns={4}
       items={[
         {
-          title: 'Toujours en ligne',
-          text: 'Votre site reste en ligne, rapide et sauvegardé automatiquement.',
-          icone: Activity,
+          title: 'Surveillé et sauvegardé',
+          text: 'Hébergement surveillé, sauvegardes et maintenance pour limiter les interruptions.',
+          icone: ShieldCheck,
         },
         {
           title: 'Testé avant la mise en ligne',
-          text: 'Tout est vérifié sur ordinateur, tablette et mobile avant la mise en ligne. Pas de mauvaise surprise.',
+          text: 'Pages, formulaires, parcours et affichage sur mobile sont vérifiés avant la mise en ligne.',
           icone: BadgeCheck,
         },
         {
-          title: 'Construit pour durer',
-          text: 'Un outil solide, qui évolue avec votre activité sans tout reconstruire.',
+          title: 'Conçu pour évoluer',
+          text: 'Une base technique propre pour ajouter des fonctionnalités sans repartir de zéro.',
           icone: Blocks,
         },
         {
-          title: 'Un seul interlocuteur',
-          text: 'Les personnes qui construisent votre projet sont celles qui vous répondent, du premier échange à la maintenance.',
+          title: 'Un interlocuteur direct',
+          text: "Vous échangez avec l'équipe qui conçoit et développe votre projet.",
           icone: Handshake,
         },
       ]}
@@ -84,9 +88,8 @@ import { organisationJsonLd } from '~/lib/seo';
     <ul class="grid max-w-3xl gap-3">
       {[
         'Vous restez propriétaire de votre code, de votre nom de domaine et de vos données.',
-        'Un devis à prix fixe, après un échange gratuit.',
-        `Une réponse à votre demande sous ${site.delaiReponse}.`,
-        `Un hébergement en ${site.hebergement}.`,
+        'Un périmètre, un prix fixe et un planning écrits avant de commencer.',
+        'Des tests avant chaque mise en ligne.',
       ].map((engagement) => (
         <li class="apparition flex gap-3 rounded-md border border-slate-200 bg-white px-4 py-3">
           <BadgeCheck class="apparition-zoom mt-0.5 shrink-0 text-emerald-600" size={20} />

@@ -3,14 +3,15 @@
  *
  * Règle du projet : aucun prix public. Chaque prix est donné dans un devis.
  * `pnpm check:content` bloque tout montant affiché sur le site.
+ * Le volume de modifications, les délais d'intervention et la durée d'engagement ne sont pas
+ * affichés sur la page Hébergement et maintenance tant qu'ils ne sont pas confirmés.
  */
 export interface ForfaitMaintenance {
   nom: string;
   recommande: boolean;
   pourQui: string;
   sauvegardes: string;
-  modifications: string;
-  delaiIntervention: string;
+  petitesModifications: boolean;
   rapportMensuel: boolean;
 }
 
@@ -20,8 +21,7 @@ export const forfaitsMaintenance: ForfaitMaintenance[] = [
     recommande: false,
     pourQui: 'Sites vitrines, particuliers',
     sauvegardes: 'Hebdomadaires',
-    modifications: '—',
-    delaiIntervention: '[48 h ouvrées]',
+    petitesModifications: false,
     rapportMensuel: false,
   },
   {
@@ -29,8 +29,7 @@ export const forfaitsMaintenance: ForfaitMaintenance[] = [
     recommande: true,
     pourQui: 'TPE, PME, boutiques en ligne',
     sauvegardes: 'Quotidiennes',
-    modifications: '[1 h/mois]',
-    delaiIntervention: '[24 h ouvrées]',
+    petitesModifications: true,
     rapportMensuel: true,
   },
   {
@@ -38,10 +37,10 @@ export const forfaitsMaintenance: ForfaitMaintenance[] = [
     recommande: false,
     pourQui: 'Applications, sites critiques',
     sauvegardes: 'Quotidiennes + copie externe',
-    modifications: '[3 h/mois]',
-    delaiIntervention: '[4 h ouvrées]',
+    petitesModifications: true,
     rapportMensuel: true,
   },
 ];
 
+/** Durée d'engagement, citée dans les CGV (projet de texte à faire valider par un juriste). */
 export const engagementMaintenance = '[Sans engagement / Engagement de 12 mois]';

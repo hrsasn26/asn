@@ -6,8 +6,8 @@ import CreditCard from '@lucide/astro/icons/credit-card';
 import LayoutDashboard from '@lucide/astro/icons/layout-dashboard';
 import Plug from '@lucide/astro/icons/plug';
 import RefreshCw from '@lucide/astro/icons/refresh-cw';
+import Rocket from '@lucide/astro/icons/rocket';
 import ShieldCheck from '@lucide/astro/icons/shield-check';
-import UsersRound from '@lucide/astro/icons/users-round';
 import ButtonLink from '~/components/ButtonLink.astro';
 import CtaFinal from '~/components/CtaFinal.astro';
 import Faq from '~/components/Faq.astro';
@@ -17,14 +17,14 @@ import Hero from '~/components/Hero.astro';
 import ProblemList from '~/components/ProblemList.astro';
 import Section from '~/components/Section.astro';
 import Steps from '~/components/Steps.astro';
-import { delais, site } from '~/data/site';
+import { site } from '~/data/site';
 import BaseLayout from '~/layouts/BaseLayout.astro';
 import { serviceJsonLd } from '~/lib/seo';
 
 const title = 'Développement de logiciel SaaS par abonnement';
 const description =
   'Vous voulez vendre un logiciel en ligne par abonnement ? Nous développons votre SaaS : comptes clients, abonnements, paiement en ligne, sécurité et suivi.';
-const ctaProjet = { label: 'Présenter mon idée', href: '/contact' };
+const ctaProjet = { label: 'Parler de mon idée de SaaS', href: '/contact' };
 ---
 
 <BaseLayout
@@ -38,9 +38,9 @@ const ctaProjet = { label: 'Présenter mon idée', href: '/contact' };
 >
   <Hero
     maquette="logiciels-saas"
-    title="Votre logiciel en ligne, vendu par abonnement"
-    motCle="abonnement"
-    subtitle="Vous avez une idée de logiciel pour les entreprises ou pour les particuliers ? Nous développons votre plateforme, de la première version au lancement, puis nous la faisons évoluer avec vous."
+    title="Lancez votre SaaS avec une première version solide et prête à vendre"
+    motCle="prête à vendre"
+    subtitle="Nous vous aidons à cadrer l'essentiel, à construire la plateforme et à gérer les comptes et les abonnements. Puis nous faisons évoluer le logiciel avec les retours de vos clients."
   >
     <ButtonLink href={ctaProjet.href}>{ctaProjet.label}</ButtonLink>
   </Hero>
@@ -67,19 +67,19 @@ const ctaProjet = { label: 'Présenter mon idée', href: '/contact' };
     <FeatureGrid
       items={[
         {
-          title: 'Comptes et équipes',
-          icone: UsersRound,
-          text: 'Inscription, connexion sécurisée, gestion des utilisateurs et de leurs droits. Les données de chaque client restent séparées de celles des autres.',
+          title: "Commencer par l'essentiel",
+          icone: Rocket,
+          text: 'Nous gardons les fonctions nécessaires pour vendre et apprendre vite de vos premiers clients. Le reste attend leurs retours.',
         },
         {
-          title: 'Abonnements et paiement',
+          title: 'Comptes et abonnements',
           icone: CreditCard,
-          text: "Formules, période d'essai, paiement en ligne et factures automatiques. Nous choisissons avec vous la solution de paiement adaptée à vos clients, au Maroc ou à l'international.",
+          text: "Inscription, connexion sécurisée, utilisateurs et droits, formules, période d'essai, paiement en ligne et factures automatiques. Nous choisissons avec vous la solution de paiement adaptée à vos clients, au Maroc ou à l'international.",
         },
         {
           title: "Espace d'administration",
           icone: LayoutDashboard,
-          text: "Vous suivez vos clients, vos abonnements et l'utilisation de votre logiciel, sans passer par nous.",
+          text: "Vous suivez vos clients, vos abonnements et l'utilisation de votre logiciel, sans dépendre de nous.",
         },
         {
           title: "Connexion avec d'autres logiciels",
@@ -96,7 +96,7 @@ const ctaProjet = { label: 'Présenter mon idée', href: '/contact' };
         {
           title: 'Des bases solides',
           icone: Blocks,
-          text: 'Nous concevons votre logiciel pour accueillir de nouveaux clients et de nouvelles fonctionnalités sans tout reconstruire.',
+          text: 'Les données de chaque client restent séparées de celles des autres. Votre logiciel peut accueillir de nouveaux clients et de nouvelles fonctionnalités sans tout reconstruire.',
         },
         {
           title: 'Testé à chaque version',
@@ -153,7 +153,8 @@ const ctaProjet = { label: 'Présenter mon idée', href: '/contact' };
     </FaqItem>
     <FaqItem question="Combien de temps faut-il ?">
       <p>
-        {`Une première version demande en général ${delais.mvp}. Nous fixons le planning ensemble après le cadrage.`}
+        Cela dépend des fonctions de la première version. Nous fixons le planning ensemble après le
+        cadrage, et il figure dans le devis.
       </p>
     </FaqItem>
     <FaqItem question="Qui est propriétaire du logiciel ?">
@@ -177,14 +178,13 @@ const ctaProjet = { label: 'Présenter mon idée', href: '/contact' };
     <FaqItem question="Mes clients sont à l'étranger. Est-ce un problème ?">
       <p>
         Non, mais les règles changent selon les pays : protection des données, facturation,
-        paiement. Nous en tenons compte dès le cadrage. [À valider avec un juriste selon les pays
-        visés]
+        paiement. Nous en tenons compte dès le cadrage.
       </p>
     </FaqItem>
   </Faq>
 
   <CtaFinal
-    title="Présentez-nous votre idée de SaaS"
+    title="Parlons de votre idée de SaaS"
     text="Un échange de 30 minutes, gratuit et confidentiel, pour parler de votre idée, de vos futurs clients et de ce qui est réaliste pour une première version."
     button={ctaProjet}
   />

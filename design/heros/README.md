@@ -48,5 +48,6 @@ Maquettes reçues du designer le 26 septembre 2026 (archive « Hero mockups for 
 - **Aucune entreprise réelle** : fournisseurs, opérateurs et logiciels cités dans les factures et les tableaux de bord sont remplacés par des noms fictifs ou génériques. « Transports Benjelloun » devient « Transports Sebou ».
 - **Aucun membre de l'équipe inventé** : le prénom de l'ingénieur qui lance les tests est retiré.
 - **Aucun engagement non confirmé** : délai du rapport d'audit (« sous 48 h ») et durée de l'appel (« 30 min ») retirés ; sauvegardes et surveillance décrites comme dans la section 6.5 du brief.
+- **Pas de mot « ingénieurs »** (décision du 26 septembre 2026) : le bouton « Échanger avec un ingénieur » du rapport d'audit devient « Parler de mon projet ».
 - **Pas de numéro, d'adresse ou de domaine réel** : numéros masqués ou fictifs ; le site audité devient `www.votre-site.ma`.
 - **Polices** : Inter remplace la police système d'Apple (SF Pro), JetBrains Mono celle du terminal : le rendu est le même sur tous les ordinateurs.

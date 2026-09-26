@@ -13,9 +13,10 @@ import Field from '~/components/forms/Field.astro';
 import Honeypot from '~/components/forms/Honeypot.astro';
 import Success from '~/components/forms/Success.astro';
 import Hero from '~/components/Hero.astro';
+import LienFleche from '~/components/LienFleche.astro';
 import Section from '~/components/Section.astro';
 import { couleurPalette } from '~/data/couleurs';
-import { delais, site } from '~/data/site';
+import { site } from '~/data/site';
 import BaseLayout from '~/layouts/BaseLayout.astro';
 import { etatFormulaire } from '~/lib/formulaire';
 import { preoccupations } from '~/lib/schemas';
@@ -38,13 +39,13 @@ const verifications = [
   {
     Icone: Gauge,
     titre: 'Vitesse',
-    texte: "combien de temps vos pages mettent à s'afficher, et pourquoi.",
+    texte: "combien de temps vos pages mettent à s'afficher, et ce qui les ralentit.",
     delai: 'delai-300',
   },
   {
     Icone: ShieldCheck,
-    titre: 'Sécurité',
-    texte: 'certificat HTTPS, mises à jour, failles connues.',
+    titre: 'Sécurité de base',
+    texte: "certificat HTTPS, mises à jour et failles visibles de l'extérieur.",
     delai: 'delai-400',
   },
   {
@@ -56,7 +57,7 @@ const verifications = [
   {
     Icone: Smartphone,
     titre: 'Affichage mobile',
-    texte: 'comment vos visiteurs voient votre site sur téléphone.',
+    texte: 'comment vos visiteurs voient et utilisent votre site sur téléphone.',
     delai: 'delai-600',
   },
 ];
@@ -69,9 +70,9 @@ const verifications = [
 >
   <Hero
     maquette="audit-gratuit"
-    title="Votre site est-il lent, vulnérable ou invisible sur Google ?"
-    motCle="invisible"
-    subtitle="Recevez gratuitement un audit technique de votre site. Un rapport clair, sans jargon, avec les actions prioritaires à mener."
+    title="Obtenez un diagnostic clair de votre site"
+    motCle="diagnostic clair"
+    subtitle="Nous vérifions gratuitement les principaux points techniques qui peuvent freiner votre site : vitesse, sécurité de base, référencement technique et affichage mobile."
   />
 
   <Section>
@@ -103,9 +104,9 @@ const verifications = [
           <h2 class="apparition text-2xl">Ce que vous recevez</h2>
           <ul class="mt-4 space-y-2 text-slate-700">
             {[
-              `Un rapport écrit sous ${delais.rapportAudit}`,
-              'La liste des problèmes, classés par priorité',
-              delais.appelAudit,
+              'Un rapport écrit, sans jargon',
+              'Les problèmes classés par priorité : ce qui est urgent, ce qui peut attendre',
+              'Les actions recommandées pour chaque problème',
             ].map((element, index) => (
               <li class="apparition flex items-start gap-3">
                 <CircleCheck
@@ -121,13 +122,24 @@ const verifications = [
             ))}
           </ul>
         </div>
+        <div>
+          <h2 class="apparition text-2xl">Ce que l'audit gratuit ne couvre pas</h2>
+          <p class="apparition mt-4 text-slate-700">
+            L'audit gratuit regarde votre site de l'extérieur, sans accès au code ni au serveur. Il
+            ne remplace pas un audit de sécurité complet. Les corrections ne sont pas incluses :
+            vous les faites avec votre prestataire, ou nous vous proposons un devis.
+          </p>
+          <p class="apparition mt-4">
+            <LienFleche href="/services/tests-securite" label="Voir l'offre Tests et sécurité" />
+          </p>
+        </div>
       </div>
 
       <div>
         <h2 class="apparition mb-6 text-2xl">Demander mon audit</h2>
         {etat.envoye ? (
           <Success title="Votre demande d'audit est envoyée">
-            <p>Vous recevez votre rapport sous {delais.rapportAudit}.</p>
+            <p>Nous revenons vers vous avec votre rapport.</p>
           </Success>
         ) : (
           <>

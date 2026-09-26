@@ -20,7 +20,7 @@ import { serviceJsonLd } from '~/lib/seo';
 const title = "Audit de sécurité et tests de sites et d'applications";
 const description =
   'Audit de sécurité, tests avant une mise en ligne, tests automatiques et tests de charge : nous vérifions vos sites et vos applications.';
-const ctaAudit = { label: 'Demander un audit de sécurité', href: '/contact' };
+const ctaAudit = { label: 'Faire vérifier mon projet', href: '/contact' };
 ---
 
 <BaseLayout
@@ -34,9 +34,9 @@ const ctaAudit = { label: 'Demander un audit de sécurité', href: '/contact' };
 >
   <Hero
     maquette="tests-securite"
-    title="Vos sites et vos applications, vérifiés avant vos clients"
-    motCle="vérifiés"
-    subtitle="Audit de sécurité, tests avant une mise en ligne, tests automatiques : nous trouvons les problèmes avant qu'ils vous coûtent des clients. Même si nous n'avons pas développé votre projet."
+    title="Trouvez les problèmes avant vos utilisateurs"
+    motCle="avant vos utilisateurs"
+    subtitle="Audit de sécurité, tests avant une mise en ligne, tests automatiques et tests de charge : nous vérifions votre site ou votre application, même si nous ne l'avons pas développé."
   >
     <ButtonLink href={ctaAudit.href}>{ctaAudit.label}</ButtonLink>
   </Hero>
@@ -51,7 +51,7 @@ const ctaAudit = { label: 'Demander un audit de sécurité', href: '/contact' };
     ]}
   />
 
-  <Section title="Quatre façons de sécuriser votre projet">
+  <Section title="Quatre façons de réduire les risques">
     <FeatureGrid
       items={[
         {
@@ -149,7 +149,7 @@ const ctaAudit = { label: 'Demander un audit de sécurité', href: '/contact' };
     </FaqItem>
     <FaqItem question="Les tests vont-ils perturber mon site ?">
       <p>
-        Nous planifions les tests avec vous. Les tests de charge se font hors des heures
+        Non. Nous planifions les tests avec vous. Les tests de charge se font hors des heures
         d'affluence, ou sur une copie de votre site.
       </p>
     </FaqItem>

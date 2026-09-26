@@ -12,7 +12,7 @@ import Hero from '~/components/Hero.astro';
 import IllustrationMethode from '~/components/illustrations/IllustrationMethode.astro';
 import Section from '~/components/Section.astro';
 import { couleurPalette } from '~/data/couleurs';
-import { cta, delais, offre, site } from '~/data/site';
+import { cta, site } from '~/data/site';
 import BaseLayout from '~/layouts/BaseLayout.astro';
 
 interface Etape {
@@ -27,7 +27,7 @@ interface Etape {
 const etapes: Etape[] = [
   {
     title: 'Un premier échange, gratuit.',
-    text: 'Un appel de 30 minutes pour comprendre votre activité, votre besoin et vos contraintes. Nous vous disons honnêtement si nous sommes la bonne équipe pour votre projet.',
+    text: "Un appel de 30 minutes pour comprendre votre activité, votre besoin, vos contraintes et ce qui mérite vraiment d'être développé. Nous vous disons honnêtement si nous sommes la bonne équipe pour votre projet.",
     recu: 'un premier avis sur votre projet.',
   },
   {
@@ -42,7 +42,7 @@ const etapes: Etape[] = [
   },
   {
     title: 'Le développement, par étapes.',
-    text: "Nous construisons votre projet par petites étapes. Vous suivez l'avancement et vous validez chaque étape.",
+    text: "Nous construisons votre projet par petites étapes. Vous suivez l'avancement et vous validez chaque étape : vous n'attendez pas la livraison finale pour voir le résultat.",
     recu: "l'accès à une version de test, mise à jour régulièrement.",
   },
   {
@@ -62,7 +62,7 @@ const etapes: Etape[] = [
   },
   {
     title: 'La mise en ligne et la formation.',
-    text: "Nous mettons votre projet en ligne, puis nous vous montrons comment l'utiliser et le modifier vous-même.",
+    text: "Nous mettons votre projet en ligne, nous vous transmettons tous les accès, puis nous vous montrons comment l'utiliser et le modifier vous-même.",
     recu: "l'accès complet à votre site, à votre code et à vos données.",
   },
   {
@@ -90,9 +90,9 @@ const besoins = [
   breadcrumbs={[{ label: 'Méthode', href: '/methode' }]}
 >
   <Hero
-    title="Une méthode claire, du premier appel au suivi"
-    motCle="claire"
-    subtitle="À chaque étape, vous savez ce qui se passe, ce que vous validez et ce que vous recevez. Les tests font partie du projet : ce n'est pas une option."
+    title="Un projet clair, avec des validations à chaque étape"
+    motCle="clair"
+    subtitle="Vous savez ce qui est prévu, ce que vous devez valider et ce que vous recevez. Les tests sont intégrés au projet, pas ajoutés à la fin."
   >
     <IllustrationMethode slot="illustration" />
   </Hero>
@@ -138,8 +138,14 @@ const besoins = [
                 </ul>
               )}
               {etape.complement && <p class="mt-3 text-slate-700">{etape.complement}</p>}
-              <p class="mt-3 text-slate-900">
-                <em>Vous recevez :</em> {etape.recu}
+              {/* Ce qui est livré à chaque étape, dans un petit encadré (brief, section 6.8). */}
+              <p
+                class:list={[
+                  'mt-4 rounded-md border px-3 py-2 text-sm text-slate-900',
+                  etape.tests ? 'border-emerald-200 bg-white' : 'border-slate-200 bg-slate-50',
+                ]}
+              >
+                <strong>Vous recevez :</strong> {etape.recu}
               </p>
             </div>
           </li>
@@ -177,8 +183,8 @@ const besoins = [
   <Faq>
     <FaqItem question="Combien de temps dure un projet ?">
       <p>
-        Comptez {delais.siteVitrine} pour un site vitrine et {delais.boutique} pour une boutique en
-        ligne. Pour une application, nous fixons le planning ensemble après le cadrage.
+        Cela dépend du projet. Nous fixons le planning ensemble après le premier échange, et il
+        figure dans le devis.
       </p>
     </FaqItem>
     <FaqItem question="Puis-je demander des changements en cours de projet ?">
@@ -189,8 +195,8 @@ const besoins = [
     </FaqItem>
     <FaqItem question="Que se passe-t-il si un problème apparaît après la mise en ligne ?">
       <p>
-        Nous corrigeons les défauts liés à notre travail {offre.garantie}. Avec un forfait de
-        maintenance, nous surveillons votre site et nous intervenons rapidement.
+        Nous le corrigeons s'il est lié à notre travail, dans les conditions prévues au devis. Avec
+        un forfait de maintenance, nous surveillons votre site et nous intervenons rapidement.
       </p>
     </FaqItem>
   </Faq>

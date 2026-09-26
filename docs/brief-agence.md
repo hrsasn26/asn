@@ -152,7 +152,9 @@ Audit du site actuel du prospect : rapidité, sécurité, SEO technique, afficha
 
 ### Promesse
 
-> **Des sites et des applications conçus par des ingénieurs : fiables, testés, sécurisés et suivis dans la durée.**
+> **Des sites et des applications fiables, testés, sécurisés et suivis dans la durée.**
+
+> Décision du 26 septembre 2026 : le mot « ingénieurs » n'apparaît plus sur le site, ni dans la promesse.
 
 ### Différenciation
 Beaucoup d'agences qui travaillent avec les TPE et PME montent des sites WordPress à partir de thèmes, sans tests ni vraie maintenance. Nos compétences DevOps et QA nous permettent de nous démarquer sur la **fiabilité** et le **suivi**. C'est un argument fort auprès de clients souvent échaudés par un prestataire disparu ou un site piraté.
@@ -167,16 +169,29 @@ Les clients ne savent pas ce que veulent dire « DevOps » ou « QA ». Sur le s
 | Ingénierie logicielle | Un outil solide qui évolue avec votre activité |
 | Fullstack | Un seul interlocuteur pour tout votre projet |
 
+### Preuves à répéter
+Chaque page s'appuie sur les mêmes preuves, plutôt que sur des promesses générales :
+- les tests avant chaque mise en ligne ;
+- un périmètre, un prix et un planning écrits dans le devis ;
+- la propriété du code, du nom de domaine et des données ;
+- un interlocuteur direct ;
+- la maintenance possible après la mise en ligne.
+
+Dès que possible, ajouter des preuves réelles : exemple de rapport, capture de test, délai constaté, processus de sauvegarde, cas client ou témoignage vérifiable (avec l'accord écrit du client).
+
 ### Ton et style
 - **Vouvoiement**, ton professionnel et chaleureux.
 - **Clair avant tout** : phrases courtes, un message par section.
 - **Bénéfices avant fonctionnalités** : dire ce que le client y gagne, pas comment c'est fait.
 - **Honnête** : aucune statistique, aucun témoignage ni aucune promesse de résultat inventés (ex. pas de « première place sur Google garantie »).
+- **Rassurant, pas alarmiste** : décrire les risques sans formule anxiogène.
+- **FAQ** : chaque réponse commence par une réponse directe (« Oui », « Non », « Cela dépend de… »), puis explique, en deux à cinq phrases si possible.
+- **Aucune valeur non confirmée** : pas de délai, de durée, de ville ni de pays tant qu'ils ne sont pas confirmés. La phrase est retirée plutôt que publiée avec un placeholder (décision du 26 septembre 2026). Exceptions : les pages légales et les coordonnées de l'agence, obligatoires.
 - **Pas de points d'exclamation.**
-- **Mots à éviter sur le site** : DevOps, QA, stack, CI/CD, framework, « solutions innovantes », « optimiser », « digitaliser », « 360° ».
+- **Mots à éviter sur le site** : DevOps, QA, stack, CI/CD, framework, « solutions innovantes », « optimiser », « digitaliser », « 360° », « ingénieurs ».
 
 ### Engagements à confirmer avant publication
-Ces engagements sont repris dans les textes. Ils sont forts commercialement, mais il faut pouvoir les tenir :
+Ces engagements sont forts commercialement, mais il faut pouvoir les tenir. Depuis le 26 septembre 2026, le pays d'hébergement et le délai de réponse ne sont plus affichés sur le site : ils reviendront une fois confirmés.
 - [ ] Le client reste propriétaire de son code, de son nom de domaine et de ses données.
 - [ ] Hébergement en [pays à définir]. Un hébergement au Maroc évite la déclaration de transfert de données à la CNDP.
 - [ ] Devis à prix fixe après cadrage.
@@ -216,9 +231,12 @@ La page « Méthode », avec une étape de tests bien visible, est l'endroit id�
 
 > Sections 6.1 à 6.6 : textes validés, sauf les ajouts marqués « à valider ». Sections 6.7 à 6.13 et 6.14 à 6.18 (nouveaux services) : propositions à valider. Section 6.19 (visuels des en-têtes) : proposition à valider.
 > Adaptation au Maroc (25 septembre 2026) : prix en DH, loi 09-08 à la place du RGPD, délai de rétractation de 7 jours. Ces changements sont à revalider, y compris dans les sections 6.1 à 6.6.
+> Révision du 26 septembre 2026, à valider : textes revus selon le document « Digital Solutions - Recommandations de wording ». Les en-têtes, les boutons, plusieurs cartes et les FAQ changent, y compris dans les sections 6.1 à 6.6. Les phrases qui contenaient une valeur non confirmée (délais, pays d'hébergement, ville, garantie, durée des sauvegardes) sont retirées. La section « L'équipe » de la page L'agence est masquée jusqu'à réception des vraies informations.
 
-**Appel à l'action principal (tout le site) :** « Demander un devis gratuit »
-**Appel à l'action secondaire :** « Faire auditer mon site »
+**Appels à l'action (tout le site) : trois familles**
+- **« Parler de mon projet »** : bouton principal (en-tête, accueil), pour un premier échange. Chaque page de service a sa variante : « Parler de mon futur site », « Parler de mon application », etc.
+- **« Demander un devis »** : quand le besoin est déjà cadré (page Hébergement et maintenance).
+- **« Faire auditer mon site »** : l'audit gratuit, l'offre d'entrée.
 
 ---
 
@@ -226,27 +244,28 @@ La page « Méthode », avec une étape de tests bien visible, est l'endroit id�
 
 **URL :** `/services`
 **Balise title :** Création de sites web et d'applications sur mesure | Digital Solutions
-**Meta description :** Sites web, applications web et mobiles, logiciels SaaS, IA, automatisation et maintenance : des projets conçus par des ingénieurs, testés et suivis.
+**Meta description :** Sites web, applications web et mobiles, logiciels SaaS, IA, automatisation et maintenance : des projets testés, mis en ligne et suivis par la même équipe.
 **Mots-clés visés (à valider) :** agence web [ville], création site internet TPE, développement application sur mesure
 
 #### En-tête
 
-**H1 :** Des sites et des applications qui fonctionnent. Aujourd'hui, et dans cinq ans.
+**H1 :** Un partenaire technique pour créer, connecter et faire durer vos outils numériques
 
-**Sous-titre :** Nous sommes une équipe d'ingénieurs. Nous concevons, testons, hébergeons et maintenons vos projets web, pour que vous puissiez vous concentrer sur votre activité.
+**Sous-titre :** Du site vitrine au logiciel métier, nous prenons en charge la conception, le développement, les tests, la mise en ligne et le suivi.
 
-**Boutons :** [Demander un devis gratuit] [Faire auditer mon site]
+**Boutons :** [Parler de mon projet] [Faire auditer mon site]
 
-> Alternatives pour le H1 :
-> - « Vos outils numériques, construits solidement et suivis dans la durée » : plus descriptif, moins d'impact.
-> - « On construit votre site. Et on s'en occupe ensuite. » : plus familier, met en avant la maintenance.
+> Le document de recommandations propose « outils digitaux » : « numériques » est plus simple et évite le vocabulaire marketing (section 4).
+> Ancien H1 : « Des sites et des applications qui fonctionnent. Aujourd'hui, et dans cinq ans. »
 
 #### Section : nos services
 
 **Titre :** Ce que nous faisons pour vous
 
+> Cette section aide le visiteur à choisir la bonne page : une phrase par service, sans répéter le contenu de chaque offre. Elle est reprise sur l'accueil.
+
 **Carte 1 : Sites web**
-Un site vitrine ou une boutique en ligne rapide, bien référencé et facile à mettre à jour.
+Des sites rapides et crédibles, qui facilitent la prise de contact et l'achat.
 - Site vitrine
 - Boutique en ligne
 - Refonte de site existant
@@ -255,7 +274,7 @@ Un site vitrine ou une boutique en ligne rapide, bien référencé et facile à 
 → [Découvrir l'offre Sites web]
 
 **Carte 2 : Applications sur mesure**
-Un outil conçu pour votre façon de travailler : réservation, devis, planning ou espace client.
+Des outils adaptés à votre façon de travailler, et non l'inverse.
 - Outils métier
 - Espaces clients et portails
 - Première version de votre projet d'application
@@ -263,7 +282,7 @@ Un outil conçu pour votre façon de travailler : réservation, devis, planning 
 → [Découvrir l'offre Applications]
 
 **Carte 3 : Applications mobiles** *(proposition à valider)*
-Une application iPhone et Android pour vos clients ou pour vos équipes, publiée et suivie par nos soins.
+Une application iPhone et Android conçue, publiée et maintenue par la même équipe.
 - Applications pour vos clients
 - Applications pour vos équipes
 - Publication sur l'App Store et Google Play
@@ -271,7 +290,7 @@ Une application iPhone et Android pour vos clients ou pour vos équipes, publié
 → [Découvrir l'offre Applications mobiles]
 
 **Carte 4 : Logiciels SaaS** *(proposition à valider)*
-Votre logiciel en ligne, vendu par abonnement et construit pour accueillir de plus en plus de clients.
+Une première version prête à vendre, puis un logiciel qui évolue avec vos clients.
 - Comptes clients et abonnements
 - Paiement en ligne
 - Première version, puis évolutions
@@ -279,7 +298,7 @@ Votre logiciel en ligne, vendu par abonnement et construit pour accueillir de pl
 → [Découvrir l'offre Logiciels SaaS]
 
 **Carte 5 : Intelligence artificielle** *(proposition à valider)*
-L'IA là où elle vous fait vraiment gagner du temps, avec des résultats vérifiés.
+L'IA là où elle apporte un gain concret, avec des usages encadrés et des résultats vérifiés.
 - Assistants pour vos clients et vos équipes
 - Traitement de documents
 - Formation de vos équipes
@@ -287,7 +306,7 @@ L'IA là où elle vous fait vraiment gagner du temps, avec des résultats vérif
 → [Découvrir l'offre Intelligence artificielle]
 
 **Carte 6 : Automatisation et intégrations**
-Vos logiciels connectés entre eux, et les tâches répétitives faites automatiquement.
+Vos outils connectés entre eux : l'information circule sans être recopiée à la main.
 - Connexion de vos outils
 - Automatisation des tâches
 - WhatsApp connecté à vos outils *(ajout à valider)*
@@ -295,7 +314,7 @@ Vos logiciels connectés entre eux, et les tâches répétitives faites automati
 → [Découvrir l'offre Automatisation]
 
 **Carte 7 : Données et tableaux de bord** *(proposition à valider)*
-Vos chiffres clés réunis sur un seul écran, fiables et mis à jour automatiquement.
+Des chiffres fiables et lisibles pour piloter votre activité.
 - Mesure d'audience de votre site
 - Tableaux de bord de votre activité
 - Rapports automatiques
@@ -303,7 +322,7 @@ Vos chiffres clés réunis sur un seul écran, fiables et mis à jour automatiqu
 → [Découvrir l'offre Données]
 
 **Carte 8 : Tests et sécurité** *(proposition à valider)*
-Vos sites et vos applications vérifiés par des spécialistes des tests, même si nous ne les avons pas développés.
+Les problèmes trouvés avant vos utilisateurs, même si nous n'avons pas développé votre projet.
 - Audit de sécurité
 - Tests avant une mise en ligne
 - Tests automatiques et tests de charge
@@ -311,7 +330,7 @@ Vos sites et vos applications vérifiés par des spécialistes des tests, même 
 → [Découvrir l'offre Tests et sécurité]
 
 **Carte 9 : Hébergement et maintenance**
-Votre site en ligne, sauvegardé et à jour. Vous n'avez plus à y penser.
+Votre site disponible, sauvegardé et à jour, sans vous occuper de la technique.
 - Hébergement sécurisé
 - Sauvegardes et mises à jour
 - Reprise de site existant
@@ -322,8 +341,8 @@ Votre site en ligne, sauvegardé et à jour. Vous n'avez plus à y penser.
 
 **Titre :** Pourquoi travailler avec nous
 
-**Conçu par des ingénieurs**
-Votre projet est développé par des ingénieurs logiciels, avec les méthodes des grandes entreprises, adaptées à la taille de la vôtre.
+**Des méthodes solides**
+Votre projet est construit avec les méthodes des grandes entreprises, adaptées à la taille de la vôtre.
 
 **Tout est testé avant la mise en ligne**
 Chaque page, chaque formulaire et chaque paiement est vérifié sur ordinateur, tablette et mobile. Vous ne découvrez pas les bugs à la place de vos clients.
@@ -368,16 +387,18 @@ Nous analysons gratuitement sa vitesse, sa sécurité et son référencement tec
 #### FAQ
 
 **Combien coûte un site ou une application ?**
-Chaque projet est différent. Après un premier échange, nous vous remettons un devis gratuit, détaillé et à prix fixe : vous savez exactement ce que vous payez avant de vous engager.
+Cela dépend du projet. Après un premier échange, nous vous remettons un devis gratuit, détaillé et à prix fixe : vous savez exactement ce que vous payez avant de vous engager.
 
 **Combien de temps faut-il ?**
-Comptez [2 à 4 semaines] pour un site vitrine et [4 à 8 semaines] pour une boutique en ligne. Pour une application, nous fixons le délai ensemble après le cadrage.
+Cela dépend du projet. Nous fixons le planning ensemble après le premier échange, et il figure dans le devis.
 
 **Je n'y connais rien en informatique. Est-ce un problème ?**
 Non. Nous vous expliquons chaque choix simplement, et nous vous formons à l'utilisation de votre site ou de votre outil à la livraison.
 
 **Vous occupez-vous du design ?**
-Oui. [Nous travaillons avec un designer partenaire / Nous partons de modèles de qualité que nous adaptons à votre image]. Vous validez les maquettes avant le début du développement.
+Oui. Vous validez les maquettes avant le début du développement.
+
+> Les délais indicatifs ([2 à 4 semaines] pour un site vitrine, [4 à 8 semaines] pour une boutique en ligne) et l'option design ([designer partenaire / modèles personnalisés]) reviendront une fois confirmés.
 
 **J'ai déjà un site ou une application. Pouvez-vous le reprendre ?**
 Oui. Nous commençons par un audit pour faire le point, puis nous vous proposons un plan : corriger, améliorer ou reconstruire si c'est plus raisonnable.
@@ -388,7 +409,7 @@ Oui. Nous commençons par un audit pour faire le point, puis nous vous proposons
 
 Un échange de 30 minutes, gratuit et sans engagement, pour comprendre votre besoin et vous dire honnêtement ce que nous pouvons faire pour vous.
 
-**Bouton :** [Demander un devis gratuit]
+**Bouton :** [Parler de mon projet]
 
 ---
 
@@ -396,20 +417,18 @@ Un échange de 30 minutes, gratuit et sans engagement, pour comprendre votre bes
 
 **URL :** `/services/sites-web`
 **Balise title :** Création de site vitrine et e-commerce | Digital Solutions
-**Meta description :** Site vitrine, boutique en ligne ou refonte : des sites rapides, sécurisés et bien référencés, conçus par des ingénieurs pour les TPE, PME et particuliers.
+**Meta description :** Site vitrine, boutique en ligne ou refonte : des sites rapides, sécurisés et prêts pour le référencement, pour les TPE, PME et particuliers.
 **Mots-clés visés (à valider) :** création site vitrine, création site internet [ville], création boutique en ligne, refonte site web
 
 #### En-tête
 
-**H1 :** Un site web rapide, sécurisé et facile à trouver sur Google
+**H1 :** Un site rapide, crédible et pensé pour générer des contacts
 
-**Sous-titre :** Site vitrine, boutique en ligne ou refonte : nous créons des sites qui chargent vite, s'affichent parfaitement sur mobile et que vous pouvez modifier vous-même.
+**Sous-titre :** Site vitrine, boutique en ligne ou refonte : nous créons un site adapté au mobile, simple à modifier vous-même et techniquement prêt pour le référencement.
 
-**Bouton :** [Demander un devis gratuit]
+**Bouton :** [Parler de mon futur site]
 
-> Alternatives pour le H1 :
-> - « Un site qui travaille pour vous, même quand vous ne travaillez pas » : plus accrocheur, moins précis.
-> - « Votre site web, construit pour durer » : insiste sur la solidité.
+> Ancien H1 : « Un site web rapide, sécurisé et facile à trouver sur Google ». Le document de recommandations demande une promesse de référencement technique solide, sans garantie de position.
 
 #### Section : le problème
 
@@ -425,15 +444,14 @@ Un échange de 30 minutes, gratuit et sans engagement, pour comprendre votre bes
 **Titre :** Trois façons de lancer ou de relancer votre présence en ligne
 
 **Site vitrine**
-Pour présenter votre activité, montrer vos réalisations et être contacté facilement.
+Pour présenter clairement votre activité et vos réalisations, et être contacté facilement.
 *Idéal pour :* artisans, indépendants, TPE, particuliers.
-- Jusqu'à [5] pages
 - Formulaire de contact
 - Prise de rendez-vous en ligne (en option)
 - Liens vers vos réseaux sociaux et votre fiche Google
 
 **Boutique en ligne**
-Pour vendre vos produits sur Internet, 24 h/24.
+Pour vendre en ligne, avec un parcours d'achat simple, des paiements sécurisés et une gestion adaptée à votre activité.
 *Idéal pour :* commerçants, créateurs, PME.
 - Paiement sécurisé (carte bancaire via le CMI, paiement à la livraison…) *(modifié pour le Maroc, à valider)*
 - Gestion des stocks et des commandes
@@ -441,8 +459,8 @@ Pour vendre vos produits sur Internet, 24 h/24.
 - Shopify, WooCommerce ou sur mesure, selon votre volume de ventes
 
 **Refonte de site**
-Pour moderniser un site vieillissant sans perdre votre place sur Google.
-*Idéal pour :* tout site de plus de [3] ans ou qui ne vous apporte plus de contacts.
+Pour moderniser votre site sans perdre ce qui fonctionne : contenus, redirections, vitesse et affichage mobile sont traités dès le départ.
+*Idéal pour :* tout site vieillissant ou qui ne vous apporte plus de contacts.
 - Reprise de vos contenus
 - Redirections des anciennes pages pour conserver votre référencement
 - Nouveau design, plus rapide et adapté au mobile
@@ -484,7 +502,7 @@ Avant de livrer votre site, nous vérifions chaque page sur les principaux navig
 
 **Titre :** Un site à votre image
 
-[Nous travaillons avec un designer partenaire / Nous partons de modèles de qualité que nous adaptons à votre image]. Vous validez les maquettes avant le début du développement : pas de mauvaise surprise à la livraison.
+Vous validez les maquettes avant le début du développement : pas de mauvaise surprise à la livraison.
 
 Vous n'avez pas encore de logo ? Nous pouvons vous mettre en relation avec un graphiste partenaire.
 
@@ -494,16 +512,16 @@ Vous n'avez pas encore de logo ? Nous pouvons vous mettre en relation avec un gr
 Oui. Vous disposez d'un espace d'administration pour changer vos textes, vos images et ajouter des pages ou des articles. Nous vous formons à son utilisation à la livraison.
 
 **Vous occupez-vous des textes et des photos ?**
-Vous nous fournissez vos textes et vos photos, et nous vous aidons à les organiser. Si vous préférez déléguer, nous pouvons vous mettre en relation avec un rédacteur ou un photographe partenaire.
+Pas directement. Vous nous fournissez vos textes et vos photos, et nous vous aidons à les organiser. Si vous préférez déléguer, nous pouvons vous mettre en relation avec un rédacteur ou un photographe partenaire.
 
 **Mon site sera-t-il bien référencé sur Google ?**
-Nous nous occupons de toute la partie technique du référencement : vitesse, structure, balises, compatibilité mobile. Votre position dans Google dépend aussi de vos contenus et de la concurrence dans votre secteur : personne ne peut honnêtement vous garantir la première place. En revanche, nous vous donnons toutes les bases pour y arriver.
+Il sera techniquement prêt. Nous nous occupons de toute la partie technique du référencement : vitesse, structure, balises, compatibilité mobile. Votre position dans Google dépend aussi de vos contenus et de la concurrence dans votre secteur : personne ne peut honnêtement vous garantir la première place.
 
 **WordPress ou développement sur mesure ?**
-Nous vous conseillons selon votre besoin. WordPress convient très bien à la plupart des sites vitrines. Le sur-mesure devient intéressant quand vous avez des fonctionnalités spécifiques ou de gros volumes.
+Cela dépend de votre besoin. WordPress convient très bien à la plupart des sites vitrines. Le sur-mesure devient intéressant quand vous avez des fonctionnalités spécifiques ou de gros volumes.
 
 **Combien de temps faut-il pour créer mon site ?**
-Comptez [2 à 4 semaines] pour un site vitrine et [4 à 8 semaines] pour une boutique en ligne, selon la rapidité à laquelle nous recevons vos contenus.
+Cela dépend du site et de la rapidité à laquelle nous recevons vos contenus. Nous fixons le planning ensemble, et il figure dans le devis.
 
 **Que se passe-t-il après la mise en ligne ?**
 Votre site vous appartient. Vous pouvez le gérer seul, ou nous confier son hébergement et sa maintenance avec l'un de nos [forfaits mensuels](#65-page--hébergement-et-maintenance-).
@@ -512,9 +530,11 @@ Votre site vous appartient. Vous pouvez le gérer seul, ou nous confier son héb
 
 **Titre :** Parlons de votre futur site
 
-Décrivez-nous votre projet en quelques lignes. Nous revenons vers vous sous [48 h ouvrées] avec une première estimation.
+Décrivez-nous votre projet en quelques lignes. Nous revenons vers vous avec les prochaines étapes.
 
-**Bouton :** [Demander un devis gratuit]
+**Bouton :** [Parler de mon futur site]
+
+> « Une première estimation » est retiré : le document de recommandations demande de ne pas la promettre tant que le processus interne ne permet pas de la fournir à chaque demande.
 
 ---
 
@@ -527,15 +547,13 @@ Décrivez-nous votre projet en quelques lignes. Nous revenons vers vous sous [48
 
 #### En-tête
 
-**H1 :** Un outil conçu pour votre façon de travailler
+**H1 :** Un logiciel qui s'adapte à votre métier
 
-**Sous-titre :** Réservation, devis, planning, espace client, application mobile : nous développons le logiciel dont vous avez besoin, et il évolue avec votre activité.
+**Sous-titre :** Réservation, devis, planning, espace client ou outil interne : nous développons les fonctions dont vous avez réellement besoin, puis nous les faisons évoluer avec vous.
 
 **Bouton :** [Parler de mon projet]
 
-> Alternatives pour le H1 :
-> - « Arrêtez de gérer votre activité dans des tableurs » : part du problème, parle bien aux PME.
-> - « Votre idée d'application, développée par des ingénieurs » : cible les porteurs de projet.
+> Ancien H1 : « Un outil conçu pour votre façon de travailler ».
 
 #### Section : le problème
 
@@ -551,16 +569,15 @@ Décrivez-nous votre projet en quelques lignes. Nous revenons vers vous sous [48
 **Titre :** Ce que nous pouvons construire pour vous
 
 **Outils métier**
-Prise de rendez-vous, devis et factures, gestion de stock, planning d'équipe, suivi de chantier. Un seul outil, pensé pour votre activité, à la place de trois logiciels mal adaptés.
-
-**Espaces clients et portails**
-Vos clients suivent leurs commandes, téléchargent leurs documents et font leurs demandes en ligne, sans vous appeler.
-
-**Applications mobiles**
-Une application iPhone et Android à partir d'un seul développement, pour un coût maîtrisé. Nous nous occupons aussi de la publication sur l'App Store et Google Play.
+Prise de rendez-vous, devis et factures, gestion de stock, planning d'équipe : réunissez dans un seul outil ce qui est aujourd'hui dispersé entre tableurs, e-mails et logiciels mal adaptés.
 
 **Première version de votre projet (MVP)**
-Vous avez une idée d'application ? Nous construisons une première version avec l'essentiel, pour la tester auprès de vrais utilisateurs avant d'investir davantage.
+Vous avez une idée d'application ? Lancez une première version utile, testez-la avec de vrais utilisateurs, puis investissez dans ce qui fonctionne.
+
+**Espaces clients et portails**
+Vos clients consultent leurs demandes, leurs documents et leur suivi en ligne, sans vous appeler.
+
+> La carte « Applications mobiles » est retirée : l'offre a sa propre page (lien sous les cartes). La première version (MVP) passe en deuxième position pour rassurer sur le budget et le risque.
 
 **Liens sous les cartes** *(ajout à valider)* : → [Voir l'offre Applications mobiles] → [Vous voulez vendre votre logiciel par abonnement ? Voir l'offre Logiciels SaaS]
 
@@ -575,7 +592,7 @@ Nous concevons votre application pour que l'on puisse ajouter des fonctionnalit�
 Chaque nouvelle version est vérifiée par des tests automatiques. Une amélioration ne casse pas ce qui fonctionnait déjà.
 
 **Vos données protégées**
-Sauvegardes quotidiennes, accès sécurisés, hébergement en [pays à définir].
+Sauvegardes quotidiennes et accès sécurisés.
 
 **Un code qui vous appartient**
 Le code est documenté et vous appartient. Vous restez libre de changer de prestataire si vous le souhaitez.
@@ -586,7 +603,7 @@ Le code est documenté et vous appartient. Vous restez libre de changer de prest
 
 1. **Atelier de cadrage.** Nous listons ensemble les fonctionnalités et nous gardons l'essentiel pour la première version.
 2. **Maquettes.** Vous voyez les écrans de votre application avant qu'une seule ligne de code soit écrite.
-3. **Développement par étapes.** Une nouvelle version à tester toutes les [2] semaines. Vous suivez l'avancement concrètement.
+3. **Développement par étapes.** Une nouvelle version à tester régulièrement. Vous suivez l'avancement concrètement.
 4. **Tests.** Tests automatiques et vérifications manuelles avant chaque mise en ligne.
 5. **Mise en ligne et suivi.** Nous formons vos équipes, puis nous assurons la maintenance et les évolutions.
 
@@ -596,7 +613,7 @@ Le code est documenté et vous appartient. Vous restez libre de changer de prest
 
 Plutôt que de tout développer d'un coup, nous construisons d'abord une version simple, avec les fonctionnalités essentielles. Vous la testez auprès de vrais utilisateurs, puis vous décidez de la suite en connaissance de cause. Vous dépensez moins, et vous apprenez plus vite.
 
-**Bouton :** [Présenter mon idée]
+**Bouton :** [Parler de mon idée]
 
 #### FAQ
 
@@ -604,7 +621,7 @@ Plutôt que de tout développer d'un coup, nous construisons d'abord une version
 Cela dépend des fonctionnalités. Après l'atelier de cadrage, nous vous remettons un devis gratuit, à prix fixe.
 
 **Combien de temps faut-il ?**
-Une première version demande en général [6 à 12 semaines]. Nous fixons le planning ensemble après le cadrage.
+Cela dépend des fonctionnalités. Nous fixons le planning ensemble après le cadrage, et il figure dans le devis.
 
 **Mon idée sera-t-elle protégée ?**
 Oui. Nous pouvons signer un accord de confidentialité avant d'entrer dans les détails de votre projet.
@@ -634,15 +651,13 @@ Un échange de 30 minutes, gratuit et confidentiel, pour comprendre votre besoin
 
 #### En-tête
 
-**H1 :** Moins de saisie, moins d'erreurs, plus de temps pour votre métier
+**H1 :** Faites circuler l'information sans la recopier
 
-**Sous-titre :** Nous connectons vos outils entre eux et automatisons les tâches répétitives. Vos informations circulent toutes seules, au bon endroit.
+**Sous-titre :** Nous connectons vos outils et automatisons les tâches répétitives pour réduire la saisie manuelle, les oublis et les erreurs.
 
-**Bouton :** [Identifier mes tâches à automatiser]
+**Bouton :** [Parler de mes tâches répétitives]
 
-> Alternatives pour le H1 :
-> - « Vos logiciels se parlent enfin » : court et concret.
-> - « Combien d'heures par semaine passez-vous à recopier des informations ? » : question qui fait réfléchir le visiteur à sa situation.
+> Ancien H1 : « Moins de saisie, moins d'erreurs, plus de temps pour votre métier ». Le bénéfice « ne plus recopier » parle plus que le nom des outils : n8n, Make et Zapier restent une preuve secondaire.
 
 #### Section : le problème
 
@@ -658,13 +673,13 @@ Un échange de 30 minutes, gratuit et confidentiel, pour comprendre votre besoin
 **Titre :** Trois façons de vous faire gagner du temps
 
 **Connecter vos outils**
-Site web, boutique, CRM, comptabilité, agenda, e-mailing : nous les faisons communiquer. Chaque commande crée automatiquement sa facture, et chaque demande de contact arrive directement dans votre CRM.
+Site web, boutique, CRM, comptabilité, agenda, e-mailing : nous les relions pour éviter les doubles saisies. Chaque commande crée automatiquement sa facture, et chaque demande de contact arrive directement dans votre CRM.
 
 **Automatiser les tâches répétitives**
-Relances, rapports, notifications, synchronisation des stocks. Nous utilisons des outils éprouvés (n8n, Make, Zapier), ou un développement sur mesure quand c'est nécessaire.
+Relances, notifications, rapports, mise à jour des stocks : chaque tâche part au bon moment, sans action de votre part. Selon le besoin, nous utilisons des outils éprouvés (n8n, Make, Zapier) ou un développement sur mesure.
 
 **Intégrer l'IA, là où elle est utile**
-Un assistant sur votre site qui répond aux questions fréquentes, le tri automatique de vos documents, l'extraction des informations de vos factures. Nous n'intégrons l'IA que là où elle vous fait vraiment gagner du temps, et vos données restent protégées.
+Un assistant sur votre site qui répond aux questions fréquentes, le tri automatique de vos documents, l'extraction des informations de vos factures. Nous n'intégrons l'IA que là où elle vous fait vraiment gagner du temps, et nous vous expliquons où vont vos données.
 
 **Lien sous les cartes** *(ajout à valider)* : → [Découvrir l'offre Intelligence artificielle]
 
@@ -724,7 +739,9 @@ Pour les messages automatiques, oui : un compte WhatsApp Business relié à la p
 Seulement aux clients qui ont donné leur accord. Nous prévoyons la demande d'accord et la possibilité de se désinscrire.
 
 **Mes données sont-elles en sécurité avec l'IA ?**
-Nous choisissons des services compatibles avec la loi 09-08 sur les données personnelles, qui n'utilisent pas vos données pour entraîner leurs modèles. [à confirmer selon les fournisseurs retenus]
+Cela dépend du service d'IA choisi. Avant de commencer, nous vous disons quel service traite vos données, dans quel pays, et s'il peut les utiliser pour entraîner ses modèles. Vous décidez en connaissance de cause.
+
+> Pas de promesse générale sur la confidentialité d'un fournisseur d'IA tant que les fournisseurs et les contrats ne sont pas choisis (section 8).
 
 **Combien ça coûte ?**
 Cela dépend de la tâche à automatiser. Avant de commencer, nous estimons avec vous le temps gagné, puis nous vous remettons un devis gratuit, à prix fixe. Vous décidez en connaissance de cause.
@@ -735,7 +752,7 @@ Cela dépend de la tâche à automatiser. Avant de commencer, nous estimons avec
 
 Listez-nous les tâches répétitives qui vous prennent du temps. Nous vous disons gratuitement ce qui peut être automatisé.
 
-**Bouton :** [Identifier mes tâches à automatiser]
+**Bouton :** [Parler de mes tâches répétitives]
 
 ---
 
@@ -748,19 +765,17 @@ Listez-nous les tâches répétitives qui vous prennent du temps. Nous vous diso
 
 #### En-tête
 
-**H1 :** Votre site toujours en ligne. Vous n'avez plus à y penser.
+**H1 :** Votre site reste disponible, sauvegardé et à jour
 
-**Sous-titre :** Hébergement, sauvegardes, mises à jour de sécurité, surveillance et petites modifications : nous nous occupons de la technique, vous gardez l'esprit libre.
+**Sous-titre :** Nous gérons l'hébergement, les sauvegardes, la surveillance et les mises à jour, pour que vous n'ayez pas à vous occuper de la technique au quotidien.
 
 **Boutons :** [Voir les forfaits] [Demander un devis]
 
-> Alternatives pour le H1 :
-> - « La tranquillité technique, en forfait mensuel » : met en avant le modèle d'abonnement.
-> - « Site en panne, piraté ou abandonné ? Nous prenons le relais. » : cible les visiteurs qui ont déjà un problème.
+> Ancien H1 : « Votre site toujours en ligne. Vous n'avez plus à y penser. » « Toujours en ligne » est une promesse absolue.
 
 #### Section : le problème
 
-**Titre :** Un site sans maintenance est un site en danger
+**Titre :** Pourquoi un site a besoin de maintenance
 
 - Les extensions et logiciels non mis à jour sont l'une des principales portes d'entrée des pirates.
 - Un site en panne un week-end, ce sont des clients perdus sans que vous le sachiez.
@@ -771,19 +786,19 @@ Listez-nous les tâches répétitives qui vous prennent du temps. Nous vous diso
 **Titre :** Tout ce dont votre site a besoin
 
 **Hébergement géré**
-Serveurs en [pays à définir], connexion HTTPS, nom de domaine et e-mails professionnels.
+Un hébergement sécurisé, configuré et suivi, avec connexion HTTPS, nom de domaine et e-mails professionnels.
 
 **Sauvegardes vérifiées**
-Des sauvegardes automatiques, conservées [30] jours. Nous testons régulièrement leur restauration : une sauvegarde jamais testée n'est pas une vraie sauvegarde.
+Des sauvegardes automatiques, dont nous testons régulièrement la restauration : une sauvegarde jamais testée n'est pas une vraie sauvegarde.
 
 **Surveillance 24 h/24**
-Si votre site ne répond plus, nous sommes alertés immédiatement et nous intervenons.
+Si votre site ne répond plus, nous sommes alertés immédiatement. Nous intervenons selon votre forfait.
 
 **Mises à jour de sécurité testées**
 Nous appliquons les mises à jour après avoir vérifié qu'elles ne cassent rien.
 
 **Petites modifications**
-Un texte à changer, une image à remplacer, une page à ajouter : envoyez-nous un message, nous nous en occupons.
+Un texte à changer, une image à remplacer, une page à ajouter : envoyez-nous un message. Le volume inclus dépend de votre forfait.
 
 **Rapport mensuel**
 Chaque mois, un résumé clair : disponibilité du site, sauvegardes réalisées, mises à jour effectuées.
@@ -799,11 +814,12 @@ Chaque mois, un résumé clair : disponibilité du site, sauvegardes réalisées
 | Sauvegardes | Hebdomadaires | Quotidiennes | Quotidiennes + copie externe |
 | Surveillance 24 h/24 | ✓ | ✓ | ✓ |
 | Mises à jour de sécurité | ✓ | ✓ | ✓ |
-| Modifications incluses | — | [1 h/mois] | [3 h/mois] |
-| Délai d'intervention | [48 h ouvrées] | [24 h ouvrées] | [4 h ouvrées] |
+| Petites modifications | — | ✓ | ✓ |
 | Rapport mensuel | — | ✓ | ✓ |
 
-Le prix de chaque forfait dépend de votre site : il figure dans votre devis gratuit. [Sans engagement / Engagement de 12 mois] [à définir]
+Le prix de chaque forfait dépend de votre site : il figure dans votre devis gratuit, avec le volume de modifications inclus.
+
+> Valeurs retirées du site tant qu'elles ne sont pas confirmées : durée de conservation des sauvegardes ([30] jours), pays des serveurs, volume de modifications ([1 h/mois], [3 h/mois]), délais d'intervention ([48 h], [24 h], [4 h] ouvrées) et durée d'engagement ([Sans engagement / Engagement de 12 mois]).
 
 **Bouton :** [Choisir mon forfait]
 
@@ -847,22 +863,32 @@ Votre site est entre de bonnes mains, et vous pouvez vous concentrer sur votre a
 
 #### En-tête
 
-**H1 :** Votre site est-il lent, vulnérable ou invisible sur Google ?
+**H1 :** Obtenez un diagnostic clair de votre site
 
-**Sous-titre :** Recevez gratuitement un audit technique de votre site. Un rapport clair, sans jargon, avec les actions prioritaires à mener.
+**Sous-titre :** Nous vérifions gratuitement les principaux points techniques qui peuvent freiner votre site : vitesse, sécurité de base, référencement technique et affichage mobile.
+
+> Ancien H1 : « Votre site est-il lent, vulnérable ou invisible sur Google ? » (la question reste le titre de l'encadré audit, section 6.1).
 
 #### Section : ce que nous vérifions
 
-- **Vitesse** : combien de temps vos pages mettent à s'afficher, et pourquoi.
-- **Sécurité** : certificat HTTPS, mises à jour, failles connues.
+- **Vitesse** : combien de temps vos pages mettent à s'afficher, et ce qui les ralentit.
+- **Sécurité de base** : certificat HTTPS, mises à jour et failles visibles de l'extérieur.
 - **Référencement technique** : ce qui empêche Google de bien comprendre votre site.
-- **Affichage mobile** : comment vos visiteurs voient votre site sur téléphone.
+- **Affichage mobile** : comment vos visiteurs voient et utilisent votre site sur téléphone.
 
 #### Section : ce que vous recevez
 
-- Un rapport écrit sous [5 jours ouvrés]
-- La liste des problèmes, classés par priorité
-- [Un appel de 20 minutes pour vous l'expliquer]
+- Un rapport écrit, sans jargon
+- Les problèmes classés par priorité : ce qui est urgent, ce qui peut attendre
+- Les actions recommandées pour chaque problème
+
+> Retirés tant qu'ils ne sont pas confirmés : le délai du rapport ([5 jours ouvrés]) et l'appel d'explication ([20 minutes]).
+
+#### Section : ce que l'audit gratuit ne couvre pas
+
+L'audit gratuit regarde votre site de l'extérieur, sans accès au code ni au serveur. Il ne remplace pas un audit de sécurité complet. Les corrections ne sont pas incluses : vous les faites avec votre prestataire, ou nous vous proposons un devis.
+
+→ [Voir l'offre Tests et sécurité]
 
 #### Formulaire
 
@@ -885,34 +911,38 @@ Votre site est entre de bonnes mains, et vous pouvez vous concentrer sur votre a
 
 **URL :** `/`
 **Balise title :** Sites web et applications sur mesure pour TPE, PME et particuliers | Digital Solutions
-**Meta description :** Nous créons, testons, hébergeons et maintenons vos sites et vos applications. Une équipe d'ingénieurs, un seul interlocuteur et un devis à prix fixe.
+**Meta description :** Nous créons, testons, hébergeons et maintenons vos sites et vos applications. Un interlocuteur direct, un devis à prix fixe et un suivi après la mise en ligne.
 **Mots-clés visés (à valider) :** agence web [ville], création site internet, application sur mesure
 
 #### En-tête
 
-**H1 :** Des sites et des applications conçus par des ingénieurs
+**H1 :** Des sites et des applications fiables, suivis dans la durée
 
-**Sous-titre :** Fiables, testés, sécurisés et suivis dans la durée. Nous construisons votre projet, puis nous nous en occupons, pour que vous puissiez vous concentrer sur votre activité.
+**Sous-titre :** Sites web, applications et automatisations : nous concevons des outils rapides, sécurisés et faciles à faire évoluer. Et nous restons disponibles après la mise en ligne.
 
-**Boutons :** [Demander un devis gratuit] [Faire auditer mon site]
+**Boutons :** [Parler de mon projet] [Faire auditer mon site]
+
+> Le document de recommandations propose « Des solutions digitales fiables, conçues par des ingénieurs ». Décision du 26 septembre 2026 : pas de mot « ingénieurs » sur le site ; « sites et applications » est plus concret que « solutions digitales ».
 
 #### Section : ce que vous y gagnez
 
 **Titre :** Ce que vous y gagnez
 
-**Toujours en ligne**
-Votre site reste en ligne, rapide et sauvegardé automatiquement.
+Un projet qui fonctionne dès le lancement, qui reste facile à faire évoluer et qui ne vous rend pas dépendant d'un prestataire.
+
+**Surveillé et sauvegardé**
+Hébergement surveillé, sauvegardes et maintenance pour limiter les interruptions.
 
 **Testé avant la mise en ligne**
-Tout est vérifié sur ordinateur, tablette et mobile avant la mise en ligne. Pas de mauvaise surprise.
+Pages, formulaires, parcours et affichage sur mobile sont vérifiés avant la mise en ligne.
 
-**Construit pour durer**
-Un outil solide, qui évolue avec votre activité sans tout reconstruire.
+**Conçu pour évoluer**
+Une base technique propre pour ajouter des fonctionnalités sans repartir de zéro.
 
-**Un seul interlocuteur**
-Les personnes qui construisent votre projet sont celles qui vous répondent, du premier échange à la maintenance.
+**Un interlocuteur direct**
+Vous échangez avec l'équipe qui conçoit et développe votre projet.
 
-> Le tableau de la section 4 dit « sauvegardé chaque jour ». Le forfait Essentiel prévoit des sauvegardes hebdomadaires : le texte dit donc « sauvegardé automatiquement ».
+> Le document de recommandations propose le titre « Toujours disponible » : c'est une promesse absolue, que le texte de la carte ne tient pas (« pour limiter les interruptions »). Le titre devient « Surveillé et sauvegardé ».
 
 #### Section : nos services
 
@@ -939,11 +969,10 @@ Reprend la section « audit gratuit » de la page Services (6.1).
 **Titre :** Nos engagements
 
 - Vous restez propriétaire de votre code, de votre nom de domaine et de vos données.
-- Un devis à prix fixe, après un échange gratuit.
-- Une réponse à votre demande sous [48 h ouvrées].
-- Un hébergement en [pays à définir].
+- Un périmètre, un prix fixe et un planning écrits avant de commencer.
+- Des tests avant chaque mise en ligne.
 
-> Ces engagements sont encore à confirmer (section 4).
+> Ces engagements sont encore à confirmer (section 4). La réponse sous [48 h ouvrées] et l'hébergement en [pays à définir] sont retirés tant qu'ils ne sont pas confirmés.
 
 #### Appel à l'action final
 
@@ -961,21 +990,23 @@ Reprend l'appel à l'action final de la page Services (6.1).
 
 #### En-tête
 
-**H1 :** Une méthode claire, du premier appel au suivi
+**H1 :** Un projet clair, avec des validations à chaque étape
 
-**Sous-titre :** À chaque étape, vous savez ce qui se passe, ce que vous validez et ce que vous recevez. Les tests font partie du projet : ce n'est pas une option.
+**Sous-titre :** Vous savez ce qui est prévu, ce que vous devez valider et ce que vous recevez. Les tests sont intégrés au projet, pas ajoutés à la fin.
 
 #### Section : les étapes
 
 **Titre :** Les étapes de votre projet
 
-1. **Un premier échange, gratuit.** Un appel de 30 minutes pour comprendre votre activité, votre besoin et vos contraintes. Nous vous disons honnêtement si nous sommes la bonne équipe pour votre projet.
+> Ce que vous recevez à chaque étape s'affiche dans un petit encadré, comme preuve de ce qui est livré.
+
+1. **Un premier échange, gratuit.** Un appel de 30 minutes pour comprendre votre activité, votre besoin, vos contraintes et ce qui mérite vraiment d'être développé. Nous vous disons honnêtement si nous sommes la bonne équipe pour votre projet.
    *Vous recevez :* un premier avis sur votre projet.
 2. **Un devis clair, à prix fixe.** Nous détaillons ce qui est inclus, le prix et les délais. Vous savez exactement ce que vous payez avant de vous engager.
    *Vous recevez :* un devis écrit, avec la liste précise de ce qui est livré.
 3. **Les maquettes.** Vous voyez les écrans de votre site ou de votre application avant le début du développement. Vous demandez les modifications nécessaires, puis vous validez.
    *Vous recevez :* les maquettes à valider.
-4. **Le développement, par étapes.** Nous construisons votre projet par petites étapes. Vous suivez l'avancement et vous validez chaque étape.
+4. **Le développement, par étapes.** Nous construisons votre projet par petites étapes. Vous suivez l'avancement et vous validez chaque étape : vous n'attendez pas la livraison finale pour voir le résultat.
    *Vous recevez :* l'accès à une version de test, mise à jour régulièrement.
 5. **Les tests.** Avant chaque mise en ligne, nous vérifions :
    - chaque page, sur ordinateur, tablette et mobile, dans les principaux navigateurs ;
@@ -986,7 +1017,7 @@ Reprend l'appel à l'action final de la page Services (6.1).
 
    Pour les applications, des tests automatiques vérifient chaque nouvelle version : une amélioration ne casse pas ce qui fonctionnait déjà.
    *Vous recevez :* un site ou une application vérifiés, prêts à être mis en ligne.
-6. **La mise en ligne et la formation.** Nous mettons votre projet en ligne, puis nous vous montrons comment l'utiliser et le modifier vous-même.
+6. **La mise en ligne et la formation.** Nous mettons votre projet en ligne, nous vous transmettons tous les accès, puis nous vous montrons comment l'utiliser et le modifier vous-même.
    *Vous recevez :* l'accès complet à votre site, à votre code et à vos données.
 7. **Le suivi.** Si vous le souhaitez, nous hébergeons et maintenons votre projet avec un forfait mensuel : sauvegardes, mises à jour de sécurité, surveillance et petites modifications.
    *Vous recevez :* selon votre forfait, un rapport mensuel clair.
@@ -1008,13 +1039,15 @@ Un bug découvert par un client coûte plus cher qu'un bug trouvé avant la mise
 #### FAQ
 
 **Combien de temps dure un projet ?**
-Comptez [2 à 4 semaines] pour un site vitrine et [4 à 8 semaines] pour une boutique en ligne. Pour une application, nous fixons le planning ensemble après le cadrage.
+Cela dépend du projet. Nous fixons le planning ensemble après le premier échange, et il figure dans le devis.
 
 **Puis-je demander des changements en cours de projet ?**
 Oui. Nous estimons l'effet sur le prix et sur le délai, puis vous décidez. Rien n'est ajouté à la facture sans votre accord.
 
 **Que se passe-t-il si un problème apparaît après la mise en ligne ?**
-Nous corrigeons les défauts liés à notre travail [pendant X mois après la livraison : garantie à définir]. Avec un forfait de maintenance, nous surveillons votre site et nous intervenons rapidement.
+Nous le corrigeons s'il est lié à notre travail, dans les conditions prévues au devis. Avec un forfait de maintenance, nous surveillons votre site et nous intervenons rapidement.
+
+> La durée de la garantie ([pendant X mois après la livraison]) reste à définir dans les CGV.
 
 #### Appel à l'action final
 
@@ -1031,25 +1064,27 @@ Reprend l'appel à l'action final de la page Services (6.1).
 
 ### 6.10 Page « L'agence »
 
-> Proposition à valider. Aucune information sur l'équipe n'est inventée : les membres restent des placeholders.
+> Proposition à valider. Aucune information sur l'équipe n'est inventée. Le document de recommandations demande une page plus humaine : vraie histoire, ville ou région, noms, rôles et photos. En attendant ces informations, la section « L'équipe » est masquée (décision du 26 septembre 2026).
 
 **URL :** `/agence`
-**Balise title :** L'agence : une équipe d'ingénieurs à votre service | Digital Solutions
-**Meta description :** Une équipe d'ingénieurs qui conçoit, teste, héberge et maintient des sites et des applications pour les TPE, PME et particuliers.
+**Balise title :** L'agence : une équipe technique à votre service | Digital Solutions
+**Meta description :** Une équipe qui conçoit, teste, héberge et maintient des sites et des applications pour les TPE, PME et porteurs de projet.
 
 #### En-tête
 
-**H1 :** Une équipe d'ingénieurs, à la taille de votre projet
+**H1 :** Une équipe accessible, du premier échange au suivi
 
-**Sous-titre :** Nous construisons des sites et des applications solides, et nous les suivons dans la durée. Nous sommes basés à [Ville ou région].
+**Sous-titre :** Nous concevons des sites et des applications solides pour les TPE, les PME et les porteurs de projet, avec un interlocuteur direct et une responsabilité claire sur la qualité technique.
+
+> Ancien H1 : « Une équipe d'ingénieurs, à la taille de votre projet ». La ville ([Ville ou région]) reviendra dans le sous-titre une fois choisie.
 
 #### Section : pourquoi nous avons créé l'agence
 
 **Titre :** Pourquoi Digital Solutions existe
 
-Beaucoup de TPE et de PME ont vécu la même situation : un site livré sans tests, un prestataire qui ne répond plus, un site piraté faute de mises à jour. Nous avons créé Digital Solutions pour proposer autre chose : des projets construits avec les méthodes des ingénieurs, et un suivi dans la durée.
+Beaucoup de TPE et de PME ont vécu la même situation : un site livré sans tests, un prestataire qui ne répond plus, un site piraté faute de mises à jour. Nous avons créé Digital Solutions pour proposer autre chose : des projets construits avec méthode, testés, et un suivi dans la durée.
 
-[À rédiger : l'histoire de l'agence, en quelques phrases]
+> À ajouter quand elle sera rédigée : l'histoire de l'agence, en quelques phrases.
 
 #### Section : nos compétences, en clair
 
@@ -1065,35 +1100,39 @@ Beaucoup de TPE et de PME ont vécu la même situation : un site livré sans tes
 **Titre :** Nos valeurs
 
 **Fiabilité**
-Nous livrons ce que nous avons testé.
+Nous livrons ce que nous avons vérifié.
 
 **Transparence**
-Un prix fixe, et des explications sans jargon.
+Un périmètre, un prix fixe et des choix expliqués clairement, sans jargon.
 
 **Honnêteté**
 Nous vous disons quand un projet n'est pas raisonnable. Nous ne promettons jamais de résultat que nous ne maîtrisons pas.
 
-**Engagement dans la durée**
-Nous restons là après la mise en ligne.
+**Continuité**
+Nous pouvons rester responsables de l'hébergement, de la maintenance et des évolutions.
 
-**Liberté**
-Vous restez propriétaire de votre code, de votre nom de domaine et de vos données.
+**Indépendance**
+Votre code, vos comptes, votre nom de domaine et vos données restent à votre nom.
 
-#### Section : l'équipe
+#### Section : l'équipe (masquée)
 
 **Titre :** L'équipe
 
 Une carte par personne : [Prénom Nom], [Rôle], [Une phrase de présentation]. [Photos : à fournir]
 
+> Section masquée sur le site depuis le 26 septembre 2026. Elle reviendra avec les vrais noms, rôles et photos.
+
 #### Section : partenaires
 
 **Titre :** Nos partenaires
 
-Pour le design, le logo et la rédaction, nous travaillons avec des indépendants de confiance : [graphiste partenaire], [rédacteur partenaire]. Le développement, lui, n'est jamais sous-traité.
+Pour le design, le logo et la rédaction, nous travaillons avec des indépendants de confiance. Le développement, lui, n'est jamais sous-traité.
+
+> Les noms des partenaires ([graphiste partenaire], [rédacteur partenaire]) seront ajoutés une fois choisis (section 8).
 
 #### Appel à l'action final
 
-Reprend l'appel à l'action final de la page Services (6.1).
+Reprend l'appel à l'action final de la page Services (6.1). Le document de recommandations propose le bouton « Rencontrer l'équipe » : il reste « Parler de mon projet », car une rencontre n'est pas une offre confirmée.
 
 ---
 
@@ -1103,13 +1142,13 @@ Reprend l'appel à l'action final de la page Services (6.1).
 
 **URL :** `/contact`
 **Balise title :** Contact et demande de devis gratuit | Digital Solutions
-**Meta description :** Décrivez votre projet en quelques lignes : nous revenons vers vous avec une première estimation. Devis gratuit et sans engagement.
+**Meta description :** Décrivez votre projet en quelques lignes : nous revenons vers vous avec les prochaines étapes. Échange gratuit et sans engagement.
 
 #### En-tête
 
 **H1 :** Parlons de votre projet
 
-Décrivez-nous votre projet en quelques lignes. Nous revenons vers vous sous [48 h ouvrées] avec une première estimation.
+Expliquez-nous votre besoin en quelques lignes. Nous vous répondons avec les prochaines étapes et, lorsque c'est possible, une première orientation sur le périmètre.
 
 #### Formulaire
 
@@ -1117,19 +1156,21 @@ Décrivez-nous votre projet en quelques lignes. Nous revenons vers vous sous [48
 - E-mail *(obligatoire)*
 - Téléphone *(facultatif)*
 - Votre projet : Site web / Application sur mesure / Automatisation et intégrations / Hébergement et maintenance / Autre *(facultatif)*
-- Votre message *(obligatoire)*
+- Votre message *(obligatoire)*, avec l'aide : « Quelques lignes suffisent : objectif, utilisateurs, fonctionnalités importantes et délai souhaité. »
 - Case de consentement (loi 09-08) + lien vers la politique de confidentialité
 
 **Bouton :** [Envoyer ma demande]
 
-**Réassurance sous le bouton :** Gratuit et sans engagement. Vos informations servent uniquement à répondre à votre demande.
+**Réassurance sous le bouton :** Gratuit et sans engagement. Vos informations servent uniquement à traiter votre demande. Pas de relance commerciale insistante.
+
+**Message après l'envoi :** Nous revenons vers vous avec les prochaines étapes.
 
 #### Section : et ensuite
 
 **Titre :** Et ensuite ?
 
-1. Nous lisons votre demande et nous revenons vers vous sous [48 h ouvrées].
-2. Nous organisons un appel de 30 minutes, gratuit, pour comprendre votre besoin.
+1. Nous étudions votre demande.
+2. Si nécessaire, nous organisons un appel gratuit pour mieux comprendre votre besoin.
 3. Vous recevez un devis clair, à prix fixe, sans engagement.
 
 #### Section : autres moyens
@@ -1138,7 +1179,8 @@ Décrivez-nous votre projet en quelques lignes. Nous revenons vers vous sous [48
 
 - E-mail : [adresse e-mail de contact]
 - Téléphone : [numéro de téléphone]
-- Zone : [Ville ou région]
+
+> L'e-mail et le téléphone restent en placeholder : ce sont des informations obligatoires (loi 31-08, article 29). La ligne « Zone : [Ville ou région] » est retirée tant que la ville n'est pas choisie.
 
 #### Encadré : audit
 
@@ -1173,9 +1215,9 @@ Commencez par un audit gratuit : vitesse, sécurité, référencement technique 
 
 #### En-tête
 
-**H1 :** Votre application iPhone et Android, solide et suivie dans la durée
+**H1 :** Votre application iPhone et Android, de la conception à la publication
 
-**Sous-titre :** Pour vos clients ou pour vos équipes : nous concevons, testons et publions votre application, puis nous la gardons à jour.
+**Sous-titre :** Pour vos clients ou pour vos équipes : une seule équipe conçoit les écrans, développe l'application, la teste sur de vrais téléphones et assure son suivi.
 
 **Bouton :** [Parler de mon application]
 
@@ -1199,7 +1241,7 @@ Réservation, commande, fidélité, suivi de livraison, espace client : vos serv
 Pointage, suivi de chantier, inventaire, tournées, photos et signatures sur le terrain. L'application peut fonctionner sans connexion et envoyer les données dès que le réseau revient.
 
 **Un seul développement pour iPhone et Android**
-Nous développons une seule application qui fonctionne sur les deux systèmes. Vous payez un seul projet, et les deux versions évoluent ensemble.
+Quand c'est adapté à votre projet, nous développons une seule application pour les deux systèmes. Vous payez un seul projet, et les deux versions évoluent ensemble.
 
 **La publication sur l'App Store et Google Play**
 Nous préparons les fiches, les captures d'écran et les documents demandés par Apple et Google, et nous suivons la validation jusqu'à la publication.
@@ -1226,7 +1268,7 @@ Apple et Google changent leurs règles chaque année. Avec un forfait de mainten
 
 1. **Cadrage.** Nous listons les écrans et les fonctionnalités, et nous gardons l'essentiel pour la première version.
 2. **Maquettes.** Vous voyez les écrans de votre application avant le début du développement.
-3. **Développement par étapes.** Une nouvelle version à installer sur votre téléphone toutes les [2] semaines.
+3. **Développement par étapes.** Vous installez régulièrement une nouvelle version sur votre téléphone.
 4. **Tests.** Tests automatiques et vérifications sur de vrais téléphones avant chaque publication.
 5. **Publication et suivi.** Nous publions votre application sur l'App Store et Google Play, puis nous la gardons à jour.
 
@@ -1268,11 +1310,13 @@ Un échange de 30 minutes, gratuit et confidentiel, pour savoir si une applicati
 
 #### En-tête
 
-**H1 :** Votre logiciel en ligne, vendu par abonnement
+**H1 :** Lancez votre SaaS avec une première version solide et prête à vendre
 
-**Sous-titre :** Vous avez une idée de logiciel pour les entreprises ou pour les particuliers ? Nous développons votre plateforme, de la première version au lancement, puis nous la faisons évoluer avec vous.
+**Sous-titre :** Nous vous aidons à cadrer l'essentiel, à construire la plateforme et à gérer les comptes et les abonnements. Puis nous faisons évoluer le logiciel avec les retours de vos clients.
 
-**Bouton :** [Présenter mon idée]
+**Bouton :** [Parler de mon idée de SaaS]
+
+> Ancien H1 : « Votre logiciel en ligne, vendu par abonnement ». Le document de recommandations demande de mettre l'accent sur le lancement et sur les retours des premiers clients, plus que sur la liste technique.
 
 #### Section : définition
 
@@ -1293,14 +1337,14 @@ Un SaaS (« logiciel en tant que service ») est un logiciel que vos clients uti
 
 **Titre :** Tout ce dont votre SaaS a besoin
 
-**Comptes et équipes**
-Inscription, connexion sécurisée, gestion des utilisateurs et de leurs droits. Les données de chaque client restent séparées de celles des autres.
+**Commencer par l'essentiel**
+Nous gardons les fonctions nécessaires pour vendre et apprendre vite de vos premiers clients. Le reste attend leurs retours.
 
-**Abonnements et paiement**
-Formules, période d'essai, paiement en ligne et factures automatiques. Nous choisissons avec vous la solution de paiement adaptée à vos clients, au Maroc ou à l'international.
+**Comptes et abonnements**
+Inscription, connexion sécurisée, utilisateurs et droits, formules, période d'essai, paiement en ligne et factures automatiques. Nous choisissons avec vous la solution de paiement adaptée à vos clients, au Maroc ou à l'international.
 
 **Espace d'administration**
-Vous suivez vos clients, vos abonnements et l'utilisation de votre logiciel, sans passer par nous.
+Vous suivez vos clients, vos abonnements et l'utilisation de votre logiciel, sans dépendre de nous.
 
 **Connexion avec d'autres logiciels**
 Vos clients relient votre SaaS à leurs propres outils : comptabilité, CRM, e-mailing. Votre logiciel devient plus utile, et plus difficile à remplacer.
@@ -1310,7 +1354,7 @@ Vos clients relient votre SaaS à leurs propres outils : comptabilité, CRM, e-m
 **Titre :** Construit pour grandir
 
 **Des bases solides**
-Nous concevons votre logiciel pour accueillir de nouveaux clients et de nouvelles fonctionnalités sans tout reconstruire.
+Les données de chaque client restent séparées de celles des autres. Votre logiciel peut accueillir de nouveaux clients et de nouvelles fonctionnalités sans tout reconstruire.
 
 **Testé à chaque version**
 Des tests automatiques vérifient chaque nouvelle version avant sa mise en ligne. Vos clients ne découvrent pas les bugs à votre place.
@@ -1337,7 +1381,7 @@ Nous préparons chaque mise en ligne pour éviter les coupures de service. En ca
 Cela dépend des fonctionnalités. Après l'atelier de cadrage, nous vous remettons un devis gratuit, à prix fixe, pour la première version.
 
 **Combien de temps faut-il ?**
-Une première version demande en général [6 à 12 semaines]. Nous fixons le planning ensemble après le cadrage.
+Cela dépend des fonctions de la première version. Nous fixons le planning ensemble après le cadrage, et il figure dans le devis.
 
 **Qui est propriétaire du logiciel ?**
 Vous. Le code, les données et les comptes (hébergement, paiement, nom de domaine) sont à votre nom.
@@ -1349,15 +1393,17 @@ Oui. Nous pouvons signer un accord de confidentialité avant d'entrer dans les d
 Oui. Nous proposons l'hébergement, la surveillance et les évolutions dans un forfait mensuel adapté à votre nombre de clients.
 
 **Mes clients sont à l'étranger. Est-ce un problème ?**
-Non, mais les règles changent selon les pays : protection des données, facturation, paiement. Nous en tenons compte dès le cadrage. [À valider avec un juriste selon les pays visés]
+Non, mais les règles changent selon les pays : protection des données, facturation, paiement. Nous en tenons compte dès le cadrage.
+
+> À valider avec un juriste selon les pays visés.
 
 #### Appel à l'action final
 
-**Titre :** Présentez-nous votre idée de SaaS
+**Titre :** Parlons de votre idée de SaaS
 
 Un échange de 30 minutes, gratuit et confidentiel, pour parler de votre idée, de vos futurs clients et de ce qui est réaliste pour une première version.
 
-**Bouton :** [Présenter mon idée]
+**Bouton :** [Parler de mon idée de SaaS]
 
 ---
 
@@ -1372,9 +1418,11 @@ Un échange de 30 minutes, gratuit et confidentiel, pour parler de votre idée, 
 
 #### En-tête
 
-**H1 :** L'intelligence artificielle, là où elle vous fait vraiment gagner du temps
+**H1 :** Intégrez l'IA là où elle apporte un gain concret
 
-**Sous-titre :** Assistants pour vos clients et pour vos équipes, traitement de documents, rédaction assistée : nous intégrons l'IA dans vos outils, avec des résultats vérifiés et vos données protégées.
+**Sous-titre :** Assistants, traitement de documents et rédaction assistée : nous partons de vos tâches réelles, nous testons les résultats et nous encadrons l'utilisation de vos données.
+
+> Ancien H1 : « L'intelligence artificielle, là où elle vous fait vraiment gagner du temps ». Pas de promesse générale sur la confidentialité d'un fournisseur d'IA tant que les fournisseurs et les contrats ne sont pas choisis (section 8).
 
 **Bouton :** [Parler de mon projet IA]
 
@@ -1395,7 +1443,7 @@ Un échange de 30 minutes, gratuit et confidentiel, pour parler de votre idée, 
 Sur votre site ou sur WhatsApp, il répond aux questions fréquentes à partir de vos informations : horaires, tarifs, suivi de commande. Quand il ne sait pas, il transmet la demande à votre équipe.
 
 **Un assistant pour vos équipes**
-Vos collaborateurs posent leurs questions sur vos procédures, vos catalogues ou vos contrats. Ils reçoivent une réponse avec le document d'origine.
+Vos collaborateurs retrouvent plus vite une procédure, une information produit ou un passage de contrat. Chaque réponse indique le document d'origine.
 
 **Le traitement de vos documents**
 Factures, bons de commande, formulaires : l'IA lit les documents, extrait les informations et les range dans vos outils. Votre équipe vérifie seulement les cas douteux.
@@ -1415,7 +1463,7 @@ Vos équipes utilisent déjà des outils d'IA comme ChatGPT ? Nous organisons de
 
 À la fin de l'atelier, vous recevez des règles d'utilisation simples, adaptées à votre entreprise.
 
-[Durée et nombre de participants : à définir]
+> La durée et le nombre de participants ([à définir]) seront ajoutés une fois fixés.
 
 **Bouton :** [Organiser un atelier]
 
@@ -1429,8 +1477,8 @@ Avant la mise en service, nous vérifions les réponses sur une liste de cas ré
 **Honnête sur ses limites**
 L'assistant cite ses sources et dit quand il ne sait pas. Pour les décisions importantes, une personne valide toujours le résultat.
 
-**Vos données protégées**
-Nous choisissons des services d'IA qui n'utilisent pas vos données pour entraîner leurs modèles, et nous respectons la loi 09-08. [à confirmer selon les fournisseurs retenus]
+**Vos données encadrées**
+Nous limitons les données envoyées au strict nécessaire. Avant de commencer, nous vous disons quel service d'IA traite vos données, et dans quel pays.
 
 **Suivie dans la durée**
 Nous surveillons la qualité des réponses et les coûts d'utilisation. Nous mettons l'assistant à jour quand vos informations changent.
@@ -1454,7 +1502,7 @@ Oui. C'est pourquoi nous testons les réponses avant la mise en service, nous li
 Les services d'IA actuels comprennent le français, l'arabe et l'anglais. Pour la darija, les résultats varient : nous faisons des essais avec vos propres exemples avant de vous proposer une solution.
 
 **Mes données sont-elles en sécurité ?**
-Nous choisissons des services d'IA qui n'utilisent pas vos données pour entraîner leurs modèles. Nous limitons les données envoyées au strict nécessaire. [à confirmer selon les fournisseurs retenus]
+Cela dépend du service d'IA choisi. Nous limitons les données envoyées au strict nécessaire. Avant de commencer, nous vous disons quel service traite vos données, dans quel pays, et s'il peut les utiliser pour entraîner ses modèles. Vous décidez en connaissance de cause.
 
 **Combien ça coûte ?**
 Cela dépend de l'assistant et de vos données. Nous vous remettons un devis gratuit, à prix fixe. Le service d'IA est facturé en plus, selon l'utilisation : nous estimons ce coût avec vous avant de commencer.
@@ -1483,9 +1531,11 @@ Décrivez-nous les tâches qui vous prennent du temps. Nous vous disons gratuite
 
 #### En-tête
 
-**H1 :** Vos chiffres clés, sur un seul écran
+**H1 :** Les bons chiffres, au même endroit
 
-**Sous-titre :** Visiteurs de votre site, ventes, stocks, rendez-vous : nous réunissons vos données dans des tableaux de bord clairs, mis à jour automatiquement.
+**Sous-titre :** Visiteurs de votre site, ventes, stocks, rendez-vous : nous réunissons les données de vos outils dans des tableaux de bord clairs et des rapports automatiques, avec des chiffres vérifiés.
+
+> Ancien H1 : « Vos chiffres clés, sur un seul écran ». La fiabilité des chiffres est le principal argument de la page, avant leur présentation.
 
 **Bouton :** [Parler de mes chiffres]
 
@@ -1538,7 +1588,9 @@ Nous mettons en place les outils et des chiffres fiables. L'analyse marketing, l
 Pour la mesure d'audience : Matomo, Plausible ou Google Analytics, selon vos besoins. Pour les tableaux de bord : des outils éprouvés comme Looker Studio ou Metabase, ou un tableau de bord sur mesure dans votre application.
 
 **Faut-il un bandeau cookies ?**
-Cela dépend de l'outil de mesure. Certains outils fonctionnent sans cookie de suivi. Nous vous conseillons la solution la plus simple qui respecte la loi 09-08. [À valider avec le juriste]
+Cela dépend de l'outil de mesure. Certains outils fonctionnent sans cookie de suivi. Nous vous conseillons la solution la plus simple qui respecte la loi 09-08.
+
+> À valider avec le juriste.
 
 **Qui peut voir mes chiffres ?**
 Seulement les personnes que vous choisissez. Chaque accès est personnel, et vous décidez qui voit quoi.
@@ -1567,11 +1619,13 @@ Listez-nous les chiffres que vous suivez aujourd'hui et les outils qui les conti
 
 #### En-tête
 
-**H1 :** Vos sites et vos applications, vérifiés avant vos clients
+**H1 :** Trouvez les problèmes avant vos utilisateurs
 
-**Sous-titre :** Audit de sécurité, tests avant une mise en ligne, tests automatiques : nous trouvons les problèmes avant qu'ils vous coûtent des clients. Même si nous n'avons pas développé votre projet.
+**Sous-titre :** Audit de sécurité, tests avant une mise en ligne, tests automatiques et tests de charge : nous vérifions votre site ou votre application, même si nous ne l'avons pas développé.
 
-**Bouton :** [Demander un audit de sécurité]
+**Bouton :** [Faire vérifier mon projet]
+
+> Ancien H1 : « Vos sites et vos applications, vérifiés avant vos clients ». Le texte dit « réduire les risques », jamais « sécuriser » : aucune formule ne doit suggérer une sécurité garantie.
 
 #### Section : le problème
 
@@ -1584,7 +1638,7 @@ Listez-nous les chiffres que vous suivez aujourd'hui et les outils qui les conti
 
 #### Section : ce que nous faisons
 
-**Titre :** Quatre façons de sécuriser votre projet
+**Titre :** Quatre façons de réduire les risques
 
 **Audit de sécurité**
 Nous recherchons les failles les plus courantes : mises à jour oubliées, mots de passe faibles, accès trop larges, formulaires mal protégés, serveur mal configuré. Vous recevez un rapport avec les failles classées par gravité, et les corrections à faire.
@@ -1632,7 +1686,7 @@ L'audit gratuit regarde votre site de l'extérieur : vitesse, sécurité de base
 Oui, c'est même le cas le plus fréquent. Nous avons besoin de votre accord écrit et, pour aller plus loin, d'un accès au code ou au serveur.
 
 **Les tests vont-ils perturber mon site ?**
-Nous planifions les tests avec vous. Les tests de charge se font hors des heures d'affluence, ou sur une copie de votre site.
+Non. Nous planifions les tests avec vous. Les tests de charge se font hors des heures d'affluence, ou sur une copie de votre site.
 
 **Combien ça coûte ?**
 Cela dépend de la taille du site ou de l'application et des tests choisis. Après le cadrage, nous vous remettons un devis gratuit, à prix fixe.
@@ -1646,7 +1700,7 @@ Vous êtes libre : vous corrigez avec votre prestataire, ou nous nous en chargeo
 
 Un échange de 30 minutes, gratuit et confidentiel, pour définir ce qu'il faut tester en priorité.
 
-**Bouton :** [Demander un audit de sécurité]
+**Bouton :** [Faire vérifier mon projet]
 
 ---
 
@@ -1724,6 +1778,10 @@ Onze pages ont un visuel dans l'en-tête, à droite du texte (sous le texte sur 
 - [ ] Relire et valider les pages des nouveaux services : Applications mobiles, Logiciels SaaS, Intelligence artificielle, Données et tableaux de bord, Tests et sécurité (sections 6.14 à 6.18)
 - [ ] Relire et valider les ajouts dans les pages existantes : options Sites web (langues, WhatsApp), section WhatsApp (Automatisation), formation à l'IA
 - [ ] Relire et valider les visuels des en-têtes (section 6.19). Les remplacer par des projets réels quand des clients auront donné leur accord écrit.
+- [ ] Relire et valider la révision des textes du 26 septembre 2026 (recommandations de wording, section 6)
+- [ ] Confirmer les valeurs retirées du site, puis les réafficher : délai de réponse, délais des projets, pays d'hébergement, ville, durée de conservation des sauvegardes, volume de modifications et délais d'intervention des forfaits, durée d'engagement, garantie
+- [ ] Fournir l'histoire de l'agence, la ville, les noms, les rôles et les photos de l'équipe, pour réafficher la section « L'équipe » (section 6.10)
+- [ ] Préparer des preuves concrètes : exemple de rapport d'audit, captures de tests, exemples de livrables, cas clients et témoignages avec l'accord écrit des clients
 - [ ] Préparer un modèle d'autorisation de test pour les audits de sécurité, validé par le juriste
 - [ ] Choisir les fournisseurs d'IA (données non utilisées pour l'entraînement, transfert hors du Maroc à déclarer à la CNDP)
 - [x] Choisir les technologies du site et commencer le développement (voir [stack-technique.md](stack-technique.md))

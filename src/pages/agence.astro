@@ -1,6 +1,7 @@
 ---
 // Textes : docs/brief-agence.md, section 6.10 (proposition à valider).
-// Aucune information sur l'équipe n'est inventée : les membres restent des placeholders.
+// Aucune information sur l'équipe n'est inventée : la section « L'équipe » est masquée
+// jusqu'à réception des vrais noms, rôles et photos.
 import Activity from '@lucide/astro/icons/activity';
 import BadgeCheck from '@lucide/astro/icons/badge-check';
 import Blocks from '@lucide/astro/icons/blocks';
@@ -10,12 +11,10 @@ import Eye from '@lucide/astro/icons/eye';
 import KeyRound from '@lucide/astro/icons/key-round';
 import Scale from '@lucide/astro/icons/scale';
 import ShieldCheck from '@lucide/astro/icons/shield-check';
-import UserRound from '@lucide/astro/icons/user-round';
 import CtaFinal from '~/components/CtaFinal.astro';
 import FeatureGrid from '~/components/FeatureGrid.astro';
 import Hero from '~/components/Hero.astro';
 import IllustrationAgence from '~/components/illustrations/IllustrationAgence.astro';
-import Placeholder from '~/components/Placeholder.astro';
 import Section from '~/components/Section.astro';
 import { couleurPalette } from '~/data/couleurs';
 import { cta, site } from '~/data/site';
@@ -39,28 +38,25 @@ const savoirFaire = [
 ---
 
 <BaseLayout
-  title={`L'agence : une équipe d'ingénieurs à votre service | ${site.nom}`}
-  description="Une équipe d'ingénieurs qui conçoit, teste, héberge et maintient des sites et des applications pour les TPE, PME et particuliers."
+  title={`L'agence : une équipe technique à votre service | ${site.nom}`}
+  description="Une équipe qui conçoit, teste, héberge et maintient des sites et des applications pour les TPE, PME et porteurs de projet."
   breadcrumbs={[{ label: "L'agence", href: '/agence' }]}
 >
   <Hero
-    title="Une équipe d'ingénieurs, à la taille de votre projet"
-    motCle="ingénieurs"
-    subtitle={`Nous construisons des sites et des applications solides, et nous les suivons dans la durée. Nous sommes basés à ${site.zone}.`}
+    title="Une équipe accessible, du premier échange au suivi"
+    motCle="accessible"
+    subtitle="Nous concevons des sites et des applications solides pour les TPE, les PME et les porteurs de projet, avec un interlocuteur direct et une responsabilité claire sur la qualité technique."
   >
     <IllustrationAgence slot="illustration" />
   </Hero>
 
   <Section title={`Pourquoi ${site.nom} existe`}>
-    <div class="max-w-3xl space-y-4 text-lg text-slate-700">
-      <p class="apparition">
-        Beaucoup de TPE et de PME ont vécu la même situation : un site livré sans tests, un
-        prestataire qui ne répond plus, un site piraté faute de mises à jour. Nous avons créé{' '}
-        {site.nom} pour proposer autre chose : des projets construits avec les méthodes des
-        ingénieurs, et un suivi dans la durée.
-      </p>
-      <Placeholder text="[À rédiger : l'histoire de l'agence, en quelques phrases]" />
-    </div>
+    <p class="apparition max-w-3xl text-lg text-slate-700">
+      Beaucoup de TPE et de PME ont vécu la même situation : un site livré sans tests, un
+      prestataire qui ne répond plus, un site piraté faute de mises à jour. Nous avons créé{' '}
+      {site.nom} pour proposer autre chose : des projets construits avec méthode, testés, et un
+      suivi dans la durée.
+    </p>
   </Section>
 
   <Section title="Ce que nous savons faire, en clair" tone="gris">
@@ -90,12 +86,12 @@ const savoirFaire = [
       items={[
         {
           title: 'Fiabilité',
-          text: 'Nous livrons ce que nous avons testé.',
+          text: 'Nous livrons ce que nous avons vérifié.',
           icone: ShieldCheck,
         },
         {
           title: 'Transparence',
-          text: 'Un prix fixe, et des explications sans jargon.',
+          text: 'Un périmètre, un prix fixe et des choix expliqués clairement, sans jargon.',
           icone: Eye,
         },
         {
@@ -104,42 +100,23 @@ const savoirFaire = [
           icone: Scale,
         },
         {
-          title: 'Engagement dans la durée',
-          text: 'Nous restons là après la mise en ligne.',
+          title: 'Continuité',
+          text: "Nous pouvons rester responsables de l'hébergement, de la maintenance et des évolutions.",
           icone: Clock,
         },
         {
-          title: 'Liberté',
-          text: 'Vous restez propriétaire de votre code, de votre nom de domaine et de vos données.',
+          title: 'Indépendance',
+          text: 'Votre code, vos comptes, votre nom de domaine et vos données restent à votre nom.',
           icone: KeyRound,
         },
       ]}
     />
   </Section>
 
-  <Section title="L'équipe" tone="gris">
-    <ul class="grid gap-6 md:grid-cols-3">
-      {[1, 2, 3].map(() => (
-        <li class="apparition rounded-lg border border-slate-200 bg-white p-6">
-          <span class="apparition-zoom inline-flex size-16 items-center justify-center rounded-full bg-slate-200 text-slate-500">
-            <UserRound size={32} />
-          </span>
-          <p class="mt-4 font-semibold text-slate-900">[Prénom Nom]</p>
-          <p class="text-sm text-slate-600">[Rôle]</p>
-          <p class="mt-2 text-slate-700">[Une phrase de présentation]</p>
-        </li>
-      ))}
-    </ul>
-    <div class="mt-6 max-w-3xl">
-      <Placeholder text="[Photos : à fournir]" />
-    </div>
-  </Section>
-
-  <Section title="Nos partenaires">
+  <Section title="Nos partenaires" tone="gris">
     <p class="apparition max-w-3xl text-lg text-slate-700">
-      Pour le design, le logo et la rédaction, nous travaillons avec des indépendants de confiance :
-      [graphiste partenaire], [rédacteur partenaire]. Le développement, lui, n'est jamais
-      sous-traité.
+      Pour le design, le logo et la rédaction, nous travaillons avec des indépendants de confiance.
+      Le développement, lui, n'est jamais sous-traité.
     </p>
   </Section>
 
