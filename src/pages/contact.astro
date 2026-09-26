@@ -15,6 +15,7 @@ import Texte from '~/components/Texte.astro';
 import { cta, site } from '~/data/site';
 import BaseLayout from '~/layouts/BaseLayout.astro';
 import { etatFormulaire } from '~/lib/formulaire';
+import { estConfirme } from '~/lib/placeholders';
 import { typesProjet } from '~/lib/schemas';
 
 export const prerender = false;
@@ -36,11 +37,12 @@ const ensuite = [
   'Vous recevez un devis clair, à prix fixe, sans engagement.',
 ];
 
-// Le téléphone reste un placeholder jusqu'à ce que le numéro soit disponible.
+// Une coordonnée encore entre crochets n'est pas affichée : le téléphone apparaît quand le
+// numéro remplace le placeholder dans src/data/site.ts (section 6.11 du brief).
 const coordonnees = [
   { label: 'E-mail', valeur: site.email, href: `mailto:${site.email}` },
   { label: 'Téléphone', valeur: site.telephone },
-];
+].filter(({ valeur }) => estConfirme(valeur));
 ---
 
 <BaseLayout

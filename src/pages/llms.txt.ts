@@ -41,10 +41,10 @@ const descriptions: Record<string, string> = {
     'Vitesse, sécurité, référencement, affichage mobile : recevez gratuitement un audit technique de votre site, avec un rapport clair et les actions prioritaires.',
   '/contact':
     'Décrivez votre projet en quelques lignes : nous revenons vers vous avec les prochaines étapes. Échange gratuit et sans engagement.',
-  '/mentions-legales': `Mentions légales du site ${site.nom} : éditeur, directeur de la publication, hébergeur et propriété intellectuelle.`,
+  '/mentions-legales': `Mentions légales du site ${site.nom} : éditeur, propriété intellectuelle et données personnelles.`,
   '/cgv': `Conditions générales de vente des prestations de ${site.nom} : devis, prix, délais, propriété, maintenance et droit de rétractation.`,
   '/confidentialite':
-    'Quelles données nous collectons avec nos formulaires, pourquoi, combien de temps nous les gardons et comment exercer vos droits.',
+    'Quelles données nous collectons avec nos formulaires, pourquoi, qui les reçoit et comment exercer vos droits.',
 };
 
 const accueil =

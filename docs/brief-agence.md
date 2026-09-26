@@ -1202,7 +1202,7 @@ Expliquez-nous votre besoin en quelques lignes. Nous vous répondons avec les pr
 - E-mail : contact@digital-solutions.ma
 - Téléphone : [numéro de téléphone]
 
-> L'e-mail est confirmé le 26 septembre 2026. Le téléphone reste en placeholder jusqu'à ce que le numéro soit disponible : c'est une information obligatoire (loi 31-08, article 29). La ligne « Zone : [Ville ou région] » est retirée tant que la ville n'est pas choisie.
+> L'e-mail est confirmé le 26 septembre 2026. Depuis le 26 septembre 2026, la ligne « Téléphone » n'est pas affichée : elle revient seule quand le numéro remplace le placeholder dans `src/data/site.ts`. C'est une information obligatoire (loi 31-08, article 29) : à fournir au plus vite. La ligne « Zone : [Ville ou région] » est retirée tant que la ville n'est pas choisie.
 
 #### Encadré : audit
 
@@ -1849,6 +1849,42 @@ Les visuels des pages de services servent aussi de vignettes aux cartes des serv
 - **Tests et audit de sécurité** : accord écrit du propriétaire avant tout test. Accéder sans autorisation à un système informatique est puni par le Code pénal (articles 607-3 et suivants, issus de la loi 07-03) [à vérifier par le juriste]. Prévoir un modèle d'autorisation de test.
 - **Messages WhatsApp automatiques** : la prospection par message électronique demande le consentement préalable de la personne (loi 09-08, article 10) [à vérifier par le juriste]. Prévoir la demande d'accord et la désinscription.
 
+### Parties retirées des pages légales
+
+Depuis le 26 septembre 2026, les pages Mentions légales, CGV et Confidentialité n'affichent que les parties sans placeholder. Le bandeau « Projet de texte : à faire valider par un juriste » n'est plus affiché, mais les textes restent des projets à faire valider. Les parties ci-dessous attendent une information ou une clause : quand elle est disponible, remettez la phrase sur la page.
+
+Les valeurs de `src/data/` (téléphone, modalités de paiement, garantie, durée d'engagement) reviennent seules : la phrase s'affiche quand la valeur n'a plus de crochets (fonction `estConfirme`).
+
+**Mentions légales**
+- Éditeur : « Le site www.digital-solutions.ma est édité par Digital Solutions, [forme juridique] au capital de [montant] DH. » Attention : `pnpm check:content` bloque les montants en dirhams, la règle devra accepter le capital.
+- Siège social : [adresse]
+- Registre du commerce : [ville], numéro [numéro]
+- Identifiant commun de l'entreprise (ICE) : [numéro]
+- Identifiant fiscal (IF) : [numéro]
+- Taxe professionnelle : [numéro]
+- Téléphone : [numéro de téléphone] (valeur `site.telephone`, revient seule)
+- Directeur de la publication : « [Prénom Nom], [fonction]. »
+- Hébergement : « [Nom de l'hébergeur], [adresse], [téléphone]. »
+- Données personnelles : « Déclaration auprès de la CNDP : [numéro de récépissé]. »
+
+**Conditions générales de vente**
+- 2. Devis et commande : [Conditions d'acompte à définir]
+- 3. Prix et paiement : « Modalités de paiement : [à définir : acompte à la commande, solde à la livraison, etc.] » (valeur `offre.modalitesPaiement`, revient seule) ; [Prix HT ou TTC, délais de paiement et pénalités de retard : à définir]
+- 6. Tests et livraison : [Procédure de validation et délai : à définir] ; « Garantie : nous corrigeons les défauts liés à notre travail [pendant X mois après la livraison : garantie à définir]. » (valeur `offre.garantie`, revient seule)
+- 7. Propriété : [Modalités de la cession des droits : à faire valider]
+- 8. Hébergement et maintenance : durée d'engagement [Sans engagement / Engagement de 12 mois] (valeur `engagementMaintenance`, revient seule) ; [Conditions de résiliation : à définir]
+- 9. Droit de rétractation : [Point de départ du délai, cas d'un travail commencé avec votre accord avant la fin du délai, démarchage et remboursement : à faire valider par un juriste]
+- Section « Responsabilité » : [À définir]. La section est retirée et les suivantes sont renumérotées : remettez-la en 10.
+- Droit applicable : [Juridiction compétente : à définir]
+
+**Politique de confidentialité**
+- Responsable du traitement : « Digital Solutions, [adresse]. » et « Déclaration auprès de la CNDP : [numéro de récépissé]. »
+- Base légale (consentement, article 4 de la loi 09-08) : [À confirmer par le juriste]
+- Brevo : [Vérifier la localisation des données, le contrat de sous-traitance et la déclaration du transfert à la CNDP]
+- Destinataires : « Notre hébergeur : [nom de l'hébergeur, pays]. »
+- Section « Combien de temps nous les gardons » : [Durée à définir, par exemple 3 ans après notre dernier échange]. Après son retour, remettez aussi « combien de temps nous les gardons » dans la meta description et dans `llms.txt`.
+- Cookies : [À mettre à jour si un outil de mesure d'audience est ajouté]
+
 ---
 
 ## 8. Prochaines étapes
@@ -1868,12 +1904,13 @@ Les visuels des pages de services servent aussi de vignettes aux cartes des serv
 - [ ] Relire et valider la révision des textes du 26 septembre 2026 (recommandations de wording, section 6)
 - [ ] Confirmer les valeurs retirées du site, puis les réafficher : délai de réponse, délais des projets, pays d'hébergement, ville, adresse et zone servie (données structurées, llms.txt), durée de conservation des sauvegardes, volume de modifications et délais d'intervention des forfaits, durée d'engagement, garantie
 - [ ] Fournir l'histoire de l'agence, la ville et les photos de l'équipe (section 6.10). Les noms et les rôles sont reçus le 26 septembre 2026 : la section « L'équipe » est affichée.
-- [ ] Donner le numéro de téléphone de l'agence (Contact, mentions légales)
+- [ ] Donner le numéro de téléphone de l'agence (Contact, mentions légales). La ligne est cachée jusque-là.
 - [ ] Préparer des preuves concrètes : exemple de rapport d'audit, captures de tests, exemples de livrables, cas clients et témoignages avec l'accord écrit des clients
 - [x] Intégrer le design du site : maquettes du designer, intégrées le 26 septembre 2026 (section « Design » de [stack-technique.md](stack-technique.md))
 - [ ] Relire et valider les surtitres et les libellés ajoutés par le design (section 6.20)
 - [ ] Préparer un modèle d'autorisation de test pour les audits de sécurité, validé par le juriste
 - [ ] Choisir les fournisseurs d'IA (données non utilisées pour l'entraînement, transfert hors du Maroc à déclarer à la CNDP)
 - [x] Choisir les technologies du site et commencer le développement (voir [stack-technique.md](stack-technique.md))
-- [ ] Faire valider les CGV et les mentions légales par un juriste (droit marocain)
+- [ ] Faire valider les CGV, les mentions légales et la politique de confidentialité par un juriste (droit marocain)
+- [ ] Fournir les informations et les clauses des pages légales, puis remettre les parties retirées (section 7, « Parties retirées des pages légales »)
 - [ ] Déclarer les traitements du site à la CNDP, avec le transfert des données vers Brevo et l'hébergeur
