@@ -59,5 +59,34 @@ test('chaque service renvoie à l’agence décrite sur l’accueil', async ({ p
     await page.goto(chemin);
     const service = (await noeuds(page)).find((noeud) => noeud['@type'] === 'Service');
     expect(service?.provider, chemin).toMatchObject({ '@id': agence?.['@id'] });
+    // L'adresse du service est celle de la page (URL canonique).
+    const canonique = await page.locator('link[rel="canonical"]').getAttribute('href');
+    expect(service?.url, chemin).toBe(canonique);
   }
+});
+
+test('L’agence décrit l’équipe affichée, et l’accueil y renvoie', async ({ page }) => {
+  await page.goto('/agence');
+  const noeudsAgence = await noeuds(page);
+  const personnes = noeudsAgence.filter((noeud) => noeud['@type'] === 'Person');
+  const affiches = await page
+    .locator('section', { has: page.getByRole('heading', { level: 2, name: "L'équipe" }) })
+    .getByRole('heading', { level: 3 })
+    .allTextContents();
+
+  expect(personnes.map((personne) => personne.name)).toEqual(affiches.map(normaliser));
+  expect(affiches.length).toBeGreaterThan(0);
+
+  await page.goto('/');
+  const agence = (await noeuds(page)).find((noeud) => noeud['@type'] === 'ProfessionalService');
+  const idAgence = agence?.['@id'];
+  for (const personne of personnes) {
+    expect(personne.worksFor, String(personne.name)).toEqual({ '@id': idAgence });
+  }
+  expect(noeudsAgence.find((noeud) => noeud['@type'] === 'AboutPage')?.about).toEqual({
+    '@id': idAgence,
+  });
+  expect((agence?.employee as Noeud[]).map((employe) => employe['@id'])).toEqual(
+    personnes.map((personne) => personne['@id']),
+  );
 });
