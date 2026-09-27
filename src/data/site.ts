@@ -37,7 +37,7 @@ export const site = {
   },
   /**
    * Conteneur Google Tag Manager de l'agence (26 septembre 2026), pour Google Ads. Il se charge
-   * pour tous les visiteurs, sur le domaine de production (src/lib/tag-manager.ts).
+   * pour tous les visiteurs, dans le build pour le domaine de production (src/lib/tag-manager.ts).
    * Une nouvelle sorte de balise dans Tag Manager demande souvent une mise à jour de la CSP
    * (astro.config.mjs, `google`).
    */

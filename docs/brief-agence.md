@@ -1828,7 +1828,7 @@ Les visuels des pages de services servent aussi de vignettes aux cartes des serv
 **Décision de l'agence (26 septembre 2026) : pas de bandeau des cookies, ni de lien pour les refuser, ni de mention d'un bandeau sur le site.** Tag Manager se charge pour tous les visiteurs. Retirés aussi : « bandeau cookies » dans les inclus de la page Sites web (section 6.2), la question « Faut-il un bandeau cookies ? » de la page Données et tableaux de bord (section 6.17), et la phrase sur le blocage des cookies dans le navigateur (politique de confidentialité). Un premier essai avec un bandeau (« Refuser », « Accepter »), puis un lien « Refuser les cookies » dans le pied de page, sont retirés le même jour. Risques signalés à l'agence avant la décision : la loi 09-08 (consentement, article 4 ; droit d'opposition, article 9) ; la règle de Google Ads sur le consentement des visiteurs de l'Union européenne, du Royaume-Uni et de la Suisse ; la promesse « bandeau cookies » de la page Sites web (section 6.2), faite aux clients. À faire valider par le juriste.
 
 **Règles :**
-- Tag Manager se charge seulement sur `www.digital-solutions.ma`, pas sur les aperçus Vercel. Sans JavaScript, il ne se charge pas.
+- Tag Manager se charge seulement sur `www.digital-solutions.ma`, pas sur les aperçus Vercel. La balise est écrite dans le HTML des pages (build de production) : Google Ads la détecte dans le code du site. Sans JavaScript, Tag Manager ne se charge pas.
 
 **Politique de confidentialité :**
 - Meta description : Quelles données nous collectons avec nos formulaires, sur WhatsApp et avec les cookies, pourquoi, qui les reçoit et comment exercer vos droits.

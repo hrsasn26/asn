@@ -3,16 +3,28 @@
  * Google Tag Manager, pour Google Ads (section 6.21 du brief).
  *
  * Décision de l'agence du 26 septembre 2026 : pas de bandeau des cookies ni de lien pour les
- * refuser. Tag Manager se charge pour tous les visiteurs, sur le domaine de production
- * seulement (src/lib/tag-manager.ts). Sans JavaScript, il ne se charge pas.
+ * refuser. Tag Manager se charge pour tous les visiteurs, sur le site construit pour le domaine
+ * de production seulement (src/lib/tag-manager.ts). La balise est écrite dans le HTML, dans
+ * <head> : le vérificateur de Google Ads la lit sans exécuter le JavaScript. Sans JavaScript,
+ * Tag Manager ne se charge pas.
  */
+import { site } from '~/data/site';
+import { tagManagerAutorise, urlTagManager } from '~/lib/tag-manager';
+
+const autorise = tagManagerAutorise(
+  new URL(Astro.site ?? 'http://localhost').hostname,
+  site.domaine,
+  process.env.VERCEL_ENV,
+);
 ---
 
-<script>
-  import { site } from '~/data/site';
-  import { tagManagerAutorise, urlTagManager } from '~/lib/tag-manager';
+{autorise && (
+  <script is:inline async src={urlTagManager(site.tagManager)} data-tag-manager></script>
+)}
 
-  if (tagManagerAutorise(location.hostname, site.domaine)) {
+<script>
+  // Événements pour Tag Manager. Sans le script ci-dessus, la liste reste sans effet.
+  if (document.querySelector('script[data-tag-manager]')) {
     const fenetre = window as typeof window & { dataLayer?: Record<string, unknown>[] };
     const dataLayer = (fenetre.dataLayer ??= []);
     dataLayer.push({ 'gtm.start': Date.now(), event: 'gtm.js' });
@@ -21,9 +33,5 @@
     if (envoi) {
       dataLayer.push({ event: 'formulaire_envoye', formulaire: envoi.dataset.formulaireEnvoye });
     }
-    const script = document.createElement('script');
-    script.async = true;
-    script.src = urlTagManager(site.tagManager);
-    document.head.append(script);
   }
 </script>
