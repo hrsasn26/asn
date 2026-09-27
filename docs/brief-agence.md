@@ -932,9 +932,9 @@ L'audit gratuit regarde votre site de l'extérieur, sans accès au code ni au se
 
 > Le document de recommandations propose « Des solutions digitales fiables, conçues par des ingénieurs ». Décision du 26 septembre 2026 : pas de mot « ingénieurs » sur le site ; « sites et applications » est plus concret que « solutions digitales ».
 
-#### Section : ce que vous y gagnez
+#### Section : pourquoi nous choisir
 
-**Titre :** Ce que vous y gagnez
+**Titre :** Pourquoi nous choisir
 
 Un projet qui fonctionne dès le lancement, qui reste facile à faire évoluer et qui ne vous rend pas dépendant d'un prestataire.
 
@@ -1776,7 +1776,7 @@ Les visuels des pages de services servent aussi de vignettes aux cartes des serv
 
 | Page | Section | Surtitre |
 |---|---|---|
-| Accueil | Ce que vous y gagnez | Vos bénéfices |
+| Accueil | Pourquoi nous choisir | Nos engagements |
 | Accueil | Des solutions digitales qui répondent à vos enjeux | Nos services |
 | Accueil | Un projet en cinq étapes claires | Processus |
 | Accueil, Services | Encadré audit gratuit | Audit gratuit |
