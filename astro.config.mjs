@@ -48,6 +48,8 @@ const google = {
     'https://www.google.co.ma',
     'https://google.com',
     'https://pagead2.googlesyndication.com',
+    // Mesure complémentaire des conversions (ad.doubleclick.net/ccm/s/collect).
+    'https://ad.doubleclick.net',
   ],
   frame: [
     'https://www.googletagmanager.com',
