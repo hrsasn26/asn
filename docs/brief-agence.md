@@ -1776,7 +1776,7 @@ Les visuels des pages de services servent aussi de vignettes aux cartes des serv
 
 | Page | Section | Surtitre |
 |---|---|---|
-| Accueil | Pourquoi nous choisir | Vos bénéfices |
+| Accueil | Pourquoi nous choisir | Nos engagements |
 | Accueil | Des solutions digitales qui répondent à vos enjeux | Nos services |
 | Accueil | Un projet en cinq étapes claires | Processus |
 | Accueil, Services | Encadré audit gratuit | Audit gratuit |

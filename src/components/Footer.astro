@@ -69,6 +69,7 @@ const whatsapp = lienWhatsApp(site.whatsapp, site.messageWhatsApp);
     <div class="apparition min-w-0 flex-[1_1_13.75rem] md:[--decalage:4.5rem]">
       <p class={titreColonne}>Contact</p>
       <address class="mt-4 grid gap-y-1.5 text-sm not-italic">
+        <p class="py-0.5">{adresseComplete}</p>
         <p>
           <a href={`mailto:${site.email}`} class={lien}>
             {site.email}
@@ -90,7 +91,6 @@ const whatsapp = lienWhatsApp(site.whatsapp, site.messageWhatsApp);
             </a>
           </p>
         )}
-        <p class="py-0.5">{adresseComplete}</p>
       </address>
     </div>
   </div>
