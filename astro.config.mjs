@@ -20,9 +20,10 @@ const urlProduction = `https://${infos.domaine}`;
 const site = process.env.SITE_URL || (surVercel ? urlProduction : 'http://localhost:4321');
 const { hostname, protocol } = new URL(site);
 
-// Adresses de Google Tag Manager et de Google Ads (conversions et remarketing), pour la CSP.
-// Tag Manager se charge pour tous les visiteurs (src/components/TagManager.astro).
-// Une autre sorte de balise (Google Analytics, par exemple) demande ses propres adresses.
+// Adresses de Google Tag Manager, de Google Ads (conversions et remarketing) et de Google
+// Analytics 4, pour la CSP. Tag Manager se charge pour tous les visiteurs
+// (src/components/TagManager.astro).
+// Une autre sorte de balise (Meta, par exemple) demande ses propres adresses.
 // Les balises « HTML personnalisé » et les variables « JavaScript personnalisé » de Tag
 // Manager ne fonctionnent pas : elles demandent 'unsafe-inline' ou 'unsafe-eval'.
 const google = {
@@ -39,6 +40,7 @@ const google = {
     'https://www.google.com',
     'https://www.google.co.ma',
     'https://pagead2.googlesyndication.com',
+    'https://*.google-analytics.com',
   ],
   connect: [
     'https://www.googletagmanager.com',
@@ -50,6 +52,9 @@ const google = {
     'https://pagead2.googlesyndication.com',
     // Mesure complémentaire des conversions (ad.doubleclick.net/ccm/s/collect).
     'https://ad.doubleclick.net',
+    // Google Analytics 4 : envoi des données (region1.google-analytics.com, par exemple).
+    'https://*.google-analytics.com',
+    'https://*.analytics.google.com',
   ],
   frame: [
     'https://www.googletagmanager.com',
