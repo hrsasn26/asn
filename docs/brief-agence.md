@@ -1823,7 +1823,7 @@ Les visuels des pages de services servent aussi de vignettes aux cartes des serv
 
 ### 6.21 Cookies et Google Tag Manager
 
-> Proposition à valider. Ajouté le 26 septembre 2026 avec Google Tag Manager (conteneur `GTM-WRR53MWN`), pour mesurer les annonces Google Ads de l'agence. L'agence fait ses propres annonces : l'offre ne change pas (Google Ads reste hors de notre offre, section 3).
+> Proposition à valider. Ajouté le 26 septembre 2026 avec Google Tag Manager (conteneur `GTM-WRR53MWN`), pour mesurer les annonces Google Ads de l'agence. L'agence fait ses propres annonces : l'offre ne change pas (Google Ads reste hors de notre offre, section 3). Ajout du 28 septembre 2026 : Google Analytics 4 (flux `G-2M2LWC6EVS`), une balise Google dans Tag Manager, pour mesurer la fréquentation du site.
 
 **Décision de l'agence (26 septembre 2026) : pas de bandeau des cookies, ni de lien pour les refuser, ni de mention d'un bandeau sur le site.** Tag Manager se charge pour tous les visiteurs. Retirés aussi : « bandeau cookies » dans les inclus de la page Sites web (section 6.2), la question « Faut-il un bandeau cookies ? » de la page Données et tableaux de bord (section 6.17), et la phrase sur le blocage des cookies dans le navigateur (politique de confidentialité). Un premier essai avec un bandeau (« Refuser », « Accepter »), puis un lien « Refuser les cookies » dans le pied de page, sont retirés le même jour. Risques signalés à l'agence avant la décision : la loi 09-08 (consentement, article 4 ; droit d'opposition, article 9) ; la règle de Google Ads sur le consentement des visiteurs de l'Union européenne, du Royaume-Uni et de la Suisse ; la promesse « bandeau cookies » de la page Sites web (section 6.2), faite aux clients. À faire valider par le juriste.
 
@@ -1833,10 +1833,11 @@ Les visuels des pages de services servent aussi de vignettes aux cartes des serv
 **Politique de confidentialité :**
 - Meta description : Quelles données nous collectons avec nos formulaires, sur WhatsApp et avec les cookies, pourquoi, qui les reçoit et comment exercer vos droits.
 - « Les données que nous collectons » : la liste commence par « Avec nos formulaires et sur WhatsApp, nous collectons uniquement les données que vous nous envoyez : ».
-- Base légale : votre consentement, donné en cochant la case du formulaire ou en nous écrivant sur WhatsApp (article 4 de la loi 09-08). Pour les cookies : notre intérêt légitime à mesurer l'efficacité de nos annonces (article 4 de la loi 09-08). [À confirmer par le juriste : l'intérêt légitime suffit-il pour les cookies publicitaires ?]
+- Base légale : votre consentement, donné en cochant la case du formulaire ou en nous écrivant sur WhatsApp (article 4 de la loi 09-08). Pour les cookies : notre intérêt légitime à mesurer l'efficacité de nos annonces et la fréquentation du site (article 4 de la loi 09-08). [À confirmer par le juriste : l'intérêt légitime suffit-il pour les cookies publicitaires et de mesure d'audience ?]
 - « Qui reçoit vos données » : Google, par les cookies du site (voir « Cookies » ci-dessous). Ses serveurs sont situés hors du Maroc : ces données sont donc transférées à l'étranger. Google applique aussi sa propre politique de confidentialité.
 - « Cookies » :
   - Le site utilise Google Tag Manager et des cookies de Google Ads. Ils nous permettent de mesurer l'efficacité de nos annonces : par exemple, savoir si une visite venue d'une annonce Google mène à une demande de contact.
+  - Le site utilise aussi des cookies de Google Analytics. Ils nous permettent de mesurer la fréquentation du site : le nombre de visites, les pages consultées et la provenance des visiteurs.
   - Google reçoit des informations sur votre visite : les pages vues, l'annonce sur laquelle vous avez cliqué, votre adresse IP et des informations sur votre navigateur.
 
 ---
@@ -1853,9 +1854,9 @@ Les visuels des pages de services servent aussi de vignettes aux cartes des serv
 
 **Données personnelles (loi 09-08, CNDP)**
 - **Déclaration préalable à la CNDP** des traitements du site (formulaires de contact et d'audit), avant la mise en ligne. Indiquer le numéro de récépissé dans les mentions légales et dans la politique de confidentialité.
-- **Transfert de données à l'étranger** (article 43) : Mailjet (envoi des e-mails), WhatsApp (Meta, messages reçus sur le numéro de l'agence), Google (Tag Manager et Google Ads) et un hébergeur hors du Maroc reçoivent des données. Le transfert est à déclarer à la CNDP. Vérifier que le pays de destination est sur la liste des pays reconnus par la CNDP.
+- **Transfert de données à l'étranger** (article 43) : Mailjet (envoi des e-mails), WhatsApp (Meta, messages reçus sur le numéro de l'agence), Google (Tag Manager, Google Ads et Google Analytics) et un hébergeur hors du Maroc reçoivent des données. Le transfert est à déclarer à la CNDP. Vérifier que le pays de destination est sur la liste des pays reconnus par la CNDP.
 - **Droits des personnes** : information (article 5), accès (article 7), rectification et suppression (article 8), opposition (article 9).
-- **Cookies** : depuis le 26 septembre 2026, le site utilise Google Tag Manager et Google Ads pour tous les visiteurs, sans bandeau des cookies ni lien pour les refuser (décision de l'agence, section 6.21). À faire valider par le juriste : l'absence de consentement préalable (article 4 de la loi 09-08), l'absence de moyen de refus sur le site (droit d'opposition, article 9), la base légale (intérêt légitime), le texte de la politique de confidentialité et la déclaration du traitement à la CNDP.
+- **Cookies** : depuis le 26 septembre 2026, le site utilise Google Tag Manager et Google Ads pour tous les visiteurs (et Google Analytics depuis le 28 septembre 2026), sans bandeau des cookies ni lien pour les refuser (décision de l'agence, section 6.21). À faire valider par le juriste : l'absence de consentement préalable (article 4 de la loi 09-08), l'absence de moyen de refus sur le site (droit d'opposition, article 9), la base légale (intérêt légitime), le texte de la politique de confidentialité et la déclaration du traitement à la CNDP.
 
 **Site de l'agence**
 - Mentions légales : raison sociale, forme juridique, capital, siège, registre du commerce, ICE, identifiant fiscal, taxe professionnelle, directeur de la publication, hébergeur.
@@ -1902,9 +1903,9 @@ Les valeurs de `src/data/` (modalités de paiement, garantie, durée d'engagemen
 - WhatsApp (Meta) : [Vérifier les conditions de WhatsApp Business et la déclaration du transfert à la CNDP]
 - Destinataires : « Notre hébergeur : [nom de l'hébergeur, pays]. »
 - Section « Combien de temps nous les gardons » : [Durée à définir, par exemple 3 ans après notre dernier échange]. Après son retour, remettez aussi « combien de temps nous les gardons » dans la meta description et dans `llms.txt`.
-- Google (Tag Manager, Google Ads) : [Vérifier les conditions de Google Ads et la déclaration du transfert à la CNDP]
+- Google (Tag Manager, Google Ads, Google Analytics) : [Vérifier les conditions de Google Ads et de Google Analytics, et la déclaration du transfert à la CNDP]
 - Cookies, si l'agence active le remarketing (audiences Google Ads) : « Google peut aussi utiliser ces cookies pour vous montrer nos annonces sur d'autres sites. » [À confirmer : remarketing activé ou non]
-- Cookies, si une autre balise est ajoutée dans Tag Manager (Google Analytics, par exemple) : [Nom de l'outil et ce qu'il mesure]. Ajouter aussi ses adresses à la CSP (`astro.config.mjs`).
+- Cookies, si une autre balise est ajoutée dans Tag Manager (Meta, par exemple) : [Nom de l'outil et ce qu'il mesure]. Ajouter aussi ses adresses à la CSP (`astro.config.mjs`).
 
 ---
 
@@ -1936,4 +1937,4 @@ Les valeurs de `src/data/` (modalités de paiement, garantie, durée d'engagemen
 - [x] Choisir les technologies du site et commencer le développement (voir [stack-technique.md](stack-technique.md))
 - [ ] Faire valider les CGV, les mentions légales et la politique de confidentialité par un juriste (droit marocain)
 - [ ] Fournir les informations et les clauses des pages légales, puis remettre les parties retirées (section 7, « Parties retirées des pages légales »)
-- [ ] Déclarer les traitements du site à la CNDP, avec le transfert des données vers Mailjet, WhatsApp (Meta), Google (Tag Manager et Google Ads) et l'hébergeur
+- [ ] Déclarer les traitements du site à la CNDP, avec le transfert des données vers Mailjet, WhatsApp (Meta), Google (Tag Manager, Google Ads et Google Analytics) et l'hébergeur
