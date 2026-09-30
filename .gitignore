@@ -19,4 +19,5 @@ coverage/
 # Divers
 .DS_Store
 *.log
-digital-solutions-ads-api-286ac0868700.json
+# Clés de compte de service Google Ads : tout fichier dont le nom contient « ads-api »
+*ads-api*
