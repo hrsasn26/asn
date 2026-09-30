@@ -30,3 +30,25 @@ test('llms.txt liste chaque page avec sa meta description', async ({ page, reque
     expect(note, chemin).toBe(await metaDescription(page, chemin));
   }
 });
+
+test('llms.txt cite les prix de départ affichés sur les pages de services', async ({
+  page,
+  request,
+}) => {
+  const texte = (await (await request.get('/llms.txt')).text()).replace(/\s+/g, ' ');
+  const prix = [...texte.matchAll(/à partir de (\d[\d ]* DH TTC)/g)].map(([, montant]) => montant);
+  expect(prix.length).toBeGreaterThan(0);
+
+  const affiches = new Set<string>();
+  for (const chemin of pages.filter((p) => p.startsWith('/services/'))) {
+    await page.goto(chemin);
+    for (const montant of await page
+      .locator('#tarifs li strong, #forfaits td strong')
+      .allTextContents()) {
+      affiches.add(montant.replace(/\s+/g, ' ').trim());
+    }
+  }
+  // Chaque prix de la liste est affiché sur une page, et la liste a une ligne par prix affiché.
+  for (const montant of prix) expect([...affiches]).toContain(montant);
+  expect(new Set(prix)).toEqual(affiches);
+});

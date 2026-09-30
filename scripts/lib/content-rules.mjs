@@ -26,10 +26,32 @@ export const MENTIONS_INTERDITES = [
 ];
 
 /**
- * Montant affiché (ex. : « 5 000 DH », « [X] DH », « 300 € »). Aucun prix n'est public :
- * chaque prix est donné dans un devis. « capital de [montant] DH » (mentions légales) reste autorisé.
+ * Montant affiché (ex. : « 5 000 DH », « [X] DH », « 300 € »).
+ *
+ * Depuis le 30 septembre 2026, le site affiche des prix de départ (brief, section 6.22). Un
+ * montant est accepté s'il figure dans src/data/prix.json et s'il est suivi de « TTC » ou de
+ * « HT ». Tout autre montant est refusé : un prix ne s'écrit pas à la main dans une page.
+ * Les visuels des en-têtes (clients fictifs) n'affichent toujours aucun prix.
+ * « capital de [montant] DH » et « capital de 100 000 DH » (mentions légales) restent autorisés.
  */
-const MONTANT = /(?:\[X\]|\d[\d\s.,]*)\s*(?:DH|MAD|dirhams?|€|euros?)(?![\p{L}\p{N}])/giu;
+const MONTANT =
+  /(?<![\d.,])(\[X\]|\d{1,3}(?:\s\d{3})+|\d+(?:[.,]\d+)?)\s*(DH|MAD|dirhams?|€|euros?)(?![\p{L}\p{N}])(\s*(?:TTC|HT)(?![\p{L}\p{N}]))?/giu;
+
+/** Clés des données structurées (schema.org) qui portent un prix. */
+const CLES_PRIX = new Set(['price', 'minPrice', 'maxPrice', 'lowPrice', 'highPrice']);
+
+/**
+ * Prix déclarés dans src/data/prix.json : les montants hors taxes et toutes taxes comprises.
+ * @param {{ tauxTva: number, offres: { ht: number | null }[] }} donnees
+ * @returns {{ ttc: Set<number>, ht: Set<number> }}
+ */
+export function prixDeclares({ tauxTva, offres }) {
+  const ht = offres.flatMap((offre) => (offre.ht === null ? [] : [offre.ht]));
+  return {
+    ht: new Set(ht),
+    ttc: new Set(ht.map((montant) => Math.round((montant * (100 + tauxTva)) / 100))),
+  };
+}
 
 const ENTITES = { amp: '&', lt: '<', gt: '>', quot: '"', apos: "'", nbsp: ' ' };
 
@@ -55,6 +77,59 @@ function chainesJson(valeur) {
   if (Array.isArray(valeur)) return valeur.flatMap(chainesJson);
   if (valeur && typeof valeur === 'object') return Object.values(valeur).flatMap(chainesJson);
   return [];
+}
+
+/**
+ * Collecte les prix d'une valeur JSON (données structurées) : les nombres des clés `price`,
+ * `minPrice`, `lowPrice`…
+ * @param {unknown} valeur
+ * @returns {number[]}
+ */
+function prixJson(valeur) {
+  if (Array.isArray(valeur)) return valeur.flatMap(prixJson);
+  if (!valeur || typeof valeur !== 'object') return [];
+  return Object.entries(valeur).flatMap(([cle, contenu]) =>
+    CLES_PRIX.has(cle) && (typeof contenu === 'number' || typeof contenu === 'string')
+      ? [Number(contenu)]
+      : prixJson(contenu),
+  );
+}
+
+/**
+ * Prix cités dans les données structurées d'une page. `analyserTexte` ne lit que les chaînes :
+ * ces nombres sont vérifiés à part (`analyserPrixStructures`).
+ * @param {string} html
+ * @returns {number[]}
+ */
+export function extrairePrixStructures(html) {
+  /** @type {number[]} */
+  const prix = [];
+  for (const [, json] of html.matchAll(
+    /<script[^>]*type="application\/ld\+json"[^>]*>([\s\S]*?)<\/script>/gi,
+  )) {
+    try {
+      prix.push(...prixJson(JSON.parse(json ?? '')));
+    } catch {
+      // Le JSON invalide est déjà lu comme du texte par extraireTexte.
+    }
+  }
+  return prix;
+}
+
+/**
+ * Un prix des données structurées doit être un prix TTC déclaré dans src/data/prix.json.
+ * @param {number[]} prix
+ * @param {{ ttc: Set<number>, ht: Set<number> }} declares
+ * @returns {Probleme[]}
+ */
+export function analyserPrixStructures(prix, declares) {
+  return prix
+    .filter((montant) => !declares.ttc.has(montant))
+    .map((montant) => ({
+      niveau: /** @type {const} */ ('erreur'),
+      regle: 'prix affiché non déclaré dans src/data/prix.json (données structurées, prix TTC)',
+      extrait: String(montant),
+    }));
 }
 
 /** Balises en ligne : leur texte fait partie de la phrase qui les entoure. */
@@ -132,10 +207,13 @@ export function extraireTexteMarkdown(markdown) {
 /**
  * Applique les règles de contenu à une liste de fragments de texte.
  * @param {string[]} fragments
- * @param {{ strict: boolean }} options En mode strict (production), les placeholders sont des erreurs.
+ * @param {{ strict: boolean, prix?: { ttc: Set<number>, ht: Set<number> } }} options
+ *   En mode strict (production), les placeholders sont des erreurs.
+ *   `prix` : les prix déclarés (`prixDeclares`). Sans cette option, tout montant est refusé
+ *   (visuels des en-têtes).
  * @returns {Probleme[]}
  */
-export function analyserTexte(fragments, { strict }) {
+export function analyserTexte(fragments, { strict, prix }) {
   /** @type {Probleme[]} */
   const problemes = [];
 
@@ -171,11 +249,9 @@ export function analyserTexte(fragments, { strict }) {
     }
 
     for (const correspondance of fragment.matchAll(MONTANT)) {
-      problemes.push({
-        niveau: 'erreur',
-        regle: 'prix affiché (les prix sont donnés dans les devis)',
-        extrait: contexte(fragment, correspondance.index ?? 0),
-      });
+      const index = correspondance.index ?? 0;
+      const regle = reglePrix(correspondance, fragment.slice(0, index), prix);
+      if (regle) problemes.push({ niveau: 'erreur', regle, extrait: contexte(fragment, index) });
     }
 
     // Un placeholder collé à un mot trahit une espace perdue lors du rendu
@@ -198,6 +274,70 @@ export function analyserTexte(fragments, { strict }) {
   }
 
   return problemes;
+}
+
+/**
+ * Règle enfreinte par un montant, ou `undefined` s'il est accepté.
+ * @param {RegExpMatchArray} correspondance Résultat de MONTANT : nombre, devise, « TTC » ou « HT ».
+ * @param {string} avant Texte qui précède le montant dans le fragment.
+ * @param {{ ttc: Set<number>, ht: Set<number> } | undefined} prix
+ * @returns {string | undefined}
+ */
+function reglePrix([, nombre = '', devise = '', taxe = ''], avant, prix) {
+  // Capital social des mentions légales : ce n'est pas un prix.
+  if (/capital de\s*$/i.test(avant)) return undefined;
+  if (!prix) return 'prix affiché (aucun prix dans ce contenu)';
+  if (devise !== 'DH') return 'prix affiché dans une autre écriture que « DH »';
+
+  const montant = Number(nombre.replace(/\s/g, ''));
+  const mention = taxe.trim().toUpperCase();
+  if (mention === 'TTC' && prix.ttc.has(montant)) return undefined;
+  if (mention === 'HT' && prix.ht.has(montant)) return undefined;
+  if (mention === '' && (prix.ttc.has(montant) || prix.ht.has(montant))) {
+    return 'prix affiché sans « TTC » ou « HT »';
+  }
+  return 'prix affiché non déclaré dans src/data/prix.json';
+}
+
+/**
+ * Conditions pour publier des prix (étude de prix du 29 septembre 2026, à faire valider par le
+ * juriste : loi 31-08, articles 21, 29 et 30). Une offre de prix en ligne demande les
+ * identifiants de l'entreprise dans les mentions légales, et un « à partir de » demande une
+ * durée de validité. En mode strict (production), une condition manquante est une erreur.
+ * @param {{ mentionsLegales: string[], validite: string, strict: boolean }} options
+ *   `mentionsLegales` : fragments de texte de la page Mentions légales.
+ *   `validite` : valeur `validite` de src/data/prix.json.
+ * @returns {Probleme[]}
+ */
+export function conditionsPrix({ mentionsLegales, validite, strict }) {
+  const texte = mentionsLegales.join('\n');
+  const manquants = [
+    { nom: 'registre du commerce', motif: /registre du commerce/i },
+    { nom: 'capital', motif: /capital de/i },
+    { nom: 'identifiant fiscal', motif: /identifiant fiscal/i },
+  ]
+    .filter(({ motif }) => !motif.test(texte))
+    .map(({ nom }) => `mentions légales sans ${nom} (src/data/site.ts, « entreprise »)`);
+  if (/\[[^\]\n]+\]/.test(validite)) {
+    manquants.push('date de fin de validité des prix absente (src/data/prix.json, « validite »)');
+  }
+  return manquants.map((extrait) => ({
+    niveau: strict ? 'erreur' : 'avertissement',
+    regle: 'prix affichés avant les conditions de publication',
+    extrait,
+  }));
+}
+
+/**
+ * Vrai si un des fragments cite un montant en dirhams (hors capital social).
+ * @param {string[]} fragments
+ */
+export function contientPrix(fragments) {
+  return fragments.some((fragment) =>
+    [...fragment.matchAll(MONTANT)].some(
+      ({ index = 0 }) => !/capital de\s*$/i.test(fragment.slice(0, index)),
+    ),
+  );
 }
 
 /**

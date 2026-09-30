@@ -56,7 +56,7 @@ Liste de référence des services qu'une agence de ce type propose en général,
 
 Neuf pôles de services, plus un audit gratuit pour générer des contacts.
 
-> **Décision du 25 septembre 2026 : aucun prix public.** Les prix sont donnés uniquement dans les devis, en privé. La page Tarifs est supprimée. `pnpm check:content` bloque tout montant affiché sur le site.
+> **Décision du 30 septembre 2026 : des prix de départ publics, en dirhams.** Elle remplace la décision du 25 septembre 2026 (« aucun prix public »). Chaque offre affiche un seul montant, précédé de « à partir de » : pas de fourchette, pas de calcul d'estimation, pas de tarif à la journée ni à l'heure pour un projet. Un niveau de complexité (simple, intermédiaire, avancé) aide le visiteur à situer son projet. Le prix exact reste celui du devis, gratuit et à prix fixe. Les prix viennent de l'étude « Prix du marché marocain des services numériques » du 29 septembre 2026 (document interne), reprise telle quelle : prix recommandés, au-dessus des packs et sous la médiane du marché. Textes, liste des prix et règles : [section 6.22](#622-prix-affichés). Il n'y a toujours pas de page Tarifs : les prix sont sur les pages de services. `pnpm check:content` refuse tout montant qui ne figure pas dans `src/data/prix.json`.
 
 > Ajouts du 25 septembre 2026, à valider : pôles 3, 4, 5, 7 et 8 (sections 6.14 à 6.18), sites multilingues (pôle 1), WhatsApp Business (pôle 6) et formation à l'IA (pôle 5).
 
@@ -67,7 +67,7 @@ Neuf pôles de services, plus un audit gratuit pour générer des contacts.
 - Refonte ou migration d'un site existant
 - Inclus par défaut : SEO technique, rapidité, accessibilité, conformité à la loi 09-08 (données personnelles)
 - En option : site en plusieurs langues (français, arabe de droite à gauche, anglais). Traductions fournies par le client ou par un traducteur partenaire.
-- En option : bouton WhatsApp (voir pôle 6)
+- Inclus sans supplément : bouton WhatsApp (décision du 30 septembre 2026, à valider ; il était en option). Messages automatiques et connexion aux outils : voir pôle 6.
 
 ### Pôle 2 : Applications sur mesure
 *Compétences : ingénierie logicielle, fullstack*
@@ -186,7 +186,7 @@ Dès que possible, ajouter des preuves réelles : exemple de rapport, capture de
 - **Honnête** : aucune statistique, aucun témoignage ni aucune promesse de résultat inventés (ex. pas de « première place sur Google garantie »).
 - **Rassurant, pas alarmiste** : décrire les risques sans formule anxiogène.
 - **FAQ** : chaque réponse commence par une réponse directe (« Oui », « Non », « Cela dépend de… »), puis explique, en deux à cinq phrases si possible.
-- **Aucune valeur non confirmée** : pas de délai, de durée, de ville, de pays, d'adresse ni de zone servie tant qu'ils ne sont pas confirmés, ni sur les pages, ni dans les données structurées, ni dans `llms.txt`. La phrase est retirée plutôt que publiée avec un placeholder (décision du 26 septembre 2026). Exceptions : les pages légales et les coordonnées de l'agence, obligatoires.
+- **Aucune valeur non confirmée** : pas de délai, de durée, de ville, de pays, d'adresse, de zone servie ni de date de validité des prix tant qu'ils ne sont pas confirmés, ni sur les pages, ni dans les données structurées, ni dans `llms.txt`. La phrase est retirée plutôt que publiée avec un placeholder (décision du 26 septembre 2026). Exceptions : les pages légales et les coordonnées de l'agence, obligatoires.
 - **Pas de points d'exclamation.**
 - **Mots à éviter sur le site** : DevOps, QA, stack, CI/CD, framework, « solutions innovantes », « optimiser », « digitaliser », « 360° », « ingénieurs ».
 - **Publics non nommés** : le site ne nomme pas les publics visés (TPE, PME, particuliers). Les mots-clés visés ne les contiennent pas non plus. Il n'est pas nécessaire de les préciser (décision du 26 septembre 2026, à valider). Exception : les pages légales, qui parlent des clients particuliers (loi 31-08).
@@ -236,10 +236,14 @@ La page « Processus », avec une étape de tests bien visible, est l'endroit id
 > Adaptation au Maroc (25 septembre 2026) : prix en DH, loi 09-08 à la place du RGPD, délai de rétractation de 7 jours. Ces changements sont à revalider, y compris dans les sections 6.1 à 6.6.
 > Révision du 26 septembre 2026, à valider : textes revus selon le document « Digital Solutions - Recommandations de wording ». Les en-têtes, les boutons, plusieurs cartes et les FAQ changent, y compris dans les sections 6.1 à 6.6. Les phrases qui contenaient une valeur non confirmée (délais, pays d'hébergement, ville, garantie, durée des sauvegardes) sont retirées. La section « L'équipe » de la page L'agence, masquée jusqu'à réception des vraies informations, est de nouveau affichée depuis la réception des noms et des rôles (section 6.10).
 
+> Prix de départ du 30 septembre 2026, à valider : section « Tarifs » sur huit pages de services, prix dans le tableau des forfaits, sur les cartes des services et dans les réponses « Combien coûte… » des FAQ (section 6.22). Les sections 6.1 à 6.5 et 6.14 à 6.18 citent les montants en clair : la source reste `src/data/prix.json`.
+
 **Appels à l'action (tout le site) : trois familles**
 - **« Parler de mon projet »** : bouton principal (en-tête, accueil), pour un premier échange. Chaque page de service a sa variante : « Parler de mon futur site », « Parler de mon application », etc.
 - **« Demander un devis »** : quand le besoin est déjà cadré (page Hébergement et maintenance).
 - **« Faire auditer mon site »** : l'audit gratuit, l'offre d'entrée.
+
+« Voir les tarifs » (en-tête des pages de services, depuis le 30 septembre 2026) et « Voir les forfaits » ne sont pas des appels à l'action : ce sont des liens vers une section de la même page.
 
 ---
 
@@ -266,6 +270,7 @@ La page « Processus », avec une étape de tests bien visible, est l'endroit id
 **Titre :** Des solutions pour faire avancer votre activité
 
 > Cette section aide le visiteur à choisir la bonne page : une phrase par service, sans répéter le contenu de chaque offre. Elle est reprise sur l'accueil, avec un autre titre (section 6.7).
+> Depuis le 30 septembre 2026 (à valider), chaque carte cite le prix de départ de l'offre de référence du pôle, au-dessus du lien : « Site vitrine : à partir de 4 800 DH TTC » (liste en section 6.22).
 > Titre changé le 26 septembre 2026, à valider. Ancien titre : « Ce que nous faisons pour vous ».
 
 **Carte 1 : Sites web**
@@ -393,7 +398,7 @@ Nous analysons gratuitement sa vitesse, sa sécurité et son référencement tec
 #### FAQ
 
 **Combien coûte un site ou une application ?**
-Cela dépend du projet. Après un premier échange, nous vous remettons un devis gratuit, détaillé et à prix fixe : vous savez exactement ce que vous payez avant de vous engager.
+À partir de 4 800 DH TTC (4 000 DH HT) pour un site vitrine, et de 24 000 DH TTC (20 000 DH HT) pour une première version d'application. Le prix dépend du projet : après un premier échange, nous vous remettons un devis gratuit, détaillé et à prix fixe. Vous savez exactement ce que vous payez avant de vous engager.
 
 **Combien de temps faut-il ?**
 Cela dépend du projet. Nous fixons le planning ensemble après le premier échange, et il figure dans le devis.
@@ -432,7 +437,7 @@ Un échange de 30 minutes, gratuit et sans engagement, pour comprendre votre bes
 
 **Sous-titre :** Site vitrine, boutique en ligne ou refonte : nous créons un site adapté au mobile, simple à modifier vous-même et techniquement prêt pour le référencement.
 
-**Bouton :** [Parler de mon futur site]
+**Boutons :** [Parler de mon futur site] [Voir les tarifs] *(lien vers la section Tarifs, ajout du 30 septembre 2026)*
 
 > Ancien H1 : « Un site web rapide, sécurisé et facile à trouver sur Google ». Le document de recommandations demande une promesse de référencement technique solide, sans garantie de position.
 
@@ -471,7 +476,11 @@ Pour moderniser votre site sans perdre ce qui fonctionne : contenus, redirection
 - Redirections des anciennes pages pour conserver votre référencement
 - Nouveau design, plus rapide et adapté au mobile
 
+**Prix de départ, en bas de chaque carte** *(30 septembre 2026, à valider)* : Site vitrine, à partir de 4 800 DH TTC (4 000 DH HT). Boutique en ligne, à partir de 12 000 DH TTC (10 000 DH HT). Refonte de site, à partir de 7 200 DH TTC (6 000 DH HT).
+
 **Sous les offres :** Chaque projet fait l'objet d'un devis gratuit et détaillé, à prix fixe.
+
+→ [Voir tous les tarifs] *(lien vers la section Tarifs, section 6.22)*
 
 #### Section : inclus dans chaque site
 
@@ -496,7 +505,7 @@ Pour moderniser votre site sans perdre ce qui fonctionne : contenus, redirection
 Français, arabe, anglais : chaque visiteur lit votre site dans sa langue. La version arabe s'affiche de droite à gauche, avec une mise en page adaptée. Chaque langue a ses propres pages, que Google peut référencer. Vous nous fournissez les textes traduits. Si besoin, nous vous mettons en relation avec un traducteur.
 
 **WhatsApp sur votre site**
-Un bouton pour vous écrire sur WhatsApp en un clic. Nous pouvons aussi relier WhatsApp à vos outils et envoyer des messages automatiques.
+Un bouton pour vous écrire sur WhatsApp en un clic, inclus sans supplément. Nous pouvons aussi relier WhatsApp à vos outils et envoyer des messages automatiques.
 
 → [Voir l'offre Automatisation]
 
@@ -527,6 +536,9 @@ Il sera techniquement prêt. Nous nous occupons de toute la partie technique du 
 
 **WordPress ou développement sur mesure ?**
 Cela dépend de votre besoin. WordPress convient très bien à la plupart des sites vitrines. Le sur-mesure devient intéressant quand vous avez des fonctionnalités spécifiques ou de gros volumes.
+
+**Combien coûte un site ?** *(ajout du 30 septembre 2026, à valider)*
+À partir de 4 800 DH TTC (4 000 DH HT) pour un site vitrine, et de 12 000 DH TTC (10 000 DH HT) pour une boutique en ligne. Le prix dépend du nombre de pages, du design et des options : il figure dans un devis gratuit, à prix fixe.
 
 **Combien de temps faut-il pour créer mon site ?**
 Cela dépend du site et de la rapidité à laquelle nous recevons vos contenus. Nous fixons le planning ensemble, et il figure dans le devis.
@@ -559,7 +571,7 @@ Décrivez-nous votre projet en quelques lignes. Nous revenons vers vous avec les
 
 **Sous-titre :** Réservation, devis, planning, espace client ou outil interne : nous développons les fonctions dont vous avez réellement besoin, puis nous les faisons évoluer avec vous.
 
-**Bouton :** [Parler de mon projet]
+**Boutons :** [Parler de mon projet] [Voir les tarifs] *(lien vers la section Tarifs, ajout du 30 septembre 2026)*
 
 > Ancien H1 : « Un outil conçu pour votre façon de travailler ».
 
@@ -626,7 +638,7 @@ Plutôt que de tout développer d'un coup, nous construisons d'abord une version
 #### FAQ
 
 **Combien coûte une application sur mesure ?**
-Cela dépend des fonctionnalités. Après l'atelier de cadrage, nous vous remettons un devis gratuit, à prix fixe.
+À partir de 24 000 DH TTC (20 000 DH HT) pour une première version, et de 36 000 DH TTC (30 000 DH HT) pour un outil métier. Le prix dépend des fonctionnalités : après l'atelier de cadrage, nous vous remettons un devis gratuit, à prix fixe.
 
 **Combien de temps faut-il ?**
 Cela dépend des fonctionnalités. Nous fixons le planning ensemble après le cadrage, et il figure dans le devis.
@@ -663,7 +675,7 @@ Un échange de 30 minutes, gratuit et confidentiel, pour comprendre votre besoin
 
 **Sous-titre :** Nous connectons vos outils et automatisons les tâches répétitives pour réduire la saisie manuelle, les oublis et les erreurs.
 
-**Bouton :** [Parler de mes tâches répétitives]
+**Boutons :** [Parler de mes tâches répétitives] [Voir les tarifs] *(lien vers la section Tarifs, ajout du 30 septembre 2026)*
 
 > Ancien H1 : « Moins de saisie, moins d'erreurs, plus de temps pour votre métier ». Le bénéfice « ne plus recopier » parle plus que le nom des outils : n8n, Make et Zapier restent une preuve secondaire.
 
@@ -752,7 +764,7 @@ Cela dépend du service d'IA choisi. Avant de commencer, nous vous disons quel s
 > Pas de promesse générale sur la confidentialité d'un fournisseur d'IA tant que les fournisseurs et les contrats ne sont pas choisis (section 8).
 
 **Combien ça coûte ?**
-Cela dépend de la tâche à automatiser. Avant de commencer, nous estimons avec vous le temps gagné, puis nous vous remettons un devis gratuit, à prix fixe. Vous décidez en connaissance de cause.
+À partir de 6 000 DH TTC (5 000 DH HT) pour automatiser une tâche. Le prix dépend de la tâche et des outils à relier : avant de commencer, nous estimons avec vous le temps gagné, puis nous vous remettons un devis gratuit, à prix fixe. Vous décidez en connaissance de cause.
 
 #### Appel à l'action final
 
@@ -817,6 +829,7 @@ Chaque mois, un résumé clair : disponibilité du site, sauvegardes réalisées
 
 | | **Essentiel** | **Sérénité** *(recommandé)* | **Pro** |
 |---|---|---|---|
+| **Prix** *(par mois, à partir de)* | 600 DH TTC (500 DH HT) | 1 200 DH TTC (1 000 DH HT) | 3 000 DH TTC (2 500 DH HT) |
 | **Pour qui** | Sites vitrines | Boutiques en ligne | Applications, sites critiques |
 | Hébergement + HTTPS | ✓ | ✓ | ✓ |
 | Sauvegardes | Hebdomadaires | Quotidiennes | Quotidiennes + copie externe |
@@ -825,7 +838,9 @@ Chaque mois, un résumé clair : disponibilité du site, sauvegardes réalisées
 | Petites modifications | — | ✓ | ✓ |
 | Rapport mensuel | — | ✓ | ✓ |
 
-Le prix de chaque forfait dépend de votre site : il figure dans votre devis gratuit, avec le volume de modifications inclus.
+Prix de départ par mois, en dirhams, toutes taxes comprises (TVA de 20 %). Le prix exact dépend de votre site : il figure dans votre devis gratuit, avec le volume de modifications inclus. *(30 septembre 2026, à valider. Ancienne phrase : « Le prix de chaque forfait dépend de votre site : il figure dans votre devis gratuit, avec le volume de modifications inclus. »)*
+
+> Non affichés, à décider (étude de prix du 29 septembre 2026) : les heures de modifications incluses et le délai d'intervention de chaque forfait, que des concurrents affichent ; le prix d'une intervention hors forfait (recommandé : 400 DH HT de l'heure) ; le nom de domaine, l'hébergement et les e-mails au prix coûtant.
 
 > Valeurs retirées du site tant qu'elles ne sont pas confirmées : durée de conservation des sauvegardes ([30] jours), pays des serveurs, volume de modifications ([1 h/mois], [3 h/mois]), délais d'intervention ([48 h], [24 h], [4 h] ouvrées) et durée d'engagement ([Sans engagement / Engagement de 12 mois]).
 
@@ -840,6 +855,9 @@ Nous reprenons les sites et applications développés par d'autres. Nous commen�
 **Bouton :** [Faire auditer mon site]
 
 #### FAQ
+
+**Combien coûte un forfait ?** *(ajout du 30 septembre 2026, à valider ; première question, ouverte)*
+À partir de 600 DH TTC (500 DH HT) par mois pour le forfait Essentiel. Le prix exact dépend de votre site : il figure dans votre devis gratuit.
 
 **Pouvez-vous héberger un site que vous n'avez pas créé ?**
 Oui. Nous faisons d'abord un audit pour vérifier son état, puis nous le migrons sur nos serveurs sans interruption de service.
@@ -1072,8 +1090,8 @@ Reprend l'appel à l'action final de la page Services (6.1).
 
 ### 6.9 Page « Tarifs » (supprimée)
 
-> Page supprimée le 25 septembre 2026 : aucun prix n'est affiché sur le site. Chaque prix est donné dans un devis.
-> Les informations utiles restent ailleurs : devis gratuit à prix fixe (Processus, 6.8), forfaits de maintenance sans prix (6.5), modalités de paiement et droit de rétractation (CGV).
+> Page supprimée le 25 septembre 2026. Elle n'est pas recréée : depuis le 30 septembre 2026, les prix de départ sont affichés sur chaque page de service (section 6.22).
+> Les autres informations restent ailleurs : devis gratuit à prix fixe (Processus, 6.8), forfaits de maintenance (6.5), modalités de paiement et droit de rétractation (CGV).
 
 ---
 
@@ -1247,7 +1265,7 @@ Commencez par un audit gratuit : vitesse, sécurité, référencement technique 
 
 **Sous-titre :** Pour vos clients ou pour vos équipes : une seule équipe conçoit les écrans, développe l'application, la teste sur de vrais téléphones et assure son suivi.
 
-**Bouton :** [Parler de mon application]
+**Boutons :** [Parler de mon application] [Voir les tarifs] *(lien vers la section Tarifs, ajout du 30 septembre 2026)*
 
 #### Section : le problème
 
@@ -1306,7 +1324,7 @@ Apple et Google changent leurs règles chaque année. Avec un forfait de mainten
 Pas toujours. Si vos clients vous consultent de temps en temps, un site rapide et adapté au mobile suffit souvent, et il coûte moins cher. Une application devient utile quand vos clients l'utilisent souvent, ou quand ils ont besoin des notifications, de l'appareil photo, de la localisation ou d'un mode sans connexion. Nous vous le disons honnêtement dès le premier échange.
 
 **Combien coûte une application mobile ?**
-Cela dépend des écrans et des fonctionnalités. Après le cadrage, nous vous remettons un devis gratuit, à prix fixe.
+À partir de 48 000 DH TTC (40 000 DH HT) pour une application simple, sur iPhone et Android. Le prix dépend des écrans et des fonctionnalités : après le cadrage, nous vous remettons un devis gratuit, à prix fixe.
 
 **Combien de temps faut-il ?**
 Nous fixons le planning ensemble après le cadrage. Il faut aussi prévoir quelques jours pour la validation de l'application par Apple et Google.
@@ -1342,7 +1360,7 @@ Un échange de 30 minutes, gratuit et confidentiel, pour savoir si une applicati
 
 **Sous-titre :** Nous vous aidons à cadrer l'essentiel, à construire la plateforme et à gérer les comptes et les abonnements. Puis nous faisons évoluer le logiciel avec les retours de vos clients.
 
-**Bouton :** [Parler de mon idée de SaaS]
+**Boutons :** [Parler de mon idée de SaaS] [Voir les tarifs] *(lien vers la section Tarifs, ajout du 30 septembre 2026)*
 
 > Ancien H1 : « Votre logiciel en ligne, vendu par abonnement ». Le document de recommandations demande de mettre l'accent sur le lancement et sur les retours des premiers clients, plus que sur la liste technique.
 
@@ -1406,7 +1424,7 @@ Nous préparons chaque mise en ligne pour éviter les coupures de service. En ca
 #### FAQ
 
 **Combien coûte le développement d'un SaaS ?**
-Cela dépend des fonctionnalités. Après l'atelier de cadrage, nous vous remettons un devis gratuit, à prix fixe, pour la première version.
+À partir de 96 000 DH TTC (80 000 DH HT) pour la première version. Le prix dépend des fonctionnalités : après l'atelier de cadrage, nous vous remettons un devis gratuit, à prix fixe.
 
 **Combien de temps faut-il ?**
 Cela dépend des fonctions de la première version. Nous fixons le planning ensemble après le cadrage, et il figure dans le devis.
@@ -1418,7 +1436,7 @@ Vous. Le code, les données et les comptes (hébergement, paiement, nom de domai
 Oui. Nous pouvons signer un accord de confidentialité avant d'entrer dans les détails de votre projet.
 
 **Pouvez-vous héberger et maintenir le logiciel après le lancement ?**
-Oui. Nous proposons l'hébergement, la surveillance et les évolutions dans un forfait mensuel adapté à votre nombre de clients.
+Oui. Nous proposons l'hébergement, la surveillance et les évolutions dans un forfait mensuel adapté à votre nombre de clients, à partir de 3 600 DH TTC (3 000 DH HT) par mois.
 
 **Mes clients sont à l'étranger. Est-ce un problème ?**
 Non, mais les règles changent selon les pays : protection des données, facturation, paiement. Nous en tenons compte dès le cadrage.
@@ -1452,7 +1470,7 @@ Un échange de 30 minutes, gratuit et confidentiel, pour parler de votre idée, 
 
 > Ancien H1 : « L'intelligence artificielle, là où elle vous fait vraiment gagner du temps ». Pas de promesse générale sur la confidentialité d'un fournisseur d'IA tant que les fournisseurs et les contrats ne sont pas choisis (section 8).
 
-**Bouton :** [Parler de mon projet IA]
+**Boutons :** [Parler de mon projet IA] [Voir les tarifs] *(lien vers la section Tarifs, ajout du 30 septembre 2026)*
 
 #### Section : le problème
 
@@ -1533,7 +1551,7 @@ Les services d'IA actuels comprennent le français, l'arabe et l'anglais. Pour l
 Cela dépend du service d'IA choisi. Nous limitons les données envoyées au strict nécessaire. Avant de commencer, nous vous disons quel service traite vos données, dans quel pays, et s'il peut les utiliser pour entraîner ses modèles. Vous décidez en connaissance de cause.
 
 **Combien ça coûte ?**
-Cela dépend de l'assistant et de vos données. Nous vous remettons un devis gratuit, à prix fixe. Le service d'IA est facturé en plus, selon l'utilisation : nous estimons ce coût avec vous avant de commencer.
+À partir de 9 000 DH TTC (7 500 DH HT) pour un assistant sur votre site. Le prix dépend de l'assistant et de vos données : nous vous remettons un devis gratuit, à prix fixe. Le service d'IA est facturé en plus, selon l'utilisation : nous estimons ce coût avec vous avant de commencer.
 
 **Dois-je changer mes outils ?**
 Non. Nous intégrons l'IA dans les outils que vous utilisez déjà : site, messagerie, CRM, dossiers partagés.
@@ -1565,7 +1583,7 @@ Décrivez-nous les tâches qui vous prennent du temps. Nous vous disons gratuite
 
 > Ancien H1 : « Vos chiffres clés, sur un seul écran ». La fiabilité des chiffres est le principal argument de la page, avant leur présentation.
 
-**Bouton :** [Parler de mes chiffres]
+**Boutons :** [Parler de mes chiffres] [Voir les tarifs] *(lien vers la section Tarifs, ajout du 30 septembre 2026)*
 
 #### Section : le problème
 
@@ -1621,7 +1639,7 @@ Pour la mesure d'audience : Matomo, Plausible ou Google Analytics, selon vos bes
 Seulement les personnes que vous choisissez. Chaque accès est personnel, et vous décidez qui voit quoi.
 
 **Combien ça coûte ?**
-Cela dépend du nombre de sources et d'indicateurs. Chaque projet fait l'objet d'un devis gratuit, à prix fixe.
+À partir de 3 000 DH TTC (2 500 DH HT) pour la mesure d'audience de votre site, et de 12 000 DH TTC (10 000 DH HT) pour un tableau de bord. Le prix dépend du nombre de sources et d'indicateurs : chaque projet fait l'objet d'un devis gratuit, à prix fixe.
 
 #### Appel à l'action final
 
@@ -1648,7 +1666,7 @@ Listez-nous les chiffres que vous suivez aujourd'hui et les outils qui les conti
 
 **Sous-titre :** Audit de sécurité, tests avant une mise en ligne, tests automatiques et tests de charge : nous vérifions votre site ou votre application, même si nous ne l'avons pas développé.
 
-**Bouton :** [Faire vérifier mon projet]
+**Boutons :** [Faire vérifier mon projet] [Voir les tarifs] *(lien vers la section Tarifs, ajout du 30 septembre 2026)*
 
 > Ancien H1 : « Vos sites et vos applications, vérifiés avant vos clients ». Le texte dit « réduire les risques », jamais « sécuriser » : aucune formule ne doit suggérer une sécurité garantie.
 
@@ -1714,7 +1732,7 @@ Oui, c'est même le cas le plus fréquent. Nous avons besoin de votre accord éc
 Non. Nous planifions les tests avec vous. Les tests de charge se font hors des heures d'affluence, ou sur une copie de votre site.
 
 **Combien ça coûte ?**
-Cela dépend de la taille du site ou de l'application et des tests choisis. Après le cadrage, nous vous remettons un devis gratuit, à prix fixe.
+À partir de 12 000 DH TTC (10 000 DH HT) pour l'audit de sécurité d'un site. Le prix dépend de la taille du site ou de l'application et des tests choisis : après le cadrage, nous vous remettons un devis gratuit, à prix fixe.
 
 **Que se passe-t-il après l'audit ?**
 Vous êtes libre : vous corrigez avec votre prestataire, ou nous nous en chargeons. Avec un forfait de maintenance, nous surveillons ensuite votre site dans la durée.
@@ -1739,7 +1757,7 @@ Les visuels des pages de services servent aussi de vignettes aux cartes des serv
 
 **Règles :**
 - Les clients, les noms, les chiffres et les adresses sont inventés. Aucun visuel ne présente un client fictif comme une réalisation de l'agence. La légende le dit sous chaque visuel.
-- Aucun prix ni montant en dirhams, même dans les écrans d'un client.
+- Aucun prix ni montant en dirhams, même dans les écrans d'un client (règle inchangée le 30 septembre 2026 : les prix de départ du site ne sont pas repris dans les visuels).
 - Aucune photo de stock : les photos des maquettes sont remplacées par des dessins.
 - Aucun nom d'entreprise réelle, aucun membre de l'équipe inventé.
 - Aucun engagement qui n'est pas encore confirmé (délai du rapport d'audit, durée de l'appel).
@@ -1773,6 +1791,7 @@ Les visuels des pages de services servent aussi de vignettes aux cartes des serv
 - En-tête des pages de services : « Service 01 · Sites web ». Le numéro suit l'ordre des services de la section 5. Les cartes des services portent le même numéro (01 à 09).
 - Accueil, en-tête : pas de surtitre. Le surtitre « TPE · PME · Particuliers » est retiré le 26 septembre 2026 (section 4, publics non nommés).
 - Libellés : « Idéal pour » (cartes d'offre, sans deux-points), « Vous recevez » (étapes de la page Processus, sans deux-points), « (facultatif) » après le libellé des champs facultatifs (les champs obligatoires n'ont plus de mention), « recommandé » (forfait Sérénité), « Erreur 404 » (page introuvable).
+- Prix (section 6.22) : « À partir de » (petites capitales, au-dessus du montant), « Sur devis », « Options » et « Après la mise en ligne » (petites capitales, au-dessus d'un groupe d'offres), niveaux « Simple », « Intermédiaire », « Avancé » (avec une jauge de un à trois traits bleus), « Prix » (première ligne du tableau des forfaits).
 - Page Audit gratuit, « Ce que nous vérifions » : chaque point a un titre (« Vitesse ») et une phrase qui commence par une majuscule (« Combien de temps vos pages mettent à s'afficher, et ce qui les ralentit. »).
 - Page Contact : « Et ensuite ? » reste un titre, présenté comme un surtitre au-dessus des trois étapes.
 
@@ -1789,6 +1808,7 @@ Les visuels des pages de services servent aussi de vignettes aux cartes des serv
 | Toutes les pages avec une FAQ | Questions fréquentes | FAQ |
 | Pages de services | Le problème | Le constat |
 | Pages de services | Les étapes (« Comment nous travaillons », « Du cadrage aux premiers clients ») | Processus |
+| Pages de services, sauf Hébergement et maintenance | Un prix de départ selon la complexité de votre projet (section 6.22) | Tarifs |
 | Sites web | Trois façons de lancer ou de relancer votre présence en ligne | Nos formules |
 | Sites web | Inclus dans tous nos sites | Sans supplément |
 | Sites web | Les options | À la carte |
@@ -1842,6 +1862,159 @@ Les visuels des pages de services servent aussi de vignettes aux cartes des serv
   - Le site utilise aussi des cookies de Google Analytics. Ils nous permettent de mesurer la fréquentation du site : le nombre de visites, les pages consultées et la provenance des visiteurs.
   - Google reçoit des informations sur votre visite : les pages vues, l'annonce sur laquelle vous avez cliqué, votre adresse IP et des informations sur votre navigateur.
 
+### 6.22 Prix affichés
+
+> Proposition à valider. Décision du 30 septembre 2026 (section 3) : des prix de départ publics, repris tels quels de l'étude « Prix du marché marocain des services numériques » du 29 septembre 2026 (document interne : 672 pages lues sur 284 sites, prix recommandés entre le plancher et la médiane du marché). La TVA est de 20 % : prix TTC = prix HT × 1,2.
+> Source unique des montants : `src/data/prix.json`. Les pages, les FAQ, les données structurées et `llms.txt` lisent ce fichier. Pour changer un prix, changez-le dans ce fichier, puis dans cette section.
+
+**Règles**
+- Un seul montant par offre, précédé de « À partir de ». Pas de fourchette, pas de calculateur, pas de tarif à la journée ni à l'heure pour un projet. Seuls les ateliers de formation ont un prix par jour.
+- Le prix TTC d'abord, en dirhams, puis le prix HT : « À partir de 4 800 DH TTC », et dessous « 4 000 DH HT ». Dans une phrase : « à partir de 4 800 DH TTC (4 000 DH HT) ».
+- Chaque prix correspond à une offre décrite (ce qu'elle contient). Un « à partir de » sans offre réelle n'est pas publié.
+- Un niveau de complexité par offre de projet : Simple, Intermédiaire ou Avancé. C'est l'estimation proposée au visiteur : il situe son projet, puis le devis fixe le prix. Sous les offres, une liste « Ce qui fait monter le prix », sans chiffre ni pourcentage.
+- Une offre sans prix publié affiche « Sur devis ».
+- Les visuels des en-têtes (clients fictifs) n'affichent aucun prix (section 6.19).
+- Les prix ne sont pas écrits à la main dans une page : `pnpm check:content` refuse tout montant absent de `src/data/prix.json`, ou sans « TTC » ou « HT ».
+
+**Où les prix apparaissent**
+- Pages de services : section « Tarifs », avant la FAQ (huit pages) ; tableau des forfaits (Hébergement et maintenance) ; cartes « Nos formules » (Sites web).
+- Cartes des services (accueil et page Services) : l'offre de référence du pôle, « Site vitrine : à partir de 4 800 DH TTC ».
+- FAQ : les réponses « Combien coûte… » (sections 6.1 à 6.5 et 6.14 à 6.18), reprises dans les données structurées FAQPage.
+- Données structurées : chaque page de service liste ses offres (schema.org `Offer`, prix minimal TTC, devise MAD).
+- `llms.txt` : la liste des prix de départ, avant la liste des pages.
+- CGV, « 3. Prix et paiement » : « Les prix affichés sur le site sont des prix de départ, en dirhams, toutes taxes comprises. Le prix de votre projet est celui de votre devis. »
+
+**Section « Tarifs » (pages de services)**
+
+**Surtitre :** Tarifs
+**Titre :** Un prix de départ selon la complexité de votre projet. Page Logiciels SaaS : Un prix de départ pour votre première version.
+**Introduction :** Chaque offre a un prix de départ et un niveau de complexité : simple, intermédiaire ou avancé. Vous situez votre projet, puis nous fixons son prix exact dans un devis. Page Logiciels SaaS (pas de niveau) : Chaque offre a un prix de départ. Nous fixons le prix exact de votre projet dans un devis.
+**Titre de la liste :** Ce qui fait monter le prix
+**Sous la liste :** Prix de départ en dirhams, toutes taxes comprises (TVA de 20 %). Le prix de votre projet dépend de son contenu : il figure dans un devis gratuit, à prix fixe.
+**Validité (phrase cachée tant que la date n'est pas confirmée) :** Prix valables jusqu'au [date de fin de validité des prix].
+
+
+**Sites web**
+
+| Offre | Groupe | Niveau | À partir de (TTC) | HT | Ce que l'offre contient |
+|---|---|---|---|---|---|
+| Site vitrine *(offre de référence)* | Projet | Simple | 4 800 DH TTC | 4 000 DH HT | Quelques pages pour présenter votre activité, à partir d'une base éprouvée que nous adaptons à votre image. |
+| Refonte de site | Projet | Simple | 7 200 DH TTC | 6 000 DH HT | Votre site vitrine actuel, repris avec vos contenus, les redirections des anciennes pages et un nouveau design. |
+| Boutique en ligne | Projet | Intermédiaire | 12 000 DH TTC | 10 000 DH HT | Un catalogue, un panier, le paiement en ligne ou à la livraison, et la gestion des commandes. |
+| Site vitrine sur mesure | Projet | Intermédiaire | 15 000 DH TTC | 12 500 DH HT | Un design créé pour vous, avec des pages et des fonctions propres à votre activité. |
+| Boutique en ligne avancée | Projet | Avancé | 36 000 DH TTC | 30 000 DH HT | Un grand catalogue, plusieurs modes de livraison et de paiement, et une boutique reliée à vos outils de gestion. |
+| Une langue en plus | Option | — | 1 200 DH TTC par langue | 1 000 DH HT | Français, arabe ou anglais. Vous nous fournissez les textes traduits. |
+| Prise de rendez-vous en ligne | Option | — | 2 400 DH TTC | 2 000 DH HT | Vos clients choisissent un créneau sur votre site. |
+
+Ce qui fait monter le prix : Le nombre de pages et de langues ; Un design créé sur mesure ; La reprise des contenus d'un ancien site ; Le paiement en ligne et la taille du catalogue ; La connexion à vos autres outils.
+
+**Applications sur mesure**
+
+| Offre | Groupe | Niveau | À partir de (TTC) | HT | Ce que l'offre contient |
+|---|---|---|---|---|---|
+| Première version de votre projet (MVP) | Projet | Simple | 24 000 DH TTC | 20 000 DH HT | Les fonctions essentielles, pour tester votre idée avec de vrais utilisateurs. |
+| Espace client | Projet | Intermédiaire | 30 000 DH TTC | 25 000 DH HT | Des comptes sécurisés où vos clients consultent leurs demandes, leurs documents et leur suivi. |
+| Outil métier *(offre de référence)* | Projet | Avancé | 36 000 DH TTC | 30 000 DH HT | Plusieurs fonctions réunies dans un seul outil : rendez-vous, devis et factures, stock, planning. |
+
+Ce qui fait monter le prix : Le nombre d'écrans et de fonctions ; Le nombre de profils d'utilisateurs ; Le paiement en ligne ; Une version en français et en arabe ; La connexion à vos autres logiciels.
+
+**Applications mobiles**
+
+| Offre | Groupe | Niveau | À partir de (TTC) | HT | Ce que l'offre contient |
+|---|---|---|---|---|---|
+| Application simple *(offre de référence)* | Projet | Simple | 48 000 DH TTC | 40 000 DH HT | Quelques écrans, des comptes utilisateurs et des notifications, sur iPhone et Android. |
+| Application avancée | Projet | Avancé | 120 000 DH TTC | 100 000 DH HT | Paiement en ligne, fonctionnement sans connexion, localisation ou connexion à vos logiciels de gestion. |
+
+Ce qui fait monter le prix : Le nombre d'écrans et de fonctions ; Le fonctionnement sans connexion ; Le paiement en ligne ; Une version en français et en arabe ; La connexion à vos logiciels de gestion.
+
+Précision sous la liste : Après la publication, un forfait de maintenance garde votre application à jour. → [Voir les forfaits]
+
+**Logiciels SaaS**
+
+| Offre | Groupe | Niveau | À partir de (TTC) | HT | Ce que l'offre contient |
+|---|---|---|---|---|---|
+| Première version de votre SaaS *(offre de référence)* | Projet | — | 96 000 DH TTC | 80 000 DH HT | Comptes clients séparés, abonnements, paiement en ligne et espace d'administration. |
+| Hébergement, surveillance et évolutions | Après la mise en ligne | — | 3 600 DH TTC par mois | 3 000 DH HT | Après le lancement, dans un forfait adapté à votre nombre de clients. |
+
+Ce qui fait monter le prix : Le nombre de fonctions de la première version ; Les formules d'abonnement et le paiement en ligne ; Les profils d'utilisateurs et leurs droits ; La connexion avec d'autres logiciels ; Une version en français et en arabe.
+
+**Intelligence artificielle**
+
+| Offre | Groupe | Niveau | À partir de (TTC) | HT | Ce que l'offre contient |
+|---|---|---|---|---|---|
+| Assistant sur WhatsApp | Projet | Simple | 6 000 DH TTC | 5 000 DH HT | Il répond aux questions fréquentes de vos clients sur WhatsApp, à partir de vos informations. |
+| Assistant sur votre site *(offre de référence)* | Projet | Simple | 9 000 DH TTC | 7 500 DH HT | Il répond aux questions fréquentes de vos visiteurs et transmet les autres demandes à votre équipe. |
+| Traitement de documents | Projet | Intermédiaire | 18 000 DH TTC | 15 000 DH HT | L'IA lit vos factures ou vos formulaires, extrait les informations et les range dans vos outils. |
+| Assistant pour vos équipes | Projet | Avancé | 30 000 DH TTC | 25 000 DH HT | Il recherche dans vos documents internes et indique la source de chaque réponse. |
+| Atelier de formation à l'IA | Option | — | 7 200 DH TTC par jour | 6 000 DH HT | Un atelier pratique pour vos équipes, avec vos propres cas de travail. |
+| Suivi de votre assistant | Après la mise en ligne | — | 1 200 DH TTC par mois | 1 000 DH HT | Nous surveillons la qualité des réponses et nous mettons l'assistant à jour quand vos informations changent. |
+
+Ce qui fait monter le prix : Le nombre et la variété de vos documents ; Les langues à comprendre ; Les outils à relier : site, WhatsApp, CRM, dossiers partagés ; La part des réponses à faire vérifier par une personne.
+
+Précision sous la liste : Le service d'IA et les messages WhatsApp sont facturés en plus, selon l'utilisation : nous estimons ce coût avec vous avant de commencer.
+
+**Automatisation et intégrations**
+
+| Offre | Groupe | Niveau | À partir de (TTC) | HT | Ce que l'offre contient |
+|---|---|---|---|---|---|
+| WhatsApp relié à vos outils | Projet | Simple | 3 000 DH TTC | 2 500 DH HT | Votre compte WhatsApp Business sur la plateforme officielle de Meta, avec vos premiers messages automatiques. |
+| Automatisation d'une tâche *(offre de référence)* | Projet | Simple | 6 000 DH TTC | 5 000 DH HT | Une tâche répétitive entre deux outils, testée avec des cas réels. |
+| Connexion de deux logiciels | Projet | Intermédiaire | 12 000 DH TTC | 10 000 DH HT | Vos données passent d'un logiciel à l'autre sans double saisie, avec un développement sur mesure. |
+| Projet d'automatisation | Projet | Avancé | 18 000 DH TTC | 15 000 DH HT | Plusieurs tâches et plusieurs outils, après un diagnostic et un classement par gain de temps. |
+| Suivi de vos automatisations | Après la mise en ligne | — | 600 DH TTC par mois | 500 DH HT | Nous surveillons leur fonctionnement et nous les adaptons quand vos outils changent. |
+
+Ce qui fait monter le prix : Le nombre d'outils à relier ; Le nombre d'étapes et de cas particuliers ; Un outil sans connexion prévue, qui demande un développement sur mesure ; Le volume de données à traiter.
+
+Précision sous la liste : Meta facture certains messages WhatsApp : nous estimons ce coût avec vous avant de commencer.
+
+**Données et tableaux de bord**
+
+| Offre | Groupe | Niveau | À partir de (TTC) | HT | Ce que l'offre contient |
+|---|---|---|---|---|---|
+| Mesure d'audience de votre site | Projet | Simple | 3 000 DH TTC | 2 500 DH HT | Un outil de mesure installé et réglé : visiteurs, provenance, pages qui mènent à un contact. |
+| Rapports automatiques et alertes | Projet | Intermédiaire | 9 000 DH TTC | 7 500 DH HT | Un résumé par e-mail chaque semaine ou chaque mois, et une alerte quand un chiffre sort de l'ordinaire. |
+| Tableau de bord de votre activité *(offre de référence)* | Projet | Avancé | 12 000 DH TTC | 10 000 DH HT | Vos chiffres réunis depuis plusieurs outils sur un seul écran, vérifiés un par un. |
+
+Ce qui fait monter le prix : Le nombre de sources à relier ; Le nombre d'indicateurs ; L'état de vos données : doublons, formats différents ; Un tableau de bord sur mesure dans votre application.
+
+**Tests et sécurité**
+
+| Offre | Groupe | Niveau | À partir de (TTC) | HT | Ce que l'offre contient |
+|---|---|---|---|---|---|
+| Tests avant une mise en ligne | Projet | Simple | Sur devis | — | Nous vérifions chaque parcours important, sur ordinateur, tablette et mobile. |
+| Tests de charge | Projet | Simple | 7 200 DH TTC | 6 000 DH HT | Nous simulons un grand nombre de visiteurs et nous vous donnons les limites de votre site. |
+| Tests automatiques | Projet | Intermédiaire | 12 000 DH TTC | 10 000 DH HT | Nous ajoutons à votre projet des tests qui vérifient chaque nouvelle version. |
+| Audit de sécurité d'un site *(offre de référence)* | Projet | Intermédiaire | 12 000 DH TTC | 10 000 DH HT | Nous recherchons les failles courantes et nous vous remettons un rapport classé par gravité. |
+| Audit de sécurité d'une application | Projet | Avancé | 36 000 DH TTC | 30 000 DH HT | Le même audit, étendu au code, aux comptes utilisateurs et au serveur de votre application. |
+
+Ce qui fait monter le prix : La taille du site ou de l'application ; Le nombre de parcours à vérifier ; Le nombre de profils d'utilisateurs à tester ; L'examen du code et du serveur, en plus des tests de l'extérieur.
+
+Précision sous la liste : L'audit technique de votre site (vitesse, référencement, affichage mobile) est gratuit. → [Faire auditer mon site]
+
+**Hébergement et maintenance**
+
+| Offre | Groupe | Niveau | À partir de (TTC) | HT | Ce que l'offre contient |
+|---|---|---|---|---|---|
+| Forfait Essentiel *(offre de référence)* | Forfait | — | 600 DH TTC par mois | 500 DH HT | Hébergement, sauvegardes hebdomadaires, surveillance et mises à jour de sécurité d'un site vitrine. |
+| Forfait Sérénité | Forfait | — | 1 200 DH TTC par mois | 1 000 DH HT | Le forfait Essentiel, avec des sauvegardes quotidiennes, les petites modifications et un rapport mensuel. |
+| Forfait Pro | Forfait | — | 3 000 DH TTC par mois | 2 500 DH HT | Pour les applications et les sites critiques, avec une copie externe des sauvegardes. |
+
+**Écarts avec l'étude de prix**
+- « Tests avant une mise en ligne » (recette) reste sur devis. L'étude recommande 1 500 DH HT par jour : ce serait publier un tarif à la journée.
+- Non publiés : l'intervention hors forfait (400 DH HT de l'heure), les pourcentages de hausse (hors connexion, paiement en ligne, français et arabe), les prix coûtants du nom de domaine, de l'hébergement et des e-mails (fourchettes du marché).
+- L'étude parle de refacturer au coût réel l'usage de l'IA et les messages WhatsApp. Le site dit seulement qu'ils sont facturés en plus, selon l'utilisation : le « coût réel » est un engagement à confirmer.
+- Le bouton WhatsApp devient inclus sans supplément dans tous les sites (section 6.2).
+
+**Prix fondés sur trois sources ou moins dans l'étude (confiance faible), à revoir en priorité**
+Audit de sécurité d'un site et d'une application, forfait Pro, traitement de documents, WhatsApp relié à vos outils, mesure d'audience, rapports automatiques et alertes. Les tests automatiques et les tests de charge n'ont aucun prix public au Maroc : leur prix est calculé sur le temps de travail. Pour retirer un prix du site, mettez `"ht": null` dans `src/data/prix.json` : l'offre affiche « Sur devis ».
+
+**Avant la mise en ligne des prix**
+`pnpm check:content` affiche un avertissement tant que ces conditions manquent, et une erreur en mode `--strict` :
+- registre du commerce, capital et identifiant fiscal dans les mentions légales (`src/data/site.ts`, `entreprise`) ;
+- date de fin de validité des prix (`src/data/prix.json`, `validite`).
+
+Les points légaux sont en [section 7](#7-points-légaux), « Prix affichés ».
+
 ---
 
 ## 7. Points légaux
@@ -1853,6 +2026,14 @@ Les visuels des pages de services servent aussi de vignettes aux cartes des serv
 - **Droit de rétractation de 7 jours** pour les contrats conclus à distance (article 36). Le délai passe à 30 jours si le fournisseur ne confirme pas par écrit les informations obligatoires. Le remboursement se fait sous 30 jours. À vérifier avec le juriste : le point de départ du délai pour une prestation de services, le cas d'un travail commencé avec l'accord du client avant la fin du délai, et les règles du démarchage.
 - **Informations obligatoires** du fournisseur dans l'offre (article 29) : identité, adresse, téléphone, e-mail, numéro d'immatriculation.
 - **CGV spécifiques** à la vente aux particuliers.
+
+**Prix affichés (loi 31-08, décret 2-12-503)**
+> Points relevés par l'étude de prix du 29 septembre 2026. À faire valider par le juriste avant de mettre les prix en ligne.
+- **Prix TTC, en dirhams**, frais obligatoires compris, pour les clients particuliers (loi 31-08, articles 3 et 5 ; décret 2-12-503, articles 1 et 15). Le site affiche le prix TTC d'abord, puis le prix HT. L'agence facture la TVA, au taux de 20 % (confirmé le 30 septembre 2026).
+- **« À partir de »** : possible s'il correspond à une offre réelle et décrite, avec sa durée de validité (articles 21 et 29). Chaque prix du site a une description. La date de fin de validité reste à fixer : [date de fin de validité des prix].
+- **Offre en ligne** : registre du commerce, capital, identifiant fiscal et conditions générales accessibles depuis l'accueil (articles 29 et 30). Les CGV sont dans le pied de page de chaque page. Les identifiants restent à fournir. L'étude signale une amende de 1 200 à 10 000 DH (article 177).
+- **Devis écrit au-delà de 3 000 DH**, avec une date limite d'exécution (article 12 ; décret, article 28).
+- **Forfaits mensuels** : rappel de l'échéance au client un mois avant (article 7).
 
 **Données personnelles (loi 09-08, CNDP)**
 - **Déclaration préalable à la CNDP** des traitements du site (formulaires de contact et d'audit), avant la mise en ligne. Indiquer le numéro de récépissé dans les mentions légales et dans la politique de confidentialité.
@@ -1878,7 +2059,8 @@ Depuis le 26 septembre 2026, les pages Mentions légales, CGV et Confidentialit�
 Les valeurs de `src/data/` (modalités de paiement, garantie, durée d'engagement) reviennent seules : la phrase s'affiche quand la valeur n'a plus de crochets (fonction `estConfirme`).
 
 **Mentions légales**
-- Éditeur : « Le site www.digital-solutions.ma est édité par Digital Solutions, [forme juridique] au capital de [montant] DH. » Attention : `pnpm check:content` bloque les montants en dirhams, la règle devra accepter le capital.
+- Depuis le 30 septembre 2026, la forme juridique, le capital, le registre du commerce, l'ICE, l'identifiant fiscal et la taxe professionnelle sont des valeurs de `src/data/site.ts` (`entreprise`) : chaque ligne revient seule quand sa valeur n'a plus de crochets. Ils sont nécessaires avant de mettre les prix en ligne (« Prix affichés », plus haut).
+- Éditeur : « Le site www.digital-solutions.ma est édité par Digital Solutions, [forme juridique] au capital de [montant] DH. » `pnpm check:content` accepte le montant du capital.
 - Siège social : l'adresse de l'agence (N° 7, rue Tantane, 30000 Fès, Maroc) est affichée depuis le 26 septembre 2026, avec l'intitulé « Adresse ». Si c'est aussi le siège social inscrit au registre du commerce, remplacez l'intitulé par « Siège social ».
 - Registre du commerce : [ville], numéro [numéro]
 - Identifiant commun de l'entreprise (ICE) : [numéro]
@@ -1890,7 +2072,7 @@ Les valeurs de `src/data/` (modalités de paiement, garantie, durée d'engagemen
 
 **Conditions générales de vente**
 - 2. Devis et commande : [Conditions d'acompte à définir]
-- 3. Prix et paiement : « Modalités de paiement : [à définir : acompte à la commande, solde à la livraison, etc.] » (valeur `offre.modalitesPaiement`, revient seule) ; [Prix HT ou TTC, délais de paiement et pénalités de retard : à définir]
+- 3. Prix et paiement : « Modalités de paiement : [à définir : acompte à la commande, solde à la livraison, etc.] » (valeur `offre.modalitesPaiement`, revient seule) ; [Délais de paiement et pénalités de retard : à définir]. Ajout du 30 septembre 2026, à faire valider : « Les prix affichés sur le site sont des prix de départ, en dirhams, toutes taxes comprises. Le prix de votre projet est celui de votre devis. »
 - 6. Tests et livraison : [Procédure de validation et délai : à définir] ; « Garantie : nous corrigeons les défauts liés à notre travail [pendant X mois après la livraison : garantie à définir]. » (valeur `offre.garantie`, revient seule)
 - 7. Propriété : [Modalités de la cession des droits : à faire valider]
 - 8. Hébergement et maintenance : durée d'engagement [Sans engagement / Engagement de 12 mois] (valeur `engagementMaintenance`, revient seule) ; [Conditions de résiliation : à définir]
@@ -1916,7 +2098,11 @@ Les valeurs de `src/data/` (modalités de paiement, garantie, durée d'engagemen
 - [x] Choisir le nom de l'agence et réserver le nom de domaine : Digital Solutions, `digital-solutions.ma`
 - [x] Créer le logo (fait par l'équipe), puis l'intégrer : en-tête, pied de page, favicon et image de partage (`pnpm image:partage`). Reçu et intégré le 26 septembre 2026 (sources dans `design/logo/`).
 - [ ] Relier le domaine au site et créer l'adresse e-mail de contact, `contact@digital-solutions.ma` (affichée sur le site depuis le 26 septembre 2026 ; voir la section « Nom de domaine » de [stack-technique.md](stack-technique.md))
-- [ ] Fixer la grille de prix interne, pour les devis. Elle n'est pas publiée sur le site.
+- [x] Fixer les prix de départ : étude de prix du 29 septembre 2026, prix recommandés repris tels quels et affichés sur le site (branche du 30 septembre 2026, section 6.22)
+- [ ] Avant de mettre les prix en ligne : fournir le registre du commerce, le capital et l'identifiant fiscal (`src/data/site.ts`, `entreprise`), fixer la date de fin de validité des prix (`src/data/prix.json`, `validite`) et faire valider l'affichage des prix par le juriste (section 7, « Prix affichés »)
+- [ ] Relire et valider les textes des prix : noms et descriptions des offres, niveaux de complexité, listes « Ce qui fait monter le prix » (section 6.22)
+- [ ] Revoir les prix fondés sur trois sources ou moins dans l'étude, et vérifier que chaque prix de départ est tenable, en particulier le site vitrine (deux jours de travail au tarif de référence de l'étude : il suppose une base réutilisable)
+- [ ] Décider des heures de modifications incluses et du délai d'intervention de chaque forfait, puis les afficher (section 6.5)
 - [ ] Confirmer les engagements listés en [section 4](#engagements-à-confirmer-avant-publication)
 - [ ] Choisir l'option design : designer partenaire ou modèles personnalisés
 - [ ] Trouver les partenaires : graphiste, rédacteur, traducteur (arabe, anglais)

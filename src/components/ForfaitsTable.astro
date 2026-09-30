@@ -1,6 +1,9 @@
 ---
-import { forfaitsMaintenance } from '~/data/forfaits';
+// Prix de départ par mois : brief, section 6.22 (src/data/prix.json).
+import Prix from '~/components/Prix.astro';
 import Texte from '~/components/Texte.astro';
+import { forfaitsMaintenance } from '~/data/forfaits';
+import { offre } from '~/lib/prix';
 
 const lignes: { label: string; valeur: (f: (typeof forfaitsMaintenance)[number]) => string }[] = [
   { label: 'Pour qui', valeur: (f) => f.pourQui },
@@ -47,6 +50,16 @@ const lignes: { label: string; valeur: (f: (typeof forfaitsMaintenance)[number])
       </tr>
     </thead>
     <tbody>
+      <tr class="border-t border-ligne">
+        <th scope="row" class="p-4 text-[0.9375rem] font-semibold sm:px-6">
+          Prix
+        </th>
+        {forfaitsMaintenance.map((f) => (
+          <td class:list={['p-4 align-top sm:px-6', f.recommande && 'bg-surface']}>
+            <Prix offre={offre(f.prix)} taille="petit" />
+          </td>
+        ))}
+      </tr>
       {lignes.map((ligne) => (
         <tr class="border-t border-ligne">
           <th scope="row" class="p-4 text-[0.9375rem] font-semibold sm:px-6">

@@ -1,6 +1,7 @@
 ---
 // Surtitres des sections : docs/brief-agence.md, section 6.20.
 // Textes : docs/brief-agence.md, section 6.4 (section WhatsApp et deux questions : ajouts à valider).
+// Prix de départ : section 6.22.
 import ButtonLink from '~/components/ButtonLink.astro';
 import CtaFinal from '~/components/CtaFinal.astro';
 import Encadre from '~/components/Encadre.astro';
@@ -11,10 +12,12 @@ import LienFleche from '~/components/LienFleche.astro';
 import ProblemList from '~/components/ProblemList.astro';
 import Section from '~/components/Section.astro';
 import Steps from '~/components/Steps.astro';
+import Tarifs from '~/components/Tarifs.astro';
 import { site } from '~/data/site';
 import { surtitreService } from '~/data/navigation';
 import BaseLayout from '~/layouts/BaseLayout.astro';
 import type { QuestionFaq } from '~/lib/faq';
+import { prixComplet } from '~/lib/prix';
 import { serviceJsonLd } from '~/lib/seo';
 
 const title = 'Automatisation et connexion de vos logiciels';
@@ -63,7 +66,7 @@ const faq: QuestionFaq[] = [
   {
     question: 'Combien ça coûte ?',
     reponse: [
-      'Cela dépend de la tâche à automatiser. Avant de commencer, nous estimons avec vous le temps gagné, puis nous vous remettons un devis gratuit, à prix fixe. Vous décidez en connaissance de cause.',
+      `À partir de ${prixComplet('automatisation-tache')} pour automatiser une tâche. Le prix dépend de la tâche et des outils à relier : avant de commencer, nous estimons avec vous le temps gagné, puis nous vous remettons un devis gratuit, à prix fixe. Vous décidez en connaissance de cause.`,
     ],
   },
 ];
@@ -89,6 +92,9 @@ const faq: QuestionFaq[] = [
     subtitle="Nous connectons vos outils et automatisons les tâches répétitives pour réduire la saisie manuelle, les oublis et les erreurs."
   >
     <ButtonLink href={ctaTaches.href}>{ctaTaches.label}</ButtonLink>
+    <ButtonLink href="#tarifs" variant="secondaire">
+      Voir les tarifs
+    </ButtonLink>
   </Hero>
 
   <ProblemList
@@ -216,6 +222,20 @@ const faq: QuestionFaq[] = [
       ]}
     />
   </Section>
+
+  <Tarifs
+    service="/services/automatisation-integrations"
+    facteurs={[
+      "Le nombre d'outils à relier",
+      "Le nombre d'étapes et de cas particuliers",
+      'Un outil sans connexion prévue, qui demande un développement sur mesure',
+      'Le volume de données à traiter',
+    ]}
+  >
+    <p>
+      Meta facture certains messages WhatsApp : nous estimons ce coût avec vous avant de commencer.
+    </p>
+  </Tarifs>
 
   <Faq questions={faq} />
 

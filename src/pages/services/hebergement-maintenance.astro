@@ -1,6 +1,6 @@
 ---
 // Surtitres des sections : docs/brief-agence.md, section 6.20.
-// Textes : docs/brief-agence.md, section 6.5.
+// Textes : docs/brief-agence.md, section 6.5. Prix de départ des forfaits : section 6.22.
 import ButtonLink from '~/components/ButtonLink.astro';
 import CtaFinal from '~/components/CtaFinal.astro';
 import Encadre from '~/components/Encadre.astro';
@@ -14,6 +14,7 @@ import { cta, site } from '~/data/site';
 import { surtitreService } from '~/data/navigation';
 import BaseLayout from '~/layouts/BaseLayout.astro';
 import type { QuestionFaq } from '~/lib/faq';
+import { prixComplet, tauxTva, validitePrix } from '~/lib/prix';
 import { serviceJsonLd } from '~/lib/seo';
 
 const title = 'Hébergement et maintenance de site web';
@@ -25,8 +26,14 @@ const ctaForfait = { label: 'Choisir mon forfait', href: '/contact' };
 // structurées FAQPage.
 const faq: QuestionFaq[] = [
   {
-    question: "Pouvez-vous héberger un site que vous n'avez pas créé ?",
+    question: 'Combien coûte un forfait ?',
     ouvert: true,
+    reponse: [
+      `À partir de ${prixComplet('forfait-essentiel')} pour le forfait Essentiel. Le prix exact dépend de votre site : il figure dans votre devis gratuit.`,
+    ],
+  },
+  {
+    question: "Pouvez-vous héberger un site que vous n'avez pas créé ?",
     reponse: [
       "Oui. Nous faisons d'abord un audit pour vérifier son état, puis nous le migrons sur nos serveurs sans interruption de service.",
     ],
@@ -117,8 +124,8 @@ const faq: QuestionFaq[] = [
   <Section surtitre="Forfaits" title="Choisissez votre forfait" id="forfaits">
     <ForfaitsTable />
     <p class="apparition mt-6 text-[0.9375rem] leading-[1.65] text-doux">
-      Le prix de chaque forfait dépend de votre site : il figure dans votre devis gratuit, avec le
-      volume de modifications inclus.
+      {`Prix de départ par mois, en dirhams, toutes taxes comprises (TVA de ${tauxTva} %). Le prix exact dépend de votre site : il figure dans votre devis gratuit, avec le volume de modifications inclus.`}
+      {validitePrix && ` Prix valables jusqu'au ${validitePrix}.`}
     </p>
     <div class="apparition mt-8">
       <ButtonLink href={ctaForfait.href}>{ctaForfait.label}</ButtonLink>

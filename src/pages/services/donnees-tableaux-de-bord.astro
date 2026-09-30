@@ -1,6 +1,6 @@
 ---
 // Surtitres des sections : docs/brief-agence.md, section 6.20.
-// Textes : docs/brief-agence.md, section 6.17 (proposition à valider).
+// Textes : docs/brief-agence.md, section 6.17 (proposition à valider). Prix : section 6.22.
 import ButtonLink from '~/components/ButtonLink.astro';
 import CtaFinal from '~/components/CtaFinal.astro';
 import Encadre from '~/components/Encadre.astro';
@@ -10,10 +10,12 @@ import Hero from '~/components/Hero.astro';
 import ProblemList from '~/components/ProblemList.astro';
 import Section from '~/components/Section.astro';
 import Steps from '~/components/Steps.astro';
+import Tarifs from '~/components/Tarifs.astro';
 import { site } from '~/data/site';
 import { surtitreService } from '~/data/navigation';
 import BaseLayout from '~/layouts/BaseLayout.astro';
 import type { QuestionFaq } from '~/lib/faq';
+import { prixComplet } from '~/lib/prix';
 import { serviceJsonLd } from '~/lib/seo';
 
 const title = "Tableaux de bord et mesure d'audience";
@@ -40,7 +42,7 @@ const faq: QuestionFaq[] = [
   {
     question: 'Combien ça coûte ?',
     reponse: [
-      "Cela dépend du nombre de sources et d'indicateurs. Chaque projet fait l'objet d'un devis gratuit, à prix fixe.",
+      `À partir de ${prixComplet('mesure-audience')} pour la mesure d'audience de votre site, et de ${prixComplet('tableau-de-bord')} pour un tableau de bord. Le prix dépend du nombre de sources et d'indicateurs : chaque projet fait l'objet d'un devis gratuit, à prix fixe.`,
     ],
   },
 ];
@@ -66,6 +68,9 @@ const faq: QuestionFaq[] = [
     subtitle="Visiteurs de votre site, ventes, stocks, rendez-vous : nous réunissons les données de vos outils dans des tableaux de bord clairs et des rapports automatiques, avec des chiffres vérifiés."
   >
     <ButtonLink href={ctaProjet.href}>{ctaProjet.label}</ButtonLink>
+    <ButtonLink href="#tarifs" variant="secondaire">
+      Voir les tarifs
+    </ButtonLink>
   </Hero>
 
   <ProblemList
@@ -157,6 +162,16 @@ const faq: QuestionFaq[] = [
       ]}
     />
   </Section>
+
+  <Tarifs
+    service="/services/donnees-tableaux-de-bord"
+    facteurs={[
+      'Le nombre de sources à relier',
+      "Le nombre d'indicateurs",
+      "L'état de vos données : doublons, formats différents",
+      'Un tableau de bord sur mesure dans votre application',
+    ]}
+  />
 
   <Faq questions={faq} />
 

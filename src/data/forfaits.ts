@@ -1,13 +1,14 @@
 /**
  * Forfaits d'hébergement et de maintenance (section 6.5 du brief).
  *
- * Règle du projet : aucun prix public. Chaque prix est donné dans un devis.
- * `pnpm check:content` bloque tout montant affiché sur le site.
+ * Prix de départ, par mois : src/data/prix.json (brief, section 6.22), par l'identifiant `prix`.
  * Le volume de modifications, les délais d'intervention et la durée d'engagement ne sont pas
  * affichés sur la page Hébergement et maintenance tant qu'ils ne sont pas confirmés.
  */
 export interface ForfaitMaintenance {
   nom: string;
+  /** Identifiant de l'offre dans src/data/prix.json. */
+  prix: string;
   recommande: boolean;
   pourQui: string;
   sauvegardes: string;
@@ -18,6 +19,7 @@ export interface ForfaitMaintenance {
 export const forfaitsMaintenance: ForfaitMaintenance[] = [
   {
     nom: 'Essentiel',
+    prix: 'forfait-essentiel',
     recommande: false,
     pourQui: 'Sites vitrines',
     sauvegardes: 'Hebdomadaires',
@@ -26,6 +28,7 @@ export const forfaitsMaintenance: ForfaitMaintenance[] = [
   },
   {
     nom: 'Sérénité',
+    prix: 'forfait-serenite',
     recommande: true,
     pourQui: 'Boutiques en ligne',
     sauvegardes: 'Quotidiennes',
@@ -34,6 +37,7 @@ export const forfaitsMaintenance: ForfaitMaintenance[] = [
   },
   {
     nom: 'Pro',
+    prix: 'forfait-pro',
     recommande: false,
     pourQui: 'Applications, sites critiques',
     sauvegardes: 'Quotidiennes + copie externe',

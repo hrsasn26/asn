@@ -1,6 +1,7 @@
 ---
 // Surtitres des sections : docs/brief-agence.md, section 6.20.
 // Textes : docs/brief-agence.md, section 6.16 (proposition à valider, avec la section Formation).
+// Prix de départ : section 6.22.
 import ButtonLink from '~/components/ButtonLink.astro';
 import CtaFinal from '~/components/CtaFinal.astro';
 import Encadre from '~/components/Encadre.astro';
@@ -11,10 +12,12 @@ import ListePoints from '~/components/ListePoints.astro';
 import ProblemList from '~/components/ProblemList.astro';
 import Section from '~/components/Section.astro';
 import Steps from '~/components/Steps.astro';
+import Tarifs from '~/components/Tarifs.astro';
 import { site } from '~/data/site';
 import { surtitreService } from '~/data/navigation';
 import BaseLayout from '~/layouts/BaseLayout.astro';
 import type { QuestionFaq } from '~/lib/faq';
+import { prixComplet } from '~/lib/prix';
 import { serviceJsonLd } from '~/lib/seo';
 
 const title = "Intégration de l'intelligence artificielle en entreprise";
@@ -47,7 +50,7 @@ const faq: QuestionFaq[] = [
   {
     question: 'Combien ça coûte ?',
     reponse: [
-      "Cela dépend de l'assistant et de vos données. Nous vous remettons un devis gratuit, à prix fixe. Le service d'IA est facturé en plus, selon l'utilisation : nous estimons ce coût avec vous avant de commencer.",
+      `À partir de ${prixComplet('assistant-site')} pour un assistant sur votre site. Le prix dépend de l'assistant et de vos données : nous vous remettons un devis gratuit, à prix fixe. Le service d'IA est facturé en plus, selon l'utilisation : nous estimons ce coût avec vous avant de commencer.`,
     ],
   },
   {
@@ -79,6 +82,9 @@ const faq: QuestionFaq[] = [
     subtitle="Assistants, traitement de documents et rédaction assistée : nous partons de vos tâches réelles, nous testons les résultats et nous encadrons l'utilisation de vos données."
   >
     <ButtonLink href={ctaProjet.href}>{ctaProjet.label}</ButtonLink>
+    <ButtonLink href="#tarifs" variant="secondaire">
+      Voir les tarifs
+    </ButtonLink>
   </Hero>
 
   <ProblemList
@@ -192,6 +198,21 @@ const faq: QuestionFaq[] = [
       ]}
     />
   </Section>
+
+  <Tarifs
+    service="/services/intelligence-artificielle"
+    facteurs={[
+      'Le nombre et la variété de vos documents',
+      'Les langues à comprendre',
+      'Les outils à relier : site, WhatsApp, CRM, dossiers partagés',
+      'La part des réponses à faire vérifier par une personne',
+    ]}
+  >
+    <p>
+      Le service d'IA et les messages WhatsApp sont facturés en plus, selon l'utilisation : nous
+      estimons ce coût avec vous avant de commencer.
+    </p>
+  </Tarifs>
 
   <Faq questions={faq} />
 

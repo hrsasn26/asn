@@ -44,6 +44,24 @@ export const site = {
   tagManager: 'GTM-WRR53MWN',
 } as const;
 
+/**
+ * Identifiants de l'entreprise, affichés dans les mentions légales quand ils sont confirmés
+ * (brief, section 7). Une offre de prix en ligne les demande (loi 31-08, articles 29 et 30, à
+ * faire valider par le juriste) : `pnpm check:content` le signale tant qu'ils manquent, et
+ * bloque la mise en production en mode `--strict`.
+ */
+export const entreprise = {
+  /** « SARL », « SARL AU »… */
+  formeJuridique: '[forme juridique]',
+  /** Capital social en dirhams, sans la devise : « 100 000 ». */
+  capital: '[montant]',
+  /** « Fès, numéro 12345 ». */
+  registreCommerce: '[ville, numéro]',
+  ice: '[numéro]',
+  identifiantFiscal: '[numéro]',
+  taxeProfessionnelle: '[numéro]',
+} as const;
+
 /** Adresse sur une ligne : « N° 7, rue Tantane, 30000 Fès, Maroc ». */
 export const adresseComplete = `${site.adresse.rue}, ${site.adresse.codePostal} ${site.adresse.ville}, ${site.adresse.nomPays}`;
 
