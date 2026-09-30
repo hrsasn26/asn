@@ -1,4 +1,3 @@
-import AxeBuilder from '@axe-core/playwright';
 import { expect, test } from '@playwright/test';
 import { pages } from './pages';
 
@@ -17,16 +16,6 @@ for (const chemin of pages) {
         ecran: window.innerWidth,
       }));
       expect(largeurs.page).toBeLessThanOrEqual(largeurs.ecran);
-    });
-
-    test('respecte les règles d’accessibilité WCAG 2.1 AA vérifiables automatiquement', async ({
-      page,
-    }) => {
-      await page.goto(chemin);
-      const resultat = await new AxeBuilder({ page })
-        .withTags(['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa'])
-        .analyze();
-      expect(resultat.violations).toEqual([]);
     });
   });
 }

@@ -17,6 +17,7 @@
     "format:check": "prettier --check .",
     "test": "vitest run",
     "test:e2e": "playwright test",
+    "test:e2e:rapide": "playwright test --project=ordinateur-chromium --project=mobile-chromium",
     "check:content": "node scripts/check-content.mjs",
     "image:partage": "node scripts/generer-image-partage.mjs",
     "image:heros": "node scripts/generer-heros.mjs",

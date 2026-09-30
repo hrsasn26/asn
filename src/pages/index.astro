@@ -6,6 +6,7 @@ import ButtonLink from '~/components/ButtonLink.astro';
 import CtaFinal from '~/components/CtaFinal.astro';
 import FeatureGrid from '~/components/FeatureGrid.astro';
 import Hero from '~/components/Hero.astro';
+import IconeWhatsApp from '~/components/IconeWhatsApp.astro';
 import LienFleche from '~/components/LienFleche.astro';
 import ListePoints from '~/components/ListePoints.astro';
 import Section from '~/components/Section.astro';
@@ -15,9 +16,14 @@ import { etapesProjet } from '~/data/processus';
 import { cta, site } from '~/data/site';
 import BaseLayout from '~/layouts/BaseLayout.astro';
 import { organisationJsonLd, siteWebJsonLd } from '~/lib/seo';
+import { lienWhatsApp } from '~/lib/whatsapp';
 
 const description =
   'Nous créons, testons, hébergeons et maintenons vos sites et vos applications. Un interlocuteur direct, un devis à prix fixe et un suivi après la mise en ligne.';
+
+// Bouton WhatsApp au-dessus des deux boutons (ajout du 30 septembre 2026, à valider). Caché tant
+// que le numéro est un placeholder.
+const whatsapp = lienWhatsApp(site.whatsapp, site.messageWhatsApp);
 ---
 
 <BaseLayout
@@ -37,6 +43,14 @@ const description =
     motCle="suivis dans la durée"
     subtitle="Sites web, applications et automatisations : nous concevons des outils rapides, sécurisés et faciles à faire évoluer. Et nous restons disponibles après la mise en ligne."
   >
+    {whatsapp && (
+      <p class="flex basis-full justify-center">
+        <ButtonLink href={whatsapp} variant="whatsapp">
+          <IconeWhatsApp class="size-5" />
+          Nous écrire sur WhatsApp
+        </ButtonLink>
+      </p>
+    )}
     <ButtonLink href={cta.principal.href}>{cta.principal.label}</ButtonLink>
     <ButtonLink href={cta.secondaire.href} variant="secondaire">
       {cta.secondaire.label}

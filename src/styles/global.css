@@ -48,8 +48,14 @@
   --color-nuit-logo-nom: #b8c2d6;
   /* Placeholders à compléter (texte entre crochets). */
   --color-surligne: #fff5cc;
-  /* Pastille de l'option WhatsApp (page Sites web). */
+  /* Vert de WhatsApp : logo (Contact, pied de page) et pastille de l'option WhatsApp (Sites web). */
   --color-whatsapp: #25d366;
+  /*
+   * Fond des boutons WhatsApp (accueil, bouton flottant) : vert foncé de WhatsApp. Le texte et le
+   * logo blancs ont un contraste de 4,9:1 (1,98:1 seulement sur le vert clair). Au survol, les
+   * couleurs s'inversent : fond blanc, texte et logo verts (même contraste).
+   */
+  --color-whatsapp-fonce: #008069;
 
   /* Largeur du contenu : 1200 px, plus les marges de 32 px. */
   --container-site: 79rem;

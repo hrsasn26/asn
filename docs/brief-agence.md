@@ -224,6 +224,8 @@ Accueil                                   /
 
 **Pied de page (toutes les pages) :** nom de l'agence et promesse, liens vers les services, liens légaux, coordonnées (e-mail, téléphone et lien « Nous écrire sur WhatsApp » avec le logo de WhatsApp, ajout du 26 septembre 2026, à valider), puis la ligne « © [année] Digital Solutions. Tous droits réservés. » L'année est celle du dernier déploiement.
 
+**Bouton WhatsApp flottant (toutes les pages) :** rond vert avec le logo de WhatsApp, en bas à droite de l'écran. Nom du lien pour les lecteurs d'écran : « Nous écrire sur WhatsApp ». Même lien que la page Contact (message déjà rempli). *(Décision du 30 septembre 2026, à valider.)*
+
 La page « Processus », avec une étape de tests bien visible, est l'endroit idéal pour mettre en avant la compétence QA.
 
 ---
@@ -254,7 +256,7 @@ La page « Processus », avec une étape de tests bien visible, est l'endroit id
 
 **Sous-titre :** Du site vitrine au logiciel métier, nous prenons en charge la conception, le développement, les tests, la mise en ligne et le suivi.
 
-**Boutons :** [Parler de mon projet] [Faire auditer mon site]
+**Boutons :** [Nous écrire sur WhatsApp] *(au-dessus, en vert, avec le logo de WhatsApp : ajout du 30 septembre 2026, à valider)*, puis [Parler de mon projet] [Faire auditer mon site]
 
 > Le document de recommandations propose « outils digitaux » : « numériques » est plus simple et évite le vocabulaire marketing (section 4).
 > Ancien H1 : « Des sites et des applications qui fonctionnent. Aujourd'hui, et dans cinq ans. »
@@ -1204,7 +1206,7 @@ Expliquez-nous votre besoin en quelques lignes. Nous vous répondons avec les pr
 - WhatsApp : lien « Nous écrire sur WhatsApp » *(ajout du 26 septembre 2026, à valider)*
 - Adresse : N° 7, rue Tantane, 30000 Fès, Maroc
 
-> WhatsApp : compte WhatsApp Business de l'agence (application gratuite), sur le même numéro que le téléphone, partagé par l'équipe : un téléphone principal et jusqu'à 4 postes reliés. Le lien « Nous écrire sur WhatsApp » (lien `wa.me`) ouvre la conversation avec un message déjà rempli : « Bonjour, je vous contacte depuis votre site. Mon projet : » *(à valider)*. Le texte du lien n'est pas le numéro : le lien du téléphone l'affiche déjà. Le lien a le logo de WhatsApp devant son texte, et il est aussi dans le pied de page, avec l'e-mail, le téléphone et l'adresse (26 septembre 2026). Pas de bouton flottant sur les autres pages : il cacherait du contenu sur téléphone et concurrencerait le bouton principal.
+> WhatsApp : compte WhatsApp Business de l'agence (application gratuite), sur le même numéro que le téléphone, partagé par l'équipe : un téléphone principal et jusqu'à 4 postes reliés. Le lien « Nous écrire sur WhatsApp » (lien `wa.me`) ouvre la conversation avec un message déjà rempli : « Bonjour, je vous contacte depuis votre site. Mon projet : » *(à valider)*. Le texte du lien n'est pas le numéro : le lien du téléphone l'affiche déjà. Le lien a le logo de WhatsApp (en vert) devant son texte, et il est aussi dans le pied de page, avec l'e-mail, le téléphone et l'adresse (26 septembre 2026). Décision du 30 septembre 2026 : le même lien est aussi un bouton flottant sur toutes les pages (section 5) et un bouton vert dans l'en-tête de l'accueil (section 6.7). L'ancienne décision (pas de bouton flottant, pour ne pas cacher de contenu sur téléphone) est remplacée.
 
 > L'e-mail, le téléphone et l'adresse sont confirmés le 26 septembre 2026. Ce sont des informations obligatoires (loi 31-08, article 29). Les valeurs sont dans `src/data/site.ts`. La ligne « Adresse » remplace l'ancienne ligne « Zone : [Ville ou région] ». Code postal reçu : « 300000 », corrigé en 30000 (code postal de Fès, cinq chiffres) : à confirmer.
 

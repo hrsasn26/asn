@@ -1,0 +1,26 @@
+---
+/**
+ * Bouton WhatsApp flottant, en bas à droite de toutes les pages (ajout du 30 septembre 2026, à
+ * valider : section 5 du brief). Même lien que la page Contact et le pied de page : il ouvre la
+ * conversation avec le message déjà rempli. Caché tant que le numéro est un placeholder, et à
+ * l'impression.
+ * Le logo seul est visible : aria-label donne au lien le même nom que les autres liens WhatsApp.
+ * Focus clavier : contour bleu nuit sur un halo blanc, visible sur les fonds clairs et sur le pied
+ * de page sombre.
+ */
+import IconeWhatsApp from '~/components/IconeWhatsApp.astro';
+import { site } from '~/data/site';
+import { lienWhatsApp } from '~/lib/whatsapp';
+
+const whatsapp = lienWhatsApp(site.whatsapp, site.messageWhatsApp);
+---
+
+{whatsapp && (
+  <a
+    href={whatsapp}
+    aria-label="Nous écrire sur WhatsApp"
+    class="fixed right-4 bottom-4 z-20 grid size-14 place-items-center rounded-full bg-whatsapp-fonce text-white shadow-[0_12px_28px_-10px_rgb(11_27_51/0.55)] [--anneau:var(--color-encre)] ring-2 ring-whatsapp-fonce ring-inset hover:bg-white hover:text-whatsapp-fonce focus-visible:shadow-[0_0_0_6px_var(--color-white)] motion-safe:transition-[background-color,color,scale] motion-safe:hover:scale-105 sm:right-6 sm:bottom-6 print:hidden"
+  >
+    <IconeWhatsApp class="size-7" />
+  </a>
+)}

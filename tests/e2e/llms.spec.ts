@@ -8,9 +8,7 @@ async function metaDescription(page: Page, chemin: string) {
   return page.locator('meta[name="description"]').getAttribute('content');
 }
 
-test('llms.txt liste chaque page avec sa meta description', async ({ page, request }, testInfo) => {
-  test.skip(testInfo.project.name !== 'ordinateur-chromium', 'Un seul navigateur suffit.');
-
+test('llms.txt liste chaque page avec sa meta description', async ({ page, request }) => {
   const reponse = await request.get('/llms.txt');
   expect(reponse.status()).toBe(200);
   expect(reponse.headers()['content-type']).toContain('text/plain');
