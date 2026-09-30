@@ -20,7 +20,7 @@
 ## 1. Principes
 
 - **Le site est notre première preuve.** Il doit réussir les contrôles de notre propre audit gratuit : vitesse, sécurité, référencement technique et affichage mobile.
-- **Il applique nos promesses** : tests avant la mise en ligne, protection des données personnelles (loi 09-08), accessibilité. Aucun prix public : chaque prix est donné dans un devis.
+- **Il applique nos promesses** : tests avant la mise en ligne, protection des données personnelles (loi 09-08), accessibilité. Les prix affichés sont des prix de départ : le prix exact est celui du devis, à prix fixe.
 - **Le site contient surtout des pages statiques.** Seules les pages avec formulaire (Contact et Audit gratuit) passent par le serveur.
 - **Il envoie très peu de JavaScript.** Le menu mobile et la FAQ utilisent des éléments HTML natifs (`<details>`). Les formulaires fonctionnent sans JavaScript. Les animations sont en CSS.
 
@@ -75,7 +75,8 @@ src/
   components/             Composants des pages (Hero, Section, Encadre, Texte, FAQ, formulaires…)
   data/
     site.ts               Nom, domaine, coordonnées, conditions des CGV, appels à l'action
-    forfaits.ts           Forfaits de maintenance (sans prix)
+    prix.json             Prix de départ de chaque offre (source unique, lue aussi par pnpm check:content)
+    forfaits.ts           Forfaits de maintenance (prix de départ dans prix.json)
     navigation.ts         Menus, numéro et surtitre des pages de services
     processus.ts          Les cinq étapes d'un projet (accueil, services)
     maquettes.ts          Visuels des en-têtes : textes alternatifs, légendes, largeurs affichées
@@ -100,7 +101,8 @@ deploy/                   Docker Compose, Caddyfile, script de déploiement
 
 - **Textes des pages** : dans `src/pages/`. Chaque page indique la section du brief d'où viennent ses textes.
 - **Nouvelle page ou nouvelle meta description** : la reporter aussi dans `src/pages/llms.txt.ts`. Le test `tests/e2e/llms.spec.ts` échoue si une page du sitemap manque ou si une description est différente.
-- **Prix** : aucun sur le site. Chaque prix est donné dans un devis. Les forfaits de maintenance (sans prix) sont dans `src/data/forfaits.ts`.
+- **Prix** (section 6.22 du brief, décision du 30 septembre 2026) : des prix de départ, « à partir de », TTC puis HT. Tous les montants sont dans `src/data/prix.json` : offre, page du service, niveau de complexité, prix HT, unité. `src/lib/prix.ts` calcule le TTC et met en forme les montants. Les composants `Tarifs` (section d'une page de service), `Prix` (un montant), `OfferCard`, `ForfaitsTable` et `ServiceCards` les affichent. Les réponses des FAQ, les données structurées (`Offer`, dans `src/lib/seo.ts`) et `llms.txt` lisent le même fichier. Pour changer un prix : `prix.json`, puis la section 6.22 du brief. Pour retirer un prix : `"ht": null`, l'offre affiche « Sur devis ». Un prix n'est jamais écrit à la main dans une page.
+- **Avant de mettre les prix en ligne** : les identifiants de l'entreprise dans `src/data/site.ts` (`entreprise` : ils s'affichent dans les mentions légales) et la date de fin de validité dans `prix.json` (`validite`). `pnpm check:content` affiche un avertissement tant qu'ils manquent, et une erreur en mode `--strict`.
 - **Nom, domaine, coordonnées, conditions des CGV, appels à l'action** : dans `src/data/site.ts`. Le téléphone et l'adresse (Fès) sont reçus le 26 septembre 2026. Pas de zone servie tant qu'elle n'est pas confirmée. Le domaine sert aussi d'adresse de production dans `astro.config.mjs`.
 - **Visuels des en-têtes** (onze pages, section 6.19 du brief) : des maquettes d'écrans pour des clients fictifs, avec la légende « Exemple fictif ». Les sources HTML sont dans `design/heros/`. Après une modification, lancez `pnpm image:heros` : le script vérifie les règles de contenu sur les sources (le texte d'une image échappe à `pnpm check:content`), puis écrit les images AVIF et WebP dans `src/assets/heros/`. Le composant `MaquetteHero` les sert telles quelles, sans conversion par Astro : la page Audit gratuit, rendue par le serveur, ne convertit rien à chaque visite. Textes alternatifs et légende : `src/data/maquettes.ts`. Les mêmes images servent de vignettes aux cartes des services (Accueil, Services), avec une légende sous la grille, et le visuel de l'audit gratuit illustre l'encadré de l'accueil. Détails : `design/heros/README.md`.
 - **Image de partage** (aperçu sur les réseaux sociaux) : lancez `pnpm image:partage` après un changement du nom de l'agence, du logo ou des couleurs. Le script affiche le nom dès qu'il n'est plus un placeholder.
@@ -161,7 +163,7 @@ Limite connue : Firefox ne prend pas encore en charge les animations liées au d
 **Règles du brief vérifiées automatiquement** (section 4) :
 - mots à éviter : DevOps, QA, stack, CI/CD, framework, « solutions innovantes », « optimiser », « digitaliser », « 360° », « ingénieurs » ;
 - pas de point d'exclamation ;
-- aucun prix affiché (« 5 000 DH », « [X] DH », « 300 € ») : les prix sont donnés dans les devis ;
+- aucun prix hors de la liste : un montant affiché doit figurer dans `src/data/prix.json` et être suivi de « TTC » ou de « HT », en « DH ». Les données structurées sont vérifiées aussi (prix TTC). Les visuels des en-têtes n'affichent toujours aucun prix (`pnpm image:heros`) ;
 - aucune mention de la France, du RGPD ou de la CNIL : le site vise des projets au Maroc ;
 - pas de placeholder collé à un mot (ex. : « sous [48 h ouvrées]avec »). Astro supprime parfois l'espace entre une valeur `{…}` et le texte de la ligne suivante : écrivez `{' '}` ou gardez la valeur sur la même ligne.
 

@@ -2,13 +2,26 @@
 // Projet de texte à faire valider par un juriste (docs/brief-agence.md, section 7).
 // Droit marocain : identité et identifiants de l'entreprise (RC, ICE, IF, taxe professionnelle),
 // informations du fournisseur (loi 31-08, article 29) et données personnelles (loi 09-08).
-// Seules les parties confirmées sont affichées. Les parties qui attendent une information
-// (forme juridique, identifiants, directeur de la publication, hébergeur, récépissé de la CNDP)
-// sont dans la section 7 du brief, avec leurs placeholders.
+// Seules les parties confirmées sont affichées. Les identifiants de l'entreprise (forme
+// juridique, capital, RC, ICE, IF, taxe professionnelle) sont dans src/data/site.ts : chaque
+// ligne apparaît quand sa valeur est confirmée. Les autres parties en attente (directeur de la
+// publication, hébergeur, récépissé de la CNDP) sont dans la section 7 du brief.
 import BarreLecture from '~/components/BarreLecture.astro';
 import Prose from '~/components/Prose.astro';
-import { adresseComplete, lienTelephone, site } from '~/data/site';
+import { adresseComplete, entreprise, lienTelephone, site } from '~/data/site';
 import BaseLayout from '~/layouts/BaseLayout.astro';
+import { estConfirme } from '~/lib/placeholders';
+
+const societe =
+  estConfirme(entreprise.formeJuridique) && estConfirme(entreprise.capital)
+    ? `, ${entreprise.formeJuridique} au capital de ${entreprise.capital} DH`
+    : '';
+const identifiants = [
+  { label: 'Registre du commerce', valeur: entreprise.registreCommerce },
+  { label: "Identifiant commun de l'entreprise (ICE)", valeur: entreprise.ice },
+  { label: 'Identifiant fiscal (IF)', valeur: entreprise.identifiantFiscal },
+  { label: 'Taxe professionnelle', valeur: entreprise.taxeProfessionnelle },
+].filter(({ valeur }) => estConfirme(valeur));
 ---
 
 <BaseLayout
@@ -22,7 +35,7 @@ import BaseLayout from '~/layouts/BaseLayout.astro';
     <div class="mt-12">
       <Prose>
         <h2>Éditeur du site</h2>
-        <p>{`Le site ${site.domaine} est édité par ${site.nom}.`}</p>
+        <p>{`Le site ${site.domaine} est édité par ${site.nom}${societe}.`}</p>
         <ul>
           <li>Adresse : {adresseComplete}</li>
           <li>
@@ -31,6 +44,9 @@ import BaseLayout from '~/layouts/BaseLayout.astro';
           <li>
             E-mail : <a href={`mailto:${site.email}`}>{site.email}</a>
           </li>
+          {identifiants.map(({ label, valeur }) => (
+            <li>{`${label} : ${valeur}`}</li>
+          ))}
         </ul>
 
         <h2>Propriété intellectuelle</h2>

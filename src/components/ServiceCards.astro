@@ -3,10 +3,13 @@
  * Cartes des neuf pôles (docs/brief-agence.md, section 6.1), avec en vignette le visuel de
  * l'en-tête de chaque page de service (maquette d'écrans pour un client fictif).
  * Toute la carte est cliquable : le lien « Découvrir… » s'étend sur la carte (after:inset-0).
+ * Chaque carte cite le prix de départ de l'offre de référence du pôle (brief, section 6.22) :
+ * « Site vitrine : à partir de 4 800 DH TTC ».
  */
 import MaquetteHero from '~/components/MaquetteHero.astro';
 import { legendeVignettes, TAILLES_MAQUETTE, type NomMaquette } from '~/data/maquettes';
 import { numeroService } from '~/data/navigation';
+import { libelleUnite, offreDeReference, prixTtc } from '~/lib/prix';
 
 interface CarteService {
   title: string;
@@ -154,6 +157,15 @@ const fin = (label: string) => label.split(' ').at(-1);
             </li>
           ))}
         </ul>
+        {offreDeReference(link.href) && (
+          <p class="mt-5 text-[0.8125rem] leading-[1.5] text-doux">
+            {`${offreDeReference(link.href)?.nom} : `}
+            <span class="font-semibold whitespace-nowrap text-encre">
+              {`à partir de ${prixTtc(offreDeReference(link.href)!)}`}
+            </span>{' '}
+            {libelleUnite(offreDeReference(link.href)!)}
+          </p>
+        )}
         <p class="mt-auto pt-5.5">
           <a
             href={link.href}

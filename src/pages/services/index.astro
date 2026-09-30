@@ -1,5 +1,6 @@
 ---
 // Textes : docs/brief-agence.md, section 6.1. Surtitres des sections : section 6.20.
+// Prix de départ : section 6.22.
 import AuditTeaser from '~/components/AuditTeaser.astro';
 import ButtonLink from '~/components/ButtonLink.astro';
 import CtaFinal from '~/components/CtaFinal.astro';
@@ -13,6 +14,7 @@ import { etapesProjet } from '~/data/processus';
 import { cta, site } from '~/data/site';
 import BaseLayout from '~/layouts/BaseLayout.astro';
 import type { QuestionFaq } from '~/lib/faq';
+import { prixComplet } from '~/lib/prix';
 
 // Questions fréquentes : affichées par le composant Faq et reprises dans les données
 // structurées FAQPage.
@@ -21,7 +23,7 @@ const faq: QuestionFaq[] = [
     question: 'Combien coûte un site ou une application ?',
     ouvert: true,
     reponse: [
-      'Cela dépend du projet. Après un premier échange, nous vous remettons un devis gratuit, détaillé et à prix fixe : vous savez exactement ce que vous payez avant de vous engager.',
+      `À partir de ${prixComplet('site-vitrine')} pour un site vitrine, et de ${prixComplet('mvp-web')} pour une première version d'application. Le prix dépend du projet : après un premier échange, nous vous remettons un devis gratuit, détaillé et à prix fixe. Vous savez exactement ce que vous payez avant de vous engager.`,
     ],
   },
   {

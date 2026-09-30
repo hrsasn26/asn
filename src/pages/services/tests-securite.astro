@@ -1,20 +1,23 @@
 ---
 // Surtitres des sections : docs/brief-agence.md, section 6.20.
-// Textes : docs/brief-agence.md, section 6.18 (proposition à valider).
+// Textes : docs/brief-agence.md, section 6.18 (proposition à valider). Prix : section 6.22.
 import ButtonLink from '~/components/ButtonLink.astro';
 import CtaFinal from '~/components/CtaFinal.astro';
 import Encadre from '~/components/Encadre.astro';
 import Faq from '~/components/Faq.astro';
 import FeatureGrid from '~/components/FeatureGrid.astro';
+import LienFleche from '~/components/LienFleche.astro';
 import Hero from '~/components/Hero.astro';
 import ListePoints from '~/components/ListePoints.astro';
 import ProblemList from '~/components/ProblemList.astro';
 import Section from '~/components/Section.astro';
 import Steps from '~/components/Steps.astro';
+import Tarifs from '~/components/Tarifs.astro';
 import { cta, site } from '~/data/site';
 import { surtitreService } from '~/data/navigation';
 import BaseLayout from '~/layouts/BaseLayout.astro';
 import type { QuestionFaq } from '~/lib/faq';
+import { prixComplet } from '~/lib/prix';
 import { serviceJsonLd } from '~/lib/seo';
 
 const title = "Audit de sécurité et tests de sites et d'applications";
@@ -48,7 +51,7 @@ const faq: QuestionFaq[] = [
   {
     question: 'Combien ça coûte ?',
     reponse: [
-      "Cela dépend de la taille du site ou de l'application et des tests choisis. Après le cadrage, nous vous remettons un devis gratuit, à prix fixe.",
+      `À partir de ${prixComplet('audit-securite-site')} pour l'audit de sécurité d'un site. Le prix dépend de la taille du site ou de l'application et des tests choisis : après le cadrage, nous vous remettons un devis gratuit, à prix fixe.`,
     ],
   },
   {
@@ -80,6 +83,9 @@ const faq: QuestionFaq[] = [
     subtitle="Audit de sécurité, tests avant une mise en ligne, tests automatiques et tests de charge : nous vérifions votre site ou votre application, même si nous ne l'avons pas développé."
   >
     <ButtonLink href={ctaAudit.href}>{ctaAudit.label}</ButtonLink>
+    <ButtonLink href="#tarifs" variant="secondaire">
+      Voir les tarifs
+    </ButtonLink>
   </Hero>
 
   <ProblemList
@@ -184,6 +190,21 @@ const faq: QuestionFaq[] = [
       ]}
     />
   </Section>
+
+  <Tarifs
+    service="/services/tests-securite"
+    facteurs={[
+      "La taille du site ou de l'application",
+      'Le nombre de parcours à vérifier',
+      "Le nombre de profils d'utilisateurs à tester",
+      "L'examen du code et du serveur, en plus des tests de l'extérieur",
+    ]}
+  >
+    <p>
+      L'audit technique de votre site (vitesse, référencement, affichage mobile) est gratuit.{' '}
+      <LienFleche href={cta.secondaire.href} label={cta.secondaire.label} />
+    </p>
+  </Tarifs>
 
   <Faq questions={faq} />
 

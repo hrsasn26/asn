@@ -1,16 +1,23 @@
 ---
-/** Carte d'une offre (page Sites web, « Nos formules ») : texte, public visé et contenu. */
+/**
+ * Carte d'une offre (page Sites web, « Nos formules ») : texte, public visé, contenu et prix de
+ * départ (brief, section 6.22).
+ */
 import ListePoints from '~/components/ListePoints.astro';
+import Prix from '~/components/Prix.astro';
 import Texte from '~/components/Texte.astro';
+import { offre } from '~/lib/prix';
 
 interface Props {
   title: string;
   text: string;
   idealPour: string;
   items: string[];
+  /** Identifiant de l'offre dans src/data/prix.json. */
+  prix: string;
 }
 
-const { title, text, idealPour, items } = Astro.props;
+const { title, text, idealPour, items, prix } = Astro.props;
 ---
 
 <article class="apparition flex min-w-0 flex-[1_1_15rem] flex-col rounded-3xl px-7 py-8 ring-1 ring-ligne ring-inset">
@@ -23,4 +30,5 @@ const { title, text, idealPour, items } = Astro.props;
     <Texte texte={idealPour} />
   </p>
   <ListePoints items={items} variante="lignes" class="mt-6" />
+  <Prix offre={offre(prix)} taille="petit" class="mt-auto pt-6" />
 </article>

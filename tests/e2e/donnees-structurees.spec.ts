@@ -65,6 +65,39 @@ test('chaque service renvoie à l’agence décrite sur l’accueil', async ({ p
   }
 });
 
+test('chaque service décrit ses offres avec les prix de départ affichés', async ({ page }) => {
+  // « 4 800 DH TTC », comme sur la page (les espaces insécables sont normalisées).
+  const montant = (prix: number) => normaliser(`${prix.toLocaleString('fr-FR')} DH TTC`);
+
+  for (const chemin of pages.filter((p) => p.startsWith('/services/'))) {
+    await page.goto(chemin);
+    const service = (await noeuds(page)).find((noeud) => noeud['@type'] === 'Service');
+    const offres = (service?.offers ?? []) as {
+      name: string;
+      priceSpecification: {
+        minPrice: number;
+        priceCurrency: string;
+        valueAddedTaxIncluded: boolean;
+      };
+    }[];
+
+    // Prix TTC affichés : liste « Tarifs » des pages de services, tableau des forfaits.
+    const affiches = await page.locator('#tarifs li strong, #forfaits td strong').allTextContents();
+    expect(affiches.length, chemin).toBeGreaterThan(0);
+    expect(
+      offres.map(({ priceSpecification }) => montant(priceSpecification.minPrice)).sort(),
+      chemin,
+    ).toEqual(affiches.map(normaliser).sort());
+
+    for (const { name, priceSpecification } of offres) {
+      expect(priceSpecification, `${chemin} : ${name}`).toMatchObject({
+        priceCurrency: 'MAD',
+        valueAddedTaxIncluded: true,
+      });
+    }
+  }
+});
+
 test('L’agence décrit l’équipe affichée, et l’accueil y renvoie', async ({ page }) => {
   await page.goto('/agence');
   const noeudsAgence = await noeuds(page);

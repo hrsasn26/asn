@@ -1,18 +1,21 @@
 ---
 // Surtitres des sections : docs/brief-agence.md, section 6.20.
-// Textes : docs/brief-agence.md, section 6.14 (proposition à valider).
+// Textes : docs/brief-agence.md, section 6.14 (proposition à valider). Prix : section 6.22.
 import ButtonLink from '~/components/ButtonLink.astro';
 import CtaFinal from '~/components/CtaFinal.astro';
 import Faq from '~/components/Faq.astro';
 import FeatureGrid from '~/components/FeatureGrid.astro';
+import LienFleche from '~/components/LienFleche.astro';
 import Hero from '~/components/Hero.astro';
 import ProblemList from '~/components/ProblemList.astro';
 import Section from '~/components/Section.astro';
 import Steps from '~/components/Steps.astro';
+import Tarifs from '~/components/Tarifs.astro';
 import { site } from '~/data/site';
 import { surtitreService } from '~/data/navigation';
 import BaseLayout from '~/layouts/BaseLayout.astro';
 import type { QuestionFaq } from '~/lib/faq';
+import { prixComplet } from '~/lib/prix';
 import { serviceJsonLd } from '~/lib/seo';
 
 const title = "Création d'application mobile iPhone et Android";
@@ -33,7 +36,7 @@ const faq: QuestionFaq[] = [
   {
     question: 'Combien coûte une application mobile ?',
     reponse: [
-      'Cela dépend des écrans et des fonctionnalités. Après le cadrage, nous vous remettons un devis gratuit, à prix fixe.',
+      `À partir de ${prixComplet('appli-simple')} pour une application simple, sur iPhone et Android. Le prix dépend des écrans et des fonctionnalités : après le cadrage, nous vous remettons un devis gratuit, à prix fixe.`,
     ],
   },
   {
@@ -77,6 +80,9 @@ const faq: QuestionFaq[] = [
     subtitle="Pour vos clients ou pour vos équipes : une seule équipe conçoit les écrans, développe l'application, la teste sur de vrais téléphones et assure son suivi."
   >
     <ButtonLink href={ctaProjet.href}>{ctaProjet.label}</ButtonLink>
+    <ButtonLink href="#tarifs" variant="secondaire">
+      Voir les tarifs
+    </ButtonLink>
   </Hero>
 
   <ProblemList
@@ -171,6 +177,22 @@ const faq: QuestionFaq[] = [
       ]}
     />
   </Section>
+
+  <Tarifs
+    service="/services/applications-mobiles"
+    facteurs={[
+      "Le nombre d'écrans et de fonctions",
+      'Le fonctionnement sans connexion',
+      'Le paiement en ligne',
+      'Une version en français et en arabe',
+      'La connexion à vos logiciels de gestion',
+    ]}
+  >
+    <p>
+      Après la publication, un forfait de maintenance garde votre application à jour.{' '}
+      <LienFleche href="/services/hebergement-maintenance#forfaits" label="Voir les forfaits" />
+    </p>
+  </Tarifs>
 
   <Faq questions={faq} />
 

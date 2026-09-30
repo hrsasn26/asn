@@ -1,7 +1,11 @@
 #!/usr/bin/env node
 /**
  * Vérifie le contenu du site construit (`pnpm build`) avec les règles du brief :
- * placeholders restants, mots à éviter, points d'exclamation.
+ * placeholders restants, mots à éviter, points d'exclamation, prix affichés.
+ *
+ * Prix (brief, section 6.22) : un montant affiché doit figurer dans src/data/prix.json et être
+ * suivi de « TTC » ou de « HT ». Tant que les mentions légales n'ont pas les identifiants de
+ * l'entreprise, ou que les prix n'ont pas de date de fin de validité, le script le signale.
  *
  * Usage : node scripts/check-content.mjs [--strict] [--base-url http://localhost:4321]
  *
@@ -12,7 +16,16 @@
 import { spawn } from 'node:child_process';
 import { existsSync, readFileSync } from 'node:fs';
 import { parseArgs } from 'node:util';
-import { analyserTexte, extraireTexte, extraireTexteMarkdown } from './lib/content-rules.mjs';
+import {
+  analyserPrixStructures,
+  analyserTexte,
+  conditionsPrix,
+  contientPrix,
+  extrairePrixStructures,
+  extraireTexte,
+  extraireTexteMarkdown,
+  prixDeclares,
+} from './lib/content-rules.mjs';
 
 const { values: options } = parseArgs({
   options: {
@@ -26,6 +39,10 @@ if (!existsSync(SITEMAP)) {
   console.error(`${SITEMAP} introuvable : lancez d'abord « pnpm build ».`);
   process.exit(1);
 }
+
+// Prix de départ du site : source unique, lue aussi par src/lib/prix.ts.
+const donneesPrix = JSON.parse(readFileSync('src/data/prix.json', 'utf8'));
+const prix = prixDeclares(donneesPrix);
 
 // Toutes les pages du sitemap, plus la page 404 et le fichier llms.txt (Markdown).
 const chemins = [
@@ -50,6 +67,9 @@ if (!baseUrl) {
 
 let erreurs = 0;
 let avertissements = 0;
+let prixAffiches = false;
+/** @type {string[]} */
+let mentionsLegales = [];
 
 try {
   for (const chemin of chemins) {
@@ -58,7 +78,12 @@ try {
     const fragments = chemin.endsWith('.txt')
       ? extraireTexteMarkdown(contenu)
       : extraireTexte(contenu);
-    const problemes = analyserTexte(fragments, { strict: options.strict });
+    const problemes = [
+      ...analyserTexte(fragments, { strict: options.strict, prix }),
+      ...analyserPrixStructures(extrairePrixStructures(contenu), prix),
+    ];
+    prixAffiches ||= contientPrix(fragments);
+    if (chemin === '/mentions-legales') mentionsLegales = fragments;
 
     const canonique = contenu.match(/<link rel="canonical" href="([^"]+)"/)?.[1] ?? '';
     if (options.strict && /\/\/(localhost|127\.0\.0\.1)/.test(canonique)) {
@@ -69,27 +94,43 @@ try {
       });
     }
 
-    if (problemes.length === 0) continue;
-    console.log(`\n${chemin}`);
-    for (const [cle, nombre] of regrouper(problemes)) {
-      const [niveau, regle, extrait] = JSON.parse(cle);
-      const symbole = niveau === 'erreur' ? '✖' : '⚠';
-      console.log(`  ${symbole} ${regle} : ${extrait}${nombre > 1 ? ` (×${nombre})` : ''}`);
-    }
-    erreurs += problemes.filter((p) => p.niveau === 'erreur').length;
-    avertissements += problemes.filter((p) => p.niveau === 'avertissement').length;
+    signaler(chemin, problemes);
   }
 } finally {
   serveur?.kill();
+}
+
+if (prixAffiches) {
+  signaler(
+    'Prix affichés',
+    conditionsPrix({ mentionsLegales, validite: donneesPrix.validite, strict: options.strict }),
+  );
 }
 
 console.log(
   `\n${chemins.length} pages et fichiers vérifiés : ${erreurs} erreur(s), ${avertissements} avertissement(s).`,
 );
 if (avertissements > 0 && !options.strict) {
-  console.log('Les placeholders bloqueront la mise en production (mode --strict).');
+  console.log('Les avertissements bloqueront la mise en production (mode --strict).');
 }
 process.exit(erreurs > 0 ? 1 : 0);
+
+/**
+ * Affiche les problèmes d'une page et les compte.
+ * @param {string} titre
+ * @param {{ niveau: string, regle: string, extrait: string }[]} problemes
+ */
+function signaler(titre, problemes) {
+  if (problemes.length === 0) return;
+  console.log(`\n${titre}`);
+  for (const [cle, nombre] of regrouper(problemes)) {
+    const [niveau, regle, extrait] = JSON.parse(cle);
+    const symbole = niveau === 'erreur' ? '✖' : '⚠';
+    console.log(`  ${symbole} ${regle} : ${extrait}${nombre > 1 ? ` (×${nombre})` : ''}`);
+  }
+  erreurs += problemes.filter((p) => p.niveau === 'erreur').length;
+  avertissements += problemes.filter((p) => p.niveau === 'avertissement').length;
+}
 
 /** @param {{ niveau: string, regle: string, extrait: string }[]} problemes */
 function regrouper(problemes) {

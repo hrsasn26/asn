@@ -3,13 +3,15 @@
  * les moteurs de recherche à base d'IA.
  *
  * Textes : meta description de l'accueil (brief, section 6.7), promesse du pied de page,
- * phrase sur le devis de la page Sites web (section 6.2). Chaque lien reprend mot pour mot la
- * meta description de sa page. Le test tests/e2e/llms.spec.ts vérifie que chaque page du
+ * phrase sur le devis de la page Sites web (section 6.2), prix de départ de chaque offre
+ * (section 6.22, src/data/prix.json). Chaque lien reprend mot pour mot la meta description de
+ * sa page. Le test tests/e2e/llms.spec.ts vérifie que chaque page du
  * sitemap est listée avec sa meta description : mettez ce fichier à jour avec les pages.
  */
 import type { APIRoute } from 'astro';
 import { liensLegaux, navigationPrincipale, services, type LienNav } from '~/data/navigation';
 import { adresseComplete, site } from '~/data/site';
+import { offres, prixComplet, tauxTva, validitePrix } from '~/lib/prix';
 
 /** Meta description de chaque page, identique à celle de la page. */
 const descriptions: Record<string, string> = {
@@ -68,6 +70,22 @@ const sections: { titre: string; liens: LienNav[] }[] = [
   { titre: 'Optional', liens: liensLegaux },
 ];
 
+/**
+ * Prix de départ, par service : « Sites web, Site vitrine : à partir de 4 800 DH TTC (4 000 DH HT) ».
+ * Les offres sur devis n'y figurent pas. Ces lignes ne sont pas des liens : la liste des pages
+ * reste celle des sections (tests/e2e/llms.spec.ts).
+ */
+const prix = [
+  `Prix de départ, en dirhams, toutes taxes comprises (TVA de ${tauxTva} %). Le prix de chaque projet figure dans un devis gratuit, à prix fixe.${validitePrix ? ` Prix valables jusqu'au ${validitePrix}.` : ''}`,
+  services
+    .flatMap(({ label, href }) =>
+      offres
+        .filter(({ service, ht }) => service === href && ht !== null)
+        .map(({ id, nom }) => `- ${label}, ${nom} : à partir de ${prixComplet(id)}`),
+    )
+    .join('\n'),
+];
+
 export const GET: APIRoute = ({ site: adresse }) => {
   const ligne = ({ label, href }: LienNav) => {
     const description = descriptions[href];
@@ -81,6 +99,7 @@ export const GET: APIRoute = ({ site: adresse }) => {
     'Des sites et des applications fiables, testés, sécurisés et suivis dans la durée. ' +
       "Chaque projet fait l'objet d'un devis gratuit et détaillé, à prix fixe.",
     `Adresse : ${adresseComplete}. Téléphone : ${site.telephone}. E-mail : ${site.email}.`,
+    ...prix,
     ...sections.map(({ titre, liens }) => `## ${titre}\n\n${liens.map(ligne).join('\n')}`),
   ].join('\n\n');
 

@@ -1,6 +1,6 @@
 ---
 // Surtitres des sections : docs/brief-agence.md, section 6.20.
-// Textes : docs/brief-agence.md, section 6.3.
+// Textes : docs/brief-agence.md, section 6.3. Prix de départ : section 6.22.
 import ButtonLink from '~/components/ButtonLink.astro';
 import CtaFinal from '~/components/CtaFinal.astro';
 import Encadre from '~/components/Encadre.astro';
@@ -11,10 +11,12 @@ import LienFleche from '~/components/LienFleche.astro';
 import ProblemList from '~/components/ProblemList.astro';
 import Section from '~/components/Section.astro';
 import Steps from '~/components/Steps.astro';
+import Tarifs from '~/components/Tarifs.astro';
 import { site } from '~/data/site';
 import { surtitreService } from '~/data/navigation';
 import BaseLayout from '~/layouts/BaseLayout.astro';
 import type { QuestionFaq } from '~/lib/faq';
+import { prixComplet } from '~/lib/prix';
 import { serviceJsonLd } from '~/lib/seo';
 
 const title = 'Applications web et mobiles sur mesure';
@@ -29,7 +31,7 @@ const faq: QuestionFaq[] = [
     question: 'Combien coûte une application sur mesure ?',
     ouvert: true,
     reponse: [
-      "Cela dépend des fonctionnalités. Après l'atelier de cadrage, nous vous remettons un devis gratuit, à prix fixe.",
+      `À partir de ${prixComplet('mvp-web')} pour une première version, et de ${prixComplet('outil-metier')} pour un outil métier. Le prix dépend des fonctionnalités : après l'atelier de cadrage, nous vous remettons un devis gratuit, à prix fixe.`,
     ],
   },
   {
@@ -78,6 +80,9 @@ const faq: QuestionFaq[] = [
     subtitle="Réservation, devis, planning, espace client ou outil interne : nous développons les fonctions dont vous avez réellement besoin, puis nous les faisons évoluer avec vous."
   >
     <ButtonLink href={ctaProjet.href}>{ctaProjet.label}</ButtonLink>
+    <ButtonLink href="#tarifs" variant="secondaire">
+      Voir les tarifs
+    </ButtonLink>
   </Hero>
 
   <ProblemList
@@ -202,6 +207,17 @@ const faq: QuestionFaq[] = [
       </div>
     </Encadre>
   </Section>
+
+  <Tarifs
+    service="/services/applications-sur-mesure"
+    facteurs={[
+      "Le nombre d'écrans et de fonctions",
+      "Le nombre de profils d'utilisateurs",
+      'Le paiement en ligne',
+      'Une version en français et en arabe',
+      'La connexion à vos autres logiciels',
+    ]}
+  />
 
   <Faq questions={faq} />
 

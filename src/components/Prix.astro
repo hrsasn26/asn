@@ -1,0 +1,41 @@
+---
+/**
+ * Prix de départ d'une offre (brief, section 6.22) : « À partir de », le prix TTC, puis le prix
+ * HT. Une offre sans prix affiche « Sur devis ». Les montants viennent de src/data/prix.json.
+ * Les espaces entre les morceaux comptent : un lecteur d'écran et `pnpm check:content` lisent
+ * « À partir de 4 800 DH TTC par mois 4 000 DH HT ».
+ */
+import { libelleUnite, prixHt, prixTtc, type Offre } from '~/lib/prix';
+
+interface Props {
+  offre: Pick<Offre, 'ht' | 'unite'>;
+  /** « grand » : liste des tarifs. « petit » : cartes d'offre et tableau des forfaits. */
+  taille?: 'petit' | 'grand';
+  class?: string;
+}
+
+const { offre, taille = 'grand', class: classe } = Astro.props;
+const unite = libelleUnite(offre);
+---
+
+<p class={classe}>
+  {offre.ht === null ? (
+    <span class="font-semibold text-encre">Sur devis</span>
+  ) : (
+    <>
+      <span class="block text-[0.6875rem] font-semibold tracking-[0.18em] text-discret uppercase">
+        À partir de
+      </span>{' '}
+      <strong
+        class:list={[
+          'font-semibold tracking-[-0.01em] whitespace-nowrap text-encre',
+          taille === 'grand' ? 'text-[1.375rem]' : 'text-lg',
+        ]}
+      >
+        {prixTtc(offre)}
+      </strong>{' '}
+      {unite && <span class="text-sm whitespace-nowrap text-doux">{unite}</span>}{' '}
+      <span class="block text-sm text-doux">{prixHt(offre)}</span>
+    </>
+  )}
+</p>
