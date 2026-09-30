@@ -54,6 +54,9 @@ test('le bouton WhatsApp flottant est sur toutes les pages', async ({ page }) =>
 });
 
 test('l’accueil propose WhatsApp au-dessus des deux boutons', async ({ page }) => {
+  // Sans animation d'entrée : les boutons montent en place pendant 0,8 seconde, et deux mesures
+  // successives ne tomberaient pas au même instant (écart de 12 px vu sur WebKit).
+  await page.emulateMedia({ reducedMotion: 'reduce' });
   await page.goto('/');
   const principal = page.getByRole('main');
   const whatsapp = principal.getByRole('link', { name: 'Nous écrire sur WhatsApp' });
