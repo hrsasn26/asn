@@ -1,8 +1,6 @@
 import { expect, test } from '@playwright/test';
 
-test('tous les liens internes fonctionnent', async ({ page, request, baseURL }, testInfo) => {
-  test.skip(testInfo.project.name !== 'ordinateur-chromium', 'Un seul navigateur suffit.');
-
+test('tous les liens internes fonctionnent', async ({ page, request, baseURL }) => {
   const aVisiter = ['/'];
   const visites = new Set<string>();
   const erreurs: string[] = [];

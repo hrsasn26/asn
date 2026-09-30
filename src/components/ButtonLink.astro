@@ -4,11 +4,13 @@
  * - primaire : fond bleu, bleu nuit au survol ;
  * - secondaire : contour gris, bleu au survol ;
  * - contour : contour bleu, rempli au survol (en-tête) ;
- * - clair : fond blanc, pour les encadrés sombres (le bleu sur le bleu nuit manque de contraste).
+ * - clair : fond blanc, pour les encadrés sombres (le bleu sur le bleu nuit manque de contraste) ;
+ * - whatsapp : fond vert de WhatsApp. Au survol, les couleurs
+ *   s'inversent (fond blanc, texte et logo verts) ; le contour vert garde la forme du bouton. Le logo se place dans le slot.
  */
 interface Props {
   href: string;
-  variant?: 'primaire' | 'secondaire' | 'contour' | 'clair';
+  variant?: 'primaire' | 'secondaire' | 'contour' | 'clair' | 'whatsapp';
   /** « grand » : appel à l'action final. « petit » : en-tête. */
   taille?: 'petit' | 'normal' | 'grand';
   class?: string;
@@ -29,6 +31,8 @@ const { href, variant = 'primaire', taille = 'normal', class: classe } = Astro.p
       'text-encre ring-1 ring-contour ring-inset hover:text-bleu hover:ring-bleu',
     variant === 'contour' && 'text-bleu ring-1 ring-bleu ring-inset hover:bg-bleu hover:text-white',
     variant === 'clair' && 'bg-white text-encre hover:bg-nuit-survol',
+    variant === 'whatsapp' &&
+      'inline-flex items-center justify-center gap-2.5 bg-whatsapp-fonce text-white ring-1 ring-whatsapp-fonce ring-inset hover:bg-white hover:text-whatsapp-fonce',
     classe,
   ]}
 >

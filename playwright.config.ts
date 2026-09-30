@@ -9,9 +9,26 @@ const chromium = process.env.PW_CHROMIUM_PATH
   : {};
 
 /**
- * Les tests tournent sur le site construit (`pnpm build`), dans les principaux navigateurs
- * et tailles d'écran : c'est la promesse « testé avant la mise en ligne » du brief.
+ * Les tests tournent sur le site construit (`pnpm build`), sur Chromium (ordinateur et mobile) et
+ * WebKit, le moteur de Safari (ordinateur) : c'est la promesse « testé avant la mise en ligne »
+ * du brief. Décision du 30 septembre 2026 : plus de projet Firefox (peu de visiteurs, liste
+ * déroulante du système) ni iPad (Safari à une autre largeur : rien de plus que les deux autres).
+ *
+ * Chaque test ne tourne que là où son résultat peut changer :
+ * - contenu : le HTML est le même dans tous les navigateurs (données structurées, llms.txt,
+ *   liens internes, Tag Manager). Un seul navigateur suffit : Chromium, taille ordinateur ;
+ * - accessibilité (axe) : elle dépend de la mise en page, pas du moteur. Chromium, tailles
+ *   ordinateur et mobile ;
+ * - le reste (affichage, formulaires, animations, navigation) : les trois projets.
+ * En local, `pnpm test:e2e:rapide` ne lance que les deux projets Chromium.
  */
+const contenu = [
+  '**/donnees-structurees.spec.ts',
+  '**/cookies.spec.ts',
+  '**/llms.spec.ts',
+  '**/liens.spec.ts',
+];
+const accessibilite = ['**/accessibilite.spec.ts'];
 export default defineConfig({
   testDir: 'tests/e2e',
   fullyParallel: true,
@@ -25,10 +42,12 @@ export default defineConfig({
   },
   projects: [
     { name: 'ordinateur-chromium', use: { ...devices['Desktop Chrome'], ...chromium } },
-    { name: 'ordinateur-firefox', use: { ...devices['Desktop Firefox'] } },
-    { name: 'ordinateur-webkit', use: { ...devices['Desktop Safari'] } },
-    { name: 'mobile-chromium', use: { ...devices['Pixel 7'], ...chromium } },
-    { name: 'tablette-webkit', use: { ...devices['iPad (gen 7)'] } },
+    { name: 'mobile-chromium', use: { ...devices['Pixel 7'], ...chromium }, testIgnore: contenu },
+    {
+      name: 'ordinateur-webkit',
+      use: { ...devices['Desktop Safari'] },
+      testIgnore: [...contenu, ...accessibilite],
+    },
   ],
   webServer: {
     command: 'node dist/server/entry.mjs',

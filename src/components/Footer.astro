@@ -86,7 +86,7 @@ const whatsapp = lienWhatsApp(site.whatsapp, site.messageWhatsApp);
               href={whatsapp}
               class="inline-flex items-center gap-2 py-0.5 text-nuit-texte no-underline hover:text-white"
             >
-              <IconeWhatsApp class="size-4" />
+              <IconeWhatsApp class="size-4 text-whatsapp" />
               Nous écrire sur WhatsApp
             </a>
           </p>
@@ -94,7 +94,8 @@ const whatsapp = lienWhatsApp(site.whatsapp, site.messageWhatsApp);
       </address>
     </div>
   </div>
-  <div class="conteneur border-t border-nuit-ligne pt-6 pb-10 text-[0.8125rem] text-nuit-pied">
+  {/* pb-24 sur téléphone : le bouton WhatsApp flottant ne cache pas la dernière ligne. */}
+  <div class="conteneur border-t border-nuit-ligne pt-6 pb-24 text-[0.8125rem] text-nuit-pied sm:pb-10">
     <p>{`© ${annee} ${site.nom}. Tous droits réservés.`}</p>
   </div>
 </footer>
